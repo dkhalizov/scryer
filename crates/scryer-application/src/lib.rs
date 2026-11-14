@@ -384,6 +384,8 @@ pub mod parity_seams {
         normalize_quality_tier, quality_meets_or_exceeds_cutoff, quality_tier_index,
         resolution_lines,
     };
+    // fork (P11): source tier keys (tests/props_quality.rs, tests/parity_decision.rs)
+    pub use crate::quality::profile::{quality_tier_label, release_tier_label};
     // fork: parity net seam (parity/fuzz scan_path)
     pub use crate::library::filename_parser::{
         LibraryFilenameParse, LibraryFilenameParseInput, LibraryFilenameParseMode,

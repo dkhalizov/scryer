@@ -1284,7 +1284,7 @@ impl MediaFileRepository for MediaFileStore {
         let sql = format!(
             "SELECT mf.id, mf.file_path, mf.original_file_path, mf.scene_name,
                     mf.grabbed_release_title, fem.episode_id, {} AS series_movie_link_ids_json,
-                    mf.quality_id, mf.created_at
+                    mf.quality_id, mf.source_type, mf.created_at
              FROM media_files mf
              LEFT JOIN file_episode_map fem ON fem.file_id = mf.id
              WHERE mf.title_id = {{}} AND {}
@@ -1314,6 +1314,7 @@ impl MediaFileRepository for MediaFileStore {
                     "media_files.series_movie_link_ids_json",
                 ),
                 quality_label: row.opt_text("quality_id")?,
+                source_type: row.opt_text("source_type")?, // fork (P11)
                 created_at: timestamp_text(row, "created_at")?,
             })
         })
@@ -1684,13 +1685,15 @@ impl MediaFileRepository for MediaFileStore {
         for chunk in title_ids.chunks(per_statement) {
             let placeholders = placeholders(chunk.len());
             let sql = format!(
-                "SELECT title_id, episode_id, season_number, episode_number, quality_tier
+                "SELECT title_id, episode_id, season_number, episode_number, quality_tier,
+                        source_type
                  FROM (
                     SELECT media_files.title_id AS title_id,
                            fem.episode_id AS episode_id,
                            e.season_number AS season_number,
                            e.episode_number AS episode_number,
                            {normalized_quality} AS quality_tier,
+                           media_files.source_type AS source_type,
                            ROW_NUMBER() OVER (
                               PARTITION BY CASE
                                   WHEN fem.episode_id IS NOT NULL THEN fem.episode_id
@@ -1723,6 +1726,7 @@ impl MediaFileRepository for MediaFileStore {
                     season_number: row.opt_text("season_number")?,
                     episode_number: row.opt_text("episode_number")?,
                     quality_tier: row.text("quality_tier")?,
+                    source_type: row.opt_text("source_type")?, // fork (P11)
                 });
             }
         }
@@ -4246,6 +4250,7 @@ mod tests {
                     file_path: path.into(),
                     role,
                     quality_label: Some("1080p".into()),
+                    source_type: Some("Remux".into()), // fork (P11): the compact read carries it
                     scoring_log: Some("large unused scoring payload".repeat(4096)),
                     ..Default::default()
                 })
@@ -7449,6 +7454,7 @@ mod tests {
                 file_path: "/library/Show/Season 01/Show - S01 pack.mkv".to_string(),
                 size_bytes: 1_000,
                 quality_label: Some("720p".to_string()),
+                source_type: Some("WEB-DL".to_string()), // fork (P11)
                 ..Default::default()
             })
             .await
@@ -7510,6 +7516,7 @@ mod tests {
         assert_eq!(summaries[1].quality_tier, "1080P");
         assert_eq!(summaries[1].season_number.as_deref(), Some("1"));
         assert_eq!(summaries[1].episode_number.as_deref(), Some("2"));
+        assert_eq!(summaries[0].source_type.as_deref(), Some("WEB-DL")); // fork (P11)
 
         let _ = std::fs::remove_file(db);
     }

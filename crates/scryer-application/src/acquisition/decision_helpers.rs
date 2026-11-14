@@ -81,30 +81,30 @@ pub enum CutoffScope {
 /// strength of one good episode.
 ///
 /// Ordering is by resolution, descending, read with the same parser
-/// `quality_tier_index` normalizes through. Tiers are resolution-only today, so
-/// for every label that names a resolution this agrees with a profile lookup;
-/// a label that names none ranks last here while the profile would simply not
-/// list it. When Part 5 makes tiers `(source, resolution)` this needs the
-/// profile — which the callers cannot supply yet, because they resolve the
-/// profile *from* this value.
+/// `quality_tier_index` normalizes through. fork (P11): the answer is the tier
+/// key (`quality_tier_label` of the file's quality and stored source), so a
+/// profile with source tiers ranks it like the candidate and the incumbent.
+// ponytail: ties within a resolution break on a fixed source order (`cutoff_rank`),
+// not the profile's tiers (callers resolve the profile from this value); pass the
+// tiers in if a profile ever ranks sources differently.
 pub fn analyzed_cutoff_quality_for_scope<'a, F: CutoffFile>(
     existing_files: &'a [F],
     scope: &CutoffScope,
-) -> Option<&'a str> {
+) -> Option<String> {
     match scope {
         CutoffScope::Episodes(episode_ids) => {
             if episode_ids.is_empty() {
                 return None;
             }
-            let mut weakest: Option<&'a str> = None;
+            let mut weakest: Option<String> = None;
             for episode_id in episode_ids {
                 let member = best_cutoff_quality_for(existing_files, |file| {
                     file.episode_id == Some(episode_id.as_str())
                 })?;
-                // `resolution_rank` is lower-is-better, so the weakest member is
+                // `cutoff_rank` is lower-is-better, so the weakest member is
                 // the one with the highest rank.
                 weakest = Some(match weakest {
-                    Some(current) if resolution_rank(current) >= resolution_rank(member) => current,
+                    Some(current) if cutoff_rank(&current) >= cutoff_rank(&member) => current,
                     _ => member,
                 });
             }
@@ -128,28 +128,42 @@ pub fn analyzed_cutoff_quality_for_scope<'a, F: CutoffFile>(
 fn best_cutoff_quality_for<'a, F: CutoffFile>(
     existing_files: &'a [F],
     matches: impl Fn(&CutoffFileFacts<'a>) -> bool,
-) -> Option<&'a str> {
+) -> Option<String> {
     existing_files
         .iter()
         .map(CutoffFile::cutoff_facts)
         .filter(|file| file.primary)
         .filter(|file| matches(file))
         .filter_map(|file| {
-            let quality = file.quality_label.map(str::trim)?;
-            (!quality.is_empty()).then_some((file, quality))
+            // fork (P11): the tier key, so a source breaks a resolution tie
+            let key =
+                crate::quality_profile::quality_tier_label(file.quality_label, file.source_type)?;
+            Some((file, key))
         })
         .min_by(|(left_file, left), (right_file, right)| {
-            resolution_rank(left)
-                .cmp(&resolution_rank(right))
+            cutoff_rank(left)
+                .cmp(&cutoff_rank(right))
                 .then_with(|| right_file.created_at.cmp(left_file.created_at))
         })
-        .map(|(_, quality)| quality)
+        .map(|(_, key)| key)
+}
+
+/// fork (P11): a tier key's place, lower is better: resolution first, then the
+/// source (REMUX > BLURAY > WEBDL > WEBRIP > HDTV > DVD > any other or none).
+fn cutoff_rank(key: &str) -> (u32, u8) {
+    let source = key.rsplit_once('-').map(|(source, _)| source);
+    let source_rank = ["REMUX", "BLURAY", "WEBDL", "WEBRIP", "HDTV", "DVD"]
+        .iter()
+        .position(|known| Some(*known) == source)
+        .unwrap_or(6) as u8;
+    (resolution_rank(key), source_rank)
 }
 
 pub struct CutoffFileFacts<'a> {
     episode_id: Option<&'a str>,
     series_movie_link_ids: &'a [String],
     quality_label: Option<&'a str>,
+    source_type: Option<&'a str>, // fork (P11)
     created_at: &'a str,
     primary: bool,
 }
@@ -165,6 +179,7 @@ impl CutoffFile for TitleMediaFile {
             episode_id: self.episode_id.as_deref(),
             series_movie_link_ids: &self.series_movie_link_ids,
             quality_label: self.quality_label.as_deref(),
+            source_type: self.source_type.as_deref(), // fork (P11)
             created_at: &self.created_at,
             primary: self.role.is_primary(),
         }
@@ -177,6 +192,7 @@ impl CutoffFile for crate::MediaFileCutoffSummary {
             episode_id: self.episode_id.as_deref(),
             series_movie_link_ids: &self.series_movie_link_ids,
             quality_label: self.quality_label.as_deref(),
+            source_type: self.source_type.as_deref(), // fork (P11)
             created_at: &self.created_at,
             primary: true,
         }

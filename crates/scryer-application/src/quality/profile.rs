@@ -914,16 +914,30 @@ fn normalize_codec(raw: Option<&str>) -> Option<String> {
 
 #[doc(hidden)] // fork: parity net seam (was pub(crate); tests/props_quality.rs)
 pub fn normalize_quality_tier(raw: Option<&str>) -> Option<String> {
-    raw.map(|value| {
-        let value = value.trim().to_ascii_lowercase();
-        let clean = value;
-        if clean.ends_with('p') && clean.len() > 1 {
-            let numeric = &clean[..clean.len() - 1];
-            format!("{}P", numeric)
-        } else {
-            clean.to_ascii_uppercase()
-        }
+    // fork (P11): plain upper-case; lower-casing a source prefix lost `REMUX-2160P`
+    raw.map(|value| value.trim().to_ascii_uppercase())
+}
+
+/// fork (P11): the tier key of a quality from `source`: `<SRC>-<RES>P` (e.g.
+/// `REMUX-2160P`, `WEBDL-1080P`), or the bare tier when the source is unknown.
+/// SRC is `parsed_release_source_type` upper-cased without `-` (ledger D48).
+#[doc(hidden)] // fork: parity net seam (tests/props_quality.rs, tests/parity_decision.rs)
+pub fn quality_tier_label(quality: Option<&str>, source: Option<&str>) -> Option<String> {
+    let resolution = normalize_quality_tier(quality).filter(|q| !q.is_empty())?;
+    let source = source
+        .map(|s| s.trim().to_ascii_uppercase().replace('-', ""))
+        .filter(|s| !s.is_empty());
+    Some(match source {
+        Some(source) => format!("{source}-{resolution}"),
+        None => resolution,
     })
+}
+
+/// fork (P11): the tier key a parsed release is ranked by.
+#[doc(hidden)] // fork: parity net seam (tests/props_quality.rs)
+pub fn release_tier_label(release: &ParsedReleaseMetadata) -> Option<String> {
+    let source = crate::release_parser::parsed_release_source_type(release);
+    quality_tier_label(release.quality.as_deref(), source.as_deref())
 }
 
 /// The vertical resolution a quality label names, if it names one.
@@ -973,11 +987,15 @@ pub fn quality_tier_index(
     criteria: &QualityProfileCriteria,
     quality: Option<&str>,
 ) -> Option<usize> {
-    let quality = normalize_quality_tier(quality)?;
-    criteria
-        .quality_tiers
-        .iter()
-        .position(|tier| tier == &quality)
+    tier_position(&criteria.quality_tiers, quality?) // fork (P11)
+}
+
+/// fork (P11): a key's place in `tiers`: the exact key, else its bare
+/// resolution, which stands for every source not listed there (ledger D48).
+pub(crate) fn tier_position(tiers: &[String], quality: &str) -> Option<usize> {
+    let key = normalize_quality_tier(Some(quality))?;
+    let find = |key: &str| tiers.iter().position(|tier| tier == key);
+    find(&key).or_else(|| find(key.rsplit_once('-')?.1))
 }
 
 pub fn resolve_profile_id_for_title(
@@ -998,33 +1016,14 @@ pub fn quality_meets_or_exceeds_cutoff(
     cutoff_tier: &str,
     quality_tiers: &[String],
 ) -> bool {
-    if quality_tiers.is_empty() {
-        return false;
-    }
-
-    let current_normalized = match normalize_quality_tier(Some(current_quality)) {
-        Some(quality) => quality,
-        None => return false,
-    };
-    let cutoff_normalized = match normalize_quality_tier(Some(cutoff_tier)) {
-        Some(quality) => quality,
-        None => return false,
-    };
-
-    let cutoff_pos = match quality_tiers
-        .iter()
-        .position(|tier| tier == &cutoff_normalized)
-    {
-        Some(position) => position,
-        None => return false,
-    };
-    match quality_tiers
-        .iter()
-        .position(|tier| tier == &current_normalized)
-    {
-        Some(current_pos) => current_pos <= cutoff_pos,
-        None => false,
-    }
+    // fork (P11): source keys fall back to their bare tier
+    matches!(
+        (
+            tier_position(quality_tiers, current_quality),
+            tier_position(quality_tiers, cutoff_tier),
+        ),
+        (Some(current), Some(cutoff)) if current <= cutoff
+    )
 }
 
 pub fn evaluate_profile_requirements(
@@ -1035,7 +1034,8 @@ pub fn evaluate_profile_requirements(
 ) -> QualityProfileDecision {
     let mut decision = QualityProfileDecision::new();
     let criteria = &profile.criteria;
-    decision.tier_index = quality_tier_index(criteria, release.quality.as_deref());
+    // fork (P11): the source tier key, not the bare resolution
+    decision.tier_index = quality_tier_index(criteria, release_tier_label(release).as_deref());
     decision.decision_pipeline = criteria.decision_pipeline;
     // The lowest admitted resolution is the fallback floor. Each standard
     // resolution step above it earns 100 points, including skipped tiers. Profile
@@ -1068,10 +1068,8 @@ pub fn evaluate_profile_requirements(
         decision.reject_requirement("upgrade_blocked_by_profile");
     }
     match normalize_quality_tier(release.quality.as_deref()) {
-        Some(quality)
-            if !criteria.quality_tiers.is_empty()
-                && !criteria.quality_tiers.iter().any(|tier| tier == &quality) =>
-        {
+        // fork (P11): "not listed" is the source-aware lookup's miss
+        Some(_) if !criteria.quality_tiers.is_empty() && decision.tier_index.is_none() => {
             decision.reject_requirement("quality_not_in_profile_tiers");
         }
         None if !criteria.allow_unknown_quality => {

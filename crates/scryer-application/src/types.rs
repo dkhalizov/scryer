@@ -939,6 +939,7 @@ pub struct MediaFileCutoffSummary {
     pub episode_id: Option<String>,
     pub series_movie_link_ids: Vec<String>,
     pub quality_label: Option<String>,
+    pub source_type: Option<String>, // fork (P11)
     pub created_at: String,
 }
 
@@ -953,6 +954,7 @@ impl From<&TitleMediaFile> for MediaFileCutoffSummary {
             episode_id: file.episode_id.clone(),
             series_movie_link_ids: file.series_movie_link_ids.clone(),
             quality_label: file.quality_label.clone(),
+            source_type: file.source_type.clone(), // fork (P11)
             created_at: file.created_at.clone(),
         }
     }
@@ -4096,6 +4098,7 @@ pub struct CutoffUnmetQualitySummary {
     pub season_number: Option<String>,
     pub episode_number: Option<String>,
     pub quality_tier: String,
+    pub source_type: Option<String>, // fork (P11)
 }
 
 /// The two derived acquisition-target kinds. `Missing` scopes have

@@ -216,7 +216,7 @@ pub(crate) fn score_parked_release_title(
     );
     let tier_index = crate::quality_profile::quality_tier_index(
         &context.profile().criteria,
-        parsed.quality.as_deref(),
+        crate::quality_profile::release_tier_label(&parsed).as_deref(), // fork (P11)
     );
     let release_group = parsed.release_group.clone();
     let scored = crate::canonical_scoring::score_release(

@@ -2072,7 +2072,8 @@ pub(crate) fn automatic_candidate_delay_decision(
             candidate
                 .parsed_release_metadata
                 .as_ref()
-                .and_then(|parsed| parsed.quality.as_deref()),
+                .and_then(crate::quality_profile::release_tier_label) // fork (P11)
+                .as_deref(),
         ),
         candidate_revision(candidate),
         candidate_score,
@@ -2500,7 +2501,8 @@ fn evaluate_auto_candidate_recording(
             candidate
                 .parsed_release_metadata
                 .as_ref()
-                .and_then(|parsed| parsed.quality.as_deref()),
+                .and_then(crate::quality_profile::release_tier_label) // fork (P11)
+                .as_deref(),
         ),
         candidate_revision(candidate),
         candidate_score,
@@ -2979,7 +2981,7 @@ impl AppUseCase {
             .resolve_upgrade_context_for_title_with_category_and_quality(
                 title,
                 Some(subject.category.as_str()),
-                analyzed_cutoff_quality,
+                analyzed_cutoff_quality.as_deref(), // fork (P11)
             )
             .await
         {
@@ -7277,12 +7279,13 @@ mod tests {
             analyzed_cutoff_quality_for_scope(
                 &existing,
                 &CutoffScope::Episode("episode-1".to_string()),
-            ),
-            Some("720p")
+            )
+            .as_deref(),
+            Some("720P")
         );
         assert_eq!(
-            analyzed_cutoff_quality_for_scope(&existing, &CutoffScope::Title),
-            Some("1080p")
+            analyzed_cutoff_quality_for_scope(&existing, &CutoffScope::Title).as_deref(),
+            Some("1080P")
         );
     }
 
@@ -7310,13 +7313,14 @@ mod tests {
             |ids: &[&str]| CutoffScope::Episodes(ids.iter().map(|id| (*id).to_string()).collect());
 
         assert_eq!(
-            analyzed_cutoff_quality_for_scope(&existing, &members(&["episode-1", "episode-2"])),
-            Some("720p"),
+            analyzed_cutoff_quality_for_scope(&existing, &members(&["episode-1", "episode-2"]))
+                .as_deref(),
+            Some("720P"),
             "the season is only as good as its worst episode"
         );
         assert_eq!(
-            analyzed_cutoff_quality_for_scope(&existing, &members(&["episode-1"])),
-            Some("1080p")
+            analyzed_cutoff_quality_for_scope(&existing, &members(&["episode-1"])).as_deref(),
+            Some("1080P")
         );
         assert_eq!(
             analyzed_cutoff_quality_for_scope(
@@ -7330,6 +7334,37 @@ mod tests {
             analyzed_cutoff_quality_for_scope(&existing, &members(&[])),
             None
         );
+    }
+
+    /// fork (P11): one resolution's members rank by source, so the weakest does
+    /// not depend on episode order. Under [REMUX-2160P, 2160P] (cutoff
+    /// REMUX-2160P) a season holding a WEB-DL episode has not reached cutoff.
+    #[test]
+    fn a_pack_scope_weakest_member_does_not_depend_on_episode_order() {
+        use crate::acquisition::decision_helpers::{
+            CutoffScope, analyzed_cutoff_quality_for_scope,
+        };
+
+        let file = |episode: &str, source: &str| {
+            let mut file = make_media_file(&format!("Nightfall.S01.2160p.{source}"), Some(episode));
+            file.quality_label = Some("2160p".to_string());
+            file.source_type = Some(source.to_string());
+            file
+        };
+        let existing = vec![file("episode-1", "Remux"), file("episode-2", "WEB-DL")];
+        let mut criteria = QualityProfile::default().criteria;
+        criteria.quality_tiers = vec!["REMUX-2160P".into(), "2160P".into()];
+        criteria.cutoff_tier = Some("REMUX-2160P".into());
+
+        for order in [["episode-1", "episode-2"], ["episode-2", "episode-1"]] {
+            let scope = CutoffScope::Episodes(order.iter().map(|id| (*id).to_string()).collect());
+            let weakest = analyzed_cutoff_quality_for_scope(&existing, &scope);
+            assert_eq!(weakest.as_deref(), Some("WEBDL-2160P"), "{order:?}");
+            assert!(
+                !criteria.quality_cutoff_met(weakest.as_deref()),
+                "{order:?}"
+            );
+        }
     }
 
     /// The cutoff-defining file is elected by **quality**, not by the stored
@@ -7353,8 +7388,9 @@ mod tests {
             analyzed_cutoff_quality_for_scope(
                 &existing,
                 &CutoffScope::Episode("episode-1".to_string()),
-            ),
-            Some("2160p")
+            )
+            .as_deref(),
+            Some("2160P")
         );
     }
 
@@ -7778,6 +7814,73 @@ mod tests {
                 evaluate(&at),
                 ReleaseAutoDecisionCode::CutoffReached,
                 "once the bar reaches the score cutoff the scope really is finished"
+            );
+        }
+
+        /// fork (P11): the grab lane ranks a candidate by its source tier key.
+        /// Under [REMUX-2160P, 2160P] a Remux release is tier 0, so it beats a
+        /// WEB-DL file (tier 1) at an equal score, and a delay profile's
+        /// highest-quality bypass lets it through at once. Ranked by its bare
+        /// resolution it would tie with the file and wait out the delay.
+        #[test]
+        fn a_remux_candidate_ranks_by_its_source_tier_in_the_grab_lane() {
+            let title = make_title();
+            let subject = title_subject(&title);
+            let mut candidate =
+                make_candidate("Nightfall.2022.2160p.UHD.BluRay.REMUX.HDR.HEVC-GRP", None);
+            candidate.quality_profile_decision = Some(allowed_quality_decision(900));
+            let now = Utc::now();
+            candidate.published_at = Some(now.to_rfc3339());
+
+            let mut profile = QualityProfile::default();
+            profile.criteria.quality_tiers = vec!["REMUX-2160P".into(), "2160P".into()];
+            profile.criteria.cutoff_tier = Some("REMUX-2160P".into());
+            let thresholds = AcquisitionThresholds::default();
+            let db_blocklist =
+                crate::app_usecase_discovery::TitleReleaseBlocklistSignatures::default();
+            let no_minimum_seeders = HashMap::new();
+            let no_unmonitored = HashSet::new();
+            let delayed = [DelayProfile {
+                id: "delay".into(),
+                usenet_delay_minutes: 60,
+                torrent_delay_minutes: 60,
+                bypass_if_highest_quality: true,
+                ..DelayProfile::default()
+            }];
+
+            let evaluate = |admission: &AdmissionSubject, delay_profiles: &[DelayProfile]| {
+                let context = AutoCandidateEvaluationContext {
+                    title: &title,
+                    subject: &subject,
+                    admission,
+                    profile: &profile,
+                    thresholds: &thresholds,
+                    incumbent_at_cutoff: false,
+                    is_rss_lane: false,
+                    user_invoked: false,
+                    oldest_overlapping_pending_published_at: None,
+                    now: &now,
+                    dl_snapshot: None,
+                    db_blocklist: &db_blocklist,
+                    existing_files: &[],
+                    delay_profiles,
+                    failed_routes: None,
+                    minimum_seeders: &no_minimum_seeders,
+                    unmonitored_episode_ids: &no_unmonitored,
+                };
+                evaluate_auto_candidate(&candidate, &context)
+            };
+
+            // The WEB-DL file sits at tier 1 with the candidate's score.
+            assert_eq!(
+                evaluate(&holding(0, 1), &[]),
+                ReleaseAutoDecisionCode::Eligible,
+                "a Remux candidate is a tier upgrade over a WEB-DL file"
+            );
+            assert_eq!(
+                evaluate(&AdmissionSubject::new(AdmissionScope::Title, []), &delayed),
+                ReleaseAutoDecisionCode::Eligible,
+                "the top tier bypasses the delay"
             );
         }
 

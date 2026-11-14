@@ -6,7 +6,7 @@ fails if an outcome disagrees with it (ratchet).
 | Area | Green | Red | Waived | Unmapped | Out of scope | Total |
 |---|---|---|---|---|---|---|
 | parse | 1956 | 1356 | 0 | 613 | 68 | 3925 |
-| decision | 554 | 156 | 0 | 336 | 13 | 1046 |
+| decision | 569 | 141 | 0 | 336 | 13 | 1046 |
 | quality | 407 | 39 | 0 | 344 | 33 | 790 |
 | naming | 67 | 506 | 0 | 160 | 143 | 733 |
 | import | 81 | 21 | 0 | 495 | 59 | 597 |
@@ -17,7 +17,7 @@ fails if an outcome disagrees with it (ratchet).
 | subtitles | 64 | 63 | 0 | 88 | 27 | 215 |
 | indexers | 4 | 28 | 1 | 29 | 0 | 62 |
 | notify | 0 | 0 | 0 | 10 | 3 | 10 |
-| **all** | 3188 | 2184 | 24 | 3130 | 661 | 8526 |
+| **all** | 3203 | 2169 | 24 | 3130 | 661 | 8526 |
 
 ## Run
 
@@ -26,5 +26,20 @@ Suites run: 41 of 41. Cases recorded: 5374. Ratchet violations: 0. Catalogue err
 
 ## Moved since baseline
 
+- RAD-DECISION-1032: Red → Green
+- RAD-DECISION-1034: Red → Green
+- RAD-DECISION-1037: Red → Green
+- RAD-DECISION-1105: Red → Green
+- RAD-DECISION-1108: Red → Green
+- RAD-DECISION-1118: Red → Green
+- RAD-DECISION-6002: Red → Green
+- SON-DECISION-1036: Red → Green
+- SON-DECISION-1038: Red → Green
+- SON-DECISION-1042: Red → Green
+- SON-DECISION-1043: Red → Green
+- SON-DECISION-1132: Red → Green
+- SON-DECISION-1136: Red → Green
+- SON-DECISION-1137: Red → Green
+- SON-DECISION-1150: Red → Green
 
-0 changed status, 0 added, 0 removed.
+15 changed status, 0 added, 0 removed.

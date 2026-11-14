@@ -1449,7 +1449,7 @@ impl AppUseCase {
             .resolve_upgrade_context_for_title_with_category_and_quality(
                 &title,
                 None,
-                analyzed_cutoff_quality,
+                analyzed_cutoff_quality.as_deref(), // fork (P11)
             )
             .await
         {
