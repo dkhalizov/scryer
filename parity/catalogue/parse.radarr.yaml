@@ -894,7 +894,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0113
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|20998d8fd5893d76|0"
@@ -910,7 +911,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0115
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|92ef5678d4cec41f|0"
@@ -918,7 +920,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0116
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|f214d2017aca1e40|0"
@@ -926,7 +929,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:42"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0117
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|de6239ca379fea56|0"
@@ -934,7 +938,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:49"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0118
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|42a571157b2a5b87|0"
@@ -942,7 +947,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:56"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0119
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|514afbe8c7b736b3|0"
@@ -950,7 +956,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:63"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0120
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|db4cec5d47cf5c03|0"
@@ -958,7 +965,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:70"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0121
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|b587d51cc475ce62|0"
@@ -966,7 +974,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:77"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0122
   # key: "HashedReleaseFixture.cs|should_properly_parse_hashed_releases|bacd2b83ec70d147|0"
@@ -974,7 +983,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:84"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W75: TitleOnly fixture title is the placeholder Movie; stored movie quality comes from media info (W12); Radarr renames, no hashed movie stems"
   tests: [scryer-application::parity_parse::rad_parse_path]
 - id: RAD-PARSE-0123
   # key: "IsoLanguagesFixture.cs|should_return_iso_language_for_English|e9069436536cb59a|0"

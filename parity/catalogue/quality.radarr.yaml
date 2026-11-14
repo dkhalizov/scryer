@@ -222,7 +222,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W30: respectGroupOrder has no production caller in either arr; Scryer bare tiers tie group members the same (precondition: our Scryer profiles keep arr groups as bare tiers)"
   tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0033
   behaviour: "QualityIndex(2,0) compared to (1,0) with respect_group_order=true is 1"
@@ -236,7 +237,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W30: respectGroupOrder has no production caller in either arr; Scryer bare tiers tie group members the same (precondition: our Scryer profiles keep arr groups as bare tiers)"
   tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0035
   behaviour: "QualityIndex(1,0) compared to (2,0) with respect_group_order=true is -1"
@@ -628,7 +630,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:139"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W30: respectGroupOrder has no production caller in either arr; Scryer bare tiers tie group members the same (precondition: our Scryer profiles keep arr groups as bare tiers)"
   tests: [scryer-application::parity_quality::rad_quality_model_compare]
 - id: RAD-QUALITY-0091
   behaviour: "A REAL revision is greater than the default revision"
@@ -943,91 +946,104 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:170"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0136
   behaviour: "The default definition for WORKPRINT has weight 2, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:171"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0137
   behaviour: "The default definition for CAM has weight 3, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:172"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0138
   behaviour: "The default definition for TELESYNC has weight 4, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:173"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0139
   behaviour: "The default definition for TELECINE has weight 5, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:174"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0140
   behaviour: "The default definition for REGIONAL has weight 6, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:175"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0141
   behaviour: "The default definition for DVDSCR has weight 7, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:176"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0142
   behaviour: "The default definition for SDTV has weight 8, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:177"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0143
   behaviour: "The default definition for DVD has weight 9, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:178"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0144
   behaviour: "The default definition for DVD-R has weight 10, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:179"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0145
   behaviour: "The default definition for WEBDL-480p has weight 11, min size 0, max size 100, preferred 95, group WEB 480p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:181"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0146
   behaviour: "The default definition for WEBRip-480p has weight 11, min size 0, max size 100, preferred 95, group WEB 480p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:182"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0147
   behaviour: "The default definition for Bluray-480p has weight 12, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:183"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0148
   behaviour: "The default definition for Bluray-576p has weight 13, min size 0, max size 100, preferred 95"
@@ -1041,98 +1057,112 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:186"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0150
   behaviour: "The default definition for WEBDL-720p has weight 15, min size 0, max size 100, preferred 95, group WEB 720p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:187"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0151
   behaviour: "The default definition for WEBRip-720p has weight 15, min size 0, max size 100, preferred 95, group WEB 720p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:188"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0152
   behaviour: "The default definition for Bluray-720p has weight 16, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:189"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0153
   behaviour: "The default definition for HDTV-1080p has weight 17, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:191"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0154
   behaviour: "The default definition for WEBDL-1080p has weight 18, min size 0, max size 100, preferred 95, group WEB 1080p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:192"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0155
   behaviour: "The default definition for WEBRip-1080p has weight 18, min size 0, max size 100, preferred 95, group WEB 1080p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:193"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0156
   behaviour: "The default definition for Bluray-1080p has weight 19, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:194"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0157
   behaviour: "The default definition for Remux-1080p has weight 20, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:195"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0158
   behaviour: "The default definition for HDTV-2160p has weight 21, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:197"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0159
   behaviour: "The default definition for WEBDL-2160p has weight 22, min size 0, max size none, preferred none, group WEB 2160p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:198"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0160
   behaviour: "The default definition for WEBRip-2160p has weight 22, min size 0, max size none, preferred none, group WEB 2160p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:199"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0161
   behaviour: "The default definition for Bluray-2160p has weight 23, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:200"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0162
   behaviour: "The default definition for Remux-2160p has weight 24, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:201"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0163
   behaviour: "The default definition for BR-DISK has weight 25, min size 0, max size none, preferred none"

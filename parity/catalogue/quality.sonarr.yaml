@@ -165,7 +165,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W30: respectGroupOrder has no production caller in either arr; Scryer bare tiers tie group members the same (precondition: our Scryer profiles keep arr groups as bare tiers)"
   tests: [scryer-application::parity_quality::son_quality_index_compare]
 - id: SON-QUALITY-0025
   behaviour: "QualityIndex(2,0) compared to (1,0) with respect_group_order=true is 1"
@@ -179,7 +180,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W30: respectGroupOrder has no production caller in either arr; Scryer bare tiers tie group members the same (precondition: our Scryer profiles keep arr groups as bare tiers)"
   tests: [scryer-application::parity_quality::son_quality_index_compare]
 - id: SON-QUALITY-0027
   behaviour: "QualityIndex(1,0) compared to (2,0) with respect_group_order=true is -1"
@@ -579,7 +581,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:134"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W30: respectGroupOrder has no production caller in either arr; Scryer bare tiers tie group members the same (precondition: our Scryer profiles keep arr groups as bare tiers)"
   tests: [scryer-application::parity_quality::son_quality_model_compare]
 - id: SON-QUALITY-0084
   behaviour: "A REAL revision is greater than the default revision"
@@ -845,35 +848,40 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:159"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0122
   behaviour: "The default definition for WEBRip-480p has weight 3, min size 2, max size 100, preferred 95, group WEB 480p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:160"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0123
   behaviour: "The default definition for WEBDL-480p has weight 3, min size 2, max size 100, preferred 95, group WEB 480p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:161"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0124
   behaviour: "The default definition for DVD has weight 4, min size 2, max size 100, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:162"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0125
   behaviour: "The default definition for Bluray-480p has weight 5, min size 2, max size 100, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:163"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0126
   behaviour: "The default definition for Bluray-576p has weight 6, min size 2, max size 100, preferred 95"
@@ -887,14 +895,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:165"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0128
   behaviour: "The default definition for HDTV-1080p has weight 8, min size 4, max size 125, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:166"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0129
   behaviour: "The default definition for Raw-HD has weight 9, min size 4, max size none, preferred 95"
@@ -909,82 +919,94 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:168"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0131
   behaviour: "The default definition for WEBDL-720p has weight 10, min size 3, max size 130, preferred 95, group WEB 720p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:169"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0132
   behaviour: "The default definition for Bluray-720p has weight 11, min size 4, max size 130, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:170"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0133
   behaviour: "The default definition for WEBRip-1080p has weight 12, min size 4, max size 130, preferred 95, group WEB 1080p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:171"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0134
   behaviour: "The default definition for WEBDL-1080p has weight 12, min size 4, max size 130, preferred 95, group WEB 1080p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:172"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0135
   behaviour: "The default definition for Bluray-1080p has weight 13, min size 4, max size 155, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:173"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0136
   behaviour: "The default definition for Bluray-1080p Remux has weight 14, min size 35, max size none, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:174"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0137
   behaviour: "The default definition for HDTV-2160p has weight 15, min size 35, max size 199.9, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:175"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0138
   behaviour: "The default definition for WEBRip-2160p has weight 16, min size 35, max size none, preferred 95, group WEB 2160p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:176"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0139
   behaviour: "The default definition for WEBDL-2160p has weight 16, min size 35, max size none, preferred 95, group WEB 2160p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:177"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0140
   behaviour: "The default definition for Bluray-2160p has weight 17, min size 35, max size none, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:178"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0141
   behaviour: "The default definition for Bluray-2160p Remux has weight 18, min size 35, max size none, preferred 95"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:179"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D71 W29: the arr default weight order only seeds the default profile and UI order; grab, upgrade and import rank by profile items, Scryer by profile tiers"
   tests: [scryer-application::parity_quality::son_quality_default_order]
