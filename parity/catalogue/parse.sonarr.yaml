@@ -1215,7 +1215,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:229"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_followed_by_standard_as_standard|f32e96550da2|0
 - id: SON-PARSE-0153
@@ -2465,7 +2465,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:49"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|fb452814781b|0
 - id: SON-PARSE-0309
@@ -2473,7 +2473,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:56"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|63df302fbaa8|0
 - id: SON-PARSE-0310
@@ -2481,7 +2481,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:63"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|e63aa7b15f87|0
 - id: SON-PARSE-0311
@@ -2489,7 +2489,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:70"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|3059dea74eb0|0
 - id: SON-PARSE-0312
@@ -2505,7 +2505,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:84"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|708bb2b1256c|0
 - id: SON-PARSE-0314
@@ -2540,7 +2540,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:112"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|ac7d6b88c1ee|0
 - id: SON-PARSE-0318
@@ -2548,7 +2548,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:119"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|ed1ea0a92278|0
 - id: SON-PARSE-0319
@@ -2556,7 +2556,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:126"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|f3dd87b82eb1|0
 - id: SON-PARSE-0320
@@ -2564,7 +2564,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:133"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|e0f02eead95a|0
 - id: SON-PARSE-0321
@@ -2572,7 +2572,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:140"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|should_not_treat_files_without_a_series_title_as_a_special|78e15c21a1a3|0
 - id: SON-PARSE-0322
@@ -6083,7 +6083,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs|should_parse_from_path|75901bc67818|0
 - id: SON-PARSE-0758
@@ -6091,7 +6091,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs|should_parse_from_path|5dfe1d73a7c0|0
 - id: SON-PARSE-0759
@@ -6099,7 +6099,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:30"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs|should_parse_from_path|4caf892187d8|0
 - id: SON-PARSE-0760
@@ -6107,7 +6107,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:31"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs|should_parse_from_path|444a8ca0eea2|0
 - id: SON-PARSE-0761
@@ -6115,7 +6115,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs|should_parse_from_path|175bf1847a5b|0
 - id: SON-PARSE-0762
@@ -6123,7 +6123,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:33"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs|should_parse_from_path|bb9a4cb1967a|0
 - id: SON-PARSE-0763
@@ -6156,7 +6156,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:52"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|parsing_our_own_quality_enum_name|d7ba4ab7ece8|0
 - id: SON-PARSE-0767

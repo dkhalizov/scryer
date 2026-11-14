@@ -1148,10 +1148,13 @@ fn parse_release_fallback(
     title_index: Option<&LibraryFilenameTitleIndex>,
 ) -> crate::ParsedReleaseMetadata {
     let mut parsed = parse_release_fallback_name(input, raw_name, title_index);
-    if parsed_release_has_title_scan_episode_identity(&parsed, input.facet)
-        || !input.mode.eq(&LibraryFilenameParseMode::TitleScan)
-    {
+    if input.mode != LibraryFilenameParseMode::TitleScan {
         return parsed;
+    }
+    // fork (P16): a hashed name carries nothing (Sonarr ValidateBeforeParsing,
+    // Parser.cs:1277); the parent fallback below fills it from the folder.
+    if is_hashed_release_stem(raw_name) {
+        parsed = crate::ParsedReleaseMetadata::empty(raw_name, parsed.parser_version);
     }
 
     let Some(parent_name) = input
@@ -1164,7 +1167,23 @@ fn parse_release_fallback(
         return parsed;
     };
 
-    let parent_release = parse_release_fallback_name(input, &parent_name, title_index);
+    // fork (P16): Sonarr ParsePath (Parser.cs:601-629): `Season 2/05 Title` is
+    // S02E05. A bare `E05` parses as season 1, so the folder wins for it too.
+    if let Some(path_title) = season_folder_episode_title(&parent_name, raw_name)
+        && (raw_name.starts_with(['e', 'E'])
+            || !parsed_release_has_title_scan_episode_identity(&parsed, input.facet))
+    {
+        let mut from_path = parse_release_fallback_name(input, &path_title, title_index);
+        if parsed_release_has_title_scan_episode_identity(&from_path, input.facet) {
+            from_path.raw_title = parsed.raw_title;
+            return from_path;
+        }
+    }
+    if parsed_release_has_title_scan_episode_identity(&parsed, input.facet) {
+        return parsed;
+    }
+
+    let mut parent_release = parse_release_fallback_name(input, &parent_name, title_index);
     let Some(parent_episode) = parent_release.episode.as_ref() else {
         return parsed;
     };
@@ -1175,8 +1194,80 @@ fn parse_release_fallback(
         return parsed;
     }
 
+    // fork (P16): an integer name in a range folder is that one episode
+    // (Sonarr Parser.cs:632-649); a number outside the range stays unmatched.
+    // A single-episode folder fills as before (`S04E08 .../123.mkv`).
+    if let (Ok(number), Some(parent_episode)) =
+        (raw_name.parse::<u32>(), parent_release.episode.as_mut())
+        && (parent_episode.absolute_episode_numbers.len() > 1
+            || parent_episode.episode_numbers.len() > 1)
+    {
+        if parent_episode.absolute_episode_numbers.contains(&number) {
+            parent_episode.absolute_episode_numbers = vec![number];
+            parent_episode.absolute_episode = Some(number);
+        } else if parent_episode.episode_numbers.contains(&number) {
+            parent_episode.episode_numbers = vec![number];
+        } else {
+            return parsed;
+        }
+        parent_episode.is_split_episode = false;
+        parent_episode.release_type = crate::ParsedEpisodeReleaseType::SingleEpisode;
+        parsed.normalized_title.clear();
+        parsed.normalized_title_variants.clear();
+    }
+
     fill_missing_release_metadata(&mut parsed, &parent_release, input.facet);
     parsed
+}
+
+/// fork (P16): Sonarr `RejectHashedReleasesRegexes` (Parser.cs:471-512).
+fn is_hashed_release_stem(stem: &str) -> bool {
+    static RE: OnceLock<Regex> = OnceLock::new();
+    RE.get_or_init(|| {
+        Regex::new(
+            r"^(?:[0-9a-zA-Z]{24}|[A-Z]{11}\d{3}$|[a-z]{12}\d{3}$|Backup_\d{5,}S\d{2}-\d{2}$|123$|(?i:abc)$|(?i:abc[-_. ]xyz)|(?i:b00bs)$|\d{6}_\d{2}$)",
+        )
+        .expect("valid hashed release regex")
+    })
+    .is_match(stem)
+}
+
+/// fork (P16): Sonarr `SeasonFolderRegex` + `SimpleEpisodeNumberRegex`
+/// (Parser.cs:586-587, 609-622), lookarounds rewritten for the regex crate.
+fn season_folder_episode_title(folder: &str, stem: &str) -> Option<String> {
+    static SEASON: OnceLock<Regex> = OnceLock::new();
+    static EPISODE: OnceLock<Regex> = OnceLock::new();
+    let season = SEASON
+        .get_or_init(|| {
+            Regex::new(
+                r"(?i)^(?:S|Season|Saison|Series|Stagione)[-_. ]*(\d{1,4})(?:[_. ]+[^\d_. ]|[_. ]*$)",
+            )
+            .expect("valid season folder regex")
+        })
+        .captures(folder)?[1]
+        .parse::<u32>()
+        .ok()?;
+    let caps = EPISODE
+        .get_or_init(|| {
+            Regex::new(r"(?i)^[ex]?(\d{1,3})(?:[ex-](\d{1,3}))?(?:[_. ]([^\d].*)|$)")
+                .expect("valid simple episode regex")
+        })
+        .captures(stem)?;
+    let first: u32 = caps[1].parse().ok()?;
+    let last: u32 = caps
+        .get(2)
+        .map_or(Some(first), |m| m.as_str().parse().ok())?;
+    let mut title = format!("S{season:02}E{first:02}");
+    if first != last {
+        // Sonarr writes `-E06`; our parser reads `S02E05-E06` at the start of a
+        // name as S01E06, so the range uses the `S02E05-06` form it does read.
+        title.push_str(&format!("-{last:02}"));
+    }
+    if let Some(rest) = caps.get(3) {
+        title.push(' ');
+        title.push_str(rest.as_str());
+    }
+    Some(title)
 }
 
 fn parse_release_fallback_name(
@@ -3522,5 +3613,94 @@ mod tests {
                 "{file_name}"
             );
         }
+    }
+
+    // fork (P16): the title scan's parse for a file written under `dir`, as the
+    // parity harness builds it (no title, no catalogue).
+    fn scan_written_file(
+        dir: &Path,
+        relative: &str,
+        facet: Option<&MediaFacet>,
+    ) -> LibraryFilenameParse {
+        let path = dir.join(relative);
+        std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+        std::fs::write(&path, b"x").unwrap();
+        let mut input = LibraryFilenameParseInput::title_only(&path, None);
+        input.mode = LibraryFilenameParseMode::TitleScan;
+        input.facet = facet;
+        parse_library_filename(&input)
+    }
+
+    fn season_and_episodes(parse: &LibraryFilenameParse) -> Option<(Option<u32>, Vec<u32>)> {
+        parse
+            .episode_identity
+            .as_ref()
+            .map(|identity| (identity.season, identity.episode_numbers.clone()))
+    }
+
+    #[test]
+    fn title_scan_reads_the_season_folder_for_a_bare_episode_number() {
+        let dir = tempfile::tempdir().unwrap();
+        let facet = Some(&MediaFacet::Series);
+        let pilot = scan_written_file(dir.path(), "Show/Season 01/01 Pilot (1080p HD).mkv", facet);
+        assert_eq!(season_and_episodes(&pilot), Some((Some(1), vec![1])));
+
+        let bare_e = scan_written_file(
+            dir.path(),
+            "Show/Season 2/E05-06 - Episode Title HDTV-720p Proper.mkv",
+            facet,
+        );
+        assert_eq!(season_and_episodes(&bare_e), Some((Some(2), vec![5, 6])));
+
+        let named = scan_written_file(
+            dir.path(),
+            "Show/Season 1/8 Series Rules - S01E01 - Pilot.mkv",
+            facet,
+        );
+        assert_eq!(season_and_episodes(&named), Some((Some(1), vec![1])));
+    }
+
+    #[test]
+    fn title_scan_reads_the_release_folder_for_a_hashed_file_name() {
+        let dir = tempfile::tempdir().unwrap();
+        let parse = scan_written_file(
+            dir.path(),
+            "Show Title.S02E12.1080p.BluRay.x264-SONARR/Backup_72023S02-12.mkv",
+            Some(&MediaFacet::Series),
+        );
+        assert_eq!(season_and_episodes(&parse), Some((Some(2), vec![12])));
+        assert_eq!(
+            parse.parsed_release.release_group.as_deref(),
+            Some("SONARR")
+        );
+        assert_eq!(parse.parsed_release.normalized_title, "SHOW TITLE");
+    }
+
+    #[test]
+    fn title_scan_leaves_a_hashed_file_unmatched_when_the_folder_holds_several_videos() {
+        let dir = tempfile::tempdir().unwrap();
+        let folder = "Show.Title.S03E04.1080p.WEB-DL.DD5.1.H264-RARBG";
+        scan_written_file(dir.path(), &format!("{folder}/170424_27.mkv"), None);
+        // `170424_26` reads as an air date; a hashed name must not invent one.
+        let parse = scan_written_file(
+            dir.path(),
+            &format!("{folder}/170424_26.mkv"),
+            Some(&MediaFacet::Series),
+        );
+        assert_eq!(parse.episode_identity, None);
+    }
+
+    #[test]
+    fn title_scan_narrows_an_integer_stem_in_a_range_folder() {
+        let dir = tempfile::tempdir().unwrap();
+        let facet = Some(&MediaFacet::Anime);
+        let folder = "Series Title 921-928 [English Dub][1080p][onepiecedubb]";
+        let inside = scan_written_file(dir.path(), &format!("in/{folder}/925.mkv"), facet);
+        let identity = inside.episode_identity.expect("925 is inside the range");
+        assert_eq!(identity.absolute_episode_numbers, vec![925]);
+        assert_eq!(identity.absolute_episode, Some(925));
+
+        let outside = scan_written_file(dir.path(), &format!("out/{folder}/930.mkv"), facet);
+        assert_eq!(outside.episode_identity, None);
     }
 }
