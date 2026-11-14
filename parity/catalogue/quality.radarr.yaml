@@ -158,15 +158,15 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:23"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_profiles]
 - id: RAD-QUALITY-0024
   behaviour: "On startup, default profiles are not re-added if any quality profile exists"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_profiles]
 - id: RAD-QUALITY-0025
   behaviour: "Deleting a quality profile used by a movie fails and deletes nothing"
   source: reference
@@ -214,71 +214,71 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:11"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0032
   behaviour: "QualityIndex(1,1) compared to (1,0) with respect_group_order=true is 1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:12"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0033
   behaviour: "QualityIndex(2,0) compared to (1,0) with respect_group_order=true is 1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:13"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0034
   behaviour: "QualityIndex(1,0) compared to (1,1) with respect_group_order=true is -1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:14"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0035
   behaviour: "QualityIndex(1,0) compared to (2,0) with respect_group_order=true is -1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:15"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0036
   behaviour: "QualityIndex(1,0) compared to (1,0) with respect_group_order=false is 0"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:23"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0037
   behaviour: "QualityIndex(1,1) compared to (1,0) with respect_group_order=false is 0"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:24"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0038
   behaviour: "QualityIndex(2,0) compared to (1,0) with respect_group_order=false is 1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:25"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0039
   behaviour: "QualityIndex(1,0) compared to (1,1) with respect_group_order=false is 0"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:26"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0040
   behaviour: "QualityIndex(1,0) compared to (2,0) with respect_group_order=false is -1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:27"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_index_compare]
 - id: RAD-QUALITY-0041
   behaviour: "On startup with no definitions, one definition per known quality (30) is inserted"
   source: reference
@@ -592,127 +592,127 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:74"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_model_compare]
 - id: RAD-QUALITY-0086
   behaviour: "In the default profile, DVD compares less than Bluray-1080p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:87"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_model_compare]
 - id: RAD-QUALITY-0087
   behaviour: "In the default profile, Bluray-1080p v2 compares greater than Bluray-1080p v1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:100"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_model_compare]
 - id: RAD-QUALITY-0088
   behaviour: "In the custom profile, DVD compares greater than Bluray-720p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:113"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_model_compare]
 - id: RAD-QUALITY-0089
   behaviour: "In the grouped profile, HDTV-720p compares equal to WEBDL-720p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:126"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_model_compare]
 - id: RAD-QUALITY-0090
   behaviour: "In the grouped profile respecting group order, HDTV-720p compares less than WEBDL-720p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:139"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_model_compare]
 - id: RAD-QUALITY-0091
   behaviour: "A REAL revision is greater than the default revision"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:11"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0092
   behaviour: "A PROPER (version 2) is greater than the default revision"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:20"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0093
   behaviour: "A PROPER REAL is greater than a REAL"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:29"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0094
   behaviour: "The default revision is less than a REAL"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:38"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0095
   behaviour: "The default revision is less than a PROPER"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:47"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0096
   behaviour: "A REAL is less than a PROPER REAL"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:56"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0097
   behaviour: "Two default revisions compare equal"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:65"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0098
   behaviour: "Two REAL revisions compare equal"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:74"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0099
   behaviour: "Two PROPER REAL revisions compare equal"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:83"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0100
   behaviour: "Comparison operators agree for equal revisions"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:92"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0101
   behaviour: "Comparison operators agree when the first revision is greater"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:106"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0102
   behaviour: "Comparison operators agree when the first revision is less"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:120"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0103
   behaviour: "A revision compared with a missing (null) revision is greater"
   source: reference
@@ -942,208 +942,208 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:170"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0136
   behaviour: "The default definition for WORKPRINT has weight 2, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:171"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0137
   behaviour: "The default definition for CAM has weight 3, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:172"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0138
   behaviour: "The default definition for TELESYNC has weight 4, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:173"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0139
   behaviour: "The default definition for TELECINE has weight 5, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:174"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0140
   behaviour: "The default definition for REGIONAL has weight 6, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:175"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0141
   behaviour: "The default definition for DVDSCR has weight 7, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:176"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0142
   behaviour: "The default definition for SDTV has weight 8, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:177"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0143
   behaviour: "The default definition for DVD has weight 9, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:178"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0144
   behaviour: "The default definition for DVD-R has weight 10, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:179"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0145
   behaviour: "The default definition for WEBDL-480p has weight 11, min size 0, max size 100, preferred 95, group WEB 480p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:181"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0146
   behaviour: "The default definition for WEBRip-480p has weight 11, min size 0, max size 100, preferred 95, group WEB 480p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:182"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0147
   behaviour: "The default definition for Bluray-480p has weight 12, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:183"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0148
   behaviour: "The default definition for Bluray-576p has weight 13, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:184"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0149
   behaviour: "The default definition for HDTV-720p has weight 14, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:186"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0150
   behaviour: "The default definition for WEBDL-720p has weight 15, min size 0, max size 100, preferred 95, group WEB 720p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:187"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0151
   behaviour: "The default definition for WEBRip-720p has weight 15, min size 0, max size 100, preferred 95, group WEB 720p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:188"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0152
   behaviour: "The default definition for Bluray-720p has weight 16, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:189"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0153
   behaviour: "The default definition for HDTV-1080p has weight 17, min size 0, max size 100, preferred 95"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:191"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0154
   behaviour: "The default definition for WEBDL-1080p has weight 18, min size 0, max size 100, preferred 95, group WEB 1080p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:192"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0155
   behaviour: "The default definition for WEBRip-1080p has weight 18, min size 0, max size 100, preferred 95, group WEB 1080p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:193"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0156
   behaviour: "The default definition for Bluray-1080p has weight 19, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:194"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0157
   behaviour: "The default definition for Remux-1080p has weight 20, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:195"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0158
   behaviour: "The default definition for HDTV-2160p has weight 21, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:197"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0159
   behaviour: "The default definition for WEBDL-2160p has weight 22, min size 0, max size none, preferred none, group WEB 2160p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:198"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0160
   behaviour: "The default definition for WEBRip-2160p has weight 22, min size 0, max size none, preferred none, group WEB 2160p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:199"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0161
   behaviour: "The default definition for Bluray-2160p has weight 23, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:200"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0162
   behaviour: "The default definition for Remux-2160p has weight 24, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:201"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0163
   behaviour: "The default definition for BR-DISK has weight 25, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:203"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0164
   behaviour: "The default definition for Raw-HD has weight 26, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:204"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_quality::rad_quality_default_order]

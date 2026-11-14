@@ -1,10 +1,13 @@
-//! Parity net, area `quality` (notes/11-parity-net-design.md). Six suites:
+//! Parity net, area `quality` (notes/11-parity-net-design.md). Six root
+//! suites, plus the submodule suites under `parity_quality/` (each listed in
+//! its own header):
 //!
 //! | suite                    | cases                                                    |
 //! |--------------------------|----------------------------------------------------------|
 //! | son_quality / rad_quality | reference ports, `corpus/reference/<app>/quality/*.json` (0001..) |
 //! | son_quality_config / rad_quality_config | captured config facts (5001..), checked from the ref'd `corpus/captured/<app>/config/*.json` |
 //! | son_quality_captured / rad_quality_captured | quality each real file was assigned (6001..), `corpus/captured/<app>/data/cases/quality.json` |
+//! | son_quality_profiles / rad_quality_profiles | `default_profiles` (SON 0033-0034, RAD 0023-0024), `parity_quality/quality_profiles.rs` |
 //!
 //! # Translation tables
 //!
@@ -79,28 +82,24 @@
 //! # Unmapped (tests: []) and why
 //!
 //! Reference (both apps):
-//! - `quality_declaration`, `all_qualities`, `default_definition`, `from_id`,
-//!   `to_id`, `find_by_source_and_resolution`, `definitions_init` /
+//! - `default_definition` (weights): mapped in
+//!   `parity_quality/quality_catalogue.rs` as ordering facts (suites
+//!   `son_quality_default_order`, `rad_quality_default_order`).
+//! - `quality_declaration`, `all_qualities`, `from_id`, `to_id`,
+//!   `find_by_source_and_resolution`, `definitions_init` /
 //!   `definition_init`: Sonarr/Radarr's closed quality catalogue (numeric
-//!   ids, weights, per-quality size definitions, source+resolution lookup).
-//!   Scryer has no such catalogue: quality is an open (source, resolution)
-//!   pair parsed per release. Concept absent.
-//! - `quality_index_compare`: `QualityIndex` with quality-group indices.
-//!   Scryer profiles have no quality groups (a flat tier list). Concept absent.
-//! - `revision_compare`: Scryer has no Revision value type; the folded i32 is
-//!   compared inside the pub(crate) decision pipeline
-//!   (acquisition/decision_pipeline.rs). Comparing two translated ints in the
-//!   harness would test nothing of Scryer. Revision ordering is exercised by
-//!   the decision suites.
-//! - `compare` (QualityModelComparer, SON 0078-0083, RAD 0085-0090): Scryer's
-//!   tier comparison `quality_meets_or_exceeds_cutoff` (quality/profile.rs:993)
-//!   is `pub` inside the pub(crate) `quality` module and not re-exported, so an
-//!   integration test cannot call it. Needs seam (see below). Note 0083/0090
-//!   (`respect_group_order`) would stay red: no groups in Scryer.
-//! - `default_profiles`: Scryer's built-in profiles are code constants
-//!   (quality/profile.rs:536-683), never seeded into a store. Concept absent.
+//!   ids, declaration order, a stored definition table, source+resolution
+//!   lookup). Scryer has no such catalogue: quality is an open (source,
+//!   resolution) pair parsed per release. Concept absent. Per-op reasons in
+//!   the `quality_catalogue.rs` header.
+//! - `quality_index_compare`, `revision_compare`, `compare` (QualityModelComparer):
+//!   mapped in `parity_quality/quality_compare.rs` onto the production ladder
+//!   `ladder_against_incumbent`, except RAD-QUALITY-0103 (revision vs null,
+//!   no missing revision in Scryer; see the submodule header).
+//! - `default_profiles` (SON 0033-0034, RAD 0023-0024): mapped in
+//!   `parity_quality/quality_profiles.rs` (`son_`/`rad_quality_profiles`).
 //! - `profile_delete`: Scryer has the guard
-//!   (settings/runtime/quality_profiles.rs:841 `ensure_quality_profiles_are_unreferenced`)
+//!   (settings/runtime/quality_profiles.rs:479 `ensure_quality_profiles_are_unreferenced`)
 //!   but only behind a full `AppUseCase` over stores; the in-crate fixtures
 //!   (lib_tests) are not reachable from an integration test.
 //! - `delay_profile_reorder`: Scryer delay profiles carry an explicit
@@ -138,10 +137,17 @@
 //!
 //! # Seams
 //!
-//! None used (`PolicyEngine::build_with_limits` and `RuntimeLimits` are
-//! already pub). Needed to map `compare`: re-export
-//! `quality_meets_or_exceeds_cutoff` from crate root (lib.rs:759 `pub use
-//! quality_profile::{...}`).
+//! None used for the root suites (`PolicyEngine::build_with_limits` and
+//! `RuntimeLimits` are already pub). `parity_quality/quality_compare.rs` uses
+//! `ladder_against_incumbent` and `LadderOutcome` (parity_seams).
+//! `parity_quality/quality_profiles.rs` uses `ensure_quality_profiles_exist`.
+
+#[path = "parity_quality/quality_catalogue.rs"]
+mod quality_catalogue;
+#[path = "parity_quality/quality_compare.rs"]
+mod quality_compare;
+#[path = "parity_quality/quality_profiles.rs"]
+mod quality_profiles;
 
 use scryer_application::arr_custom_format::{
     ArrCustomFormatTranslation, ArrFormatStatus, ArrSourceApplication,
