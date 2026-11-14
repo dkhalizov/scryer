@@ -8,6 +8,8 @@
 //! - `scryer-infrastructure-acquisition::parity_torrent::son_torrent`:
 //!   corpus/reference/sonarr/torrent/SeedConfigProviderFixture.json
 //! - `...::rad_torrent`: corpus/reference/radarr/torrent/SeedConfigProviderFixture.json
+//! - `...::qbt_torrent_excluded_files`
+//!   (priv_torrent.rs): private config entries, see that header.
 //! - `...::son_torrent_config`, `rad_torrent_config`, `prw_torrent_config`:
 //!   config entries whose ref is `corpus/captured/<app>/config/indexer.json#id=N/seedCriteria`,
 //!   checked from that JSON.
@@ -90,20 +92,25 @@
 //!   go through repositories.
 //!
 //! Config entries unmapped:
-//! - SON-TORRENT-5001..5004, RAD-TORRENT-5001..5005, RAD-TORRENT-5010
-//!   (download client category, priorities, remove completed/failed, failed
-//!   redownload, poll interval, RefreshMonitoredDownloads task): Scryer
-//!   download-client routing settings and job schedules resolved through
-//!   AppUseCase and its settings repository (settings/runtime/routing.rs:2);
-//!   no pure function holds them.
+//! - RAD-TORRENT-5005/5010 (poll interval, RefreshMonitoredDownloads task):
+//!   unmapped: Scryer's poll cadence is a code constant, not computed from
+//!   the reference setting; reason in parity_torrent/priv_torrent.rs.
+//! - SON-TORRENT-5001..5003, RAD-TORRENT-5001..5003 (download client category,
+//!   priorities, remove completed/failed): the settings
+//!   exist in Scryer (`DownloadClientRoutingEntry`, catalog/helpers.rs:5) but
+//!   the values are operator configuration its arr import does not copy, and
+//!   the behaviour runs through AppUseCase and its settings repository.
+//! - SON-TORRENT-5004, RAD-TORRENT-5004 (failed redownload): process_failed
+//!   needs AppUseCase; see parity_torrent/priv_torrent.rs.
 //! - PRW-TORRENT-5002..5028 even/redirect entries (preferMagnetUrl, redirect):
-//!   the link a grab uses is chosen by Prowlarr when it writes its feed; the
+//!   Prowlarr applies both itself, when it writes its feed and serves its
+//!   download endpoint (Prowlarr NewznabController.cs:201-203, :265-307); the
 //!   captured config has no feed, so there is no Scryer input to compare.
 //! - PRW-TORRENT-5019 (Prowlarr has no download client): Prowlarr-side; Scryer
 //!   always grabs through its own clients.
-//! - QBT-TORRENT-* (all, so no qbt_torrent_config test): qBittorrent's own
-//!   preferences, categories, pod hooks, sidecars and CronJobs. Scryer does not
-//!   configure or replace qBittorrent and has no field for any of them.
+//! - QBT-TORRENT-5015 mapped in parity_torrent/priv_torrent.rs (suite
+//!   qbt_torrent_excluded_files); the other QBT-TORRENT-* reasons are in that
+//!   header (qBittorrent's own preferences, pod hooks, sidecars, CronJobs).
 
 use std::collections::BTreeMap;
 use std::sync::Arc;
@@ -472,3 +479,6 @@ async fn prw_torrent_config() {
 
 #[path = "parity_torrent/torrent_qbit.rs"]
 mod torrent_qbit;
+
+#[path = "parity_torrent/priv_torrent.rs"]
+mod priv_torrent;

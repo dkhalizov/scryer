@@ -1,7 +1,7 @@
 //! Parity net: grab-decision harness (notes/11-parity-net-design.md, phase 4).
 //!
 //! Six suites here, one test fn each; the submodules `parity_decision/decision_delay.rs`,
-//! `parity_decision/decision_rank.rs`, `parity_decision/decision_absent.rs`, `parity_decision/decision_context.rs` and `parity_decision/decision_guards.rs` add their own (see their headers):
+//! `parity_decision/decision_rank.rs`, `parity_decision/decision_absent.rs`, `parity_decision/decision_context.rs`, `parity_decision/decision_guards.rs` and `parity_decision/priv_decision.rs` (the private config entries) add their own (see their headers):
 //!
 //! | Suite | Corpus |
 //! |---|---|
@@ -145,19 +145,19 @@
 //!   field) in `parity_decision/decision_absent.rs`. Retention, FreeSpace (grab
 //!   time; the import check is mapped in `parity_import`), BlockedIndexer,
 //!   DownloadDecisionMaker, SingleEpisodeAgeDownloadDecision and Pending stay
-//!   unmapped, reasons in that file. Also unmapped (private config catalogue,
-//!   outside this stage): config `retention`, `maximumSize`, `releaseprofile`,
-//!   `tag.json`, `autotagging`; by the D29 reasoning in `decision_absent.rs`,
-//!   `maximumSize`, `releaseprofile` and `tag.json` would map red when that
-//!   catalogue is mapped.
+//!   unmapped, reasons in that file. Private config catalogue: `maximumSize`,
+//!   `releaseprofile`, `tag.json`, `allowHardcodedSubs` and `preferIndexerFlags` are
+//!   red by reason, `retention` and `autotagging` stay unmapped, see
+//!   `parity_decision/priv_decision.rs`.
 //! - Movie, Search.Series, SingleEpisodeSearchMatch, AlreadyImported, MultiSeason
 //!   (red) and the MonitoredEpisode multi-episode / pack cases are mapped in
 //!   `parity_decision/decision_context.rs` (seams `evaluate_auto_candidate_with_step`,
 //!   `candidate_matches_existing_media_file`). MonitoredMovie, the MonitoredEpisode
 //!   series-monitoring / single-episode cases and DeletedEpisodeFile stay unmapped,
-//!   reasons in that file's header. Still unmapped here: config
-//!   `series-summary`/`movie-summary` (monitored, minimum availability),
-//!   `allowHardcodedSubs`.
+//!   reasons in that file's header. Config minimum availability and
+//!   `allowHardcodedSubs` are mapped in `priv_decision`; config `monitored` (title,
+//!   season and single-episode monitoring, applied by target derivation and the RSS
+//!   scope filter) stays unmapped (reason there).
 //! - History (Sonarr RssSync.History, Radarr History): mapped in
 //!   `parity_decision/decision_guards.rs` through the loader's row selection
 //!   (`grabbed_release_record`, `recent_missing_grab_record`).
@@ -166,11 +166,11 @@
 //!   `compare_release_search_results`). The rest (protocol, coverage, episode
 //!   number, indexer priority, seeders/peers, usenet age) stay unmapped: they
 //!   need `SearchRank`, built only inside the private `evaluate_candidate`
-//!   (see that file's header). Config `preferIndexerFlags` and
-//!   `downloadPropersAndRepacks` (its "preferred over the original" half) stay
-//!   unmapped for the same reason.
-//! - Config `formatItems/format=N`: scoring a release against a translated
-//!   custom format needs the rules engine (Rego) harness.
+//!   (see that file's header). Config `downloadPropersAndRepacks` is mapped
+//!   in `priv_decision` (the head carries the revision step); `preferIndexerFlags`
+//!   is red by reason there (no flag step in the rank).
+//! - Config `formatItems/format=N`: mapped red in `priv_decision` (Scryer's import
+//!   derives no score), the same comparison as `parity_quality` `son_quality_config`.
 //! - Delay cases whose outcome rests on "highest quality in profile" (bypass
 //!   on) or "same-tier revision over the file on disk": mapped in
 //!   `parity_decision/decision_delay.rs` (`son_decision_delay`,
@@ -196,7 +196,9 @@
 //! uses `compare_release_search_results` (search rank head); `decision_delay` uses
 //! `automatic_candidate_delay_decision`; `decision_guards` uses `submission_is_queued`,
 //! `grabbed_release_record`, `recent_missing_grab_record` and `GrabbedReleaseRecord`
-//! (plus `submission_scope_intersects` as the history rows' scope filter).
+//! (plus `submission_scope_intersects` as the history rows' scope filter);
+//! `priv_decision` uses `revision_preference`, `movie_availability_decision`,
+//! `MovieAvailabilitySettings::policy` and `ReleaseAutoDecisionCode::with_movie_availability`.
 
 use std::cmp::Reverse;
 
@@ -229,6 +231,8 @@ mod decision_absent;
 mod decision_context;
 #[path = "parity_decision/decision_guards.rs"]
 mod decision_guards;
+#[path = "parity_decision/priv_decision.rs"]
+mod priv_decision;
 
 const NOW: &str = "2026-01-15T12:00:00Z";
 

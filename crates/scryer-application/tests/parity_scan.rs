@@ -70,12 +70,12 @@
 //! son_scan_format_video_codec, son_scan_format_dynamic_range,
 //! son_scan_format_dynamic_range_type.
 //!
-//! Config suites (son_scan_config, rad_scan_config, baz_scan_config): nothing
-//! mapped, so no test function (a suite with no entries is vacuous). Reasons
-//! are listed in the phase report: settings defaults resolve through
-//! AppUseCase settings repositories, root folders and monitoring are library
-//! state, and the Bazarr entries describe Bazarr's sync with Sonarr/Radarr,
-//! which has no Scryer counterpart.
+//! Config suites (son_scan_config, rad_scan_config, baz_scan_config) live in
+//! parity_scan/priv_scan.rs: SON-SCAN-5002, 5006, RAD-SCAN-5002, 5013 and
+//! BAZ-SCAN-5001, 5003, 5005, 5007 are mapped there. The config entries still
+//! unmapped (SON-SCAN-5001, 5003, 5004, 5005, 5007, RAD-SCAN-5001, 5003, 5004,
+//! 5005, BAZ-SCAN-5002, 5004, 5006) and their reasons are listed in that
+//! file's header.
 
 use std::path::{Path, PathBuf};
 
@@ -221,3 +221,6 @@ fn son_scan() {
 
 #[path = "parity_scan/scan_mediainfo.rs"]
 mod scan_mediainfo;
+
+#[path = "parity_scan/priv_scan.rs"]
+mod priv_scan;

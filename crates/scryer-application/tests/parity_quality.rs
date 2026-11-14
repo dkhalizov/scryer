@@ -8,6 +8,7 @@
 //! | son_quality_config / rad_quality_config | captured config facts (5001..), checked from the ref'd `corpus/captured/<app>/config/*.json` |
 //! | son_quality_captured / rad_quality_captured | quality each real file was assigned (6001..), `corpus/captured/<app>/data/cases/quality.json` |
 //! | son_quality_profiles / rad_quality_profiles | `default_profiles` (SON 0033-0034, RAD 0023-0024), `parity_quality/quality_profiles.rs` |
+//! | rad_quality_size_limits | quality definitions RAD 5025-5034, `parity_quality/priv_quality.rs` |
 //!
 //! # Translation tables
 //!
@@ -111,19 +112,23 @@
 //!   a filter, not derived from format scores. Concept absent.
 //!
 //! Config:
-//! - Custom-format definitions the arr matched on no sampled parse title
-//!   while Scryer matches none either: no positive verdict, so matching
-//!   would go untested and a green would be vacuous (a Scryer false positive
-//!   records red instead). SON 5032 5035 5036 5040 5041 5043 5044 5046 5049
-//!   5051 5052; RAD 5037 5039-5045 5047 5049 5051 5052 5054-5058.
+//! - Custom-format definitions: the arr matched them on no captured title at
+//!   all (parse.json, history.json, moviefile/episodefile.json; see
+//!   `parity_quality/priv_quality.rs`), and Scryer matches none of the
+//!   sampled parse.json titles either: no positive verdict, so a green would
+//!   be vacuous (an adopt run of the config suites records red on a Scryer
+//!   false positive among those titles instead). SON 5032 5035 5036 5040
+//!   5041 5043 5044 5046 5049 5051 5052; RAD 5037 5039-5045 5047 5049 5051 5052 5054-5058.
 //! - Profile definitions (SON 5007, RAD 5002, RAD 5005): Scryer's arr import
 //!   reads only a profile's id, name and language (external_import.rs:574);
 //!   nothing converts arr quality items, groups, cutoff or upgrade flag into a
 //!   Scryer `QualityProfile`, so there is no Scryer output to compare. A
-//!   hand-built Scryer profile would test the harness. Open decision.
-//! - Quality definitions (RAD 5025-5034, MB per minute bounds): Scryer has no
-//!   per-quality size table; size plausibility comes from a bitrate model
-//!   (quality/profile.rs:1217). Concept absent.
+//!   hand-built Scryer profile would test the harness. Open decision
+//!   (re-checked in `priv_quality.rs`).
+//! - Quality definitions (RAD 5025-5034, MB per minute bounds): mapped red in
+//!   `parity_quality/priv_quality.rs` (`rad_quality_size_limits`); Scryer has
+//!   fixed per-tier bounds (quality/profile.rs:1513), not the arr's
+//!   per-quality settings (D29).
 //!
 //! # Ignored keys
 //!
@@ -141,7 +146,11 @@
 //! `RuntimeLimits` are already pub). `parity_quality/quality_compare.rs` uses
 //! `ladder_against_incumbent` and `LadderOutcome` (parity_seams).
 //! `parity_quality/quality_profiles.rs` uses `ensure_quality_profiles_exist`.
+//! `parity_quality/priv_quality.rs` uses `apply_size_requirement` and
+//! `CoverageSizeBasis` (parity_seams).
 
+#[path = "parity_quality/priv_quality.rs"]
+mod priv_quality;
 #[path = "parity_quality/quality_catalogue.rs"]
 mod quality_catalogue;
 #[path = "parity_quality/quality_compare.rs"]

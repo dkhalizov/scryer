@@ -132,10 +132,15 @@
 //!   through the import's `episode_import_dest_path` / `preserved_import_filename`.
 //! - SON-NAMING-0188..0190 (`requires_episode_title`): concept absent; Scryer
 //!   has no episode-title-required import gate (see parity_naming/naming.rs).
-//! - SON-NAMING-5001, RAD-NAMING-5001 (rename on import): Scryer's default is
-//!   resolved by `AppUseCase::resolve_rename_enabled` against the settings
-//!   database (settings/runtime/media.rs:548, `unwrap_or(true)`); no pure
-//!   accessor. Belongs to an app-level settings harness.
+//! - SON-NAMING-5001, RAD-NAMING-5001 (rename on import): Scryer has the switch
+//!   (`rename.enabled`, per facet), but its own value comes only from
+//!   `AppUseCase::resolve_rename_enabled` (settings/runtime/media.rs:548,
+//!   `unwrap_or(true)`), and an AppUseCase needs every repository port (no
+//!   public fakes; see tests/sm_download_import.rs). Passing the arr's value
+//!   into `episode_import_dest_path` would pass for either value (vacuous).
+//!   The movie switch is also inline in async import code (series_movie.rs
+//!   :1570, :2087, :2754; manual.rs:2964), with no sync function to expose.
+//!   Belongs to an app-level settings harness.
 
 use scryer_application::{
     MediaRequestMetadataSnapshot, RenameMissingMetadataPolicy, RenamePlanningState,

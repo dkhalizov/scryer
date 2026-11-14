@@ -50,6 +50,9 @@
 //! `doRuleAction` through this file's operator table and the production
 //! engine), `mnt_playback_hold` (collection_worker.json 0160, 0174).
 //!
+//! Suites of `parity_maintenance/priv_maintenance.rs`: `mnt_maintenance_config`,
+//! `prw_maintenance_config` (job cadences, private config corpus).
+//!
 //! Unmapped (tests: []), with reasons:
 //! - comparator.json 0294, 0295, 0296, 0298: see `parity_maintenance/maintenance.rs`
 //!   (only Maintainerr's lowercasing, set EQUALS or BOOL encoding decides
@@ -69,16 +72,15 @@
 //!   *arr clients; the only doubles are crate-private (`lib_tests`). Per-group
 //!   reasons for the unmapped ones are in `parity_maintenance/maintenance.rs`
 //!   (0160 and 0174 are mapped there).
-//! - MNT-MAINTENANCE-5001..5028 (`mnt_maintenance_config`, no suite fn): our
-//!   Maintainerr rule groups, collections and schedules; a check needs a
-//!   decision on how our rules are ported to Scryer Rego (open decision), the
-//!   config gives no expected answer for a Scryer function.
-//! - MNT-MAINTENANCE-6001..6011 (`mnt_maintenance_captured`, no suite fn):
-//!   log-pattern observations with no facts to evaluate.
-//! - PRW-MAINTENANCE-5001, 5002: Prowlarr history cleanup, no Scryer function.
+//! - MNT-MAINTENANCE-5001..5028, 6001..6011, PRW-MAINTENANCE-5001, 5002: see
+//!   `parity_maintenance/priv_maintenance.rs`. 5001, 5002 and PRW-5002 are
+//!   mapped there (period-only cadence compare); the rest stay unmapped
+//!   with per-group reasons in that header. 5022 and 5025 stay waived (D32).
 
 #[path = "parity_maintenance/maintenance.rs"]
 mod maintenance;
+#[path = "parity_maintenance/priv_maintenance.rs"]
+mod priv_maintenance;
 
 use std::collections::{HashMap, HashSet};
 

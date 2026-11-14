@@ -40,6 +40,9 @@
 //!   PENDING, and REFUSED without ADMIN or REQUEST[_MOVIE|_TV]
 //!   (the source-derived cases SER-REQUESTS-0071/0077 state the same rule).
 //!   Ignored keys: quotas, requestCount, userType.
+//! - `priv_requests_config::{ser_requests_settings, rad_requests_config}`:
+//!   SER-REQUESTS-5001, 5007, 5018, 5030, RAD-REQUESTS-5002, 5004, 5005:
+//!   see `parity_requests/priv_requests_config.rs`.
 //! - `requests::ser_requests_seasons` (0073, 0074),
 //!   `requests::ser_requests_season_status` (0084, 0085),
 //!   `requests::ser_requests_watchlist` (0047),
@@ -61,25 +64,49 @@
 //!   0083 (Radarr/Sonarr add and search), 0081 (Plex sign-in): async
 //!   integrations (lists sync, library scan, acquisition, auth) with no pure
 //!   seam; reasons in `parity_requests/requests.rs`.
-//! - SER-REQUESTS-5001 (default permissions of a new user): set by the
-//!   user-creation path (`authorization::build_user_authorization` is private).
-//! - SER-REQUESTS-5002, 5003 (quotas): Scryer has no request quota.
-//! - SER-REQUESTS-5006, 5007 (partial season requests, specials): left for the
-//!   config stage. Scryer has partial-season requests (monitor type "advanced"
-//!   with `MonitorSelection.seasons`) and a specials setting
-//!   (`monitor_specials`); per D29 they are mapping candidates, not
-//!   concept-absent. 5008 (4K): concept absent (no 4K split).
-//! - SER-REQUESTS-5009, 5010 (media server and metadata source), 5040, 5041
-//!   (watchlist sync on): configuration of integrations, no request behaviour
-//!   a pure function answers.
-//! - SER-REQUESTS-6001..6204 (`ser_requests_captured`, no suite fn): each case
-//!   is a request's final lifecycle state (COMPLETED / APPROVED with media
-//!   availability from Plex scans); the initial verdict is not in the capture
-//!   and the lifecycle has no pure seam.
-//! - SON-REQUESTS-5001, RAD-REQUESTS-5001..5006 (import lists, collections,
-//!   exclusions, task intervals) and MNT-REQUESTS-5001, 5002 (forceSeerr off):
-//!   list/collection sync and maintenance-to-request side effects are async
-//!   flows; no suite fn.
+//! - SER-REQUESTS-5001, 5007, 5018, 5030 (default permissions,
+//!   specials, new seasons, watchlist cadence) are mapped in
+//!   `priv_requests_config::ser_requests_settings`.
+//! - SER-REQUESTS-5002, 5003 (quotas): no quota setting; with no request rule the
+//!   evaluation reads no requester count (vacuous). Reasons in
+//!   `parity_requests/priv_requests_config.rs`.
+//! - SER-REQUESTS-5006 (partial requests): UI-only setting, no Scryer switch; no function takes
+//!   the flag. Reason in `parity_requests/priv_requests_config.rs`.
+//! - SER-REQUESTS-5008 (4K): concept absent (no 4K split).
+//! - SER-REQUESTS-5009, 5010, 5014..5017, 5019..5028, 5033, 5040, 5041 (the other config
+//!   entries): reasons in `parity_requests/priv_requests_config.rs`.
+//! - SER-REQUESTS-6001..6194 (captured requests, corpus/captured/seerr/data/cases/
+//!   requests.json; no suite fn, D30), per field group:
+//!   (1) expect.status/statusName is the lifecycle outcome of approval plus Plex
+//!   availability sync; `MediaRequestStatus` has no COMPLETED (scryer-domain
+//!   lib.rs:218) and no scan or availability path writes a request (as 0049..0065).
+//!   (2) The creation verdict is the requester permission rule, already checked per
+//!   user by `ser_requests_config` (5004/5005, red until P8); a per-request copy
+//!   would duplicate it.
+//!   (3) expect.media.* is media-server availability; the input has no library facts.
+//!   (4) expect.profileId/rootFolder/serverId/languageProfileId/tags are stored null
+//!   unless an advanced override or override rule applied (MediaRequest.ts:289-308,
+//!   :370-371); the override is not in the input. Scryer has a per-request profile
+//!   (`requested/approved_quality_profile_id`) resolved by async
+//!   `request_quality_profile_snapshot_for_submission` over repositories (more than
+//!   a seam), and per-request `policy_tags` emitted only by request rules (none in
+//!   the input, so [] vs null would be vacuous). It has no per-request root folder,
+//!   server or language profile.
+//!   (5) expect.seasons: the raw request row has one `seasons` field, copied into
+//!   both input.seasons and expect.seasons, so expected == input and the
+//!   "advanced" monitor path reduces to `seasons.contains`, an echo (empty for a
+//!   movie). The season-selection path is covered by `requests::ser_requests_seasons`
+//!   (0073/0074); Seerr's pre-store season filtering (MediaRequest.ts:400-436) is
+//!   0075/0076.
+//! - SER-REQUESTS-6195..6204 (cases/media.json, media rows with no request):
+//!   status/status4k is written by the Plex scan and availability sync; the input
+//!   holds only mediaType, external ids and a request count. Scryer has no media
+//!   or season availability status (as 0049..0065); 4K: concept absent.
+//! - RAD-REQUESTS-5002, 5004, 5005 are mapped in `priv_requests_config`;
+//!   RAD-REQUESTS-5001, SON-REQUESTS-5001 (no import lists), RAD-REQUESTS-5003,
+//!   5006 (collections) and MNT-REQUESTS-5001, 5002 (maintenance never edits a
+//!   request; needs a mock-interaction check) stay unmapped, reasons in
+//!   `parity_requests/priv_requests_config.rs`.
 
 use std::collections::HashMap;
 
@@ -93,6 +120,9 @@ use serde_json::Value;
 
 #[path = "parity_requests/requests.rs"]
 mod requests;
+
+#[path = "parity_requests/priv_requests_config.rs"]
+mod priv_requests_config;
 
 /// The Scryer authorization a Seerr permission list translates to (table above).
 fn authorization(permissions: &[String]) -> Result<UserAuthorization, String> {

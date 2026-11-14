@@ -7,6 +7,7 @@
 //! - `scryer-infrastructure-acquisition::parity_indexers::prw_indexers_config`
 //! - `...::son_indexers_config`, `rad_indexers_config`
 //! - `...::prw_indexers_caps_categories` (submodule indexers.rs)
+//! - `...::prw_indexers_sync_cadence` (submodule priv_indexers.rs)
 //!
 //! Scryer code under test:
 //! - `ProwlarrManagementClient::plan_sync` (prowlarr.rs:1463, children built by
@@ -73,15 +74,14 @@
 //!   (prw_indexers_caps_categories); 0004..0006 stay unmapped (tracker-category
 //!   table Scryer lacks, see the indexers.rs header).
 //! - PRW-INDEXERS titleRewrite (5006, 5009, 5011, 5014), settings (5020..5028),
-//!   host proxy and certificates (5029, 5030), Prowlarr task 5032, the custom
-//!   cookie-auth indexer definition (5033..5037), challenge-solver proxy (5019):
-//!   Prowlarr's own engine and host, which stay in Prowlarr; no Scryer field.
-//! - PRW-INDEXERS-5031 (Prowlarr re-syncs its indexers to every app every
-//!   360 min): Scryer has a counterpart, the task runner pulling Prowlarr
-//!   every 5 min (scryer-application acquisition/workflow/task_runner.rs:6699,
-//!   `prowlarr_sync_interval`), but it is an inline literal inside the runner
-//!   loop, not a pub fn or const; mapping it needs a product seam (lifting it
-//!   to a pub const), not taken in Phase 4. Once mapped, 5 != 360, so red.
+//!   host (5029, 5030), task 5032, cookie-auth definition (5033..5037),
+//!   challenge-solver proxy (5019): Prowlarr's own engine and host, which stay
+//!   in Prowlarr. Reasons per group are in the parity_indexers/priv_indexers.rs
+//!   header. (Scryer does have caps limits, per-indexer proxies and challenge
+//!   solvers; the hop they cover is Prowlarr's, not Scryer's.)
+//! - PRW-INDEXERS-5031 (Prowlarr's ApplicationIndexerSync interval) is now
+//!   mapped in parity_indexers/priv_indexers.rs (prw_indexers_sync_cadence),
+//!   against the public `JobKey::ProwlarrSync.interval_seconds()`.
 //! - SON-INDEXERS / RAD-INDEXERS: none beyond the ignored keys above.
 //!
 //! Notify (no parity_notify test file): SON-NOTIFY-5001, RAD-NOTIFY-5001,
@@ -111,6 +111,8 @@ use wiremock::{Mock, MockServer, ResponseTemplate};
 
 #[path = "parity_indexers/indexers.rs"]
 mod indexers;
+#[path = "parity_indexers/priv_indexers.rs"]
+mod priv_indexers;
 
 const PARENT_ID: &str = "prowlarr";
 

@@ -12,6 +12,9 @@
 //!   `rad_orphan_records`, `son_unwanted_executable`, `rad_unwanted_executable`,
 //!   `son_import_mode`, `rad_import_mode`, `rad_import_largest`: orchestration
 //!   sub-decisions, in parity_import/import_orchestration.rs.
+//! - `rad_import_settings`, `son_import_settings`: captured import settings
+//!   (hardlinks, recycle bin, remote path mappings), in
+//!   parity_import/priv_import.rs.
 //!
 //! Scryer code under test:
 //! - Import checks (crates/scryer-application/src/import/checks.rs):
@@ -111,12 +114,12 @@
 //!
 //! Config entries mapped: SON-IMPORT-5002 / RAD-IMPORT-5002 (working folders)
 //! and SON-IMPORT-5005 / RAD-IMPORT-5004 (minimum free space). The other
-//! import config entries (completed download handling, hardlinks, episode
-//! title required, extra files, recycle bin, empty folders, file dates,
-//! permissions, script import, metadata writers, remote path mappings, root
-//! folders) are Scryer settings resolved through AppUseCase and its settings
-//! repository (e.g. settings/runtime/media.rs:595 import mode), or library
-//! state; no pure function holds their defaults.
+//! import config entries: hardlinks, recycle bin and remote path mappings are
+//! mapped in parity_import/priv_import.rs (suites rad_import_settings,
+//! son_import_settings); completed download handling, episode title required,
+//! extra files, empty folders, file dates, permissions, script import,
+//! metadata writers and root folder assignment stay unmapped, reasons in that
+//! header.
 
 use std::path::{Path, PathBuf};
 
@@ -135,6 +138,8 @@ mod import_aggregate;
 mod import_orchestration;
 #[path = "parity_import/import_specs.rs"]
 mod import_specs;
+#[path = "parity_import/priv_import.rs"]
+mod priv_import;
 
 const MIB: u64 = 1024 * 1024;
 

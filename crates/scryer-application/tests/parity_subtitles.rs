@@ -43,6 +43,9 @@
 //!   `expect.language/hi/forced` (the kept subtitle's own properties; used as
 //!   the download under test).
 //!
+//! - `priv_subtitles::baz_subtitles_cfg_wanted` (5010, 5012, 5013),
+//!   `::baz_subtitles_cfg_files` (5015, 5018), `::baz_subtitles_cfg_scene_name`
+//!   (5017): `parity_subtitles/priv_subtitles.rs`.
 //! - `subtitles::baz_subtitles_custom_weights` (0058, 0059) and
 //!   `subtitles::baz_subtitles_absent` (0060..0065): mapped red (D29) in
 //!   `parity_subtitles/subtitles.rs`.
@@ -61,12 +64,12 @@
 //!   the kind from the title's facet and never guesses it from a name.
 //! - BAZ-SUBTITLES-0039..0042 (provider pool update/discard), 5004, 5005
 //!   (enabled providers, OpenSubtitles options): provider configs and the
-//!   pool live behind async `AppUseCase` settings with no pure seam.
+//!   pool live behind async `AppUseCase` settings with no pure seam; 5004 and
+//!   5005 are listed in `parity_subtitles/priv_subtitles.rs`.
 //! - BAZ-SUBTITLES-0058..0065 are mapped red in `parity_subtitles/subtitles.rs`.
-//! - BAZ-SUBTITLES-5002, 5003, 5010..5021, 5024..5031: schedules, adaptive
-//!   search, file naming/encoding, embedded tracks, tags, post-processing and
-//!   blacklist counts are settings of async jobs with no pure function that
-//!   answers them from the config value.
+//! - BAZ-SUBTITLES-5010, 5012, 5013, 5015, 5017, 5018 are mapped in
+//!   `parity_subtitles/priv_subtitles.rs`; the reasons for 5002, 5003, 5011,
+//!   5014, 5016, 5019..5021, 5024..5031 are in its header.
 
 use std::collections::{BTreeMap, HashSet};
 
@@ -80,6 +83,8 @@ use scryer_domain::{ExternalSubtitleSourceKind, SubtitleDownload};
 use scryer_parity::{Catalogue, Suite, corpus};
 use serde_json::{Value, json};
 
+#[path = "parity_subtitles/priv_subtitles.rs"]
+mod priv_subtitles;
 #[path = "parity_subtitles/subtitles.rs"]
 mod subtitles;
 
