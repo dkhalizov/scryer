@@ -5810,6 +5810,12 @@ fn project_episode(
             release_type: ParsedEpisodeReleaseType::SeasonPack,
             raw: Some(render_identity_raw(identity, tokens)),
         }),
+        // A range no real pack spans is noise; never collect it (P12).
+        ReleaseIdentity::RangePackIdentity {
+            range_start,
+            range_end,
+            ..
+        } if range_end.saturating_sub(*range_start) > MAX_PROJECTED_RANGE_SPAN => None,
         ReleaseIdentity::RangePackIdentity {
             season,
             range_start,
@@ -6969,8 +6975,13 @@ fn extend_repeated_episodes(
                 }
                 _ => None,
             });
-        let Some(number) = number.filter(|number| *number > previous && number - first <= 999)
-        else {
+        let Some(number) = number.filter(|number| {
+            // An unsorted list (`E16E1`, `E4000000000E1`) puts `first` above
+            // `previous`, so bound the fill from `previous` too (P12).
+            *number > previous
+                && number - previous <= 999
+                && number.checked_sub(first).is_some_and(|span| span <= 999)
+        }) else {
             break;
         };
         if hyphen {
@@ -7151,6 +7162,10 @@ fn series_pack(seasons: Vec<u32>, consumed: Vec<usize>) -> Option<SeasonPackPars
 /// Parse the compact no-whitespace season forms that the lexer keeps inside one
 /// token, such as `S01+S02+OVAs`.
 const MAX_EXPLICIT_SEASON: u32 = 100;
+
+/// The widest range a parse may list. Long-running batches pass (`One Piece
+/// 1-1100`); a hostile `1-4000000000` would allocate 16 GB.
+const MAX_PROJECTED_RANGE_SPAN: u32 = 9999;
 
 fn valid_explicit_season(season: u32) -> bool {
     season <= MAX_EXPLICIT_SEASON

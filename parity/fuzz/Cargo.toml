@@ -31,12 +31,10 @@
 #   <bin>/analyze_release_against_targets -seed=1 -max_total_time=300 \
 #     -fork=1 -ignore_ooms=1 -ignore_crashes=1 -artifact_prefix=<scratch>/ \
 #     parity/fuzz/corpus/parser/analyze_release_against_targets
-# Known red (both parser targets): artifacts/parser/*/ hold an OOM from an
-# unbounded episode range collected in build_candidate ("1-4000000000") and a
-# u32 underflow in extend_repeated_episodes ("e16E1-6": episodes [16, 1], then
-# "-6" passes 6 > previous but 6 - first underflows; panics where overflow
-# checks are on, wraps and breaks in release). Keep both inputs out of the
-# corpus dirs so a corpus replay (-runs=0) still flags new regressions.
+# Fixed (P12): artifacts/parser/*/ hold an OOM from an unbounded episode
+# range ("1-4000000000") and a u32 underflow in extend_repeated_episodes
+# ("e16E1-6"); crates/*/tests/fuzz_artifacts.rs replay them. Keep these inputs
+# out of the corpus dirs so a corpus replay (-runs=0) stays a fresh check.
 
 [package]
 name = "scryer-parity-fuzz"

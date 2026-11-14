@@ -26,9 +26,5 @@ Suites run: 41 of 41. Cases recorded: 5374. Ratchet violations: 0. Catalogue err
 
 ## Moved since baseline
 
-- MNT-MAINTENANCE-0352: Red → Waived
-- MNT-MAINTENANCE-5022: Unmapped → Waived
-- MNT-MAINTENANCE-5025: Unmapped → Waived
-- RAD-INDEXERS-5010: Red → Waived
 
-4 changed status, 0 added, 0 removed.
+0 changed status, 0 added, 0 removed.
