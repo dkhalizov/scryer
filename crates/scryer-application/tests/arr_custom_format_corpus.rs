@@ -81,7 +81,12 @@ fn server_translator_reproduces_the_checked_in_corpus() {
     let mut diagnostic_mismatches = Vec::new();
     let mut source_differences = Vec::new();
     let mut identical = 0;
-    for (entry, expected) in source.formats.iter().zip(&expected.formats) {
+    // fork (P9): after a deliberate translator change, regenerate the snapshot
+    // with ARR_CORPUS_BLESS=1 (only the differing rego_source values change).
+    let mut blessed: Option<serde_json::Value> = (std::env::var("ARR_CORPUS_BLESS").as_deref()
+        == Ok("1"))
+    .then(|| serde_json::from_str(include_str!("fixtures/arr_custom_formats_rego.json")).unwrap());
+    for (index, (entry, expected)) in source.formats.iter().zip(&expected.formats).enumerate() {
         assert_eq!(entry.path, expected.path);
         assert_eq!(entry.source, expected.source);
         let application = match entry.source.as_str() {
@@ -125,6 +130,9 @@ fn server_translator_reproduces_the_checked_in_corpus() {
             identical += 1;
             continue;
         }
+        if let Some(blessed) = blessed.as_mut() {
+            blessed["formats"][index]["rego_source"] = result.rego_source.clone().into();
+        }
         let rule_id = "arr_import_corpus";
         let rewritten = rewrite_package_declaration(&result.rego_source, rule_id);
         let validation = match validate_user_rule_with_limits(&rewritten, rule_id, &limits) {
@@ -167,6 +175,14 @@ fn server_translator_reproduces_the_checked_in_corpus() {
         "Regorus rejected differing output:\n{}",
         source_differences.join("\n")
     );
+    if let Some(blessed) = blessed {
+        let path = concat!(
+            env!("CARGO_MANIFEST_DIR"),
+            "/tests/fixtures/arr_custom_formats_rego.json"
+        );
+        std::fs::write(path, serde_json::to_string_pretty(&blessed).unwrap() + "\n").unwrap();
+        return;
+    }
     assert!(
         source_differences.is_empty(),
         "Rego differs from the checked-in corpus:\n{}",

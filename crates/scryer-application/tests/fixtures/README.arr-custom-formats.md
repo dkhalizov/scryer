@@ -5,6 +5,7 @@ translator's output for all 478 formats in
 [`trash-corpus.json`](../../../../apps/scryer-web/lib/arr-custom-format/__fixtures__/trash-corpus.json).
 It was generated on 2026-09-07 using the translator in this commit, with a fixed
 score of 100 for every format. Generated Rego is not hand-edited.
+Fork (P9): the snapshot is now regenerated from the Rust translator with `ARR_CORPUS_BLESS=1` on the corpus test (the TypeScript generator is gone).
 
 The source is
 [TRaSH-Guides/Guides at 56cb176ef4b59d734d3643287e66aafd7c809bd4](https://github.com/TRaSH-Guides/Guides/tree/56cb176ef4b59d734d3643287e66aafd7c809bd4/docs/json).

@@ -101,6 +101,17 @@ fn regex_failure(
     Compiled::failed(diagnostic(code, message, format_id, Some(spec.index)))
 }
 
+/// fork (P9): Arr's `MatchString` is false on a null field
+/// (RegexSpecificationBase.cs:41). Rego's string builtins raise on null
+/// instead, and one raise voids every `score_entry` of the imported module.
+/// The guard runs first, so lowered lookaround relations are never reached
+/// with null, and a negated condition matches through `not`, as in Arr.
+/// Regex compiles only produce a body (no alternatives).
+pub(super) fn when_string(field: Term, mut compiled: Compiled) -> Compiled {
+    compiled.body.insert(0, call("is_string", vec![field]));
+    compiled
+}
+
 /// The parser is the structural gate; constructs Rego's regex engine cannot
 /// express never reach generated source.
 pub(super) fn compile_regex(
@@ -616,12 +627,16 @@ fn compile_specification(
             if !only_value {
                 return unsupported_fields("Release group");
             }
-            compile_regex(
-                spec.field("value"),
-                &input("release_group"),
-                &format.id,
-                spec,
-                relation_prefix,
+            // fork (P9): a missing group does not match.
+            when_string(
+                input("release_group"),
+                compile_regex(
+                    spec.field("value"),
+                    &input("release_group"),
+                    &format.id,
+                    spec,
+                    relation_prefix,
+                ),
             )
         }
         "EditionSpecification" => {
@@ -636,12 +651,16 @@ fn compile_specification(
                     Some(spec.index),
                 ));
             }
-            compile_regex(
-                spec.field("value"),
-                &input("edition"),
-                &format.id,
-                spec,
-                relation_prefix,
+            // fork (P9): a missing edition does not match.
+            when_string(
+                input("edition"),
+                compile_regex(
+                    spec.field("value"),
+                    &input("edition"),
+                    &format.id,
+                    spec,
+                    relation_prefix,
+                ),
             )
         }
         _ => compile_leaf(spec, format).unwrap_or_else(|| {
