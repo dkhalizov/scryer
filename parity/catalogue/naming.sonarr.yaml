@@ -417,14 +417,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:283"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W57: renaming is on in our config"
   tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0061
   behaviour: "With renaming off, a colon in the scene name is still replaced (Smart: ':' -> '-')"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:294"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W57: renaming is on in our config"
   tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0062
   behaviour: "A daily series uses the daily format with the air date; needs a daily series (all 23 of ours are standard, naming.json/series-summary.json)"

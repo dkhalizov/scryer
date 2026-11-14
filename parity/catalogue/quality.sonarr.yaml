@@ -228,7 +228,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/QualityProfileServiceFixture.cs:26"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W31: seeding defaults exists; only the default list differs"
   tests: [scryer-application::parity_quality::son_quality_profiles]
 - id: SON-QUALITY-0034
   behaviour: "On startup, default profiles are not re-added if any quality profile exists"
@@ -900,7 +901,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:167"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W28: BR-DISK/Raw-HD are not allowed in our profiles"
   tests: [scryer-application::parity_quality::son_quality_default_order]
 - id: SON-QUALITY-0130
   behaviour: "The default definition for WEBRip-720p has weight 10, min size 3, max size 130, preferred 95, group WEB 720p"

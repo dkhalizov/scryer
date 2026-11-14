@@ -824,28 +824,32 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:43"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W35: our naming formats use no release-group token"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0119
   behaviour: "The file's release group is used when folder and download titles have none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:63"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W37: grabbed release is the score evidence by design"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0120
   behaviour: "An {imdb-..} tag in a folder name is not taken as a release group"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:83"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W37: grabbed release is the score evidence by design"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0121
   behaviour: "A {tmdb-..} tag in a folder name is not taken as a release group"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:103"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W37: grabbed release is the score evidence by design"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0262
   behaviour: "Subtitle 'Name (2020) - [AAC 2.0].default.eng.forced.ass' next to movie file 'Name (2020)/Name (2020) - [AAC 2.0].mkv' parses with no title and copy 0"
@@ -1132,14 +1136,16 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:59"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W36: no invented 480p/TV fallback"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0153
   behaviour: "The grabbed title 'Series.Title.S01E01.720p.x264' gives source TV (Fallback) and 720p (Tag)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:60"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W36: no invented 480p/TV fallback"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0154
   behaviour: "A .flv file is never a sample and its runtime is not probed"
@@ -1258,7 +1264,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:96"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W35: our naming formats use no release-group token"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0171
   behaviour: "A folder title that does not look like a scene name gives no scene name"
@@ -1363,7 +1370,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:203"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W38: we hardlink; never force a move of seeding data"
   tests: [scryer-application::parity_import::rad_import_mode]
 - id: RAD-IMPORT-0186
   behaviour: "A download that is a single file records just its file name as the original path"
@@ -1580,7 +1588,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:142"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W32: free-space reserve is a data-safety check; keep it"
   tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0217
   behaviour: "Without a download client item the grabbed-quality check passes"

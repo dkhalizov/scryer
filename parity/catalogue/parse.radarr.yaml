@@ -1030,7 +1030,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W1: Scryer's ISO table is wider and keeps more information"
   tests: [scryer-application::parity_parse::rad_iso_languages]
 - id: RAD-PARSE-0130
   # key: "IsoLanguagesFixture.cs|unknown_or_invalid_code_should_return_null|abc4f46920904174|0"
@@ -1038,7 +1039,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W3: Scryer's ISO table is wider and keeps more information"
   tests: [scryer-application::parity_parse::rad_iso_languages]
 - id: RAD-PARSE-0131
   # key: "IsoLanguagesFixture.cs|should_return_portuguese|53c4cf778e75f905|0"
@@ -1070,7 +1072,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W2: Scryer's ISO table is wider and keeps more information"
   tests: [scryer-application::parity_parse::rad_iso_languages]
 - id: RAD-PARSE-0135
   # key: "IsoLanguagesFixture.cs|should_return_telugu|9419212e9e9ce8cf|0"
@@ -2854,7 +2857,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:617"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W11: no language token; nothing to tag"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0358
   # key: "LanguageParserFixture.cs|should_not_parse_false_title|05ac0227306beb45|0"
@@ -2910,7 +2914,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0365
   # key: "NormalizeTitleFixture.cs|should_remove_special_characters_and_casing|404fd37c957e0771|0"
@@ -2966,7 +2971,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:27"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0372
   # key: "NormalizeTitleFixture.cs|should_remove_special_characters_and_casing|415b7ae47b48ffd1|0"
@@ -2974,7 +2980,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0373
   # key: "NormalizeTitleFixture.cs|should_remove_special_characters_and_casing|6a845f87b4d0ccba|0"
@@ -2982,7 +2989,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:29"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W8: lookup key is identity-preserving by design; equivalence by collation (trailing article) (diacritics)"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0374
   # key: "NormalizeTitleFixture.cs|should_remove_special_characters_and_casing|b1452312efa96105|0"
@@ -2990,7 +2998,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:30"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W8: lookup key is identity-preserving by design; equivalence by collation (trailing article) (diacritics)"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0375
   # key: "NormalizeTitleFixture.cs|should_remove_common_words_from_middle_of_title|4c92d2bc944e5803|0"
@@ -2998,7 +3007,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:37"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0376
   # key: "NormalizeTitleFixture.cs|should_remove_common_words_from_middle_of_title|3a3cc8fd6c0c9ac4|0"
@@ -3006,7 +3016,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:38"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0377
   # key: "NormalizeTitleFixture.cs|should_remove_common_words_from_middle_of_title|e5eb8636e9e77c9b|0"
@@ -3014,7 +3025,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0378
   # key: "NormalizeTitleFixture.cs|should_remove_common_words_from_middle_of_title|942e7d75b00de475|0"
@@ -3022,7 +3034,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0379
   # key: "NormalizeTitleFixture.cs|should_remove_common_words_from_middle_of_title|a73acb1a1b8f133b|0"
@@ -3030,7 +3043,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0380
   # key: "NormalizeTitleFixture.cs|should_not_remove_common_words_from_end_of_title|bdb6d5f024dec4c1|0"
@@ -3038,7 +3052,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:58"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W7: lookup key is identity-preserving by design; equivalence by collation (trailing article)"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0381
   # key: "NormalizeTitleFixture.cs|should_not_remove_common_words_from_end_of_title|f4d1558c6eb259b2|0"
@@ -3062,7 +3077,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W7: lookup key is identity-preserving by design; equivalence by collation (trailing article)"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0384
   # key: "NormalizeTitleFixture.cs|should_not_remove_common_words_from_end_of_title|6fb36a5c5cc58806|0"
@@ -3078,7 +3094,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:79"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0386
   # key: "NormalizeTitleFixture.cs|should_not_remove_a_when_at_start_of_acronym|50341fc657721197|0"
@@ -3222,7 +3239,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:186"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W7: lookup key is identity-preserving by design; equivalence by collation (trailing article)"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0404
   # key: "ParserFixture.cs|should_remove_accents_from_title|143bf855f95ec0d0|0"
@@ -3230,7 +3248,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W8: lookup key is identity-preserving by design; equivalence by collation (trailing article) (diacritics)"
   tests: [scryer-application::parity_parse::rad_clean_title]
 - id: RAD-PARSE-0405
   # key: "ParserFixture.cs|should_parse_movie_title|b97dc6b00a950d2c|0"
@@ -4174,7 +4193,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:161"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W19: Roman numerals kept apart from digits by design"
   tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0523
   # key: "ParsingServiceTests/MapFixture.cs|should_match_umlauts|fd67c69fdcfd6b0d|0"
@@ -4182,7 +4202,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:167"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W18: umlaut fold only matters for German titles"
   tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0524
   # key: "QualityParserFixture.cs|should_parse_ts|7051782b1551f4f9|0"
@@ -6390,7 +6411,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:483"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0800
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|d709aa413ff6ef35|0"
@@ -6398,7 +6420,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:484"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0801
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|749f0c0c6d4b78c6|0"
@@ -6406,7 +6429,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:485"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0802
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|9d462ca8be532d53|0"
@@ -6414,7 +6438,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:486"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0803
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|49bc0fc03983714b|0"
@@ -6422,7 +6447,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:495"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W13: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0804
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|7bd7d0b9cb0db57e|0"
@@ -8246,7 +8272,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:31"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1032
   # key: "SlugParserFixture.cs|should_replace_special_characters|ae57d249d66a908d|0"
@@ -8254,7 +8281,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1033
   # key: "SlugParserFixture.cs|should_replace_special_characters|932d8603caa6bcf6|0"
@@ -8262,7 +8290,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:33"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1034
   # key: "SlugParserFixture.cs|should_replace_special_characters|08f334f32b987356|0"
@@ -8270,7 +8299,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:34"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1035
   # key: "SlugParserFixture.cs|should_replace_special_characters|0b47ff85275f8cfe|0"
@@ -8278,7 +8308,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1036
   # key: "SlugParserFixture.cs|should_replace_special_characters|82390814546f8290|0"
@@ -8286,7 +8317,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:36"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1037
   # key: "SlugParserFixture.cs|should_replace_special_characters|e91722ed4a1ae75b|0"
@@ -8294,7 +8326,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:37"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1038
   # key: "SlugParserFixture.cs|should_replace_special_characters|ea71f6b533e655bb|0"
@@ -8302,7 +8335,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:38"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1039
   # key: "SlugParserFixture.cs|should_replace_special_characters|13486d146234efed|0"
@@ -8310,7 +8344,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1040
   # key: "SlugParserFixture.cs|should_lowercase_capitals|4401a3b4c351faee|0"
@@ -8382,7 +8417,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:68"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1049
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|ec7f243b9f7af67d|0"
@@ -8462,7 +8498,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:88"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1059
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|1c63c8e8913b7a81|0"
@@ -8470,7 +8507,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:89"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1060
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|32cb2346f423f803|0"
@@ -8478,7 +8516,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:90"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1061
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|29e3e4631775c83c|0"
@@ -8486,7 +8525,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:91"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1062
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|3af75e5ad1afe9a0|0"
@@ -8494,7 +8534,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:92"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1063
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|f40fccba4bd15e21|0"
@@ -8502,7 +8543,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:93"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1064
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|cfc545aa20bb0692|0"
@@ -8510,7 +8552,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:94"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1065
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|a22a1c95032ec1ff|0"
@@ -8518,7 +8561,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:95"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1066
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|610b7b8b849d1e72|0"
@@ -8526,7 +8570,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:96"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W14: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1067
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|7c79ffad5068bd51|0"
@@ -8566,7 +8611,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:106"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1072
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|06a26ed0181ad107|0"
@@ -8574,7 +8620,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1073
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|637ca0cac05797a2|0"
@@ -8582,7 +8629,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:108"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1074
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|e98e5adfc99f5120|0"
@@ -8598,7 +8646,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:110"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1076
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|f5d96df0575179b4|0"
@@ -8606,7 +8655,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:111"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1077
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|80f7b7c27fea3dcf|0"
@@ -8614,7 +8664,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:112"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1078
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|e9400e00028d0d71|0"
@@ -8622,7 +8673,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:113"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1079
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|c9d560354996d658|0"
@@ -8638,7 +8690,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:120"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1081
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|4694d7115a396445|0"
@@ -8654,7 +8707,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:122"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1083
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|2a9931faf51e92e0|0"
@@ -8670,7 +8724,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:124"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1085
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|bd0b660eee3d4eaf|0"
@@ -8678,7 +8733,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:125"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1086
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|91a22e6588fa30f5|0"
@@ -8686,7 +8742,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:126"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1087
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|47e528be84bcba28|0"
@@ -8694,7 +8751,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:127"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1088
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|9c47ba9d43e18e9e|0"
@@ -8702,7 +8760,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:128"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1089
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|8c44673db6685362|0"
@@ -8710,7 +8769,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:129"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1090
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|594afe8ccb8ed3d3|0"
@@ -8718,7 +8778,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:130"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1091
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|878d67222122e05f|0"
@@ -8726,7 +8787,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:131"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W15: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1092
   # key: "SlugParserFixture.cs|should_handle_null_trim_parameters|ed75da4b18a68b17|0"

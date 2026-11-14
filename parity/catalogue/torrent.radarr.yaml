@@ -63,14 +63,16 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:161"
   in_scope: true
-  status: unmapped
+  status: waived
+  decision: "D69 (M8) W49: tracked row forgotten on delete"
   tests: []
 - id: RAD-TORRENT-0010
   behaviour: "An unmapped tracked download survives a movie-deleted event without error"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:218"
   in_scope: true
-  status: unmapped
+  status: waived
+  decision: "D69 (M8) W49: tracked row forgotten on delete"
   tests: []
 - id: RAD-TORRENT-0011
   behaviour: "A download whose latest download history is DownloadImported tracks as Imported, and after it is grabbed again (latest history DownloadGrabbed) it tracks as Downloading"

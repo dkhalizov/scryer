@@ -463,7 +463,8 @@
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:22"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W55: we keep Bazarr default weights; fixed weights"
   tests: [scryer-application::parity_subtitles::baz_subtitles_custom_weights]
 # key: tests/subliminal_patch/test_score.py|test_compute_score_custom_valid
 - id: BAZ-SUBTITLES-0059
@@ -471,7 +472,8 @@
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:29"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W55: we keep Bazarr default weights; fixed weights"
   tests: [scryer-application::parity_subtitles::baz_subtitles_custom_weights]
 # key: tests/subliminal_patch/test_subtitle.py|test_guess_matches_w_edition_only_video
 - id: BAZ-SUBTITLES-0060
@@ -511,7 +513,8 @@
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:5"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W56: guessit internals"
   tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_video.py|test_video_fromguess_movie
 - id: BAZ-SUBTITLES-0065
@@ -519,7 +522,8 @@
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W56: guessit internals"
   tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_video.py|test_video_fromname_episode
 - id: BAZ-SUBTITLES-0066

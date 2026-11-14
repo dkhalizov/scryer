@@ -490,7 +490,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W37: grabbed release is the score evidence by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0071
   behaviour: "A full-season folder name does not set the file's release group"
@@ -511,14 +512,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:79"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W35: our naming formats use no release-group token"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0074
   behaviour: "Without a group in download or folder name, the file's release group is used"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:99"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W37: grabbed release is the score evidence by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0075
   behaviour: "Without media info, no quality is derived from it"
@@ -700,14 +703,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:59"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W36: no invented 480p/TV fallback"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0101
   behaviour: "The grabbed title Series.Title.S01E01.720p.x264 gives source Television (Fallback) and resolution 720 (Tag)"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:60"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W36: no invented 480p/TV fallback"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0102
   behaviour: "A special (season 0) is never a sample"
@@ -854,7 +859,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:118"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W35: our naming formats use no release-group token"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0123
   behaviour: "A folder name that does not look like a scene name is not used"
@@ -973,7 +979,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:211"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W38: we hardlink; never force a move of seeding data"
   tests: [scryer-application::parity_import::son_import_mode]
 - id: SON-IMPORT-0140
   behaviour: "A single-file download records only the file name as the original path"

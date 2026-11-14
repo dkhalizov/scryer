@@ -2439,7 +2439,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W5: reversed-title scene obfuscation, rare and old"
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|3c9785c67947|0
 - id: SON-PARSE-0306
@@ -2447,7 +2448,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W5: reversed-title scene obfuscation, rare and old"
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|01b190e12d4b|0
 - id: SON-PARSE-0307
@@ -2511,7 +2513,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:91"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W5: reversed-title scene obfuscation, rare and old"
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|e4b4d7c591e3|0
 - id: SON-PARSE-0315
@@ -2519,7 +2522,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W5: reversed-title scene obfuscation, rare and old"
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|c9d176a781d6|0
 - id: SON-PARSE-0316
@@ -2527,7 +2531,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:105"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W5: reversed-title scene obfuscation, rare and old"
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|9a491ab4722f|0
 - id: SON-PARSE-0317
@@ -2679,7 +2684,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W1: Scryer's ISO table is wider and keeps more information"
   tests: [scryer-application::parity_parse::son_iso_languages]
 # key: src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs|unknown_or_invalid_code_should_return_null|e4a4f633044a|0
 - id: SON-PARSE-0336
@@ -2687,7 +2693,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W3: Scryer's ISO table is wider and keeps more information"
   tests: [scryer-application::parity_parse::son_iso_languages]
 # key: src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs|should_return_portuguese|1e6d7a6970f6|0
 - id: SON-PARSE-0337
@@ -2719,7 +2726,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W2: Scryer's ISO table is wider and keeps more information"
   tests: [scryer-application::parity_parse::son_iso_languages]
 # key: src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs|should_lookup_cze_via_alternate_iso_code_mapping|965018e2d0bd|0
 - id: SON-PARSE-0341
@@ -4047,7 +4055,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:491"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W11: no language token; nothing to tag"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_not_parse_false_title|80c49d3ceb3b|0
 - id: SON-PARSE-0507
@@ -4727,7 +4736,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W17: no episode-title normaliser; specials are found by context-title matching, a miss refuses a special and never misplaces one (S0x.Special risk stays red in SON-PARSE-0324..0327)"
   tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|aa8898b55f3c|0
 - id: SON-PARSE-0592
@@ -4735,7 +4745,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W17: no episode-title normaliser; specials are found by context-title matching, a miss refuses a special and never misplaces one (S0x.Special risk stays red in SON-PARSE-0324..0327)"
   tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_normalize_series_title|e17594e6d406|0
 - id: SON-PARSE-0593
@@ -4767,7 +4778,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_remove_special_characters_and_casing|12308ef1c5c7|0
 - id: SON-PARSE-0597
@@ -4823,7 +4835,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:27"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W8: lookup key is identity-preserving by design; equivalence by collation (trailing article) (diacritics)"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_remove_special_characters_and_casing|67849c7dafa7|0
 - id: SON-PARSE-0604
@@ -4831,7 +4844,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W8: lookup key is identity-preserving by design; equivalence by collation (trailing article) (diacritics)"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_remove_common_words_from_middle_of_title|b30f62a96b83|0
 - id: SON-PARSE-0605
@@ -4839,7 +4853,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_remove_common_words_from_middle_of_title|a7cc8396f4eb|0
 - id: SON-PARSE-0606
@@ -4847,7 +4862,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:36"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_remove_common_words_from_middle_of_title|92190aa3ab79|0
 - id: SON-PARSE-0607
@@ -4855,7 +4871,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:37"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_remove_common_words_from_middle_of_title|cd3581dd7d30|0
 - id: SON-PARSE-0608
@@ -4863,7 +4880,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:38"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_remove_common_words_from_middle_of_title|75cc1b32a8c7|0
 - id: SON-PARSE-0609
@@ -4871,7 +4889,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_not_remove_common_words_from_end_of_title|cbe54f610c3b|0
 - id: SON-PARSE-0610
@@ -4879,7 +4898,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:56"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W7: lookup key is identity-preserving by design; equivalence by collation (trailing article)"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_not_remove_common_words_from_end_of_title|fffc16a052d8|0
 - id: SON-PARSE-0611
@@ -4903,7 +4923,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:59"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W7: lookup key is identity-preserving by design; equivalence by collation (trailing article)"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_not_remove_common_words_from_end_of_title|d86fb3e9f217|0
 - id: SON-PARSE-0614
@@ -4919,7 +4940,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:77"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_not_remove_common_words_in_the_middle_of_word|7e81e068fc2b|0
 - id: SON-PARSE-0616
@@ -5047,7 +5069,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:150"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W7: lookup key is identity-preserving by design; equivalence by collation (trailing article)"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_replace_percent_sign_with_percent_following_numbers|1e0862a5fd6a|0
 - id: SON-PARSE-0632
@@ -5159,7 +5182,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_series_name|166626a64988|0
 - id: SON-PARSE-0646
@@ -5167,7 +5191,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W6: lookup key is identity-preserving by design; equivalence by collation"
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_series_name|15bd594b704a|0
 - id: SON-PARSE-0647
@@ -5359,7 +5384,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W8: lookup key is identity-preserving by design; equivalence by collation (trailing article) (diacritics)"
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_clean_up_invalid_path_characters|aa8ea19eed5f|0
 - id: SON-PARSE-0671
@@ -5383,7 +5409,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:81"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W16: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::son_quality_from_extension]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_quality_from_extension|2be4bfbe04b8|0
 - id: SON-PARSE-0674
@@ -5391,7 +5418,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:82"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W16: Radarr web/list URL slugs; we use none"
   tests: [scryer-application::parity_parse::son_quality_from_extension]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_releasetitle|f0ed99030c98|0
 - id: SON-PARSE-0675
@@ -6103,7 +6131,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:34"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W4: extensionless path; the scan only passes video files"
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs|should_parse_from_path|ed61535ba232|0
 - id: SON-PARSE-0764
@@ -8495,7 +8524,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:470"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|efcd243a0fdf|0
 - id: SON-PARSE-1063
@@ -8503,7 +8533,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:471"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|2ee072973e19|0
 - id: SON-PARSE-1064
@@ -8511,7 +8542,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:472"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|2b7384ea7965|0
 - id: SON-PARSE-1065
@@ -8519,7 +8551,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:473"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W12: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|8bd1550079c0|0
 - id: SON-PARSE-1066
@@ -8527,7 +8560,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:482"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W13: library files get quality from media info, not the container extension"
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|8242563c73a4|0
 - id: SON-PARSE-1067

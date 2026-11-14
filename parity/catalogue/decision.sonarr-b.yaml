@@ -48,14 +48,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:175"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W10: bitrate size fit replaces preferredSize by design"
   tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1007
   behaviour: "With preferred size 46 MB/min, the 3000 MB release is ranked first among 500/2000/3000/5000 MB"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:192"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W10: bitrate size fit replaces preferredSize by design"
   tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1008
   behaviour: "The 5-day-old release is ranked before the 10-day-old one"
@@ -524,126 +526,144 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:51"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1075
   behaviour: "A title containing the required term WEBRip is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1076
   behaviour: "A title containing none of the required terms (doesnt, exist) is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:69"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1077
   behaviour: "A title without the ignored term \"ignored\" is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:77"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1078
   behaviour: "A title containing the ignored term \"edited\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:85"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1079
   behaviour: "Required terms ['EdiTED'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:93"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1080
   behaviour: "Required terms ['webrip'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:94"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1081
   behaviour: "Required terms ['X264'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:95"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1082
   behaviour: "Required terms ['X264', 'NOTTHERE'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:96"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1083
   behaviour: "Ignored terms ['EdiTED'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:104"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1084
   behaviour: "Ignored terms ['webrip'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:105"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1085
   behaviour: "Ignored terms ['X264'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:106"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1086
   behaviour: "Ignored terms ['X264', 'NOTTHERE'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1087
   behaviour: "A title with both a required term (x264) and an ignored term (www.Speed.cd) is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:115"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1088
   behaviour: "Required regex /WEB/ matches the title and accepts it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:134"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1089
   behaviour: "Required term \"/WEB<backspace>/\" does not match and rejects the title"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:135"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1090
   behaviour: "Required regex /WEb/ is case-sensitive, does not match, and rejects the title"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:136"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1091
   behaviour: "Required regex /\\.WEB/ matches \".WEB\" in the title and accepts it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:137"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1092
   behaviour: "A release that is not a repack is accepted"
@@ -1350,7 +1370,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:133"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W25: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1193
   behaviour: "A DVD release is accepted over a recent SDTV grab"
@@ -1413,70 +1434,80 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:210"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W26: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1202
   behaviour: "With completed download handling off, a grab meeting the WEBDL-1080p cutoff blocks a Bluray-1080p release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:218"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W26: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1203
   behaviour: "With completed download handling off, an HDTV-1080p grab blocks a DVD release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:231"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W26: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1204
   behaviour: "An untagged indexer serves an untagged series"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:71"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1205
   behaviour: "A tagged indexer does not serve an untagged series"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:80"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1206
   behaviour: "An untagged indexer serves a tagged series"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:89"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1207
   behaviour: "An indexer sharing a tag (123) with the series serves it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1208
   behaviour: "An indexer with no tag in common with the series does not serve it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1209
   behaviour: "A release with no indexer id is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:116"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1210
   behaviour: "A release from an unknown indexer (id 2) is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:126"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1211
   behaviour: "A DVD proper is rejected in RSS when the DVD file was added 30 days ago"

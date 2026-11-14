@@ -40,7 +40,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:154"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W10: bitrate size fit replaces preferredSize by design"
   tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_largest_to_if_zero_runtime|0|6fdd73bc3fac
 - id: RAD-DECISION-1005
@@ -48,7 +49,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:171"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W10: bitrate size fit replaces preferredSize by design"
   tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_closest_to_preferred_size_if_both_under|0|766c4251d776
 - id: RAD-DECISION-1006
@@ -56,7 +58,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:188"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W10: bitrate size fit replaces preferredSize by design"
   tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_closest_to_preferred_size_if_preferred_is_in_between|0|b98fbaac8c47
 - id: RAD-DECISION-1007
@@ -64,7 +67,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:205"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W10: bitrate size fit replaces preferredSize by design"
   tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_youngest|0|2408b20bfbc1
 - id: RAD-DECISION-1008
@@ -496,7 +500,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:51"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_true_when_title_contains_one_required_term|0|ba875f66eb2a
 - id: RAD-DECISION-1062
@@ -504,7 +509,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_false_when_title_does_not_contain_any_required_terms|0|aaefad8767ed
 - id: RAD-DECISION-1063
@@ -512,7 +518,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:69"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_true_when_title_does_not_contain_any_ignored_terms|0|64e83e5f5d76
 - id: RAD-DECISION-1064
@@ -520,7 +527,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:77"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_false_when_title_contains_one_anded_ignored_terms|0|40337f12ff55
 - id: RAD-DECISION-1065
@@ -528,7 +536,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:85"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|0|c31b42af178b
 - id: RAD-DECISION-1066
@@ -536,7 +545,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:93"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|1|fa475542b2e4
 - id: RAD-DECISION-1067
@@ -544,7 +554,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:94"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|2|aad5f74d7b71
 - id: RAD-DECISION-1068
@@ -552,7 +563,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:95"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|3|3e750022e819
 - id: RAD-DECISION-1069
@@ -560,7 +572,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:96"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|0|6c9bb6ec6a12
 - id: RAD-DECISION-1070
@@ -568,7 +581,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:104"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|1|a10c873bc1c3
 - id: RAD-DECISION-1071
@@ -576,7 +590,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:105"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|2|9404a78ef3d5
 - id: RAD-DECISION-1072
@@ -584,7 +599,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:106"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|3|6bad68b22ae0
 - id: RAD-DECISION-1073
@@ -592,7 +608,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_false_when_release_contains_one_restricted_word_and_one_required_word|0|1eb3760aeaa5
 - id: RAD-DECISION-1074
@@ -600,7 +617,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:115"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|0|40bc48625850
 - id: RAD-DECISION-1075
@@ -608,7 +626,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:134"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|1|e9cdaacabe1c
 - id: RAD-DECISION-1076
@@ -616,7 +635,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:135"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|2|7bf362c64de5
 - id: RAD-DECISION-1077
@@ -624,7 +644,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:136"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|3|ac14155c5e66
 - id: RAD-DECISION-1078
@@ -632,7 +653,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:137"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W20: we have 0 release profiles (captured config); custom formats/rules cover it"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs|should_return_true_if_it_is_not_a_repack|0|6d3578600f65
 - id: RAD-DECISION-1079

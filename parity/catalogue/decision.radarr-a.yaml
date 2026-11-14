@@ -96,7 +96,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:79"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W24: completed download handling is on in our config and always on in Scryer"
   tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_movie_does_not_have_a_file|0|2a1316da72da
 - id: RAD-DECISION-0013
@@ -408,7 +409,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:113"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W25: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_be_upgradable_if_only_episode_is_upgradable|0|f12e1f03c4b8
 - id: RAD-DECISION-0052
@@ -448,7 +450,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:209"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W26: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_false_if_cutoff_already_met_and_cdh_is_disabled|0|e7955bfe5bd7
 - id: RAD-DECISION-0057
@@ -456,7 +459,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:217"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W26: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_false_if_only_episode_is_not_upgradable_and_cdh_is_disabled|0|823d9c3e5dae
 - id: RAD-DECISION-0058
@@ -464,7 +468,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:237"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W26: grab claim kept until it leaves grabbed: safer"
   tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/LanguageSpecificationFixture.cs|should_return_true_if_language_is_english|0|fc0d3a93555e
 - id: RAD-DECISION-0059
@@ -520,7 +525,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:30"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_smaller_than_maximum_size|0|c84923ff0acc
 - id: RAD-DECISION-0066
@@ -528,7 +534,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_equals_to_maximum_size|0|e412ffd52078
 - id: RAD-DECISION-0067
@@ -536,7 +543,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:48"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_false_when_size_is_bigger_than_maximum_size|0|eba3d4fad2f9
 - id: RAD-DECISION-0068
@@ -544,7 +552,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:57"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_zero|0|a41a2f5ec3b1
 - id: RAD-DECISION-0069
@@ -552,7 +561,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:66"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MinimumAgeSpecificationFixture.cs|should_return_true_when_minimum_age_is_set_to_zero|0|c9009eb8a1bb
 - id: RAD-DECISION-0070
@@ -720,7 +730,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:64"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_with_tags_movie_without_tags_should_return_false|0|ce0c6c047334
 - id: RAD-DECISION-0091
@@ -728,7 +739,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:73"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_without_tags_movie_with_tags_should_return_true|0|de47f2fe3d0f
 - id: RAD-DECISION-0092
@@ -736,7 +748,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:82"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_with_tags_movie_with_matching_tags_should_return_true|0|25b1ee708e04
 - id: RAD-DECISION-0093
@@ -744,7 +757,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:91"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_with_tags_movie_with_different_tags_should_return_false|0|6edbe7c572b1
 - id: RAD-DECISION-0094
@@ -752,7 +766,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:100"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|release_without_indexerid_should_return_true|0|5def7a5aa116
 - id: RAD-DECISION-0095
@@ -760,7 +775,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:109"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|release_with_invalid_indexerid_should_return_true|0|3ea63898d616
 - id: RAD-DECISION-0096
@@ -768,7 +784,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:119"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W74: no indexer or download client is tagged in Sonarr/Radarr; the only tag (4k) picks a delay profile, which Scryer supports (SON-DECISION-5012 green)"
   tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/Search/MovieSpecificationFixture.cs|should_return_false_if_series_doesnt_match|0|fe30c6675ad8
 - id: RAD-DECISION-0097

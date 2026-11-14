@@ -39,7 +39,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/actions/radarr-action-handler.spec.ts:157"
   in_scope: true
-  status: unmapped
+  status: waived
+  decision: "D69 (M8) W52: D32: never delete untracked items"
   tests: []
 # key: apps/server/src/modules/actions/radarr-action-handler.spec.ts|should delete movie when action is $title|0|{ action: ServarrAction.DELETE, title: 'DELETE' }
 - id: MNT-MAINTENANCE-0006
@@ -335,7 +336,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:517"
   in_scope: true
-  status: unmapped
+  status: waived
+  decision: "D69 (M8) W52: D32: never delete untracked items"
   tests: []
 # key: apps/server/src/modules/actions/sonarr-action-handler.spec.ts|should delete $title in Plex if not found in Sonarr and action is $action|5|{ type: 'episode', title: 'EPISODES', action: ServarrAction.UNMONITOR_DELETE_ALL, }
 - id: MNT-MAINTENANCE-0043
@@ -1391,7 +1393,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:370"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W50: global playback hold over-holds: safer"
   tests: [scryer-application::parity_maintenance::mnt_playback_hold]
 # key: apps/server/src/modules/collections/collection-worker.server.spec.ts|should not report failed media as handled
 - id: MNT-MAINTENANCE-0175
@@ -2383,7 +2386,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:56"
   in_scope: true
-  status: unmapped
+  status: waived
+  decision: "D69 (M8) W51: bool custom value 0/1 encoding"
   tests: []
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|5|[true, [], []]
 - id: MNT-MAINTENANCE-0299

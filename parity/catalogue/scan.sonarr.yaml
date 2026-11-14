@@ -168,7 +168,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:90"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W46: never retire an on-disk file (deletion boundary)"
   tests: [scryer-infrastructure-library::parity_scan::son_scan_clean]
 - id: SON-SCAN-0025
   behaviour: "Episodes linked to a file id absent from the DB are unlinked (episode file id set to 0)"
@@ -196,7 +197,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:85"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W47: one analysis revision threshold"
   tests: [scryer-infrastructure-library::parity_scan::son_scan_media_info_queue]
 - id: SON-SCAN-0029
   behaviour: "On scan, files with media info below the minimum schema (0) are re-read and saved"
@@ -287,14 +289,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W45: codec tag/container title are internal"
   tests: [scryer-mediainfo::parity_scan::son_scan_reader_file]
 - id: SON-SCAN-0042
   behaviour: "Media info is read from a file whose name has non-ASCII characters"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:70"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W45: codec tag/container title are internal"
   tests: [scryer-mediainfo::parity_scan::son_scan_reader_file]
 - id: SON-SCAN-0043
   behaviour: "8-bit unset/unset with no side data is HDR format None"
@@ -343,14 +347,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:112"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W44: PQ10 label: no codec token in our names"
   tests: [scryer-mediainfo::parity_scan::son_scan_reader_hdr]
 - id: SON-SCAN-0050
   behaviour: "10-bit bt2020/smpte2084 with SideData is HDR format Pq10"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:113"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W44: PQ10 label: no codec token in our names"
   tests: [scryer-mediainfo::parity_scan::son_scan_reader_hdr]
 - id: SON-SCAN-0051
   behaviour: "10-bit bt2020/smpte2084 with MasteringDisplayMetadata is HDR format Hdr10"
@@ -455,21 +461,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:18"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W42: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0066
   behaviour: "Audio truehd/thd+/- with scene name 'TrueHD.Atmos.7.1' formats as 'TrueHD Atmos'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:19"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W42: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0067
   behaviour: "Audio truehd/thd+/- with scene name '' formats as 'TrueHD Atmos'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:20"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W42: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0068
   behaviour: "Audio wmav1/-/- with scene name 'Droned.wmv' formats as 'WMA'"
@@ -553,7 +562,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:32"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W42: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0080
   behaviour: "Audio eac3/-/- with scene name 'DDP5.1' formats as 'EAC3'"
@@ -588,7 +598,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:50"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W40: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0085
   behaviour: "Video mpeg2video/- with scene name 'Droned.S01E02.1080i.HDTV.DD5.1.MPEG2-NTb' formats as 'MPEG2'"
@@ -637,14 +648,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:17"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0092
   behaviour: "Video h264/V_MPEG4/ISO/AVC with scene name 'Resistance.2019.S01E03.1080p.RTE.WEB-DL.AAC2.0.x264-RTN' formats as 'x264'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:18"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0093
   behaviour: "Video wmv1/WMV1 with scene name 'Droned.wmv' formats as 'WMV'"
@@ -749,21 +762,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:33"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0108
   behaviour: "Video hevc/V_MPEGH/ISO/HEVC with scene name 'The BBT S11E12 The Matrimonial Metric 1080p 10bit AMZN WEB-DL' formats as 'h265'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:34"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0109
   behaviour: "Video mpeg4/mp4v-20 with scene name '' formats as ''"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W41: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0110
   behaviour: "Video mpeg4/XVID with scene name 'American.Chopper.S06E07.Mountain.Creek.Bike.DSR.XviD-KRS' formats as 'XviD'"
@@ -784,70 +800,80 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:38"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W41: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0113
   behaviour: "Video mpeg4/MP42 with scene name '' formats as ''"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W41: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0114
   behaviour: "Video mpeg4/mp43 with scene name 'Bubble.Guppies.S01E13.480p.WEB-DL.H.264-BTN-Custom' formats as ''"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W41: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0115
   behaviour: "Video h264/x264 with scene name 'Some.Video.S01E01.h264' formats as 'x264'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:53"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0116
   behaviour: "Video hevc/x265 with scene name 'Some.Video.S01E01.h265' formats as 'x265'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0117
   behaviour: "Video h264/- with scene name 'Some.Video.S01E01.x264' formats as 'x264'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:55"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0118
   behaviour: "Video hevc/- with scene name 'Some.Video.S01E01.x265' formats as 'x265'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:56"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0119
   behaviour: "Video h264/- with scene name 'Some.Video.S01E01' formats as 'h264'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:57"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0120
   behaviour: "Video hevc/- with scene name 'Some.Video.S01E01' formats as 'h265'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:58"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W39: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0121
   behaviour: "An unknown video format is reported as its raw format name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:71"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W40: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0122
   behaviour: "HDR format None formats as dynamic range ''"
@@ -924,7 +950,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W43: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range_type]
 - id: SON-SCAN-0133
   behaviour: "HDR format DolbyVision formats as dynamic range type 'DV'"
@@ -959,7 +986,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:20"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W43: our naming formats use no MediaInfo codec tokens"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range_type]
 - id: SON-SCAN-0138
   behaviour: "GetVideoFiles with no flag lists the path recursively, once, and never top level only"

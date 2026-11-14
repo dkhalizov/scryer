@@ -510,14 +510,16 @@
   source: reference
   ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:384"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W54: seasons monitored at creation by design"
   tests: [scryer-application::parity_requests::ser_requests_seasons]
 - id: SER-REQUESTS-0074
   behaviour: "With specials disabled, season 0 is dropped from an explicit season list (no reference test; from the implementing source)"
   source: reference
   ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:392"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W53: advanced monitor selection is explicit by design"
   tests: [scryer-application::parity_requests::ser_requests_seasons]
 - id: SER-REQUESTS-0075
   behaviour: "A new series request drops seasons held by another active (not DECLINED or COMPLETED) request of the same 4K kind and seasons whose media status is other than UNKNOWN or DELETED (no reference test; from the implementing source)"

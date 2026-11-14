@@ -158,7 +158,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W31: seeding defaults exists; only the default list differs"
   tests: [scryer-application::parity_quality::rad_quality_profiles]
 - id: RAD-QUALITY-0024
   behaviour: "On startup, default profiles are not re-added if any quality profile exists"
@@ -1138,12 +1139,14 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:203"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W27: BR-DISK/Raw-HD are not allowed in our profiles"
   tests: [scryer-application::parity_quality::rad_quality_default_order]
 - id: RAD-QUALITY-0164
   behaviour: "The default definition for Raw-HD has weight 26, min size 0, max size none, preferred none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core/Qualities/Quality.cs:204"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W27: BR-DISK/Raw-HD are not allowed in our profiles"
   tests: [scryer-application::parity_quality::rad_quality_default_order]

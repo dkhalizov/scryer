@@ -321,7 +321,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:90"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W24: completed download handling is on in our config and always on in Scryer"
   tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_episode_does_not_have_a_file|-|-
 - id: SON-DECISION-0041
@@ -713,7 +714,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:46"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D70 (M8) W23: Scryer refuses every multi-episode grab holding a monitored unaired episode, Sonarr only full-season packs; stricter, never worse"
   tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs|should_return_true_if_all_episodes_have_aired|-|-
 - id: SON-DECISION-0090
@@ -753,7 +755,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:30"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_smaller_than_maximum_size|-|-
 - id: SON-DECISION-0095
@@ -761,7 +764,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_equals_to_maximum_size|-|-
 - id: SON-DECISION-0096
@@ -769,7 +773,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:48"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_false_when_size_is_bigger_than_maximum_size|-|-
 - id: SON-DECISION-0097
@@ -777,7 +782,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:57"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_zero|-|-
 - id: SON-DECISION-0098
@@ -785,7 +791,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:66"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W21: maximumSize is 0 (unlimited) in our config"
   tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MinimumAgeSpecificationFixture.cs|should_return_true_when_minimum_age_is_set_to_zero|-|-
 - id: SON-DECISION-0099
@@ -905,7 +912,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:140"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D69 (M8) W22: season packs exempt from the unmonitored gate by design"
   tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs|should_return_true_if_is_not_a_multi_season_release|-|-
 - id: SON-DECISION-0114

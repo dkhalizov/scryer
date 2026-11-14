@@ -931,7 +931,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:347"
   in_scope: true
-  status: unmapped
+  status: waived
+  decision: "D69 (M8) W49: tracked row forgotten on delete"
   tests: []
 # key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_publish_on_grab_event|-
 - id: SON-TORRENT-0115
@@ -1011,7 +1012,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:210"
   in_scope: true
-  status: unmapped
+  status: waived
+  decision: "D69 (M8) W48: backoff client skip is fine"
   tests: []
 # key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|should_send_download_to_correct_usenet_client|-
 - id: SON-TORRENT-0125
