@@ -70,9 +70,11 @@ fn collapse_dot_segments(path: &str) -> std::borrow::Cow<'_, str> {
             .get(index)
             .is_some_and(|byte| is_path_separator(*byte as char))
     };
-    // The anchor a `..` cannot climb past: a share (`\\server\share`), a
-    // drive (`D:\`), the filesystem root, or nothing for a relative path.
-    let (anchor, rest) = if starts_with_separator(0) && starts_with_separator(1) {
+    // The anchor a `..` cannot climb past: a share (`\\server\share`, Windows
+    // syntax only; fork P13: POSIX reads a leading `//` as `/`, as Linux and
+    // `Path::components` do), a drive (`D:\`), the filesystem root, or nothing
+    // for a relative path.
+    let (anchor, rest) = if windows && starts_with_separator(0) && starts_with_separator(1) {
         let mut segments = path[2..].splitn(3, is_path_separator);
         let server = segments.next().unwrap_or_default();
         let share = segments.next().unwrap_or_default();

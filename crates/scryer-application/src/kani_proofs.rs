@@ -18,10 +18,10 @@
 //!   calls they would only repeat the sampled cases in `tests/props_quality.rs`.
 //! - Ownership with a recorded folder times out even on concrete paths with
 //!   the ASCII stubs below (symex in `Path::components`, memchr, memcmp).
-//!   `ownership_stays_inside_recorded_folder` is FALSE on today's code (see
-//!   `ownership_double_slash_parent_*`, counterexample recorded `/..`,
-//!   folder `//..`); Kani cannot reach a verdict on it, an exhaustive
-//!   enumeration outside Kani found it.
+//!   `ownership_stays_inside_recorded_folder` holds since P13 (the old
+//!   counterexample, recorded `/..`, folder `//..`, was a UNC reading of `//` on
+//!   POSIX; see `ownership_double_slash_parent_*`); checked exhaustively on 7225
+//!   pairs by `folder_ownership` tests, Kani still cannot reach a verdict.
 
 use crate::acquisition::decision_helpers::resolution_rank;
 use crate::decision_pipeline::{DecisionGate, DecisionPipeline};
@@ -495,12 +495,13 @@ fn ownership_stays_inside_recorded_folder() {
     kani::cover!(owns && folder == "/");
 }
 
-/// Half of the minimal counterexample to
-/// `ownership_stays_inside_recorded_folder` (4 bytes, out of that harness's
-/// N=3 reach; N=4 times out): a title recording `/..` owns `//..`, because
-/// `title_owns_folder` compares `Path::components` identities and both spell
-/// RootDir, ParentDir. Witness only (covers), the other half is the known-red
-/// harness below. Split because the combined concrete check times out.
+/// Witness for the ownership half of the `/..` vs `//..` pair (4 bytes, out of
+/// `ownership_stays_inside_recorded_folder`'s N=3 reach; N=4 times out): a
+/// title recording `/..` owns `//..`, because `title_owns_folder` compares
+/// `Path::components` identities and both spell RootDir, ParentDir. That
+/// ownership is correct on POSIX; since P13 containment agrees (see
+/// `ownership_double_slash_parent_contained`). Witness only (covers). Split
+/// because the combined concrete check times out.
 #[kani::proof]
 #[kani::unwind(5)]
 #[kani::stub(crate::stored_paths::identity_os_str, ascii_identity_os_str)]
@@ -514,17 +515,15 @@ fn ownership_double_slash_parent_owned() {
     kani::cover!(!owns); // expected UNSATISFIED
 }
 
-/// KNOWN RED (expected FAILED): with `/..` owning `//..` (harness above), the
-/// property "an owned folder is never strictly inside the recorded one"
-/// needs `!path_is_strictly_within("//..", "/..")`. It does not hold:
-/// `title_folder_rules::collapse_dot_segments` reads a leading `//` as a UNC
-/// share anchor even on POSIX, so `//..` keeps containment key `/..` while
-/// `/..` collapses to `/`. Rare (doubled leading slash plus `..`), but the
-/// two path readers disagree about one folder.
+/// Expected VERIFIED (may still hit the D43 timeout; the gate is the unit test
+/// `ownership_and_containment_agree_on_every_short_absolute_path`): with `/..`
+/// owning `//..` (harness above), an owned folder is never strictly inside the
+/// recorded one. P13: `collapse_dot_segments` reads a leading `//` as a UNC
+/// anchor only on Windows, so both spellings collapse to `/` on POSIX.
 #[kani::proof]
 #[kani::unwind(5)]
 #[kani::stub(crate::stored_paths::identity_os_str, ascii_identity_os_str)]
 #[kani::stub(crate::stored_paths::normalize_identity_unicode, ascii_normalize_identity_unicode)]
-fn ownership_double_slash_parent_known_red() {
+fn ownership_double_slash_parent_contained() {
     assert!(!path_is_strictly_within("//..", "/.."));
 }

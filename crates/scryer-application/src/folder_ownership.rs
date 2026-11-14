@@ -1494,6 +1494,49 @@ mod tests {
         );
     }
 
+    // fork P13: `//` is a UNC share only on Windows; POSIX reads it as `/`.
+    #[cfg(unix)]
+    #[test]
+    fn ownership_and_containment_agree_on_every_short_absolute_path() {
+        use crate::title_folder_rules::{
+            folder_containment_key, path_is_strictly_within, stored_path_is_inside_folder,
+        };
+        // Every absolute path of 1..=4 bytes over `/a.b`: 85 paths, 7225 pairs.
+        let mut paths = vec!["/".to_string()];
+        let mut frontier = paths.clone();
+        for _ in 1..4 {
+            frontier = frontier
+                .iter()
+                .flat_map(|p| "/a.b".chars().map(move |c| format!("{p}{c}")))
+                .collect();
+            paths.extend(frontier.iter().cloned());
+        }
+        assert_eq!(paths.len(), 85);
+        for recorded in &paths {
+            let owner = title(Some(recorded));
+            for folder in &paths {
+                if !title_owns_folder(&owner, Path::new(folder)) {
+                    continue;
+                }
+                let pair = format!("recorded {recorded:?} folder {folder:?}");
+                assert!(stored_path_is_inside_folder(recorded, folder), "{pair}");
+                assert!(stored_path_is_inside_folder(folder, recorded), "{pair}");
+                assert!(!path_is_strictly_within(folder, recorded), "{pair}");
+                assert!(!path_is_strictly_within(recorded, folder), "{pair}");
+                assert_eq!(
+                    folder_containment_key(recorded),
+                    folder_containment_key(folder),
+                    "{pair}"
+                );
+            }
+        }
+        // A `..` reaching the first two segments resolves on POSIX, not as a share.
+        assert!(stored_path_is_inside_folder(
+            "//media/tv/..",
+            "/media/movies/F.mkv"
+        ));
+    }
+
     fn title(folder_path: Option<&str>) -> Title {
         let facet = MediaFacet::Anime;
         Title {
