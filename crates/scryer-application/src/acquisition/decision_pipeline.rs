@@ -53,8 +53,9 @@ macro_rules! decision_gates {
 decision_gates! {
     /// Positions in the profile's own tier ordering.
     QualityTier,
-    /// PROPER/REPACK ranks, only between releases of the same tier from the
-    /// same release group.
+    /// PROPER/REPACK ranks between releases of the same tier from the same
+    /// release group; a lower revision of the same tier loses whatever the
+    /// groups (P18).
     Revision,
     /// The position of the first preferred audio language each carries.
     PreferredLanguage,
@@ -546,8 +547,8 @@ pub(crate) fn rank_key(pipeline: &DecisionPipeline, facts: &RankFacts) -> GateKe
 }
 
 /// The sort key of a held file, best first: the gates of `pipeline` that do
-/// not depend on a counterpart. A revision only orders a candidate against a
-/// related release, so it is neutral between held files.
+/// not depend on a counterpart. A revision never compares one held file with
+/// another, so it is neutral between held files.
 pub(crate) fn held_key(pipeline: &DecisionPipeline, side: SideFacts) -> GateKey {
     rank_key(
         pipeline,

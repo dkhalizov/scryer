@@ -43,6 +43,24 @@ fn episodes(ids: &[&str]) -> AdmissionScope {
     AdmissionScope::Episodes(ids.iter().map(|value| (*value).to_string()).collect())
 }
 
+// fork (P18 review): the lower-revision refusal is for one tier only; with the
+// revision gate first, a better tier of another group still wins over a PROPER.
+#[test]
+fn a_better_tier_beats_an_unrelated_proper_under_a_revision_first_pipeline() {
+    let (mut held, role) = incumbent("file-1", 900, &["ep-1"]);
+    held.tier_index = Some(1);
+    held.revision = 1;
+    held.release_group = Some("OTHER".into());
+    let subject = AdmissionSubject::new(episodes(&["ep-1"]), [(held, role)]);
+    let pipeline =
+        DecisionPipeline::try_from_gates([DecisionGate::Revision, DecisionGate::QualityTier])
+            .unwrap();
+    let candidate = CandidateFacts::new(Some(0), 0, 900)
+        .with_revision_policy(Some("GRP"), false)
+        .with_pipeline(pipeline);
+    assert!(evaluate_admission(&subject, candidate, &auto(1)).is_admitted());
+}
+
 fn auto(min_delta: i32) -> AdmissionPolicy {
     AdmissionPolicy {
         allow_upgrades: true,
@@ -2252,9 +2270,10 @@ fn reason_label(reason: &AdmissionRejectionReason) -> &'static str {
     }
 }
 
-/// A copy of the single-file ladder exactly as it ran before profiles chose
-/// an order, kept here so the two orders it supported can be checked against
-/// the pipeline. `language_first` was the library's audio language priority.
+/// The single-file ladder as it ran before profiles chose an order, plus
+/// P18's lower-revision refusal (pinned on its own by
+/// `a_lower_revision_never_replaces_a_higher_one_whatever_the_groups`), so
+/// the two orders it supported can be checked against the pipeline. `language_first` was the library's audio language priority.
 /// `None` admits.
 fn frozen_ladder(
     language_first: bool,
