@@ -776,14 +776,17 @@ fn a_proper_admits_over_the_same_tier_even_when_it_scores_lower() {
     );
 }
 
+/// Upward, an unrelated PROPER is still decided by score (the group gate, d3);
+/// downward, a lower revision is refused at any score (P18).
 #[test]
-fn cross_group_and_unknown_group_propers_use_score_in_both_directions() {
+fn cross_group_and_unknown_group_propers_use_score_only_upward() {
     for group in [None, Some(""), Some("  "), Some("other")] {
         for (candidate_revision, incumbent_revision) in [(1, 0), (0, 1)] {
             let (mut file, primary) = revised("file-1", incumbent_revision, 900);
             file.release_group = group.map(str::to_string);
             let subject = AdmissionSubject::new(episodes(&["ep-01"]), [(file, primary)]);
-            for (score, admitted) in [(400, false), (1_200, true)] {
+            for (score, by_score) in [(400, false), (1_200, true)] {
+                let admitted = by_score && candidate_revision > incumbent_revision;
                 let verdict = evaluate_admission(
                     &subject,
                     CandidateFacts::new(Some(0), candidate_revision, score)
@@ -821,6 +824,32 @@ fn the_original_is_refused_against_a_proper_on_disk() {
             })
         ),
         "score bought its way past a revision: {verdict:?}"
+    );
+}
+
+/// A migrated file carries no release group, so the group gate never related
+/// it to anything; the v2 on disk was replaceable (and so deleted) by a v1 at
+/// an equal score. Sonarr's import `UpgradeSpecification` refuses it (P18).
+#[test]
+fn an_unknown_group_v1_does_not_replace_a_v2_at_import() {
+    let (mut file, primary) = revised("file-1", 1, 900);
+    file.release_group = None;
+    let subject = AdmissionSubject::new(episodes(&["ep-01"]), [(file, primary)]);
+
+    let verdict = evaluate_admission(
+        &subject,
+        CandidateFacts::new(Some(0), 0, 900).with_revision_policy(Some("GRP"), false),
+        &AdmissionPolicy::not_a_downgrade(),
+    );
+    assert!(
+        matches!(
+            verdict.rejection().map(|r| &r.reason),
+            Some(AdmissionRejectionReason::LowerRevision {
+                incumbent_revision: 1,
+                candidate_revision: 0,
+            })
+        ),
+        "a v1 replaced the v2 on disk: {verdict:?}"
     );
 }
 
@@ -2257,6 +2286,8 @@ fn frozen_ladder(
             .is_some_and(|held| held.eq_ignore_ascii_case(group));
     let revision_cmp = if related {
         revision.cmp(&incumbent.revision)
+    } else if tier == incumbent.tier_index && revision < incumbent.revision {
+        Less
     } else {
         Equal
     };
@@ -2418,7 +2449,7 @@ fn a_refused_lower_revision_does_not_hide_an_admissible_release_below_it() {
     let subject = title_scope((held, primary));
     let original = CandidateFacts::new(Some(1), 0, 9_000).with_revision_policy(Some("GRP"), false);
     let other_group =
-        CandidateFacts::new(Some(1), 0, 900).with_revision_policy(Some("OTHER"), false);
+        CandidateFacts::new(Some(1), 1, 900).with_revision_policy(Some("OTHER"), false);
     assert!(!evaluate_admission(&subject, original, &grab_policy()).is_admitted());
     assert!(evaluate_admission(&subject, other_group, &grab_policy()).is_admitted());
     let reached =

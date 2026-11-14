@@ -1589,7 +1589,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:239"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import_specs]
 - id: SON-IMPORT-0227
   behaviour: "Bluray-2160p replaces Bluray-1080p regardless of formats and language"

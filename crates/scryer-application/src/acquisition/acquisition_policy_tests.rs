@@ -57,13 +57,23 @@ fn revision_related_groups_and_ignore_control_the_exception() {
     }
 }
 
+/// Sonarr's import `UpgradeSpecification` and grab `BetterRevision` refuse a
+/// lower revision of the same quality whatever the release groups (P18).
 #[test]
-fn revision_unrelated_or_unknown_incumbent_does_not_protect_a_repack() {
+fn a_lower_revision_never_replaces_a_higher_one_whatever_the_groups() {
     for group in [Some("OTHER"), None, Some(" ")] {
         let subject = occupied(&[group], 3);
-        let candidate =
-            CandidateFacts::new(Some(0), 0, 1000).with_revision_policy(Some("group"), false);
-        assert!(evaluate_admission(&subject, candidate, &policy()).is_admitted());
+        for ignore in [false, true] {
+            let candidate =
+                CandidateFacts::new(Some(0), 0, 1000).with_revision_policy(Some("group"), ignore);
+            for policy in [policy(), AdmissionPolicy::not_a_downgrade()] {
+                assert_eq!(
+                    evaluate_admission(&subject, candidate, &policy).is_admitted(),
+                    ignore,
+                    "group={group:?}, ignore={ignore}"
+                );
+            }
+        }
     }
 }
 
@@ -149,8 +159,8 @@ fn revision_queue_comparison_uses_the_profile_policy() {
         (1, 1000, Some("group"), false, false),
         (0, 1000, Some("group"), true, true),
         (3, 100, Some("group"), true, false),
-        (0, 1000, Some("other"), false, true),
-        (0, 1000, None, false, true),
+        (0, 1000, Some("other"), false, false),
+        (0, 1000, None, false, false),
     ] {
         let candidate =
             CandidateFacts::new(Some(0), revision, score).with_revision_policy(group, ignore);

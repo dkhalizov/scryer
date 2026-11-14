@@ -218,9 +218,10 @@ impl PreferenceStep for QualityTierStep {
 }
 
 /// PROPER/REPACK ranks, only between releases of the same tier from the same
-/// release group. Its sort key is the context-derived revision preference
-/// (see [`crate::admission::revision_preference`]), not a property of the
-/// release alone.
+/// release group; a lower revision of the same tier loses whatever the groups
+/// (P18, [`Facts::revision_cmp`]). Its sort key is the context-derived
+/// revision preference (see [`crate::admission::revision_preference`]), not a
+/// property of the release alone.
 struct RevisionStep;
 
 impl PreferenceStep for RevisionStep {

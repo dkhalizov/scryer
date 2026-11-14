@@ -455,10 +455,17 @@ impl Facts<'_> {
                 .is_some_and(|(left, right)| left.eq_ignore_ascii_case(right))
     }
 
-    /// The revisions of two related releases; `Equal` for unrelated ones.
+    /// The revisions of two related releases. For unrelated ones (unknown or
+    /// different group) only a lower revision of the same tier counts, as
+    /// `Less`: the arrs refuse it whatever the groups. Otherwise `Equal`.
     pub(crate) fn revision_cmp(&self, held: &Facts<'_>) -> Ordering {
         if self.is_related_to(held) {
             self.revision.cmp(&held.revision)
+        } else if !self.ignores_revision // fork (P18)
+            && self.side.tier_sort_key == held.side.tier_sort_key
+            && self.revision < held.revision
+        {
+            Ordering::Less
         } else {
             Ordering::Equal
         }

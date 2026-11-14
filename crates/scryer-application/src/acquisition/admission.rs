@@ -1238,6 +1238,10 @@ pub fn evaluate_admission(
         // Tiers are coarser than Sonarr's exact `Quality`, so "same tier" for a
         // revision is "same resolution": a WEB-DL PROPER counts as a revision of
         // a Bluray release of the same resolution from the same group.
+        //
+        // A higher revision wins only within one release group; a lower one
+        // of the same tier loses whatever the groups (P18), as Sonarr's
+        // import `UpgradeSpecification` and grab `BetterRevision` refuse it.
         match ladder_against_incumbent(candidate, incumbent) {
             LadderOutcome::Won(gate) => {
                 if !gate.step().admits_despite_upgrade_guard() && !policy.allow_upgrades {
