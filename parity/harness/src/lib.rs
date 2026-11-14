@@ -73,8 +73,22 @@ pub fn parity_dir() -> PathBuf {
 /// Reads a JSON file under `parity/` (e.g. `corpus/reference/sonarr/parse/x.json`).
 pub fn corpus<T: serde::de::DeserializeOwned>(rel: &str) -> T {
     let path = parity_dir().join(rel);
+    // A checkout without the private captured corpus (D45): hand back an empty
+    // list or map so the suite reaches `Suite::open` and skips as designed.
+    if rel.starts_with("corpus/captured/") && !parity_dir().join("corpus/captured").is_dir() {
+        return empty_corpus(rel);
+    }
     let text = std::fs::read_to_string(&path).unwrap_or_else(|e| panic!("{}: {e}", path.display()));
     serde_json::from_str(&text).unwrap_or_else(|e| panic!("{}: {e}", path.display()))
+}
+
+fn empty_corpus<T: serde::de::DeserializeOwned>(rel: &str) -> T {
+    ["[]", "{}"]
+        .iter()
+        .find_map(|empty| serde_json::from_str(empty).ok())
+        .unwrap_or_else(|| {
+            panic!("{rel}: private corpus absent and the type is neither a list nor a map")
+        })
 }
 
 impl Catalogue {
@@ -296,6 +310,19 @@ impl Suite {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn absent_private_corpus_reads_as_empty_list_or_map() {
+        assert!(empty_corpus::<Vec<String>>("x").is_empty());
+        assert!(empty_corpus::<BTreeMap<String, u8>>("x").is_empty());
+        assert!(empty_corpus::<serde_json::Value>("x").as_array().is_some_and(|a| a.is_empty()));
+    }
+
+    #[test]
+    #[should_panic(expected = "neither a list nor a map")]
+    fn absent_private_corpus_of_another_shape_panics_clearly() {
+        empty_corpus::<String>("x");
+    }
 
     fn suite(expected: &[(&str, Status)]) -> Suite {
         Suite {
