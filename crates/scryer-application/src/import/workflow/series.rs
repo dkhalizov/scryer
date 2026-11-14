@@ -882,7 +882,8 @@ async fn expected_episode_ids_from_release_title(
         Some(episodes.drain(..).map(|episode| episode.id).collect())
     }
 }
-fn resolved_episode_ids_are_within_expected(
+// fork: parity net seam (tests/parity_import/import_specs.rs)
+pub fn resolved_episode_ids_are_within_expected(
     target_episode_ids: &[String],
     expected_episode_ids: &HashSet<String>,
 ) -> bool {
@@ -2931,7 +2932,8 @@ async fn resolve_title_from_release_candidate_via_port(
 /// (whole or partial — it has no episode numbers to hand out), every file must
 /// identify itself from its own name; a file that cannot gets no episode at
 /// all, so the caller parks it for manual import instead of guessing.
-fn build_augmented_episode_import_metadata_for_title(
+// fork: parity net seam (tests/parity_import/import_aggregate.rs)
+pub fn build_augmented_episode_import_metadata_for_title(
     source_video: &Path,
     release_evidence: &ReleaseEvidence,
     title: &scryer_domain::Title,
@@ -2978,7 +2980,8 @@ fn build_augmented_episode_import_metadata_for_title(
 /// parse yields a release group, a quality, a title, and episode numbering.
 /// Anything less (obfuscated, renamed, "episode 2.mkv") is not scene-titled
 /// and does not override the release name.
-fn scene_titled_file_episode(source_video: &Path) -> Option<crate::ParsedEpisodeMetadata> {
+// fork: parity net seam (tests/parity_parse/parse_absent.rs)
+pub fn scene_titled_file_episode(source_video: &Path) -> Option<crate::ParsedEpisodeMetadata> {
     let stem = source_video_stem(Some(source_video))?;
     if !stem.contains('.') || stem.contains(' ') {
         return None;

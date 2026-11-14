@@ -41,7 +41,8 @@ pub struct SaveQualityProfileSettings {
     pub global_scoring_persona: Option<ScoringPersona>,
     pub category_persona_selections: Vec<UpdateFacetScoringPersonaSelection>,
 }
-fn ensure_quality_profiles_exist(
+// fork: parity net seam (tests/parity_quality/quality_profiles.rs)
+pub fn ensure_quality_profiles_exist(
     mut profiles: Vec<crate::QualityProfile>,
 ) -> Vec<crate::QualityProfile> {
     if profiles.is_empty() {

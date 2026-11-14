@@ -223,7 +223,8 @@ impl AdmissionPolicy {
     /// `newFormatScore <= currentFormatScore` and applies `UpgradeAllowed`,
     /// `CutoffFormatScore` and `MinUpgradeFormatScore`; the import spec rejects
     /// only `newFormatScore < currentFormatScore` and applies none of them.
-    pub(crate) fn not_a_downgrade() -> Self {
+    // fork: parity net seam (tests/parity_import/import_specs.rs)
+    pub fn not_a_downgrade() -> Self {
         Self {
             allow_upgrades: true,
             min_delta: 0,
@@ -425,7 +426,8 @@ impl QueuedRelease {
 }
 
 /// The profile's ladder between the candidate and one held file.
-fn ladder_against_incumbent(candidate: CandidateFacts, incumbent: &Incumbent) -> LadderOutcome {
+// fork: parity net seam (tests/parity_quality/quality_compare.rs)
+pub fn ladder_against_incumbent(candidate: CandidateFacts, incumbent: &Incumbent) -> LadderOutcome {
     crate::decision_pipeline::walk(&candidate.pipeline, &candidate.facts(), &incumbent.facts())
 }
 

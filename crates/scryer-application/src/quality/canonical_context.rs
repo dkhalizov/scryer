@@ -1225,7 +1225,8 @@ pub(crate) struct IncumbentFacts {
 
 /// What a scope row remembers about its last grab.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) struct GrabbedReleaseRecord {
+// fork: parity net seam (tests/parity_decision/decision_guards.rs)
+pub struct GrabbedReleaseRecord {
     pub title: String,
     pub score: i32,
     pub grabbed_at: chrono::DateTime<chrono::Utc>,
@@ -1258,7 +1259,8 @@ pub(crate) fn submission_scope_for_acquisition_scope_state(
 /// release. There is no age bound; a release is never fetched again until the
 /// row leaves `grabbed`. A row without a grab timestamp falls back to its
 /// `updated_at`; a row with neither parseable claims nothing.
-pub(crate) fn grabbed_release_record(
+// fork: parity net seam (tests/parity_decision/decision_guards.rs)
+pub fn grabbed_release_record(
     state: &crate::AcquisitionScopeState,
 ) -> Option<GrabbedReleaseRecord> {
     if state.status != crate::AcquisitionScopeStatus::Grabbed {
@@ -1294,7 +1296,8 @@ pub(crate) fn grabbed_release_record(
     })
 }
 
-pub(crate) fn recent_missing_grab_record(
+// fork: parity net seam (tests/parity_decision/decision_guards.rs)
+pub fn recent_missing_grab_record(
     state: &crate::AcquisitionScopeState,
     now: chrono::DateTime<chrono::Utc>,
 ) -> crate::AppResult<Option<GrabbedReleaseRecord>> {

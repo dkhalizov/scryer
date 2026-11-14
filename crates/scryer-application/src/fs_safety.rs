@@ -10,7 +10,8 @@ pub(crate) fn most_specific_containing_root(path: &Path, roots: &[PathBuf]) -> O
         .cloned()
 }
 
-pub(crate) fn resolve_available_root_for_path(path: &Path, roots: &[PathBuf]) -> AppResult<()> {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub fn resolve_available_root_for_path(path: &Path, roots: &[PathBuf]) -> AppResult<()> {
     let root = containing_root_for_path(path, roots)?;
     ensure_root_available(&root)?;
     Ok(())

@@ -2835,7 +2835,8 @@ impl AppUseCase {
 /// hands control back, so a large library does not hold one blocking thread
 /// for the whole sweep. It is also how many rows one media-root availability
 /// verdict is reused for before the root is proven again.
-const ORPHAN_SWEEP_PROBES_PER_PASS: usize = 256;
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub const ORPHAN_SWEEP_PROBES_PER_PASS: usize = 256;
 
 /// Media-root availability verdicts for the orphan sweep, each reused for at
 /// most [`ORPHAN_SWEEP_PROBES_PER_PASS`] rows.
@@ -2844,9 +2845,12 @@ const ORPHAN_SWEEP_PROBES_PER_PASS: usize = 256;
 /// on a network share are round trips. The verdict is taken once per root per
 /// window of rows instead of once per row, and every window starts over, so a
 /// root that disconnects mid-sweep is seen again within one window.
-struct OrphanSweepRootChecks {
-    verdicts: std::collections::HashMap<PathBuf, crate::AppResult<()>>,
-    rows_in_window: usize,
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub struct OrphanSweepRootChecks {
+    // fork: parity net seam (tests/parity_import/import_orchestration.rs)
+    pub verdicts: std::collections::HashMap<PathBuf, crate::AppResult<()>>,
+    // fork: parity net seam (tests/parity_import/import_orchestration.rs)
+    pub rows_in_window: usize,
 }
 
 impl OrphanSweepRootChecks {
@@ -2919,7 +2923,8 @@ fn probe_orphan_media_file(
 /// Stops after `budget` rows without an orphan and returns `None`.
 ///
 /// Blocking: call it from a blocking thread.
-fn next_orphan_media_file(
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub fn next_orphan_media_file(
     files: &mut std::collections::VecDeque<crate::HousekeepingMediaFileRootRow>,
     budget: usize,
     root_checks: &mut OrphanSweepRootChecks,

@@ -34,7 +34,8 @@ fn release_evidence_quality_for_title(
 /// Canonical import-time release metadata for a movie file: the release
 /// evidence (never the downloader display label or destination folder) parsed
 /// with the title's canonical grab-time context.
-fn build_augmented_movie_import_metadata_for_title(
+// fork: parity net seam (tests/parity_import/import_aggregate.rs)
+pub fn build_augmented_movie_import_metadata_for_title(
     source_video: &Path,
     release_evidence: &ReleaseEvidence,
     title: &scryer_domain::Title,

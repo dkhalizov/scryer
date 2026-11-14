@@ -5,7 +5,8 @@
 
 pub mod configs;
 pub mod download;
-mod external;
+// fork: parity net seam (tests/parity_parse/parse_sublang.rs)
+pub(crate) mod external;
 #[cfg(feature = "runtime-media-analysis")]
 mod external_probe;
 #[cfg(not(feature = "runtime-media-analysis"))]

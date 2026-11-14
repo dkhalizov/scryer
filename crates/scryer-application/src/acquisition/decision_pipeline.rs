@@ -467,7 +467,8 @@ impl Facts<'_> {
 
 /// Where the ladder stopped.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub(crate) enum LadderOutcome {
+// fork: parity net seam (tests/parity_quality/quality_compare.rs)
+pub enum LadderOutcome {
     /// The candidate is better at this gate.
     Won(DecisionGate),
     /// What the candidate is measured against is better at this gate.

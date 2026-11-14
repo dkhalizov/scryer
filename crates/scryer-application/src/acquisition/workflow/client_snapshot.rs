@@ -8,7 +8,8 @@ pub(crate) const STALE_INITIAL_CLAIM_SECONDS: i64 = 24 * 60 * 60;
 /// Snapshot of the download client's current queue and recent history,
 /// fetched once per polling cycle to avoid repeated API calls.
 #[derive(Clone)]
-pub(crate) struct DownloadClientSnapshot {
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub struct DownloadClientSnapshot {
     /// Lowercase title names of items currently queued or downloading.
     active_titles: std::collections::HashSet<String>,
     /// Download client item IDs of items currently queued/downloading.
@@ -802,7 +803,8 @@ pub(crate) fn submission_is_active(
 ///   for that state until the failure handler has run.
 /// - `Imported | ImportedSeeding | Failed | Ignored` — over.
 /// - No tracked row at all: fall back to what the client says.
-pub(crate) fn submission_is_queued(
+// fork: parity net seam (tests/parity_decision/decision_guards.rs)
+pub fn submission_is_queued(
     tracked_state: Option<scryer_domain::TrackedDownloadState>,
     snapshot_active: bool,
 ) -> bool {

@@ -1,5 +1,6 @@
 #[derive(Clone, Debug, PartialEq, Eq)]
-pub(crate) struct DownloadRouteKey {
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub struct DownloadRouteKey {
     pub source_kind: Option<DownloadSourceKind>,
     pub indexer_id: Option<String>,
 }

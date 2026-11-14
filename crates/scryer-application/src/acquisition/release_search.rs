@@ -109,7 +109,8 @@ impl TitleIdentityAmbiguity {
 }
 
 #[derive(Clone, Debug)]
-pub(crate) struct CanonicalTitleEvidence {
+// fork: parity net seam (tests/parity_parse/parse_absent.rs, tests/parity_decision/decision_context.rs)
+pub struct CanonicalTitleEvidence {
     pub(crate) spelling_identity: crate::title_matching::relaxed::SpellingIdentity,
     pub(crate) lookup_keys: Vec<String>,
     pub(crate) canonical_key: String,
@@ -156,35 +157,36 @@ pub(crate) struct CandidateTitleMatch {
 }
 
 #[derive(Clone, Debug)]
-pub(crate) struct ResolvedReleaseSearchSubject {
-    pub(crate) title_id: String,
-    pub(crate) title_tags: Vec<String>,
-    pub(crate) title_evidence: CanonicalTitleEvidence,
-    pub(crate) queries: Vec<String>,
-    pub(crate) imdb_id: Option<String>,
-    pub(crate) tmdb_id: Option<String>,
-    pub(crate) tvdb_id: Option<String>,
-    pub(crate) anidb_id: Option<String>,
-    pub(crate) mal_id: Option<String>,
-    pub(crate) category: String,
-    pub(crate) owner_facet: MediaFacet,
-    pub(crate) search_facet: MediaFacet,
-    pub(crate) id_search_facet: Option<MediaFacet>,
-    pub(crate) newznab_categories: Vec<String>,
-    pub(crate) runtime_minutes: Option<i32>,
-    pub(crate) season: Option<u32>,
-    pub(crate) episode: Option<u32>,
-    pub(crate) numbering_context: crate::IndexerSearchNumberingContext,
-    pub(crate) absolute_episode: Option<u32>,
-    pub(crate) subject_kind: ReleaseSearchSubjectKind,
-    pub(crate) submission_scope: SubmissionScope,
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub struct ResolvedReleaseSearchSubject {
+    pub title_id: String,
+    pub title_tags: Vec<String>,
+    pub title_evidence: CanonicalTitleEvidence,
+    pub queries: Vec<String>,
+    pub imdb_id: Option<String>,
+    pub tmdb_id: Option<String>,
+    pub tvdb_id: Option<String>,
+    pub anidb_id: Option<String>,
+    pub mal_id: Option<String>,
+    pub category: String,
+    pub owner_facet: MediaFacet,
+    pub search_facet: MediaFacet,
+    pub id_search_facet: Option<MediaFacet>,
+    pub newznab_categories: Vec<String>,
+    pub runtime_minutes: Option<i32>,
+    pub season: Option<u32>,
+    pub episode: Option<u32>,
+    pub numbering_context: crate::IndexerSearchNumberingContext,
+    pub absolute_episode: Option<u32>,
+    pub subject_kind: ReleaseSearchSubjectKind,
+    pub submission_scope: SubmissionScope,
     /// The subject is searched before its release window has settled — an
     /// episode within a day of its air date, or a movie not yet a day past
     /// availability. Coverage from such a search proves nothing about the
     /// released catalog, so it is fingerprinted apart from released coverage.
-    pub(crate) pre_release: bool,
+    pub pre_release: bool,
     /// The scoped episode's automatic acquisition window; absent for an unknown schedule.
-    pub(crate) episode_search_not_before: Option<DateTime<Utc>>,
+    pub episode_search_not_before: Option<DateTime<Utc>>,
 }
 
 /// How long after an air or availability date a search still counts as
@@ -448,44 +450,45 @@ impl ReleaseAutoDecisionCode {
 }
 
 #[derive(Clone)]
-pub(crate) struct AutoCandidateEvaluationContext<'a> {
-    pub(crate) title: &'a Title,
-    pub(crate) subject: &'a ResolvedReleaseSearchSubject,
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub struct AutoCandidateEvaluationContext<'a> {
+    pub title: &'a Title,
+    pub subject: &'a ResolvedReleaseSearchSubject,
     /// The primary files occupying this scope, each with a canonical bar.
     /// Replaces a ledger score that could be null, stale, or the grab-time score
     /// of a release that never landed.
-    pub(crate) admission: &'a crate::admission::AdmissionSubject,
-    pub(crate) profile: &'a QualityProfile,
-    pub(crate) thresholds: &'a AcquisitionThresholds,
+    pub admission: &'a crate::admission::AdmissionSubject,
+    pub profile: &'a QualityProfile,
+    pub thresholds: &'a AcquisitionThresholds,
     /// The scope's best incumbent has reached the profile's cutoff — the
     /// candidate-independent half of Sonarr's `QualityCutoffNotMet`. The
     /// candidate-dependent half (a same-tier revision upgrade escapes it) lives
     /// in [`cutoff_refusal`], so there is one cutoff gate rather than a
     /// scope-level short-circuit in every lane.
-    pub(crate) incumbent_at_cutoff: bool,
+    pub incumbent_at_cutoff: bool,
     /// This evaluation is a feed pass rather than an active search, which is the
     /// condition Sonarr's `ProperSpecification` keys on
     /// (`if (information.SearchCriteria != null) return Accept()`). The old-file
     /// guard binds only here.
-    pub(crate) is_rss_lane: bool,
+    pub is_rss_lane: bool,
     /// Interactive searches bypass protocol delay and the episode air window
     /// while retaining hard minimum age and permanent diagnostics.
-    pub(crate) user_invoked: bool,
+    pub user_invoked: bool,
     /// Publication timestamp of the oldest active pending release overlapping
     /// this scope. Populated only by the RSS merge lane.
-    pub(crate) oldest_overlapping_pending_published_at: Option<DateTime<Utc>>,
-    pub(crate) now: &'a DateTime<Utc>,
-    pub(crate) dl_snapshot: Option<&'a crate::acquisition_workflow::DownloadClientSnapshot>,
-    pub(crate) db_blocklist: &'a crate::app_usecase_discovery::TitleReleaseBlocklistSignatures,
-    pub(crate) existing_files: &'a [crate::MediaFileCutoffSummary],
-    pub(crate) delay_profiles: &'a [DelayProfile],
-    pub(crate) failed_routes: Option<&'a [crate::acquisition_workflow::DownloadRouteKey]>,
+    pub oldest_overlapping_pending_published_at: Option<DateTime<Utc>>,
+    pub now: &'a DateTime<Utc>,
+    pub dl_snapshot: Option<&'a crate::acquisition_workflow::DownloadClientSnapshot>,
+    pub db_blocklist: &'a crate::app_usecase_discovery::TitleReleaseBlocklistSignatures,
+    pub existing_files: &'a [crate::MediaFileCutoffSummary],
+    pub delay_profiles: &'a [DelayProfile],
+    pub failed_routes: Option<&'a [crate::acquisition_workflow::DownloadRouteKey]>,
     /// Admission threshold per indexer id, resolved once for the batch.
     /// An indexer absent from the map is treated as unrestricted.
-    pub(crate) minimum_seeders: &'a HashMap<String, i32>,
+    pub minimum_seeders: &'a HashMap<String, i32>,
     /// Episodes of this title nobody is monitoring, resolved once per scope.
     /// Empty for a title with no episodes.
-    pub(crate) unmonitored_episode_ids: &'a HashSet<String>,
+    pub unmonitored_episode_ids: &'a HashSet<String>,
 }
 
 pub fn release_strategy_kind_for_label(label: &str, is_rss_request: bool) -> ReleaseStrategyKind {
@@ -580,7 +583,8 @@ pub(crate) fn title_with_bridge_cour_titles(
     bridged
 }
 
-pub(crate) fn canonical_title_evidence(title: &Title) -> CanonicalTitleEvidence {
+// fork: parity net seam (tests/parity_parse/parse_absent.rs, tests/parity_decision/decision_context.rs)
+pub fn canonical_title_evidence(title: &Title) -> CanonicalTitleEvidence {
     canonical_title_evidence_for_episode(title, None)
 }
 
@@ -833,7 +837,8 @@ fn series_movie_newznab_categories(owner_facet: &MediaFacet) -> Vec<String> {
     categories
 }
 
-pub(crate) fn parsed_release_matches_title_evidence(
+// fork: parity net seam (tests/parity_parse/parse_absent.rs)
+pub fn parsed_release_matches_title_evidence(
     parsed: &ParsedReleaseMetadata,
     evidence: &CanonicalTitleEvidence,
 ) -> bool {
@@ -1673,7 +1678,8 @@ fn release_identities(file: &impl ReleaseIdentityFile) -> impl Iterator<Item = S
         )
 }
 
-trait ReleaseIdentityFile {
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub trait ReleaseIdentityFile {
     fn file_id(&self) -> &str;
     fn release_names(&self) -> [Option<&str>; 2];
     fn release_paths(&self) -> [Option<&str>; 2];
@@ -1719,7 +1725,8 @@ impl ReleaseIdentityFile for crate::MediaFileCutoffSummary {
 /// the row's scalar column. The subject already holds exactly the primary files
 /// occupying the scope, whatever its shape, so membership by file id is
 /// span-correct by construction.
-fn candidate_matches_existing_media_file<F: ReleaseIdentityFile>(
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub fn candidate_matches_existing_media_file<F: ReleaseIdentityFile>(
     candidate: &IndexerSearchResult,
     existing_files: &[F],
     subject: &crate::admission::AdmissionSubject,
@@ -2306,7 +2313,8 @@ pub(crate) fn evaluate_auto_candidate(
 /// decision pipeline that settled the comparison with what the scope holds:
 /// `None` when no comparison settled it (an unoccupied scope, or a refusal
 /// before or beside the ladder).
-pub(crate) fn evaluate_auto_candidate_with_step(
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub fn evaluate_auto_candidate_with_step(
     candidate: &IndexerSearchResult,
     context: &AutoCandidateEvaluationContext<'_>,
 ) -> (ReleaseAutoDecisionCode, Option<crate::ReleaseDecidingStep>) {

@@ -3228,7 +3228,8 @@ const TITLE_RELEASE_BLOCKLIST_READ_LIMIT: usize = 1_000;
 /// candidate. The per-title `blocklist` table is the single search-time
 /// exclusion source; `release_download_attempts` is history only.
 #[derive(Clone, Debug, Default, PartialEq, Eq)]
-pub(crate) struct TitleReleaseBlocklistSignatures {
+// fork: parity net seam (tests/parity_decision/decision_context.rs)
+pub struct TitleReleaseBlocklistSignatures {
     /// `(indexer_id, normalized_release_name)`. An empty indexer id blocks the
     /// name on every indexer -- see [`scryer_domain::BlocklistEntry::indexer_id`].
     pub(crate) release_names: HashSet<(String, String)>,

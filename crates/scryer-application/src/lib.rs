@@ -398,6 +398,50 @@ pub mod parity_seams {
     pub use crate::catalog::release_search::compare_release_search_results;
     // fork: parity net seam (tests/parity_decision/decision_delay.rs)
     pub use crate::acquisition::release_search::automatic_candidate_delay_decision;
+    // fork: parity net seam (tests/parity_parse/parse_sublang.rs)
+    pub use crate::subtitles::external::{ExternalSubtitleCandidate, parse_discovered_external_subtitle};
+    // fork: parity net seam (tests/parity_parse/parse_absent.rs)
+    pub use crate::import::workflow::scene_titled_file_episode;
+    pub use crate::library::workflow::slug_from_library_name;
+    pub use crate::acquisition::release_search::{
+        CanonicalTitleEvidence, canonical_title_evidence, parsed_release_matches_title_evidence,
+    };
+    // fork: parity net seam (tests/parity_decision/decision_context.rs)
+    pub use crate::acquisition::release_search::{
+        AutoCandidateEvaluationContext, ReleaseIdentityFile, ResolvedReleaseSearchSubject,
+        candidate_matches_existing_media_file, evaluate_auto_candidate_with_step,
+    };
+    pub use crate::acquisition::workflow::{DownloadClientSnapshot, DownloadRouteKey};
+    pub use crate::catalog::release_search::TitleReleaseBlocklistSignatures;
+    // fork: parity net seam (tests/parity_decision/decision_guards.rs)
+    pub use crate::acquisition::workflow::submission_is_queued;
+    pub use crate::quality::canonical_context::{
+        GrabbedReleaseRecord, grabbed_release_record, recent_missing_grab_record,
+    };
+    // fork: parity net seam (tests/parity_quality/quality_compare.rs)
+    pub use crate::acquisition::admission::ladder_against_incumbent;
+    pub use crate::acquisition::decision_pipeline::LadderOutcome;
+    // fork: parity net seam (tests/parity_quality/quality_profiles.rs)
+    pub use crate::settings::runtime::ensure_quality_profiles_exist;
+    // fork: parity net seam (tests/parity_import/import_specs.rs; AdmissionPolicy::not_a_downgrade is pub)
+    pub use crate::import::workflow::resolved_episode_ids_are_within_expected;
+    // fork: parity net seam (tests/parity_import/import_aggregate.rs)
+    pub use crate::import::workflow::{
+        ReleaseEvidence, build_augmented_episode_import_metadata_for_title,
+        build_augmented_movie_import_metadata_for_title,
+    };
+    // fork: parity net seam (tests/parity_import/import_orchestration.rs)
+    pub use crate::fs_safety::resolve_available_root_for_path;
+    pub use crate::import::seeding_gate::{
+        SeedingGateDecision, SeedingGateInput, SeedingGateOutcome, TorrentSeedingObservation,
+        evaluate_seeding_gate,
+    };
+    pub use crate::import::workflow::{
+        ImportVideoFile, pick_largest_import_video_file, unwanted_executable_in_download,
+    };
+    pub use crate::jobs::housekeeping::{
+        ORPHAN_SWEEP_PROBES_PER_PASS, OrphanSweepRootChecks, next_orphan_media_file,
+    };
 }
 pub use acquisition::seed_goals::{
     ReleaseSeedMinimums, ResolvedSeedGoals, SeedGoalRequest, SeedGoalResolutionSource,

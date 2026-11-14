@@ -286,7 +286,8 @@ impl SeedGoalsRead for AppUseCase {
 /// several have no seed-time counter, and three keep their goal in a volatile
 /// plugin variable.
 #[derive(Clone, Debug, Default, PartialEq)]
-pub(crate) struct TorrentSeedingObservation {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub struct TorrentSeedingObservation {
     /// The client's own verdict on its seeding obligation. Tri-state.
     pub can_remove: Option<bool>,
     /// Whether the payload is fully downloaded and stable. **Not** permission
@@ -333,7 +334,8 @@ pub(crate) fn observation_from_queue_item(
 
 /// Everything the pure gate needs. Assembled by `evaluate_seeding_gate_for`.
 #[derive(Clone, Debug)]
-pub(crate) struct SeedingGateInput {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub struct SeedingGateInput {
     /// `false` for usenet and anything else that is not a torrent client.
     pub is_torrent: bool,
     pub client_type: String,
@@ -359,7 +361,8 @@ impl Default for SeedingGateInput {
 
 /// What the caller should do with the client entry.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub(crate) enum SeedingGateOutcome {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub enum SeedingGateOutcome {
     /// Not a torrent. The gate does not apply and the legacy path runs.
     NotApplicable,
     /// The entry is already gone from the client. Settle the tracked download
@@ -382,7 +385,8 @@ pub(crate) enum SeedingGateOutcome {
 
 /// The gate's answer plus the reason, which is logged and reported verbatim.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub(crate) struct SeedingGateDecision {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub struct SeedingGateDecision {
     pub outcome: SeedingGateOutcome,
     pub reason: &'static str,
     /// Whether the payload may be moved (as opposed to hardlinked/copied).
@@ -413,7 +417,8 @@ impl SeedingGateDecision {
     /// is only safe when the data is complete **and** the seeding obligation
     /// is discharged. Under the P3 SDK contract `can_move_files` answers only
     /// the first half; this method supplies the second.
-    pub(crate) fn import_mode(self, configured: ImportMode) -> ImportMode {
+    // fork: parity net seam (tests/parity_import/import_orchestration.rs)
+    pub fn import_mode(self, configured: ImportMode) -> ImportMode {
         if configured == ImportMode::Move && !self.move_allowed {
             ImportMode::HardlinkOrCopy
         } else {
@@ -428,7 +433,8 @@ impl SeedingGateDecision {
 /// Two layers: the seeding **obligation** (below) decides what would happen to
 /// the client entry, and the profile's **post-import tracking** then decides
 /// whether Scryer is still the one deciding.
-pub(crate) fn evaluate_seeding_gate(input: &SeedingGateInput) -> SeedingGateDecision {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub fn evaluate_seeding_gate(input: &SeedingGateInput) -> SeedingGateDecision {
     let decision = evaluate_seeding_obligation(input);
 
     // Post-import handoff (Sonarr's post-import category, made explicit).

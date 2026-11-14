@@ -58,7 +58,8 @@ enum CompletedDownloadSubmissionResolution {
 /// Downloader display labels, categories, parameters, and destination folders
 /// intentionally have no representation here.
 #[derive(Clone, Debug, serde::Serialize, serde::Deserialize)]
-pub(crate) enum ReleaseEvidence {
+// fork: parity net seam (tests/parity_import/import_aggregate.rs)
+pub enum ReleaseEvidence {
     ScryerSubmission {
         title_id: String,
         facet: String,
@@ -669,7 +670,8 @@ pub(crate) fn find_download_files(dir: &Path) -> AppResult<Vec<PathBuf>> {
 ///
 /// When archives were extracted, the archive volumes they replaced are not
 /// counted: what they held is in `extracted_dir`.
-pub(crate) fn unwanted_executable_in_download(
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub fn unwanted_executable_in_download(
     dest_dir: &Path,
     extracted_dir: Option<&Path>,
 ) -> Option<PathBuf> {
@@ -979,7 +981,8 @@ mod media_registry_discovery_tests {
 /// pack planning and the movie fallback have something to parse. The file on
 /// disk is never renamed.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) struct ImportVideoFile {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub struct ImportVideoFile {
     pub(crate) physical: PathBuf,
     pub(crate) logical_name: Option<String>,
     pub(crate) disc_selection: Option<scryer_media_types::DiscSelection>,
@@ -989,7 +992,8 @@ pub(crate) struct ImportVideoFile {
 impl ImportVideoFile {
     /// A file with no recovered name: parsing reads the physical name, which is
     /// what every import did before filename recovery existed.
-    pub(crate) fn physical(physical: PathBuf) -> Self {
+    // fork: parity net seam (tests/parity_import/import_orchestration.rs)
+    pub fn physical(physical: PathBuf) -> Self {
         Self {
             physical,
             logical_name: None,
@@ -1352,7 +1356,8 @@ impl SrrdbFilenameRecovery {
 
 /// The largest file by on-disk size, which is the release claim when nothing
 /// else names the download.
-fn pick_largest_import_video_file(files: &[ImportVideoFile]) -> AppResult<ImportVideoFile> {
+// fork: parity net seam (tests/parity_import/import_orchestration.rs)
+pub fn pick_largest_import_video_file(files: &[ImportVideoFile]) -> AppResult<ImportVideoFile> {
     files
         .iter()
         .max_by_key(|file| {

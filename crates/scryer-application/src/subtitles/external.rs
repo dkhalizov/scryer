@@ -18,12 +18,13 @@ struct DiscoveredExternalSubtitle {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
-struct ExternalSubtitleCandidate {
+// fork: parity net seam (tests/parity_parse/parse_sublang.rs)
+pub struct ExternalSubtitleCandidate {
     file_path: String,
     extension: String,
-    language: Option<String>,
-    forced: bool,
-    hearing_impaired: bool,
+    pub language: Option<String>,
+    pub forced: bool,
+    pub hearing_impaired: bool,
 }
 
 #[derive(Default)]
@@ -373,7 +374,8 @@ fn path_has_subtitle_extension(path: &Path) -> bool {
         .is_some_and(|ext| SUBTITLE_EXTENSIONS.contains(&ext.as_str()))
 }
 
-fn parse_discovered_external_subtitle(
+// fork: parity net seam (tests/parity_parse/parse_sublang.rs)
+pub fn parse_discovered_external_subtitle(
     video_stem: &str,
     subtitle_path: &Path,
 ) -> Option<ExternalSubtitleCandidate> {

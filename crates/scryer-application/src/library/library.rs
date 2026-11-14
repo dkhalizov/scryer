@@ -475,7 +475,8 @@ async fn flush_title_scan_progress(
         .await;
 }
 
-fn slug_from_library_name(name: &str) -> String {
+// fork: parity net seam (tests/parity_parse/parse_absent.rs)
+pub fn slug_from_library_name(name: &str) -> String {
     let mut slug = String::new();
     let mut previous_dash = false;
     for ch in name.trim().chars() {
