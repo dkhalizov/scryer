@@ -31,8 +31,8 @@
 //! Suites and mapped IDs:
 //! - `ser_requests`: SER-REQUESTS-0071, 0072, 0077, 0078 (source.json, `request.create`
 //!   with `expect.status`). Ignored keys: `body.is4k` (no 4K split in Scryer),
-//!   `body.seasons` (Scryer requests a title, not seasons; the status is the
-//!   request's).
+//!   `body.seasons` (the status is the request's; the requested-season set is
+//!   checked in `requests::ser_requests_seasons`).
 //! - `ser_requests_config`: SER-REQUESTS-5004, 5005 (users.json, by the `#id=` in
 //!   each entry's ref). Expected status per media type is derived from the
 //!   user's Seerr permissions with Seerr's own rule (MediaRequest.ts:340, :455):
@@ -40,25 +40,35 @@
 //!   PENDING, and REFUSED without ADMIN or REQUEST[_MOVIE|_TV]
 //!   (the source-derived cases SER-REQUESTS-0071/0077 state the same rule).
 //!   Ignored keys: quotas, requestCount, userType.
+//! - `requests::ser_requests_seasons` (0073, 0074),
+//!   `requests::ser_requests_season_status` (0084, 0085),
+//!   `requests::ser_requests_watchlist` (0047),
+//!   `requests::ser_requests_watchlist_rerequest` (0048): see
+//!   `parity_requests/requests.rs`.
 //!
 //! Unmapped (tests: []), with reasons:
 //! - SER-REQUESTS-0002..0005, 0007..0045 (request_route.json, MediaRequest.json):
 //!   request lifecycle (duplicates, delete/edit/approve/decline/retry, season
-//!   bookkeeping) runs through async `AppUseCase` methods over repositories;
-//!   the only repository doubles live in the crate-private `lib_tests`, so no
-//!   integration test can drive them without a test-support seam.
-//! - SER-REQUESTS-0073..0076: Seerr's per-season request rows; Scryer requests
-//!   a title with a monitor type, it has no requested-season set to compute.
-//! - SER-REQUESTS-0084, 0085: per-season request status; same concept gap.
-//! - SER-REQUESTS-0047, 0048, 0079, 0080 (watchlist sync), 0049, 0050, 0052,
-//!   0056..0065 (media-server scan, availability sync), 0067..0070, 0082, 0083
-//!   (Radarr/Sonarr add and search), 0081 (Plex sign-in): async integrations
-//!   (lists engine, library scan, acquisition, auth) with no pure seam.
+//!   bookkeeping) runs through async `AppUseCase` methods over repositories.
+//!   Re-checked: `AppServices::builder` is public but needs 10 repository
+//!   objects and a stateful `MediaRequestRepository` (the SQL store in
+//!   scryer-infrastructure-library or the cfg(test) doubles); more than a seam.
+//!   Per-group reasons: `parity_requests/requests.rs`.
+//! - SER-REQUESTS-0075, 0076: no per-season exclusion; the title-level
+//!   refusal is async `ensure_request_subject_is_not_in_library`.
+//! - SER-REQUESTS-0079, 0080 (watchlist sync), 0049, 0050,
+//!   0052, 0056..0065 (media-server scan, availability sync), 0067..0070, 0082,
+//!   0083 (Radarr/Sonarr add and search), 0081 (Plex sign-in): async
+//!   integrations (lists sync, library scan, acquisition, auth) with no pure
+//!   seam; reasons in `parity_requests/requests.rs`.
 //! - SER-REQUESTS-5001 (default permissions of a new user): set by the
 //!   user-creation path (`authorization::build_user_authorization` is private).
 //! - SER-REQUESTS-5002, 5003 (quotas): Scryer has no request quota.
-//! - SER-REQUESTS-5006, 5007 (partial season requests, specials), 5008 (4K):
-//!   concepts absent (title-level requests, no 4K split).
+//! - SER-REQUESTS-5006, 5007 (partial season requests, specials): left for the
+//!   config stage. Scryer has partial-season requests (monitor type "advanced"
+//!   with `MonitorSelection.seasons`) and a specials setting
+//!   (`monitor_specials`); per D29 they are mapping candidates, not
+//!   concept-absent. 5008 (4K): concept absent (no 4K split).
 //! - SER-REQUESTS-5009, 5010 (media server and metadata source), 5040, 5041
 //!   (watchlist sync on): configuration of integrations, no request behaviour
 //!   a pure function answers.
@@ -80,6 +90,9 @@ use scryer_domain::{
 };
 use scryer_parity::{Catalogue, Suite, corpus};
 use serde_json::Value;
+
+#[path = "parity_requests/requests.rs"]
+mod requests;
 
 /// The Scryer authorization a Seerr permission list translates to (table above).
 fn authorization(permissions: &[String]) -> Result<UserAuthorization, String> {

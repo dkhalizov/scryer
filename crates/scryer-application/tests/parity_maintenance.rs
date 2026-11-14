@@ -18,7 +18,7 @@
 //! | getter throws | `Observation::unknown(..)` (Scryer never throws from a fact read; the read fails into unknown) |
 //! | `{"$date": d}` | RFC3339 string; compared through `time.parse_rfc3339_ns` |
 //! | custom value NUMBER / DATE / TEXT | Rego number / `time.parse_rfc3339_ns("..")` / string literal |
-//! | EQUALS, NOT_EQUALS, BIGGER, SMALLER, BEFORE, AFTER | `==`, `!=`, `>`, `<`, `<`, `>` (plain Rego: none of Maintainerr's string lowercasing, set-based list EQUALS or day-granular date EQUALS, `rule.comparator.service.ts:621-669`; every mapped case compares numbers or dates) |
+//! | EQUALS, NOT_EQUALS, BIGGER, SMALLER, BEFORE, AFTER | `==`, `!=`, `>`, `<`, `<`, `>` (plain Rego: none of Maintainerr's string lowercasing, set-based list EQUALS or day-granular date EQUALS, `rule.comparator.service.ts:621-669`; `mnt_maintenance` compares only numbers and dates, `mnt_comparator` in `parity_maintenance/maintenance.rs` also texts, lists and bools, and leaves out the cases where only lowercasing or set EQUALS decides, D36) |
 //! | CONTAINS on a text | `indexof(L, R) != -1` |
 //! | CONTAINS on a list | `R in L`, or `some v in R; v in L` when R is a list (`undefined` entries of a literal list dropped: Rego has no undefined value) |
 //! | a later rule of the same section with operator "0" (AND) | another statement of the same `match if { .. }` body |
@@ -45,12 +45,15 @@
 //! - plex_getter.json: 0179, 0192, 0242, 0243, 0244. seerr_getter.json: 0255,
 //!   0262, 0263.
 //!
+//! Suites of `parity_maintenance/maintenance.rs` (its header has their IDs,
+//! tables and unmapped reasons): `mnt_comparator` (comparator.json
+//! `doRuleAction` through this file's operator table and the production
+//! engine), `mnt_playback_hold` (collection_worker.json 0160, 0174).
+//!
 //! Unmapped (tests: []), with reasons:
-//! - comparator.json (`doRuleAction`: 0294..0312, 0334..0336): Scryer has no
-//!   comparator operators; a rule is user-written Rego. A check would measure
-//!   this file's own Maintainerr-to-Rego operator translation (lowercasing,
-//!   set-based list EQUALS, day-granular date EQUALS, an `undefined` operand),
-//!   not Scryer: that port is the open decision named for 5001..5028 below.
+//! - comparator.json 0294, 0295, 0296, 0298: see `parity_maintenance/maintenance.rs`
+//!   (only Maintainerr's lowercasing, set EQUALS or BOOL encoding decides
+//!   them; that belongs to the open Rego port decision, 5001..5028 below).
 //! - 0358: a NUMBER custom value on a DATE property means "now minus n
 //!   seconds"; Scryer rules have no such value type (the author writes the
 //!   arithmetic against `input.evaluation_time`).
@@ -63,7 +66,9 @@
 //!   0280 (no TMDB id): Scryer's request facts come from request links.
 //! - 0001..0177 (Radarr/Sonarr actions, collection handler and worker),
 //!   0281 (scheduler): async action execution and jobs over repositories and
-//!   *arr clients; the only doubles are crate-private (`lib_tests`).
+//!   *arr clients; the only doubles are crate-private (`lib_tests`). Per-group
+//!   reasons for the unmapped ones are in `parity_maintenance/maintenance.rs`
+//!   (0160 and 0174 are mapped there).
 //! - MNT-MAINTENANCE-5001..5028 (`mnt_maintenance_config`, no suite fn): our
 //!   Maintainerr rule groups, collections and schedules; a check needs a
 //!   decision on how our rules are ported to Scryer Rego (open decision), the
@@ -71,6 +76,9 @@
 //! - MNT-MAINTENANCE-6001..6011 (`mnt_maintenance_captured`, no suite fn):
 //!   log-pattern observations with no facts to evaluate.
 //! - PRW-MAINTENANCE-5001, 5002: Prowlarr history cleanup, no Scryer function.
+
+#[path = "parity_maintenance/maintenance.rs"]
+mod maintenance;
 
 use std::collections::{HashMap, HashSet};
 

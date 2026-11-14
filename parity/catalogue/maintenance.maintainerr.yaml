@@ -1279,8 +1279,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:78"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_playback_hold]
 # key: apps/server/src/modules/collections/collection-worker.server.spec.ts|should not handle media for Do Nothing collections
 - id: MNT-MAINTENANCE-0161
   behaviour: "Tests: should not handle media for Do Nothing collections; not ported: action not used by our collections (arrAction 0, DELETE)"
@@ -1391,8 +1391,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:370"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_maintenance::mnt_playback_hold]
 # key: apps/server/src/modules/collections/collection-worker.server.spec.ts|should not report failed media as handled
 - id: MNT-MAINTENANCE-0175
   behaviour: "A member whose action failed raises the failed event, not the handled event, and triggers no Seerr sync"
@@ -2375,8 +2375,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:54"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|4|[true, true, 1]
 - id: MNT-MAINTENANCE-0298
   behaviour: "EQUALS of true and 1 is true (spec table :50: strings compare case-insensitively, lists with the same entries in the same order are equal and lists of a different length or entries are not, a one-entry list equals its lone value, equal dates are equal, an undefined value never matches, and true equals the number 1 while false does not)"
@@ -2391,112 +2391,112 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:57"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|6|[false, 'abc', undefined]
 - id: MNT-MAINTENANCE-0300
   behaviour: "EQUALS of \"abc\" and {\"$undefined\": true} is false (spec table :50: strings compare case-insensitively, lists with the same entries in the same order are equal and lists of a different length or entries are not, a one-entry list equals its lone value, equal dates are equal, an undefined value never matches, and true equals the number 1 while false does not)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:58"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|7|[false, 'abc', 'abd']
 - id: MNT-MAINTENANCE-0301
   behaviour: "EQUALS of \"abc\" and \"abd\" is false (spec table :50: strings compare case-insensitively, lists with the same entries in the same order are equal and lists of a different length or entries are not, a one-entry list equals its lone value, equal dates are equal, an undefined value never matches, and true equals the number 1 while false does not)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:59"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|8|[false, ['abc'], ['abc', 'def']]
 - id: MNT-MAINTENANCE-0302
   behaviour: "EQUALS of [\"abc\"] and [\"abc\", \"def\"] is false (spec table :50: strings compare case-insensitively, lists with the same entries in the same order are equal and lists of a different length or entries are not, a one-entry list equals its lone value, equal dates are equal, an undefined value never matches, and true equals the number 1 while false does not)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:60"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|9|[false, ['abc', 'def'], ['abc', 'cde']]
 - id: MNT-MAINTENANCE-0303
   behaviour: "EQUALS of [\"abc\", \"def\"] and [\"abc\", \"cde\"] is false (spec table :50: strings compare case-insensitively, lists with the same entries in the same order are equal and lists of a different length or entries are not, a one-entry list equals its lone value, equal dates are equal, an undefined value never matches, and true equals the number 1 while false does not)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:61"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|10|[false, new Date('2022-01-01'), new Date('2022-01-02')]
 - id: MNT-MAINTENANCE-0304
   behaviour: "EQUALS of {\"$date\": \"2022-01-01\"} and {\"$date\": \"2022-01-02\"} is false (spec table :50: strings compare case-insensitively, lists with the same entries in the same order are equal and lists of a different length or entries are not, a one-entry list equals its lone value, equal dates are equal, an undefined value never matches, and true equals the number 1 while false does not)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:62"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action EQUALS|11|[false, false, 1]
 - id: MNT-MAINTENANCE-0305
   behaviour: "EQUALS of false and 1 is false (spec table :50: strings compare case-insensitively, lists with the same entries in the same order are equal and lists of a different length or entries are not, a one-entry list equals its lone value, equal dates are equal, an undefined value never matches, and true equals the number 1 while false does not)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:63"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|0|[true, 'abc', 'ab']
 - id: MNT-MAINTENANCE-0306
   behaviour: "CONTAINS of \"abc\" and \"ab\" is true (spec table :79: a string contains a substring of it; a list contains a value when one of the given values is an entry of it; empty-string and undefined given values match nothing; 'imdb' is not contained in a list holding 'ImDb top 250')"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:80"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|1|[true, ['abc', 'def'], ['ral', undefined, 'abc']]
 - id: MNT-MAINTENANCE-0307
   behaviour: "CONTAINS of [\"abc\", \"def\"] and [\"ral\", {\"$undefined\": true}, \"abc\"] is true (spec table :79: a string contains a substring of it; a list contains a value when one of the given values is an entry of it; empty-string and undefined given values match nothing; 'imdb' is not contained in a list holding 'ImDb top 250')"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:81"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|2|[true, [1, 2, 3, 4], [3]]
 - id: MNT-MAINTENANCE-0308
   behaviour: "CONTAINS of [1, 2, 3, 4] and [3] is true (spec table :79: a string contains a substring of it; a list contains a value when one of the given values is an entry of it; empty-string and undefined given values match nothing; 'imdb' is not contained in a list holding 'ImDb top 250')"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:82"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|3|[false, 'abc', 'de']
 - id: MNT-MAINTENANCE-0309
   behaviour: "CONTAINS of \"abc\" and \"de\" is false (spec table :79: a string contains a substring of it; a list contains a value when one of the given values is an entry of it; empty-string and undefined given values match nothing; 'imdb' is not contained in a list holding 'ImDb top 250')"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:83"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|4|[false, ['abc', 'def'], ['ral', undefined, 'rel']]
 - id: MNT-MAINTENANCE-0310
   behaviour: "CONTAINS of [\"abc\", \"def\"] and [\"ral\", {\"$undefined\": true}, \"rel\"] is false (spec table :79: a string contains a substring of it; a list contains a value when one of the given values is an entry of it; empty-string and undefined given values match nothing; 'imdb' is not contained in a list holding 'ImDb top 250')"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:84"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|5|[false, ['ImDb top 250', 'My birthday', 'jef'], ['imdb']]
 - id: MNT-MAINTENANCE-0311
   behaviour: "CONTAINS of [\"ImDb top 250\", \"My birthday\", \"jef\"] and [\"imdb\"] is false (spec table :79: a string contains a substring of it; a list contains a value when one of the given values is an entry of it; empty-string and undefined given values match nothing; 'imdb' is not contained in a list holding 'ImDb top 250')"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:85"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|6|[false, ['abc', 'def'], ['']]
 - id: MNT-MAINTENANCE-0312
   behaviour: "CONTAINS of [\"abc\", \"def\"] and [\"\"] is false (spec table :79: a string contains a substring of it; a list contains a value when one of the given values is an entry of it; empty-string and undefined given values match nothing; 'imdb' is not contained in a list holding 'ImDb top 250')"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:86"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS_PARTIAL|0|[true, 'abc', 'ab']
 - id: MNT-MAINTENANCE-0313
   behaviour: "Tests: should return %s when val1 is %o and val2 is %o with action CONTAINS_PARTIAL [row [true, 'abc', 'ab']]; not ported: operator not used by our rules (we use CONTAINS, EQUALS, BEFORE: rules.json#id=1, #id=3)"
@@ -2671,24 +2671,24 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:184"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return false when comparing two dates with action BEFORE and value is undefined
 - id: MNT-MAINTENANCE-0335
   behaviour: "BEFORE of 2022-01-01 and undefined is false (an earlier date is before a later one, a later date is not, an undefined second date never matches)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:192"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return false when comparing two dates with action BEFORE
 - id: MNT-MAINTENANCE-0336
   behaviour: "BEFORE of 2022-01-03 and 2022-01-02 is false (an earlier date is before a later one, a later date is not, an undefined second date never matches)"
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:200"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return true when comparing two dates with action AFTER
 - id: MNT-MAINTENANCE-0337
   behaviour: "Tests: should return true when comparing two dates with action AFTER; not ported: operator not used by our rules (we use CONTAINS, EQUALS, BEFORE: rules.json#id=1, #id=3)"

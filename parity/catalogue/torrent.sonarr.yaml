@@ -191,8 +191,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:469"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-infrastructure-acquisition::parity_torrent::son_torrent_magnet_hash]
 # key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_refuse_magnet_if_no_trackers_provided_and_dht_is_disabled|-
 - id: SON-TORRENT-0025
   behaviour: "A magnet with no trackers is refused when qBittorrent has DHT off"
@@ -819,24 +819,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs:59"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_torrent::son_failed_check]
 # key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs|should_warn_if_matching_history_is_not_found|-
 - id: SON-TORRENT-0101
   behaviour: "A failed download with no grab history gets a warning message"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs:69"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_torrent::son_failed_check]
 # key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs|should_not_warn_if_matching_history_is_not_found_and_not_failed|-
 - id: SON-TORRENT-0102
   behaviour: "A failed download with no grab history gets a warning message (test name says otherwise)"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs:80"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_torrent::son_failed_check]
 # key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs|should_return_false_if_there_is_no_history|-
 - id: SON-TORRENT-0103
   behaviour: "With no history a download is not already imported"

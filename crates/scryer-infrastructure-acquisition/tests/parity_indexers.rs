@@ -6,6 +6,7 @@
 //! Suites (config entries, each checked from the captured JSON its ref names):
 //! - `scryer-infrastructure-acquisition::parity_indexers::prw_indexers_config`
 //! - `...::son_indexers_config`, `rad_indexers_config`
+//! - `...::prw_indexers_caps_categories` (submodule indexers.rs)
 //!
 //! Scryer code under test:
 //! - `ProwlarrManagementClient::plan_sync` (prowlarr.rs:1463, children built by
@@ -68,10 +69,9 @@
 //!   the catalogue behaviour.
 //!
 //! Unmapped (tests: []), with reasons:
-//! - PRW-INDEXERS-0001..0006 (IndexerCapabilitiesCategoriesFixture, so no
-//!   prw_indexers test): Prowlarr's tracker-category to Newznab mapping inside
-//!   its indexer definitions. Scryer consumes the Newznab categories Prowlarr
-//!   already mapped and has no tracker-category model.
+//! - PRW-INDEXERS-0001..0003 are now mapped in parity_indexers/indexers.rs
+//!   (prw_indexers_caps_categories); 0004..0006 stay unmapped (tracker-category
+//!   table Scryer lacks, see the indexers.rs header).
 //! - PRW-INDEXERS titleRewrite (5006, 5009, 5011, 5014), settings (5020..5028),
 //!   host proxy and certificates (5029, 5030), Prowlarr task 5032, the custom
 //!   cookie-auth indexer definition (5033..5037), challenge-solver proxy (5019):
@@ -108,6 +108,9 @@ use scryer_parity::{Catalogue, Suite};
 use serde_json::{Value, json};
 use wiremock::matchers::{method, path};
 use wiremock::{Mock, MockServer, ResponseTemplate};
+
+#[path = "parity_indexers/indexers.rs"]
+mod indexers;
 
 const PARENT_ID: &str = "prowlarr";
 

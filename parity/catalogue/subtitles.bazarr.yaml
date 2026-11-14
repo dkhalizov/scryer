@@ -463,64 +463,64 @@
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:22"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_custom_weights]
 # key: tests/subliminal_patch/test_score.py|test_compute_score_custom_valid
 - id: BAZ-SUBTITLES-0059
   behaviour: "Custom movie weights release_group 12 and source 8 (sum unchanged) are accepted and used"
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:29"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_custom_weights]
 # key: tests/subliminal_patch/test_subtitle.py|test_guess_matches_w_edition_only_video
 - id: BAZ-SUBTITLES-0060
   behaviour: "When only the video has an edition, 'edition' is not a match"
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:4"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_subtitle.py|test_guess_matches_w_edition_only_guess
 - id: BAZ-SUBTITLES-0061
   behaviour: "When only the release guess has an edition, 'edition' is not a match"
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:11"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_subtitle.py|test_guess_matches_w_edition_both
 - id: BAZ-SUBTITLES-0062
   behaviour: "When both have an edition, 'edition' is a match"
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:18"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_subtitle.py|test_guess_matches_w_edition_both_empty
 - id: BAZ-SUBTITLES-0063
   behaviour: "When neither has an edition, 'edition' is a match"
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:25"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_video.py|test_video_fromguess_episode
 - id: BAZ-SUBTITLES-0064
   behaviour: "A video built from an episode guess keeps streaming_service and leaves other unset"
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:5"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_video.py|test_video_fromguess_movie
 - id: BAZ-SUBTITLES-0065
   behaviour: "A video built from a movie guess keeps edition and other"
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:15"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_subtitles::baz_subtitles_absent]
 # key: tests/subliminal_patch/test_video.py|test_video_fromname_episode
 - id: BAZ-SUBTITLES-0066
   behaviour: "'Breaking.Bad.S01E01.NF.WEB-DL.1080p.x264-FOO.mkv' parses to Breaking Bad S01E01, Web, Netflix, 1080p, H.264, group FOO"

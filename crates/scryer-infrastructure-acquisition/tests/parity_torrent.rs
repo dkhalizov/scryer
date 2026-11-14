@@ -11,6 +11,8 @@
 //! - `...::son_torrent_config`, `rad_torrent_config`, `prw_torrent_config`:
 //!   config entries whose ref is `corpus/captured/<app>/config/indexer.json#id=N/seedCriteria`,
 //!   checked from that JSON.
+//! - `...::son_torrent_magnet_hash` (SON-TORRENT-0024): submodule
+//!   parity_torrent/torrent_qbit.rs, header there.
 //!
 //! Scryer code under test:
 //! - `SeedGoalResolver::resolve` (scryer-application acquisition/seed_goals.rs:167),
@@ -52,22 +54,40 @@
 //! seed setting).
 //!
 //! Unmapped (tests: []), with reasons. Sonarr (torrent.sonarr.yaml):
-//! - QBittorrentFixture (SON-TORRENT-0001..0075): queue state mapping, import
+//! - QBittorrentFixture (SON-TORRENT-0001..0023, 0025..0075; 0024 is mapped
+//!   in parity_torrent/torrent_qbit.rs): queue state mapping, import
 //!   paths, add/magnet handling, removability by ratio/seeding/inactive limits,
 //!   category and JSON parsing all happen inside the qBittorrent download
 //!   client, which in Scryer is an out-of-tree WASM plugin (registry
 //!   "qbittorrent", see scryer-plugins seeding_trust.rs:58). The host only
 //!   sees its DownloadItemState and `can_remove`; the rules under test are not
-//!   in this repo.
+//!   in this repo. Re-checked in stage 6-7: DOWNLOAD_CLIENT_BUILTINS is empty
+//!   (scryer-plugins builtins.rs:24). The host artifact resolver
+//!   (artifact_transport.rs:409) follows download URLs and magnet redirects,
+//!   but a torrent-file grab's download id comes from the plugin's add reply
+//!   (download_identity.rs:839), and 0023/0032 rely on a mocked torrent-file
+//!   hash reader with a non-torrent body. 0025/0026 (DHT refusal, add-call
+//!   count) and 0027/0028 (move-to-top mock calls) are plugin behaviour.
+//!   For 0033..0070: the host seeding gate (scryer-application
+//!   import/seeding_gate.rs:437) evaluates Scryer's own profile goals; for a
+//!   torrent with no Scryer goal it passes through the plugin's `can_remove`
+//!   (CLIENT_OBLIGATION_MET, "a different question", :537). The reference's
+//!   verdict is qBittorrent's client-limit regime (pausedUP/stoppedUP state,
+//!   -2/-1 override resolution, 0.001 tolerance, QBittorrent.cs:240-245,
+//!   :630-650), so these cases test the plugin, not the gate.
 //! - CompletedDownloadService Import/Process (0077..0096): waived, D21
 //!   duplicates of SON-IMPORT-0001..0020.
-//! - FailedDownloadService (0097..0102), TrackedDownloadAlreadyImported
-//!   (0103..0108), TrackedDownloadService (0109..0114), DownloadService
-//!   (0115..0126): orchestration through AppUseCase (tracked downloads,
-//!   history, grab dispatch, indexer backoff) with repositories and events;
-//!   no in-memory seam, assertions are mock calls and published events.
-//! - Radarr (torrent.radarr.yaml) RAD-TORRENT-0001..0005 (completed download
-//!   import) and 0007..0012 (tracked downloads): as for Sonarr.
+//! - FailedDownloadService.ProcessFixture (SON-TORRENT-0100..0102) is mapped
+//!   in crates/scryer-application/tests/parity_torrent/torrent_tracked.rs
+//!   (suite scryer-application::parity_torrent::son_failed_check).
+//!   TrackedDownloadAlreadyImported (0103..0108), TrackedDownloadService
+//!   (0109..0114), DownloadService (0115..0124, 0126) and Radarr
+//!   RAD-TORRENT-0001..0005, 0007..0012 stay unmapped; reasons are in that
+//!   submodule's header.
+//! - FailedDownloadService.ProcessFailedFixture (0098..0099; 0097 out of
+//!   scope): process_failed takes &AppUseCase (scryer-application
+//!   import/failed_download.rs:48); grab-submission lookup and failure events
+//!   go through repositories.
 //!
 //! Config entries unmapped:
 //! - SON-TORRENT-5001..5004, RAD-TORRENT-5001..5005, RAD-TORRENT-5010
@@ -449,3 +469,6 @@ async fn prw_torrent_config() {
     run_config(&mut suite, "PRW-TORRENT-").await;
     suite.finish();
 }
+
+#[path = "parity_torrent/torrent_qbit.rs"]
+mod torrent_qbit;

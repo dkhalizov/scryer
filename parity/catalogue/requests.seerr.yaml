@@ -328,15 +328,15 @@
   source: reference
   ref: "Seerr@v3.5.2 server/lib/watchlistsync.test.ts:103"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_requests::ser_requests_watchlist]
 - id: SER-REQUESTS-0048
   behaviour: "Watchlist sync re-requests a DELETED movie even though the user's earlier completed auto-request for it exists"
   source: reference
   ref: "Seerr@v3.5.2 server/lib/watchlistsync.test.ts:164"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_requests::ser_requests_watchlist_rerequest]
 - id: SER-REQUESTS-0049
   behaviour: "A Plex full scan that finds a requested show with no episodes yet leaves its approved request APPROVED"
   source: reference
@@ -510,15 +510,15 @@
   source: reference
   ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:384"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_requests::ser_requests_seasons]
 - id: SER-REQUESTS-0074
   behaviour: "With specials disabled, season 0 is dropped from an explicit season list (no reference test; from the implementing source)"
   source: reference
   ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:392"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_requests::ser_requests_seasons]
 - id: SER-REQUESTS-0075
   behaviour: "A new series request drops seasons held by another active (not DECLINED or COMPLETED) request of the same 4K kind and seasons whose media status is other than UNKNOWN or DELETED (no reference test; from the implementing source)"
   source: reference
@@ -552,15 +552,15 @@
   source: reference
   ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:493"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_requests::ser_requests_season_status]
 - id: SER-REQUESTS-0085
   behaviour: "A series request from a user with REQUEST only creates every season request PENDING (no reference test; from the implementing source)"
   source: reference
   ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:493"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_requests::ser_requests_season_status]
 - id: SER-REQUESTS-0079
   behaviour: "Watchlist sync skips a user without AUTO_REQUEST, AUTO_REQUEST_MOVIE or AUTO_REQUEST_TV (no reference test; from the implementing source)"
   source: reference

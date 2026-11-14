@@ -6,22 +6,22 @@
   source: reference
   ref: "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:12"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-infrastructure-acquisition::parity_indexers::prw_indexers_caps_categories]
 - id: PRW-INDEXERS-0002
   behaviour: "An indexer that maps Movies/SD (2030) supports a request for 2030"
   source: reference
   ref: "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:24"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-infrastructure-acquisition::parity_indexers::prw_indexers_caps_categories]
 - id: PRW-INDEXERS-0003
   behaviour: "An indexer that maps only Movies/SD (2030) does not support a request for the sibling Movies/HD (2040)"
   source: reference
   ref: "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-infrastructure-acquisition::parity_indexers::prw_indexers_caps_categories]
 - id: PRW-INDEXERS-0004
   behaviour: "With tracker categories 1 and 2 mapped (with descriptions), the tracker category list has 2 entries, '1' first"
   source: reference

@@ -43,22 +43,26 @@
 //!   `expect.language/hi/forced` (the kept subtitle's own properties; used as
 //!   the download under test).
 //!
+//! - `subtitles::baz_subtitles_custom_weights` (0058, 0059) and
+//!   `subtitles::baz_subtitles_absent` (0060..0065): mapped red (D29) in
+//!   `parity_subtitles/subtitles.rs`.
+//!
 //! Unmapped (tests: []), with reasons:
 //! - BAZ-SUBTITLES-0001..0018: no corpus case (the expectation exists only in
 //!   catalogue prose); a corpus case has to be added before a test can read it.
 //! - BAZ-SUBTITLES-0023, 0045, 0049, 0050, 5022 (language equivalences): Scryer
-//!   has no language-equivalence setting.
+//!   has no language-equivalence setting (re-checked:
+//!   `normalize_subtitle_language_code` (`subtitles/language.rs`) and
+//!   `normalize_detected_subtitle_language_code` (`media/language.rs`, which
+//!   falls back to the primary subtag) are fixed normalisers; es-MX, pt-BR and
+//!   zh-TW stay distinct codes; there is no user equivalence list and nothing
+//!   widens a language set).
 //! - BAZ-SUBTITLES-0037, 0038 (scan_video kind from a file name): Scryer takes
 //!   the kind from the title's facet and never guesses it from a name.
 //! - BAZ-SUBTITLES-0039..0042 (provider pool update/discard), 5004, 5005
 //!   (enabled providers, OpenSubtitles options): provider configs and the
 //!   pool live behind async `AppUseCase` settings with no pure seam.
-//! - BAZ-SUBTITLES-0058, 0059 (custom score weights): Scryer weights are fixed.
-//! - BAZ-SUBTITLES-0060..0063 (edition match): Scryer's matcher has no edition
-//!   property.
-//! - BAZ-SUBTITLES-0064, 0065 (`video_fromguess`: a video from a guessit
-//!   dictionary): Scryer has no guess dictionary; its query is built from the
-//!   title row and the parsed release name.
+//! - BAZ-SUBTITLES-0058..0065 are mapped red in `parity_subtitles/subtitles.rs`.
 //! - BAZ-SUBTITLES-5002, 5003, 5010..5021, 5024..5031: schedules, adaptive
 //!   search, file naming/encoding, embedded tracks, tags, post-processing and
 //!   blacklist counts are settings of async jobs with no pure function that
@@ -75,6 +79,9 @@ use scryer_application::subtitles::wanted::{SubtitleLanguagePref, compute_missin
 use scryer_domain::{ExternalSubtitleSourceKind, SubtitleDownload};
 use scryer_parity::{Catalogue, Suite, corpus};
 use serde_json::{Value, json};
+
+#[path = "parity_subtitles/subtitles.rs"]
+mod subtitles;
 
 fn kind(name: &str) -> SubtitleScoreKind {
     match name {

@@ -325,8 +325,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:313"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_naming::rad_naming_rename_off]
 - id: RAD-NAMING-0042
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs|should_should_replace_release_group|null|0"
   behaviour: "{Release Group} renders the release group"

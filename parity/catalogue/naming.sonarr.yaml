@@ -4,50 +4,50 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:29"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0002
   behaviour: "Season 1 with season folders on and format 'Season {season}' builds '/C/Test/30 Rock/Season 1/30 Rock - S01E05 - Episode Title.mkv'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:30"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0003
   behaviour: "Season 1 with season folders off and format 'Season {season:00}' builds '/C/Test/30 Rock/30 Rock - S01E05 - Episode Title.mkv'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:31"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0004
   behaviour: "Season 1 with season folders off and format 'Season {season}' builds '/C/Test/30 Rock/30 Rock - S01E05 - Episode Title.mkv'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:32"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0005
   behaviour: "Season 1 with season folders on and format 'ReallyUglySeasonFolder {season}' builds '/C/Test/30 Rock/ReallyUglySeasonFolder 1/30 Rock - S01E05 - Episode Title.mkv'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:33"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0006
   behaviour: "Season 0 with season folders on and format 'Season {season}' builds '/C/Test/30 Rock/MySpecials/30 Rock - S00E05 - Episode Title.mkv'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:34"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0007
   behaviour: "A colon in the series title is cleaned in a season folder built from {Series Title}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:59"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0008
   behaviour: "CleanFileName replaces illegal characters in 'Law & Order: Criminal Intent - S10E07 - Icarus [HDTV-720p]'"
   source: reference
@@ -403,29 +403,29 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:262"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0059
   behaviour: "With renaming off and no scene name or relative path, the file keeps its path's name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:272"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0060
   behaviour: "With renaming off, the scene name wins over the relative path"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:283"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0061
   behaviour: "With renaming off, a colon in the scene name is still replaced (Smart: ':' -> '-')"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:294"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0062
   behaviour: "A daily series uses the daily format with the air date; needs a daily series (all 23 of ours are standard, naming.json/series-summary.json)"
   source: reference

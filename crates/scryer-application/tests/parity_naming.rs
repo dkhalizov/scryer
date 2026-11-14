@@ -2,7 +2,9 @@
 //!
 //! Suites (one test fn each): `son_naming`, `rad_naming` (reference ports),
 //! `son_naming_config`, `rad_naming_config` (our captured settings),
-//! `son_naming_captured`, `rad_naming_captured` (real relative paths).
+//! `son_naming_captured`, `rad_naming_captured` (real relative paths);
+//! rename-off suites `son_naming_rename_off`, `rad_naming_rename_off` live in
+//! parity_naming/naming.rs (nextest names `naming::<fn>`).
 //!
 //! # What runs
 //!
@@ -99,8 +101,8 @@
 //! `seriesType` (no daily or anime case is in scope), `culture`,
 //! `episodeFile.quality`/`revision`, mediaInfo other than `videoHdrFormat`,
 //! `sceneName`, `relativePath`, `path`, `releaseHash` (they only feed lacking
-//! tokens or rename-off cases), `series.path`, `series.seasonFolder` (only in
-//! unmapped build_file_path cases), `note`. Captured: `quality`,
+//! tokens or rename-off cases, which naming.rs runs), `series.path`, `series.seasonFolder` (used by
+//! naming.rs), `note`. Captured: `quality`,
 //! `media_info` (they feed `{Quality Full}`).
 //!
 //! # Config checks (built from the ref'd JSON)
@@ -125,13 +127,11 @@
 //! # Unmapped (left `tests: []`)
 //!
 //! - SON-NAMING-0001..0007 (`build_file_path`), SON-NAMING-0058..0061 and
-//!   RAD-NAMING-0041 (`build_file_name` with rename off): with renaming off the
-//!   arr keeps the scene or relative name. In Scryer the rename on/off switch
-//!   (`rename.enabled`, settings/runtime/media.rs:548) is applied by the
-//!   import pipeline, which this pure planner harness cannot drive; the
-//!   planner always renames. Belongs to the import harness.
+//!   RAD-NAMING-0041 (`build_file_name` with rename off): mapped in
+//!   parity_naming/naming.rs (`son_naming_rename_off`, `rad_naming_rename_off`)
+//!   through the import's `episode_import_dest_path` / `preserved_import_filename`.
 //! - SON-NAMING-0188..0190 (`requires_episode_title`): concept absent; Scryer
-//!   has no episode-title-required import gate.
+//!   has no episode-title-required import gate (see parity_naming/naming.rs).
 //! - SON-NAMING-5001, RAD-NAMING-5001 (rename on import): Scryer's default is
 //!   resolved by `AppUseCase::resolve_rename_enabled` against the settings
 //!   database (settings/runtime/media.rs:548, `unwrap_or(true)`); no pure
@@ -145,6 +145,9 @@ use scryer_application::{
 use scryer_domain::{Episode, EpisodeType, MediaFacet, Title};
 use scryer_parity::{Catalogue, Source, Suite, corpus, parity_dir};
 use serde_json::Value;
+
+#[path = "parity_naming/naming.rs"]
+mod naming;
 
 const MEDIA_ROOT: &str = "/library";
 
