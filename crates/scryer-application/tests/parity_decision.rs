@@ -1,7 +1,7 @@
 //! Parity net: grab-decision harness (notes/11-parity-net-design.md, phase 4).
 //!
-//! Six suites here, one test fn each; the submodules `parity_decision/decision_delay.rs`
-//! and `parity_decision/decision_rank.rs` add their own (see their headers):
+//! Six suites here, one test fn each; the submodules `parity_decision/decision_delay.rs`,
+//! `parity_decision/decision_rank.rs`, `parity_decision/decision_absent.rs`, `parity_decision/decision_context.rs` and `parity_decision/decision_guards.rs` add their own (see their headers):
 //!
 //! | Suite | Corpus |
 //! |---|---|
@@ -141,24 +141,26 @@
 //!
 //! # Unmapped (not recorded; the catalogue keeps them `unmapped`)
 //!
-//! - Concept absent in Scryer: Retention (no usenet retention setting),
-//!   MaximumSize (no global size cap), FreeSpace (no grab-time free-space
-//!   check), ReleaseRestrictions (no required/ignored terms), BlockedIndexer
-//!   and IndexerTag (indexer backoff/routing happen at query time, no
-//!   per-release gate), DownloadDecisionMaker (no pluggable specification
-//!   list), SingleEpisodeAgeDownloadDecision (no per-indexer season-search
-//!   episode age), Pending (no pending-queue read path to call), config
-//!   `retention`, `maximumSize`, `releaseprofile`, `tag.json`, `autotagging`.
-//! - Callable only through `evaluate_auto_candidate_recording`, which needs
-//!   an `AutoCandidateEvaluationContext` (Title, search subject, snapshots):
-//!   MonitoredEpisode, MonitoredMovie, Movie, Search.Series,
-//!   SingleEpisodeSearchMatch, MultiSeason, AlreadyImported,
-//!   DeletedEpisodeFile, config `series-summary`/`movie-summary`
-//!   (monitored, minimum availability), `allowHardcodedSubs`.
-//! - History (Sonarr RssSync.History, Radarr History): Scryer models recent
-//!   grabs as queued pseudo-incumbents, but which history rows count (event
-//!   type, 12 h window, completed download handling) is decided by the
-//!   loader, not by a callable gate.
+//! - MaximumSize, ReleaseRestrictions and IndexerTag are red (D29, no Scryer
+//!   field) in `parity_decision/decision_absent.rs`. Retention, FreeSpace (grab
+//!   time; the import check is mapped in `parity_import`), BlockedIndexer,
+//!   DownloadDecisionMaker, SingleEpisodeAgeDownloadDecision and Pending stay
+//!   unmapped, reasons in that file. Also unmapped (private config catalogue,
+//!   outside this stage): config `retention`, `maximumSize`, `releaseprofile`,
+//!   `tag.json`, `autotagging`; by the D29 reasoning in `decision_absent.rs`,
+//!   `maximumSize`, `releaseprofile` and `tag.json` would map red when that
+//!   catalogue is mapped.
+//! - Movie, Search.Series, SingleEpisodeSearchMatch, AlreadyImported, MultiSeason
+//!   (red) and the MonitoredEpisode multi-episode / pack cases are mapped in
+//!   `parity_decision/decision_context.rs` (seams `evaluate_auto_candidate_with_step`,
+//!   `candidate_matches_existing_media_file`). MonitoredMovie, the MonitoredEpisode
+//!   series-monitoring / single-episode cases and DeletedEpisodeFile stay unmapped,
+//!   reasons in that file's header. Still unmapped here: config
+//!   `series-summary`/`movie-summary` (monitored, minimum availability),
+//!   `allowHardcodedSubs`.
+//! - History (Sonarr RssSync.History, Radarr History): mapped in
+//!   `parity_decision/decision_guards.rs` through the loader's row selection
+//!   (`grabbed_release_record`, `recent_missing_grab_record`).
 //! - PrioritizeDownloadDecision: the cases the search rank head decides are
 //!   mapped in `parity_decision/decision_rank.rs` (seam
 //!   `compare_release_search_results`). The rest (protocol, coverage, episode
@@ -174,13 +176,14 @@
 //!   `parity_decision/decision_delay.rs` (`son_decision_delay`,
 //!   `rad_decision_delay`) through the `automatic_candidate_delay_decision`
 //!   seam; the reference suites here still skip them.
-//! - Spec applicability guards with no Scryer counterpart: Repack / Proper /
-//!   AnimeVersionUpgrade cases where the reference spec does not evaluate
-//!   (not a repack, DoNotPrefer, not a same-quality newer revision, a search
-//!   rather than RSS, no file, a non-anime series), FullSeason with a
-//!   non-season release.
-//! - Queue cases with a queue item in a state other than Downloading: which
-//!   client states become queued pseudo-incumbents is the loader's choice.
+//! - Spec applicability guards (Repack / Proper / AnimeVersionUpgrade cases where
+//!   the reference spec does not evaluate): mapped in
+//!   `parity_decision/decision_guards.rs` where the reference's whole pipeline
+//!   gives the same answer; SON 1094, 1099, 0051, 0056 and RAD 1081, 1088 stay
+//!   unmapped, reasons in that file's header. (FullSeason with a non-season
+//!   release: mapped, red, in `decision_context`.)
+//! - Queue cases with a queue item in a state other than Downloading: mapped in
+//!   `parity_decision/decision_guards.rs` through `submission_is_queued`.
 //!
 //! # Product seams this file needs (visibility only, see the integrator's list)
 //!
@@ -188,9 +191,12 @@
 //! pieces used here, and `QualityProfileCriteria::quality_cutoff_met` is `pub`.
 //! Queue cases select queued submissions with the loader's own scope filter,
 //! `submission_scope_intersects` (and `ScopeMembership`), widened to `pub` in
-//! `acquisition/workflow/search.rs` for that re-export. `decision_rank` also
+//! `acquisition/workflow/search.rs` for that re-export. `decision_context` uses `evaluate_auto_candidate_with_step` and
+//! `candidate_matches_existing_media_file`; `decision_rank` also
 //! uses `compare_release_search_results` (search rank head); `decision_delay` uses
-//! `automatic_candidate_delay_decision`.
+//! `automatic_candidate_delay_decision`; `decision_guards` uses `submission_is_queued`,
+//! `grabbed_release_record`, `recent_missing_grab_record` and `GrabbedReleaseRecord`
+//! (plus `submission_scope_intersects` as the history rows' scope filter).
 
 use std::cmp::Reverse;
 
@@ -217,6 +223,12 @@ use serde_json::{Value, json};
 mod decision_delay;
 #[path = "parity_decision/decision_rank.rs"]
 mod decision_rank;
+#[path = "parity_decision/decision_absent.rs"]
+mod decision_absent;
+#[path = "parity_decision/decision_context.rs"]
+mod decision_context;
+#[path = "parity_decision/decision_guards.rs"]
+mod decision_guards;
 
 const NOW: &str = "2026-01-15T12:00:00Z";
 

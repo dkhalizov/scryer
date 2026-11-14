@@ -391,8 +391,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:431"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_queue_state]
 - id: SON-DECISION-1056
   behaviour: "With DoNotUpgrade, a proper is rejected when the same quality non-proper is queued"
   source: reference
@@ -524,141 +524,141 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:51"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1075
   behaviour: "A title containing the required term WEBRip is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:61"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1076
   behaviour: "A title containing none of the required terms (doesnt, exist) is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:69"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1077
   behaviour: "A title without the ignored term \"ignored\" is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:77"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1078
   behaviour: "A title containing the ignored term \"edited\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:85"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1079
   behaviour: "Required terms ['EdiTED'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:93"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1080
   behaviour: "Required terms ['webrip'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:94"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1081
   behaviour: "Required terms ['X264'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:95"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1082
   behaviour: "Required terms ['X264', 'NOTTHERE'] match the title case-insensitively and accept it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:96"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1083
   behaviour: "Ignored terms ['EdiTED'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:104"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1084
   behaviour: "Ignored terms ['webrip'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:105"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1085
   behaviour: "Ignored terms ['X264'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:106"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1086
   behaviour: "Ignored terms ['X264', 'NOTTHERE'] match the title case-insensitively and reject it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:107"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1087
   behaviour: "A title with both a required term (x264) and an ignored term (www.Speed.cd) is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:115"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1088
   behaviour: "Required regex /WEB/ matches the title and accepts it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:134"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1089
   behaviour: "Required term \"/WEB<backspace>/\" does not match and rejects the title"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:135"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1090
   behaviour: "Required regex /WEb/ is case-sensitive, does not match, and rejects the title"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:136"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1091
   behaviour: "Required regex /\\.WEB/ matches \".WEB\" in the title and accepts it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:137"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1092
   behaviour: "A release that is not a repack is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:39"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_guards]
 - id: SON-DECISION-1093
   behaviour: "A repack is accepted when the episode has no file"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:53"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_guards]
 - id: SON-DECISION-1094
   behaviour: "A repack is accepted when the existing file is a different quality (DVD)"
   source: reference
@@ -1329,155 +1329,155 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:106"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1190
   behaviour: "A release is accepted when no episode has history"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:112"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1191
   behaviour: "A latest history item that is DownloadFailed does not block the release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:119"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1192
   behaviour: "A grab older than 12 hours does not block the release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:133"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1193
   behaviour: "A DVD release is accepted over a recent SDTV grab"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:140"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1194
   behaviour: "A DVD release is accepted over recent SDTV grabs of both episodes"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:147"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1195
   behaviour: "A DVD release is rejected over recent HDTV-1080p grabs of both episodes"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:155"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1196
   behaviour: "A DVD release is rejected when episode 1's latest grab is HDTV-1080p"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:163"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1197
   behaviour: "A DVD release is rejected when episode 1's recent grab is HDTV-1080p even if episode 2's is SDTV"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:171"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1198
   behaviour: "A WEBDL-1080p release is rejected over a recent WEBDL-1080p grab"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:179"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1199
   behaviour: "A release is rejected when the recent grab (WEBDL-1080p) meets the WEBDL-1080p cutoff"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:191"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1200
   behaviour: "A one-hour-old HDTV-1080p grab blocks a DVD release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:203"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1201
   behaviour: "With completed download handling off, a 100-day-old SDTV grab with a download id does not block a DVD release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:210"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1202
   behaviour: "With completed download handling off, a grab meeting the WEBDL-1080p cutoff blocks a Bluray-1080p release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:218"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1203
   behaviour: "With completed download handling off, an HDTV-1080p grab blocks a DVD release"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:231"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1204
   behaviour: "An untagged indexer serves an untagged series"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:71"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1205
   behaviour: "A tagged indexer does not serve an untagged series"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:80"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1206
   behaviour: "An untagged indexer serves a tagged series"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:89"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1207
   behaviour: "An indexer sharing a tag (123) with the series serves it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:98"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1208
   behaviour: "An indexer with no tag in common with the series does not serve it"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:107"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1209
   behaviour: "A release with no indexer id is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:116"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1210
   behaviour: "A release from an unknown indexer (id 2) is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:126"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 - id: SON-DECISION-1211
   behaviour: "A DVD proper is rejected in RSS when the DVD file was added 30 days ago"
   source: reference
@@ -1504,15 +1504,15 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:92"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_guards]
 - id: SON-DECISION-1215
   behaviour: "A search accepts the proper regardless of file age"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:101"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_guards]
 - id: SON-DECISION-1216
   behaviour: "With DoNotUpgrade, a DVD proper over a DVD file added today is rejected"
   source: reference
@@ -1532,22 +1532,22 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:136"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_guards]
 - id: SON-DECISION-1219
   behaviour: "A release for series 1 is rejected in a search for series 2"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SeriesSpecificationFixture.cs:29"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1220
   behaviour: "A release for series 1 is accepted in a search for series 1"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SeriesSpecificationFixture.cs:37"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1221
   behaviour: "A non-torrent release is accepted"
   source: reference
@@ -1609,61 +1609,61 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:22"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1230
   behaviour: "A release that is not a full season is accepted in an anime episode search"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:30"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1231
   behaviour: "A full-season release is accepted in an anime season search"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:38"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1232
   behaviour: "A S10E01 release is rejected in a single-episode search for S05E01"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:29"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1233
   behaviour: "A release parsed as season 10 (mapped to season 5) is accepted in a search for scene season 10 episode 1"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:38"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1234
   behaviour: "A release parsed as season 10 (mapped to season 6) is rejected in a search for scene season 9 episode 1"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:48"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1235
   behaviour: "A season-5 release with no episode numbers is rejected in a single-episode search for S05E01"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:58"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1236
   behaviour: "A S05E02 release is rejected in a single-episode search for S05E01"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:66"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 - id: SON-DECISION-1237
   behaviour: "A S05E01 release is accepted in a single-episode search for S05E01"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:74"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]

@@ -96,72 +96,72 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:79"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_movie_does_not_have_a_file|0|2a1316da72da
 - id: RAD-DECISION-0013
   behaviour: "Accepted when the movie has no file"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:87"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_movie_does_not_have_grabbed_event|0|8b57720b234e
 - id: RAD-DECISION-0014
   behaviour: "Accepted when the movie history has no grabbed event"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:95"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_movie_does_not_have_imported_event|0|fe50b72b6bc3
 - id: RAD-DECISION-0015
   behaviour: "Accepted when the movie history has a grab but no import"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:101"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_grabbed_and_imported_quality_is_the_same|0|385d98313bf1
 - id: RAD-DECISION-0016
   behaviour: "Accepted when grabbed and imported quality are the same"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:109"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_grabbed_download_id_and_release_torrent_hash_is_unknown|0|fd01a50bd3fb
 - id: RAD-DECISION-0017
   behaviour: "Accepted when grab and import qualities differ but the torrent release has no info hash"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:120"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_grabbed_download_does_not_have_an_id|0|55130ee8de37
 - id: RAD-DECISION-0018
   behaviour: "Accepted when the grabbed history event has no download id"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:136"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_rejected_if_grabbed_download_id_matches_release_torrent_hash|0|f30ed79298e9
 - id: RAD-DECISION-0019
   behaviour: "Rejected when the release info hash matches a grab whose import landed in a different quality"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:152"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_rejected_if_release_title_matches_grabbed_event_source_title|0|f30ed79298e9
 - id: RAD-DECISION-0020
   behaviour: "Rejected when the release was already grabbed and imported in a different quality (title-match variant)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:168"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/BlockedIndexerSpecificationFixture.cs|should_return_true_if_no_blocked_indexer|0|38984fd72c32
 - id: RAD-DECISION-0021
   behaviour: "Accepted when no indexer is blocked"
@@ -384,88 +384,88 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:87"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_true_if_latest_history_item_is_null|0|f379c0d8918a
 - id: RAD-DECISION-0049
   behaviour: "Accepted when the movie has no history"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:93"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_true_if_latest_history_item_is_not_grabbed|0|b4c314b66d2a
 - id: RAD-DECISION-0050
   behaviour: "Accepted when the latest history event is not a grab (download failed)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:100"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_true_if_latest_history_item_is_older_than_twelve_hours|0|492289e88db6
 - id: RAD-DECISION-0051
   behaviour: "Accepted when the latest grab is older than 12 hours (13 h), even at a better quality"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:113"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_be_upgradable_if_only_episode_is_upgradable|0|f12e1f03c4b8
 - id: RAD-DECISION-0052
   behaviour: "Accepted when the release (DVD v2) upgrades a just-grabbed SDTV"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:120"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_not_be_upgradable_if_episode_is_of_same_quality_as_existing|0|bb725b06ce19
 - id: RAD-DECISION-0053
   behaviour: "Rejected when the release equals a just-grabbed WEBDL-1080p"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:160"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_not_be_upgradable_if_cutoff_already_met|0|c3f8b142301a
 - id: RAD-DECISION-0054
   behaviour: "Rejected when a just-grabbed Bluray-1080p already meets the WEBDL-1080p cutoff"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:183"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_false_if_latest_history_item_is_only_one_hour_old|0|d7bb668180a8
 - id: RAD-DECISION-0055
   behaviour: "Rejected when a grab one hour ago (HDTV-1080p v2) is not upgraded by the release (DVD v2)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:202"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_false_if_latest_history_has_a_download_id_and_cdh_is_disabled|0|4271d4ac4994
 - id: RAD-DECISION-0056
   behaviour: "Accepted with completed download handling off when the release upgrades a 100-day-old grab with a download id"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:209"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_false_if_cutoff_already_met_and_cdh_is_disabled|0|e7955bfe5bd7
 - id: RAD-DECISION-0057
   behaviour: "Rejected with completed download handling off when an old grab (WEBDL-1080p) already meets the cutoff"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:217"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_return_false_if_only_episode_is_not_upgradable_and_cdh_is_disabled|0|823d9c3e5dae
 - id: RAD-DECISION-0058
   behaviour: "Rejected with completed download handling off when the release does not upgrade an old grab"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:237"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/LanguageSpecificationFixture.cs|should_return_true_if_language_is_english|0|fc0d3a93555e
 - id: RAD-DECISION-0059
   behaviour: "An English release is accepted by an English profile"
@@ -520,40 +520,40 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:30"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_smaller_than_maximum_size|0|c84923ff0acc
 - id: RAD-DECISION-0066
   behaviour: "1999 MB is accepted under a 2000 MB maximum"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:39"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_equals_to_maximum_size|0|e412ffd52078
 - id: RAD-DECISION-0067
   behaviour: "2000 MB is accepted at a 2000 MB maximum (inclusive)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:48"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_false_when_size_is_bigger_than_maximum_size|0|eba3d4fad2f9
 - id: RAD-DECISION-0068
   behaviour: "2001 MB is rejected over a 2000 MB maximum"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:57"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_zero|0|a41a2f5ec3b1
 - id: RAD-DECISION-0069
   behaviour: "A release of unknown size (0) is accepted under a 2000 MB maximum"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:66"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MinimumAgeSpecificationFixture.cs|should_return_true_when_minimum_age_is_set_to_zero|0|c9009eb8a1bb
 - id: RAD-DECISION-0070
   behaviour: "A usenet release is accepted when minimum age is 0"
@@ -720,69 +720,69 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:64"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_with_tags_movie_without_tags_should_return_false|0|ce0c6c047334
 - id: RAD-DECISION-0091
   behaviour: "Rejected when the indexer has tags and the movie has none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:73"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_without_tags_movie_with_tags_should_return_true|0|de47f2fe3d0f
 - id: RAD-DECISION-0092
   behaviour: "Accepted when the indexer has no tags and the movie has some"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:82"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_with_tags_movie_with_matching_tags_should_return_true|0|25b1ee708e04
 - id: RAD-DECISION-0093
   behaviour: "Accepted when indexer and movie share a tag"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:91"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|indexer_with_tags_movie_with_different_tags_should_return_false|0|6edbe7c572b1
 - id: RAD-DECISION-0094
   behaviour: "Rejected when indexer and movie tags do not overlap"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:100"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|release_without_indexerid_should_return_true|0|5def7a5aa116
 - id: RAD-DECISION-0095
   behaviour: "Accepted when the release has no indexer id (0)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:109"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs|release_with_invalid_indexerid_should_return_true|0|3ea63898d616
 - id: RAD-DECISION-0096
   behaviour: "Accepted when the release's indexer id is not a known indexer"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:119"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/Search/MovieSpecificationFixture.cs|should_return_false_if_series_doesnt_match|0|fe30c6675ad8
 - id: RAD-DECISION-0097
   behaviour: "Rejected in a search when the release maps to a different movie than the one searched"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/MovieSpecificationFixture.cs:32"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/Search/MovieSpecificationFixture.cs|should_return_true_when_series_ids_match|0|ac0dd9ee3e5e
 - id: RAD-DECISION-0098
   behaviour: "Accepted in a search when the release maps to the searched movie"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/MovieSpecificationFixture.cs:40"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_context]

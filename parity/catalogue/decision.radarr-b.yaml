@@ -344,8 +344,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:191"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_queue_state]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs|should_return_false_if_same_quality_non_proper_in_queue_and_download_propers_is_do_not_upgrade|0|a34bb8c7a053
 - id: RAD-DECISION-1043
   behaviour: "Rejected when a proper (HDTV-720p v2) would replace the same quality in the queue and propers are DoNotUpgrade"
@@ -496,160 +496,160 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:51"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_true_when_title_contains_one_required_term|0|ba875f66eb2a
 - id: RAD-DECISION-1062
   behaviour: "Accepted when the title contains the one required term (WEBRip)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:61"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_false_when_title_does_not_contain_any_required_terms|0|aaefad8767ed
 - id: RAD-DECISION-1063
   behaviour: "Rejected when the title contains none of the required terms"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:69"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_true_when_title_does_not_contain_any_ignored_terms|0|64e83e5f5d76
 - id: RAD-DECISION-1064
   behaviour: "Accepted when the title contains no ignored term"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:77"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_false_when_title_contains_one_anded_ignored_terms|0|40337f12ff55
 - id: RAD-DECISION-1065
   behaviour: "Rejected when the title contains an ignored term (edited, case-insensitive)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:85"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|0|c31b42af178b
 - id: RAD-DECISION-1066
   behaviour: "Required terms ['EdiTED'] match the title case-insensitively, so it is accepted"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:93"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|1|fa475542b2e4
 - id: RAD-DECISION-1067
   behaviour: "Required terms ['webrip'] match the title case-insensitively, so it is accepted"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:94"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|2|aad5f74d7b71
 - id: RAD-DECISION-1068
   behaviour: "Required terms ['X264'] match the title case-insensitively, so it is accepted"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:95"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_required|3|3e750022e819
 - id: RAD-DECISION-1069
   behaviour: "Required terms ['X264', 'NOTTHERE'] match the title case-insensitively, so it is accepted"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:96"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|0|6c9bb6ec6a12
 - id: RAD-DECISION-1070
   behaviour: "Ignored terms ['EdiTED'] match the title case-insensitively, so it is rejected"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:104"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|1|a10c873bc1c3
 - id: RAD-DECISION-1071
   behaviour: "Ignored terms ['webrip'] match the title case-insensitively, so it is rejected"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:105"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|2|9404a78ef3d5
 - id: RAD-DECISION-1072
   behaviour: "Ignored terms ['X264'] match the title case-insensitively, so it is rejected"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:106"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_ignore_case_when_matching_ignored|3|6bad68b22ae0
 - id: RAD-DECISION-1073
   behaviour: "Ignored terms ['X264', 'NOTTHERE'] match the title case-insensitively, so it is rejected"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:107"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_be_false_when_release_contains_one_restricted_word_and_one_required_word|0|1eb3760aeaa5
 - id: RAD-DECISION-1074
   behaviour: "Rejected when the title has a required term (x264) and an ignored term (www.Speed.cd)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:115"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|0|40bc48625850
 - id: RAD-DECISION-1075
   behaviour: "Required term \"/WEB/\" is a /regex/ and the release is accepted"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:134"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|1|e9cdaacabe1c
 - id: RAD-DECISION-1076
   behaviour: "Required term \"/WEB\\b/\" is a /regex/ and the release is rejected"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:135"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|2|7bf362c64de5
 - id: RAD-DECISION-1077
   behaviour: "Required term \"/WEb/\" is a /regex/ and the release is rejected"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:136"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs|should_match_perl_regex|3|ac14155c5e66
 - id: RAD-DECISION-1078
   behaviour: "Required term \"/\\\\.WEB/\" is a /regex/ and the release is accepted"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:137"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs|should_return_true_if_it_is_not_a_repack|0|6d3578600f65
 - id: RAD-DECISION-1079
   behaviour: "Accepted when the release is not a repack"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_guards]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs|should_return_true_if_there_are_is_no_movie_file|0|e580b6d2feee
 - id: RAD-DECISION-1080
   behaviour: "Accepted when the release is a repack and the movie has no file"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:47"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_guards]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs|should_return_true_if_is_a_repack_for_a_different_quality|0|1c7796e95d00
 - id: RAD-DECISION-1081
   behaviour: "Accepted when the repack (SDTV) is for a different quality than the file (DVD)"
@@ -1224,16 +1224,16 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:61"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_guards]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs|should_return_true_when_episodeFile_was_added_more_than_7_days_ago_but_is_for_search|0|8ecc4d92f6f4
 - id: RAD-DECISION-1153
   behaviour: "Accepted in a search even when the file was added 30 days ago"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:70"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_guards]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs|should_return_false_when_proper_but_auto_download_propers_is_false|0|b84bbd7284bb
 - id: RAD-DECISION-1154
   behaviour: "Rejected when a proper for today's DVD v1 file arrives and propers are DoNotUpgrade"

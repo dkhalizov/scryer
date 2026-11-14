@@ -321,88 +321,88 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:90"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_episode_does_not_have_a_file|-|-
 - id: SON-DECISION-0041
   behaviour: "An episode without a file is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:98"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_episode_does_not_have_grabbed_event|-|-
 - id: SON-DECISION-0042
   behaviour: "An episode with no history is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:106"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_episode_does_not_have_imported_event|-|-
 - id: SON-DECISION-0043
   behaviour: "A grab without an import in history is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:112"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_grabbed_and_imported_quality_is_the_same|-|-
 - id: SON-DECISION-0044
   behaviour: "A grab imported at the same quality is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:120"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_grabbed_download_id_and_release_torrent_hash_is_unknown|-|-
 - id: SON-DECISION-0045
   behaviour: "A torrent release without an info hash is accepted even if a grab was imported at a different quality"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:131"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_grabbed_download_does_not_have_an_id|-|-
 - id: SON-DECISION-0046
   behaviour: "A grab without a download id does not match a torrent release by hash"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:147"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_rejected_if_grabbed_download_id_matches_release_torrent_hash|-|-
 - id: SON-DECISION-0047
   behaviour: "A torrent release whose info hash matches a grab that was imported at a different quality is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:163"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_rejected_if_release_title_matches_grabbed_event_source_title|-|-
 - id: SON-DECISION-0048
   behaviour: "A release matching an imported grab (by the arranged info hash) is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:179"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs|should_be_true_when_no_existing_file|-|-
 - id: SON-DECISION-0049
   behaviour: "An anime version upgrade with no existing file is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs:63"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_guards]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs|should_be_true_if_series_is_not_anime|-|-
 - id: SON-DECISION-0050
   behaviour: "The release-group rule applies only to anime series"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs:71"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_guards]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs|should_be_true_if_is_not_a_version_upgrade_for_existing_file|-|-
 - id: SON-DECISION-0051
   behaviour: "A release that is not a version upgrade is accepted"
@@ -713,8 +713,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:46"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs|should_return_true_if_all_episodes_have_aired|-|-
 - id: SON-DECISION-0090
   behaviour: "A season pack whose episodes have all aired is accepted"
@@ -753,40 +753,40 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:30"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_smaller_than_maximum_size|-|-
 - id: SON-DECISION-0095
   behaviour: "A release below the maximum size is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:39"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_equals_to_maximum_size|-|-
 - id: SON-DECISION-0096
   behaviour: "A release exactly at the maximum size is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:48"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_false_when_size_is_bigger_than_maximum_size|-|-
 - id: SON-DECISION-0097
   behaviour: "A release above the maximum size is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:57"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_size_is_zero|-|-
 - id: SON-DECISION-0098
   behaviour: "A release of unknown size (0) passes the maximum size check"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:66"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_absent]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MinimumAgeSpecificationFixture.cs|should_return_true_when_minimum_age_is_set_to_zero|-|-
 - id: SON-DECISION-0099
   behaviour: "A minimum age of 0 accepts any usenet release"
@@ -841,24 +841,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:84"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs|only_first_episode_not_monitored_should_return_false|-|-
 - id: SON-DECISION-0106
   behaviour: "A two-episode release with the first episode unmonitored is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:92"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs|only_second_episode_not_monitored_should_return_false|-|-
 - id: SON-DECISION-0107
   behaviour: "A two-episode release with the second episode unmonitored is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:99"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs|should_return_true_for_single_episode_search|-|-
 - id: SON-DECISION-0108
   behaviour: "A single-episode search ignores an unmonitored series"
@@ -905,21 +905,21 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:140"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs|should_return_true_if_is_not_a_multi_season_release|-|-
 - id: SON-DECISION-0114
   behaviour: "A single-season pack is accepted"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs:46"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs|should_return_false_if_is_a_multi_season_release|-|-
 - id: SON-DECISION-0115
   behaviour: "A multi-season pack is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs:54"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_context]
