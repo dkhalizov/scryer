@@ -2032,6 +2032,41 @@ async fn movie_title_scan_multiple_files_picks_initial_primary_and_marks_rest_ad
     );
 }
 
+// fork (P2, #440): a scanned file stores the quality its name gives, as a
+// manual import does; analysis later replaces it with the measured size.
+#[tokio::test]
+async fn movie_title_scan_stores_the_parsed_quality() {
+    let tempdir = tempfile::tempdir().expect("tempdir");
+    let title_dir = tempdir.path().join("Quality Seed (2026)");
+    std::fs::create_dir(&title_dir).expect("create movie folder");
+    let movie_path = title_dir.join("Quality.Seed.2026.1080p.WEB-DL.mkv");
+    std::fs::write(&movie_path, vec![0_u8; 128]).expect("write movie file");
+
+    let (app, user, _) = bootstrap_movie_scan_app(
+        tempdir.path(),
+        build_test_library_files(&[movie_path.as_path()]),
+        Arc::new(EmptySearchMetadataGateway),
+    )
+    .await;
+    let title =
+        create_movie_title_with_folder(&app, &user, "Quality Seed", title_dir.as_path()).await;
+
+    app.scan_title_library(&user, &title.id)
+        .await
+        .expect("scan movie title");
+
+    let files = app
+        .services
+        .library
+        .media_files
+        .list_media_files_for_title(&title.id)
+        .await
+        .expect("list media files");
+    assert_eq!(files.len(), 1);
+    assert_eq!(files[0].quality_label.as_deref(), Some("1080p"));
+    assert_eq!(files[0].resolution.as_deref(), Some("1080p"));
+}
+
 #[tokio::test]
 async fn movie_title_scan_backfills_stale_mtime_signature_then_skips_current_signature() {
     let tempdir = tempfile::tempdir().expect("tempdir");

@@ -198,6 +198,9 @@ async fn persist_or_reuse_scanned_media_file(
         });
     }
 
+    // fork (P2, #440): store the name's quality, as manual import does
+    // (import/workflow/manual.rs); analysis replaces it with the measured size.
+    let parsed_quality = parsed.quality.clone().filter(|q| !q.trim().is_empty());
     let media_file_input = crate::InsertMediaFileInput {
         title_id: title.id.clone(),
         file_path: file.path.clone(),
@@ -205,11 +208,11 @@ async fn persist_or_reuse_scanned_media_file(
         role: new_file_role,
         source_signature_scheme,
         source_signature_value,
-        quality_label: None,
+        quality_label: parsed_quality.clone(),
         scene_name: Some(parsed.raw_title.clone()),
         release_group: parsed.release_group.clone(),
         source_type: crate::release_parser::parsed_release_source_type(parsed),
-        resolution: None,
+        resolution: parsed_quality,
         video_codec_parsed: None,
         audio_codec_parsed: None,
         audio_channels_parsed: None,

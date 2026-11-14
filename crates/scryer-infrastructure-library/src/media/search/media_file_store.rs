@@ -3293,7 +3293,10 @@ fn media_analysis_update(
     let labels = analysis.derived_labels();
     Ok(MediaAnalysisUpdate {
         analysis_args,
+        // fork (P2, #440, D12): the measured size sets the quality too, so
+        // the cutoff gate reads what the Wanted SQL computes. No size: keep it.
         sql: "UPDATE media_files SET
+                quality_id = COALESCE({}, quality_id),
                 resolution = COALESCE({}, resolution),
                 video_codec_parsed = COALESCE({}, video_codec_parsed),
                 audio_codec_parsed = {},
@@ -3324,6 +3327,7 @@ fn media_analysis_update(
              WHERE id = {}"
             .to_string(),
         args: vec![
+            SqlArg::OptText(labels.resolution.clone()),
             SqlArg::OptText(labels.resolution),
             SqlArg::OptText(labels.video_codec.as_ref().map(ToString::to_string)),
             SqlArg::OptText(labels.audio_codec),
@@ -8270,7 +8274,8 @@ mod tests {
             .expect("list media files should succeed");
 
         assert_eq!(files.len(), 1);
-        assert_eq!(files[0].quality_label.as_deref(), Some("720p"));
+        // fork (P2, D12): the measured size sets the quality too.
+        assert_eq!(files[0].quality_label.as_deref(), Some("1080p"));
         // Successful analysis replaces the parsed resolution with the measured tier.
         assert_eq!(files[0].resolution.as_deref(), Some("1080p"));
         assert_eq!(files[0].source_type.as_deref(), Some("WEB-DL"));
@@ -8655,5 +8660,92 @@ mod tests {
 
         files.delete_media_file(&file_id).await.unwrap();
         assert!(stored_analysis(&services, &file_id).await.is_none());
+    }
+
+    // fork (P2, #440): analysis sets the quality from the measured size, over
+    // the name's (D12); an analysis without a size keeps it.
+    async fn assert_analysis_sets_quality_from_video_size(
+        datastore: crate::queries::sql_runtime::StoreDatastore,
+    ) {
+        let title = make_test_series_title("title-analysis-quality");
+        TitleStore::new(datastore.clone())
+            .create(title.clone())
+            .await
+            .unwrap();
+        let files = MediaFileStore::new(datastore);
+        let file_id = files
+            .insert_media_file(&InsertMediaFileInput {
+                title_id: title.id.clone(),
+                file_path: "/library/Show/Season 01/Show - S01E01.mkv".to_string(),
+                size_bytes: 1_000,
+                quality_label: Some("720p".to_string()),
+                ..Default::default()
+            })
+            .await
+            .unwrap();
+        let gate_label = || async {
+            files
+                .list_primary_file_cutoffs_for_title(&title.id)
+                .await
+                .unwrap()
+                .into_iter()
+                .map(|file| file.quality_label)
+                .collect::<Vec<_>>()
+        };
+        assert_eq!(gate_label().await, vec![Some("720p".to_string())]);
+
+        files
+            .update_media_file_analysis(&file_id, stream_analysis("eng"))
+            .await
+            .unwrap();
+        assert_eq!(gate_label().await, vec![Some("1080p".to_string())]);
+
+        files
+            .update_media_file_analysis(&file_id, MediaFileAnalysis::default())
+            .await
+            .unwrap();
+        assert_eq!(gate_label().await, vec![Some("1080p".to_string())]);
+    }
+
+    #[tokio::test]
+    async fn sqlite_analysis_sets_quality_from_video_size() {
+        let dir = tempfile::tempdir().unwrap();
+        let services = SqliteServices::new(dir.path().join("quality.db").to_string_lossy())
+            .await
+            .unwrap();
+        assert_analysis_sets_quality_from_video_size(services.datastore()).await;
+    }
+
+    #[tokio::test]
+    async fn postgres_analysis_sets_quality_from_video_size() {
+        let Ok(url) = std::env::var("SCRYER_TEST_POSTGRES_URL") else {
+            eprintln!("skipped: SCRYER_TEST_POSTGRES_URL must name an isolated test database");
+            return;
+        };
+        let admin = sqlx::PgPool::connect(&url).await.unwrap();
+        let schema = format!("analysis_quality_{}", uuid::Uuid::new_v4().simple());
+        sqlx::raw_sql(sqlx::AssertSqlSafe(format!("CREATE SCHEMA {schema}")))
+            .execute(&admin)
+            .await
+            .unwrap();
+        let options: sqlx::postgres::PgConnectOptions = url.parse().unwrap();
+        let pool = sqlx::postgres::PgPoolOptions::new()
+            .connect_with(options.options([("search_path", schema.as_str())]))
+            .await
+            .unwrap();
+        scryer_infrastructure_datastore::postgres::replay_source_catalog_for_fresh_install(
+            &pool, None,
+        )
+        .await
+        .unwrap();
+        assert_analysis_sets_quality_from_video_size(
+            crate::queries::sql_runtime::StoreDatastore::Postgres { pool: pool.clone() },
+        )
+        .await;
+        pool.close().await;
+        sqlx::raw_sql(sqlx::AssertSqlSafe(format!("DROP SCHEMA {schema} CASCADE")))
+            .execute(&admin)
+            .await
+            .unwrap();
     }
 }
