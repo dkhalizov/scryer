@@ -2336,6 +2336,12 @@ pub(crate) fn episode_import_rename_tokens(
     );
     if let Some(q) = quality_override {
         tokens.insert("quality".to_string(), q.to_string());
+        // fork (P5): `quality_full` is built from `quality`.
+        crate::library::rename::insert_quality_full_token(
+            &mut tokens,
+            &title.facet,
+            parsed.is_remux,
+        );
     }
     tokens
 }
