@@ -18,7 +18,7 @@ mod search;
 pub use scryer_plugin_sdk::PluginNabOperation as IndexerClientSearchOperation;
 pub use search::IndexerClientSearchRequest;
 mod artifact;
-mod caps;
+pub(crate) mod caps; // fork: parity net seam (tests/parity_indexers/indexers.rs)
 pub use artifact::IndexerClientArtifactReference;
 pub mod usage;
 pub use usage::IndexerClientUseOutcome;

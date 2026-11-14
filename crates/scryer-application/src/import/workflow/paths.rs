@@ -522,7 +522,8 @@ async fn persist_title_folder_path_if_missing(
     }
     crate::folder_ownership::claim_title_folder_if_missing(app, &mut title, folder_path).await
 }
-pub(crate) fn preserved_import_filename(source_path: &Path) -> String {
+// fork: parity net seam (tests/parity_naming/naming.rs)
+pub fn preserved_import_filename(source_path: &Path) -> String {
     let raw = source_path
         .file_name()
         .and_then(|name| name.to_str())

@@ -22,3 +22,6 @@ isolang = "2.4"
 
 [dev-dependencies]
 toml.workspace = true
+# fork: parity net (tests/parity_scan.rs)
+scryer-parity = { path = "../../parity/harness" }
+tempfile = "3"

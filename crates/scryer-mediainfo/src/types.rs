@@ -1,6 +1,7 @@
 /// Track type discriminator for intermediate parsing results.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
-pub(crate) enum TrackKind {
+// fork: parity net seam (tests/parity_scan/scan_reader.rs)
+pub enum TrackKind {
     #[default]
     Video,
     Audio,
@@ -11,7 +12,8 @@ pub(crate) enum TrackKind {
 /// format. Container-specific parsers populate this struct; codec analysis and
 /// HDR detection then operate on it uniformly.
 #[derive(Debug, Clone, Default)]
-pub(crate) struct RawTrack {
+// fork: parity net seam (tests/parity_scan/scan_reader.rs)
+pub struct RawTrack {
     pub kind: TrackKind,
     /// Raw container codec identifier, e.g. `"V_MPEG4/ISO/AVC"` (MKV) or
     /// `"avc1"` (MP4 FourCC).
@@ -49,7 +51,8 @@ pub(crate) struct RawTrack {
 
 /// Parsed container-level metadata.
 #[derive(Debug, Clone)]
-pub(crate) struct RawContainer {
+// fork: parity net seam (tests/parity_scan/scan_reader.rs)
+pub struct RawContainer {
     /// Container format name, e.g. `"matroska"`, `"mp4"`.
     pub format_name: String,
     /// Total duration in fractional seconds.

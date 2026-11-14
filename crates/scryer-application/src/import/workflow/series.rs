@@ -2258,7 +2258,8 @@ pub(crate) fn import_absolute_episode_token(
     clippy::too_many_arguments,
     reason = "episode rename rendering uses the full canonical token set explicitly"
 )]
-pub(crate) fn episode_import_dest_path(
+// fork: parity net seam (tests/parity_naming/naming.rs)
+pub fn episode_import_dest_path(
     title: &scryer_domain::Title,
     use_season_folders: bool,
     parsed: &crate::ParsedReleaseMetadata,

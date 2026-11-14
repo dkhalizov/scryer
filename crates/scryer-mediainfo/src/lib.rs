@@ -28,6 +28,13 @@ mod video_metadata;
 
 use types::{RawContainer, RawTrack, TrackKind};
 
+// fork: parity net seam (tests/parity_scan/scan_reader.rs)
+#[doc(hidden)]
+pub mod parity_seams {
+    pub use crate::build_analysis;
+    pub use crate::types::{RawContainer, RawTrack, TrackKind};
+}
+
 // ---------------------------------------------------------------------------
 // Public error type
 // ---------------------------------------------------------------------------
@@ -580,7 +587,9 @@ fn looks_like_mp4(data: &[u8]) -> bool {
 // Internal: convert RawContainer → MediaAnalysis
 // ---------------------------------------------------------------------------
 
-fn build_analysis(mut raw: RawContainer) -> MediaAnalysis {
+// fork: parity net seam (tests/parity_scan/scan_reader.rs)
+#[doc(hidden)]
+pub fn build_analysis(mut raw: RawContainer) -> MediaAnalysis {
     populate_analysis_details(&mut raw);
     let video_tracks: Vec<&RawTrack> = raw
         .tracks

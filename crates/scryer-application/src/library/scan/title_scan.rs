@@ -101,7 +101,8 @@ async fn discover_episodic_title_files_for_progress(
 /// [`library_root_state`]. Errors other than "not found" (an unreachable
 /// mount, a permission problem) abort the scan so nothing downstream treats
 /// the tree as empty.
-async fn episodic_title_directory_present(title_dir: &Path) -> AppResult<bool> {
+// fork: parity net seam (was private; crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs)
+pub async fn episodic_title_directory_present(title_dir: &Path) -> AppResult<bool> {
     match tokio::fs::metadata(title_dir).await {
         Ok(metadata) if metadata.is_dir() => Ok(true),
         Ok(_) => Err(AppError::validation_refused(
@@ -126,13 +127,15 @@ async fn episodic_title_directory_present(title_dir: &Path) -> AppResult<bool> {
 /// deleted. Only a populated root makes a missing title directory a real
 /// deletion.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
-pub(crate) enum LibraryRootState {
+// fork: parity net seam (was private; crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs)
+pub enum LibraryRootState {
     Missing,
     Empty,
     Populated,
 }
 
-pub(crate) async fn library_root_state(root: &Path) -> AppResult<LibraryRootState> {
+// fork: parity net seam (was private; crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs)
+pub async fn library_root_state(root: &Path) -> AppResult<LibraryRootState> {
     match tokio::fs::metadata(root).await {
         Ok(metadata) if metadata.is_dir() => {}
         Ok(_) => return Ok(LibraryRootState::Missing),
@@ -324,7 +327,8 @@ async fn tracked_movie_path_confirmed_missing(path: &Path) -> bool {
 /// is still a directory. When the anchor is gone too, the whole tree is
 /// unreachable (a vanished mount, a detached volume) rather than deleted, and
 /// the record must survive so a transient outage never retires real files.
-async fn tracked_media_path_confirmed_missing(path: &Path, anchor_dir: &Path) -> bool {
+// fork: parity net seam (was private; crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs)
+pub async fn tracked_media_path_confirmed_missing(path: &Path, anchor_dir: &Path) -> bool {
     match tokio::fs::metadata(path).await {
         Ok(_) => false,
         Err(error) if error.kind() == std::io::ErrorKind::NotFound => {

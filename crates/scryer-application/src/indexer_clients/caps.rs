@@ -122,7 +122,8 @@ fn merge_node(target: &mut Option<IndexerCapsSearchNode>, source: Option<&Indexe
     target.supported_params.dedup();
 }
 
-fn merge_source(
+// fork: parity net seam (tests/parity_indexers/indexers.rs)
+pub fn merge_source(
     caps: &mut IndexerCapsSnapshot,
     categories: &mut BTreeMap<u32, IndexerCategoryDescriptor>,
     declared: &IndexerProviderCapabilities,

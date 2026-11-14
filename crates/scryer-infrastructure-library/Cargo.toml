@@ -39,6 +39,7 @@ zune-core = { version = "=0.5.3", optional = true }
 
 [dev-dependencies]
 scryer-infrastructure-datastore = { path = "../scryer-infrastructure-datastore" }
+scryer-parity = { path = "../../parity/harness" }
 tempfile = "3"
 # Paused-clock tests (`start_paused`) run the runtime to idle.
 tokio = { workspace = true, features = ["test-util"] }

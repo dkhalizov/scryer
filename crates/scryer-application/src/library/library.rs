@@ -88,7 +88,8 @@ pub(crate) mod scan_title_files;
 #[path = "scan/title_finalize.rs"]
 mod scan_title_finalize;
 #[path = "scan/title_scan.rs"]
-mod scan_title_scan;
+// fork: parity net seam (was private; crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs)
+pub(crate) mod scan_title_scan;
 
 use scan_candidates::{
     heal_scanned_title_root_folder_id, process_movie_full_scan_candidate,

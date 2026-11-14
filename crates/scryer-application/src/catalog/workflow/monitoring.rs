@@ -1336,7 +1336,8 @@ fn extract_monitor_type(tags: &[String]) -> String {
 /// NOTE: All values are lowercase because tags go through `normalize_tag`
 /// which calls `.to_lowercase()`. The frontend sends camelCase values like
 /// "futureEpisodes" which become "futureepisodes" after normalization.
-fn should_monitor_season(
+// fork: parity net seam (tests/parity_requests/requests.rs)
+pub fn should_monitor_season(
     monitor_type: &str,
     season_number: i32,
     monitor_specials: bool,

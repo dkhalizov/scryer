@@ -2528,7 +2528,8 @@ pub(crate) fn normalize_requested_monitor_type(
 
 /// Advanced monitoring requires an explicit, non-empty selection; every other
 /// monitor type drops whatever selection was supplied.
-pub(crate) fn normalize_requested_monitor_selection(
+// fork: parity net seam (tests/parity_requests/requests.rs)
+pub fn normalize_requested_monitor_selection(
     monitor_type: Option<&str>,
     selection: Option<MonitorSelection>,
 ) -> AppResult<Option<MonitorSelection>> {

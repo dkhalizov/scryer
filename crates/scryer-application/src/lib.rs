@@ -442,6 +442,20 @@ pub mod parity_seams {
     pub use crate::jobs::housekeeping::{
         ORPHAN_SWEEP_PROBES_PER_PASS, OrphanSweepRootChecks, next_orphan_media_file,
     };
+    // fork: parity net seam (tests/parity_scan/scan_mediainfo.rs)
+    pub use crate::library::rename::{RenameMediaEvidence, title_rename_tokens};
+    // fork: parity net seam (crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs)
+    pub use crate::library::workflow::scan_title_scan::{
+        LibraryRootState, episodic_title_directory_present, library_root_state,
+        tracked_media_path_confirmed_missing,
+    };
+    // fork: parity net seam (tests/parity_requests/requests.rs)
+    pub use crate::catalog::workflow::should_monitor_season;
+    pub use crate::media_requests::normalize_requested_monitor_selection;
+    // fork: parity net seam (tests/parity_naming/naming.rs)
+    pub use crate::import::workflow::{episode_import_dest_path, preserved_import_filename};
+    // fork: parity net seam (crates/scryer-infrastructure-acquisition/tests/parity_indexers/indexers.rs)
+    pub use crate::indexer_clients::caps::merge_source;
 }
 pub use acquisition::seed_goals::{
     ReleaseSeedMinimums, ResolvedSeedGoals, SeedGoalRequest, SeedGoalResolutionSource,

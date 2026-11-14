@@ -5028,7 +5028,8 @@ fn title_external_id_value(title: &Title, source: &str) -> Option<String> {
 /// Import and library rename both build this, so a file renders the same name
 /// whichever pass names it.
 #[derive(Debug, Clone, Default)]
-pub(crate) struct RenameMediaEvidence {
+#[doc(hidden)] // fork: parity net seam (tests/parity_scan/scan_mediainfo.rs)
+pub struct RenameMediaEvidence {
     analyzed: crate::media::release_labels::ResolvedAnalysisReleaseLabels,
     has_audio_stream_evidence: bool,
     quality_label: Option<String>,
@@ -5073,7 +5074,8 @@ impl RenameMediaEvidence {
     /// A file still being imported has its probe but no recorded row yet; the
     /// parsed release name supplies missing facts, except unknown fields of
     /// an explicitly analyzed primary audio track.
-    pub(crate) fn from_analysis(analysis: &crate::MediaFileAnalysis) -> Self {
+    // fork: parity net seam (tests/parity_scan/scan_mediainfo.rs)
+    pub fn from_analysis(analysis: &crate::MediaFileAnalysis) -> Self {
         Self {
             has_audio_stream_evidence: !analysis.audio_streams.is_empty(),
             analyzed: resolve_release_labels_from_analysis(
@@ -5325,7 +5327,8 @@ fn dolby_vision_label(
 /// it, including a disambiguating year such as "Name (2018)"; movie templates
 /// render `{year}` themselves, so a movie's `title` drops that year hint.
 /// `year` is populated either way.
-pub(crate) fn title_rename_tokens(
+#[doc(hidden)] // fork: parity net seam (tests/parity_scan/scan_mediainfo.rs)
+pub fn title_rename_tokens(
     title: &Title,
     evidence: Option<RenameMediaEvidence>,
     parsed_current: &ParsedReleaseMetadata,
