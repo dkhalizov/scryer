@@ -424,14 +424,15 @@ pub fn prowlarr_managed_goal_profile(indexer: &IndexerConfig) -> Option<SeedingP
         name: "Managed by Prowlarr".to_string(),
         ratio,
         seed_time_minutes,
-        // Prowlarr carries a season-pack seed time but no season-pack ratio, so
-        // an override only kicks in when it actually set one.
+        // fork P10: Prowlarr's ratio covers every release; only the time
+        // switches for a pack (Sonarr SeedConfigProvider.cs:52-57). Override
+        // therefore only turns on when a pack time exists.
         season_pack_mode: if season_pack_seed_time_minutes.is_some() {
             SeasonPackSeedMode::Override
         } else {
             SeasonPackSeedMode::Inherit
         },
-        season_pack_ratio: None,
+        season_pack_ratio: ratio,
         season_pack_seed_time_minutes,
         // The operator's Prowlarr goals are still a floor, not a ceiling: a
         // tracker that declares a higher minimum wins, same as for a profile.
@@ -1412,6 +1413,35 @@ mod tests {
         assert_eq!(resolved.seeding_profile_id, None);
         assert_eq!(resolved.seed_goal_ratio, Some(1.5));
         assert_eq!(resolved.seed_goal_seconds, Some(4320 * 60));
+    }
+
+    #[tokio::test]
+    async fn prowlarr_season_pack_keeps_the_indexer_ratio() {
+        // fork P10: only the time switches for a pack; the ratio covers every release.
+        let resolver = resolver(
+            vec![],
+            vec![prowlarr_child(
+                "idx-managed",
+                None,
+                serde_json::json!({
+                    "indexer_id": 7,
+                    "seed_ratio": 1.0,
+                    "seed_time_minutes": 4320,
+                    "season_pack_seed_time_minutes": 10080,
+                }),
+            )],
+            None,
+        );
+        let mut pack_request = request(Some("idx-managed"), None);
+        pack_request.season_pack = true;
+
+        let resolved = resolver
+            .resolve(&pack_request)
+            .await
+            .expect("resolution should succeed");
+
+        assert_eq!(resolved.seed_goal_ratio, Some(1.0));
+        assert_eq!(resolved.seed_goal_seconds, Some(10080 * 60));
     }
 
     #[tokio::test]
