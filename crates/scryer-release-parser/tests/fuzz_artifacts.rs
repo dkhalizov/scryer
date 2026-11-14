@@ -172,3 +172,52 @@ fn repeated_episode_fill_is_bounded_from_the_last_listed_episode() {
     let listed = episode("Show.Name.S01.E1500E10-2000.720p.HDTV.x264-GRP").episode_numbers;
     assert!(listed.len() < 1000, "{} episodes", listed.len());
 }
+
+/// No season of 10000 or more, in `season` or `season_numbers` (ledger P14).
+fn assert_no_huge_season(raw: &str) {
+    let parsed = episode(raw);
+    assert!(
+        parsed.season.is_none_or(|season| season < 10_000)
+            && parsed.season_numbers.iter().all(|season| *season < 10_000),
+        "{raw}: {parsed:?}"
+    );
+}
+
+/// A season token of five or more digits is not a season (ledger P14); four
+/// digits (`S1936E18`) still are.
+#[test]
+fn five_digit_season_is_not_read() {
+    let real = episode("Show.Name.S12345E02.S03E04.720p.HDTV.x264-GRP");
+    assert_eq!(real.season, Some(3), "{real:?}");
+    assert_eq!(real.episode_numbers, vec![4], "{real:?}");
+    let four = episode("Show.Name.S1936E18.720p.HDTV.x264-GRP");
+    assert_eq!(four.season, Some(1936), "{four:?}");
+    assert_no_huge_season("Show.Name.S12345E02.720p.HDTV.x264-GRP");
+}
+
+/// The NxM route.
+#[test]
+fn five_digit_season_nxm_is_not_read() {
+    assert_no_huge_season("Show.Name.12345x03.720p.HDTV.x264-GRP");
+    let real = episode("Show.Name.12345x03.S03E04.720p.HDTV.x264-GRP");
+    assert_eq!(real.season, Some(3), "{real:?}");
+}
+
+/// Every other route that reads a season word or token.
+#[test]
+fn five_digit_season_word_routes_are_not_read() {
+    for raw in [
+        "Show.Name.Season.12345.Episode.3.720p.HDTV.x264-GRP",
+        "Show.Name.Complete.Season.12345.720p.HDTV.x264-GRP",
+        "Show.Name.CompleteSeason12345.720p.HDTV.x264-GRP",
+        "Show.Name.Season.12345.(01-12).720p.HDTV.x264-GRP",
+        "Show Name (Season 12345) (01-12) 720p HDTV x264-GRP",
+        "Show.Name.Season.12345.Complete.(01-12).720p.HDTV.x264-GRP",
+        "Show.Name.Season.12345.Batch.01-12.720p.HDTV.x264-GRP",
+        "Show.Name.2019.Season 12345 Episode 2-3.720p.HDTV.x264-GRP",
+        "Show Name - Season 99999999 Episode 2-3 720p HDTV x264-GRP",
+        "Show.Name.S12345.720p.HDTV.x264-GRP",
+    ] {
+        assert_no_huge_season(raw);
+    }
+}

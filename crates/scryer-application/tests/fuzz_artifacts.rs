@@ -62,3 +62,25 @@ fn artifact(name: &str) -> Vec<u8> {
 fn scan_path_wide_range_does_not_allocate_the_whole_range() {
     replay(&artifact("oom-range-1-4000000000"));
 }
+
+/// A season of five digits is not a season (ledger P14).
+#[test]
+fn scan_path_five_digit_season_is_not_read() {
+    let parse = replay(&artifact("crash-season-22332x3"));
+    for episode in [
+        parse.parsed_release.episode.as_ref(),
+        parse.episode_identity.as_ref(),
+    ]
+    .into_iter()
+    .flatten()
+    {
+        assert!(
+            episode.season.is_none_or(|season| season < 10_000),
+            "{episode:?}"
+        );
+        assert!(
+            episode.season_numbers.iter().all(|season| *season < 10_000),
+            "{episode:?}"
+        );
+    }
+}
