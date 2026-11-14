@@ -4896,6 +4896,59 @@ fn insert_common_rename_tokens(tokens: &mut BTreeMap<String, String>, common: Re
     tokens.insert("ext".to_string(), common.extension);
 }
 
+/// fork (P5): `{quality_full}` is the arr's `{Quality Full}`. Built from the
+/// final `source`, `quality` and `revision` tokens, so a caller that overrides
+/// `quality` calls it again. Titles are the arr defaults: `WEBDL-1080p`,
+/// `WEBRip-1080p`, `Bluray-1080p`, `HDTV-720p`, `SDTV`, `DVD`, `BR-DISK`; a
+/// remux is `Remux-2160p` for a movie (Radarr) and `Bluray-2160p Remux`
+/// otherwise (Sonarr). Any revision adds ` Proper`: both arrs write Proper for
+/// a repack (revision version above 1). With no known source it is the bare
+/// resolution.
+pub(crate) fn insert_quality_full_token(
+    tokens: &mut BTreeMap<String, String>,
+    facet: &MediaFacet,
+    parsed_remux: bool,
+) {
+    use crate::ReleaseSource as Source;
+    let token = |name: &str| tokens.get(name).cloned().unwrap_or_default();
+    let (source, quality) = (token("source"), token("quality"));
+    // Arr resolutions: both parsers fold 1440p into 1080p (Sonarr and Radarr
+    // QualityParser ResolutionRegex); neither knows 4320p, which folds into
+    // 2160p here; 576p is a Bluray-only title and anything lower is 480p.
+    let lines = crate::quality_profile::resolution_lines(Some(&quality)).map(|lines| match lines {
+        2160.. => 2160,
+        1080.. => 1080,
+        720.. => 720,
+        576.. => 576,
+        _ => 480,
+    });
+    // A WEB source below 720p is WEBDL-480p / WEBRip-480p (Sonarr QualityParser).
+    let web = |lines: u32| if lines < 720 { 480 } else { lines };
+    let remux = parsed_remux || source.eq_ignore_ascii_case("remux");
+    let title = match (remux, Source::parse(&source), lines) {
+        (true, _, Some(lines)) if *facet == MediaFacet::Movie => format!("Remux-{lines}p"),
+        (true, _, Some(lines)) => format!("Bluray-{lines}p Remux"),
+        (_, Some(Source::WebDl), Some(lines)) => format!("WEBDL-{}p", web(lines)),
+        (_, Some(Source::WebRip), Some(lines)) => format!("WEBRip-{}p", web(lines)),
+        (_, Some(Source::BluRay), Some(lines)) => format!("Bluray-{lines}p"),
+        (_, Some(Source::Hdtv), Some(lines)) if lines >= 720 => format!("HDTV-{lines}p"),
+        (_, Some(Source::Hdtv), _) => "SDTV".to_string(),
+        (_, Some(Source::BrDisk), _) => "BR-DISK".to_string(),
+        // DVD, CAM, TELESYNC, TELECINE, DVDSCR, WORKPRINT are the arr titles.
+        (_, Some(other), _) => other.as_str().to_string(),
+        (_, None, _) => quality,
+    };
+    let proper = if token("revision").is_empty() {
+        ""
+    } else {
+        " Proper"
+    };
+    tokens.insert(
+        "quality_full".to_string(),
+        format!("{title}{proper}").trim().to_string(),
+    );
+}
+
 const TITLE_EXTERNAL_ID_TOKENS: [(&str, &str); 6] = [
     ("imdb_id", "imdb"),
     ("tmdb_id", "tmdb"),
@@ -4916,6 +4969,7 @@ fn is_supported_rename_template_token(token: &str) -> bool {
             | "title_first_character"
             | "year"
             | "quality"
+            | "quality_full"
             | "edition"
             | "source"
             | "dynamic_range"
@@ -4944,6 +4998,7 @@ fn is_supported_rename_template_token_for_facet(token: &str, facet: &MediaFacet)
             | "title_without_year"
             | "year"
             | "quality"
+            | "quality_full"
             | "source"
             | "dynamic_range"
             | "revision"
@@ -5350,6 +5405,7 @@ pub fn title_rename_tokens(
     );
     let mut tokens = BTreeMap::new();
     insert_common_rename_tokens(&mut tokens, common.common);
+    insert_quality_full_token(&mut tokens, &title.facet, parsed_current.is_remux); // fork (P5)
     insert_title_year_variant_tokens(&mut tokens, title);
     let title_token = tokens.get("title").cloned().unwrap_or_default();
     insert_title_order_tokens(
@@ -6050,6 +6106,7 @@ fn build_movie_rename_plan_item(
                 .or(parsed.quality.clone())
                 .unwrap_or_default(),
         );
+        insert_quality_full_token(&mut tokens, &title.facet, parsed.is_remux); // fork (P5)
     }
     tokens.insert("edition".to_string(), edition);
     let rendered = match resolve_rendered_rename_filename(

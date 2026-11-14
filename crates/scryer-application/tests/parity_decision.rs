@@ -28,11 +28,22 @@
 //!
 //! # Translation table (reference model -> Scryer)
 //!
-//! Quality name -> (tier, source, flags). Scryer tiers are resolutions only, so
-//! qualities of one resolution share a tier (Sonarr's WEBDL-1080p < Bluray-1080p
-//! is invisible to Scryer; those cases go red, they are not adjusted).
+//! Quality name -> (resolution, source, flags). A Scryer tier is a bare
+//! resolution (`1080P`: every source not listed at it) or a source key
+//! (`WEBDL-1080P`), built by the product's `quality_tier_label` from the
+//! resolution and the source spelled as `parsed_release_source_type` does
+//! (`Remux` when `is_remux`), ledger D48. Per case a resolution is *split* into
+//! source keys only when (D54) two named qualities at it (release, files, queue
+//! items, cutoff) have different keys, or a named one is outside the explicit
+//! allowed list while another allowed one at that resolution is in it. A split
+//! resolution lists the key of each allowed quality there, ranked by its
+//! position in the allowed list (the reference item order), and no bare entry;
+//! colliding keys (DVD, DVD-R, REGIONAL -> `DVD-480P`; HDTV-1080p, Raw-HD ->
+//! `HDTV-1080P`) take the rank of the member the case names, else the best.
+//! Other resolutions stay bare, and
+//! resolutions are ordered highest first.
 //!
-//! | Reference quality | Scryer tier | `ReleaseSource` | flags |
+//! | Reference quality | Scryer resolution | `ReleaseSource` | flags |
 //! |---|---|---|---|
 //! | Unknown | none (`allow_unknown_quality` when allowed) | none | |
 //! | SDTV | 480P | Hdtv | |
@@ -50,14 +61,16 @@
 //!
 //! Profile -> `QualityProfileCriteria` (starting from `builtin_1080p_profile()`):
 //!
-//! - `quality_tiers`: distinct tiers of the allowed qualities, best (highest
-//!   resolution) first. Allowed = the explicit `allowed` / `items_allowed`
-//!   list; `"all"` or no list = every quality of `qualities` / `items`, or
+//! - `quality_tiers`: distinct tiers of the allowed qualities (split as
+//!   above), best (highest resolution, then item order) first. Allowed = the
+//!   explicit `allowed` / `items_allowed` list; `"all"` or no list = every
+//!   quality of `qualities` / `items`, or
 //!   every quality in the table above when the fixture lists none.
 //! - `source_allowlist`: distinct sources of the allowed qualities, only when
 //!   the fixture gives an explicit allowed list; empty for "all".
-//! - `cutoff_tier`: tier of `cutoff`; `Unknown` or absent (the reference
-//!   model's default cutoff, quality id 0 = Unknown) -> the lowest tier.
+//! - `cutoff_tier`: tier (or split key) of `cutoff`; `Unknown` or absent (the
+//!   reference model's default cutoff, quality id 0 = Unknown) -> the lowest
+//!   tier.
 //! - `allow_upgrades` = `upgrade_allowed`; `min_score_to_grab` = `min_format_score`;
 //!   `cutoff_score` = `cutoff_format_score`; `min_upgrade_score_delta` =
 //!   `min_upgrade_format_score`. Absent keys take the reference model's
@@ -209,7 +222,7 @@ use scryer_application::parity_seams::{
     ReleaseAutoDecisionCode, ScopeMembership, analyzed_cutoff_quality_for_scope,
     apply_min_score_gate, cutoff_refusal, episode_is_unaired, evaluate_admission,
     evaluate_profile_requirements, incumbent_at_cutoff, meets_minimum_seeders,
-    submission_scope_intersects,
+    quality_tier_label, submission_scope_intersects,
 };
 use scryer_application::{
     AcquisitionThresholds, AudioLanguageRank, DelayProfile, DownloadSourceKind,
@@ -290,7 +303,7 @@ fn son_decision_captured() {
         let input = &case["input"];
         let outcome = (|| -> Result<Value, String> {
             let profile_id = input["profile_id"].as_i64().ok_or("no profile_id")?;
-            let profile = build_profile(&captured_spec("sonarr", profile_id)?)?;
+            let profile = build_profile(&captured_spec("sonarr", profile_id)?, &[])?;
             let name = input["file_quality"]["name"].as_str().ok_or("no file quality")?;
             let tier = quality(name)?.tier;
             Ok(json!({ "cutoff_met": profile.criteria.quality_cutoff_met(tier) }))
@@ -311,9 +324,10 @@ fn rad_decision_captured() {
         }
         let given = &case["input"]["given"];
         let outcome = (|| -> Result<Value, String> {
-            let profile = build_profile(&fixture_spec(&given["profile"], &Value::Null)?)?;
-            let crit = &profile.criteria;
             let name = given["file_quality"].as_str().ok_or("no file quality")?;
+            let spec = fixture_spec(&given["profile"], &Value::Null)?;
+            let profile = build_profile(&spec, &[quality(name)?])?;
+            let crit = &profile.criteria;
             let (version, real) = revision_of(&given["revision"]);
             if real > 0 {
                 return Err("no Scryer field for a REAL revision".into());
@@ -325,11 +339,11 @@ fn rad_decision_captured() {
                 group: None,
                 score: given["custom_format_score"].as_i64().unwrap_or(0) as i32,
             };
-            let quality_met = crit.quality_cutoff_met(file.q.tier);
+            let quality_met = crit.quality_cutoff_met(key(&file.q).as_deref());
             // Scryer's cutoff-unmet list (catalog/workflow/titles.rs:612) skips
             // profiles with upgrades off and files whose tier is not in the
             // profile; past those guards it is `!quality_cutoff_met`.
-            let in_profile = file.q.tier.is_some_and(|t| crit.quality_tiers.iter().any(|x| x == t));
+            let in_profile = tier_index(&profile, &file).is_some();
             if !crit.allow_upgrades || !in_profile {
                 return Err(
                     "Scryer's cutoff-unmet list is not callable here; its guards (upgrades on, file tier in the profile) do not hold"
@@ -428,7 +442,12 @@ struct Q {
     source: Option<ReleaseSource>,
     remux: bool,
     bd_disk: bool,
+    /// The reference name when it shares a key with another (`COLLIDING`).
+    alias: Option<&'static str>,
 }
+
+/// Reference qualities that share a tier key (header, D54).
+const COLLIDING: &[&str] = &["DVD", "DVD-R", "REGIONAL", "HDTV-1080p", "Raw-HD"];
 
 /// Every quality the translation table knows, for "all qualities allowed"
 /// when a fixture lists none.
@@ -446,14 +465,16 @@ fn quality(name: &str) -> Result<Q, String> {
         source,
         remux: false,
         bd_disk: false,
+        alias: None,
     };
     let remux = |tier: &'static str| Q {
         tier: Some(tier),
         source: Some(BluRay),
         remux: true,
         bd_disk: false,
+        alias: None,
     };
-    Ok(match name {
+    let mut found = match name {
         "Unknown" => q(None, None),
         "SDTV" => q(Some("480P"), Some(Hdtv)),
         "DVD" | "DVD-R" | "REGIONAL" => q(Some("480P"), Some(Dvd)),
@@ -480,6 +501,7 @@ fn quality(name: &str) -> Result<Q, String> {
             source: Some(BrDisk),
             remux: false,
             bd_disk: true,
+            alias: None,
         },
         "CAM" => q(None, Some(Cam)),
         "TELESYNC" => q(None, Some(Telesync)),
@@ -487,11 +509,48 @@ fn quality(name: &str) -> Result<Q, String> {
         "DVDSCR" => q(None, Some(DvdScr)),
         "WORKPRINT" => q(None, Some(Workprint)),
         other => return Err(format!("no Scryer translation for quality '{other}'")),
-    })
+    };
+    found.alias = COLLIDING.iter().copied().find(|n| *n == name);
+    Ok(found)
 }
 
 fn tier_lines(tier: &str) -> u32 {
-    tier.trim_end_matches('P').parse().unwrap_or(0)
+    let resolution = tier.rsplit('-').next().unwrap_or(tier);
+    resolution.trim_end_matches('P').parse().unwrap_or(0)
+}
+
+/// The source as the product stores it (`parsed_release_source_type`).
+fn source_name(q: &Q) -> Option<String> {
+    if q.remux { Some("Remux".into()) } else { q.source.map(|s| s.to_string()) }
+}
+
+/// The product's tier key for a quality (`WEBDL-1080P`, `REMUX-2160P`).
+fn key(q: &Q) -> Option<String> {
+    quality_tier_label(q.tier, source_name(q).as_deref())
+}
+
+/// Resolutions this case splits into source keys (header, D54). `named`: the
+/// case's release, files and queue items; the cutoff is added here.
+fn split_lines(s: &ProfileSpec, named: &[Q]) -> Result<Vec<u32>, String> {
+    let mut named = named.to_vec();
+    if let Some(cutoff) = s.cutoff.as_deref() {
+        named.push(quality(cutoff)?);
+    }
+    let allowed = s.names.iter().map(|n| quality(n)).collect::<Result<Vec<_>, _>>()?;
+    let keys_at = |list: &[Q], tier: &str| -> Vec<Option<String>> {
+        list.iter().filter(|q| q.tier == Some(tier)).map(key).collect()
+    };
+    let mut split = Vec::new();
+    for q in &named {
+        let Some(tier) = q.tier else { continue };
+        let allowed_here = keys_at(&allowed, tier);
+        let differ = keys_at(&named, tier).iter().any(|k| *k != key(q));
+        let outside = s.explicit && !allowed_here.is_empty() && !allowed_here.contains(&key(q));
+        if (differ || outside) && !split.contains(&tier_lines(tier)) {
+            split.push(tier_lines(tier));
+        }
+    }
+    Ok(split)
 }
 
 struct ProfileSpec {
@@ -600,18 +659,29 @@ fn captured_spec(app: &str, id: i64) -> Result<ProfileSpec, String> {
     })
 }
 
-fn build_profile(s: &ProfileSpec) -> Result<QualityProfile, String> {
-    let mut tiers: Vec<&'static str> = Vec::new();
+fn build_profile(s: &ProfileSpec, named: &[Q]) -> Result<QualityProfile, String> {
+    let split = split_lines(s, named)?;
+    let tier_of = |q: &Q| -> Option<String> {
+        let tier = q.tier?;
+        if split.contains(&tier_lines(tier)) { key(q) } else { Some(tier.to_string()) }
+    };
+    // A collision takes the rank of the member the case names, else the best.
+    let cutoff_q = s.cutoff.as_deref().map(quality).transpose()?;
+    let named_alias: Vec<&str> = named.iter().chain(&cutoff_q).filter_map(|q| q.alias).collect();
+    // (tier, rank, pinned): rank = position in the allowed list
+    let mut tiers: Vec<(String, usize, bool)> = Vec::new();
     let mut sources: Vec<ReleaseSource> = Vec::new();
     let (mut unknown, mut bd_disk) = (false, false);
-    for name in &s.names {
+    for (rank, name) in s.names.iter().enumerate() {
         let q = quality(name)?;
-        match q.tier {
-            Some(tier) => {
-                if !tiers.contains(&tier) {
-                    tiers.push(tier);
-                }
-            }
+        let pinned = q.alias.is_some_and(|a| named_alias.contains(&a));
+        match tier_of(&q) {
+            Some(tier) => match tiers.iter_mut().find(|(t, ..)| *t == tier) {
+                Some(entry) if pinned => *entry = (tier, rank, true),
+                Some(entry) if !entry.2 => entry.1 = entry.1.max(rank),
+                Some(_) => {}
+                None => tiers.push((tier, rank, pinned)),
+            },
             None => unknown |= name == "Unknown",
         }
         if let Some(source) = q.source {
@@ -621,24 +691,25 @@ fn build_profile(s: &ProfileSpec) -> Result<QualityProfile, String> {
         }
         bd_disk |= q.bd_disk;
     }
-    tiers.sort_by_key(|tier| Reverse(tier_lines(tier)));
-    let lowest = tiers.last().copied();
+    tiers.sort_by_key(|(tier, rank, _)| Reverse((tier_lines(tier), *rank)));
+    let tiers: Vec<String> = tiers.into_iter().map(|(tier, ..)| tier).collect();
+    let lowest = tiers.last().cloned();
     let cutoff = match s.cutoff.as_deref() {
         None | Some("Unknown") => lowest,
-        Some(name) => quality(name)?.tier.or(lowest),
+        Some(_) => cutoff_q.as_ref().and_then(|q| tier_of(q)).or(lowest),
     };
     let mut profile = builtin_1080p_profile();
     profile.id = "parity".into();
     profile.name = "parity".into();
     let c = &mut profile.criteria;
-    c.quality_tiers = tiers.iter().map(|t| t.to_string()).collect();
-    c.archival_quality = tiers.first().map(|t| t.to_string());
+    c.archival_quality = tiers.first().cloned();
+    c.quality_tiers = tiers;
     c.allow_unknown_quality = unknown;
     c.source_allowlist = if s.explicit { sources } else { Vec::new() };
     c.allow_bd_disk = bd_disk;
     c.allow_upgrades = s.upgrade_allowed;
     c.set_ignore_proper_repack(s.ignore_revisions);
-    c.cutoff_tier = cutoff.map(str::to_string);
+    c.cutoff_tier = cutoff;
     c.min_score_to_grab = Some(s.min_format_score);
     c.cutoff_score = Some(s.cutoff_format_score);
     c.min_upgrade_score_delta = Some(s.min_upgrade_format_score);
@@ -844,10 +915,11 @@ fn grab_refusal(
             episode_id: h.episode.clone(),
             series_movie_link_ids: Vec::new(),
             quality_label: h.side.q.tier.map(str::to_string),
+            source_type: source_name(&h.side.q),
             created_at: created_at(h.added_days_ago),
         })
         .collect();
-    let reached = crit.quality_cutoff_met(analyzed_cutoff_quality_for_scope(&summaries, &cutoff_scope));
+    let reached = crit.quality_cutoff_met(analyzed_cutoff_quality_for_scope(&summaries, &cutoff_scope).as_deref());
     let at_cutoff = incumbent_at_cutoff(reached, &subject, crit.cutoff_score, &crit.decision_pipeline);
     if let Some(code) = cutoff_refusal(candidate, &subject, at_cutoff, is_rss, &now) {
         return Some(Refusal::Cutoff(code));
@@ -894,9 +966,10 @@ fn rejection_name(refusal: &Option<Refusal>) -> String {
 // ── Reference families ─────────────────────────────────────────────────────
 
 fn quality_allowed(app: &str, g: &Value) -> Result<Value, String> {
-    let profile = build_profile(&fixture_spec(&g["profile"], &g["config"])?)?;
     let release = if app == "radarr" { &g["parsed_quality"] } else { &g["release"] };
-    let decision = requirements(&profile, &side(release, None, 0)?);
+    let release = side(release, None, 0)?;
+    let profile = build_profile(&fixture_spec(&g["profile"], &g["config"])?, &[release.q])?;
+    let decision = requirements(&profile, &release);
     let refused = decision.block_codes.iter().any(|code| {
         code == "quality_not_in_profile_tiers"
             || code == "quality_missing_and_profile_disallows_unknown"
@@ -907,7 +980,7 @@ fn quality_allowed(app: &str, g: &Value) -> Result<Value, String> {
 
 fn custom_format_allowed(app: &str, g: &Value) -> Result<Value, String> {
     let p = &g["profile"];
-    let profile = build_profile(&fixture_spec(p, &g["config"])?)?;
+    let profile = build_profile(&fixture_spec(p, &g["config"])?, &[])?;
     let quality = if app == "radarr" { &g["parsed_quality"] } else { &g["release"] };
     let mut decision = requirements(&profile, &side(quality, None, 0)?);
     let release = &g["release"];
@@ -1104,9 +1177,9 @@ fn torrent_seeding(app: &str, g: &Value) -> Result<Value, String> {
 /// `current` -> `new` pair fixtures (IsUpgradable, IsUpgradeAllowed).
 fn pair_refusal(g: &Value) -> Result<Option<Refusal>, String> {
     let p = &g["profile"];
-    let profile = build_profile(&fixture_spec(p, &g["config"])?)?;
     let current = side(&g["current"], None, cf_score(p, &g["current"]))?;
     let new = side(&g["new"], None, cf_score(p, &g["new"]))?;
+    let profile = build_profile(&fixture_spec(p, &g["config"])?, &[current.q, new.q])?;
     let held = [Held {
         id: "f1".into(),
         side: current,
@@ -1138,7 +1211,10 @@ fn upgrade_allowed(g: &Value) -> Result<Value, String> {
 
 fn upgrade_disk(app: &str, g: &Value) -> Result<Value, String> {
     let p = &g["profile"];
-    let profile = build_profile(&fixture_spec(p, &g["config"])?)?;
+    let spec = fixture_spec(p, &g["config"])?;
+    let named = |release: &Side, held: &[Held]| -> Vec<Q> {
+        std::iter::once(release.q).chain(held.iter().map(|h| h.side.q)).collect()
+    };
     if app == "radarr" {
         let release = side(&g["parsed_quality"], None, cf_score(p, &g["release"]))?;
         let mut held = Vec::new();
@@ -1151,6 +1227,7 @@ fn upgrade_disk(app: &str, g: &Value) -> Result<Value, String> {
                 added_days_ago: 0,
             });
         }
+        let profile = build_profile(&spec, &named(&release, &held))?;
         return Ok(accepted(
             grab_refusal(&profile, &release, &held, None, Vec::new(), false).is_none(),
         ));
@@ -1182,6 +1259,7 @@ fn upgrade_disk(app: &str, g: &Value) -> Result<Value, String> {
             added_days_ago: file["added_age_days"].as_i64().unwrap_or(0),
         });
     }
+    let profile = build_profile(&spec, &named(&release, &held))?;
     Ok(accepted(
         grab_refusal(&profile, &release, &held, Some(members.as_slice()), Vec::new(), false).is_none(),
     ))
@@ -1190,7 +1268,6 @@ fn upgrade_disk(app: &str, g: &Value) -> Result<Value, String> {
 fn queue(app: &str, g: &Value) -> Outcome {
     (|| -> Result<Option<Value>, String> {
         let p = &g["profile"];
-        let profile = build_profile(&fixture_spec(p, &g["config"])?)?;
         let (release, members, wanted): (Side, Option<Vec<String>>, Vec<String>) = if app == "radarr" {
             (side(&g["parsed_quality"], None, cf_score(p, &g["release"]))?, None, Vec::new())
         } else {
@@ -1203,6 +1280,13 @@ fn queue(app: &str, g: &Value) -> Outcome {
                 .collect();
             (side(r, None, cf_score(p, r))?, Some(ids.clone()), ids)
         };
+        // Queue items name their quality even when the loader would skip them.
+        let mut named = vec![release.q];
+        named.extend(
+            g["queue"].as_array().into_iter().flatten()
+                .filter_map(|item| quality(&quality_of(item)?.0).ok()),
+        );
+        let profile = build_profile(&fixture_spec(p, &g["config"])?, &named)?;
         let mut queued = Vec::new();
         for item in g["queue"].as_array().into_iter().flatten() {
             let (matches, covers, state) = if app == "radarr" {
@@ -1321,7 +1405,7 @@ fn repack(app: &str, g: &Value) -> Outcome {
         return None;
     }
     Some((|| -> Result<Value, String> {
-        let profile = build_profile(&fixture_spec(p, config)?)?;
+        let profile = build_profile(&fixture_spec(p, config)?, &[])?;
         Ok(accepted(
             grab_refusal(&profile, &release, &held, members.as_deref(), Vec::new(), false).is_none(),
         ))
@@ -1358,7 +1442,7 @@ fn anime_version(g: &Value) -> Outcome {
         return None;
     }
     Some((|| -> Result<Value, String> {
-        let profile = build_profile(&fixture_spec(&g["profile"], config)?)?;
+        let profile = build_profile(&fixture_spec(&g["profile"], config)?, &[])?;
         let held = [Held {
             id: "f1".into(),
             side: file,
@@ -1424,7 +1508,7 @@ fn proper(app: &str, g: &Value) -> Outcome {
         return None;
     }
     Some((|| -> Result<Value, String> {
-        let profile = build_profile(&fixture_spec(p, config)?)?;
+        let profile = build_profile(&fixture_spec(p, config)?, &[])?;
         let refusal = grab_refusal(&profile, &release, &held, members.as_deref(), Vec::new(), true);
         Ok(accepted(!matches!(
             refusal,
@@ -1607,6 +1691,7 @@ fn release_at(profile: &QualityProfile, tier_from_end: usize, score: i32, group:
             source: Some(ReleaseSource::WebDl),
             remux: false,
             bd_disk: false,
+            alias: None,
         },
         name: format!("WEBDL-{tier}"),
         revision: 0,
@@ -1617,7 +1702,7 @@ fn release_at(profile: &QualityProfile, tier_from_end: usize, score: i32, group:
 
 fn check_min_format_score(app: &str, id: i64) -> Result<(), String> {
     let spec = captured_spec(app, id)?;
-    let profile = build_profile(&spec)?;
+    let profile = build_profile(&spec, &[])?;
     let release = release_at(&profile, 0, 0, None).ok_or("profile has no tier")?;
     let min = spec.min_format_score;
     let gate = |total: i32| {
@@ -1642,10 +1727,15 @@ fn check_min_format_score(app: &str, id: i64) -> Result<(), String> {
 
 fn check_cutoff(app: &str, id: i64) -> Result<(), String> {
     let spec = captured_spec(app, id)?;
-    let profile = build_profile(&spec)?;
-    let crit = &profile.criteria;
     let cutoff_name = spec.cutoff.clone().ok_or("no cutoff")?;
     let cutoff_q = quality(&cutoff_name)?;
+    // A Remux cutoff is probed with a WEB-DL file of its resolution (split, D54).
+    let web = match (cutoff_q.remux, cutoff_q.tier) {
+        (true, Some(tier)) => Some(quality(&format!("WEBDL-{}", tier.to_ascii_lowercase()))?),
+        _ => None,
+    };
+    let profile = build_profile(&spec, web.as_slice())?;
+    let crit = &profile.criteria;
     let cfs = spec.cutoff_format_score;
     let at = |q: Q, name: &str, score: i32| {
         let file = Side {
@@ -1660,7 +1750,7 @@ fn check_cutoff(app: &str, id: i64) -> Result<(), String> {
             [(incumbent(&profile, "f1", &file, None, 0), true)],
         );
         incumbent_at_cutoff(
-            crit.quality_cutoff_met(q.tier),
+            crit.quality_cutoff_met(key(&q).as_deref()),
             &subject,
             crit.cutoff_score,
             &crit.decision_pipeline,
@@ -1669,11 +1759,16 @@ fn check_cutoff(app: &str, id: i64) -> Result<(), String> {
     let mut failures = Vec::new();
     expect_that(at(cutoff_q, &cutoff_name, cfs), &format!("{cutoff_name} at score {cfs} not at cutoff"), &mut failures);
     expect_that(!at(cutoff_q, &cutoff_name, cfs - 1), &format!("{cutoff_name} at score {} at cutoff", cfs - 1), &mut failures);
+    if let Some(web) = web {
+        let name = format!("WEBDL-{}", web.tier.unwrap_or_default());
+        expect_that(!at(web, &name, cfs + 1000), &format!("{name} at score {} at cutoff", cfs + 1000), &mut failures);
+    }
     let below = crit
         .quality_tiers
         .iter()
-        .position(|t| Some(t.as_str()) == cutoff_q.tier)
-        .and_then(|i| crit.quality_tiers.get(i + 1));
+        .position(|t| Some(t) == crit.cutoff_tier.as_ref())
+        .and_then(|i| crit.quality_tiers.get(i + 1))
+        .filter(|below| !below.contains('-'));
     if let Some(below) = below {
         let below_q = quality(&format!("WEBDL-{}", below.to_ascii_lowercase()))?;
         expect_that(
@@ -1687,7 +1782,7 @@ fn check_cutoff(app: &str, id: i64) -> Result<(), String> {
 
 fn check_min_upgrade(app: &str, id: i64) -> Result<(), String> {
     let spec = captured_spec(app, id)?;
-    let profile = build_profile(&spec)?;
+    let profile = build_profile(&spec, &[])?;
     let min = spec.min_upgrade_format_score;
     let file = release_at(&profile, 0, 0, None).ok_or("profile has no tier")?;
     let held = [Held {
@@ -1711,7 +1806,7 @@ fn check_min_upgrade(app: &str, id: i64) -> Result<(), String> {
 
 fn check_upgrades_off(app: &str, id: i64) -> Result<(), String> {
     let spec = captured_spec(app, id)?;
-    let profile = build_profile(&spec)?;
+    let profile = build_profile(&spec, &[])?;
     let file = release_at(&profile, 0, 0, Some("GRP")).ok_or("profile has no tier")?;
     let held = [Held {
         id: "f1".into(),

@@ -54,13 +54,12 @@
 //!   whole set costs ~40 CPU-min in a debug build). Green needs status
 //!   Translated and Scryer's rule to fire on exactly the sampled titles the
 //!   arr matched it on. Entries are taken as the live scorer takes them, rule
-//!   errors or not (quality/canonical.rs `append_rule_scores`): a translated
-//!   ReleaseGroup spec errors on a release with no parsed group (`regex.match`
-//!   on null), which empties every format's entries for that title, so the
-//!   reds are mostly that one cause. The 1 s rule time budget is lifted
+//!   errors or not (quality/canonical.rs `append_rule_scores`); the translator
+//!   guards group, edition and resolution conditions with `is_string` (P9), so
+//!   a release without a parsed group no longer raises. The 1 s rule time budget is lifted
 //!   (not a parity behaviour; a loaded debug build would trip it). The release carries
 //!   `raw_title` and `release_group` from Scryer's parse, the two fields the
-//!   translated title/group specs read (translate.rs:595-624), set as
+//!   translated title/group specs read (translate.rs:606-641), set as
 //!   `build_rule_input` sets them (user_rule_input.rs:141,183); a format with
 //!   another spec type fails (none in the captured config). "Renaming includes it: on" fails: Scryer's renamer has no
 //!   custom-format token (all captured formats are off).
@@ -595,7 +594,7 @@ fn by_id<'a>(items: &'a [Value], key: &str, id: i64, what: &str) -> &'a Value {
 }
 
 /// Spec types whose translated rule reads only `raw_title` / `release_group`
-/// (arr_custom_format/translate.rs:595-624), the two release fields
+/// (arr_custom_format/translate.rs:606-641), the two release fields
 /// `release_input` fills from Scryer's parse as `build_rule_input` does
 /// (user_rule_input.rs:141,183).
 const FED_SPECS: &[&str] = &["ReleaseTitleSpecification", "ReleaseGroupSpecification"];

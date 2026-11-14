@@ -258,7 +258,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:29"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1037
   behaviour: "A WEBDL-720p release is rejected when the profile allows only DVD, HDTV-720p and Bluray-1080p (WEBDL-720p is not allowed)"
@@ -272,7 +272,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:31"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1039
   behaviour: "A release is accepted when the queue is empty"
@@ -300,14 +300,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:152"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1043
   behaviour: "A DVD release is accepted over a queued SDTV English item"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:173"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1044
   behaviour: "A queued item for a different episode does not block the release"
@@ -930,7 +930,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:196"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1133
   behaviour: "With upgrades off, a revision upgrade (DVD v1 to v2) is allowed"
@@ -958,14 +958,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:142"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1137
   behaviour: "A DVD release upgrades two SDTV files"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:149"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1138
   behaviour: "A DVD release does not upgrade two Bluray-1080p files"
@@ -1056,7 +1056,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:302"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1151
   behaviour: "With the HDTV-720p cutoff met, Bluray-1080p with a new custom format is not an upgrade"

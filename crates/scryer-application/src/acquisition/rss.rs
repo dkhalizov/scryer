@@ -3286,7 +3286,7 @@ impl AppUseCase {
             .resolve_upgrade_context_for_title_with_category_and_quality(
                 title,
                 Some(subject.owner_facet.as_str()),
-                analyzed_cutoff_quality,
+                analyzed_cutoff_quality.as_deref(), // fork (P11)
             )
             .await
         {

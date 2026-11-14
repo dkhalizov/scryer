@@ -383,7 +383,6 @@ proptest! {
     /// 5-digit season (Parser.cs: `(?<!\d+)(?:\d{1,2}|\d{4})(?!\d+)`, \d{3}
     /// at :307), so it takes the real SxxEyy.
     #[test]
-    #[ignore = "known red: a 5-digit SxxxxxEyy title word wins over the real SxxEyy (S01001E00.S00E01... -> season 1001)"]
     fn structured_name_season_is_bounded_with_five_digit_season_word(
         fields in structured_with(
             prop_oneof!["[A-Z][a-z]{2,8}", "S[0-9]{5}E[0-9]{2}"].boxed(),

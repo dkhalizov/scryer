@@ -206,10 +206,15 @@ pub(super) fn compile_leaf(spec: &Specification, format: &ImportedFormat) -> Opt
             if value == 0.0 {
                 Compiled::ok(vec![compare("equal", release("quality"), Term::Null)])
             } else {
-                Compiled::ok(vec![member(
-                    call_term("lower", vec![release("quality")]),
-                    vec![text(format!("{shown}p")), text(format!("{shown}i"))],
-                )])
+                // fork (P9): Arr reads an unknown resolution as no match;
+                // `lower(null)` raises and voids the whole imported module.
+                Compiled::ok(vec![
+                    call("is_string", vec![release("quality")]),
+                    member(
+                        call_term("lower", vec![release("quality")]),
+                        vec![text(format!("{shown}p")), text(format!("{shown}i"))],
+                    ),
+                ])
             }
         }
         "SourceSpecification" => {

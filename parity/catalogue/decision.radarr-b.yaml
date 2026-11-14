@@ -264,7 +264,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs|should_not_allow_if_quality_is_not_defined_in_profile|1|dd1ce6195de7
 - id: RAD-DECISION-1033
@@ -280,7 +280,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:30"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs|should_return_true_when_queue_is_empty|0|b809efd35e8d
 - id: RAD-DECISION-1035
@@ -304,7 +304,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:105"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs|should_return_false_when_qualities_are_the_same|0|e3bb34e0f8bf
 - id: RAD-DECISION-1038
@@ -848,7 +848,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:196"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs|should_returntrue_when_quality_is_revision_upgrade_for_same_quality|0|d2ac8e49c7ee
 - id: RAD-DECISION-1106
@@ -872,7 +872,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:110"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs|should_not_be_upgradable_if_qualities_are_the_same|0|1efb9304b504
 - id: RAD-DECISION-1109
@@ -952,7 +952,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:240"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs|should_return_false_if_custom_formats_is_met_and_quality_and_format_higher|0|84676a8d9868
 - id: RAD-DECISION-1119

@@ -1465,6 +1465,170 @@ fn analysed_dolby_vision_names_its_base_layer() {
     }
 }
 
+// fork (P5): `{quality_full}` writes the arr quality title.
+#[test]
+fn quality_full_renders_the_arr_quality_title() {
+    let movie = test_movie_title("Movie");
+    let mut series = test_movie_title("Show");
+    series.facet = MediaFacet::Series;
+    // test_media_file probes 3840x2160, so `quality` is 2160p.
+    let cases = [
+        (&movie, Some("Remux"), "Movie.2024", "Remux-2160p"),
+        (&series, Some("Remux"), "Show.S01E01", "Bluray-2160p Remux"),
+        (&series, Some("WEB-DL"), "Show.S01E01", "WEBDL-2160p"),
+        (
+            &series,
+            Some("WEB-DL"),
+            "Show.S01E01.PROPER",
+            "WEBDL-2160p Proper",
+        ),
+        (
+            &series,
+            Some("WEB-DL"),
+            "Show.S01E01.REPACK",
+            "WEBDL-2160p Proper",
+        ),
+        (&movie, Some("BluRay"), "Movie.2024", "Bluray-2160p"),
+        (&movie, None, "Movie.2024", "2160p"),
+        // An arr-named file scanned with no stored source round-trips.
+        (
+            &series,
+            None,
+            "Show - S01E01 - Pilot WEBDL-1080p",
+            "WEBDL-2160p",
+        ),
+    ];
+    for (title, source, stem, expected) in cases {
+        let mut file = test_media_file("/library/x.mkv");
+        file.source_type = source.map(str::to_string);
+        let tokens = title_rename_tokens(
+            title,
+            Some(RenameMediaEvidence::from_media_file(&file)),
+            &parse_release_metadata(stem),
+            "mkv",
+        )
+        .0;
+        assert_eq!(
+            tokens.get("quality_full").map(String::as_str),
+            Some(expected),
+            "{stem}"
+        );
+    }
+    assert!(
+        validate_rename_template_for_facet("{title} {quality_full}", &MediaFacet::Series).is_ok()
+    );
+    assert!(
+        validate_rename_template_for_facet("{title} {quality_full}", &MediaFacet::Movie).is_ok()
+    );
+}
+
+// fork (P5): `{quality_full}` follows the arr resolution titles.
+#[test]
+fn quality_full_folds_resolutions_into_arr_titles() {
+    let movie = test_movie_title("Movie");
+    let mut series = test_movie_title("Show");
+    series.facet = MediaFacet::Series;
+    let cases = [
+        (&series, "HDTV", "480p", "SDTV"),
+        (&series, "HDTV", "720p", "HDTV-720p"),
+        (&series, "HDTV", "2160p", "HDTV-2160p"),
+        (&series, "DVD", "480p", "DVD"),
+        (&series, "BluRay", "480p", "Bluray-480p"),
+        (&series, "BluRay", "576p", "Bluray-576p"),
+        (&series, "WEBRip", "1080p", "WEBRip-1080p"),
+        // 1440p folds into 1080p, 4320p into 2160p.
+        (&series, "WEB-DL", "1440p", "WEBDL-1080p"),
+        (&movie, "BluRay", "1440p", "Bluray-1080p"),
+        (&series, "WEB-DL", "4320p", "WEBDL-2160p"),
+        // A WEB source below 720p is 480p.
+        (&series, "WEB-DL", "576p", "WEBDL-480p"),
+        (&series, "WEBRip", "540p", "WEBRip-480p"),
+        (&movie, "Remux", "1080p", "Remux-1080p"),
+        (&series, "Remux", "1080p", "Bluray-1080p Remux"),
+    ];
+    for (title, source, label, expected) in cases {
+        let mut file = test_media_file("/library/x.mkv");
+        file.video_width = None;
+        file.video_height = None;
+        file.source_type = Some(source.to_string());
+        file.quality_label = Some(label.to_string());
+        let tokens = title_rename_tokens(
+            title,
+            Some(RenameMediaEvidence::from_media_file(&file)),
+            &parse_release_metadata("Show.S01E01"),
+            "mkv",
+        )
+        .0;
+        assert_eq!(
+            tokens.get("quality_full").map(String::as_str),
+            Some(expected),
+            "{source} {label}"
+        );
+    }
+}
+
+// fork (P5): an import quality override rewrites `quality`, so `quality_full`
+// must be built again from it.
+#[test]
+fn quality_full_follows_the_import_quality_override() {
+    let mut title = test_movie_title("Show");
+    title.facet = MediaFacet::Series;
+    let parsed = parse_release_metadata("Show.S01E01.WEB-DL");
+    let tokens = crate::import_workflow::episode_import_rename_tokens(
+        &title,
+        &parsed,
+        None,
+        "mkv",
+        1,
+        "1",
+        None,
+        None,
+        Some("1080p"),
+    );
+    assert_eq!(tokens.get("quality").map(String::as_str), Some("1080p"));
+    assert_eq!(
+        tokens.get("quality_full").map(String::as_str),
+        Some("WEBDL-1080p")
+    );
+}
+
+// fork (P5): a movie with no probed or stored quality takes the collection
+// label, and `quality_full` is built again from it.
+#[test]
+fn quality_full_follows_the_movie_collection_label() {
+    let dir = tempfile::tempdir().expect("tempdir");
+    let current_path = dir.path().join("Lantern.Harbor.2018.mkv");
+    std::fs::write(&current_path, b"movie").expect("seed movie file");
+    let current_path = current_path.to_string_lossy().to_string();
+
+    let mut title = test_movie_title("Lantern Harbor (2018)");
+    title.year = Some(2018);
+    let mut collection = test_movie_collection(&current_path);
+    collection.label = Some("1080p".to_string());
+    let mut media_file = test_media_file(&current_path);
+    media_file.video_width = None;
+    media_file.video_height = None;
+    media_file.quality_label = None;
+    media_file.source_type = Some("WEB-DL".to_string());
+    let mut planning = RenamePlanningState::default();
+    let mut options = MovieRenamePlanOptions {
+        media_root: dir.path().to_str().expect("tempdir path"),
+        folder_template: "{title_with_year}",
+        template: "{title_without_year} {quality_full}.{ext}",
+        missing_metadata_policy: &RenameMissingMetadataPolicy::FallbackTitle,
+        planning: &mut planning,
+    };
+
+    let items =
+        build_movie_rename_plan_items(&title, vec![collection], vec![media_file], &mut options);
+
+    assert_eq!(items.len(), 1);
+    assert_eq!(
+        items[0].normalized_filename.as_deref(),
+        Some("Lantern Harbor WEBDL-1080p.mkv")
+    );
+}
+
 #[test]
 fn primary_audio_rename_uses_mono_main_track_instead_of_stereo_commentary() {
     let mut media = test_media_file("/library/Movie.2024.FLAC2.0.mkv");

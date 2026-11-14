@@ -41,9 +41,9 @@ green + red.
 | Area | Covers | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|---|
 | parse | release-name parsing | 1956 | 1356 | 0 | 613 | 59% |
-| decision | which release to grab or reject | 554 | 156 | 0 | 336 | 78% |
-| quality | quality ranking, profiles, custom formats | 407 | 39 | 0 | 344 | 91% |
-| naming | file and folder names | 67 | 506 | 0 | 160 | 12% |
+| decision | which release to grab or reject | 569 | 141 | 0 | 336 | 80% |
+| quality | quality ranking, profiles, custom formats | 419 | 27 | 0 | 344 | 94% |
+| naming | file and folder names | 416 | 157 | 0 | 160 | 73% |
 | import | importing finished downloads | 81 | 21 | 0 | 495 | 79% |
 | scan | reading an existing library | 22 | 1 | 0 | 152 | 96% |
 | torrent | download client, seeding | 13 | 8 | 20 | 179 | 62% |
@@ -52,14 +52,14 @@ green + red.
 | subtitles | subtitle matching (Bazarr) | 64 | 63 | 0 | 88 | 50% |
 | indexers | indexer settings and routing (Prowlarr) | 4 | 28 | 1 | 29 | 12% |
 | notify | notifications | 0 | 0 | 0 | 10 | - |
-| **all** | | **3188** | **2184** | **24** | **3130** | **59%** |
+| **all** | | **3564** | **1808** | **24** | **3130** | **66%** |
 
 By reference app:
 
 | App | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|
-| Sonarr | 2492 | 1586 | 20 | 1190 | 61% |
-| Radarr | 604 | 514 | 1 | 1039 | 54% |
+| Sonarr | 2849 | 1229 | 20 | 1190 | 70% |
+| Radarr | 623 | 495 | 1 | 1039 | 56% |
 | Prowlarr | 8 | 15 | 0 | 51 | 35% |
 | Bazarr | 64 | 63 | 0 | 101 | 50% |
 | Seerr | 4 | 2 | 0 | 325 | 67% |

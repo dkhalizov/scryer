@@ -725,14 +725,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:713"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0105
   behaviour: "{Quality Full} is the quality name plus 'Proper' for a proper"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:722"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0106
   behaviour: "{Quality Full} is the quality name plus 'REAL' for a real"

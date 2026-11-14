@@ -17,7 +17,7 @@ jq '.data.qualityProfileSettings | {globalProfileId, globalScoringPersona,
 
 | field | type | notes |
 |---|---|---|
-| `qualityTiers` | [string] | ordered, best first; only listed tiers are wanted |
+| `qualityTiers` | [string] | ordered, best first; only listed tiers are wanted. A tier is a resolution (`1080P`) or a source and a resolution (`REMUX-2160P`; sources `REMUX WEBDL WEBRIP BLURAY BRDISK DVD HDTV`). A bare resolution stands for every source not listed at it, so `REMUX-2160P, 2160P` ranks Remux above other 2160p |
 | `cutoffTier` | string | stop upgrading once a file reaches this tier |
 | `allowUpgrades` | bool | |
 | `minUpgradeScoreDelta` | int ≥ 0 | a same-tier release must beat the current file by this much (default 120); leaving it out keeps the stored value |

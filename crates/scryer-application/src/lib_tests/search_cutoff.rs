@@ -306,6 +306,66 @@ async fn list_cutoff_unmet_titles_normalizes_lowercase_cutoff_tier() {
     assert_eq!(items[0].target_tier, "720P");
 }
 
+/// fork (P11): the Wanted cutoff list reads a file's stored source. Under
+/// [REMUX-2160P, 2160P] (cutoff REMUX-2160P) a WEB-DL 2160p file is listed as
+/// cutoff unmet and a Remux one is not.
+#[tokio::test]
+async fn list_cutoff_unmet_titles_ranks_a_file_by_its_stored_source() {
+    for (source, listed) in [("WEB-DL", true), ("Remux", false)] {
+        let settings = Arc::new(StoredSettingsRepo::default());
+        settings
+            .set_value(SETTINGS_SCOPE_SYSTEM, QUALITY_PROFILE_ID_KEY, r#""remux""#)
+            .await;
+        let mut profile = cutoff_projection_test_profile("remux", "REMUX-2160P");
+        profile.criteria.quality_tiers = vec!["REMUX-2160P".into(), "2160P".into()];
+        profile.criteria.archival_quality = Some("REMUX-2160P".into());
+        let quality_profiles = Arc::new(StoredQualityProfileRepo::default());
+        quality_profiles.set_profiles(vec![profile]).await;
+        let media_files = Arc::new(MockMediaFileRepo::default());
+        let (app, user, _) =
+            bootstrap_with_cutoff_projection_state(settings, quality_profiles, media_files.clone());
+        let title = app
+            .add_title(
+                &user,
+                NewTitle {
+                    name: "Source Case".into(),
+                    facet: MediaFacet::Movie,
+                    monitored: true,
+                    ..Default::default()
+                },
+            )
+            .await
+            .expect("create title");
+        media_files
+            .insert_media_file(&InsertMediaFileInput {
+                title_id: title.id.clone(),
+                file_path: "/library/Source Case.mkv".to_string(),
+                size_bytes: 1_000,
+                quality_label: Some("2160p".to_string()),
+                source_type: Some(source.to_string()),
+                ..Default::default()
+            })
+            .await
+            .expect("insert media file");
+
+        let items = app
+            .list_cutoff_unmet_titles(&user, Some(MediaFacet::Movie), None)
+            .await
+            .expect("cutoff unmet query should succeed");
+
+        let tiers: Vec<_> = items
+            .iter()
+            .map(|item| (item.current_tier.as_str(), item.target_tier.as_str()))
+            .collect();
+        let expected = if listed {
+            vec![("WEBDL-2160P", "REMUX-2160P")]
+        } else {
+            vec![]
+        };
+        assert_eq!(tiers, expected, "{source}");
+    }
+}
+
 /// A profile whose order has no quality tier step ignores its cutoff tier, so
 /// a file below that tier is not reported, or swept, as quality-cutoff unmet.
 #[tokio::test]
@@ -2489,7 +2549,11 @@ async fn a_season_with_a_missing_episode_has_not_reached_cutoff() {
     );
 
     let context = app
-        .resolve_upgrade_context_for_title_with_category_and_quality(&title, None, analyzed)
+        .resolve_upgrade_context_for_title_with_category_and_quality(
+            &title,
+            None,
+            analyzed.as_deref(),
+        )
         .await
         .expect("resolve upgrade context");
     assert!(
@@ -2526,7 +2590,11 @@ async fn a_season_with_a_missing_episode_has_not_reached_cutoff() {
         &cutoff_scope,
     );
     let context = app
-        .resolve_upgrade_context_for_title_with_category_and_quality(&title, None, analyzed)
+        .resolve_upgrade_context_for_title_with_category_and_quality(
+            &title,
+            None,
+            analyzed.as_deref(),
+        )
         .await
         .expect("resolve upgrade context");
     assert!(context.cutoff_reached, "every member is at cutoff");

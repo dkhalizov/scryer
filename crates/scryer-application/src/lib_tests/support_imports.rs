@@ -923,6 +923,7 @@ impl MediaFileRepository for MockMediaFileRepo {
                     season_number: None,
                     episode_number: None,
                     quality_tier: normalized,
+                    source_type: entry.source_type.clone(), // fork (P11)
                 });
             }
         }

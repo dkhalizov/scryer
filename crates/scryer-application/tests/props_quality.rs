@@ -10,10 +10,13 @@
 use proptest::prelude::*;
 use proptest::test_runner::{Config as ProptestConfig, RngSeed};
 use scryer_application::parity_seams::{
-    normalize_quality_tier, quality_from_video_dimensions, quality_meets_or_exceeds_cutoff,
-    quality_tier_index, resolution_lines, resolution_rank,
+    evaluate_profile_requirements, normalize_quality_tier, quality_from_video_dimensions,
+    quality_meets_or_exceeds_cutoff, quality_tier_index, quality_tier_label, release_tier_label,
+    resolution_lines, resolution_rank,
 };
-use scryer_application::{DecisionGate, QualityProfileCriteria, builtin_default_quality_profile};
+use scryer_application::{
+    DecisionGate, QualityProfileCriteria, builtin_default_quality_profile, parse_release_metadata,
+};
 
 fn config(cases: u32) -> ProptestConfig {
     ProptestConfig {
@@ -357,5 +360,89 @@ proptest! {
         ungated.decision_pipeline = ungated.decision_pipeline.without(DecisionGate::QualityTier);
         prop_assert_eq!(ungated.quality_cutoff_met(Some(&free)), !free.trim().is_empty());
         prop_assert!(!ungated.quality_cutoff_met(None));
+    }
+}
+
+// ── 3. Source tiers (P11) ──────────────────────────────────────────────────
+
+/// A Remux tier above each resolution's group: Remux-2160p is the cutoff.
+#[test]
+fn source_tiers_split_a_resolution() {
+    let tiers: Vec<String> = ["REMUX-2160P", "2160P", "REMUX-1080P", "1080P"]
+        .map(String::from)
+        .to_vec();
+    let criteria = criteria_with(tiers.clone(), "REMUX-2160P");
+    let index = |q: Option<&str>| quality_tier_index(&criteria, q);
+
+    let web = quality_tier_label(Some("2160p"), Some("WEB-DL"));
+    let remux = quality_tier_label(Some("2160p"), Some("Remux"));
+    assert_eq!(web.as_deref(), Some("WEBDL-2160P"));
+    assert_eq!(remux.as_deref(), Some("REMUX-2160P"));
+    assert_eq!(index(web.as_deref()), Some(1));
+    assert_eq!(index(remux.as_deref()), Some(0));
+    assert!(!criteria.quality_cutoff_met(web.as_deref()));
+    assert!(criteria.quality_cutoff_met(remux.as_deref()));
+    assert_eq!(
+        index(quality_tier_label(Some("1080p"), Some("Remux")).as_deref()),
+        Some(2)
+    );
+    assert_eq!(
+        index(quality_tier_label(Some("1080p"), Some("BluRay")).as_deref()),
+        Some(3)
+    );
+
+    let mut profile = builtin_default_quality_profile();
+    profile.criteria = criteria.clone();
+    for (name, expected) in [
+        ("Movie.2023.2160p.WEB-DL.DDP5.1.H.265-GRP", 1),
+        (
+            "Movie.2023.2160p.UHD.BluRay.REMUX.HDR.HEVC.TrueHD.7.1-GRP",
+            0,
+        ),
+        ("Movie.2023.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-GRP", 2),
+        ("Movie.2023.1080p.BluRay.x264-GRP", 3),
+    ] {
+        let parsed = parse_release_metadata(name);
+        let key = release_tier_label(&parsed);
+        assert_eq!(index(key.as_deref()), Some(expected), "{name} -> {key:?}");
+        let decision = evaluate_profile_requirements(&profile, &parsed, false, None);
+        assert_eq!(decision.tier_index, Some(expected), "{name}");
+        assert_eq!(
+            criteria.quality_cutoff_met(key.as_deref()),
+            expected == 0,
+            "{name}"
+        );
+    }
+}
+
+proptest! {
+    #![proptest_config(config(2048))]
+
+    /// A profile of bare resolutions ranks a sourced label as its resolution.
+    #[test]
+    fn bare_tiers_ignore_source(
+        lines in canonical_tiers(),
+        i in any::<prop::sample::Index>(),
+        c in any::<prop::sample::Index>(),
+        v in any::<u8>(),
+        source in prop::option::of(prop_oneof![
+            prop::sample::select(SOURCES).prop_map(String::from),
+            prop::sample::select(vec!["WEB-DL", "BluRay", "BRDISK", "Remux", "DVD"]).prop_map(String::from),
+            "[ -~]{0,12}",
+        ]),
+    ) {
+        let tiers = tier_names(&lines);
+        let criteria = criteria_with(tiers.clone(), &tiers[c.index(tiers.len())]);
+        let bare = spelling(*i.get(&lines), v);
+        let key = quality_tier_label(Some(&bare), source.as_deref());
+        prop_assert_eq!(
+            quality_tier_index(&criteria, key.as_deref()),
+            Some(i.index(lines.len())),
+            "key {:?}", key
+        );
+        prop_assert_eq!(
+            criteria.quality_cutoff_met(key.as_deref()),
+            criteria.quality_cutoff_met(Some(&bare))
+        );
     }
 }

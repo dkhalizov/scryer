@@ -715,15 +715,16 @@ impl AppUseCase {
                 continue;
             }
 
-            let Some(normalized_current_tier) =
-                crate::quality_profile::normalize_quality_tier(Some(summary.quality_tier.as_str()))
-            else {
+            // fork (P11): the file's tier key, looked up like a candidate's
+            let Some(normalized_current_tier) = crate::quality_profile::quality_tier_label(
+                Some(summary.quality_tier.as_str()),
+                summary.source_type.as_deref(),
+            ) else {
                 continue;
             };
 
-            if !quality_tiers
-                .iter()
-                .any(|tier| tier == &normalized_current_tier)
+            if crate::quality_profile::tier_position(quality_tiers, &normalized_current_tier)
+                .is_none()
             {
                 continue;
             }

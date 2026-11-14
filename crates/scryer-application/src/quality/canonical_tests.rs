@@ -86,7 +86,7 @@ fn disc_scoring_uses_each_mapped_title_and_ignores_whole_image_size() {
     let scored = score_release(&evidence, &context);
     assert_eq!(
         scored.parsed_quality.as_deref(),
-        Some("1080p"),
+        Some("BLURAY-1080P"), // fork (P11): a tier key
         "the superior title cannot stand in for the HD episode"
     );
     assert_eq!(
@@ -101,8 +101,8 @@ fn disc_scoring_uses_each_mapped_title_and_ignores_whole_image_size() {
     let row = media_row_as_import_would_write(&evidence, &scored);
     let uhd = score_media_file_for_episodes(&row, &["ep-4k".into()], &context);
     let hd = score_media_file_for_episodes(&row, &["ep-hd".into()], &context);
-    assert_eq!(uhd.parsed_quality.as_deref(), Some("2160p"));
-    assert_eq!(hd.parsed_quality.as_deref(), Some("1080p"));
+    assert_eq!(uhd.parsed_quality.as_deref(), Some("BLURAY-2160P")); // fork (P11)
+    assert_eq!(hd.parsed_quality.as_deref(), Some("BLURAY-1080P"));
     assert_eq!(
         hd.total, scored.total,
         "the mapped episode's incumbent uses the import scoring path"
@@ -710,6 +710,107 @@ fn media_row_as_import_would_write(
         release_hash: None,
         release_listing_json: None,
     }
+}
+
+/// fork (P11): candidate, incumbent and cutoff read one tier key for a file,
+/// so profile 7 (Remux above each group) cannot loop: a Remux file meets the
+/// cutoff, and a Remux candidate never outranks a Remux file of its resolution.
+#[test]
+fn candidate_incumbent_and_cutoff_keys_agree_under_source_tiers() {
+    use crate::acquisition::decision_helpers::{CutoffScope, analyzed_cutoff_quality_for_scope};
+    use crate::quality_profile::{quality_tier_index, release_tier_label};
+    let profile = profile(
+        r#"{"id":"7","name":"P7","criteria":{"quality_tiers":["REMUX-2160P","2160P","REMUX-1080P","1080P"],"cutoff_tier":"REMUX-2160P","allow_upgrades":true}}"#,
+    );
+    let tags = Vec::new();
+    let context = ctx(&profile, &tags);
+    let criteria = &profile.criteria;
+    let mut index_of = Vec::new();
+    for (name, (width, height), key, met) in [
+        (
+            "Movie.2024.2160p.UHD.BluRay.REMUX.HDR.HEVC.TrueHD.7.1-GRP",
+            (3840, 2160),
+            "REMUX-2160P",
+            true,
+        ),
+        (
+            "Movie.2024.2160p.WEB-DL.DDP5.1.H.265-GRP",
+            (3840, 2160),
+            "WEBDL-2160P",
+            false,
+        ),
+        (
+            "Movie.2024.1080p.BluRay.REMUX.AVC.DTS-HD.MA.5.1-GRP",
+            (1920, 1080),
+            "REMUX-1080P",
+            false,
+        ),
+    ] {
+        let parsed = parse_release_metadata(name);
+        let mut facts = analyzed(40.0, Some("hevc"));
+        facts.analysis.video_width = Some(width);
+        facts.analysis.video_height = Some(height);
+        let evidence =
+            ReleaseEvidence::announced(parsed.clone(), Some(40 * GIB)).with_analysis(facts);
+        let mut row =
+            media_row_as_import_would_write(&evidence, &score_release(&evidence, &context));
+        row.source_type = crate::release_parser::parsed_release_source_type(&parsed);
+
+        let candidate = release_tier_label(&parsed);
+        let incumbent = score_media_file(&row, &context).parsed_quality;
+        let cutoff =
+            analyzed_cutoff_quality_for_scope(std::slice::from_ref(&row), &CutoffScope::Title);
+        assert_eq!(candidate.as_deref(), Some(key), "{name}");
+        assert_eq!(incumbent.as_deref(), Some(key), "{name}");
+        assert_eq!(cutoff.as_deref(), Some(key), "{name}");
+        assert_eq!(
+            criteria.quality_cutoff_met(cutoff.as_deref()),
+            met,
+            "{name}"
+        );
+        index_of.push(quality_tier_index(criteria, Some(key)));
+    }
+    assert_eq!(index_of, [Some(0), Some(1), Some(2)]);
+}
+
+/// fork (P11): a file whose name says nothing (`abc123.mkv` in a release
+/// folder) keeps the source its row stored at import. The incumbent's tier key
+/// reads that stored source, as the cutoff does, so a same-tier Remux release
+/// from another group is not a tier upgrade over it.
+#[test]
+fn the_incumbent_tier_key_reads_the_stored_source() {
+    use crate::acquisition::decision_helpers::{CutoffScope, analyzed_cutoff_quality_for_scope};
+    use crate::quality_profile::release_tier_label;
+    let profile = profile(
+        r#"{"id":"7","name":"P7","criteria":{"quality_tiers":["REMUX-2160P","2160P","REMUX-1080P","1080P"],"cutoff_tier":"REMUX-2160P","allow_upgrades":true}}"#,
+    );
+    let tags = Vec::new();
+    let context = ctx(&profile, &tags);
+    let parsed = parse_release_metadata("Show.S01E01.2160p.BluRay.REMUX.HEVC-GRP");
+    let mut facts = analyzed(40.0, Some("hevc"));
+    facts.analysis.video_width = Some(3840);
+    facts.analysis.video_height = Some(2160);
+    let evidence = ReleaseEvidence::announced(parsed.clone(), Some(40 * GIB)).with_analysis(facts);
+    let mut row = media_row_as_import_would_write(&evidence, &score_release(&evidence, &context));
+    row.file_path = "/data/TV/Show.S01E01.2160p.BluRay.REMUX.HEVC-GRP/abc123.mkv".into();
+    row.scene_name = None;
+    row.grabbed_release_title = None;
+    row.source_type = crate::release_parser::parsed_release_source_type(&parsed);
+    assert_eq!(
+        crate::release_parser::parsed_release_source_type(&announced_parse_from_media_file(&row)),
+        None,
+        "premise: the re-parsed name has no source"
+    );
+
+    let candidate = release_tier_label(&parse_release_metadata(
+        "Show.S01E01.2160p.UHD.BluRay.REMUX.HDR.HEVC-OTHER",
+    ));
+    let incumbent = score_media_file(&row, &context).parsed_quality;
+    let cutoff = analyzed_cutoff_quality_for_scope(std::slice::from_ref(&row), &CutoffScope::Title);
+    assert_eq!(candidate.as_deref(), Some("REMUX-2160P"));
+    assert_eq!(incumbent, candidate);
+    assert_eq!(cutoff, candidate);
+    assert!(profile.criteria.quality_cutoff_met(cutoff.as_deref()));
 }
 
 #[test]

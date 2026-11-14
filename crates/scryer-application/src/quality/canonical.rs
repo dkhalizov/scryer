@@ -155,6 +155,10 @@ pub(crate) struct ReleaseEvidence {
     pub announced_size_bytes: Option<i64>,
     pub analyzed: Option<AnalyzedFacts>,
     pub listing: Option<ListingFacts>,
+    /// fork (P11): the source a stored file's row recorded at import
+    /// (`media_files.source_type`). Only the tier key reads it, so the
+    /// incumbent ranks like the cutoff; the score's source factor keeps `parsed`.
+    pub stored_source: Option<String>,
 }
 
 impl ReleaseEvidence {
@@ -165,6 +169,7 @@ impl ReleaseEvidence {
             announced_size_bytes: size_bytes,
             analyzed: None,
             listing: None,
+            stored_source: None, // fork (P11)
         }
     }
 
@@ -336,7 +341,8 @@ pub(crate) struct ScoredRelease {
     pub truth_verdict: TruthVerdict,
     /// The quality tier this release parsed as, from whichever evidence level
     /// set the score. Admission compares tier before score, and taking it from
-    /// the same pass keeps the two consistent.
+    /// the same pass keeps the two consistent. fork (P11): a tier key
+    /// (`REMUX-2160P`), the source joined to the resolution.
     pub parsed_quality: Option<String>,
     /// PROPER/REPACK rank, from the **announced** parse
     /// ([`crate::acquisition::scoring::revision_rank`]). Admission compares it
@@ -481,6 +487,7 @@ fn score_disc_scope_with_rules(
                 rule_file_doc,
             }),
             listing: evidence.listing.clone(),
+            stored_source: evidence.stored_source.clone(), // fork (P11)
         };
         scores.push(score_single_release_with_rules(&scoped, ctx, rules));
     }
@@ -542,6 +549,7 @@ fn score_unresolved_disc(
         announced_size_bytes: evidence.announced_size_bytes,
         analyzed: None,
         listing: evidence.listing.clone(),
+        stored_source: evidence.stored_source.clone(), // fork (P11)
     };
     let mut score = score_single_release_with_rules(&announced, ctx, rules);
     score.truth_verdict = TruthVerdict::ReviewRequired {
@@ -680,7 +688,17 @@ fn score_single_release_with_rules(
     // defect this whole change set exists to remove. `truth_variance` and
     // `truth_verdict` stay as the *report* of the contradiction.
     let total = numeric_score(analyzed_decision.as_ref().unwrap_or(&announced_decision));
-    let parsed_quality = analyzed_quality.or_else(|| evidence.parsed.quality.clone());
+    // fork (P11): the tier key (source + resolution), what tiers are looked up by
+    let parsed_quality = crate::quality_profile::quality_tier_label(
+        analyzed_quality
+            .as_deref()
+            .or(evidence.parsed.quality.as_deref()),
+        evidence
+            .stored_source
+            .clone()
+            .or_else(|| crate::release_parser::parsed_release_source_type(&evidence.parsed))
+            .as_deref(),
+    );
 
     let language = analyzed_decision
         .as_ref()
@@ -1220,14 +1238,17 @@ pub(crate) fn size_basis_bytes(landed: i64, announced: Option<i64>) -> i64 {
 /// instant, so the bar never moves with the clock. A row without a snapshot
 /// scores with every listing fact unknown, exactly as before.
 pub(crate) fn evidence_from_media_file(file: &crate::TitleMediaFile) -> ReleaseEvidence {
-    ReleaseEvidence::announced(
+    let mut evidence = ReleaseEvidence::announced(
         announced_parse_from_media_file(file),
         Some(size_basis_bytes(file.size_bytes, file.announced_size_bytes)),
     )
     .with_analysis(analyzed_facts_from_media_file(file))
     .with_listing(ListingFacts::grabbed_from_json(
         file.release_listing_json.as_deref(),
-    ))
+    ));
+    // fork (P11): the tier key reads the stored source, as the cutoff does
+    evidence.stored_source = file.source_type.clone().filter(|s| !s.trim().is_empty());
+    evidence
 }
 
 /// Re-derive a stored file's canonical score.

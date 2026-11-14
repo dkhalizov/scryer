@@ -51,6 +51,7 @@
 //! | `{episode}`, `{episode:00}`        | `{episode}`, `{episode:2}`   |
 //! | `{absolute:000}`                   | `{absolute_episode:3}`       |
 //! | `{Release Year}`                   | `{year}`                     |
+//! | `{Quality Full}`                   | `{quality_full}`             |
 //! | `{{`, `}}`                         | `{{`, `}}`                   |
 //!
 //! Token names match case-insensitively, as in the arr. A `.`, `_` or `-`
@@ -61,9 +62,9 @@
 //! length is Scryer's pad width.
 //!
 //! Lacking (no Scryer token; the case is red, P5 / #470): every other token,
-//! e.g. `{Quality Full}`, `{Quality Title}`, `{Quality Proper}`,
-//! `{Quality Real}` (Scryer's `{quality}` is a resolution and `{revision}`
-//! is read from the file name, neither is the arr's quality vocabulary),
+//! e.g. `{Quality Title}`, `{Quality Proper}`, `{Quality Real}` (only
+//! `{quality_full}` speaks the arr's quality vocabulary; Scryer has no REAL
+//! field, D39, so a `real` revision stays red),
 //! `{MediaInfo Full}`, `{MEDIAINFO.FULL}`, `{MediaInfo AudioLanguages[All]}`,
 //! `{MediaInfo SubtitleLanguages[:...]}`, `{Series.CleanTitle}`,
 //! `{Episode.CleanTitle}`, `{Original Title}`, `{Original Filename}`,
@@ -82,6 +83,8 @@
 //! | `episodes[]` season/episode/absolute number, title     | `Episode` rows, one file row per episode (same file id) |
 //! | `episodeFile.releaseGroup`, `movie_file.release_group` | `TitleMediaFile.release_group`          |
 //! | `episodeFile.mediaInfo.videoHdrFormat` (`None` = absent) | `TitleMediaFile.video_hdr_format`     |
+//! | `episodeFile.quality`, `movie_file.quality`, captured `quality.name` | `TitleMediaFile.source_type` + `quality_label` (`WEBDL-1080p` -> `WEB-DL`, `1080p`; a remux -> `Remux`; `SDTV` -> `HDTV`, `480p`) |
+//! | `revision.version` > 1                                 | source stem `source.PROPER` (`source.REPACK` when `is_repack`): Scryer reads the revision from the file name only |
 //! | `extension`, captured file extension                   | the source file's extension             |
 //! | captured series `seasonFolder` (series.json via episodefile.json `seriesId`) | `use_season_folders` |
 //!
@@ -99,11 +102,11 @@
 //! has one fixed behaviour for each; the case compares Scryer's output with
 //! the arr's for that setting), `dailyEpisodeFormat`, `animeEpisodeFormat`,
 //! `seriesType` (no daily or anime case is in scope), `culture`,
-//! `episodeFile.quality`/`revision`, mediaInfo other than `videoHdrFormat`,
+//! `revision.real`, mediaInfo other than `videoHdrFormat`,
 //! `sceneName`, `relativePath`, `path`, `releaseHash` (they only feed lacking
-//! tokens or rename-off cases, which naming.rs runs), `series.path`, `series.seasonFolder` (used by
-//! naming.rs), `note`. Captured: `quality`,
-//! `media_info` (they feed `{Quality Full}`).
+//! tokens or rename-off cases, which naming.rs runs), `series.path`,
+//! `series.seasonFolder` (used by naming.rs), `note`. Captured: `media_info`
+//! (feeds only lacking `{MediaInfo ...}` tokens).
 //!
 //! # Config checks (built from the ref'd JSON)
 //!
@@ -175,6 +178,7 @@ const TOKENS: &[(&str, &str, Kind)] = &[
     ("episode", "episode", Kind::Number),
     ("absolute", "absolute_episode", Kind::Number),
     ("releaseyear", "year", Kind::Number),
+    ("qualityfull", "quality_full", Kind::Text),
 ];
 
 struct Template {
@@ -288,6 +292,10 @@ struct Plan {
     episodes: Vec<Ep>,
     release_group: Option<String>,
     hdr_format: Option<String>,
+    /// The arr's quality title (`WEBDL-1080p`).
+    quality: Option<String>,
+    /// `PROPER` or `REPACK` when the arr's revision version is above 1.
+    revision: Option<&'static str>,
     /// Without the dot.
     extension: String,
     file_template: String,
@@ -390,10 +398,12 @@ impl Plan {
     /// the media root (title folder[/season folder]/file). None when Scryer
     /// proposes no path.
     fn run(&self) -> Option<Vec<String>> {
+        let stem = self.revision.map_or("source".to_string(), |tag| format!("source.{tag}"));
         let source = match &self.folder_path {
-            Some(folder) => format!("{folder}/source.{}", self.extension),
-            None => format!("/downloads/source.{}", self.extension),
+            Some(folder) => format!("{folder}/{stem}.{}", self.extension),
+            None => format!("/downloads/{stem}.{}", self.extension),
         };
+        let (source_type, quality_label) = self.quality.as_deref().map(stored_quality).unwrap_or_default();
         let episodes: Vec<Episode> = self
             .episodes
             .iter()
@@ -407,6 +417,8 @@ impl Plan {
             file_path: source.clone(),
             release_group: self.release_group.clone(),
             video_hdr_format: self.hdr_format.clone(),
+            source_type: source_type.clone(),
+            quality_label: quality_label.clone(),
             ..TitleMediaFile::default()
         };
         let media_files: Vec<TitleMediaFile> = if episodes.is_empty() {
@@ -475,6 +487,30 @@ fn number(v: &Value) -> u32 {
 
 fn year(v: &Value) -> Option<i32> {
     v.as_i64().map(|y| i32::try_from(y).expect("year fits i32"))
+}
+
+/// Arr quality title -> (source_type, quality_label) as an import stores them.
+fn stored_quality(name: &str) -> (Option<String>, Option<String>) {
+    let remux = name.starts_with("Remux-") || name.ends_with(" Remux");
+    let (source, resolution) = match name.trim_end_matches(" Remux").split_once('-') {
+        Some((_, resolution)) if remux => ("Remux", resolution),
+        Some(("WEBDL", resolution)) => ("WEB-DL", resolution),
+        Some(("Bluray", resolution)) => ("BluRay", resolution),
+        Some((source, resolution)) => (source, resolution),
+        None if name == "SDTV" => ("HDTV", "480p"),
+        None if name == "DVD" => ("DVD", "480p"),
+        None => return (None, None),
+    };
+    (Some(source.to_string()), Some(resolution.to_string()))
+}
+
+/// The arr file's quality (a title, or captured `{name, ...}`) and revision.
+fn set_quality(plan: &mut Plan, quality: &Value, revision: &Value) {
+    plan.quality = quality.as_str().or_else(|| quality["name"].as_str()).map(str::to_string);
+    if revision["version"].as_u64().is_some_and(|v| v > 1) {
+        let repack = revision["is_repack"].as_bool() == Some(true) || revision["isRepack"].as_bool() == Some(true);
+        plan.revision = Some(if repack { "REPACK" } else { "PROPER" });
+    }
 }
 
 /// Records the comparison, or a fail when the arr format used a token
@@ -564,6 +600,9 @@ fn son_sample(count: u32) -> Plan {
             title: format!("Episode Title ({n})"),
         })
         .collect();
+    // FileNameSampleService: WEBDL-1080p, Revision(2).
+    plan.quality = Some("WEBDL-1080p".into());
+    plan.revision = Some("PROPER");
     plan
 }
 
@@ -571,6 +610,9 @@ fn son_sample(count: u32) -> Plan {
 fn rad_sample() -> Plan {
     let mut plan = Plan::new(MediaFacet::Movie, "The Movie: Title");
     plan.year = Some(2010);
+    // FileNameSampleService: Bluray-1080p, Revision(2).
+    plan.quality = Some("Bluray-1080p".into());
+    plan.revision = Some("PROPER");
     plan
 }
 
@@ -613,6 +655,7 @@ fn son_naming() {
                     })
                     .collect();
                 plan.release_group = opt_text(file, "releaseGroup");
+                set_quality(&mut plan, &file["quality"], &file["revision"]);
                 plan.hdr_format = file["mediaInfo"]["videoHdrFormat"]
                     .as_str()
                     .filter(|f| *f != "None")
@@ -677,6 +720,7 @@ fn rad_naming() {
                 let mut plan = Plan::new(MediaFacet::Movie, text(movie, "title"));
                 plan.year = year(&movie["year"]);
                 plan.release_group = opt_text(&given["movie_file"], "release_group");
+                set_quality(&mut plan, &given["movie_file"]["quality"], &given["movie_file"]["revision"]);
                 plan.file_template = template.scryer.clone();
                 record(&mut suite, id, &template.lacking, text(expect, "name"), plan.file_stem());
             }
@@ -887,6 +931,7 @@ fn son_naming_captured() {
             })
             .collect();
         plan.release_group = opt_text(input, "release_group");
+        set_quality(&mut plan, &input["quality"], &input["quality"]["revision"]);
         plan.extension = std::path::Path::new(text(file, "relativePath"))
             .extension()
             .and_then(|e| e.to_str())
@@ -928,6 +973,7 @@ fn rad_naming_captured() {
         let mut plan = Plan::new(MediaFacet::Movie, text(&given["movie"], "title"));
         plan.year = year(&given["movie"]["year"]);
         plan.release_group = opt_text(movie_file, "release_group");
+        set_quality(&mut plan, &movie_file["quality"], &movie_file["revision"]);
         plan.extension = text(movie_file, "extension").trim_start_matches('.').to_string();
         plan.file_template = template.scryer.clone();
         // Radarr's relative path is under the movie folder: the file name.
@@ -945,7 +991,7 @@ fn translation_table() {
     let none: Vec<String> = vec![];
     assert_eq!(
         t("{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}"),
-        ("{title} - S{season:2}E{episode:2} - {episode_title} ".into(), vec!["{Quality Full}".to_string()])
+        ("{title} - S{season:2}E{episode:2} - {episode_title} {quality_full}".into(), none.clone())
     );
     assert_eq!(t("{Series.Title}.{season:0}"), ("{title|space:.}.{season:1}".into(), none.clone()));
     assert_eq!(t("{Episode Title}{-Release Group}"), ("{episode_title}{?group:-{group}}".into(), none.clone()));

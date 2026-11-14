@@ -904,3 +904,90 @@ fn regex_nesting_is_bounded_before_any_pass_recurses_through_it() {
         );
     }
 }
+
+// ── Null release fields ─────────────────────────────────────────────────────
+
+/// Arr reads a null group, edition or resolution as "no match"
+/// (RegexSpecificationBase.MatchString, ResolutionSpecification). A null must
+/// neither match nor raise: a raise voids every format in the import.
+#[test]
+fn null_release_fields_do_not_match_and_leave_other_formats_scored() {
+    let spec = |implementation: &str, value: Value, negate: bool| {
+        json!({ "name": "c", "implementation": implementation, "required": true,
+                "negate": negate, "fields": { "value": value } })
+    };
+    let format = |name: &str, spec: Value| json!({ "name": name, "specifications": [spec] });
+    let paste = json!([
+        format(
+            "Group",
+            spec("ReleaseGroupSpecification", json!("^(GRP)$"), false)
+        ),
+        format(
+            "Group lookaround",
+            spec("ReleaseGroupSpecification", json!("GRP(?!X)"), false)
+        ),
+        format(
+            "Not group",
+            spec("ReleaseGroupSpecification", json!("^(GRP)$"), true)
+        ),
+        format(
+            "Edition",
+            spec("EditionSpecification", json!("Director"), false)
+        ),
+        format(
+            "Resolution",
+            spec("ResolutionSpecification", json!(2160), false)
+        ),
+        format(
+            "Title",
+            spec("ReleaseTitleSpecification", json!("Synthetic"), false)
+        ),
+    ])
+    .to_string();
+    let source = ArrSourceApplication::Radarr;
+    let review = translate_arr_custom_formats(source, &paste, &HashMap::new()).expect("readable");
+    let scores = review.formats.iter().map(|f| (f.id.clone(), 1)).collect();
+    let result = translate_arr_custom_formats(source, &paste, &scores).expect("readable");
+    assert!(
+        result
+            .formats
+            .iter()
+            .all(|f| f.status == ArrFormatStatus::Translated),
+        "{:?}",
+        result.diagnostics
+    );
+    let id = "arr_null_fields".to_string();
+    let policy = scryer_rules::UserPolicy {
+        rego_source: scryer_rules::rewrite_package_declaration(&result.rego_source, &id),
+        id,
+        name: "Arr null fields".to_string(),
+        origin: scryer_rules::PolicyOrigin::User,
+        applied_facets: vec![],
+    };
+    let engine = scryer_rules::UserRulesEngine::build_with_baseline_rules(
+        &[policy],
+        &std::collections::HashSet::new(),
+    )
+    .unwrap_or_else(|error| panic!("{error}\n{}", result.rego_source));
+    let codes = |group: Option<&str>, edition: Option<&str>, quality: Option<&str>| {
+        let mut input = synthetic_input();
+        input.release.release_group = group.map(str::to_string);
+        input.release.edition = edition.map(str::to_string);
+        input.release.quality = quality.map(str::to_string);
+        let result = engine.evaluator().evaluate(&input, "movie").unwrap();
+        assert!(result.errors.is_empty(), "{:?}", result.errors);
+        let mut codes: Vec<String> = result.entries.into_iter().map(|e| e.code).collect();
+        codes.sort();
+        codes
+    };
+    assert_eq!(codes(None, None, None), ["not_group_3", "title_6"]);
+    assert_eq!(
+        codes(Some("GRP"), None, None),
+        ["group_1", "group_lookaround_2", "title_6"]
+    );
+    // Present values still match, so a guard on a misspelled field fails here.
+    assert_eq!(
+        codes(None, Some("Director's Cut"), Some("2160p")),
+        ["edition_4", "not_group_3", "resolution_5", "title_6"]
+    );
+}

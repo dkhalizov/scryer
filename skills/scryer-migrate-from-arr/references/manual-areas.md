@@ -25,7 +25,7 @@ error.
 
 | Arr | Scryer `criteria` field |
 |---|---|
-| allowed qualities (`items[].allowed`) | `qualityTiers`: resolution tiers in preference order: `4320P 2160P 1440P 1080P 1080I 720P 576P 480P 360P` |
+| allowed qualities (`items[].allowed`) | `qualityTiers`: resolution tiers in preference order: `4320P 2160P 1440P 1080P 1080I 720P 576P 480P 360P`; a source tier (`REMUX-2160P`, `WEBDL-1080P`) ranks one source of a resolution on its own, and the bare resolution then covers the rest |
 | allowed sources inside those qualities | `sourceAllowlist` / `sourceBlocklist`: `WEB-DL WEBRip BluRay BRDISK DVD HDTV CAM TELESYNC TELECINE DVDSCR WORKPRINT` |
 | `cutoff` | `cutoffTier` (a tier from `qualityTiers`) |
 | `upgradeAllowed` | `allowUpgrades` |
@@ -98,7 +98,7 @@ Folders: `folderTemplate` `{title} ({year})`, `seasonFolderTemplate`
 `Season {season}`, `specialsFolderTemplate` `Specials`.
 
 Tokens: `title`, `title_with_year`, `title_without_year`, `title_with_article`,
-`title_first_character`, `year`, `quality`, `edition`, `source`,
+`title_first_character`, `year`, `quality`, `quality_full`, `edition`, `source`,
 `dynamic_range`, `revision`, `is_3d`, `video_codec`, `audio_codec`,
 `audio_channels`, `group`, `ext`, `season`, `season_order`, `episode`,
 `episode_title`, `absolute_episode`, and `imdb_id`, `tmdb_id`, `tvdb_id`,
@@ -106,6 +106,8 @@ Tokens: `title`, `title_with_year`, `title_without_year`, `title_with_article`,
 refuses a token the scope cannot use. Syntax: `{season:2}` zero-pads to 2
 digits, `{?token:text}` emits `text` only when the token has a value,
 `{token|truncate:N}` shortens, `{{` and `}}` are literal braces.
+Arr `{Quality Full}` is `{quality_full}` (`WEBDL-1080p`, `Bluray-1080p Proper`;
+a movie remux `Remux-2160p`, a series remux `Bluray-2160p Remux`; no REAL).
 
 Rewrite the arr format with these, show old and new side by side, and save
 with `UpdateMediaSettings.graphql` (`scope` plus only the changed fields).

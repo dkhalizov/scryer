@@ -6708,6 +6708,12 @@ fn split_episode_revision(token: &str) -> Option<(&str, u32)> {
     Some((episode, version))
 }
 
+// fork (P14): the reference never reads a season of five or more digits
+// (`(?:\d{1,2}|\d{4})`), so such a token is not a season marker.
+fn exceeds_season_digits(digits: &str) -> bool {
+    digits.len() > 4 && digits.bytes().all(|byte| byte.is_ascii_digit())
+}
+
 fn parse_standard_episode_token(token: &str) -> Option<(Option<u32>, Vec<u32>)> {
     let revision = split_episode_revision(token);
     let token = revision.map_or(token, |(episode, _)| episode);
@@ -6716,7 +6722,11 @@ fn parse_standard_episode_token(token: &str) -> Option<(Option<u32>, Vec<u32>)> 
     }
     if token.starts_with('S') && token.contains('E') {
         let e_index = token.find('E')?;
-        let season = token.get(1..e_index)?.parse::<u32>().ok();
+        let season_digits = token.get(1..e_index)?;
+        if exceeds_season_digits(season_digits) {
+            return None; // fork (P14)
+        }
+        let season = season_digits.parse::<u32>().ok();
         let suffix = token.get(e_index + 1..)?;
         let episode_numbers = parse_standard_episode_suffix(suffix)
             .or_else(|| parse_fused_standard_episode_suffix(suffix))?;
@@ -6728,8 +6738,8 @@ fn parse_standard_episode_token(token: &str) -> Option<(Option<u32>, Vec<u32>)> 
         return (!episode_numbers.is_empty()).then_some((Some(1), episode_numbers));
     }
     if let Some((season, suffix)) = token.split_once('X') {
-        if season.is_empty() || suffix.is_empty() {
-            return None;
+        if season.is_empty() || suffix.is_empty() || exceeds_season_digits(season) {
+            return None; // fork (P14)
         }
         let season = season.parse::<u32>().ok()?;
         let episode_numbers = parse_standard_episode_suffix(suffix)
@@ -6780,8 +6790,12 @@ fn parse_season_keyword_episode_at(
         if season_range_after(tokens, index + 1, true).is_some() {
             return None;
         }
+        let digits = tokens.get(index + 1)?.normalized.as_str();
+        if exceeds_season_digits(digits) {
+            return None; // fork (P14)
+        }
         (
-            tokens.get(index + 1)?.normalized.parse::<u32>().ok()?,
+            digits.parse::<u32>().ok()?,
             index + 2,
             vec![index, index + 1],
         )
@@ -7135,7 +7149,13 @@ fn parse_season_token(token: &str) -> Option<u32> {
     }
     token
         .strip_prefix('S')
+        .filter(|value| !exceeds_season_digits(value)) // fork (P14)
         .and_then(|value| value.parse::<u32>().ok())
+}
+
+/// fork (P14): a bare numeric season token, refused at five or more digits.
+fn parse_season_number(token: &str) -> Option<u32> {
+    parse_numeric_token(token).filter(|_| !exceeds_season_digits(token))
 }
 
 struct SeasonPackParse {
@@ -7489,13 +7509,14 @@ fn parse_series_pack_at(tokens: &[Token], index: usize) -> Option<SeasonPackPars
             {
                 return None;
             }
-            let season = parse_numeric_token(tokens.get(index + 2)?.normalized.as_str())?;
+            let season = parse_season_number(tokens.get(index + 2)?.normalized.as_str())?;
             return scoped_season_pack(vec![season], vec![index, index + 1, index + 2]);
         }
     }
 
     if let Some(season) = token
         .strip_prefix("COMPLETESEASON")
+        .filter(|value| !exceeds_season_digits(value)) // fork (P14)
         .and_then(|value| value.parse::<u32>().ok())
     {
         return scoped_season_pack(vec![season], vec![index]);
@@ -8212,7 +8233,7 @@ fn parse_season_marker_at(tokens: &[Token], index: usize) -> Option<u32> {
     let token = tokens.get(index)?.normalized.as_str();
     if token == "SEASON" {
         let value = tokens.get(index + 1)?.normalized.as_str();
-        return parse_numeric_token(value).or_else(|| parse_roman_season(value));
+        return parse_season_number(value).or_else(|| parse_roman_season(value));
     }
     parse_season_token(token)
 }

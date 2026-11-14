@@ -565,7 +565,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:530"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0072
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs|should_replace_quality_full_with_quality_title_and_proper_only_when_a_proper|null|0"
@@ -573,7 +573,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:539"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0073
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs|should_replace_quality_full_with_quality_title_and_real_when_a_real|null|0"
