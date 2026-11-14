@@ -18,12 +18,74 @@ pub(crate) fn sanitize_input(raw: &str) -> SanitizedInput {
         .chars()
         .filter_map(|ch| sanitize_char(ch, &mut hints))
         .collect::<String>();
+    // fork (P17): drop a leading site tag, like the arrs' WebsitePrefixRegex.
+    let cleaned = match website_prefix_len(&cleaned) {
+        Some(len) => {
+            hints.push("website_prefix_stripped".to_string());
+            cleaned[len..].to_string()
+        }
+        None => cleaned,
+    };
     let punctuation_normalized = cleaned.replace('&', " and ").replace(':', " ");
 
     SanitizedInput {
         value: punctuation_normalized,
         hints,
     }
+}
+
+/// Byte length of a leading site tag: `www.site.com - `, `[ site.co.uk ] - `,
+/// `(site.com) ` (Sonarr/Radarr WebsitePrefixRegex, `Naruto-Kun.Hu` exempt).
+/// `None` when there is no tag or stripping it would leave nothing.
+pub(crate) fn website_prefix_len(s: &str) -> Option<usize> {
+    let b = s.as_bytes();
+    let close = match b.first() {
+        Some(b'[') => Some(b']'),
+        Some(b'(') => Some(b')'),
+        _ => None,
+    };
+    let skip = |i: usize, f: fn(u8) -> bool| i + b[i..].iter().take_while(|&&c| f(c)).count();
+    let start = if close.is_some() {
+        skip(1, |c| c == b' ')
+    } else {
+        0
+    };
+    let host_end = skip(start, |c| {
+        c.is_ascii_alphanumeric() || matches!(c, b'-' | b'.')
+    });
+    let labels: Vec<&str> = s[start..host_end].split('.').collect();
+    let www = labels.len() > 2 && labels[0].eq_ignore_ascii_case("www");
+    let rest = &labels[usize::from(www)..];
+    if !(2..=3).contains(&rest.len())
+        || rest[0].is_empty()
+        || rest[0].eq_ignore_ascii_case("naruto-kun")
+        || !rest[1..]
+            .iter()
+            .all(|l| l.len() >= 2 && l.bytes().all(|c| c.is_ascii_alphabetic()))
+    {
+        return None;
+    }
+    let mut end = host_end;
+    if let Some(close) = close {
+        end = skip(end, |c| c == b' ');
+        if b.get(end) != Some(&close) {
+            return None;
+        }
+        end += 1;
+    } else {
+        // ponytail: unbracketed hosts need `www.` or short lower-case TLDs so
+        // `Show.Name - S01E01` stays title text. Ceilings: a lower-case
+        // `csi.ny - 1x01` still strips; a no-www `.info`/`Site.World` host is
+        // not stripped (stays unmatched, as before). Upgrade: a TLD list.
+        let short_lower = rest[1..]
+            .iter()
+            .all(|l| l.len() <= 3 && l.bytes().all(|c| c.is_ascii_lowercase()));
+        if (!www && !short_lower) || skip(end, |c| matches!(c, b' ' | b'-')) - end < 2 {
+            return None;
+        }
+    }
+    end = skip(end, |c| matches!(c, b' ' | b'-'));
+    (end < b.len()).then_some(end)
 }
 
 fn decode_common_entities(raw: &str, hints: &mut Vec<String>) -> String {

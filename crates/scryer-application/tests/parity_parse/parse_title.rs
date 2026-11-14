@@ -49,13 +49,10 @@
 //! Scryer's key; trailing article moved to the front; `%` dropped, not
 //! `percent`; diacritics kept in the key (collation equates them, the key does
 //! not); `&` rewritten to `and` by the release sanitizer
-//! (scryer-release-parser sanitize.rs:21), then kept as a stop word
+//! (scryer-release-parser sanitize.rs:29), then kept as a stop word
 //! (SON-PARSE-0636); numeric title word dropped from the parsed title
-//! (SON-PARSE-0650, `Series.911.S01` -> `Series`); unbracketed site prefixes
-//! kept in the parse title; a bracketed site prefix followed by a title with a
-//! parenthesised year gives the site name as the title (SON-PARSE-1494,
-//! RAD-PARSE-1107, `[www.test-hyphen.ca] - ...` -> `www test`); no 7-digit zero
-//! padding of IMDb ids.
+//! (SON-PARSE-0650, `Series.911.S01` -> `Series`); no 7-digit zero padding of
+//! IMDb ids.
 //!
 //! Unmapped (tests: []), with reasons: none.
 

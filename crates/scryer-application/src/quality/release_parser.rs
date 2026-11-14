@@ -217,6 +217,8 @@ fn strip_leading_bracket_groups(raw_title: &str) -> (&str, Vec<&str>) {
 }
 
 fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
+    // fork (P17): the parser drops a site tag; keep it out of the context title.
+    let raw = scryer_release_parser::strip_website_prefix(raw);
     let tokenize = |value: &str| {
         value
             .split(|ch: char| {

@@ -88,6 +88,14 @@ pub fn best_parse_for_target(raw: &str, target: &ReleaseParseContext) -> ParsedR
         .unwrap_or_else(|| ParsedReleaseMetadata::empty(raw, PARSER_VERSION))
 }
 
+/// `raw` without a leading site tag (`www.site.com - `, `[site.com] `), the
+/// prefix the parser drops before lexing.
+#[must_use]
+pub fn strip_website_prefix(raw: &str) -> &str {
+    // fork (P17)
+    sanitize::website_prefix_len(raw).map_or(raw, |len| &raw[len..])
+}
+
 fn analyze_release_internal(raw: &str, target: &ReleaseParseContext) -> ReleaseParseAnalysis {
     let sanitized = sanitize_input(raw);
     let inputs = AnalysisInputs {

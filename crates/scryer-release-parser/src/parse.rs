@@ -3445,7 +3445,11 @@ fn original_compound_leading_group(
     tokens: &[Token],
     range: TokenRange,
 ) -> Option<String> {
-    let raw_group = raw_input.trim_start().strip_prefix('[')?.split_once(']')?.0;
+    // fork (P17, review): the tokens come from the site-stripped input.
+    let raw_group = crate::strip_website_prefix(raw_input.trim_start())
+        .strip_prefix('[')?
+        .split_once(']')?
+        .0;
     let preserves_sanitized_ampersand = raw_group.contains('&')
         && tokens[range.start_token..range.end_token]
             .iter()

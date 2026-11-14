@@ -3355,7 +3355,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:47"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0417
   # key: "ParserFixture.cs|should_parse_movie_title|642727863811fda8|0"
@@ -3363,7 +3363,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:48"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0418
   # key: "ParserFixture.cs|should_parse_movie_title|34d572e069df0ffd|0"
@@ -3483,7 +3483,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:63"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0433
   # key: "ParserFixture.cs|should_parse_movie_title|954c105ae3ed6284|0"
@@ -6650,7 +6650,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0828
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|52c56dd926f9fd1b|0"
@@ -8846,7 +8846,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:12"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1098
   # key: "UrlFixture.cs|should_not_parse_url_in_name|2af4a193cd4380bd|0"
@@ -8862,7 +8862,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:14"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1100
   # key: "UrlFixture.cs|should_not_parse_url_in_name|10e00e5704b008e1|0"
@@ -8878,7 +8878,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:16"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1102
   # key: "UrlFixture.cs|should_not_parse_url_in_name|977ffc7d06895e52|0"
@@ -8894,7 +8894,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:18"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1104
   # key: "UrlFixture.cs|should_not_parse_url_in_name|2ae4ef42fb7d8005|0"
@@ -8910,7 +8910,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:20"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1106
   # key: "UrlFixture.cs|should_not_parse_url_in_name|53c1dd869fe1ce0c|0"
@@ -8918,7 +8918,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1107
   # key: "UrlFixture.cs|should_not_parse_url_in_name|9d279a56bbce825b|0"
@@ -8926,7 +8926,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1108
   # key: "UrlFixture.cs|should_not_parse_url_in_name|4cf9b16a42ca64e6|0"
@@ -8934,7 +8934,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:23"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1109
   # key: "UrlFixture.cs|should_not_parse_url_in_name|ee50ccdaa91bd94c|0"
@@ -8950,7 +8950,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:25"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_movie_title_clean]
 - id: RAD-PARSE-1111
   # key: "UrlFixture.cs|should_not_parse_url_in_group|41e64ad68897707c|0"

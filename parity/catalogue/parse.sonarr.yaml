@@ -5208,7 +5208,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_series_name|a2ac52340fbb|0
 - id: SON-PARSE-0649
@@ -5232,7 +5232,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_series_title_info|d1d987691775|0
 - id: SON-PARSE-0652
@@ -8761,7 +8761,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|a4b546587b86|0
 - id: SON-PARSE-1092
@@ -11897,7 +11897,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:12"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|e16ccf0dcfc6|0
 - id: SON-PARSE-1484
@@ -11913,7 +11913,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:14"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|547460ea74be|0
 - id: SON-PARSE-1486
@@ -11929,7 +11929,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:16"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|55bb2e9161aa|0
 - id: SON-PARSE-1488
@@ -11945,7 +11945,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:18"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|5ab3e09baf51|0
 - id: SON-PARSE-1490
@@ -11961,7 +11961,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:20"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|16373373fd93|0
 - id: SON-PARSE-1492
@@ -11977,7 +11977,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|9337b3f64080|0
 - id: SON-PARSE-1494
@@ -11985,7 +11985,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:23"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|2cd277807a1d|0
 - id: SON-PARSE-1495
@@ -11993,7 +11993,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:24"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|7ef9e85d3d12|0
 - id: SON-PARSE-1496
@@ -12009,7 +12009,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_group|a97727df5650|0
 - id: SON-PARSE-1498

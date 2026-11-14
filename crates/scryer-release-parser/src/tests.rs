@@ -5710,3 +5710,89 @@ fn localized_season_words_and_chapter_numbers_parse() {
     );
     assert_eq!(parsed.episode.expect("episode").episode_numbers, vec![2]);
 }
+
+fn first_observed_title(raw: &str, target: &ReleaseParseContext) -> (String, Option<String>, bool) {
+    let analysis = analyze_release_for_target(raw, target);
+    let stripped = analysis
+        .parse_hints
+        .iter()
+        .any(|hint| hint == "website_prefix_stripped");
+    let candidate = analysis.best_candidate().expect("best candidate");
+    let title = candidate
+        .title_segments
+        .iter()
+        .find(|segment| segment.kind == crate::TitleSegmentKind::ObservedPrimary)
+        .map(|segment| segment.normalized.clone())
+        .unwrap_or_default();
+    (title, candidate.projected.release_group.clone(), stripped)
+}
+
+// fork (P17): a leading site tag is neither title nor release group.
+#[test]
+fn website_prefix_is_stripped() {
+    let target = context(ContextFacetHint::Series, "Emberfall");
+    for raw in [
+        "www.Example.com - Emberfall.S03E14.720p.HDTV.x264-GRP",
+        "[ www.Example.com ] - Emberfall.S03E14.720p.HDTV.x264-GRP",
+        "example.net - Emberfall.S03E14.720p.HDTV.x264-GRP",
+        "www.ex-ample.net.au - Emberfall.S03E14.720p.HDTV.x264-GRP",
+        "(example.com) Emberfall 2023 [720p]",
+        "[www.ex-ample.ca] - Emberfall (2011) S01",
+    ] {
+        let (title, group, stripped) = first_observed_title(raw, &target);
+        assert!(stripped, "{raw}: no website_prefix_stripped hint");
+        assert_eq!(title, "EMBERFALL", "{raw}");
+        if raw.ends_with("-GRP") {
+            assert_eq!(group.as_deref(), Some("GRP"), "{raw}");
+        }
+    }
+}
+
+// fork (P17, review): a bracketed group after a stripped site keeps its raw `&`.
+#[test]
+fn website_prefix_then_bracketed_group_keeps_its_ampersand() {
+    let target = context(ContextFacetHint::Series, "Emberfall");
+    for raw in [
+        "[www.example.com] [Foo_&_Bar] Emberfall S01E01 [720p]",
+        "www.example.com - [Foo_&_Bar] Emberfall S01E01 [720p]",
+    ] {
+        let (_, group, stripped) = first_observed_title(raw, &target);
+        assert!(stripped, "{raw}");
+        assert_eq!(group.as_deref(), Some("Foo_&_Bar"), "{raw}");
+    }
+}
+
+// fork (P17, review): the reference regex needs ` - ` after an unbracketed
+// host, 2-3 labels after `www.`, and never strips the whole name.
+#[test]
+fn website_prefix_bounds() {
+    for raw in [
+        "www.Example.com Emberfall.S01E01",
+        "www.a.b.co.uk - Emberfall.S01E01",
+        "example.net - ",
+        "[www.example.com]",
+    ] {
+        assert_eq!(crate::sanitize::website_prefix_len(raw), None, "{raw}");
+    }
+    assert_eq!(
+        crate::strip_website_prefix("www.example.co.uk - Emberfall"),
+        "Emberfall"
+    );
+}
+
+// fork (P17): a dotted title before ` - ` is not a site; Naruto-Kun.Hu is exempt.
+#[test]
+fn dotted_title_before_dash_is_not_a_site() {
+    for (raw, title) in [
+        ("Show.Name - S01E01 - Pilot.mkv", Some("SHOW NAME")),
+        ("Series.Title - 11x11 - Title", Some("SERIES TITLE")),
+        ("[Naruto-Kun.Hu] Emberfall - 12 [1080p]", None),
+    ] {
+        let target = context(ContextFacetHint::Series, title.unwrap_or("Emberfall"));
+        let (observed, _, stripped) = first_observed_title(raw, &target);
+        assert!(!stripped, "{raw}: wrongly read as a site");
+        if let Some(title) = title {
+            assert_eq!(observed, title, "{raw}");
+        }
+    }
+}

@@ -5840,6 +5840,19 @@ mod tests {
         assert_eq!(result.unwrap().title_id, "cookxfamily");
     }
 
+    // fork (P17): a leading site tag does not block the head anchor.
+    #[tokio::test]
+    async fn site_prefixed_release_matches() {
+        let titles = vec![make_series_title("cookxfamily", "Cook x Family", None)];
+        let bank = build_title_context_bank(&titles);
+        let result = match_release(
+            "www.Example.com - Cook.x.Family.S03E07.1080p.AMZN.WEB-DL.DDP2.0.H264",
+            &bank,
+        )
+        .await;
+        assert_eq!(result.map(|m| m.title_id).as_deref(), Some("cookxfamily"));
+    }
+
     #[tokio::test]
     async fn unknown_unbracketed_prefix_does_not_count_as_a_release_group() {
         let titles = vec![make_series_title("cookxfamily", "Cook x Family", None)];
