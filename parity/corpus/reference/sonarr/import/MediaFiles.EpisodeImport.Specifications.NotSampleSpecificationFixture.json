@@ -1,0 +1,25 @@
+[
+ {
+  "id": "SON-IMPORT-0210",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotSampleSpecificationFixture.cs:41",
+  "input": {
+   "op": "NotSampleSpecification",
+   "given": {
+    "existing_file": true,
+    "series": {
+     "type": "Standard"
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p"
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

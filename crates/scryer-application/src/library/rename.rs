@@ -4399,7 +4399,7 @@ fn planned_rename_title_folder<'a>(plan: &'a RenamePlan, title_id: &str) -> Opti
 /// apply time instead, where `validate_targets` stats each source and refuses
 /// a destination that already exists before anything moves.
 #[derive(Debug, Default)]
-pub(crate) struct RenamePlanningState {
+pub struct RenamePlanningState {
     planned_targets: HashSet<String>,
 }
 
@@ -5529,7 +5529,7 @@ fn finalize_rename_plan_item(
     clippy::too_many_arguments,
     reason = "series rename planning needs the full title, template, and collision context together"
 )]
-pub(crate) fn build_series_rename_plan_items_from_media_files(
+pub fn build_series_rename_plan_items_from_media_files(
     title: &Title,
     use_season_folders: bool,
     mut collections: Vec<Collection>,

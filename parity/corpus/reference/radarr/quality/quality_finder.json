@@ -1,0 +1,212 @@
+[
+ {
+  "id": "RAD-QUALITY-0045",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:10",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "CAM",
+    "resolution": 480,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "CAM"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0046",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:11",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "CAM",
+    "resolution": 1080,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "CAM"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0047",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:12",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "CAM",
+    "resolution": 0,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "CAM"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0048",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:18",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "CAM",
+    "resolution": 1080,
+    "modifier": "SCREENER"
+   }
+  },
+  "expect": {
+   "quality": "Unknown"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0049",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:19",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "CAM",
+    "resolution": 0,
+    "modifier": "SCREENER"
+   }
+  },
+  "expect": {
+   "quality": "Unknown"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0050",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:25",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX"
+   }
+  },
+  "expect": {
+   "quality": "DVD-R"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0051",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:31",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "DVD"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0052",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:32",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "DVD",
+    "resolution": 576,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "DVD"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0053",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:38",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "TV",
+    "resolution": 480,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "SDTV"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0054",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:44",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "TV",
+    "resolution": 720,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "HDTV-720p"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0055",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:45",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "UNKNOWN",
+    "resolution": 720,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "HDTV-720p"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0056",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:51",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "TV",
+    "resolution": 1080,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0057",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:52",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "UNKNOWN",
+    "resolution": 1080,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p"
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0058",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:58",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "modifier": "NONE"
+   }
+  },
+  "expect": {
+   "quality": "Bluray-720p"
+  }
+ }
+]

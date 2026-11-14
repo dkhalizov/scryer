@@ -1,0 +1,141 @@
+[
+ {
+  "id": "RAD-DECISION-0042",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:41",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "movie": {
+     "path": "C:\\Test\\Films\\Movie"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 0
+    },
+    "available_space_mb": 200,
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie path is run through AsOsAgnostic() in the reference"
+ },
+ {
+  "id": "RAD-DECISION-0043",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:51",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "movie": {
+     "path": "C:\\Test\\Films\\Movie"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 50
+    },
+    "available_space_mb": 200,
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie path is run through AsOsAgnostic() in the reference"
+ },
+ {
+  "id": "RAD-DECISION-0044",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:61",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "movie": {
+     "path": "C:\\Test\\Films\\Movie"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 0
+    },
+    "available_space_mb": 200,
+    "release": {
+     "size_mb": 1000
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "movie path is run through AsOsAgnostic() in the reference"
+ },
+ {
+  "id": "RAD-DECISION-0045",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:71",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "movie": {
+     "path": "C:\\Test\\Films\\Movie"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 150
+    },
+    "available_space_mb": 200,
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "movie path is run through AsOsAgnostic() in the reference"
+ },
+ {
+  "id": "RAD-DECISION-0046",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:81",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "movie": {
+     "path": "C:\\Test\\Films\\Movie"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 150,
+     "skip_free_space_check_when_importing": true
+    },
+    "available_space_mb": 200,
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie path is run through AsOsAgnostic() in the reference"
+ },
+ {
+  "id": "RAD-DECISION-0047",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:95",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "movie": {
+     "path": "C:\\Test\\Films\\Movie"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 150
+    },
+    "release": {
+     "size_mb": 100
+    },
+    "available_space_error": "DirectoryNotFoundException"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie path is run through AsOsAgnostic() in the reference"
+ }
+]

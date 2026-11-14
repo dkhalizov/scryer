@@ -1,0 +1,451 @@
+[
+ {
+  "id": "SON-QUALITY-0078",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:69",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "DVD",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12). Profile items built by QualityFixture.GetDefaultQualities (QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-QUALITY-0079",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:82",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "DVD",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12). Profile items built by QualityFixture.GetDefaultQualities (QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-QUALITY-0080",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:95",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12). Profile items built by QualityFixture.GetDefaultQualities (QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-QUALITY-0081",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:108",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": false
+     },
+     {
+      "quality": "SDTV",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": false
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": false
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": false
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": false
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "DVD",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "Bluray-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12). Profile items built by QualityFixture.GetDefaultQualities (QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-QUALITY-0082",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:121",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "SDTV",
+      "allowed": false
+     },
+     {
+      "quality": "DVD",
+      "allowed": false
+     },
+     {
+      "allowed": true,
+      "items": [
+       {
+        "quality": "HDTV-720p",
+        "allowed": true
+       },
+       {
+        "quality": "WEBDL-720p",
+        "allowed": true
+       }
+      ]
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "WEBDL-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)."
+ },
+ {
+  "id": "SON-QUALITY-0083",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:134",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "SDTV",
+      "allowed": false
+     },
+     {
+      "quality": "DVD",
+      "allowed": false
+     },
+     {
+      "allowed": true,
+      "items": [
+       {
+        "quality": "HDTV-720p",
+        "allowed": true
+       },
+       {
+        "quality": "WEBDL-720p",
+        "allowed": true
+       }
+      ]
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "WEBDL-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "respect_group_order": true
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)."
+ }
+]

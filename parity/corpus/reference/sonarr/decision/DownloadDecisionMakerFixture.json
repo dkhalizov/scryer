@@ -1,0 +1,431 @@
+[
+ {
+  "id": "SON-DECISION-0068",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:110",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "fail1",
+      "result": "reject",
+      "reason": "Unknown",
+      "message": "fail1"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": true,
+     "episodes": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0069",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:120",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "fail1",
+      "result": "reject",
+      "reason": "Unknown",
+      "message": "fail1"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": true,
+     "episodes": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0070",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:130",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": true,
+     "episodes": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0071",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:140",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     },
+     {
+      "name": "fail1",
+      "result": "reject",
+      "reason": "Unknown",
+      "message": "fail1"
+     },
+     {
+      "name": "fail2",
+      "result": "reject",
+      "reason": "Unknown",
+      "message": "fail2"
+     },
+     {
+      "name": "fail3",
+      "result": "reject",
+      "reason": "Unknown",
+      "message": "fail3"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": true,
+     "episodes": 1
+    }
+   }
+  },
+  "expect": {
+   "rejection_count": 3
+  }
+ },
+ {
+  "id": "SON-DECISION-0073",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:164",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "1937 - Snow White and the Seven Dwarves"
+     }
+    ],
+    "mapped": {
+     "series_known": true,
+     "episodes": 1
+    }
+   }
+  },
+  "expect": {
+   "decision_count": 0
+  }
+ },
+ {
+  "id": "SON-DECISION-0077",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:232",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": false,
+     "episodes": 1
+    }
+   }
+  },
+  "expect": {
+   "decision_count": 1
+  }
+ },
+ {
+  "id": "SON-DECISION-0078",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:244",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "season",
+    "specs": [
+     {
+      "name": "EpisodeRequestedSpecification",
+      "result": "real"
+     }
+    ],
+    "series": {
+     "title": "Title1"
+    },
+    "series_episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "scene_season": 2,
+      "scene_number": 1
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "scene_season": 2,
+      "scene_number": 2
+     }
+    ],
+    "criteria": {
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "number": 1,
+       "scene_season": 2,
+       "scene_number": 1
+      }
+     ]
+    },
+    "releases": [
+     {
+      "title": "Title1.S02E01.720p.WEB-DL-DRONE"
+     },
+     {
+      "title": "Title1.S02E02.720p.WEB-DL-DRONE"
+     }
+    ],
+    "mapping": "a release maps to the series episode whose scene number equals the parsed episode number"
+   }
+  },
+  "expect": {
+   "approved_count": 1
+  },
+  "note": "Series title and episode/scene numbers are NBuilder defaults (Title1; 1, 2); titles are built by the test from them."
+ },
+ {
+  "id": "SON-DECISION-0079",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:288",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": false,
+     "episodes": 1
+    }
+   }
+  },
+  "expect": {
+   "decision_count": 1,
+   "download_allowed": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0080",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:302",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": true,
+     "episodes": 0
+    }
+   }
+  },
+  "expect": {
+   "decision_count": 1,
+   "download_allowed": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0081",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:316",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": "throws"
+   }
+  },
+  "expect": {
+   "decision_count": 1
+  },
+  "note": "The test also asserts one logged error (ExpectedErrors(1))."
+ },
+ {
+  "id": "SON-DECISION-0082",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:334",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "search": "rss",
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "releases": [
+     {
+      "title": "The.Office.S03E115.DVDRip.XviD-OSiTV"
+     }
+    ],
+    "mapped": {
+     "series_known": false,
+     "episodes": 1
+    },
+    "scene_mapping_tvdb_id": 12345
+   }
+  },
+  "expect": {
+   "decision_count": 1,
+   "rejection_contains": "12345"
+  }
+ }
+]

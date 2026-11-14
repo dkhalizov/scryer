@@ -1,0 +1,1055 @@
+# Sonarr download-client (qBittorrent) and download-handling fixtures, ported by
+# parity/extract/sonarr_torrent.py. Corpus: corpus/reference/sonarr/torrent/.
+
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|error_item_should_have_required_properties|-
+- id: SON-TORRENT-0001
+  behaviour: "A torrent in state 'error' maps to a Warning queue item"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:161"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|paused_item_should_have_required_properties|0|["pausedDL"]
+- id: SON-TORRENT-0002
+  behaviour: "A paused/stopped incomplete torrent maps to a Paused item with remaining size and no ETA (pausedDL)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:181"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|paused_item_should_have_required_properties|1|["stoppedDL"]
+- id: SON-TORRENT-0003
+  behaviour: "A paused/stopped incomplete torrent maps to a Paused item with remaining size and no ETA (stoppedDL)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:182"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|completed_item_should_have_required_properties|0|["pausedUP"]
+- id: SON-TORRENT-0004
+  behaviour: "A fully downloaded torrent in a seeding/stopped state maps to a Completed item with nothing remaining (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:203"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|completed_item_should_have_required_properties|1|["stoppedUP"]
+- id: SON-TORRENT-0005
+  behaviour: "A fully downloaded torrent in a seeding/stopped state maps to a Completed item with nothing remaining (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:204"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|completed_item_should_have_required_properties|2|["queuedUP"]
+- id: SON-TORRENT-0006
+  behaviour: "A fully downloaded torrent in a seeding/stopped state maps to a Completed item with nothing remaining (queuedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:205"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|completed_item_should_have_required_properties|3|["uploading"]
+- id: SON-TORRENT-0007
+  behaviour: "A fully downloaded torrent in a seeding/stopped state maps to a Completed item with nothing remaining (uploading)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:206"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|completed_item_should_have_required_properties|4|["stalledUP"]
+- id: SON-TORRENT-0008
+  behaviour: "A fully downloaded torrent in a seeding/stopped state maps to a Completed item with nothing remaining (stalledUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:207"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|completed_item_should_have_required_properties|5|["forcedUP"]
+- id: SON-TORRENT-0009
+  behaviour: "A fully downloaded torrent in a seeding/stopped state maps to a Completed item with nothing remaining (forcedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:208"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|queued_item_should_have_required_properties|0|["queuedDL"]
+- id: SON-TORRENT-0010
+  behaviour: "A queued/checking/metadata torrent maps to a Queued item with no ETA (queuedDL)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:229"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|queued_item_should_have_required_properties|1|["checkingDL"]
+- id: SON-TORRENT-0011
+  behaviour: "A queued/checking/metadata torrent maps to a Queued item with no ETA (checkingDL)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:230"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|queued_item_should_have_required_properties|2|["checkingUP"]
+- id: SON-TORRENT-0012
+  behaviour: "A queued/checking/metadata torrent maps to a Queued item with no ETA (checkingUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:231"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|queued_item_should_have_required_properties|3|["metaDL"]
+- id: SON-TORRENT-0013
+  behaviour: "A queued/checking/metadata torrent maps to a Queued item with no ETA (metaDL)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:232"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|queued_item_should_have_required_properties|4|["checkingResumeData"]
+- id: SON-TORRENT-0014
+  behaviour: "A queued/checking/metadata torrent maps to a Queued item with no ETA (checkingResumeData)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:233"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|downloading_item_should_have_required_properties|-
+- id: SON-TORRENT-0015
+  behaviour: "A downloading torrent maps to a Downloading item with a non-zero ETA"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:254"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|stalledDL_item_should_have_required_properties|-
+- id: SON-TORRENT-0016
+  behaviour: "A stalled download (stalledDL) maps to a Warning item with no ETA"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:275"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|missingFiles_item_should_have_required_properties|-
+- id: SON-TORRENT-0017
+  behaviour: "A torrent with missing files maps to a Warning item with no ETA"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:296"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|single_file_torrent_outputpath_should_have_sanitised_name|-
+- id: SON-TORRENT-0018
+  behaviour: "A single-file torrent's import path is save path + the file's name, not the torrent name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:317"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|single_file_torrent_with_folder_should_only_have_first_subfolder|-
+- id: SON-TORRENT-0019
+  behaviour: "A single-file torrent inside a folder imports from save path + the first folder only"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:350"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|multi_file_torrent_outputpath_should_have_sanitised_name|-
+- id: SON-TORRENT-0020
+  behaviour: "A multi-file torrent imports from save path + the files' common top folder, not the torrent name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:383"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|api_261_should_use_content_path|0|["pausedUP"]
+- id: SON-TORRENT-0021
+  behaviour: "With Web API 2.6.1+ the import path is the torrent's content path (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:423"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|api_261_should_use_content_path|1|["stoppedUP"]
+- id: SON-TORRENT-0022
+  behaviour: "With Web API 2.6.1+ the import path is the torrent's content path (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:424"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_return_unique_id|-
+- id: SON-TORRENT-0023
+  behaviour: "Adding a .torrent URL returns a download id"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:457"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_get_hash_from_magnet_url|0|["magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z6KR&tr=udp", "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"]
+- id: SON-TORRENT-0024
+  behaviour: "A base32 magnet info-hash is returned as the 40-char upper-case hex download id"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:469"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_refuse_magnet_if_no_trackers_provided_and_dht_is_disabled|-
+- id: SON-TORRENT-0025
+  behaviour: "A magnet with no trackers is refused when qBittorrent has DHT off"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:482"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_accept_magnet_if_trackers_provided_and_dht_is_disabled|-
+- id: SON-TORRENT-0026
+  behaviour: "A magnet with a tracker is added by URL even when DHT is off"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:495"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_set_top_priority|-
+- id: SON-TORRENT-0027
+  behaviour: "With priority First the added torrent is moved to the top of the queue"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:511"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_not_fail_if_top_priority_not_available|-
+- id: SON-TORRENT-0028
+  behaviour: "If moving to the top of the queue is refused (HTTP 403) the grab still succeeds with one warning"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:525"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_return_status_with_outputdirs|-
+- id: SON-TORRENT-0029
+  behaviour: "Client status reports localhost and qBittorrent's default save path as the output root"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:544"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_correct_category_output_path|-
+- id: SON-TORRENT-0030
+  behaviour: "With Web API 2.0+ the output root is the category's save path, '//server/x' read as a UNC path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:563"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_handle_http_redirect_to_magnet|-
+- id: SON-TORRENT-0031
+  behaviour: "A .torrent URL that redirects (303) to a magnet is still added"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:591"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_handle_http_redirect_to_torrent|-
+- id: SON-TORRENT-0032
+  behaviour: "A .torrent URL that redirects (302) to another .torrent is still added"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:604"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_and_should_not_allow_move_files_if_max_ratio_not_reached|-
+- id: SON-TORRENT-0033
+  behaviour: "A seeding torrent below the global ratio limit can be neither removed nor moved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:617"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_and_should_not_allow_move_files_if_max_ratio_reached_and_not_paused|-
+- id: SON-TORRENT-0034
+  behaviour: "A torrent at the ratio limit but still seeding (uploading) can be neither removed nor moved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:680"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_and_should_not_allow_move_files_if_max_ratio_is_not_set|0|["pausedUP"]
+- id: SON-TORRENT-0035
+  behaviour: "A stopped torrent with no seed limit anywhere is never removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:691"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_and_should_not_allow_move_files_if_max_ratio_is_not_set|1|["stoppedUP"]
+- id: SON-TORRENT-0036
+  behaviour: "A stopped torrent with no seed limit anywhere is never removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:692"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_ratio_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0037
+  behaviour: "A stopped torrent at the global ratio limit is removable and movable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:703"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_ratio_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0038
+  behaviour: "A stopped torrent at the global ratio limit is removable and movable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:704"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_ratio_reached_after_rounding_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0039
+  behaviour: "A stopped torrent at ratio 1.1006 against global 1.0 is removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:715"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_ratio_reached_after_rounding_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0040
+  behaviour: "A stopped torrent at ratio 1.1006 against global 1.0 is removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:716"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_just_under_max_ratio_reached_after_rounding_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0041
+  behaviour: "A stopped torrent at ratio 0.9999 counts as reaching global 1.0 (rounding) (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:727"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_just_under_max_ratio_reached_after_rounding_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0042
+  behaviour: "A stopped torrent at ratio 0.9999 counts as reaching global 1.0 (rounding) (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:728"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_ratio_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0043
+  behaviour: "A per-torrent ratio limit 0.8 overrides global 2.0: ratio 1.0 is removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:739"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_ratio_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0044
+  behaviour: "A per-torrent ratio limit 0.8 overrides global 2.0: ratio 1.0 is removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:740"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_ratio_reached_after_rounding_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0045
+  behaviour: "Ratio 1.1006 reaches a per-torrent limit 1.1 (rounding) over global 2.0 (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:751"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_ratio_reached_after_rounding_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0046
+  behaviour: "Ratio 1.1006 reaches a per-torrent limit 1.1 (rounding) over global 2.0 (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:752"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_just_under_overridden_max_ratio_reached_after_rounding_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0047
+  behaviour: "Ratio 0.9999 reaches a per-torrent limit 1.0 (rounding) over global 2.0 (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:763"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_just_under_overridden_max_ratio_reached_after_rounding_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0048
+  behaviour: "Ratio 0.9999 reaches a per-torrent limit 1.0 (rounding) over global 2.0 (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:764"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_if_overridden_max_ratio_not_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0049
+  behaviour: "A per-torrent ratio limit 0.8 overrides global 0.2: ratio 0.5 is not removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:775"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_if_overridden_max_ratio_not_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0050
+  behaviour: "A per-torrent ratio limit 0.8 overrides global 0.2: ratio 0.5 is not removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:776"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_and_should_not_allow_move_files_if_max_seedingtime_reached_and_not_paused|-
+- id: SON-TORRENT-0051
+  behaviour: "A torrent past the global seeding time but still uploading is not removable"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:787"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_seedingtime_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0052
+  behaviour: "A stopped torrent that seeded the global 20 min is removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:798"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_seedingtime_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0053
+  behaviour: "A stopped torrent that seeded the global 20 min is removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:799"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_seedingtime_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0054
+  behaviour: "A per-torrent seeding time 10 min overrides global 40: 20 min seeded is removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:810"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_seedingtime_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0055
+  behaviour: "A per-torrent seeding time 10 min overrides global 40: 20 min seeded is removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:811"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_if_overridden_max_seedingtime_not_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0056
+  behaviour: "A per-torrent seeding time 40 min overrides global 20: 30 min seeded is not removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:822"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_if_overridden_max_seedingtime_not_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0057
+  behaviour: "A per-torrent seeding time 40 min overrides global 20: 30 min seeded is not removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:823"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_and_should_not_allow_move_files_if_max_inactive_seedingtime_reached_and_not_paused|-
+- id: SON-TORRENT-0058
+  behaviour: "A torrent inactive past the global inactive limit but still uploading is not removable"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:834"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_inactive_seedingtime_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0059
+  behaviour: "A stopped torrent inactive 25 min against a global inactive limit 20 is removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:845"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_inactive_seedingtime_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0060
+  behaviour: "A stopped torrent inactive 25 min against a global inactive limit 20 is removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:846"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_inactive_seedingtime_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0061
+  behaviour: "A per-torrent inactive limit 10 overrides global 40: inactive 15 min is removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:857"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_overridden_max_inactive_seedingtime_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0062
+  behaviour: "A per-torrent inactive limit 10 overrides global 40: inactive 15 min is removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:858"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_if_overridden_max_inactive_seedingtime_not_reached_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0063
+  behaviour: "A per-torrent inactive limit 40 overrides global 20: inactive 30 min is not removable (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:869"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_be_removable_if_overridden_max_inactive_seedingtime_not_reached_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0064
+  behaviour: "A per-torrent inactive limit 40 overrides global 20: inactive 30 min is not removable (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:870"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_seedingtime_reached_but_ratio_not_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0065
+  behaviour: "Seeding time reached (30 of 20 min) makes a stopped torrent removable even below the ratio limit (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:881"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_seedingtime_reached_but_ratio_not_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0066
+  behaviour: "Seeding time reached (30 of 20 min) makes a stopped torrent removable even below the ratio limit (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:882"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_inactive_seedingtime_reached_but_ratio_not_and_paused|0|["pausedUP"]
+- id: SON-TORRENT-0067
+  behaviour: "Inactive time reached (25 of 20 min) makes a stopped torrent removable even below the ratio limit (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:893"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_be_removable_and_should_allow_move_files_if_max_inactive_seedingtime_reached_but_ratio_not_and_paused|1|["stoppedUP"]
+- id: SON-TORRENT-0068
+  behaviour: "Inactive time reached (25 of 20 min) makes a stopped torrent removable even below the ratio limit (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:894"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_fetch_details_twice|0|["pausedUP"]
+- id: SON-TORRENT-0069
+  behaviour: "Seeding time 20 of 30 min is not removable, and torrent properties are fetched once across two polls (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:905"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_not_fetch_details_twice|1|["stoppedUP"]
+- id: SON-TORRENT-0070
+  behaviour: "Seeding time 20 of 30 min is not removable, and torrent properties are fetched once across two polls (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:906"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_get_category_from_the_category_if_set|0|["pausedUP"]
+- id: SON-TORRENT-0071
+  behaviour: "The item's category comes from the torrent's category (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:922"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_get_category_from_the_category_if_set|1|["stoppedUP"]
+- id: SON-TORRENT-0072
+  behaviour: "The item's category comes from the torrent's category (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:923"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_get_category_from_the_label_if_the_category_is_not_available|0|["pausedUP"]
+- id: SON-TORRENT-0073
+  behaviour: "The item's category falls back to the torrent's label when category is unset (pausedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:948"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_get_category_from_the_label_if_the_category_is_not_available|1|["stoppedUP"]
+- id: SON-TORRENT-0074
+  behaviour: "The item's category falls back to the torrent's label when category is unset (stoppedUP)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:949"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|should_handle_eta_biginteger|-
+- id: SON-TORRENT-0075
+  behaviour: "A torrent JSON with eta 18446744073709335000 (beyond u64) deserialises without loss"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:974"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Test_should_force_api_version_check|-
+- id: SON-TORRENT-0076
+  behaviour: "The client's connection test forces a fresh Web API version check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:986"
+  in_scope: false
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_download_status_isnt_completed|0|["DownloadItemStatus.Downloading"]
+- id: SON-TORRENT-0077
+  behaviour: "A download whose client status is Downloading is not queued for import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:106"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0011"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_download_status_isnt_completed|1|["DownloadItemStatus.Failed"]
+- id: SON-TORRENT-0078
+  behaviour: "A download whose client status is Failed is not queued for import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:107"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0012"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_download_status_isnt_completed|2|["DownloadItemStatus.Queued"]
+- id: SON-TORRENT-0079
+  behaviour: "A download whose client status is Queued is not queued for import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:108"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0013"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_download_status_isnt_completed|3|["DownloadItemStatus.Paused"]
+- id: SON-TORRENT-0080
+  behaviour: "A download whose client status is Paused is not queued for import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:109"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0014"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_download_status_isnt_completed|4|["DownloadItemStatus.Warning"]
+- id: SON-TORRENT-0081
+  behaviour: "A download whose client status is Warning is not queued for import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:110"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0015"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_matching_history_is_not_found_and_no_category_specified|-
+- id: SON-TORRENT-0082
+  behaviour: "A completed download with no grab history and no category is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:120"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0016"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_process_if_matching_history_is_not_found_but_category_specified|-
+- id: SON-TORRENT-0083
+  behaviour: "A completed download with no grab history but a category is queued for import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:131"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0017"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_output_path_is_empty|-
+- id: SON-TORRENT-0084
+  behaviour: "A completed download with no output path is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:143"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0018"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_if_the_download_cannot_be_tracked_using_the_source_title_as_it_was_initiated_externally|-
+- id: SON-TORRENT-0085
+  behaviour: "A badly named download is not imported even if its grab history's source title matches a series"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:153"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0019"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs|should_not_process_when_there_is_a_title_mismatch|-
+- id: SON-TORRENT-0086
+  behaviour: "A download whose title maps to no series is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:170"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0020"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_not_mark_as_imported_if_all_files_were_rejected|-
+- id: SON-TORRENT-0087
+  behaviour: "If every file is rejected the download is import-blocked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:115"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0001"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_not_mark_as_imported_if_no_episodes_were_parsed|-
+- id: SON-TORRENT-0088
+  behaviour: "If the download maps to no episodes and every file is rejected it is import-blocked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:139"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0002"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_not_mark_as_imported_if_all_files_were_skipped|-
+- id: SON-TORRENT-0089
+  behaviour: "If every file is skipped the download is import-blocked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:162"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0003"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_not_mark_as_imported_if_some_of_episodes_were_not_imported|-
+- id: SON-TORRENT-0090
+  behaviour: "If only one of three files imports (no history) the download is import-blocked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:178"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0004"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_not_mark_as_imported_if_some_of_episodes_were_not_imported_including_history|-
+- id: SON-TORRENT-0091
+  behaviour: "If only one of three files imports the download is import-blocked, even when history says it was imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:206"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0005"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_mark_as_imported_if_all_episodes_were_imported|-
+- id: SON-TORRENT-0092
+  behaviour: "If every episode's file imports the download is Imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:241"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0006"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_mark_as_imported_if_all_episodes_were_imported_including_history|-
+- id: SON-TORRENT-0093
+  behaviour: "If one file imports and history shows the rest already imported, the download is Imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:266"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0007"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_mark_as_imported_if_double_episode_file_is_imported|-
+- id: SON-TORRENT-0094
+  behaviour: "A single two-episode file covering both episodes marks the download Imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:302"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0008"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_mark_as_imported_if_all_episodes_were_imported_but_extra_files_were_not|-
+- id: SON-TORRENT-0095
+  behaviour: "An extra file that is skipped does not stop a download whose episodes all imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:323"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0009"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs|should_mark_as_imported_if_the_download_can_be_tracked_using_the_source_seriesid|-
+- id: SON-TORRENT-0096
+  behaviour: "A badly named download imports when the grab history's series id resolves the series"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:346"
+  in_scope: true
+  status: waived
+  decision: "D21: duplicate of SON-IMPORT-0010"
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs|should_mark_failed_if_encrypted|-
+- id: SON-TORRENT-0097
+  behaviour: "A pending-failed download that is encrypted is marked Failed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs:52"
+  in_scope: false
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs|should_mark_failed_if_download_item_is_failed|-
+- id: SON-TORRENT-0098
+  behaviour: "A pending-failed download whose client item failed is marked Failed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs:62"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs|should_include_tracked_download_in_message|-
+- id: SON-TORRENT-0099
+  behaviour: "The download-failed event carries the tracked download"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs:72"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs|should_not_fail_if_matching_history_is_not_found|-
+- id: SON-TORRENT-0100
+  behaviour: "A completed download with no grab history is not failed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs:59"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs|should_warn_if_matching_history_is_not_found|-
+- id: SON-TORRENT-0101
+  behaviour: "A failed download with no grab history gets a warning message"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs:69"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs|should_not_warn_if_matching_history_is_not_found_and_not_failed|-
+- id: SON-TORRENT-0102
+  behaviour: "A failed download with no grab history gets a warning message (test name says otherwise)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFixture.cs:80"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs|should_return_false_if_there_is_no_history|-
+- id: SON-TORRENT-0103
+  behaviour: "With no history a download is not already imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:59"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs|should_return_false_if_single_episode_download_is_not_imported|-
+- id: SON-TORRENT-0104
+  behaviour: "A single-episode download with only a Grabbed event is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:69"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs|should_return_false_if_no_episode_in_multi_episode_download_is_imported|-
+- id: SON-TORRENT-0105
+  behaviour: "A two-episode download with only Grabbed events is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:81"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs|should_should_return_false_if_only_one_episode_in_multi_episode_download_is_imported|-
+- id: SON-TORRENT-0106
+  behaviour: "A two-episode download with only one episode imported is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:94"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs|should_return_true_if_single_episode_download_is_imported|-
+- id: SON-TORRENT-0107
+  behaviour: "A single-episode download with a DownloadFolderImported event is imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs|should_return_true_if_multi_episode_download_is_imported|-
+- id: SON-TORRENT-0108
+  behaviour: "A two-episode download with every episode imported is imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:119"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs|should_track_downloads_using_the_source_title_if_it_cannot_be_found_using_the_download_title|-
+- id: SON-TORRENT-0109
+  behaviour: "A download whose title does not parse is mapped via its grab history's source title"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:39"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs|should_set_indexer|-
+- id: SON-TORRENT-0110
+  behaviour: "A tracked download takes its release's indexer name from the grab history"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:89"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs|should_parse_as_special_when_source_title_parsing_fails|-
+- id: SON-TORRENT-0111
+  behaviour: "When the grab source title only parses as a special, the download maps to that special"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:163"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs|should_unmap_tracked_download_if_episode_deleted|-
+- id: SON-TORRENT-0112
+  behaviour: "When a tracked download's episode is deleted on refresh, it stays tracked but loses its mapping"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:229"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs|should_not_throw_when_processing_deleted_episodes|-
+- id: SON-TORRENT-0113
+  behaviour: "An unmapped tracked download survives an episode-deleted refresh without error"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:288"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs|should_not_throw_when_processing_deleted_series|-
+- id: SON-TORRENT-0114
+  behaviour: "An unmapped tracked download survives its series being deleted without error"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:347"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_publish_on_grab_event|-
+- id: SON-TORRENT-0115
+  behaviour: "A successful grab publishes an episode-grabbed event"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:81"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_grab_using_client|-
+- id: SON-TORRENT-0116
+  behaviour: "A grab is handed to the matching download client once"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:92"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_not_publish_on_failed_grab_event|-
+- id: SON-TORRENT-0117
+  behaviour: "A grab whose client call fails raises and publishes no grabbed event"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:103"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_trigger_indexer_backoff_on_indexer_error|-
+- id: SON-TORRENT-0118
+  behaviour: "A failure fetching the release from the indexer records an indexer failure"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:115"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_trigger_indexer_backoff_on_http429_with_long_time|-
+- id: SON-TORRENT-0119
+  behaviour: "An indexer HTTP 429 with Retry-After '300' backs the indexer off 5 minutes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:131"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_trigger_indexer_backoff_on_http429_based_on_date|-
+- id: SON-TORRENT-0120
+  behaviour: "An indexer HTTP 429 with Retry-After as a date 300 s ahead backs the indexer off about 5 minutes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:151"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_not_trigger_indexer_backoff_on_downloadclient_error|-
+- id: SON-TORRENT-0121
+  behaviour: "A download-client error does not back off the indexer"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:172"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|Download_report_should_not_trigger_indexer_backoff_on_indexer_404_error|-
+- id: SON-TORRENT-0122
+  behaviour: "A release gone from the indexer (unavailable) does not back off the indexer"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:185"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|should_not_attempt_download_if_client_isnt_configured|-
+- id: SON-TORRENT-0123
+  behaviour: "With no download client for the protocol the grab fails and nothing is published"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:201"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|should_attempt_download_even_if_client_is_disabled|-
+- id: SON-TORRENT-0124
+  behaviour: "A grab still goes to a client that is temporarily disabled by backoff"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:210"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|should_send_download_to_correct_usenet_client|-
+- id: SON-TORRENT-0125
+  behaviour: "A usenet release goes to the usenet client, not the torrent one"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:233"
+  in_scope: false
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs|should_send_download_to_correct_torrent_client|-
+- id: SON-TORRENT-0126
+  behaviour: "A torrent release goes to the torrent client, not the usenet one"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadServiceFixture.cs:245"
+  in_scope: true
+  status: unmapped
+  tests: []
+# key: src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs|should_not_return_config_for_non_existent_indexer|-
+- id: SON-TORRENT-0127
+  behaviour: "A torrent release from an unknown indexer (id 0) gets no seed config"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs:16"
+  in_scope: true
+  status: green
+  tests: [scryer-infrastructure-acquisition::parity_torrent::son_torrent]
+# key: src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs|should_not_return_config_for_invalid_indexer|-
+- id: SON-TORRENT-0128
+  behaviour: "A season pack from an indexer with no cached settings gets no seed config"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs:35"
+  in_scope: true
+  status: green
+  tests: [scryer-infrastructure-acquisition::parity_torrent::son_torrent]
+# key: src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs|should_return_season_time_for_season_packs|-
+- id: SON-TORRENT-0129
+  behaviour: "A season pack gets the indexer's season-pack seed time (10 min)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs:58"
+  in_scope: true
+  status: green
+  tests: [scryer-infrastructure-acquisition::parity_torrent::son_torrent]

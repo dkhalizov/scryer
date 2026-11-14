@@ -1,0 +1,167 @@
+[
+ {
+  "id": "RAD-QUALITY-0023",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:23",
+  "input": {
+   "op": "default_profiles",
+   "given": {
+    "existing_profiles": 0,
+    "custom_formats": 0
+   }
+  },
+  "expect": {
+   "profiles_inserted": 6
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0024",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:36",
+  "input": {
+   "op": "default_profiles",
+   "given": {
+    "existing_profiles": 2
+   }
+  },
+  "expect": {
+   "profiles_inserted": 0
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0025",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:52",
+  "input": {
+   "op": "profile_delete",
+   "given": {
+    "profile_id": 2,
+    "in_use_by": {
+     "movies": true,
+     "import_lists": false
+    }
+   }
+  },
+  "expect": {
+   "error": "QualityProfileInUseException",
+   "deleted": false
+  },
+  "note": "Delete checks movies, then import lists, then collections, short-circuiting (src/NzbDrone.Core/Profiles/Qualities/QualityProfileService.cs:67); a list the test does not set up is omitted. 3 movies, one random movie set to profile 2; all import lists use profile 1."
+ },
+ {
+  "id": "RAD-QUALITY-0026",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:73",
+  "input": {
+   "op": "profile_delete",
+   "given": {
+    "profile_id": 2,
+    "in_use_by": {
+     "movies": false,
+     "import_lists": true
+    }
+   }
+  },
+  "expect": {
+   "error": "QualityProfileInUseException",
+   "deleted": false
+  },
+  "note": "Delete checks movies, then import lists, then collections, short-circuiting (src/NzbDrone.Core/Profiles/Qualities/QualityProfileService.cs:67); a list the test does not set up is omitted. All movies use profile 1; 3 import lists, one random list set to profile 2."
+ },
+ {
+  "id": "RAD-QUALITY-0027",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:94",
+  "input": {
+   "op": "profile_delete",
+   "given": {
+    "profile_id": 2,
+    "in_use_by": {
+     "movies": false,
+     "collections": true
+    }
+   }
+  },
+  "expect": {
+   "error": "QualityProfileInUseException",
+   "deleted": false
+  },
+  "note": "Delete checks movies, then import lists, then collections, short-circuiting (src/NzbDrone.Core/Profiles/Qualities/QualityProfileService.cs:67); a list the test does not set up is omitted. All movies use profile 1, all collections use profile 2. Import lists are omitted: one random list is set to profile 1, the others keep NBuilder's sequential QualityProfileId, so whether one uses profile 2 is not controlled."
+ },
+ {
+  "id": "RAD-QUALITY-0028",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:121",
+  "input": {
+   "op": "profile_delete",
+   "given": {
+    "profile_id": 1,
+    "in_use_by": {
+     "movies": false,
+     "import_lists": false,
+     "collections": false
+    }
+   }
+  },
+  "expect": {
+   "deleted": true
+  },
+  "note": "Delete checks movies, then import lists, then collections, short-circuiting (src/NzbDrone.Core/Profiles/Qualities/QualityProfileService.cs:67); a list the test does not set up is omitted. All movies, import lists and collections use profile 2."
+ },
+ {
+  "id": "RAD-QUALITY-0029",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:148",
+  "input": {
+   "op": "acceptable_languages",
+   "given": {
+    "profile_language": "German",
+    "format_items": []
+   }
+  },
+  "expect": {
+   "language_set": [
+    "German"
+   ]
+  },
+  "note": "The test asserts count and membership, not order. FormatItems defaults to an empty list (QualityProfile constructor)."
+ },
+ {
+  "id": "RAD-QUALITY-0030",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Profiles/ProfileServiceFixture.cs:163",
+  "input": {
+   "op": "acceptable_languages",
+   "given": {
+    "profile_language": "German",
+    "format_items": [
+     {
+      "format": {
+       "name": "My Format 1",
+       "specifications": [
+        {
+         "implementation": "LanguageSpecification",
+         "value": "English",
+         "negate": false
+        }
+       ]
+      },
+      "score": -2
+     },
+     {
+      "format": {
+       "name": "My Format 2",
+       "specifications": [
+        {
+         "implementation": "LanguageSpecification",
+         "value": "French",
+         "negate": false
+        }
+       ]
+      },
+      "score": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "language_set": [
+    "French",
+    "German"
+   ]
+  },
+  "note": "The test asserts count 2 and membership, not order. Scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:23): allowed formats score 2^index, the others -2^allowedCount."
+ }
+]

@@ -14,7 +14,8 @@ pub fn parse_release_metadata(raw: &str) -> ParsedReleaseMetadata {
     project_analysis(raw, &neutral_release_analysis(raw))
 }
 
-pub(crate) fn neutral_release_analysis(raw: &str) -> ReleaseParseAnalysis {
+#[doc(hidden)] // fork: parity net seam (was pub(crate))
+pub fn neutral_release_analysis(raw: &str) -> ReleaseParseAnalysis {
     analyze_release_for_target(raw, &synthesize_release_parse_context(raw))
 }
 

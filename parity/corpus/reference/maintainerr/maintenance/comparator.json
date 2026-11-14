@@ -1,0 +1,409 @@
+[
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0294",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": "abc",
+    "val2": "ABC"
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:51"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0295",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": [
+     "abc",
+     "def"
+    ],
+    "val2": [
+     "ABC",
+     "DEF"
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:52"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0296",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": [
+     "abc"
+    ],
+    "val2": "abc"
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:53"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0297",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": {
+     "$date": "2022-01-01"
+    },
+    "val2": {
+     "$date": "2022-01-01"
+    }
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:54"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0298",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": true,
+    "val2": 1
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:56"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0299",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": [],
+    "val2": []
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:57"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0300",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": "abc",
+    "val2": {
+     "$undefined": true
+    }
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:58"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0301",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": "abc",
+    "val2": "abd"
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:59"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0302",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": [
+     "abc"
+    ],
+    "val2": [
+     "abc",
+     "def"
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:60"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0303",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": [
+     "abc",
+     "def"
+    ],
+    "val2": [
+     "abc",
+     "cde"
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:61"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0304",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": {
+     "$date": "2022-01-01"
+    },
+    "val2": {
+     "$date": "2022-01-02"
+    }
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:62"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0305",
+  "input": {
+   "given": {
+    "action": "EQUALS",
+    "val1": false,
+    "val2": 1
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:63"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0306",
+  "input": {
+   "given": {
+    "action": "CONTAINS",
+    "val1": "abc",
+    "val2": "ab"
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:80"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0307",
+  "input": {
+   "given": {
+    "action": "CONTAINS",
+    "val1": [
+     "abc",
+     "def"
+    ],
+    "val2": [
+     "ral",
+     {
+      "$undefined": true
+     },
+     "abc"
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:81"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0308",
+  "input": {
+   "given": {
+    "action": "CONTAINS",
+    "val1": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "val2": [
+     3
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:82"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0309",
+  "input": {
+   "given": {
+    "action": "CONTAINS",
+    "val1": "abc",
+    "val2": "de"
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:83"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0310",
+  "input": {
+   "given": {
+    "action": "CONTAINS",
+    "val1": [
+     "abc",
+     "def"
+    ],
+    "val2": [
+     "ral",
+     {
+      "$undefined": true
+     },
+     "rel"
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:84"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0311",
+  "input": {
+   "given": {
+    "action": "CONTAINS",
+    "val1": [
+     "ImDb top 250",
+     "My birthday",
+     "jef"
+    ],
+    "val2": [
+     "imdb"
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:85"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0312",
+  "input": {
+   "given": {
+    "action": "CONTAINS",
+    "val1": [
+     "abc",
+     "def"
+    ],
+    "val2": [
+     ""
+    ]
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:86"
+ },
+ {
+  "expect": {
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0334",
+  "input": {
+   "given": {
+    "action": "BEFORE",
+    "val1": {
+     "$date": "2022-01-01"
+    },
+    "val2": {
+     "$date": "2022-01-02"
+    }
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:184"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0335",
+  "input": {
+   "given": {
+    "action": "BEFORE",
+    "val1": {
+     "$date": "2022-01-01"
+    },
+    "val2": {
+     "$undefined": true
+    }
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:192"
+ },
+ {
+  "expect": {
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0336",
+  "input": {
+   "given": {
+    "action": "BEFORE",
+    "val1": {
+     "$date": "2022-01-03"
+    },
+    "val2": {
+     "$date": "2022-01-02"
+    }
+   },
+   "op": "doRuleAction"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:200"
+ }
+]

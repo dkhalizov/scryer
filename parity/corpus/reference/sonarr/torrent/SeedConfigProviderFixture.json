@@ -1,0 +1,70 @@
+[
+ {
+  "id": "SON-TORRENT-0127",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs:16",
+  "input": {
+   "op": "seed_config.get",
+   "given": {
+    "release": {
+     "protocol": "Torrent",
+     "indexer_id": 0
+    },
+    "indexer_settings": null
+   }
+  },
+  "expect": {
+   "seed_config": null
+  }
+ },
+ {
+  "id": "SON-TORRENT-0128",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs:35",
+  "input": {
+   "op": "seed_config.get",
+   "given": {
+    "release": {
+     "protocol": "Torrent",
+     "indexer_id": 1
+    },
+    "parsed": {
+     "full_season": true
+    },
+    "indexer_settings": null
+   }
+  },
+  "expect": {
+   "seed_config": null
+  }
+ },
+ {
+  "id": "SON-TORRENT-0129",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs:58",
+  "input": {
+   "op": "seed_config.get",
+   "given": {
+    "release": {
+     "protocol": "Torrent",
+     "indexer_id": 1
+    },
+    "parsed": {
+     "full_season": true
+    },
+    "indexer_settings": {
+     "fail_downloads": [
+      "Executables"
+     ],
+     "seed_criteria": {
+      "season_pack_seed_time": 10
+     }
+    }
+   }
+  },
+  "expect": {
+   "seed_config": {
+    "not": null
+   },
+   "seed_time_min": 10
+  },
+  "note": "Other seed criteria are TorznabSettings defaults (unset)."
+ }
+]

@@ -223,7 +223,7 @@ pub(crate) fn movie_is_pre_release(
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub(crate) enum ReleaseAutoDecisionCode {
+pub enum ReleaseAutoDecisionCode {
     Eligible,
     ParseAmbiguous,
     ParseUnparseable,
@@ -1904,7 +1904,7 @@ fn revision_upgrade_over(
 /// is the language escape in [`cutoff_refusal`], so only a release that
 /// actually improves the language gets past, and see
 /// [`scope_still_wants_language`] for the scope-level skip.
-pub(crate) fn incumbent_at_cutoff(
+pub fn incumbent_at_cutoff(
     quality_cutoff_met: bool,
     subject: &crate::admission::AdmissionSubject,
     cutoff_score: Option<i32>,
@@ -1971,7 +1971,7 @@ fn candidate_is_language_upgrade(
 /// its cutoff — Sonarr's `ProperSpecification` never consults the cutoff. It is
 /// a *different* refusal with its own reason code. RSS/pending only — that
 /// specification accepts unconditionally when a search produced the candidate.
-pub(crate) fn cutoff_refusal(
+pub fn cutoff_refusal(
     candidate: crate::admission::CandidateFacts,
     subject: &crate::admission::AdmissionSubject,
     incumbent_at_cutoff: bool,

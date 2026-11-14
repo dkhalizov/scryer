@@ -1,0 +1,441 @@
+[
+ {
+  "expect": {
+   "mediaServerDeleteFromDisk": false,
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": false,
+    "delete": false,
+    "deleteShow": false,
+    "unmonitorSeasons": false
+   },
+   "sonarrLookup": false
+  },
+  "id": "MNT-MAINTENANCE-0032",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "show"
+    },
+    "media": {
+     "tmdbId": {
+      "$undefined": true
+     }
+    },
+    "tvdbId": {
+     "$undefined": true
+    }
+   },
+   "op": "sonarr_handle_action"
+  },
+  "note": "The test uses a show; the series lookup it guards runs before every Sonarr action, the episode DELETE included (sonarr-action-handler.ts:116, :128).",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:394"
+ },
+ {
+  "expect": {
+   "mediaServerDeleteFromDisk": true,
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": false,
+    "delete": false,
+    "deleteShow": false,
+    "unmonitorSeasons": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0042",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "tmdbId": 1
+    },
+    "sonarrSeries": null,
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:517"
+ },
+ {
+  "expect": {
+   "mediaServerDeleteFromDisk": false,
+   "result": false,
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": false,
+    "delete": false,
+    "deleteShow": false,
+    "unmonitorSeasons": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0045",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "show"
+    },
+    "media": {
+     "tmdbId": 1
+    },
+    "sonarrSeries": {
+     "$undefined": true
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "note": "The test uses a show; the series lookup it guards runs before every Sonarr action, the episode DELETE included (sonarr-action-handler.ts:116, :128).",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:563"
+ },
+ {
+  "expect": {
+   "mediaServerDeleteFromDisk": false,
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": {
+     "airDate": {
+      "$undefined": true
+     },
+     "deleteFiles": true,
+     "episodeNumbers": [
+      {
+       "$given": "mediaData.index"
+      }
+     ],
+     "seasonNumber": {
+      "$given": "mediaData.parentIndex"
+     },
+     "seriesId": {
+      "$given": "sonarrSeries.id"
+     }
+    },
+    "delete": false,
+    "deleteShow": false,
+    "unmonitorSeasons": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0058",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "mediaData": {
+      "index": "random",
+      "parentIndex": "random"
+     },
+     "tmdbId": 1
+    },
+    "sonarrSeries": {
+     "id": "random"
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "note": "season/episode come from the createMediaItem fixture (random numbers); the assertion echoes them, written here as {\"$given\": <field>}.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:1026"
+ },
+ {
+  "expect": {
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": {
+     "airDate": {
+      "$date": "2026-01-05T00:00:00.000Z"
+     },
+     "deleteFiles": true,
+     "episodeNumbers": [],
+     "seasonNumber": 2026,
+     "seriesId": {
+      "$given": "sonarrSeries.id"
+     }
+    }
+   }
+  },
+  "id": "MNT-MAINTENANCE-0059",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "mediaData": {
+      "index": {
+       "$undefined": true
+      },
+      "originallyAvailableAt": "2026-01-05T00:00:00.000Z",
+      "parentIndex": 2026
+     },
+     "tmdbId": 1
+    },
+    "sonarrSeries": {
+     "id": "random"
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:1062"
+ },
+ {
+  "expect": {
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": {
+     "airDate": {
+      "$undefined": true
+     },
+     "deleteFiles": true,
+     "episodeNumbers": [
+      16
+     ],
+     "seasonNumber": 23,
+     "seriesId": {
+      "$given": "sonarrSeries.id"
+     }
+    }
+   }
+  },
+  "id": "MNT-MAINTENANCE-0060",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "mediaData": {
+      "index": 1171,
+      "parentIndex": 1,
+      "providerIds": {
+       "tvdb": [
+        "501"
+       ]
+      }
+     },
+     "tmdbId": 1
+    },
+    "sonarrEpisodes": [
+     {
+      "episodeNumber": 16,
+      "seasonNumber": 23,
+      "tvdbId": 501
+     }
+    ],
+    "sonarrSeries": {
+     "id": "random"
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:1098"
+ },
+ {
+  "expect": {
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": {
+     "airDate": {
+      "$undefined": true
+     },
+     "deleteFiles": true,
+     "episodeNumbers": [
+      101
+     ],
+     "seasonNumber": 2026,
+     "seriesId": {
+      "$given": "sonarrSeries.id"
+     }
+    }
+   }
+  },
+  "id": "MNT-MAINTENANCE-0061",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "mediaData": {
+      "index": 1,
+      "parentIndex": 2026,
+      "path": "/media/tv/Sample Series/Season 2026/Sample Series - 2026-06-10.mkv",
+      "providerIds": {
+       "tvdb": [
+        "501"
+       ]
+      }
+     },
+     "tmdbId": 1
+    },
+    "sonarrEpisodeFiles": [
+     {
+      "id": 8,
+      "relativePath": "Season 2026/Sample Series - 2026-06-10.mkv"
+     }
+    ],
+    "sonarrEpisodes": [
+     {
+      "episodeFileId": 0,
+      "episodeNumber": 1,
+      "seasonNumber": 2026,
+      "tvdbId": 501
+     },
+     {
+      "episodeFileId": 8,
+      "episodeNumber": 101,
+      "seasonNumber": 2026
+     }
+    ],
+    "sonarrSeries": {
+     "id": "random"
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:1184"
+ },
+ {
+  "expect": {
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0062",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "mediaData": {
+      "index": 1,
+      "parentIndex": 2026,
+      "path": "/media/tv/Sample Series/Season 2026/Sample Series - 2026-06-10.mkv",
+      "providerIds": {
+       "tvdb": [
+        "501"
+       ]
+      }
+     },
+     "tmdbId": 1
+    },
+    "sonarrEpisodeFiles": {
+     "$undefined": true
+    },
+    "sonarrEpisodes": [
+     {
+      "episodeFileId": 0,
+      "episodeNumber": 1,
+      "seasonNumber": 2026,
+      "tvdbId": 501
+     },
+     {
+      "episodeFileId": 8,
+      "episodeNumber": 101,
+      "seasonNumber": 2026
+     }
+    ],
+    "sonarrSeries": {
+     "id": "random"
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:1202"
+ },
+ {
+  "expect": {
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0063",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "mediaData": {
+      "index": 1,
+      "parentIndex": 2026,
+      "path": "/media/tv/Sample Series/Season 2026/Sample Series - 2026-06-12.mkv",
+      "providerIds": {}
+     },
+     "tmdbId": 1
+    },
+    "sonarrEpisodeFiles": [
+     {
+      "id": 8,
+      "relativePath": "Season 2026/Sample Series - 2026-06-10.mkv"
+     }
+    ],
+    "sonarrEpisodes": {
+     "$undefined": true
+    },
+    "sonarrSeries": {
+     "id": "random"
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:1209"
+ },
+ {
+  "expect": {
+   "sonarr": {
+    "UnmonitorDeleteEpisodes": false
+   },
+   "warned": true
+  },
+  "id": "MNT-MAINTENANCE-0064",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "episode"
+    },
+    "media": {
+     "mediaData": {
+      "index": {
+       "$undefined": true
+      },
+      "originallyAvailableAt": {
+       "$undefined": true
+      },
+      "parentIndex": {
+       "$undefined": true
+      }
+     },
+     "tmdbId": 1
+    },
+    "sonarrSeries": {
+     "id": "random"
+    },
+    "tvdbId": 1
+   },
+   "op": "sonarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/sonarr-action-handler.spec.ts:1228"
+ }
+]

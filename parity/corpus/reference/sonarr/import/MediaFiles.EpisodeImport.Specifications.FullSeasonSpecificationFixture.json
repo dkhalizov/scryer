@@ -1,0 +1,45 @@
+[
+ {
+  "id": "SON-IMPORT-0182",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FullSeasonSpecificationFixture.cs:32",
+  "input": {
+   "op": "FullSeasonSpecification",
+   "given": {
+    "file_info": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0183",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FullSeasonSpecificationFixture.cs:39",
+  "input": {
+   "op": "FullSeasonSpecification",
+   "given": {
+    "file_info": {
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0184",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FullSeasonSpecificationFixture.cs:47",
+  "input": {
+   "op": "FullSeasonSpecification",
+   "given": {
+    "file_info": {
+     "full_season": false
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

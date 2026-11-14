@@ -1,0 +1,596 @@
+[
+ {
+  "id": "SON-DECISION-1112",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:70",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 200,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1113",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:71",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 200,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1114",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:72",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 600,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1115",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:73",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 365,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1116",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:74",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 365,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1117",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:75",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 0,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1118",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:86",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 200,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ],
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1119",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:87",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 600,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ],
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1120",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:88",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 365,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ],
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1121",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:89",
+  "input": {
+   "spec": "SeasonPackOnlySpecification",
+   "given": {
+    "series": {
+     "series_type": "Standard"
+    },
+    "search": {
+     "kind": "SeasonSearchCriteria",
+     "season": 1,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ]
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "season_search_maximum_single_episode_age": 0,
+     "episodes": [
+      {
+       "season": 1,
+       "episode": 1,
+       "air_age_days": 400
+      },
+      {
+       "season": 1,
+       "episode": 2,
+       "air_age_days": 370
+      },
+      {
+       "season": 1,
+       "episode": 3,
+       "air_age_days": 340
+      },
+      {
+       "season": 1,
+       "episode": 4,
+       "air_age_days": 310
+      }
+     ],
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

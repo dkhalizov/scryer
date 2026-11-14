@@ -1,0 +1,150 @@
+[
+ {
+  "id": "SON-PARSE-0510",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:11",
+  "input": {
+   "name": "The.Big.Series.Leader.Part.2.DSR.XviD-SYS",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "The Big Series Leader",
+   "season": 1,
+   "episodes": [
+    2
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0511",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:12",
+  "input": {
+   "name": "kill-roy-was-here-e07-720p",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "kill-roy-was-here",
+   "season": 1,
+   "episodes": [
+    7
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0512",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:13",
+  "input": {
+   "name": "Series and Show 2012 Part 1 REPACK 720p HDTV x264 2HD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series and Show 2012",
+   "season": 1,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0513",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:14",
+  "input": {
+   "name": "Series Show.2016.E04.Power.720p.WEB-DL.DD5.1.H.264-MARS",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Show 2016",
+   "season": 1,
+   "episodes": [
+    4
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0514",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:30",
+  "input": {
+   "name": "It's a Series Title.E56.190121.720p-NEXT.mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "It's a Series Title",
+   "season": 1,
+   "episodes": [
+    56
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  },
+  "note": "air date in the row is not asserted (commented out in the reference test)"
+ },
+ {
+  "id": "SON-PARSE-0515",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:31",
+  "input": {
+   "name": "My Only Series Title.E37.190120.1080p-NEXT.mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "My Only Series Title",
+   "season": 1,
+   "episodes": [
+    37
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  },
+  "note": "air date in the row is not asserted (commented out in the reference test)"
+ },
+ {
+  "id": "SON-PARSE-0516",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:32",
+  "input": {
+   "name": "Series.E191.190121.720p-NEXT.mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series",
+   "season": 1,
+   "episodes": [
+    191
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  },
+  "note": "air date in the row is not asserted (commented out in the reference test)"
+ },
+ {
+  "id": "SON-PARSE-0517",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:33",
+  "input": {
+   "name": "The Series Title Challenge.E932.190120.720p-NEXT.mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "The Series Title Challenge",
+   "season": 1,
+   "episodes": [
+    932
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  },
+  "note": "air date in the row is not asserted (commented out in the reference test)"
+ }
+]

@@ -1,0 +1,497 @@
+[
+ {
+  "id": "SON-NAMING-0177",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:58",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "CSI: Crime Scene Investigation",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Crime Scene Investigation"
+  }
+ },
+ {
+  "id": "SON-NAMING-0178",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:59",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Code:Breaker",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Code-Breaker"
+  }
+ },
+ {
+  "id": "SON-NAMING-0179",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:60",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Back Slash\\",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Back Slash+"
+  }
+ },
+ {
+  "id": "SON-NAMING-0180",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:61",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Forward Slash/",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Forward Slash+"
+  }
+ },
+ {
+  "id": "SON-NAMING-0181",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:62",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Greater Than>",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Greater Than"
+  }
+ },
+ {
+  "id": "SON-NAMING-0182",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:63",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Less Than<",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Less Than"
+  }
+ },
+ {
+  "id": "SON-NAMING-0183",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:64",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Question Mark?",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Question Mark!"
+  }
+ },
+ {
+  "id": "SON-NAMING-0184",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:65",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Aster*sk",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Aster-sk"
+  }
+ },
+ {
+  "id": "SON-NAMING-0185",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:66",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Colon: Two Periods",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Colon - Two Periods"
+  }
+ },
+ {
+  "id": "SON-NAMING-0186",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:67",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Pipe|",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Pipe"
+  }
+ },
+ {
+  "id": "SON-NAMING-0187",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:68",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Quotes\"",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Quotes"
+  }
+ }
+]

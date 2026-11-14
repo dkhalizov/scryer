@@ -1,0 +1,800 @@
+[
+ {
+  "id": "RAD-DECISION-1095",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:56",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    },
+    "new": {
+     "quality": {
+      "quality": "Bluray-1080p"
+     },
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1096",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:70",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "One"
+     ]
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "Two"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1097",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:84",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "One"
+     ]
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "Two"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1098",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:98",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "One"
+     ]
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "One"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1099",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:112",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "Two"
+     ]
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "One"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1100",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:126",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "Two"
+     ]
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": [
+      "One"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1101",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:140",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    },
+    "new": {
+     "quality": {
+      "quality": "Bluray-1080p"
+     },
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1102",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:154",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1103",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:168",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1104",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:182",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    },
+    "new": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1105",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:196",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "custom_formats": []
+    },
+    "new": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ },
+ {
+  "id": "RAD-DECISION-1106",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:210",
+  "input": {
+   "spec": "UpgradableSpecification.IsUpgradeAllowed",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "cutoff_format_score": 100,
+     "format_items": [
+      {
+       "format": "One",
+       "score": 50
+      },
+      {
+       "format": "Two",
+       "score": 100
+      }
+     ]
+    },
+    "current": {
+     "quality": {
+      "quality": "DVD",
+      "revision": {
+       "version": 1
+      }
+     },
+     "custom_formats": [
+      "One"
+     ]
+    },
+    "new": {
+     "quality": {
+      "quality": "DVD",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": [
+      "One"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "calls IsUpgradeAllowed(profile, current, current formats, new, new formats); accepted is its return value"
+ }
+]

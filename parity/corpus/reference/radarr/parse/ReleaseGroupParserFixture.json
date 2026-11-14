@@ -1,0 +1,1850 @@
+[
+ {
+  "id": "RAD-PARSE-0811",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:10",
+  "input": {
+   "name": "Movie.2009.S01E14.English.HDTV.XviD-LOL",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "LOL"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0812",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:11",
+  "input": {
+   "name": "Movie 2009 S01E14 English HDTV XviD LOL",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0813",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:12",
+  "input": {
+   "name": "Acropolis Now S05 EXTRAS DVDRip XviD RUNNER",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0814",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:13",
+  "input": {
+   "name": "Punky.Brewster.S01.EXTRAS.DVDRip.XviD-RUNNER",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RUNNER"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0815",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:14",
+  "input": {
+   "name": "2020.NZ.2011.12.02.PDTV.XviD-C4TV",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "C4TV"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0816",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:15",
+  "input": {
+   "name": "Some.Movie.S03E115.DVDRip.XviD-OSiTV",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "OSiTV"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0817",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:16",
+  "input": {
+   "name": "Some Movie - S01E01 - Pilot [HTDV-480p]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0818",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:17",
+  "input": {
+   "name": "Some Movie - S01E01 - Pilot [HTDV-720p]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0819",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:18",
+  "input": {
+   "name": "Some Movie - S01E01 - Pilot [HTDV-1080p]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0820",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:19",
+  "input": {
+   "name": "Movie.Name.S04E13.720p.WEB-DL.AAC2.0.H.264-Cyphanix",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Cyphanix"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0821",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:20",
+  "input": {
+   "name": "Movie.Name.S02E01.720p.WEB-DL.DD5.1.H.264.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0822",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:21",
+  "input": {
+   "name": "Series Title S01E01 Episode Title",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0823",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:22",
+  "input": {
+   "name": "Movie.Name- 2014-06-02 - Some Movie.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0824",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:23",
+  "input": {
+   "name": "Movie.Name S12E17 May 23, 2014.mp4",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0825",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:24",
+  "input": {
+   "name": "Movie.Name - S01E08 - Transistrië, Zuid-Ossetië en Abchazië SDTV.avi",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0826",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:25",
+  "input": {
+   "name": "Movie.Name 10x11 - Wild Movies Cant Be Broken [rl].avi",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "rl"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0827",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:26",
+  "input": {
+   "name": "[ www.Torrenting.com ] - Movie.Name.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DIMENSION"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0828",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:27",
+  "input": {
+   "name": "Movie.Name S02E09 HDTV x264-2HD [eztv]-[rarbg.com]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "2HD"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0829",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:28",
+  "input": {
+   "name": "7s-Movie.Name-s02e01-720p.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0830",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:29",
+  "input": {
+   "name": "The.Movie.Name.720p.HEVC.x265-MeGusta-Pre",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "MeGusta"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0831",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:30",
+  "input": {
+   "name": "Blue.Movie.Name.S08E05.The.Movie.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-Rakuv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0832",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:31",
+  "input": {
+   "name": "Movie.Name.S01E13.720p.BluRay.x264-SiNNERS-Rakuvfinhel",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SiNNERS"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0833",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:32",
+  "input": {
+   "name": "Movie.Name.S01E01.INTERNAL.720p.HDTV.x264-aAF-RakuvUS-Obfuscated",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "aAF"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0834",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:33",
+  "input": {
+   "name": "Movie.Name.2018.720p.WEBRip.DDP5.1.x264-NTb-postbot",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0835",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:34",
+  "input": {
+   "name": "Movie.Name.2018.720p.WEBRip.DDP5.1.x264-NTb-xpost",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0836",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:35",
+  "input": {
+   "name": "Movie.Name.S02E24.1080p.AMZN.WEBRip.DD5.1.x264-CasStudio-AsRequested",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "CasStudio"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0837",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:36",
+  "input": {
+   "name": "Movie.Name.S04E11.Lamster.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-AlternativeToRequested",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0838",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:37",
+  "input": {
+   "name": "Movie.Name.S16E04.Third.Wheel.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-GEROV",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0839",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:38",
+  "input": {
+   "name": "Movie.NameS10E06.Kid.n.Play.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-Z0iDS3N",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0840",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:39",
+  "input": {
+   "name": "Movie.Name.S02E06.The.House.of.Lords.DVDRip.x264-MaG-Chamele0n",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "MaG"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0841",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:40",
+  "input": {
+   "name": "Some.Movie.2013.1080p.BluRay.REMUX.AVC.DTS-X.MA.5.1",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0842",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:41",
+  "input": {
+   "name": "Some.Movie.2013.1080p.BluRay.REMUX.AVC.DTS-MA.5.1",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0843",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:42",
+  "input": {
+   "name": "Movie.Name.2013.1080p.BluRay.REMUX.AVC.DTS-ES.MA.5.1",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0844",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:43",
+  "input": {
+   "name": "SomeMovie.1080p.BluRay.DTS-X.264.-D-Z0N3.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "D-Z0N3"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0845",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:44",
+  "input": {
+   "name": "SomeMovie.1080p.BluRay.DTS.x264.-Blu-bits.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Blu-bits"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0846",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:45",
+  "input": {
+   "name": "SomeMovie.1080p.BluRay.DTS.x264.-DX-TV.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DX-TV"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0847",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:46",
+  "input": {
+   "name": "SomeMovie.1080p.BluRay.DTS.x264.-FTW-HS.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "FTW-HS"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0848",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:47",
+  "input": {
+   "name": "SomeMovie.1080p.BluRay.DTS.x264.-VH-PROD.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "VH-PROD"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0849",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:48",
+  "input": {
+   "name": "Some.Dead.Movie.2006.1080p.BluRay.DTS.x264.D-Z0N3",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "D-Z0N3"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0850",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:49",
+  "input": {
+   "name": "Movie.Title.2010.720p.BluRay.x264.-[YTS.LT]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YTS.LT"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0851",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:50",
+  "input": {
+   "name": "The.Movie.Title.2013.720p.BluRay.x264-ROUGH [PublicHD]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "ROUGH"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0852",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:51",
+  "input": {
+   "name": "Some.Really.Bad.Movie.Title.[2021].1080p.WEB-HDRip.Dual.Audio.[Hindi.[Clean]. .English].x264.AAC.DD.2.0.By.Full4Movies.mkv-xpost",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0853",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:52",
+  "input": {
+   "name": "The.Movie.Title.2013.1080p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Vyndros"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0854",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:53",
+  "input": {
+   "name": "Movie.Name.2022.1080p.BluRay.x264-[YTS.AG]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YTS.AG"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0855",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:54",
+  "input": {
+   "name": "Movie.Name.2022.1080p.BluRay.x264-VARYG",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "VARYG"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0856",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:55",
+  "input": {
+   "name": "Movie.Title.2019.1080p.AMZN.WEB-Rip.DDP.5.1.HEVC",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0857",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:56",
+  "input": {
+   "name": "Movie Name (2017) [2160p REMUX] [HEVC DV HYBRID HDR10+ Dolby TrueHD Atmos 7 1 24-bit Audio English] [Data Lass]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0858",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:57",
+  "input": {
+   "name": "Movie Name (2017) [2160p REMUX] [HEVC DV HYBRID HDR10+ Dolby TrueHD Atmos 7 1 24-bit Audio English]-DataLass",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DataLass"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0859",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:58",
+  "input": {
+   "name": "Movie Name (2017) (Showtime) (1080p.BD.DD5.1.x265-TheSickle[TAoE])",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "TAoE"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0860",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:64",
+  "input": {
+   "name": "Movie Name (2020) [2160p x265 10bit S82 Joy]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Joy"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0861",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:65",
+  "input": {
+   "name": "Movie Name (2003) (2160p BluRay X265 HEVC 10bit HDR AAC 7.1 Tigole) [QxR]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "QxR"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0862",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:66",
+  "input": {
+   "name": "Ode To Joy (2009) (2160p BluRay x265 10bit HDR Joy)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Joy"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0863",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:67",
+  "input": {
+   "name": "Movie Name (2001) 1080p NF WEB-DL DDP2.0 x264-E.N.D",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "E.N.D"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0864",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:68",
+  "input": {
+   "name": "Movie Name (2020) [1080p] [WEBRip] [5.1] [YTS.MX]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YTS.MX"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0865",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:69",
+  "input": {
+   "name": "Movie Name.2018.1080p.Blu-ray.Remux.AVC.DTS-HD.MA.5.1.KRaLiMaRKo",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "KRaLiMaRKo"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0866",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:70",
+  "input": {
+   "name": "Ode To Joy (2009) (2160p BluRay x265 10bit HDR FreetheFish)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "FreetheFish"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0867",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:71",
+  "input": {
+   "name": "Ode To Joy (2009) (2160p BluRay x265 10bit HDR afm72)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "afm72"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0868",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:72",
+  "input": {
+   "name": "Ode To Joy (2009) (2160p BluRay x265 10bit HDR)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0869",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:73",
+  "input": {
+   "name": "Movie Name (2012) (1080p BluRay x265 HEVC 10bit AC3 2.0 Anna)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anna"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0870",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:74",
+  "input": {
+   "name": "Movie Name (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Joy"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0871",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:75",
+  "input": {
+   "name": "Movie Name (2019) (2160p BluRay x265 HEVC 10bit HDR AAC 7.1 Bandi)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Bandi"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0872",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:76",
+  "input": {
+   "name": "Movie Name (2009) (1080p HDTV x265 HEVC 10bit AAC 2.0 Ghost)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Ghost"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0873",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:77",
+  "input": {
+   "name": "Movie Name in the Movie (2017) (1080p BluRay x265 HEVC 10bit AAC 7.1 Tigole)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Tigole"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0874",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:78",
+  "input": {
+   "name": "Mission - Movie Name - Movie Protocol (2011) (1080p BluRay x265 HEVC 10bit AAC 7.1 Tigole)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Tigole"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0875",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:79",
+  "input": {
+   "name": "Movie Name (1990) (1080p BluRay x265 HEVC 10bit AAC 5.1 Silence)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Silence"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0876",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:80",
+  "input": {
+   "name": "Happy Movie Name (1999) (1080p BluRay x265 HEVC 10bit AAC 5.1 Korean Kappa)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Kappa"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0877",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:81",
+  "input": {
+   "name": "Movie Name (2007) Open Matte (1080p AMZN WEB-DL x265 HEVC 10bit AAC 5.1 MONOLITH)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "MONOLITH"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0878",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:82",
+  "input": {
+   "name": "Movie-Name (2019) (1080p BluRay x265 HEVC 10bit DTS 7.1 Qman)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Qman"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0879",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:83",
+  "input": {
+   "name": "Movie Name - Hell to Ticket (2018) + Extras (1080p BluRay x265 HEVC 10bit AAC 5.1 RZeroX)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RZeroX"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0880",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:84",
+  "input": {
+   "name": "Movie Name (2013) (Diamond Luxe Edition) + Extras (1080p BluRay x265 HEVC 10bit EAC3 7.1 SAMPA)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SAMPA"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0881",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:85",
+  "input": {
+   "name": "Movie Name 1984 (2020) (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 5.1 Silence)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Silence"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0882",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:86",
+  "input": {
+   "name": "The.Movie.of.the.Name.1991.REMASTERED.720p.10bit.BluRay.6CH.x265.HEVC-PSA",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "PSA"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0883",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:87",
+  "input": {
+   "name": "Movie Name 2016 (1080p BluRay x265 HEVC 10bit DDP 5.1 theincognito)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "theincognito"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0884",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:88",
+  "input": {
+   "name": "Movie Name - A History of Movie (2017) (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 2.0 t3nzin)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "t3nzin"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0885",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:89",
+  "input": {
+   "name": "Movie Name (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Vyndros)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Vyndros"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0886",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:90",
+  "input": {
+   "name": "Movie Name (2015) [BDRemux 1080p AVC ES-CAT-EN DTS-HD MA 5.1 Subs][HDO]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HDO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0887",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:91",
+  "input": {
+   "name": "Movie Name (2015) [BDRemux 1080p AVC EN-CAT-ES DTS-HD MA 5.1 Subs][HDO]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HDO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0888",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:92",
+  "input": {
+   "name": "Movie Name (2017) [BDRemux 1080p AVC ES DTS 5.1 - EN DTS-HD MA 7.1 Subs][HDO]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HDO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0889",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:93",
+  "input": {
+   "name": "Movie Name (2006) [BDRemux 1080p AVC ES DTS-HD MA 2.0 - EN DTS-HD MA 5.1 Sub][HDO]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HDO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0890",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:94",
+  "input": {
+   "name": "Movie Name (2015) [BDRemux 1080p AVC ES-CAT-EN DTS-HD MA 5.1 Subs]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0891",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:95",
+  "input": {
+   "name": "Movie Name (2015) [BDRemux 1080p AVC EN-CAT-ES DTS-HD MA 5.1 Subs]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0892",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:96",
+  "input": {
+   "name": "Movie Name (2015) [BDRemux 1080p AVC EN-ES-CAT DTS-HD MA 5.1 Subs]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0893",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:97",
+  "input": {
+   "name": "Another Crappy Anime Movie Name 1999 [DusIctv] [Blu-ray][MKV][h264][1080p][DTS-HD MA 5.1][Dual Audio][Softsubs (DusIctv)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DusIctv"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0894",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:98",
+  "input": {
+   "name": "Another Crappy Anime Movie Name 1999 [DHD] [Blu-ray][MKV][h264][1080p][AAC 5.1][Dual Audio][Softsubs (DHD)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DHD"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0895",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:99",
+  "input": {
+   "name": "Another Crappy Anime Movie Name 1999 [SEV] [Blu-ray][MKV][h265 10-bit][1080p][FLAC 5.1][Dual Audio][Softsubs (SEV)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SEV"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0896",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:100",
+  "input": {
+   "name": "Another Crappy Anime Movie Name 1999 [CtrlHD] [Blu-ray][MKV][h264][720p][AC3 2.0][Dual Audio][Softsubs (CtrlHD)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "CtrlHD"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0897",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:101",
+  "input": {
+   "name": "Crappy Anime Movie Name 2017 [-ZR-] [Blu-ray][MKV][h264][1080p][TrueHD 5.1][Dual Audio][Softsubs (-ZR-)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "-ZR-"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0898",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:102",
+  "input": {
+   "name": "Crappy Anime Movie Name 2017 [XZVN] [Blu-ray][MKV][h264][1080p][TrueHD 5.1][Dual Audio][Softsubs (XZVN)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "XZVN"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0899",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:103",
+  "input": {
+   "name": "Crappy Anime Movie Name 2017 [ADC] [Blu-ray][M2TS (A)][16:9][h264][1080p][TrueHD 5.1][Dual Audio][Softsubs (ADC)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "ADC"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0900",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:104",
+  "input": {
+   "name": "Crappy Anime Movie Name 2017 [Koten_Gars] [Blu-ray][MKV][h264][1080p][TrueHD 5.1][Dual Audio][Softsubs (Koten_Gars)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Koten_Gars"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0901",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:105",
+  "input": {
+   "name": "Crappy Anime Movie Name 2017 [RH] [Blu-ray][MKV][h264 10-bit][1080p][FLAC 5.1][Dual Audio][Softsubs (RH)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RH"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0902",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:106",
+  "input": {
+   "name": "Yet Another Anime Movie 2012 [Kametsu] [Blu-ray][MKV][h264 10-bit][1080p][FLAC 5.1][Dual Audio][Softsubs (Kametsu)]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Kametsu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0903",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:107",
+  "input": {
+   "name": "Another.Anime.Film.Name.2016.JPN.Blu-Ray.Remux.AVC.DTS-MA.BluDragon",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "BluDragon"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0904",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:108",
+  "input": {
+   "name": "A Movie in the Name (1964) (1080p BluRay x265 r00t)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "r00t"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0905",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:109",
+  "input": {
+   "name": "Movie Title (2022) (2160p ATV WEB-DL Hybrid H265 DV HDR DDP Atmos 5.1 English - HONE)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HONE"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0906",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:110",
+  "input": {
+   "name": "Movie Title (2009) (2160p PMTP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HONE"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0907",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:111",
+  "input": {
+   "name": "Movie Title (2022) (1080p PCOK WEB-DL H265 DV HDR DDP Atmos 5.1 English - GiLG)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "GiLG"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0908",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:112",
+  "input": {
+   "name": "Movie Title (2022) Extended (2160p PCOK WEB-DL H265 DV HDR DDP Atmos 5.1 English - GiLG)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "GiLG"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0909",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:113",
+  "input": {
+   "name": "Why.Cant.You.Use.Normal.Characters.2021.2160p.UHD.HDR10+.BluRay.TrueHD.Atmos.7.1.x265-ZØNEHD",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "ZØNEHD"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0910",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:114",
+  "input": {
+   "name": "Movie.Should.Not.Use.Dots.2022.1080p.BluRay.x265.10bit.Tigole)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Tigole"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0911",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:115",
+  "input": {
+   "name": "Movie.Should.Not.Use.Dots.2022.1080p.BluRay.x265.10bit.Tigole",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "RAD-PARSE-0912",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:116",
+  "input": {
+   "name": "Movie.Title.2005.2160p.UHD.BluRay.TrueHD 7.1.Atmos.x265 - HQMUX",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HQMUX"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0913",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:117",
+  "input": {
+   "name": "Movie.Name.2022.1080p.BluRay.x264-VARYG (Blue Lock, Multi-Subs)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "VARYG"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0914",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:118",
+  "input": {
+   "name": "Movie Title (2023) (1080p BluRay x265 SDR AAC 2.0 English Vyndros)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Vyndros"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0915",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:119",
+  "input": {
+   "name": "Movie Title (2010) 1080p BrRip x264 - YIFY",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YIFY"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0916",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:120",
+  "input": {
+   "name": "Movie Title (2011) [BluRay] [1080p] [YTS.MX] [YIFY]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YIFY"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0917",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:121",
+  "input": {
+   "name": "Movie Title (2014) [BluRay] [1080p] [YIFY] [YTS]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YTS"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0918",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:122",
+  "input": {
+   "name": "Movie Title (2018) [BluRay] [1080p] [YIFY] [YTS.LT]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YTS.LT"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0919",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:123",
+  "input": {
+   "name": "Movie Title (2016) (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 5 1 RZeroX) QxR",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "QxR"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0920",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:124",
+  "input": {
+   "name": "Movie Title (2016) (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 5 1 Garshasp) QxR",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "QxR"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0921",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:125",
+  "input": {
+   "name": "Movie Title 2024 mUHD 10Bits DoVi HDR10 2160p BluRay DD 5 1 x265 - TMd",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "TMd"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0922",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:126",
+  "input": {
+   "name": "Movie Title 2024 mUHD 10Bits DoVi HDR10 2160p BluRay DD 5 1 x265 TMd",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "TMd"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0923",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:127",
+  "input": {
+   "name": "Movie Title (2024) 2160p WEB-DL ESP DD+ 5.1 ING DD+ 5.1 Atmos DV HDR H.265-Eml HDTeam",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Eml HDTeam"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0924",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:128",
+  "input": {
+   "name": "Movie Title(2023) 1080p SkySHO WEB-DL ESP DD+ 5.1 H.264-EML HDTeam",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EML HDTeam"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0925",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:129",
+  "input": {
+   "name": "Movie Title (2022) BDFull 1080p DTS-HD MA 5.1 AVC LMain",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "LMain"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0926",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:130",
+  "input": {
+   "name": "Movie Title (2024) (1080p BluRay x265 SDR DDP 5.1 English - DarQ)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DarQ"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0927",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:131",
+  "input": {
+   "name": "Movie Title (2024) (1080p BluRay x265 SDR DDP 5.1 English -BEN THE MEN",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "BEN THE MEN"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0928",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:132",
+  "input": {
+   "name": "Movie Title 2024 2160p WEB-DL DoVi HDR10+ H265 DDP 5.1 Atmos-126811",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "126811"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0929",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:133",
+  "input": {
+   "name": "Movie Title (2025) (1080p BluRay x265 SDR DDP Atmos 7.1 English - Celdra QxR)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "QxR"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0930",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:134",
+  "input": {
+   "name": "Movie Title (2025) (1080p BluRay x265 Celdra)",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Celdra"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0931",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:140",
+  "input": {
+   "name": "C:\\Test\\Doctor.Series.2005.s01e01.internal.bdrip.x264-archivist.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "archivist"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0932",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:146",
+  "input": {
+   "name": "Some.Movie.S02E04.720p.WEBRip.x264-SKGTV English",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SKGTV"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0933",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:147",
+  "input": {
+   "name": "Some.Movie.S02E04.720p.WEBRip.x264-SKGTV_English",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SKGTV"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0934",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:148",
+  "input": {
+   "name": "Some.Movie.S02E04.720p.WEBRip.x264-SKGTV.English",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SKGTV"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0935",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:155",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-RP",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0936",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:156",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-RP-RP",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0937",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:157",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Obfuscation",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0938",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:158",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-NZBgeek",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0939",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:159",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-1",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0940",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:160",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-sample.mkv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0941",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:161",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Scrambled",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0942",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:162",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-postbot",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0943",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:163",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-xpost",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0944",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:164",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Rakuv",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0945",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:165",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Rakuv02",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0946",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:166",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Rakuvfinhel",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0947",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:167",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Obfuscated",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0948",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:168",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-WhiteRev",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0949",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:169",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-BUYMORE",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0950",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:170",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-AsRequested",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0951",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:171",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-AlternativeToRequested",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0952",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:172",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-GEROV",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0953",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:173",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Z0iDS3N",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0954",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:174",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Chamele0n",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0955",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:175",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-4P",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0956",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:176",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-4Planet",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVO"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0957",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:177",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-DON-AlteZachen",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DON"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0958",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:178",
+  "input": {
+   "name": "Some.Movie.2019.1080p.BDRip.X264.AC3-HarrHD-RePACKPOST",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HarrHD"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0959",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:185",
+  "input": {
+   "name": "[FFF] Invaders of the Movies!! - S01E11 - Someday, With Movies",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "FFF"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0960",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:186",
+  "input": {
+   "name": "[HorribleSubs] Invaders of the Movies!! - S01E12 - Movies Going Well!!",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HorribleSubs"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0961",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:187",
+  "input": {
+   "name": "[Anime-Koi] Movies - S01E06 - Guys From Movies",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anime-Koi"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0962",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:188",
+  "input": {
+   "name": "[Anime-Koi] Movies - S01E07 - A High-Grade Movies",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anime-Koi"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0963",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:189",
+  "input": {
+   "name": "[Anime-Koi] Kami-sama Movies 2 - 01 [h264-720p][28D54E2C]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anime-Koi"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0964",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:196",
+  "input": {
+   "name": "Terrible.Anime.Title.2020.DBOX.480p.x264-iKaos [v3] [6AFFEF6B]",
+   "facet": "unknown",
+   "fn": "ReleaseGroupParser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ }
+]

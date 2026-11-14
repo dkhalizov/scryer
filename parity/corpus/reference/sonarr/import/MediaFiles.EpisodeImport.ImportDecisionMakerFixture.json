@@ -1,0 +1,268 @@
+[
+ {
+  "id": "SON-IMPORT-0152",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:116",
+  "input": {
+   "op": "ImportDecisionMaker.GetImportDecisions",
+   "given": {
+    "series": {
+     "path": "/C/Test/Series",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "video_files": [
+     "/C/Test/Unsorted/The.Office.S03E115.DVDRip.Spanish.XviD-OSiTV.avi"
+    ],
+    "specs": [
+     {
+      "name": "fail1",
+      "result": "reject"
+     }
+    ],
+    "augmentation": "not arranged"
+   }
+  },
+  "expect": {
+   "decision_count": 1,
+   "approved": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0153",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:126",
+  "input": {
+   "op": "ImportDecisionMaker.GetImportDecisions",
+   "given": {
+    "series": {
+     "path": "/C/Test/Series",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "video_files": [
+     "/C/Test/Unsorted/The.Office.S03E115.DVDRip.Spanish.XviD-OSiTV.avi"
+    ],
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "fail1",
+      "result": "reject"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "augmentation": "not arranged"
+   }
+  },
+  "expect": {
+   "decision_count": 1,
+   "approved": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0154",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:136",
+  "input": {
+   "op": "ImportDecisionMaker.GetImportDecisions",
+   "given": {
+    "series": {
+     "path": "/C/Test/Series",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "video_files": [
+     "/C/Test/Unsorted/The.Office.S03E115.DVDRip.Spanish.XviD-OSiTV.avi"
+    ],
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     }
+    ],
+    "augmentation": "success",
+    "augmented_episodes": [
+     {}
+    ]
+   }
+  },
+  "expect": {
+   "decision_count": 1,
+   "approved": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0155",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:147",
+  "input": {
+   "op": "ImportDecisionMaker.GetImportDecisions",
+   "given": {
+    "series": {
+     "path": "/C/Test/Series",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "video_files": [
+     "/C/Test/Unsorted/The.Office.S03E115.DVDRip.Spanish.XviD-OSiTV.avi"
+    ],
+    "specs": [
+     {
+      "name": "pass1",
+      "result": "accept"
+     },
+     {
+      "name": "pass2",
+      "result": "accept"
+     },
+     {
+      "name": "pass3",
+      "result": "accept"
+     },
+     {
+      "name": "fail1",
+      "result": "reject"
+     },
+     {
+      "name": "fail2",
+      "result": "reject"
+     },
+     {
+      "name": "fail3",
+      "result": "reject"
+     }
+    ],
+    "augmentation": "success",
+    "augmented_episodes": [
+     {}
+    ]
+   }
+  },
+  "expect": {
+   "decision_count": 1,
+   "rejection_count": 3
+  }
+ },
+ {
+  "id": "SON-IMPORT-0157",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:205",
+  "input": {
+   "op": "ImportDecisionMaker.GetImportDecisions",
+   "given": {
+    "series": {
+     "path": "/C/Test/Series",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "video_files": [
+     "The.Office.S03E115.DVDRip.XviD-OSiTV"
+    ],
+    "specs": [],
+    "augmentation": "throws"
+   }
+  },
+  "expect": {
+   "decision_count": 1
+  },
+  "note": "No specifications are arranged (empty list)."
+ }
+]

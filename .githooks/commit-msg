@@ -1,0 +1,47 @@
+#!/bin/sh
+# fork: parity net trail gate (notes/11-parity-net-design.md § Trail and gates).
+# A commit that touches product code must carry a trailer:
+#   Parity: <ID>[, <ID>...]     IDs from parity/catalogue; the commit must also
+#                               touch a test, the catalogue or the corpus
+#   Parity: none (<reason>)     no behaviour a parity ID covers
+# Merge commits (upstream pulls) are exempt.
+set -eu
+msg_file="$1"
+git_dir="$(git rev-parse --git-dir)"
+[ -f "$git_dir/MERGE_HEAD" ] && exit 0
+
+staged="$(git diff --cached --name-only --diff-filter=ACMRD)"
+product="$(printf '%s\n' "$staged" | grep -E '^(crates/[^/]+/(src/|build\.rs$)|apps/scryer-web/(app|components|lib|src)/)' \
+  | grep -vE '(_tests?\.rs|/tests?\.rs|\.test\.(ts|tsx|mjs))$' || true)"
+[ -z "$product" ] && exit 0
+
+trailer="$(grep -E '^Parity:' "$msg_file" | tail -n 1 || true)"
+fail() {
+  echo "commit-msg: this commit touches product code:" >&2
+  printf '%s\n' "$product" | head -n 10 | sed 's/^/  /' >&2
+  echo "$1" >&2
+  echo "Add 'Parity: <ID>[, <ID>]' (with tests) or 'Parity: none (<reason>)'. See notes/11-parity-net-design.md." >&2
+  exit 1
+}
+[ -z "$trailer" ] && fail "missing Parity: trailer."
+
+value="$(printf '%s' "$trailer" | sed -E 's/^Parity:[[:space:]]*//')"
+case "$value" in
+  none*)
+    printf '%s' "$value" | grep -Eq '^none \(.*[^[:space:]].*\)$' || fail "'Parity: none' needs a reason in parentheses."
+    exit 0 ;;
+esac
+
+ids="$(printf '%s' "$value" | tr ',' '\n' | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//')"
+for id in $ids; do
+  printf '%s' "$id" | grep -Eq '^(SON|RAD|PRW|BAZ|SER|MNT|QBT)-[A-Z]+-[0-9]{4,}$' || fail "bad parity ID '$id'."
+  grep -rqsx -- "- id: $id" parity/catalogue || fail "parity ID '$id' is not in parity/catalogue."
+done
+
+tests="$(printf '%s\n' "$staged" | grep -E '(^crates/[^/]+/tests/|_tests?\.rs$|/tests?\.rs$|\.test\.(ts|tsx|mjs)$|^parity/(catalogue|corpus)/)' || true)"
+if [ -z "$tests" ]; then
+  # an in-file #[cfg(test)] module change also counts
+  git diff --cached -U0 -- $product | grep -Eq '^\+.*(#\[(tokio::)?test\]|#\[cfg\(test\)\])' \
+    || fail "Parity IDs given but no test, catalogue or corpus change is staged."
+fi
+exit 0

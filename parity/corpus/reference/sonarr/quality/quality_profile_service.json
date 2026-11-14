@@ -1,0 +1,102 @@
+[
+ {
+  "id": "SON-QUALITY-0033",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/QualityProfileServiceFixture.cs:26",
+  "input": {
+   "op": "default_profiles",
+   "given": {
+    "existing_profiles": 0,
+    "custom_formats": 0
+   }
+  },
+  "expect": {
+   "profiles_inserted": 6
+  }
+ },
+ {
+  "id": "SON-QUALITY-0034",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/QualityProfileServiceFixture.cs:39",
+  "input": {
+   "op": "default_profiles",
+   "given": {
+    "existing_profiles": 2
+   }
+  },
+  "expect": {
+   "profiles_inserted": 0
+  }
+ },
+ {
+  "id": "SON-QUALITY-0035",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/QualityProfileServiceFixture.cs:55",
+  "input": {
+   "op": "profile_delete",
+   "given": {
+    "profile_id": 2,
+    "series_profile_ids_one_of": [
+     [
+      2,
+      2,
+      3
+     ],
+     [
+      1,
+      2,
+      3
+     ],
+     [
+      1,
+      2,
+      2
+     ]
+    ],
+    "import_lists_using_profile": 0
+   }
+  },
+  "expect": {
+   "error": "QualityProfileInUseException",
+   "deleted": false
+  },
+  "note": "NBuilder gives the 3 series sequential QualityProfileId 1, 2, 3, then Random(1) sets one of them to 2, so the setup is one of the listed id lists (1 or 2 series use profile 2); the expectation holds for each. Import lists empty (SetUp)."
+ },
+ {
+  "id": "SON-QUALITY-0036",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/QualityProfileServiceFixture.cs:75",
+  "input": {
+   "op": "profile_delete",
+   "given": {
+    "profile_id": 1,
+    "series_profile_ids": [
+     2,
+     2,
+     2
+    ],
+    "import_lists_using_profile": 0
+   }
+  },
+  "expect": {
+   "deleted": true
+  }
+ },
+ {
+  "id": "SON-QUALITY-0037",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/QualityProfileServiceFixture.cs:90",
+  "input": {
+   "op": "profile_delete",
+   "given": {
+    "profile_id": 1,
+    "series_profile_ids": [
+     2,
+     2,
+     2
+    ],
+    "import_lists_using_profile": 1
+   }
+  },
+  "expect": {
+   "error": "QualityProfileInUseException",
+   "deleted": false
+  },
+  "note": "Import list use comes from NBuilder's sequential QualityProfileId (lists get 1, 2, 3); QualityProfileService.cs:62 checks import lists."
+ }
+]

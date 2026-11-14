@@ -1,0 +1,544 @@
+[
+ {
+  "expect": {
+   "deletedFiles": [
+    501
+   ],
+   "unmonitored": [
+    101
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0094",
+  "input": {
+   "given": {
+    "airDate": {
+     "$date": "2026-01-05T00:00:00.000Z"
+    },
+    "deleteFiles": true,
+    "episodeNumbers": [],
+    "episodes": [
+     {
+      "airDate": "2026-01-05",
+      "episodeFileId": 501,
+      "episodeNumber": 5,
+      "id": 101,
+      "seasonNumber": 2026
+     },
+     {
+      "airDate": "2026-01-06",
+      "episodeFileId": 502,
+      "episodeNumber": 6,
+      "id": 102,
+      "seasonNumber": 2026
+     }
+    ],
+    "seasonNumber": 2026,
+    "seriesId": 1
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:51"
+ },
+ {
+  "expect": {
+   "value": []
+  },
+  "id": "MNT-MAINTENANCE-0095",
+  "input": {
+   "given": {
+    "episodeNumbers": [
+     {
+      "$undefined": true
+     }
+    ],
+    "episodes": [
+     {
+      "episodeNumber": 1
+     },
+     {
+      "episodeNumber": 2
+     }
+    ],
+    "seasonNumber": 1,
+    "seriesId": 1
+   },
+   "op": "getEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:99"
+ },
+ {
+  "expect": {
+   "request": "/episode?seriesId=1&seasonNumber=0",
+   "value": []
+  },
+  "id": "MNT-MAINTENANCE-0096",
+  "input": {
+   "given": {
+    "seasonNumber": 0,
+    "seriesId": 1
+   },
+   "op": "getEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:112"
+ },
+ {
+  "expect": {
+   "throws": "boom"
+  },
+  "id": "MNT-MAINTENANCE-0097",
+  "input": {
+   "given": {
+    "episodeNumbers": [
+     1
+    ],
+    "episodes": {
+     "$throws": "boom"
+    },
+    "seasonNumber": 1,
+    "seriesId": 1
+   },
+   "op": "getEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:120"
+ },
+ {
+  "expect": {
+   "deletedFiles": [],
+   "episodesRead": false,
+   "result": false,
+   "unmonitored": []
+  },
+  "id": "MNT-MAINTENANCE-0100",
+  "input": {
+   "given": {
+    "episodeNumbers": [
+     1
+    ],
+    "seasonNumber": {
+     "$undefined": true
+    },
+    "seriesId": 1
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:189"
+ },
+ {
+  "expect": {
+   "deletedFiles": [
+    9
+   ],
+   "result": true,
+   "unmonitored": [
+    1,
+    2
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0101",
+  "input": {
+   "given": {
+    "episodeNumbers": [
+     1
+    ],
+    "episodes": [
+     {
+      "episodeFileId": 9,
+      "episodeNumber": 1,
+      "id": 1
+     },
+     {
+      "episodeFileId": 9,
+      "episodeNumber": 2,
+      "id": 2
+     },
+     {
+      "episodeFileId": 10,
+      "episodeNumber": 3,
+      "id": 3
+     }
+    ],
+    "seasonNumber": 1,
+    "seriesId": 1
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:208"
+ },
+ {
+  "expect": {
+   "deletedFiles": [],
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0102",
+  "input": {
+   "given": {
+    "episodeNumbers": [
+     2
+    ],
+    "episodes": [
+     {
+      "episodeFileId": 9,
+      "episodeNumber": 1,
+      "id": 1
+     },
+     {
+      "episodeFileId": 9,
+      "episodeNumber": 2,
+      "id": 2
+     }
+    ],
+    "recheck": {
+     "2": {
+      "monitored": true
+     }
+    },
+    "seasonNumber": 1,
+    "seriesId": 1,
+    "unmonitorFails": [
+     2
+    ]
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:234"
+ },
+ {
+  "expect": {
+   "deletedFiles": [
+    601
+   ],
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0116",
+  "input": {
+   "given": {
+    "airDate": {
+     "$date": "2026-01-05T00:00:00.000Z"
+    },
+    "deleteFiles": true,
+    "episodeNumbers": [],
+    "episodes": [
+     {
+      "airDate": "2026-01-05",
+      "episodeFileId": 501,
+      "episodeNumber": 5,
+      "id": 101,
+      "monitored": true,
+      "seasonNumber": 2026
+     }
+    ],
+    "recheck": {
+     "101": {
+      "episodeFileId": 601,
+      "monitored": false
+     }
+    },
+    "seasonNumber": 2026,
+    "seriesId": 1,
+    "unmonitorFails": [
+     101
+    ]
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:475"
+ },
+ {
+  "expect": {
+   "deletedFiles": [],
+   "result": false,
+   "warned": true
+  },
+  "id": "MNT-MAINTENANCE-0117",
+  "input": {
+   "given": {
+    "airDate": {
+     "$date": "2026-01-05T00:00:00.000Z"
+    },
+    "deleteFiles": true,
+    "episodeNumbers": [],
+    "episodes": [
+     {
+      "airDate": "2026-01-05",
+      "episodeFileId": 501,
+      "episodeNumber": 5,
+      "id": 101,
+      "monitored": true,
+      "seasonNumber": 2026
+     }
+    ],
+    "recheck": {
+     "101": {
+      "monitored": true
+     }
+    },
+    "seasonNumber": 2026,
+    "seriesId": 1,
+    "unmonitorFails": [
+     101
+    ]
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:514"
+ },
+ {
+  "expect": {
+   "deletedFiles": [],
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0118",
+  "input": {
+   "given": {
+    "airDate": {
+     "$date": "2026-01-05T00:00:00.000Z"
+    },
+    "deleteFiles": true,
+    "episodeNumbers": [],
+    "episodes": [
+     {
+      "airDate": "2026-01-05",
+      "episodeFileId": 501,
+      "episodeNumber": 5,
+      "id": 101,
+      "monitored": true,
+      "seasonNumber": 2026
+     }
+    ],
+    "recheck": {
+     "101": {
+      "$undefined": true
+     }
+    },
+    "seasonNumber": 2026,
+    "seriesId": 1,
+    "unmonitorFails": [
+     101
+    ]
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:547"
+ },
+ {
+  "expect": {
+   "deletedFiles": [
+    502
+   ],
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0119",
+  "input": {
+   "given": {
+    "airDate": {
+     "$date": "2026-07-01T00:00:00.000Z"
+    },
+    "deleteFiles": true,
+    "episodeNumbers": [],
+    "episodes": [
+     {
+      "airDate": "2026-07-01",
+      "episodeFileId": 501,
+      "episodeNumber": 5,
+      "id": 101,
+      "monitored": true,
+      "seasonNumber": 2026
+     },
+     {
+      "airDate": "2026-07-01",
+      "episodeFileId": 502,
+      "episodeNumber": 6,
+      "id": 102,
+      "monitored": true,
+      "seasonNumber": 2026
+     }
+    ],
+    "recheck": {
+     "101": {
+      "monitored": true
+     }
+    },
+    "seasonNumber": 2026,
+    "seriesId": 1,
+    "unmonitorFails": [
+     101
+    ]
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:577"
+ },
+ {
+  "expect": {
+   "deleteAttempts": [
+    501,
+    502
+   ],
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0120",
+  "input": {
+   "given": {
+    "airDate": {
+     "$date": "2026-07-01T00:00:00.000Z"
+    },
+    "deleteFails": [
+     501
+    ],
+    "deleteFiles": true,
+    "episodeNumbers": [],
+    "episodes": [
+     {
+      "airDate": "2026-07-01",
+      "episodeFileId": 501,
+      "episodeNumber": 5,
+      "id": 101,
+      "monitored": true,
+      "seasonNumber": 2026
+     },
+     {
+      "airDate": "2026-07-01",
+      "episodeFileId": 502,
+      "episodeNumber": 6,
+      "id": 102,
+      "monitored": true,
+      "seasonNumber": 2026
+     }
+    ],
+    "seasonNumber": 2026,
+    "seriesId": 1
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:622"
+ },
+ {
+  "expect": {
+   "cached": false,
+   "deletedFiles": [
+    700
+   ],
+   "request": "/episode?seriesId=1&seasonNumber=3"
+  },
+  "id": "MNT-MAINTENANCE-0126",
+  "input": {
+   "given": {
+    "episodeNumbers": [
+     7
+    ],
+    "episodes": [
+     {
+      "episodeFileId": 700,
+      "episodeNumber": 7,
+      "seasonNumber": 3
+     }
+    ],
+    "seasonNumber": 3,
+    "seriesId": 1
+   },
+   "op": "UnmonitorDeleteEpisodes"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:763"
+ },
+ {
+  "expect": {
+   "episodeNumber": 5
+  },
+  "id": "MNT-MAINTENANCE-0127",
+  "input": {
+   "given": {
+    "episodeFiles": [
+     {
+      "id": 9,
+      "relativePath": "Season 1/Sample Series - S01E05.mkv"
+     }
+    ],
+    "episodes": [
+     {
+      "episodeFileId": 9,
+      "episodeNumber": 5
+     }
+    ],
+    "item": {
+     "index": {
+      "$undefined": true
+     },
+     "path": "D:\\TV\\Sample Series\\Season 1\\Sample Series - S01E05.mkv",
+     "providerIds": {},
+     "type": "episode"
+    },
+    "seasonNumber": 1
+   },
+   "op": "findEpisodeForMediaItem"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:807"
+ },
+ {
+  "expect": {
+   "episodeNumber": 5
+  },
+  "id": "MNT-MAINTENANCE-0128",
+  "input": {
+   "given": {
+    "episodeFiles": [
+     {
+      "id": 9,
+      "relativePath": "Season 1/Sample Series - Café.mkv"
+     }
+    ],
+    "episodes": [
+     {
+      "episodeFileId": 9,
+      "episodeNumber": 5
+     }
+    ],
+    "item": {
+     "index": {
+      "$undefined": true
+     },
+     "path": "/media/tv/Sample Series/Season 1/Sample Series - Café.mkv",
+     "providerIds": {},
+     "type": "episode"
+    },
+    "seasonNumber": 1
+   },
+   "op": "findEpisodeForMediaItem"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:812"
+ },
+ {
+  "expect": {
+   "episodeNumber": {
+    "$undefined": true
+   }
+  },
+  "id": "MNT-MAINTENANCE-0129",
+  "input": {
+   "given": {
+    "episodeFiles": [
+     {
+      "id": 9,
+      "relativePath": "Season 1/Sample Series - S01E05.mkv"
+     }
+    ],
+    "episodes": [
+     {
+      "episodeFileId": 9,
+      "episodeNumber": 5
+     }
+    ],
+    "item": {
+     "index": {
+      "$undefined": true
+     },
+     "path": "/media/tv/Sample Series/Extras Season 1/Sample Series - S01E05.mkv",
+     "providerIds": {},
+     "type": "episode"
+    },
+    "seasonNumber": 1
+   },
+   "op": "findEpisodeForMediaItem"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/api/servarr-api/helpers/sonarr.helper.spec.ts:821"
+ }
+]

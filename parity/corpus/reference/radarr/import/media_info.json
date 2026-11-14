@@ -1,0 +1,668 @@
+[
+ {
+  "id": "RAD-IMPORT-0064",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:58",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "movie_scanned",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files": [
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": 14
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     }
+    ],
+    "files_exist": true
+   }
+  },
+  "expect": {
+   "probed": 2,
+   "updated": 2
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0065",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:85",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "movie_scanned",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files": [
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": 14
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     }
+    ],
+    "files_exist": true
+   }
+  },
+  "expect": {
+   "probed": 2,
+   "updated": 2
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0066",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:112",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "movie_scanned",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files": [
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": 0
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     }
+    ],
+    "files_exist": true
+   }
+  },
+  "expect": {
+   "probed": 3,
+   "updated": 3
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0067",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:139",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "movie_scanned",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files": [
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     }
+    ],
+    "files_exist": false
+   }
+  },
+  "expect": {
+   "probed": 0,
+   "updated": 0
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0068",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:162",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "movie_scanned",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files": [
+     {
+      "relative_path": "media2.mkv",
+      "schema_revision": null
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     }
+    ],
+    "files_exist": true,
+    "probe_fails_for": [
+     "media2.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "probed_ok": [
+    "media.mkv"
+   ],
+   "updated": 1
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0069",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:190",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "movie_scanned",
+    "enable_media_info": false,
+    "movie_path": "/C/movie",
+    "files": [
+     {
+      "relative_path": "media2.mkv",
+      "schema_revision": null
+     },
+     {
+      "relative_path": "media.mkv",
+      "schema_revision": null
+     }
+    ],
+    "files_exist": true
+   }
+  },
+  "expect": {
+   "probed": 0,
+   "updated": 0
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0070",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:220",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "update_file",
+    "enable_media_info": false,
+    "movie_path": "/C/movie",
+    "files_exist": true,
+    "file": {
+     "relative_path": "media.mkv"
+    }
+   }
+  },
+  "expect": {
+   "probed": 0,
+   "updated": 0
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0071",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:243",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "update_file",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files_exist": true,
+    "file": {
+     "relative_path": "media.mkv",
+     "schema_revision": 3
+    }
+   }
+  },
+  "expect": {
+   "probed": 1,
+   "updated": 1
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0072",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:264",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "update_file",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files_exist": true,
+    "file": {
+     "relative_path": "media.mkv",
+     "schema_revision": 3
+    },
+    "probe_fails": true
+   }
+  },
+  "expect": {
+   "media_info_kept": true
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0073",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:280",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "update_file",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files_exist": true,
+    "file": {
+     "relative_path": "media.mkv",
+     "schema_revision": 3
+    },
+    "probe_fails": true
+   }
+  },
+  "expect": {
+   "updated": 0
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0074",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:297",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "update_file",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files_exist": true,
+    "file": {
+     "path": "/C/movie/media.iso"
+    },
+    "probe_fails": true
+   }
+  },
+  "expect": {
+   "probed": 1,
+   "updated": 0
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0075",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:298",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "update_file",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files_exist": true,
+    "file": {
+     "path": "/C/movie/media.m3u"
+    },
+    "probe_fails": true
+   }
+  },
+  "expect": {
+   "probed": 1,
+   "updated": 0
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0076",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:299",
+  "input": {
+   "op": "update_media_info",
+   "given": {
+    "entry": "update_file",
+    "enable_media_info": true,
+    "movie_path": "/C/movie",
+    "files_exist": true,
+    "file": {
+     "path": "/C/movie/media.strm"
+    },
+    "probe_fails": true
+   }
+  },
+  "expect": {
+   "probed": 1,
+   "updated": 0
+  },
+  "note": "Movie path /C/movie. Schema revisions: current 14, minimum 14 (src/NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:25); a file whose media info revision is below the minimum (or has none) is re-probed on a movie scan. Media info on unless the test disables it. schema_revision null: the test sets no media info on that file."
+ },
+ {
+  "id": "RAD-IMPORT-0080",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:106",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 8,
+    "colour_primaries": "",
+    "transfer_characteristics": "",
+    "side_data": [],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0081",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:107",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "",
+    "transfer_characteristics": "",
+    "side_data": [],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0082",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:108",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt709",
+    "transfer_characteristics": "bt709",
+    "side_data": [],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0083",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:109",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 8,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0084",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:110",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "bt2020-10",
+    "side_data": [],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0085",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:111",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "arib-std-b67",
+    "side_data": [],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "Hlg10"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0086",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:112",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "Pq10"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0087",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:113",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "SideData"
+    ],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "Pq10"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0088",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:114",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "MasteringDisplayMetadata"
+    ],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "Hdr10"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0089",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:115",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "ContentLightLevelMetadata"
+    ],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "Hdr10"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0090",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:116",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "HdrDynamicMetadataSpmte2094"
+    ],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "Hdr10Plus"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0091",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:117",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ],
+    "dovi_bl_signal_compatibility_id": null
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVision"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0092",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:118",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ],
+    "dovi_bl_signal_compatibility_id": 1
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHdr10"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0093",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:119",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData",
+     "HdrDynamicMetadataSpmte2094"
+    ],
+    "dovi_bl_signal_compatibility_id": 1
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHdr10Plus"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0094",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:120",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData",
+     "HdrDynamicMetadataSpmte2094"
+    ],
+    "dovi_bl_signal_compatibility_id": 6
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHdr10Plus"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0095",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:121",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ],
+    "dovi_bl_signal_compatibility_id": 2
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionSdr"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ },
+ {
+  "id": "RAD-IMPORT-0096",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:122",
+  "input": {
+   "op": "hdr_format",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ],
+    "dovi_bl_signal_compatibility_id": 4
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHlg"
+  },
+  "note": "Side data are FFMpegCore side-data type names; the compatibility id is set on DoviConfigurationRecordSideData."
+ }
+]

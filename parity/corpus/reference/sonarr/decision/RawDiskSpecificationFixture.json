@@ -1,0 +1,279 @@
+[
+ {
+  "id": "SON-DECISION-1057",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:34",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.title.s01e01",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1058",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:40",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.title.s01e01",
+     "protocol": "Torrent",
+     "container": "MKV"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1059",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:47",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.title.s01e01",
+     "protocol": "Torrent",
+     "container": "VOB"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1060",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:54",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.title.s01e01",
+     "protocol": "Torrent",
+     "container": "ISO"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1061",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:61",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.title.s01e01",
+     "protocol": "Torrent",
+     "container": "M2TS"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1062",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:68",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.title.s01e01",
+     "protocol": "Torrent",
+     "container": "vob"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1063",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:75",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S02 Disc 1 1080i Blu-ray DTS-HD MA 2.0 AVC-TrollHD",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1064",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:76",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S03 Disc 1 1080p Blu-ray LPCM 2.0 AVC-TrollHD",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1065",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:77",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "SERIES TITLE S02 1080P FULL BLURAY AVC DTS-HD MA 5 1",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1066",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:78",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S06.2016.DISC.3.BluRay.1080p.AVC.Atmos.TrueHD7.1-MTeam",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1067",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:79",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1068",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:80",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1069",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:81",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Someone.the.Entertainer.Presents.S01.NTSC.3xDVD9.MPEG-2.DD2.0",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1070",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:82",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S00.The.Christmas.Special.2011.PAL.DVD5.DD2.0",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1071",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:83",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.of.Desire.2000.S1_D01.NTSC.DVD5",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1072",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:90",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title EP50 USLT NTSC DVDRemux DD2.0",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1073",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:91",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01.NTSC.DVDRip.DD2.0.x264-PLAiD",
+     "protocol": "Torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

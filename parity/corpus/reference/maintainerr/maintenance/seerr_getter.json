@@ -1,0 +1,218 @@
+[
+ {
+  "expect": {
+   "value": []
+  },
+  "id": "MNT-MAINTENANCE-0255",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "addUser",
+    "requests": []
+   },
+   "op": "seerr_get"
+  },
+  "note": "Request facts kept from the spec's movieRequest/mediaInfo builders (:75, :85): type movie, status APPROVED, createdAt 2026-01-01, requestedBy plexUsername PlexUser, media status AVAILABLE, mediaAddedAt 2026-02-02, tmdbId 12345; overrides as listed.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/seerr-getter.service.spec.ts:127"
+ },
+ {
+  "expect": {
+   "value": [
+    "SameUser"
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0256",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "addUser",
+    "requests": [
+     {
+      "id": 1,
+      "is4k": false,
+      "media": {
+       "mediaAddedAt": "2026-02-02",
+       "status": "AVAILABLE",
+       "tmdbId": 12345
+      },
+      "requestedBy": {
+       "id": 10,
+       "plexUsername": "SameUser",
+       "userType": 1
+      },
+      "status": "APPROVED",
+      "type": "movie"
+     },
+     {
+      "id": 2,
+      "is4k": true,
+      "media": {
+       "mediaAddedAt": "2026-02-02",
+       "status": "AVAILABLE",
+       "tmdbId": 12345
+      },
+      "requestedBy": {
+       "id": 10,
+       "plexUsername": "SameUser",
+       "userType": 1
+      },
+      "status": "APPROVED",
+      "type": "movie"
+     }
+    ]
+   },
+   "op": "seerr_get"
+  },
+  "note": "Request facts kept from the spec's movieRequest/mediaInfo builders (:75, :85): type movie, status APPROVED, createdAt 2026-01-01, requestedBy plexUsername PlexUser, media status AVAILABLE, mediaAddedAt 2026-02-02, tmdbId 12345; overrides as listed.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/seerr-getter.service.spec.ts:142"
+ },
+ {
+  "expect": {
+   "value": 1
+  },
+  "id": "MNT-MAINTENANCE-0262",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "isRequested",
+    "requests": [
+     {
+      "is4k": false,
+      "media": {
+       "mediaAddedAt": "2026-02-02",
+       "status": "AVAILABLE",
+       "tmdbId": 12345
+      },
+      "requestedBy": {
+       "id": 10,
+       "plexUsername": "PlexUser",
+       "userType": 1
+      },
+      "status": "APPROVED",
+      "type": "movie"
+     }
+    ]
+   },
+   "op": "seerr_get"
+  },
+  "note": "Request facts kept from the spec's movieRequest/mediaInfo builders (:75, :85): type movie, status APPROVED, createdAt 2026-01-01, requestedBy plexUsername PlexUser, media status AVAILABLE, mediaAddedAt 2026-02-02, tmdbId 12345; overrides as listed.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/seerr-getter.service.spec.ts:264"
+ },
+ {
+  "expect": {
+   "value": 0
+  },
+  "id": "MNT-MAINTENANCE-0263",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "isRequested",
+    "requests": []
+   },
+   "op": "seerr_get"
+  },
+  "note": "Request facts kept from the spec's movieRequest/mediaInfo builders (:75, :85): type movie, status APPROVED, createdAt 2026-01-01, requestedBy plexUsername PlexUser, media status AVAILABLE, mediaAddedAt 2026-02-02, tmdbId 12345; overrides as listed.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/seerr-getter.service.spec.ts:274"
+ },
+ {
+  "expect": {
+   "value": {
+    "$date": "2026-08-01"
+   }
+  },
+  "id": "MNT-MAINTENANCE-0273",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "mediaAddedAt",
+    "requests": [
+     {
+      "is4k": false,
+      "media": {
+       "mediaAddedAt": "2026-08-01",
+       "status": "AVAILABLE",
+       "tmdbId": 12345
+      },
+      "requestedBy": {
+       "id": 10,
+       "plexUsername": "PlexUser",
+       "userType": 1
+      },
+      "status": "APPROVED",
+      "type": "movie"
+     }
+    ]
+   },
+   "op": "seerr_get"
+  },
+  "note": "Request facts kept from the spec's movieRequest/mediaInfo builders (:75, :85): type movie, status APPROVED, createdAt 2026-01-01, requestedBy plexUsername PlexUser, media status AVAILABLE, mediaAddedAt 2026-02-02, tmdbId 12345; overrides as listed.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/seerr-getter.service.spec.ts:419"
+ },
+ {
+  "expect": {
+   "value": null
+  },
+  "id": "MNT-MAINTENANCE-0274",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "mediaAddedAt",
+    "requests": [
+     {
+      "is4k": false,
+      "media": {
+       "mediaAddedAt": "2026-02-02",
+       "status": "PROCESSING",
+       "tmdbId": 12345
+      },
+      "requestedBy": {
+       "id": 10,
+       "plexUsername": "PlexUser",
+       "userType": 1
+      },
+      "status": "APPROVED",
+      "type": "movie"
+     }
+    ]
+   },
+   "op": "seerr_get"
+  },
+  "note": "Request facts kept from the spec's movieRequest/mediaInfo builders (:75, :85): type movie, status APPROVED, createdAt 2026-01-01, requestedBy plexUsername PlexUser, media status AVAILABLE, mediaAddedAt 2026-02-02, tmdbId 12345; overrides as listed.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/seerr-getter.service.spec.ts:436"
+ },
+ {
+  "expect": {
+   "seerrQueried": false,
+   "value": {
+    "$undefined": true
+   }
+  },
+  "id": "MNT-MAINTENANCE-0280",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "isRequested",
+    "tmdbId": {
+     "$undefined": true
+    }
+   },
+   "op": "seerr_get"
+  },
+  "note": "Request facts kept from the spec's movieRequest/mediaInfo builders (:75, :85): type movie, status APPROVED, createdAt 2026-01-01, requestedBy plexUsername PlexUser, media status AVAILABLE, mediaAddedAt 2026-02-02, tmdbId 12345; overrides as listed.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/seerr-getter.service.spec.ts:547"
+ }
+]

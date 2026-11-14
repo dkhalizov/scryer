@@ -1,0 +1,385 @@
+[
+ {
+  "id": "SON-NAMING-0197",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:100",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "The Fantastic Life of Mr. Sisko",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "This title has to be 197 characters in length, combined with the series title, quality and episode number it becomes 254ish and the extension puts it above the 255 limit and triggers the truncation",
+      "seasonNumber": 2,
+      "episodeNumber": 18
+     }
+    ],
+    "episodeFile": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "name": "The Fantastic Life of Mr. Sisko - S02E18 - This title has to be 197 characters in length, combined with the series title, quality and episode number it becomes 254ish and the extension puts it above the 255 limit and triggers the trunc... Bluray-1080p.mkv",
+   "max_length": 255
+  },
+  "note": "Seven Setup episodes S01E01-07 (titles in Setup); the test passes all of them, or only the first. Episodes use NBuilder defaults otherwise."
+ },
+ {
+  "id": "SON-NAMING-0198",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:117",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title 1",
+      "seasonNumber": 1,
+      "episodeNumber": 1
+     },
+     {
+      "title": "Another Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 2
+     },
+     {
+      "title": "Yet Another Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 3
+     },
+     {
+      "title": "Yet Another Episode Title Take 2",
+      "seasonNumber": 1,
+      "episodeNumber": 4
+     },
+     {
+      "title": "Yet Another Episode Title Take 3",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     },
+     {
+      "title": "Yet Another Episode Title Take 4",
+      "seasonNumber": 1,
+      "episodeNumber": 6
+     },
+     {
+      "title": "A Really Really Really Really Long Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 7
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series Title - S01E01-02-03-04-05-06-07 - Episode Title 1...A Really Really Really Really Long Episode Title HDTV-720p",
+   "max_length": 255
+  },
+  "note": "Seven Setup episodes S01E01-07 (titles in Setup); the test passes all of them, or only the first. Episodes use NBuilder defaults otherwise."
+ },
+ {
+  "id": "SON-NAMING-0199",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:127",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title 1",
+      "seasonNumber": 1,
+      "episodeNumber": 1
+     },
+     {
+      "title": "Another Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 2
+     },
+     {
+      "title": "Yet Another Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 3
+     },
+     {
+      "title": "Yet Another Episode Title Take 2",
+      "seasonNumber": 1,
+      "episodeNumber": 4
+     },
+     {
+      "title": "Yet Another Episode Title Take 3",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     },
+     {
+      "title": "Yet Another Episode Title Take 4",
+      "seasonNumber": 1,
+      "episodeNumber": 6
+     },
+     {
+      "title": "A Really Really Really Really Long Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 7
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes - S01E01-02-03-04-05-06-07 - Episode Title 1... HDTV-720p",
+   "max_length": 255
+  },
+  "note": "Seven Setup episodes S01E01-07 (titles in Setup); the test passes all of them, or only the first. Episodes use NBuilder defaults otherwise."
+ },
+ {
+  "id": "SON-NAMING-0200",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:138",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title 1",
+      "seasonNumber": 1,
+      "episodeNumber": 1
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum - S01E01 - Episode Ti... HDTV-720p",
+   "max_length": 255
+  },
+  "note": "Seven Setup episodes S01E01-07 (titles in Setup); the test passes all of them, or only the first. Episodes use NBuilder defaults otherwise."
+ },
+ {
+  "id": "SON-NAMING-0201",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:149",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Lorém ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title 1",
+      "seasonNumber": 1,
+      "episodeNumber": 1
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Lorém ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum - S01E01 - Episode T... HDTV-720p",
+   "max_utf8_bytes": 255
+  },
+  "note": "Seven Setup episodes S01E01-07 (titles in Setup); the test passes all of them, or only the first. Episodes use NBuilder defaults otherwise."
+ },
+ {
+  "id": "SON-NAMING-0202",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:161",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episodé Title",
+      "seasonNumber": 1,
+      "episodeNumber": 1
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum - S01E01 - Episodé T... HDTV-720p",
+   "max_utf8_bytes": 255
+  },
+  "note": "Seven Setup episodes S01E01-07 (titles in Setup); the test passes all of them, or only the first. Episodes use NBuilder defaults otherwise."
+ },
+ {
+  "id": "SON-NAMING-0203",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:175",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Tétle",
+      "seasonNumber": 1,
+      "episodeNumber": 1
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit Maecenas et magna sem Morbi vitae volutpat quam, id porta arcu Orci varius natoque penatibus et magnis dis parturient montes nascetur ridiculus musu Cras vestibulum - S01E01 - Episode T... HDTV-720p",
+   "max_utf8_bytes": 255
+  },
+  "note": "Seven Setup episodes S01E01-07 (titles in Setup); the test passes all of them, or only the first. Episodes use NBuilder defaults otherwise."
+ }
+]

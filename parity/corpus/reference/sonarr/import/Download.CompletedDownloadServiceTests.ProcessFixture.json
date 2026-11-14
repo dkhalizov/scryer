@@ -1,0 +1,405 @@
+[
+ {
+  "id": "SON-IMPORT-0011",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:106",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Downloading",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": "S"
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0012",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:107",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Failed",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": "S"
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0013",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:108",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Queued",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": "S"
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0014",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:109",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Paused",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": "S"
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0015",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:110",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Warning",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": "S"
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0016",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:120",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Completed",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": null
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": "S"
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0017",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:131",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Completed",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "tv"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "*": "S"
+    }
+   }
+  },
+  "expect": {
+   "state": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0018",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:143",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Completed",
+      "output_path": null,
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": "S"
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0019",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:153",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Completed",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Droned Pilot",
+      "download_id": "1234",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [
+     {
+      "source_title": "Droned S01E01",
+      "event": "Grabbed"
+     }
+    ],
+    "series_lookup": {
+     "Droned S01E01": "S",
+     "*": null
+    },
+    "process_path_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "approved": true,
+      "errors": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ },
+ {
+  "id": "SON-IMPORT-0020",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:170",
+  "input": {
+   "op": "CompletedDownloadService.Check",
+   "given": {
+    "tracked_download": {
+     "state": "Downloading",
+     "item": {
+      "status": "Completed",
+      "output_path": "/C/DropFolder/MyDownload",
+      "title": "Drone.S01E01.HDTV",
+      "download_id": "DownloadId1",
+      "category": "Category1"
+     },
+     "remote_episode": {
+      "series": "S",
+      "episodes": [
+       {
+        "id": 1
+       }
+      ]
+     }
+    },
+    "download_client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "history_for_download_id": [],
+    "series_lookup": {
+     "Drone.S01E01.HDTV": null
+    }
+   }
+  },
+  "expect": {
+   "state_is_not": "ImportPending"
+  },
+  "note": "Where present, download_id DownloadId1 and category Category1 are NBuilder defaults; other values (e.g. download_id 1234) are set by the test."
+ }
+]

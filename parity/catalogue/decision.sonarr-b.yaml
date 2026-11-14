@@ -1,0 +1,1669 @@
+# Sonarr grab-decision fixtures N..Z plus RssSync/ and Search/ (DecisionEngineTests), ported by
+# parity/extract/sonarr_decision_b.py. Corpus: corpus/reference/sonarr/decision/.
+
+- id: SON-DECISION-1000
+  behaviour: "A REAL release is ranked before the same release without REAL"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:87"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1001
+  behaviour: "A proper (v2) is ranked before the same quality v1"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:101"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1002
+  behaviour: "HDTV-720p is ranked before SDTV"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:115"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1003
+  behaviour: "The release for the lower episode number is ranked first"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:129"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1004
+  behaviour: "Of two multi-episode releases, the one starting at the lower episode number is ranked first"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:143"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1005
+  behaviour: "Among HD releases the young large one (3000 MB, 1 day) is ranked first, ahead of SD and older or smaller ones"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:157"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1006
+  behaviour: "With preferred size 200 MB/min (12000 MB at 60 min), the 10000 MB release beats the 1200 MB one"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:175"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1007
+  behaviour: "With preferred size 46 MB/min, the 3000 MB release is ranked first among 500/2000/3000/5000 MB"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:192"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1008
+  behaviour: "The 5-day-old release is ranked before the 10-day-old one"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:213"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1009
+  behaviour: "Prioritizing does not fail when a release has no episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:227"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1010
+  behaviour: "With Usenet preferred, the Usenet release is ranked first"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:242"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1011
+  behaviour: "With Torrent preferred, the torrent release is ranked first"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:258"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1012
+  behaviour: "A full-season release is ranked before a single episode"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:274"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1013
+  behaviour: "For anime, the two-episode release is ranked before the single episode"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:290"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1014
+  behaviour: "For non-anime, the single episode is ranked before the two-episode release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:307"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1015
+  behaviour: "The torrent with 100 seeders is ranked before the one with 10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:321"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1016
+  behaviour: "With equal seeders, the torrent with 100 peers is ranked before the one with 10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:347"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1017
+  behaviour: "With no seeders, the torrent with 100 peers is ranked before the one with 10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:374"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1018
+  behaviour: "Torrents with similar seeders (1000 vs 1100) and size keep the first release first"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:402"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1019
+  behaviour: "Releases of similar age (100 vs 150 days) and size (200 vs 250 MB) keep the first release first"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:431"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1020
+  behaviour: "Bluray-1080p with 100 seeders beats SDTV with 1100 seeders"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:451"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1021
+  behaviour: "HDTV-720p German is ranked before SDTV French"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:480"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1022
+  behaviour: "Custom format score 10 is ranked before score 0"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:494"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1023
+  behaviour: "With PreferAndUpgrade, a proper with score 0 beats a v1 with score 10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:511"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1024
+  behaviour: "With DoNotUpgrade, a proper with score 0 beats a v1 with score 10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:532"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1025
+  behaviour: "With DoNotPrefer, a v1 with score 10 beats a proper with score 0"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:553"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1026
+  behaviour: "With DoNotPrefer, a non-REAL with score 10 beats a REAL with score 0"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:576"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1027
+  behaviour: "Equal releases are ordered by indexer priority, lowest number first (1, 25, 50)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:600"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1028
+  behaviour: "Quality ranks before indexer priority; priority breaks ties within a quality"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:616"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1029
+  behaviour: "A Usenet release is accepted when Usenet is enabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:39"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1030
+  behaviour: "A torrent release is accepted when torrent is enabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:48"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1031
+  behaviour: "A Usenet release is rejected when Usenet is disabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:57"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1032
+  behaviour: "A torrent release is rejected when torrent is disabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:66"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1033
+  behaviour: "A DVD release is accepted when the profile allows only DVD, HDTV-720p and Bluray-1080p (DVD is allowed)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:22"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1034
+  behaviour: "A HDTV-720p release is accepted when the profile allows only DVD, HDTV-720p and Bluray-1080p (HDTV-720p is allowed)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:23"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1035
+  behaviour: "A Bluray-1080p release is accepted when the profile allows only DVD, HDTV-720p and Bluray-1080p (Bluray-1080p is allowed)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:24"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1036
+  behaviour: "A SDTV release is rejected when the profile allows only DVD, HDTV-720p and Bluray-1080p (SDTV is not allowed)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:29"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1037
+  behaviour: "A WEBDL-720p release is rejected when the profile allows only DVD, HDTV-720p and Bluray-1080p (WEBDL-720p is not allowed)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:30"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1038
+  behaviour: "A Bluray-720p release is rejected when the profile allows only DVD, HDTV-720p and Bluray-1080p (Bluray-720p is not allowed)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:31"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1039
+  behaviour: "A release is accepted when the queue is empty"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:109"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1040
+  behaviour: "A queued item for another series does not block the release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:116"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1041
+  behaviour: "A release identical to a queued one (DVD, Spanish) is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:130"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1042
+  behaviour: "A DVD release is accepted over a queued SDTV item"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:152"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1043
+  behaviour: "A DVD release is accepted over a queued SDTV English item"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:173"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1044
+  behaviour: "A queued item for a different episode does not block the release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:194"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1045
+  behaviour: "Same quality and language, but a higher custom format score than the queued item, is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:212"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1046
+  behaviour: "Same quality and language as a queued item is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:241"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1047
+  behaviour: "A DVD release is rejected when HDTV-720p is queued"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:260"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1048
+  behaviour: "A queued multi-episode item covering the episode blocks the release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:281"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1049
+  behaviour: "A multi-episode release is rejected when one of its episodes is queued"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:300"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1050
+  behaviour: "A multi-episode release is rejected when the same episodes are queued"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:321"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1051
+  behaviour: "A multi-episode release is rejected when its episodes are queued as two items"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:342"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1052
+  behaviour: "A release is rejected when the queued item (HDTV-720p) meets the DVD cutoff"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:368"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1053
+  behaviour: "Same quality as a queued item with a different language (English) is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:390"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1054
+  behaviour: "With upgrades not allowed, a release is rejected when Bluray-1080p is queued"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:409"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1055
+  behaviour: "A FailedPending queued item does not block an identical release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:431"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1056
+  behaviour: "With DoNotUpgrade, a proper is rejected when the same quality non-proper is queued"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:453"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1057
+  behaviour: "A release with no container and a non-disc title is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:34"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1058
+  behaviour: "An MKV container is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:40"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1059
+  behaviour: "A VOB container is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:47"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1060
+  behaviour: "An ISO container is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:54"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1061
+  behaviour: "An M2TS container is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:61"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1062
+  behaviour: "A lower-case vob container is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:68"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1063
+  behaviour: "Disc-format title \"Series Title S02 Disc 1 1080i Blu-ray DTS-HD MA 2.0 AVC-TrollHD\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:75"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1064
+  behaviour: "Disc-format title \"Series Title S03 Disc 1 1080p Blu-ray LPCM 2.0 AVC-TrollHD\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:76"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1065
+  behaviour: "Disc-format title \"SERIES TITLE S02 1080P FULL BLURAY AVC DTS-HD MA 5 1\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:77"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1066
+  behaviour: "Disc-format title \"Series.Title.S06.2016.DISC.3.BluRay.1080p.AVC.Atmos.TrueHD7.1-MTeam\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:78"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1067
+  behaviour: "Disc-format title \"Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:79"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1068
+  behaviour: "Disc-format title \"Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:80"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1069
+  behaviour: "Disc-format title \"Someone.the.Entertainer.Presents.S01.NTSC.3xDVD9.MPEG-2.DD2.0\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:81"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1070
+  behaviour: "Disc-format title \"Series.Title.S00.The.Christmas.Special.2011.PAL.DVD5.DD2.0\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:82"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1071
+  behaviour: "Disc-format title \"Series.of.Desire.2000.S1_D01.NTSC.DVD5\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:83"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1072
+  behaviour: "DVD rip title \"Series Title EP50 USLT NTSC DVDRemux DD2.0\" is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:90"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1073
+  behaviour: "DVD rip title \"Series.Title.S01.NTSC.DVDRip.DD2.0.x264-PLAiD\" is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:91"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1074
+  behaviour: "A release is accepted when no release profile applies"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:51"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1075
+  behaviour: "A title containing the required term WEBRip is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:61"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1076
+  behaviour: "A title containing none of the required terms (doesnt, exist) is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:69"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1077
+  behaviour: "A title without the ignored term \"ignored\" is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:77"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1078
+  behaviour: "A title containing the ignored term \"edited\" is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:85"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1079
+  behaviour: "Required terms ['EdiTED'] match the title case-insensitively and accept it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:93"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1080
+  behaviour: "Required terms ['webrip'] match the title case-insensitively and accept it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:94"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1081
+  behaviour: "Required terms ['X264'] match the title case-insensitively and accept it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:95"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1082
+  behaviour: "Required terms ['X264', 'NOTTHERE'] match the title case-insensitively and accept it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:96"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1083
+  behaviour: "Ignored terms ['EdiTED'] match the title case-insensitively and reject it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:104"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1084
+  behaviour: "Ignored terms ['webrip'] match the title case-insensitively and reject it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:105"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1085
+  behaviour: "Ignored terms ['X264'] match the title case-insensitively and reject it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1086
+  behaviour: "Ignored terms ['X264', 'NOTTHERE'] match the title case-insensitively and reject it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1087
+  behaviour: "A title with both a required term (x264) and an ignored term (www.Speed.cd) is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:115"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1088
+  behaviour: "Required regex /WEB/ matches the title and accepts it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:134"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1089
+  behaviour: "Required term \"/WEB<backspace>/\" does not match and rejects the title"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:135"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1090
+  behaviour: "Required regex /WEb/ is case-sensitive, does not match, and rejects the title"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:136"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1091
+  behaviour: "Required regex /\\.WEB/ matches \".WEB\" in the title and accepts it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:137"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1092
+  behaviour: "A release that is not a repack is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:39"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1093
+  behaviour: "A repack is accepted when the episode has no file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:53"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1094
+  behaviour: "A repack is accepted when the existing file is a different quality (DVD)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:69"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1095
+  behaviour: "A repack is accepted when the existing file has the same quality and release group"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:90"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1096
+  behaviour: "A repack is rejected when the existing file's release group differs"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:111"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1097
+  behaviour: "A repack is rejected when the existing file's release group is empty"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:132"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1098
+  behaviour: "A repack is rejected when the release's own release group is unknown"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:153"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1099
+  behaviour: "With DoNotPrefer, a repack of the existing file is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:176"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1100
+  behaviour: "With PreferAndUpgrade, a repack of the existing file is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:198"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1101
+  behaviour: "With DoNotUpgrade, a repack of the existing file is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:220"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1102
+  behaviour: "Retention 0 accepts a 100-day-old Usenet release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:37"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1103
+  behaviour: "Retention 1000 accepts a 100-day-old release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:46"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1104
+  behaviour: "Retention 100 accepts a 100-day-old release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:55"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1105
+  behaviour: "Retention 10 rejects a 100-day-old Usenet release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:64"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1106
+  behaviour: "Retention 0 accepts a release (the test arranges age 100 days, not today)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:73"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1107
+  behaviour: "Retention does not apply to a torrent release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:82"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1108
+  behaviour: "A release with fewer episodes than the existing file is not an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:34"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1109
+  behaviour: "A release with more episodes than the existing file is an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:42"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1110
+  behaviour: "A release with the same episodes as the existing file is an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:50"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1111
+  behaviour: "A release covering episodes held in two separate files is an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:58"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1112
+  behaviour: "In a season search, a single-episode release of episode 1 with max single-episode age 200 days is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:70"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1113
+  behaviour: "In a season search, a single-episode release of episode 4 with max single-episode age 200 days is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:71"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1114
+  behaviour: "In a season search, a single-episode release of episode 1 with max single-episode age 600 days is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:72"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1115
+  behaviour: "In a season search, a single-episode release of episode 1 with max single-episode age 365 days is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:73"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1116
+  behaviour: "In a season search, a single-episode release of episode 4 with max single-episode age 365 days is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:74"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1117
+  behaviour: "In a season search, a single-episode release of episode 1 with max single-episode age 0 days is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:75"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1118
+  behaviour: "In a season search, a season pack is accepted with max single-episode age 200 days"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:86"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1119
+  behaviour: "In a season search, a season pack is accepted with max single-episode age 600 days"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:87"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1120
+  behaviour: "In a season search, a season pack is accepted with max single-episode age 365 days"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:88"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1121
+  behaviour: "In a season search, a season pack is accepted with max single-episode age 0 days"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SingleEpisodeAgeDownloadDecisionFixture.cs:89"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1122
+  behaviour: "With upgrades off, DVD to Bluray-1080p is not allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:56"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1123
+  behaviour: "With upgrades off, a custom format upgrade (One 50 to Two 100) is not allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:70"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1124
+  behaviour: "With upgrades on, a custom format upgrade (One to Two) is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:84"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1125
+  behaviour: "With upgrades off, the same custom format score is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:98"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1126
+  behaviour: "With upgrades on, a lower custom format score is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:112"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1127
+  behaviour: "With upgrades off, a lower custom format score (Two to One) is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:126"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1128
+  behaviour: "With upgrades on, DVD to Bluray-1080p is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:140"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1129
+  behaviour: "With upgrades on, the same quality is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:154"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1130
+  behaviour: "With upgrades off, the same quality is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:168"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1131
+  behaviour: "With upgrades on, a lower quality (SDTV) is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:182"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1132
+  behaviour: "With upgrades off, a lower quality (SDTV) is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:196"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1133
+  behaviour: "With upgrades off, a revision upgrade (DVD v1 to v2) is allowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:210"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1134
+  behaviour: "A release is accepted when no episode has a file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:127"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1135
+  behaviour: "A release with no episodes is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:134"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1136
+  behaviour: "A DVD release upgrades an SDTV file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:142"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1137
+  behaviour: "A DVD release upgrades two SDTV files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:149"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1138
+  behaviour: "A DVD release does not upgrade two Bluray-1080p files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:157"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1139
+  behaviour: "A multi-episode release is rejected when only the first file is upgradable"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:163"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1140
+  behaviour: "A multi-episode release is rejected when only the second file is upgradable"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:170"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1141
+  behaviour: "WEBDL-1080p does not upgrade a WEBDL-1080p file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:177"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1142
+  behaviour: "A WEBDL-1080p v1 with score 10 does not replace a WEBDL-1080p v2 file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:185"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1143
+  behaviour: "An existing file at the HDTV-720p cutoff is not upgraded"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:199"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1144
+  behaviour: "An existing Bluray-1080p file above the HDTV-720p cutoff is not upgraded"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:213"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1145
+  behaviour: "A HDTV-720p proper upgrades a HDTV-720p v1 file at the cutoff"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:227"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1146
+  behaviour: "With the HDTV-720p cutoff met, Bluray-1080p is not an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:242"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1147
+  behaviour: "With the HDTV-720p cutoff met, Bluray-1080p is not an upgrade (language variant)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:257"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1148
+  behaviour: "With the HDTV-720p cutoff met, Bluray-1080p is not an upgrade (higher language variant)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:272"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1149
+  behaviour: "Below the HDTV-720p cutoff, Bluray-1080p upgrades an SDTV file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:287"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1150
+  behaviour: "Below the HDTV-720p cutoff, a DVD release upgrades an SDTV file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:302"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1151
+  behaviour: "With the HDTV-720p cutoff met, Bluray-1080p with a new custom format is not an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:316"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1152
+  behaviour: "Above the HDTV-1080p cutoff, a WEBDL-1080p proper still upgrades WEBDL-1080p v1"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:339"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1153
+  behaviour: "With upgrades off and cutoff Raw-HD, Bluray-1080p does not replace WEBDL-1080p"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:355"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1154
+  behaviour: "With upgrades off, a custom format gain (0 to 50, cutoff score 10000) is not an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:371"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1155
+  behaviour: "With upgrades off and DoNotPrefer, a proper with a custom format gain is not an upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:404"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1156
+  behaviour: "SDTV v1 to SDTV v2 gives None"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:21"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1157
+  behaviour: "WEBDL-720p v1 to WEBDL-720p v2 gives None"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:22"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1158
+  behaviour: "SDTV v1 to SDTV v1 gives CustomFormatScore"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:23"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1159
+  behaviour: "WEBDL-720p v1 to HDTV-720p v2 gives BetterQuality"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:24"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1160
+  behaviour: "WEBDL-720p v1 to HDTV-720p v2 gives BetterQuality"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:25"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1161
+  behaviour: "WEBDL-720p v1 to WEBDL-720p v1 gives CustomFormatScore"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:26"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1162
+  behaviour: "WEBDL-1080p v1 to WEBDL-1080p v1 gives CustomFormatScore"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:27"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1163
+  behaviour: "With DoNotUpgrade, DVD v1 to DVD v2 is upgradable"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:58"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1164
+  behaviour: "With DoNotPrefer and upgrades off, DVD v1 to DVD v2 gives UpgradesNotAllowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:77"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1165
+  behaviour: "With upgrades off, HDTV-720p v1 to the same gives UpgradesNotAllowed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:96"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1166
+  behaviour: "Below the HDTV-1080p cutoff, HDTV-720p to HDTV-1080p is upgradable"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:113"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1167
+  behaviour: "At the HDTV-720p cutoff, HDTV-720p to HDTV-1080p gives QualityCutoff"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:132"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1168
+  behaviour: "A custom format gain of 10 below the minimum increment 11 gives MinCustomFormatScore"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:151"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1169
+  behaviour: "A custom format gain of 10 at the minimum increment 10 is upgradable"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:196"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1170
+  behaviour: "A user-invoked search bypasses the delay"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:93"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1171
+  behaviour: "A system-invoked search does not bypass a 720-minute delay for a new SDTV release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:99"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1172
+  behaviour: "A release is accepted when the Usenet delay is 0"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:110"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1173
+  behaviour: "The profile's best quality (Bluray-720p) is still delayed when bypass is disabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:118"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1174
+  behaviour: "The profile's best quality (Bluray-720p) bypasses the delay when bypass is enabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:130"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1175
+  behaviour: "A 10-hour-old release passes a 60-minute delay"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:143"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1176
+  behaviour: "A new SDTV release waits out a 720-minute delay"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:154"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1177
+  behaviour: "A proper of the existing file's quality (HDTV-720p) bypasses the delay"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:165"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1178
+  behaviour: "A REAL of the existing file's quality (HDTV-720p) bypasses the delay"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:183"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1179
+  behaviour: "A WEBDL-720p proper does not bypass the delay over an HDTV-720p file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:201"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1180
+  behaviour: "A custom format score of 100 above minimum 50 does not bypass the delay when the bypass is disabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:214"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1181
+  behaviour: "A custom format score of 5 under minimum 50 does not bypass the delay"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:226"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1182
+  behaviour: "A custom format score of 100 above minimum 50 bypasses the delay when enabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:239"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1183
+  behaviour: "A release is accepted when auto-unmonitoring of deleted episodes is off"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:92"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1184
+  behaviour: "A search is accepted even if the file is missing"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:100"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1185
+  behaviour: "A release is accepted when the episode file exists on disk"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1186
+  behaviour: "An RSS release is rejected when the episode file is missing from disk"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:114"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1187
+  behaviour: "A multi-episode release is accepted when both files exist"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:120"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1188
+  behaviour: "A multi-episode release is rejected when one file is missing"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:129"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1189
+  behaviour: "A search is not blocked by history"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1190
+  behaviour: "A release is accepted when no episode has history"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:112"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1191
+  behaviour: "A latest history item that is DownloadFailed does not block the release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:119"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1192
+  behaviour: "A grab older than 12 hours does not block the release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:133"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1193
+  behaviour: "A DVD release is accepted over a recent SDTV grab"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:140"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1194
+  behaviour: "A DVD release is accepted over recent SDTV grabs of both episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:147"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1195
+  behaviour: "A DVD release is rejected over recent HDTV-1080p grabs of both episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:155"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1196
+  behaviour: "A DVD release is rejected when episode 1's latest grab is HDTV-1080p"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:163"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1197
+  behaviour: "A DVD release is rejected when episode 1's recent grab is HDTV-1080p even if episode 2's is SDTV"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:171"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1198
+  behaviour: "A WEBDL-1080p release is rejected over a recent WEBDL-1080p grab"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:179"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1199
+  behaviour: "A release is rejected when the recent grab (WEBDL-1080p) meets the WEBDL-1080p cutoff"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:191"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1200
+  behaviour: "A one-hour-old HDTV-1080p grab blocks a DVD release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:203"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1201
+  behaviour: "With completed download handling off, a 100-day-old SDTV grab with a download id does not block a DVD release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:210"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1202
+  behaviour: "With completed download handling off, a grab meeting the WEBDL-1080p cutoff blocks a Bluray-1080p release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:218"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1203
+  behaviour: "With completed download handling off, an HDTV-1080p grab blocks a DVD release"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:231"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1204
+  behaviour: "An untagged indexer serves an untagged series"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:71"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1205
+  behaviour: "A tagged indexer does not serve an untagged series"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:80"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1206
+  behaviour: "An untagged indexer serves a tagged series"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:89"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1207
+  behaviour: "An indexer sharing a tag (123) with the series serves it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:98"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1208
+  behaviour: "An indexer with no tag in common with the series does not serve it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1209
+  behaviour: "A release with no indexer id is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:116"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1210
+  behaviour: "A release from an unknown indexer (id 2) is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:126"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1211
+  behaviour: "A DVD proper is rejected in RSS when the DVD file was added 30 days ago"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:63"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1212
+  behaviour: "A DVD proper is rejected in RSS when the first of two DVD files was added 30 days ago"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:72"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1213
+  behaviour: "A DVD proper is rejected in RSS when the second of two DVD files was added 30 days ago"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:82"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1214
+  behaviour: "A DVD proper is accepted over a 30-day-old SDTV file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:92"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1215
+  behaviour: "A search accepts the proper regardless of file age"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:101"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1216
+  behaviour: "With DoNotUpgrade, a DVD proper over a DVD file added today is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:110"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1217
+  behaviour: "With PreferAndUpgrade, a DVD proper over a DVD file added today is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:123"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1218
+  behaviour: "With DoNotPrefer, a DVD proper over a DVD file added today is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:136"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1219
+  behaviour: "A release for series 1 is rejected in a search for series 2"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SeriesSpecificationFixture.cs:29"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1220
+  behaviour: "A release for series 1 is accepted in a search for series 1"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SeriesSpecificationFixture.cs:37"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1221
+  behaviour: "A non-torrent release is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:53"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1222
+  behaviour: "A torrent with no indexer id is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:65"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1223
+  behaviour: "A torrent from a deleted indexer is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:73"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1224
+  behaviour: "A torrent with unknown seeders is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:83"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1225
+  behaviour: "A torrent with 5 seeders meets the indexer minimum of 5"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:91"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1226
+  behaviour: "A torrent with 6 seeders meets the indexer minimum of 5"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:92"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1227
+  behaviour: "A torrent with 0 seeders is below the indexer minimum of 5"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:100"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1228
+  behaviour: "A torrent with 4 seeders is below the indexer minimum of 5"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:101"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_decision::son_decision]
+- id: SON-DECISION-1229
+  behaviour: "A full-season release is rejected in an anime single-episode search"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:22"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1230
+  behaviour: "A release that is not a full season is accepted in an anime episode search"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:30"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1231
+  behaviour: "A full-season release is accepted in an anime season search"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:38"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1232
+  behaviour: "A S10E01 release is rejected in a single-episode search for S05E01"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:29"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1233
+  behaviour: "A release parsed as season 10 (mapped to season 5) is accepted in a search for scene season 10 episode 1"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:38"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1234
+  behaviour: "A release parsed as season 10 (mapped to season 6) is rejected in a search for scene season 9 episode 1"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:48"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1235
+  behaviour: "A season-5 release with no episode numbers is rejected in a single-episode search for S05E01"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:58"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1236
+  behaviour: "A S05E02 release is rejected in a single-episode search for S05E01"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:66"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-DECISION-1237
+  behaviour: "A S05E01 release is accepted in a single-episode search for S05E01"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:74"
+  in_scope: true
+  status: unmapped
+  tests: []

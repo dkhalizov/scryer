@@ -1,0 +1,532 @@
+[
+ {
+  "id": "SON-IMPORT-0028",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:98",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path"
+   }
+  },
+  "expect": {
+   "series_lookups": [
+    "foldername"
+   ]
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0029",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:106",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "file_locked": true
+   }
+  },
+  "expect": {
+   "import_called": false
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0030",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:119",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": false
+   }
+  },
+  "expect": {
+   "decisions_made": false,
+   "import_called": false
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0031",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:133",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [],
+    "folder_exists": "any path",
+    "series_found": true,
+    "folder_is_series_path": true
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetVideoFiles(any, true)": 0
+   }
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0033",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:167",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [
+     "approved"
+    ],
+    "import_results": [
+     "Imported"
+    ],
+    "sample_detection": "Indeterminate (mock default)"
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFolder(any, true)": 0
+   }
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0034",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:193",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [
+     "approved"
+    ],
+    "import_results": [
+     "Imported"
+    ],
+    "sample_detection": "Sample"
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFolder(any, true)": 1
+   }
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0035",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:223",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/C/Test/Unsorted/_UNPACK_30.rock.s01e01.pilot.hdtv-lol"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path"
+   }
+  },
+  "expect": {
+   "series_lookups": [
+    "30.rock.s01e01.pilot.hdtv-lol"
+   ],
+   "no_lookup_starting_with": "_UNPACK_"
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0036",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:224",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/C/Test/Unsorted/_FAILED_30.rock.s01e01.pilot.hdtv-lol"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path"
+   }
+  },
+  "expect": {
+   "series_lookups": [
+    "30.rock.s01e01.pilot.hdtv-lol"
+   ],
+   "no_lookup_starting_with": "_FAILED_"
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0037",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:243",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/C/folder/file.mkv",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": false,
+    "file_exists": true
+   }
+  },
+  "expect": {
+   "results": [
+    {
+     "result": "Rejected",
+     "path": "/C/folder/file.mkv"
+    }
+   ]
+  }
+ },
+ {
+  "id": "SON-IMPORT-0038",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:263",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [
+     "approved"
+    ],
+    "import_results": [
+     "Imported"
+    ],
+    "sample_detection": "Sample",
+    "files_recursive": [
+     "/c/root/foldername/30.rock.s01e01.rar"
+    ],
+    "file_size_mib": 15
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFolder(any, true)": 0
+   }
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0040",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:328",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/C/media/ba09030e-1234-1234-1234-123456789abc/Torrents/[HorribleSubs] Maria the Virgin Witch - 09 [720p].mkv",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": false,
+    "series_found": true,
+    "file_exists": true
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(any, any, any, folder_info=null, true)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0041",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:352",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/C/media/ba09030e-1234-1234-1234-123456789abc/[HorribleSubs] Maria the Virgin Witch - 09 [720p]",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": false,
+    "file_exists": false
+   }
+  },
+  "expect": {
+   "results": [],
+   "series_lookups": []
+  }
+ },
+ {
+  "id": "SON-IMPORT-0042",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:371",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessRootFolder",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [
+     "approved"
+    ],
+    "import_results": [],
+    "sample_detection": "Sample",
+    "file_size_mib": 15
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFolder(any, true)": 0
+   }
+  },
+  "note": "ProcessRootFolder has no production caller at the tag (DownloadedEpisodesImportService.cs:57); it reaches the same ProcessFolder logic completed download handling uses via ProcessPath."
+ },
+ {
+  "id": "SON-IMPORT-0043",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:405",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [
+     "approved"
+    ],
+    "import_results": [
+     "Imported"
+    ],
+    "import_mode": "Auto",
+    "tracked_download": {
+     "download_id": "sab1",
+     "status": "Downloading",
+     "remote_episode_series": "S",
+     "can_move_files": false
+    },
+    "video_files_after_import": []
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFolder(any, true)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0044",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:420",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [
+     "approved"
+    ],
+    "import_results": [
+     "Imported"
+    ],
+    "import_mode": "Move",
+    "tracked_download": {
+     "download_id": "sab1",
+     "status": "Downloading",
+     "remote_episode_series": "S",
+     "can_move_files": false
+    },
+    "video_files_after_import": []
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFolder(any, true)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0045",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:435",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [
+     "approved"
+    ],
+    "import_results": [
+     "Imported"
+    ],
+    "import_mode": "Copy",
+    "tracked_download": {
+     "download_id": "sab1",
+     "status": "Downloading",
+     "remote_episode_series": "S",
+     "can_move_files": true
+    },
+    "video_files_after_import": []
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFolder(any, true)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0046",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:450",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.abc-Sonarr",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [],
+    "import_results": [],
+    "files_recursive": [
+     "/c/root/foldername/30.rock.s01e01.rar"
+    ]
+   }
+  },
+  "expect": {
+   "result_count": 1,
+   "results": [
+    {
+     "result": "Rejected"
+    }
+   ]
+  }
+ },
+ {
+  "id": "SON-IMPORT-0047",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:476",
+  "input": {
+   "op": "DownloadedEpisodesImportService",
+   "given": {
+    "call": "ProcessPath",
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.abc-Sonarr",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/30.rock.s01e01.ext"
+    ],
+    "folder_exists": "any path",
+    "series_found": true,
+    "decisions": [],
+    "import_results": [],
+    "files_recursive": [
+     "/c/root/foldername/30.rock.s01e01.exe"
+    ]
+   }
+  },
+  "expect": {
+   "result_count": 1,
+   "results": [
+    {
+     "result": "Rejected"
+    }
+   ]
+  }
+ }
+]

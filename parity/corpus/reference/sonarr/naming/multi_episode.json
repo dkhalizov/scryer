@@ -1,0 +1,620 @@
+[
+ {
+  "id": "SON-NAMING-0154",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:77",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park"
+  }
+ },
+ {
+  "id": "SON-NAMING-0155",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:86",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Extend",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06-07 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0156",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:96",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Duplicate",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06 - S15E07 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0157",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:106",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Repeat",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06E07 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0158",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:116",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Scene",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06-E07 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0161",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:147",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Duplicate",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - ({Quality Title}, {MediaInfo Full}, {Release Group}) - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06 - S15E07 - (HDTV-720p, , SonarrTest) - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0162",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:158",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Range",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 8,
+      "absoluteEpisodeNumber": 102
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06-08 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0165",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:190",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Range",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0168",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:222",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 8,
+      "absoluteEpisodeNumber": 102
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06-E08 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0170",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:243",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0172",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:264",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - {season:0}x{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 8,
+      "absoluteEpisodeNumber": 102
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - 15x06-x08 - City Sushi"
+  }
+ },
+ {
+  "id": "SON-NAMING-0173",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:274",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Range",
+     "standardEpisodeFormat": "{Series Title} (S{season:00}E{episode:00}) {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     },
+     {
+      "title": "City Sushi",
+      "seasonNumber": 15,
+      "episodeNumber": 8,
+      "absoluteEpisodeNumber": 102
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park (S15E06-08) City Sushi"
+  }
+ }
+]

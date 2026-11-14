@@ -1,0 +1,205 @@
+[
+ {
+  "id": "SON-DECISION-1221",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:53",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "ReleaseInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp"
+    },
+    "indexers": {
+     "1": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1222",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:65",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "TorrentInfo",
+     "indexer_id": 0,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 0
+    },
+    "indexers": {
+     "1": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1223",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:73",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 0
+    },
+    "indexers": {}
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1224",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:83",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": null
+    },
+    "indexers": {
+     "1": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1225",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:91",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 5
+    },
+    "indexers": {
+     "1": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1226",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:92",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 6
+    },
+    "indexers": {
+     "1": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1227",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:100",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 0
+    },
+    "indexers": {
+     "1": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1228",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:101",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "series": {
+     "id": 1
+    },
+    "release": {
+     "type": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 4
+    },
+    "indexers": {
+     "1": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

@@ -56,7 +56,7 @@ pub(crate) fn upgrade_context_category<'a>(
 /// has none. The cutoff check then always said "not reached" and a season
 /// entirely at cutoff could be re-fetched as a pack.
 #[derive(Clone, Debug, PartialEq, Eq)]
-pub(crate) enum CutoffScope {
+pub enum CutoffScope {
     Title,
     Episode(String),
     SeriesMovieLink(String),
@@ -87,7 +87,7 @@ pub(crate) enum CutoffScope {
 /// list it. When Part 5 makes tiers `(source, resolution)` this needs the
 /// profile — which the callers cannot supply yet, because they resolve the
 /// profile *from* this value.
-pub(crate) fn analyzed_cutoff_quality_for_scope<'a, F: CutoffFile>(
+pub fn analyzed_cutoff_quality_for_scope<'a, F: CutoffFile>(
     existing_files: &'a [F],
     scope: &CutoffScope,
 ) -> Option<&'a str> {
@@ -146,7 +146,7 @@ fn best_cutoff_quality_for<'a, F: CutoffFile>(
         .map(|(_, quality)| quality)
 }
 
-pub(crate) struct CutoffFileFacts<'a> {
+pub struct CutoffFileFacts<'a> {
     episode_id: Option<&'a str>,
     series_movie_link_ids: &'a [String],
     quality_label: Option<&'a str>,
@@ -155,7 +155,7 @@ pub(crate) struct CutoffFileFacts<'a> {
 }
 
 /// The cutoff gate reads the same facts from full records and compact rows.
-pub(crate) trait CutoffFile {
+pub trait CutoffFile {
     fn cutoff_facts(&self) -> CutoffFileFacts<'_>;
 }
 
@@ -192,7 +192,8 @@ impl CutoffFile for crate::MediaFileCutoffSummary {
 /// is the only honest answer — but it is now genuinely rare rather than "any
 /// label that does not end in `p`", which used to bury `1080i` and every
 /// Sonarr-style compound below 480p.
-fn resolution_rank(quality: &str) -> u32 {
+#[doc(hidden)] // fork: parity net seam (was private; tests/props_quality.rs)
+pub fn resolution_rank(quality: &str) -> u32 {
     crate::quality_profile::resolution_lines(Some(quality))
         .map_or(u32::MAX, |lines| u32::MAX - lines)
 }

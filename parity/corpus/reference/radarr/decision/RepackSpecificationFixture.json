@@ -1,0 +1,330 @@
+[
+ {
+  "id": "RAD-DECISION-1079",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:36",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": false
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 0
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1080",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:47",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 0
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1081",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:60",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "DVD"
+     },
+     "release_group": "Radarr"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1082",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:78",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "release_group": "Radarr"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1083",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:96",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "release_group": "NotRadarr"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1084",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:114",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "release_group": ""
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1085",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:132",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": null,
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "release_group": "Radarr"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1086",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:152",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "release_group": "Radarr"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1087",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:174",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "release_group": "Radarr"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1088",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:196",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2,
+      "real": 0,
+      "is_repack": true
+     }
+    },
+    "parsed_release_group": "Radarr",
+    "movie": {
+     "movie_file_id": 1
+    },
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "release_group": "Radarr"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ }
+]

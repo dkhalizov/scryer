@@ -1,0 +1,186 @@
+[
+ {
+  "expect": {
+   "kind": "Movie"
+  },
+  "id": "BAZ-SUBTITLES-0037",
+  "input": {
+   "given": {
+    "file_name": "Taxi Driver 1976 Bluray 720p x264.mkv"
+   },
+   "op": "scan_video"
+  },
+  "note": "The test creates an empty file with this name and scans it.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:8"
+ },
+ {
+  "expect": {
+   "kind": "Episode"
+  },
+  "id": "BAZ-SUBTITLES-0038",
+  "input": {
+   "given": {
+    "file_name": "The Wire S01E01 Bluray 720p x264.mkv"
+   },
+   "op": "scan_video"
+  },
+  "note": "The test creates an empty file with this name and scans it.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:16"
+ },
+ {
+  "expect": {
+   "discarded_providers": [],
+   "providers": []
+  },
+  "id": "BAZ-SUBTITLES-0039",
+  "input": {
+   "given": {
+    "providers": [
+     "opensubtitlescom"
+    ],
+    "update_providers": []
+   },
+   "op": "provider_pool_update"
+  },
+  "note": "Pool built with providers {opensubtitlescom}; update() takes the enabled provider set.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:29"
+ },
+ {
+  "expect": {
+   "providers": [
+    "opensubtitlescom",
+    "subf2m"
+   ]
+  },
+  "id": "BAZ-SUBTITLES-0040",
+  "input": {
+   "given": {
+    "providers": [
+     "opensubtitlescom"
+    ],
+    "update_providers": [
+     "opensubtitlescom",
+     "subf2m"
+    ]
+   },
+   "op": "provider_pool_update"
+  },
+  "note": "Pool built with providers {opensubtitlescom}; update() takes the enabled provider set.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:35"
+ },
+ {
+  "expect": {
+   "discarded_providers": [],
+   "providers": [
+    "opensubtitlescom",
+    "subf2m"
+   ]
+  },
+  "id": "BAZ-SUBTITLES-0041",
+  "input": {
+   "given": {
+    "discarded_providers": [
+     "opensubtitlescom"
+    ],
+    "providers": [
+     "opensubtitlescom"
+    ],
+    "update_providers": [
+     "opensubtitlescom",
+     "subf2m"
+    ]
+   },
+   "op": "provider_pool_update"
+  },
+  "note": "Pool built with providers {opensubtitlescom}; update() takes the enabled provider set.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:41"
+ },
+ {
+  "expect": {
+   "discarded_providers": [
+    "opensubtitlescom"
+   ],
+   "providers": [
+    "subf2m"
+   ]
+  },
+  "id": "BAZ-SUBTITLES-0042",
+  "input": {
+   "given": {
+    "discarded_providers": [
+     "opensubtitlescom"
+    ],
+    "providers": [
+     "opensubtitlescom"
+    ],
+    "update_providers": [
+     "subf2m"
+    ]
+   },
+   "op": "provider_pool_update"
+  },
+  "note": "Pool built with providers {opensubtitlescom}; update() takes the enabled provider set.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:58"
+ },
+ {
+  "expect": {
+   "equals": []
+  },
+  "id": "BAZ-SUBTITLES-0045",
+  "input": {
+   "given": {
+    "equals": []
+   },
+   "op": "language_equals"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:84"
+ },
+ {
+  "expect": {
+   "languages": [
+    "spa"
+   ]
+  },
+  "id": "BAZ-SUBTITLES-0049",
+  "input": {
+   "given": {
+    "equals": [
+     [
+      "eng",
+      "spa"
+     ]
+    ],
+    "languages": [
+     "spa"
+    ]
+   },
+   "op": "language_equals_check_set"
+  },
+  "note": "Languages in Bazarr's language_equals notation (get_providers.py:147): code[-COUNTRY][@forced|@hi].",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:102"
+ },
+ {
+  "expect": {
+   "languages": [
+    "spa"
+   ]
+  },
+  "id": "BAZ-SUBTITLES-0050",
+  "input": {
+   "given": {
+    "equals": [
+     [
+      "spa@forced",
+      "spa-MX"
+     ]
+    ],
+    "languages": [
+     "spa"
+    ]
+   },
+   "op": "language_equals_check_set"
+  },
+  "note": "Languages in Bazarr's language_equals notation (get_providers.py:147): code[-COUNTRY][@forced|@hi].",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_core.py:108"
+ }
+]

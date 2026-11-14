@@ -1,0 +1,409 @@
+[
+ {
+  "id": "SON-SCAN-0027",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:58",
+  "input": {
+   "op": "UpdateMediaInfoService.Handle",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "files": [
+     {
+      "id": 1,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": {
+       "schema_revision": 11
+      }
+     },
+     {
+      "id": 2,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": null
+     },
+     {
+      "id": 3,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": null
+     }
+    ],
+    "file_exists": true,
+    "reader": "returns media info for every path"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.mkv)": 2,
+    "MediaFileService.Update(any)": 2
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ },
+ {
+  "id": "SON-SCAN-0028",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:85",
+  "input": {
+   "op": "UpdateMediaInfoService.Handle",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "files": [
+     {
+      "id": 1,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": {
+       "schema_revision": 8
+      }
+     },
+     {
+      "id": 2,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": null
+     },
+     {
+      "id": 3,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": null
+     }
+    ],
+    "file_exists": true,
+    "reader": "returns media info for every path"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.mkv)": 2,
+    "MediaFileService.Update(any)": 2
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ },
+ {
+  "id": "SON-SCAN-0029",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:112",
+  "input": {
+   "op": "UpdateMediaInfoService.Handle",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "files": [
+     {
+      "id": 1,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": {
+       "schema_revision": 0
+      }
+     },
+     {
+      "id": 2,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": null
+     },
+     {
+      "id": 3,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": null
+     }
+    ],
+    "file_exists": true,
+    "reader": "returns media info for every path"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.mkv)": 3,
+    "MediaFileService.Update(any)": 3
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ },
+ {
+  "id": "SON-SCAN-0030",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:139",
+  "input": {
+   "op": "UpdateMediaInfoService.Handle",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "files": [
+     {
+      "id": 1,
+      "path": "Path1",
+      "relative_path": "media.mkv",
+      "media_info": null
+     },
+     {
+      "id": 2,
+      "path": "Path2",
+      "relative_path": "media.mkv",
+      "media_info": null
+     }
+    ],
+    "file_exists": false,
+    "reader": "returns media info for every path"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(media.mkv)": 0,
+    "MediaFileService.Update(any)": 0
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24). Paths Path1, Path2 are NBuilder defaults; FileExists is not arranged and returns false."
+ },
+ {
+  "id": "SON-SCAN-0031",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:162",
+  "input": {
+   "op": "UpdateMediaInfoService.Handle",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "files": [
+     {
+      "id": 1,
+      "path": null,
+      "relative_path": "media2.mkv",
+      "media_info": null
+     },
+     {
+      "id": 2,
+      "path": null,
+      "relative_path": "media.mkv",
+      "media_info": null
+     }
+    ],
+    "file_exists": true,
+    "reader": "returns null for /C/series/media2.mkv, media info for every other path"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.mkv)": 1,
+    "MediaFileService.Update(any)": 1
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ },
+ {
+  "id": "SON-SCAN-0034",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:243",
+  "input": {
+   "op": "UpdateMediaInfoService.Update",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "file": {
+     "id": 1,
+     "path": null,
+     "relative_path": "media.mkv",
+     "media_info": {
+      "schema_revision": 3
+     }
+    },
+    "file_exists": true,
+    "reader": "returns media info for every path"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.mkv)": 1,
+    "MediaFileService.Update(episodeFile)": 1
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ },
+ {
+  "id": "SON-SCAN-0035",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:264",
+  "input": {
+   "op": "UpdateMediaInfoService.Update",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "file": {
+     "id": 1,
+     "path": "Path1",
+     "relative_path": "media.mkv",
+     "media_info": {
+      "schema_revision": 3
+     }
+    },
+    "file_exists": true,
+    "reader": "returns null for every path"
+   }
+  },
+  "expect": {
+   "file_media_info_is_null": false
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24). Path Path1 is the NBuilder default, so the read is of Path1; the test mocks null for /C/series/media.mkv and the loose mock returns null for any other path too."
+ },
+ {
+  "id": "SON-SCAN-0036",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:280",
+  "input": {
+   "op": "UpdateMediaInfoService.Update",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "file": {
+     "id": 1,
+     "path": "Path1",
+     "relative_path": "media.mkv",
+     "media_info": {
+      "schema_revision": 3
+     }
+    },
+    "file_exists": true,
+    "reader": "returns null for every path"
+   }
+  },
+  "expect": {
+   "calls": {
+    "MediaFileService.Update(episodeFile)": 0
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24). Path Path1 is the NBuilder default (see should_not_update_media_info_if_new_info_is_null)."
+ },
+ {
+  "id": "SON-SCAN-0037",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:297",
+  "input": {
+   "op": "UpdateMediaInfoService.Update",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "file": {
+     "id": 1,
+     "path": "/C/series/media.iso",
+     "relative_path": "RelativePath1",
+     "media_info": null
+    },
+    "file_exists": true,
+    "reader": "returns null for /C/series/media.iso"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.iso)": 1,
+    "MediaFileService.Update(episodeFile)": 0
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ },
+ {
+  "id": "SON-SCAN-0038",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:298",
+  "input": {
+   "op": "UpdateMediaInfoService.Update",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "file": {
+     "id": 1,
+     "path": "/C/series/media.m3u",
+     "relative_path": "RelativePath1",
+     "media_info": null
+    },
+    "file_exists": true,
+    "reader": "returns null for /C/series/media.m3u"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.m3u)": 1,
+    "MediaFileService.Update(episodeFile)": 0
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ },
+ {
+  "id": "SON-SCAN-0039",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:299",
+  "input": {
+   "op": "UpdateMediaInfoService.Update",
+   "given": {
+    "series": {
+     "id": 1,
+     "path": "/C/series"
+    },
+    "config": {
+     "enable_media_info": true
+    },
+    "file": {
+     "id": 1,
+     "path": "/C/series/media.strm",
+     "relative_path": "RelativePath1",
+     "media_info": null
+    },
+    "file_exists": true,
+    "reader": "returns null for /C/series/media.strm"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetMediaInfo(/C/series/media.strm)": 1,
+    "MediaFileService.Update(episodeFile)": 0
+   }
+  },
+  "note": "Handle is Handle(SeriesScannedEvent); Update is Update(episodeFile, series). A file's path is Path if set, else series path + relative path. MINIMUM_MEDIA_INFO_SCHEMA_REVISION is 8, CURRENT is 11 (NzbDrone.Core/MediaFiles/MediaInfo/VideoFileInfoReader.cs:24)."
+ }
+]

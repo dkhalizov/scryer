@@ -97,7 +97,7 @@ pub(crate) fn download_submission_scope_for_release_title(
 /// each pattern-matched the enum in its own direction. Resolving the target side
 /// to members first makes one predicate serve both.
 #[derive(Debug, Clone, Copy, Default)]
-pub(crate) struct ScopeMembership<'a> {
+pub struct ScopeMembership<'a> {
     /// Episodes the scope covers. Empty for title and series-movie-link scopes.
     pub episode_ids: &'a [String],
     /// Collections those episodes belong to; usually one, empty when unresolved.
@@ -125,7 +125,7 @@ impl OwnedScopeMembership {
 }
 
 /// Does a submission's scope overlap the scope described by `target`?
-pub(crate) fn submission_scope_intersects(
+pub fn submission_scope_intersects(
     submission: &SubmissionScope,
     target: &ScopeMembership<'_>,
 ) -> bool {

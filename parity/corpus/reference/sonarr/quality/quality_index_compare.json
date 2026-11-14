@@ -1,0 +1,212 @@
+[
+ {
+  "id": "SON-QUALITY-0023",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:11",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 0
+    },
+    "right": {
+     "index": 1,
+     "group_index": 0
+    },
+    "respect_group_order": true
+   }
+  },
+  "expect": {
+   "result": 0
+  }
+ },
+ {
+  "id": "SON-QUALITY-0024",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:12",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 1
+    },
+    "right": {
+     "index": 1,
+     "group_index": 0
+    },
+    "respect_group_order": true
+   }
+  },
+  "expect": {
+   "result": 1
+  }
+ },
+ {
+  "id": "SON-QUALITY-0025",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:13",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 2,
+     "group_index": 0
+    },
+    "right": {
+     "index": 1,
+     "group_index": 0
+    },
+    "respect_group_order": true
+   }
+  },
+  "expect": {
+   "result": 1
+  }
+ },
+ {
+  "id": "SON-QUALITY-0026",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:14",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 0
+    },
+    "right": {
+     "index": 1,
+     "group_index": 1
+    },
+    "respect_group_order": true
+   }
+  },
+  "expect": {
+   "result": -1
+  }
+ },
+ {
+  "id": "SON-QUALITY-0027",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:15",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 0
+    },
+    "right": {
+     "index": 2,
+     "group_index": 0
+    },
+    "respect_group_order": true
+   }
+  },
+  "expect": {
+   "result": -1
+  }
+ },
+ {
+  "id": "SON-QUALITY-0028",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:23",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 0
+    },
+    "right": {
+     "index": 1,
+     "group_index": 0
+    },
+    "respect_group_order": false
+   }
+  },
+  "expect": {
+   "result": 0
+  }
+ },
+ {
+  "id": "SON-QUALITY-0029",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:24",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 1
+    },
+    "right": {
+     "index": 1,
+     "group_index": 0
+    },
+    "respect_group_order": false
+   }
+  },
+  "expect": {
+   "result": 0
+  }
+ },
+ {
+  "id": "SON-QUALITY-0030",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:25",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 2,
+     "group_index": 0
+    },
+    "right": {
+     "index": 1,
+     "group_index": 0
+    },
+    "respect_group_order": false
+   }
+  },
+  "expect": {
+   "result": 1
+  }
+ },
+ {
+  "id": "SON-QUALITY-0031",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:26",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 0
+    },
+    "right": {
+     "index": 1,
+     "group_index": 1
+    },
+    "respect_group_order": false
+   }
+  },
+  "expect": {
+   "result": 0
+  }
+ },
+ {
+  "id": "SON-QUALITY-0032",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Profiles/Qualities/QualityIndexCompareToFixture.cs:27",
+  "input": {
+   "op": "quality_index_compare",
+   "given": {
+    "left": {
+     "index": 1,
+     "group_index": 0
+    },
+    "right": {
+     "index": 2,
+     "group_index": 0
+    },
+    "respect_group_order": false
+   }
+  },
+  "expect": {
+   "result": -1
+  }
+ }
+]

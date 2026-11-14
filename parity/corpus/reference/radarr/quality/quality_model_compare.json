@@ -1,0 +1,579 @@
+[
+ {
+  "id": "RAD-QUALITY-0085",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:74",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "DVD",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33). Profile items built by QualityFixture.GetDefaultQualities (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68). The test asserts the sign of Compare only."
+ },
+ {
+  "id": "RAD-QUALITY-0086",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:87",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "DVD",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33). Profile items built by QualityFixture.GetDefaultQualities (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68). The test asserts the sign of Compare only."
+ },
+ {
+  "id": "RAD-QUALITY-0087",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:100",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33). Profile items built by QualityFixture.GetDefaultQualities (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68). The test asserts the sign of Compare only."
+ },
+ {
+  "id": "RAD-QUALITY-0088",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:113",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": false
+     },
+     {
+      "quality": "CAM",
+      "allowed": false
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": false
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": false
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": false
+     },
+     {
+      "quality": "SDTV",
+      "allowed": false
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": false
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": false
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": false
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": false
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": false
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": false
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": false
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "DVD",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "Bluray-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33). Profile items built by QualityFixture.GetDefaultQualities (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68). The test asserts the sign of Compare only."
+ },
+ {
+  "id": "RAD-QUALITY-0089",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:126",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "SDTV",
+      "allowed": false
+     },
+     {
+      "quality": "DVD",
+      "allowed": false
+     },
+     {
+      "allowed": true,
+      "items": [
+       {
+        "quality": "HDTV-720p",
+        "allowed": true
+       },
+       {
+        "quality": "WEBDL-720p",
+        "allowed": true
+       }
+      ]
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "WEBDL-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33). The test asserts the sign of Compare only."
+ },
+ {
+  "id": "RAD-QUALITY-0090",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityModelComparerFixture.cs:139",
+  "input": {
+   "op": "compare",
+   "given": {
+    "profile_items": [
+     {
+      "quality": "SDTV",
+      "allowed": false
+     },
+     {
+      "quality": "DVD",
+      "allowed": false
+     },
+     {
+      "allowed": true,
+      "items": [
+       {
+        "quality": "HDTV-720p",
+        "allowed": true
+       },
+       {
+        "quality": "WEBDL-720p",
+        "allowed": true
+       }
+      ]
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     }
+    ],
+    "first": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "second": {
+     "quality": "WEBDL-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    },
+    "respect_group_order": true
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33). The test asserts the sign of Compare only."
+ }
+]

@@ -1,0 +1,245 @@
+[
+ {
+  "id": "SON-SCAN-0138",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:44",
+  "input": {
+   "op": "DiskScanService.GetVideoFiles",
+   "given": {
+    "path": "C:\\Test\\"
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetFiles(path, true)": 1,
+    "GetFiles(path, false)": 0
+   }
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0139",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:55",
+  "input": {
+   "op": "DiskScanService.GetVideoFiles",
+   "given": {
+    "path": "C:\\Test\\",
+    "all_directories": true
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetFiles(path, true)": 1,
+    "GetFiles(path, false)": 0
+   }
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0140",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:66",
+  "input": {
+   "op": "DiskScanService.GetVideoFiles",
+   "given": {
+    "path": "C:\\Test\\",
+    "all_directories": false
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetFiles(path, true)": 0,
+    "GetFiles(path, false)": 1
+   }
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0141",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:77",
+  "input": {
+   "op": "DiskScanService.GetVideoFiles",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ]
+   }
+  },
+  "expect": {
+   "count": 4
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0142",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:86",
+  "input": {
+   "op": "DiskScanService.FilterPaths",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ],
+    "special_subfolder": "Extras"
+   }
+  },
+  "expect": {
+   "excludes_special_subfolder_files": true,
+   "kept_count_greater_than": 0
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0143",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:87",
+  "input": {
+   "op": "DiskScanService.FilterPaths",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ],
+    "special_subfolder": "@eadir"
+   }
+  },
+  "expect": {
+   "excludes_special_subfolder_files": true,
+   "kept_count_greater_than": 0
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0144",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:88",
+  "input": {
+   "op": "DiskScanService.FilterPaths",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ],
+    "special_subfolder": "extrafanart"
+   }
+  },
+  "expect": {
+   "excludes_special_subfolder_files": true,
+   "kept_count_greater_than": 0
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0145",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:89",
+  "input": {
+   "op": "DiskScanService.FilterPaths",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ],
+    "special_subfolder": "Plex Versions"
+   }
+  },
+  "expect": {
+   "excludes_special_subfolder_files": true,
+   "kept_count_greater_than": 0
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0146",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:90",
+  "input": {
+   "op": "DiskScanService.FilterPaths",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ],
+    "special_subfolder": ".secret"
+   }
+  },
+  "expect": {
+   "excludes_special_subfolder_files": true,
+   "kept_count_greater_than": 0
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0147",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:91",
+  "input": {
+   "op": "DiskScanService.FilterPaths",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ],
+    "special_subfolder": ".hidden"
+   }
+  },
+  "expect": {
+   "excludes_special_subfolder_files": true,
+   "kept_count_greater_than": 0
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ },
+ {
+  "id": "SON-SCAN-0148",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:92",
+  "input": {
+   "op": "DiskScanService.FilterPaths",
+   "given": {
+    "path": "C:\\Test\\",
+    "file_names": [
+     "30 Rock1.mkv",
+     "30 Rock2.avi",
+     "30 Rock3.MP4",
+     "30 Rock4.wMv",
+     "movie.exe",
+     "movie"
+    ],
+    "special_subfolder": ".unwanted"
+   }
+  },
+  "expect": {
+   "excludes_special_subfolder_files": true,
+   "kept_count_greater_than": 0
+  },
+  "note": "Test path is C:\\Test\\ (not AsOsAgnostic, written as in the test). IDiskProvider.GetFiles is mocked to return file_names joined onto the path (Path.Combine, with special_subfolder between when set) whatever the call. Video means the extension is in MediaFileExtensions.Extensions (case-insensitive: .MP4 and .wMv count)."
+ }
+]

@@ -1,0 +1,762 @@
+[
+ {
+  "id": "RAD-DECISION-0048",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:87",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "search"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0049",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:93",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0050",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:100",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "",
+     "quality": {
+      "quality": "HDTV-1080p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "age_hours": 0,
+     "event": "DownloadFailed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0051",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:113",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "",
+     "quality": {
+      "quality": "HDTV-1080p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "age_hours": 13,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0052",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:120",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "",
+     "quality": {
+      "quality": "SDTV",
+      "revision": {
+       "version": 1
+      }
+     },
+     "age_hours": 0,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0053",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:160",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": false
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-1080p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "",
+     "quality": {
+      "quality": "WEBDL-1080p",
+      "revision": {
+       "version": 1
+      }
+     },
+     "age_hours": 0,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "profile replaced by the test: format items empty (GetSampleFormatItems() with no custom formats defined), upgrade_allowed not set so C# default false; most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0054",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:183",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "WEBDL-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": false
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-1080p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "",
+     "quality": {
+      "quality": "Bluray-1080p",
+      "revision": {
+       "version": 1
+      }
+     },
+     "age_hours": 0,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "profile replaced by the test: format items empty (GetSampleFormatItems() with no custom formats defined), upgrade_allowed not set so C# default false; most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0055",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:202",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "",
+     "quality": {
+      "quality": "HDTV-1080p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "age_hours": 1,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0056",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:209",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "test",
+     "quality": {
+      "quality": "SDTV",
+      "revision": {
+       "version": 1
+      }
+     },
+     "age_hours": 2400,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "test name says false but it asserts BeTrue; most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0057",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:217",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "WEBDL-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": false
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "test",
+     "quality": {
+      "quality": "WEBDL-1080p",
+      "revision": {
+       "version": 1
+      }
+     },
+     "age_hours": 2400,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "profile replaced by the test: format items empty (GetSampleFormatItems() with no custom formats defined), upgrade_allowed not set so C# default false; most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ },
+ {
+  "id": "RAD-DECISION-0058",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:237",
+  "input": {
+   "spec": "HistorySpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release_custom_formats": [],
+    "history_custom_formats": [],
+    "search": {
+     "kind": "rss"
+    },
+    "most_recent_history": {
+     "download_id": "test",
+     "quality": {
+      "quality": "HDTV-1080p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "age_hours": 2400,
+     "event": "Grabbed"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history is MostRecentForMovie(1); age_hours 2400 is AddDays(-100); history custom formats are mocked empty"
+ }
+]

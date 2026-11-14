@@ -1,0 +1,57 @@
+[
+ {
+  "id": "SON-TORRENT-0098",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs:62",
+  "input": {
+   "op": "failed_download.process_failed",
+   "given": {
+    "tracked_state": "FailedPending",
+    "download_item": {
+     "status": "Failed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1"
+    },
+    "remote_episode": {
+     "episode_ids": [
+      1
+     ]
+    },
+    "grabbed_history_count": 2
+   }
+  },
+  "expect": {
+   "state": "Failed",
+   "download_failed_events": 1
+  },
+  "note": "Unset string fields come from NBuilder (<Property>1, e.g. DownloadId 'DownloadId1', Category 'Category1'); bools are false."
+ },
+ {
+  "id": "SON-TORRENT-0099",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/FailedDownloadServiceTests/ProcessFailedFixture.cs:72",
+  "input": {
+   "op": "failed_download.process_failed",
+   "given": {
+    "tracked_state": "FailedPending",
+    "download_item": {
+     "status": "Failed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1"
+    },
+    "remote_episode": {
+     "episode_ids": [
+      1
+     ]
+    },
+    "grabbed_history_count": 2
+   }
+  },
+  "expect": {
+   "state": "Failed",
+   "download_failed_events": 1,
+   "event_has_tracked_download": true
+  },
+  "note": "Unset string fields come from NBuilder (<Property>1, e.g. DownloadId 'DownloadId1', Category 'Category1'); bools are false."
+ }
+]

@@ -1,0 +1,508 @@
+[
+ {
+  "id": "SON-SCAN-0022",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:62",
+  "input": {
+   "op": "MediaFileTableCleanupService.Clean",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "db_files": [
+     {
+      "id": 1,
+      "relative_path": "RelativePath1"
+     },
+     {
+      "id": 2,
+      "relative_path": "RelativePath2"
+     },
+     {
+      "id": 3,
+      "relative_path": "RelativePath3"
+     },
+     {
+      "id": 4,
+      "relative_path": "RelativePath4"
+     },
+     {
+      "id": 5,
+      "relative_path": "RelativePath5"
+     },
+     {
+      "id": 6,
+      "relative_path": "RelativePath6"
+     },
+     {
+      "id": 7,
+      "relative_path": "RelativePath7"
+     },
+     {
+      "id": 8,
+      "relative_path": "RelativePath8"
+     },
+     {
+      "id": 9,
+      "relative_path": "RelativePath9"
+     },
+     {
+      "id": 10,
+      "relative_path": "RelativePath10"
+     }
+    ],
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     },
+     {
+      "id": 2,
+      "episode_file_id": 2
+     },
+     {
+      "id": 3,
+      "episode_file_id": 3
+     },
+     {
+      "id": 4,
+      "episode_file_id": 4
+     },
+     {
+      "id": 5,
+      "episode_file_id": 5
+     },
+     {
+      "id": 6,
+      "episode_file_id": 6
+     },
+     {
+      "id": 7,
+      "episode_file_id": 7
+     },
+     {
+      "id": 8,
+      "episode_file_id": 8
+     },
+     {
+      "id": 9,
+      "episode_file_id": 9
+     },
+     {
+      "id": 10,
+      "episode_file_id": 10
+     }
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/RelativePath1",
+     "/C/Test/TV/Series/RelativePath2",
+     "/C/Test/TV/Series/RelativePath3",
+     "/C/Test/TV/Series/RelativePath4",
+     "/C/Test/TV/Series/RelativePath5",
+     "/C/Test/TV/Series/RelativePath6",
+     "/C/Test/TV/Series/RelativePath7",
+     "/C/Test/TV/Series/RelativePath8",
+     "/C/Test/TV/Series/RelativePath9",
+     "/C/Test/TV/Series/RelativePath10"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpdateEpisode(any)": 0
+   }
+  },
+  "note": "Episodes and episode files are NBuilder lists of 10 (ids 1..10; episode i links file i unless unlinked)."
+ },
+ {
+  "id": "SON-SCAN-0023",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:75",
+  "input": {
+   "op": "MediaFileTableCleanupService.Clean",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "db_files": [
+     {
+      "id": 1,
+      "relative_path": "RelativePath1"
+     },
+     {
+      "id": 2,
+      "relative_path": "RelativePath2"
+     },
+     {
+      "id": 3,
+      "relative_path": "RelativePath3"
+     },
+     {
+      "id": 4,
+      "relative_path": "RelativePath4"
+     },
+     {
+      "id": 5,
+      "relative_path": "RelativePath5"
+     },
+     {
+      "id": 6,
+      "relative_path": "RelativePath6"
+     },
+     {
+      "id": 7,
+      "relative_path": "RelativePath7"
+     },
+     {
+      "id": 8,
+      "relative_path": "RelativePath8"
+     },
+     {
+      "id": 9,
+      "relative_path": "ANY FILE WITH THIS PATH IS CONSIDERED DELETED!"
+     },
+     {
+      "id": 10,
+      "relative_path": "ANY FILE WITH THIS PATH IS CONSIDERED DELETED!"
+     }
+    ],
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     },
+     {
+      "id": 2,
+      "episode_file_id": 2
+     },
+     {
+      "id": 3,
+      "episode_file_id": 3
+     },
+     {
+      "id": 4,
+      "episode_file_id": 4
+     },
+     {
+      "id": 5,
+      "episode_file_id": 5
+     },
+     {
+      "id": 6,
+      "episode_file_id": 6
+     },
+     {
+      "id": 7,
+      "episode_file_id": 7
+     },
+     {
+      "id": 8,
+      "episode_file_id": 8
+     },
+     {
+      "id": 9,
+      "episode_file_id": 9
+     },
+     {
+      "id": 10,
+      "episode_file_id": 10
+     }
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/RelativePath1",
+     "/C/Test/TV/Series/RelativePath2",
+     "/C/Test/TV/Series/RelativePath3",
+     "/C/Test/TV/Series/RelativePath4",
+     "/C/Test/TV/Series/RelativePath5",
+     "/C/Test/TV/Series/RelativePath6",
+     "/C/Test/TV/Series/RelativePath7",
+     "/C/Test/TV/Series/RelativePath8"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "Delete(e.RelativePath == DELETED_PATH, MissingFromDisk)": 2
+   }
+  },
+  "note": "Episodes and episode files are NBuilder lists of 10 (ids 1..10; episode i links file i unless unlinked). The test picks which 2 of the 10 files get RelativePath = DELETED_PATH at random (NBuilder Random(2)); ids 9 and 10 here are one representative choice. files_on_disk is the other 8 (Clean is passed only those); FileExists is false for any path containing DELETED_PATH."
+ },
+ {
+  "id": "SON-SCAN-0024",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:90",
+  "input": {
+   "op": "MediaFileTableCleanupService.Clean",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "db_files": [
+     {
+      "id": 1,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 2,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 3,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 4,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 5,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 6,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 7,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 8,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 9,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 10,
+      "relative_path": "ExistingPath"
+     }
+    ],
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     },
+     {
+      "id": 2,
+      "episode_file_id": 0
+     },
+     {
+      "id": 3,
+      "episode_file_id": 0
+     },
+     {
+      "id": 4,
+      "episode_file_id": 0
+     },
+     {
+      "id": 5,
+      "episode_file_id": 0
+     },
+     {
+      "id": 6,
+      "episode_file_id": 0
+     },
+     {
+      "id": 7,
+      "episode_file_id": 0
+     },
+     {
+      "id": 8,
+      "episode_file_id": 0
+     },
+     {
+      "id": 9,
+      "episode_file_id": 0
+     },
+     {
+      "id": 10,
+      "episode_file_id": 0
+     }
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "Delete(any, NoLinkedEpisodes)": 10
+   }
+  },
+  "note": "Episodes and episode files are NBuilder lists of 10 (ids 1..10; episode i links file i unless unlinked)."
+ },
+ {
+  "id": "SON-SCAN-0025",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:106",
+  "input": {
+   "op": "MediaFileTableCleanupService.Clean",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "db_files": [],
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     },
+     {
+      "id": 2,
+      "episode_file_id": 2
+     },
+     {
+      "id": 3,
+      "episode_file_id": 3
+     },
+     {
+      "id": 4,
+      "episode_file_id": 4
+     },
+     {
+      "id": 5,
+      "episode_file_id": 5
+     },
+     {
+      "id": 6,
+      "episode_file_id": 6
+     },
+     {
+      "id": 7,
+      "episode_file_id": 7
+     },
+     {
+      "id": 8,
+      "episode_file_id": 8
+     },
+     {
+      "id": 9,
+      "episode_file_id": 9
+     },
+     {
+      "id": 10,
+      "episode_file_id": 10
+     }
+    ],
+    "files_on_disk": []
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpdateEpisode(e.EpisodeFileId == 0)": 10
+   }
+  },
+  "note": "Episodes and episode files are NBuilder lists of 10 (ids 1..10; episode i links file i unless unlinked)."
+ },
+ {
+  "id": "SON-SCAN-0026",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:116",
+  "input": {
+   "op": "MediaFileTableCleanupService.Clean",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "db_files": [
+     {
+      "id": 1,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 2,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 3,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 4,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 5,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 6,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 7,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 8,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 9,
+      "relative_path": "ExistingPath"
+     },
+     {
+      "id": 10,
+      "relative_path": "ExistingPath"
+     }
+    ],
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     },
+     {
+      "id": 2,
+      "episode_file_id": 2
+     },
+     {
+      "id": 3,
+      "episode_file_id": 3
+     },
+     {
+      "id": 4,
+      "episode_file_id": 4
+     },
+     {
+      "id": 5,
+      "episode_file_id": 5
+     },
+     {
+      "id": 6,
+      "episode_file_id": 6
+     },
+     {
+      "id": 7,
+      "episode_file_id": 7
+     },
+     {
+      "id": 8,
+      "episode_file_id": 8
+     },
+     {
+      "id": 9,
+      "episode_file_id": 9
+     },
+     {
+      "id": 10,
+      "episode_file_id": 10
+     }
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath",
+     "/C/Test/TV/Series/ExistingPath"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpdateEpisode(any)": 0
+   }
+  },
+  "note": "Episodes and episode files are NBuilder lists of 10 (ids 1..10; episode i links file i unless unlinked)."
+ }
+]

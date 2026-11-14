@@ -1,0 +1,643 @@
+[
+ {
+  "id": "SON-IMPORT-0188",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:59",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "existing_file": true
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0189",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:67",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title/S01E01.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5
+     ],
+     "full_season": false
+    },
+    "folder_info": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0190",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:76",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01/AFDAFD.mkv",
+    "file_info": null,
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0191",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:85",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01/S01E01.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [],
+     "full_season": true
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 15,
+      "season": 1,
+      "number": 5
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     },
+     {
+      "id": 13,
+      "season": 1,
+      "number": 3
+     },
+     {
+      "id": 14,
+      "season": 1,
+      "number": 4
+     },
+     {
+      "id": 15,
+      "season": 1,
+      "number": 5
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0192",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:98",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E01.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0193",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:111",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01E02.720p.HDTV-Sonarr/S01E01.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them. The folder info's episodes are set to [1] although the folder name says E01E02."
+ },
+ {
+  "id": "SON-IMPORT-0194",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:124",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01E02.720p.HDTV-Sonarr/S01E05E06.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5,
+      6
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1,
+      2
+     ],
+     "full_season": false
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 15,
+      "season": 1,
+      "number": 5
+     },
+     {
+      "id": 16,
+      "season": 1,
+      "number": 6
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0195",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:137",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 15,
+      "season": 1,
+      "number": 5
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0196",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:148",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01E02.720p.HDTV-Sonarr/S01E05E06.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5,
+      6
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1,
+      2
+     ],
+     "full_season": false
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 15,
+      "season": 1,
+      "number": 5
+     },
+     {
+      "id": 16,
+      "season": 1,
+      "number": 6
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0197",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:161",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01.720p.HDTV-Sonarr/S02E01.mkv",
+    "file_info": {
+     "season": 2,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1,
+      2
+     ],
+     "full_season": true
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 21,
+      "season": 2,
+      "number": 1
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0198",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:179",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01.720p.HDTV-Sonarr/S02E01.mkv",
+    "file_info": {
+     "season": 2,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1,
+      2
+     ],
+     "full_season": false
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 21,
+      "season": 2,
+      "number": 1
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0199",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:196",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01.720p.HDTV-Sonarr/S01E01.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      1
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1,
+      2
+     ],
+     "full_season": true
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0200",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:214",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "series": {
+     "id": 1,
+     "title": "Some Special"
+    },
+    "folder_title": "Some.Special.S12E00.WEB-DL.1080p-GoodNightTV",
+    "file_title": "Some.Special.S12E00.WEB-DL.1080p-GoodNightTV.mkv",
+    "special_title_parse_maps_both_to": "Some.Special.S0E100.WEB-DL.1080p-GoodNightTV.mkv",
+    "episode_lookup": "episodes of the mapped title's parse, id season*10+number"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "File and folder infos come from the reference parser on the titles above."
+ },
+ {
+  "id": "SON-IMPORT-0201",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:246",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01.720p.HDTV-Sonarr/S02E01.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5
+     ],
+     "full_season": false,
+     "absolute_episodes": [
+      1
+     ]
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [
+      1,
+      2
+     ],
+     "full_season": false
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ },
+ {
+  "id": "SON-IMPORT-0202",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:263",
+  "input": {
+   "op": "MatchesFolderSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01/S01E01.mkv",
+    "file_info": {
+     "season": 1,
+     "episodes": [
+      5
+     ],
+     "full_season": false
+    },
+    "folder_info": {
+     "season": 1,
+     "episodes": [],
+     "full_season": true
+    },
+    "episodes_for_file_info": [
+     {
+      "id": 15,
+      "season": 5,
+      "scene_season": 1,
+      "number": 5
+     }
+    ],
+    "episodes_for_folder_info": [
+     {
+      "id": 11,
+      "season": 1,
+      "number": 1
+     },
+     {
+      "id": 12,
+      "season": 1,
+      "number": 2
+     },
+     {
+      "id": 13,
+      "season": 1,
+      "number": 3
+     },
+     {
+      "id": 14,
+      "season": 1,
+      "number": 4
+     },
+     {
+      "id": 15,
+      "season": 1,
+      "number": 5
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Episode lookups return episodes with id season*10+number, as the test's GivenEpisodes builds them."
+ }
+]

@@ -1,0 +1,587 @@
+[
+ {
+  "id": "SON-NAMING-0012",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:55",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "CSI: Vegas",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  }
+ },
+ {
+  "id": "SON-NAMING-0013",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:64",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "CSI: Vegas",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  }
+ },
+ {
+  "id": "SON-NAMING-0014",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:65",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Dash",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "CSI: Vegas",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI- Vegas"
+  }
+ },
+ {
+  "id": "SON-NAMING-0015",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:66",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Delete",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "CSI: Vegas",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI Vegas"
+  }
+ },
+ {
+  "id": "SON-NAMING-0016",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:67",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "SpaceDash",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "CSI: Vegas",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  }
+ },
+ {
+  "id": "SON-NAMING-0017",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:68",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "SpaceDashSpace",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "CSI: Vegas",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  }
+ },
+ {
+  "id": "SON-NAMING-0018",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:79",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series:Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series-Title"
+  }
+ },
+ {
+  "id": "SON-NAMING-0019",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:80",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Dash",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series:Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series-Title"
+  }
+ },
+ {
+  "id": "SON-NAMING-0020",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:81",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Delete",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series:Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "SeriesTitle"
+  }
+ },
+ {
+  "id": "SON-NAMING-0021",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:82",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "SpaceDash",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series:Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series -Title"
+  }
+ },
+ {
+  "id": "SON-NAMING-0022",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:83",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "SpaceDashSpace",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series:Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series - Title"
+  }
+ },
+ {
+  "id": "SON-NAMING-0023",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:94",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Custom",
+     "customColonReplacementFormat": "꞉",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series: Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series꞉ Title"
+  }
+ },
+ {
+  "id": "SON-NAMING-0024",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:95",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Custom",
+     "customColonReplacementFormat": "∶",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series: Title",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "What Happens in Vegas",
+      "seasonNumber": 1,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series∶ Title"
+  }
+ }
+]

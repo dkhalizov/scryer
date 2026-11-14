@@ -1,0 +1,393 @@
+[
+ {
+  "id": "RAD-QUALITY-0001",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/MultiLanguageFixture.cs:36",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "French",
+     "negate": false,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "English",
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0002",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/MultiLanguageFixture.cs:45",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "French",
+     "negate": false,
+     "except_language": true
+    },
+    "release": {
+     "languages": [
+      "English",
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0003",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/MultiLanguageFixture.cs:55",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Original",
+     "negate": false,
+     "except_language": true
+    },
+    "release": {
+     "languages": [
+      "English",
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0004",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/MultiLanguageFixture.cs:65",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Spanish",
+     "negate": false,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "English",
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": false
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0005",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/MultiLanguageFixture.cs:74",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "French",
+     "negate": true,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "English",
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": false
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0006",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/MultiLanguageFixture.cs:83",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Spanish",
+     "negate": true,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "English",
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0007",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/MultiLanguageFixture.cs:92",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Spanish",
+     "negate": true,
+     "except_language": true
+    },
+    "release": {
+     "languages": [
+      "English",
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": false
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0008",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/OriginalLanguageFixture.cs:41",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Original",
+     "negate": false,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "English"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0009",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/OriginalLanguageFixture.cs:52",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Original",
+     "negate": false,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": false
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0010",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/OriginalLanguageFixture.cs:61",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Original",
+     "negate": true,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "English"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": false
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0011",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/OriginalLanguageFixture.cs:72",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Original",
+     "negate": true,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0012",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/SingleLanguageFixture.cs:35",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "French",
+     "negate": false,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0013",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/SingleLanguageFixture.cs:44",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Spanish",
+     "negate": false,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": false
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0014",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/SingleLanguageFixture.cs:53",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "French",
+     "negate": true,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": false
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0015",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/SingleLanguageFixture.cs:62",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "Spanish",
+     "negate": true,
+     "except_language": false
+    },
+    "release": {
+     "languages": [
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ },
+ {
+  "id": "RAD-QUALITY-0016",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/CustomFormats/Specifications/LanguageSpecification/SingleLanguageFixture.cs:71",
+  "input": {
+   "op": "format_matches",
+   "given": {
+    "spec": {
+     "implementation": "LanguageSpecification",
+     "value": "French",
+     "negate": true,
+     "except_language": true
+    },
+    "release": {
+     "languages": [
+      "French"
+     ],
+     "movie_original_language": "English"
+    }
+   }
+  },
+  "expect": {
+   "matches": true
+  }
+ }
+]

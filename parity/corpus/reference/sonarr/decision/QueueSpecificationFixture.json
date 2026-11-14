@@ -1,0 +1,1343 @@
+[
+ {
+  "id": "SON-DECISION-1039",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:109",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1040",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:116",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 2,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1041",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:130",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "DVD",
+       "revision": 1
+      },
+      "languages": [
+       "Spanish"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1042",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:152",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "SDTV",
+       "revision": 1
+      },
+      "languages": [
+       "Spanish"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1043",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:173",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "SDTV",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1044",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:194",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 2,
+        "series_id": 2,
+        "season": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "DVD",
+       "revision": 1
+      },
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1045",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:212",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "format_items": [
+      {
+       "format": "Bad Format",
+       "score": -2
+      },
+      {
+       "format": "My Format",
+       "score": 1
+      }
+     ]
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": [
+      "My Format"
+     ]
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "DVD",
+       "revision": 1
+      },
+      "languages": [
+       "Spanish"
+      ],
+      "custom_formats": [
+       "Bad Format"
+      ],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Scores from CustomFormatsTestHelpers.GetSampleFormatItems(\"My Format\") with formats My Format and Bad Format (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:19). Queue item custom_formats are what ICustomFormatCalculationService.ParseCustomFormat returns for it."
+ },
+ {
+  "id": "SON-DECISION-1046",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:241",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "DVD",
+       "revision": 1
+      },
+      "languages": [
+       "Spanish"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1047",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:260",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1048",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:281",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       },
+       {
+        "id": 2,
+        "series_id": 2,
+        "season": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1049",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:300",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      },
+      {
+       "id": 2,
+       "series_id": 2,
+       "season": 2,
+       "episode": 2
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1050",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:321",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      },
+      {
+       "id": 2,
+       "series_id": 2,
+       "season": 2,
+       "episode": 2
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       },
+       {
+        "id": 2,
+        "series_id": 2,
+        "season": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1051",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:342",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      },
+      {
+       "id": 2,
+       "series_id": 2,
+       "season": 2,
+       "episode": 2
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     },
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 2,
+        "series_id": 2,
+        "season": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1052",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:368",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "cutoff": "DVD"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "Spanish"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1053",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:390",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "DVD",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1054",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:409",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": false,
+     "min_format_score": 0,
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "Bluray-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "Spanish"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1055",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:431",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "DVD",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "DVD",
+       "revision": 1
+      },
+      "languages": [
+       "Spanish"
+      ],
+      "custom_formats": [],
+      "state": "FailedPending"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1056",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:453",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "min_format_score": 0,
+     "cutoff": "HDTV-720p"
+    },
+    "release": {
+     "series_id": 1,
+     "episodes": [
+      {
+       "id": 1,
+       "series_id": 1,
+       "season": 1,
+       "episode": 1
+      }
+     ],
+     "quality": "HDTV-720p",
+     "revision": 2,
+     "languages": [
+      "Spanish"
+     ],
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "series_id": 1,
+      "episodes": [
+       {
+        "id": 1,
+        "series_id": 1,
+        "season": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": [],
+      "state": "Downloading"
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

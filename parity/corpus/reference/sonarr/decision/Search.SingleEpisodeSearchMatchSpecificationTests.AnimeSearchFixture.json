@@ -1,0 +1,58 @@
+[
+ {
+  "id": "SON-DECISION-1229",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:22",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "full_season": true
+    },
+    "search": {
+     "kind": "AnimeEpisodeSearchCriteria"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1230",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:30",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "full_season": false
+    },
+    "search": {
+     "kind": "AnimeEpisodeSearchCriteria"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "is_season_search is not set by this test; the fixture shares _searchCriteria across tests, so it may be true from an earlier test. The outcome is accepted either way."
+ },
+ {
+  "id": "SON-DECISION-1231",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/AnimeSearchFixture.cs:38",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "full_season": true
+    },
+    "search": {
+     "kind": "AnimeEpisodeSearchCriteria",
+     "is_season_search": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

@@ -1,0 +1,474 @@
+[
+ {
+  "id": "SON-PARSE-0740",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:11",
+  "input": {
+   "name": "/z/tv shows/series title (2003)/Season 3/S03E05 - Title.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 3,
+   "episodes": [
+    5
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0741",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:12",
+  "input": {
+   "name": "/z/tv showsseries title/Season 16/S16E03 - The Title.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 16,
+   "episodes": [
+    3
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0742",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:13",
+  "input": {
+   "name": "/z/tv shows/series title/Specials/S00E16 - Dear Title - SD TV.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 0,
+   "episodes": [
+    16
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0743",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:14",
+  "input": {
+   "name": "/D/shares/TV Shows/series title/Season 2/S02E21 - 94 Title - 720p TV.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 2,
+   "episodes": [
+    21
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0744",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:15",
+  "input": {
+   "name": "/D/shares/TV Shows/Series (2003)/Season 2/S02E21.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 2,
+   "episodes": [
+    21
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0745",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:16",
+  "input": {
+   "name": "/C/Test/TV/Series.4x05.HDTV.XviD-LOL",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 4,
+   "episodes": [
+    5
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0746",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:17",
+  "input": {
+   "name": "/P/TV Shows/Series/Season 6/S06E13 - 5 to 9 - 720p BluRay.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 6,
+   "episodes": [
+    13
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0747",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:18",
+  "input": {
+   "name": "/S/TV Drop/Series - 10x11 - Title [SDTV]/1011 - Title.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 10,
+   "episodes": [
+    11
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0748",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:19",
+  "input": {
+   "name": "/TV Drop/Series - 10x11 - Title [SDTV]/1011 - Title.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 10,
+   "episodes": [
+    11
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0749",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:20",
+  "input": {
+   "name": "/S/TV Drop/Series Title - 10x12 - 24 Hours of Development [SDTV]/1012 - Hours of Development.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 10,
+   "episodes": [
+    12
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0750",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:21",
+  "input": {
+   "name": "/TV Drop/Series Title - 10x12 - 24 Hours of Development [SDTV]/1012 - Hours of Development.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 10,
+   "episodes": [
+    12
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0751",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:22",
+  "input": {
+   "name": "/S/TV Drop/Series Title - 10x12 - 24 Hours of Development [SDTV]/Hours of Development.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 10,
+   "episodes": [
+    12
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0752",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:23",
+  "input": {
+   "name": "/TV Drop/Series Title - 10x12 - 24 Hours of Development [SDTV]/Hours of Development.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 10,
+   "episodes": [
+    12
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0753",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:24",
+  "input": {
+   "name": "/E/Downloads/tv/Series.Title.S01E01.720p.HDTV/ajifajjjeaeaeqwer_eppj.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0754",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:25",
+  "input": {
+   "name": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV/tbbt101.avi",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0755",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:26",
+  "input": {
+   "name": "/C/Test/Unsorted/Series.Title.S02E19.720p.BluRay.x264-SiNNERS-RP/ba27283b17c00d01193eacc02a8ba98eeb523a76.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 2,
+   "episodes": [
+    19
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0756",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:27",
+  "input": {
+   "name": "/C/Test/Unsorted/Series.Title.S02E18.720p.BluRay.x264-SiNNERS-RP/45a55debe3856da318cc35882ad07e43cd32fd15.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 2,
+   "episodes": [
+    18
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0757",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:28",
+  "input": {
+   "name": "/C/Test/Series/Season 01/01 Pilot (1080p HD).mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0758",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:29",
+  "input": {
+   "name": "/C/Test/Series/Season 01/1 Pilot (1080p HD).mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0759",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:30",
+  "input": {
+   "name": "/C/Test/Series/Season 1/02 Honor Thy Father (1080p HD).m4v",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    2
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0760",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:31",
+  "input": {
+   "name": "/C/Test/Series/Season 1/2 Honor Thy Developer (1080p HD).m4v",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    2
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0761",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:32",
+  "input": {
+   "name": "/C/Test/Series/Season 2 - Total Series Action/01. Total Series Action - Episode 1 - Monster Cash.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 2,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0762",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:33",
+  "input": {
+   "name": "/C/Test/Series/Season 2/01. Total Series Action - Episode 1 - Monster Cash.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 2,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0763",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:34",
+  "input": {
+   "name": "/C/Test/Series/Season 1/02.04.24 - S01E01 - The Rabbit Hole",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0764",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:35",
+  "input": {
+   "name": "/C/Test/Series/Season 1/8 Series Rules - S01E01 - Pilot",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "season": 1,
+   "episodes": [
+    1
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0765",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:51",
+  "input": {
+   "name": "01-03/The Series Title (2010) - 1x01-02-03 - Episode Title HDTV-720p Proper",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "The Series Title (2010)",
+   "season": 1,
+   "episodes": [
+    1,
+    2,
+    3
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  },
+  "note": "episodes compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "episodes": "unordered"
+  }
+ },
+ {
+  "id": "SON-PARSE-0766",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/PathParserFixture.cs:52",
+  "input": {
+   "name": "Season 2/E05-06 - Episode Title HDTV-720p Proper",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "",
+   "season": 2,
+   "episodes": [
+    5,
+    6
+   ],
+   "absolute_episodes": [],
+   "full_season": false
+  },
+  "note": "episodes compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "episodes": "unordered"
+  }
+ }
+]

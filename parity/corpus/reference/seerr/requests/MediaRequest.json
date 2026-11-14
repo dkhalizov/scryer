@@ -1,0 +1,178 @@
+[
+ {
+  "id": "SER-REQUESTS-0002",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:98",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "concurrent": true,
+    "requests": [
+     {
+      "by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "movie_quota_limit": 5,
+      "media_type": "movie",
+      "tmdb_id": 33333,
+      "is4k": false
+     },
+     {
+      "by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "movie_quota_limit": 5,
+      "media_type": "movie",
+      "tmdb_id": 33333,
+      "is4k": false
+     }
+    ]
+   }
+  },
+  "expect": {
+   "rejected": 1,
+   "rejection": "DuplicateMediaRequestError",
+   "requests_saved": 1
+  },
+  "note": "Drops the reference's externalApiGetMock.callCount() === 2 (MediaRequest.test.ts:108) on purpose: an internal TMDB-fetch count, not a request rule."
+ },
+ {
+  "id": "SER-REQUESTS-0003",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:111",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "concurrent": false,
+    "requests": [
+     {
+      "by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "movie_quota_limit": 5,
+      "media_type": "movie",
+      "tmdb_id": 66666
+     },
+     {
+      "by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "movie_quota_limit": 5,
+      "media_type": "movie",
+      "tmdb_id": 66666
+     }
+    ]
+   }
+  },
+  "expect": {
+   "results": [
+    "created",
+    "DuplicateMediaRequestError"
+   ],
+   "requests_saved": 1
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0004",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:125",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "concurrent": true,
+    "requests": [
+     {
+      "by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "movie_quota_limit": 5,
+      "media_type": "movie",
+      "tmdb_id": 44444,
+      "is4k": false
+     },
+     {
+      "by": {
+       "name": "second",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "media_type": "movie",
+      "tmdb_id": 44444,
+      "is4k": false
+     }
+    ]
+   }
+  },
+  "expect": {
+   "rejected": 1,
+   "rejection": "DuplicateMediaRequestError",
+   "requests_saved": 1
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0005",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:145",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "concurrent": true,
+    "tmdb_seasons": [
+     1,
+     2,
+     3
+    ],
+    "requests": [
+     {
+      "by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "movie_quota_limit": 5,
+      "media_type": "tv",
+      "tmdb_id": 55555,
+      "seasons": [
+       1,
+       2
+      ],
+      "is4k": false
+     },
+     {
+      "by": {
+       "name": "second",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "media_type": "tv",
+      "tmdb_id": 55555,
+      "seasons": [
+       2,
+       3
+      ],
+      "is4k": false
+     }
+    ]
+   }
+  },
+  "expect": {
+   "rejected": 0,
+   "season_requests_for_season_2": 1,
+   "season_requests": 3
+  }
+ }
+]

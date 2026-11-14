@@ -1,0 +1,5207 @@
+[
+ {
+  "id": "RAD-PARSE-0524",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:37",
+  "input": {
+   "name": "Movie.Title.3.2017.720p.TSRip.x264.AAC-Ozlem",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TELESYNC",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0525",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:38",
+  "input": {
+   "name": "Movie: Title (2024) TeleSynch 720p | HEVC-FILVOVAN",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TELESYNC",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0526",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:44",
+  "input": {
+   "name": "Movie Name 2018 NEW PROPER 720p HD-CAM X264 HQ-CPG",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "CAM",
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0527",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:45",
+  "input": {
+   "name": "Movie Name (2022) 1080p HQCAM ENG x264 AAC - QRips",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "CAM",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0528",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:46",
+  "input": {
+   "name": "Movie Name (2018) 720p Hindi HQ CAMrip x264 AAC 1.4GB",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "CAM",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0529",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:47",
+  "input": {
+   "name": "Movie Name (2022) New HDCAMRip 1080p [Love Rulz]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "CAM",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0530",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:48",
+  "input": {
+   "name": "Movie.Name.2024.NEWCAM.1080p.HEVC.AC3.English-RypS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "CAM",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0531",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:54",
+  "input": {
+   "name": "S07E23 .avi ",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0532",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:55",
+  "input": {
+   "name": "Movie Name S02E01 HDTV XviD 2HD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0533",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:56",
+  "input": {
+   "name": "Movie Name S05E11 PROPER HDTV XviD 2HD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0534",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:57",
+  "input": {
+   "name": "Movie Name S02E08 HDTV x264 FTP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0535",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:58",
+  "input": {
+   "name": "Movie.Name.2011.S02E01.WS.PDTV.x264-TLA",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0536",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:59",
+  "input": {
+   "name": "Movie Name.2011.S02E01.WS.PDTV.x264-REPACK-TLA",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0537",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:60",
+  "input": {
+   "name": "Movie Name S01E04 DSR x264 2HD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0538",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:61",
+  "input": {
+   "name": "Movie Name S01E04 Mexicos Death Train DSR x264 MiNDTHEGAP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0539",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:62",
+  "input": {
+   "name": "Movie Name S11E03 has no periods or extension HDTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0540",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:63",
+  "input": {
+   "name": "Movie Name.S04E05.HDTV.XviD-LOL",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0541",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:64",
+  "input": {
+   "name": "Some.Movie.S02E15.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0542",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:65",
+  "input": {
+   "name": "Some.Movie.S02E15.xvid",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0543",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:66",
+  "input": {
+   "name": "Some.Movie.S02E15.divx",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0544",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:67",
+  "input": {
+   "name": "Some.Movie.S03E06.HDTV-WiDE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0545",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:68",
+  "input": {
+   "name": "Movie Name.S10E27.WS.DSR.XviD-2HD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0546",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:69",
+  "input": {
+   "name": "Movie Name.S03.TVRip.XviD-NOGRP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0547",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:75",
+  "input": {
+   "name": "Some.Movie.S03E06.DVDRip.XviD-WiDE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0548",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:76",
+  "input": {
+   "name": "Some.Movie.S03E06.DVD.Rip.XviD-WiDE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0549",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:77",
+  "input": {
+   "name": "the.Movie Name.1x13.circles.ws.xvidvd-tns",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0550",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:78",
+  "input": {
+   "name": "the_movie.9x18.sunshine_days.ac3.ws_dvdrip_xvid-fov.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0551",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:79",
+  "input": {
+   "name": "The.Third.Movie Name.2008.DVDRip.360p.H264 iPod -20-40",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0552",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:80",
+  "input": {
+   "name": "SomeMovie.2018.DVDRip.ts",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0553",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:86",
+  "input": {
+   "name": "Some.Movie.Magic.Rainbow.2007.DVD5.NTSC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0554",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:87",
+  "input": {
+   "name": "Some.Movie.Magic.Rainbow.2007.DVD9.NTSC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0555",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:88",
+  "input": {
+   "name": "Some.Movie.Magic.Rainbow.2007.DVDR.NTSC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0556",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:89",
+  "input": {
+   "name": "Some.Movie.Magic.Rainbow.2007.DVD-R.NTSC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0557",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:90",
+  "input": {
+   "name": "Some.Movie.2020.PAL.2xDVD9",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0558",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:91",
+  "input": {
+   "name": "Some.Movie.2000.2DVD5",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0559",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:92",
+  "input": {
+   "name": "Some.Movie.2005.PAL.MDVDR-SOMegRoUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "resolution": 480,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0560",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:98",
+  "input": {
+   "name": "Movie.Name.S01E10.The.Leviathan.480p.WEB-DL.x264-mSD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0561",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:99",
+  "input": {
+   "name": "Movie.Name.S04E10.Glee.Actually.480p.WEB-DL.x264-mSD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0562",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:100",
+  "input": {
+   "name": "Movie.Name.S06E11.The.Santa.Simulation.480p.WEB-DL.x264-mSD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0563",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:101",
+  "input": {
+   "name": "Movie.Name.S02E04.480p.WEB.DL.nSD.x264-NhaNc3",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0564",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:102",
+  "input": {
+   "name": "[HorribleSubs] Movie Title! 2018 [Web][MKV][h264][480p][AAC 2.0][Softsubs (HorribleSubs)]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0565",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:103",
+  "input": {
+   "name": "[SubsPlease] Movie Title (540p) [AB649D32].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0566",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:104",
+  "input": {
+   "name": "[Erai-raws] Movie Title [540p][Multiple Subtitle].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0567",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:110",
+  "input": {
+   "name": "Movie.Name.1x04.ITA.WEBMux.x264-NovaRip",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0568",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:116",
+  "input": {
+   "name": "Movie.Name (BD)(640x480(RAW) (BATCH 1) (1-13)",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0569",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:117",
+  "input": {
+   "name": "Movie.Name.S01E05.480p.BluRay.DD5.1.x264-HiSD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0570",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:118",
+  "input": {
+   "name": "Movie.Name.S03E01-06.DUAL.BDRip.AC3.-HELLYWOOD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0571",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:119",
+  "input": {
+   "name": "Movie.Name.2011.LIMITED.BluRay.360p.H264-20-40",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0572",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:120",
+  "input": {
+   "name": "Movie.Name.2011.BluRay.480i.DD.2.0.AVC.REMUX-FraMeSToR",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0573",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:121",
+  "input": {
+   "name": "Movie.Name.2011.480i.DD.2.0.AVC.REMUX-FraMeSToR",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0574",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:127",
+  "input": {
+   "name": "Movie Name - S01E01 - Title [HDTV]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0575",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:128",
+  "input": {
+   "name": "Movie Name - S01E01 - Title [HDTV-720p]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0576",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:129",
+  "input": {
+   "name": "Movie.Name S04E87 REPACK 720p HDTV x264 aAF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0577",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:130",
+  "input": {
+   "name": "S07E23 - [HDTV-720p].mkv ",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0578",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:131",
+  "input": {
+   "name": "Movie.Name - S22E03 - MoneyBART - HD TV.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0579",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:132",
+  "input": {
+   "name": "Movie.Name.S08E05.720p.HDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0580",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:133",
+  "input": {
+   "name": "E:\\Downloads\\tv\\Movie.Name.S01E01.720p.HDTV\\ajifajjjeaeaeqwer_eppj.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0581",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:134",
+  "input": {
+   "name": "Movie.Name.S01E08.Tourmaline.Nepal.720p.HDTV.x264-DHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0582",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:135",
+  "input": {
+   "name": "Movie.Name.US.S12E17.HR.WS.PDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0583",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:136",
+  "input": {
+   "name": "Movie.Name.The.Lost.Pilots.Movie.HR.WS.PDTV.x264-DHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0584",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:137",
+  "input": {
+   "name": "Movie.Name.The.Lost.Pilots.Movie.HR.WS.PDTV.x264-DHD-Remux.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0585",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:143",
+  "input": {
+   "name": "Movie Name.S07E01.ARE.YOU.1080P.HDTV.X264-QCF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0586",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:144",
+  "input": {
+   "name": "Movie Name.S07E01.ARE.YOU.1080P.HDTV.x264-QCF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0587",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:145",
+  "input": {
+   "name": "Movie Name.S07E01.ARE.YOU.1080P.HDTV.proper.X264-QCF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0588",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:146",
+  "input": {
+   "name": "Movie Name - S01E01 - Title [HDTV-1080p]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0589",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:147",
+  "input": {
+   "name": "Movie.Name.2020.1080i.HDTV.DD5.1.H.264-NOGRP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0590",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:153",
+  "input": {
+   "name": "[NOGRP][国漫][诛仙][Movie Title 2022][19][HEVC][GB][4K]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0591",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:159",
+  "input": {
+   "name": "Movie Name S01E04 Mexicos Death Train 720p WEB DL",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0592",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:160",
+  "input": {
+   "name": "Movie Name S02E21 720p WEB DL DD5 1 H 264",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0593",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:161",
+  "input": {
+   "name": "Movie Name S04E22 720p WEB DL DD5 1 H 264 NFHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0594",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:162",
+  "input": {
+   "name": "Movie Name - S11E06 - D-Yikes! - 720p WEB-DL.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0595",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:163",
+  "input": {
+   "name": "Some.Movie.S02E15.720p.WEB-DL.DD5.1.H.264-SURFER",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0596",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:164",
+  "input": {
+   "name": "S07E23 - [WEBDL].mkv ",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0597",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:165",
+  "input": {
+   "name": "Movie Name S04E22 720p WEB-DL DD5.1 H264-EbP.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0598",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:166",
+  "input": {
+   "name": "Movie Name.S04.720p.Web-Dl.Dd5.1.h264-P2PACK",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0599",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:167",
+  "input": {
+   "name": "Movie Name.S02E04.720p.WEB.DL.nSD.x264-NhaNc3",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0600",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:168",
+  "input": {
+   "name": "Movie Name.S04E25.720p.iTunesHD.AVC-TVS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0601",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:169",
+  "input": {
+   "name": "Movie Name.S06E23.720p.WebHD.h264-euHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0602",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:170",
+  "input": {
+   "name": "Movie Name.2016.03.14.720p.WEB.x264-spamTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0603",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:171",
+  "input": {
+   "name": "Movie Name.2016.03.14.720p.WEB.h264-spamTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0604",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:172",
+  "input": {
+   "name": "Movie Name.S01E01.The.Insanity.Principle.720p.WEB-DL.DD5.1.H.264-BD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0605",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:173",
+  "input": {
+   "name": "[HorribleSubs] Movie Title! 2018 [Web][MKV][h264][720p][AAC 2.0][Softsubs (HorribleSubs)]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0606",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:174",
+  "input": {
+   "name": "[HorribleSubs] Movie Title! 2018 [Web][MKV][h264][AAC 2.0][Softsubs (HorribleSubs)]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0607",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:175",
+  "input": {
+   "name": "Movie.Title.2013.960p.WEB-DL.AAC2.0.H.264-squalor",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0608",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:176",
+  "input": {
+   "name": "Movie.Title.2021.DP.WEB.720p.DDP.5.1.H.264.PLEX",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0609",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:182",
+  "input": {
+   "name": "Movie.Title.ITA.720p.WEBMux.x264-NovaRip",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0610",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:183",
+  "input": {
+   "name": "Movie Name.S04E01.720p.WEBRip.AAC2.0.x264-NFRiP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0611",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:189",
+  "input": {
+   "name": "Movie Name S09E03 1080p WEB DL DD5 1 H264 NFHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0612",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:190",
+  "input": {
+   "name": "Movie Name S10E03 1080p WEB DL DD5 1 H 264 NFHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0613",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:191",
+  "input": {
+   "name": "Movie.Name.S08E01.1080p.WEB-DL.DD5.1.H264-NFHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0614",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:192",
+  "input": {
+   "name": "Movie.Name.S08E01.1080p.WEB-DL.proper.AAC2.0.H.264",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0615",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:193",
+  "input": {
+   "name": "Movie Name S10E03 1080p WEB DL DD5 1 H 264 REPACK NFHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0616",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:194",
+  "input": {
+   "name": "Movie.Name.S04E09.Swan.Song.1080p.WEB-DL.DD5.1.H.264-ECI",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0617",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:195",
+  "input": {
+   "name": "Movie.Name.S06E11.The.Santa.Simulation.1080p.WEB-DL.DD5.1.H.264",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0618",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:196",
+  "input": {
+   "name": "Movie.Name.Baby.S01E02.Night.2.[WEBDL-1080p].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0619",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:197",
+  "input": {
+   "name": "Movie.Name.2016.03.14.1080p.WEB.x264-spamTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0620",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:198",
+  "input": {
+   "name": "Movie.Name.2016.03.14.1080p.WEB.h264-spamTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0621",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:199",
+  "input": {
+   "name": "Movie.Name.S01.1080p.WEB-DL.AAC2.0.AVC-TrollHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0622",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:200",
+  "input": {
+   "name": "Series Title S06E08 1080p WEB h264-EXCLUSIVE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0623",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:201",
+  "input": {
+   "name": "Series Title S06E08 No One PROPER 1080p WEB DD5 1 H 264-EXCLUSIVE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0624",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:202",
+  "input": {
+   "name": "Series Title S06E08 No One PROPER 1080p WEB H 264-EXCLUSIVE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0625",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:203",
+  "input": {
+   "name": "The.Movie.Name.S25E21.Pay.Pal.1080p.WEB-DL.DD5.1.H.264-NTb",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0626",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:204",
+  "input": {
+   "name": "The.Movie.Name.2017.1080p.WEB-DL.DD5.1.H.264.Remux.-NTb",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0627",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:205",
+  "input": {
+   "name": "Movie.Name.2019.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTG",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0628",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:206",
+  "input": {
+   "name": "Movie.Name.2020.1080p.AMZN.WEB...",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0629",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:207",
+  "input": {
+   "name": "Movie.Name.2020.1080p.AMZN.WEB.",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0630",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:208",
+  "input": {
+   "name": "Movie Title - 2020 1080p Viva MKV WEB",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0631",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:209",
+  "input": {
+   "name": "[HorribleSubs] Movie Title! 2018 [Web][MKV][h264][1080p][AAC 2.0][Softsubs (HorribleSubs)]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0632",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:210",
+  "input": {
+   "name": "Movie.Title.2020.MULTi.1080p.WEB.H264-ALLDAYiN (S:285/L:11)",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0633",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:211",
+  "input": {
+   "name": "Movie Title (2020) MULTi WEB 1080p x264-JiHEFF (S:317/L:28)",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0634",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:212",
+  "input": {
+   "name": "Movie.Titles.2020.1080p.NF.WEB.DD2.0.x264-SNEAkY",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0635",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:213",
+  "input": {
+   "name": "The.Movie.2022.NORDiC.1080p.DV.HDR.WEB.H 265-NiDHUG",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0636",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:214",
+  "input": {
+   "name": "Movie Title 2018 [WEB 1080p HEVC Opus] [Netaro]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0637",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:215",
+  "input": {
+   "name": "Movie Title 2018 (WEB 1080p HEVC Opus) [Netaro]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0638",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:216",
+  "input": {
+   "name": "Movie.Title.2024.German.Dubbed.DL.AAC.1080p.WEB.AVC-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0639",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:222",
+  "input": {
+   "name": "Movie.Name.S04E01.iNTERNAL.1080p.WEBRip.x264-QRUS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0640",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:223",
+  "input": {
+   "name": "Movie.Name.1x04.ITA.1080p.WEBMux.x264-NovaRip",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0641",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:224",
+  "input": {
+   "name": "Movie.Name.2019.S02E07.Chapter.15.The.Believer.4Kto1080p.DSNYP.Webrip.x265.10bit.EAC3.5.1.Atmos.GokiTAoE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0642",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:225",
+  "input": {
+   "name": "Movie.Title.2019.1080p.AMZN.WEB-Rip.DDP.5.1.HEVC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0643",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:231",
+  "input": {
+   "name": "Movie.Name.2016.03.14.2160p.WEB.x264-spamTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0644",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:232",
+  "input": {
+   "name": "Movie.Name.2016.03.14.2160p.WEB.h264-spamTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0645",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:233",
+  "input": {
+   "name": "Movie.Name.2016.03.14.2160p.WEB.PROPER.h264-spamTV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0646",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:234",
+  "input": {
+   "name": "[HorribleSubs] Movie Title! 2018 [Web][MKV][h264][2160p][AAC 2.0][Softsubs (HorribleSubs)]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0647",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:235",
+  "input": {
+   "name": "Movie Name 2020 WEB-DL 4K H265 10bit HDR DDP5.1 Atmos-PTerWEB",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0648",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:236",
+  "input": {
+   "name": "The.Movie.2022.NORDiC.2160p.DV.HDR.WEB.H.265-NiDHUG",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0649",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:237",
+  "input": {
+   "name": "Movie.Name.2024.German.Dubbed.DL.AAC.2160p.DV.HDR.WEB.HEVC-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0650",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:238",
+  "input": {
+   "name": "Movie.Name.2024.German.AC3D.DL.2160p.Hybrid.WEB.DV.HDR10Plus.HEVC-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0651",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:239",
+  "input": {
+   "name": "Movie.Name.2024.German.Atmos.Dubbed.DL.2160p.Hybrid.WEB.DV.HDR10Plus.HEVC-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0652",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:240",
+  "input": {
+   "name": "Movie.Name.2024.German.EAC3D.DL.2160p.Hybrid.WEB.DV.HDR10Plus.HEVC-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0653",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:246",
+  "input": {
+   "name": "Movie Name S01E01.2160P AMZN WEBRIP DD2.0 HI10P X264-TROLLUHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0654",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:247",
+  "input": {
+   "name": "Movie ADD Name S01E01.2160P AMZN WEBRIP DD2.0 X264-TROLLUHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0655",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:248",
+  "input": {
+   "name": "Movie.Name.S01E01.2160p.AMZN.WEBRip.DD2.0.Hi10p.X264-TrollUHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0656",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:249",
+  "input": {
+   "name": "Movie Name S01E01 2160p AMZN WEBRip DD2.0 Hi10P x264-TrollUHD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBRIP",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0657",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:255",
+  "input": {
+   "name": "Movie.Name.S03E01-06.DUAL.Bluray.AC3.-HELLYWOOD.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0658",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:256",
+  "input": {
+   "name": "Movie Name - S01E03 - Come Fly With Me - 720p BluRay.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0659",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:257",
+  "input": {
+   "name": "Movie Name.S03E01.The Electric Can Opener Fluctuation.m2ts",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0660",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:258",
+  "input": {
+   "name": "Movie.Name.S01E02.Chained.Heat.[Bluray720p].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0661",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:259",
+  "input": {
+   "name": "[FFF] Movie Name - 01 [BD][720p-AAC][0601BED4]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0662",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:260",
+  "input": {
+   "name": "[coldhell] Movie v3 [BD720p][03192D4C]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0663",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:261",
+  "input": {
+   "name": "[RandomRemux] Movie - 01 [720p BD][043EA407].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0664",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:262",
+  "input": {
+   "name": "[Kaylith] Movie Friends Movies - 01 [BD 720p AAC][B7EEE164].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0665",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:263",
+  "input": {
+   "name": "Movie.Name.S03E01-06.DUAL.Blu-ray.AC3.-HELLYWOOD.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0666",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:264",
+  "input": {
+   "name": "Movie.Name.S03E01-06.DUAL.720p.Blu-ray.AC3.-HELLYWOOD.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0667",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:265",
+  "input": {
+   "name": "[Elysium]Movie.Name.01(BD.720p.AAC.DA)[0BB96AD8].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0668",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:266",
+  "input": {
+   "name": "Movie.Name.S01E01.33.720p.HDDVD.x264-SiNNERS.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0669",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:267",
+  "input": {
+   "name": "Movie.Name.S01E07.RERIP.720p.BluRay.x264-DEMAND",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0670",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:268",
+  "input": {
+   "name": "Movie.Name.2016.2018.720p.MBluRay.x264-CRUELTY.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0671",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:269",
+  "input": {
+   "name": "Movie.Name.2019.720p.MBLURAY.x264-MBLURAYFANS.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0672",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:270",
+  "input": {
+   "name": "Movie.Name2017.720p.MBluRay.x264-TREBLE.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0673",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:271",
+  "input": {
+   "name": "Movie.Name.2.Parte.2.ITA-ENG.720p.BDMux.DD5.1.x264-DarkSideMux",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0674",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:272",
+  "input": {
+   "name": "Movie.Hunter.2018.720p.Blu-ray.Remux.AVC.FLAC.2.0-SiCFoI",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0675",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:273",
+  "input": {
+   "name": "Movie.Name.2011.720p.DD.2.0.AVC.REMUX-FraMeSToR",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0676",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:279",
+  "input": {
+   "name": "Movie Title - S01E03 - Come Fly With Me - 1080p BluRay.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0677",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:280",
+  "input": {
+   "name": "Movie.Title.S02E13.1080p.BluRay.x264-AVCDVD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0678",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:281",
+  "input": {
+   "name": "Movie.S01E02.Chained.Heat.[Bluray1080p].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0679",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:282",
+  "input": {
+   "name": "[FFF] Movie no Muromi-san - 10 [BD][1080p-FLAC][0C4091AF]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0680",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:283",
+  "input": {
+   "name": "[coldhell] Movie v2 [BD1080p][5A45EABE].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0681",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:284",
+  "input": {
+   "name": "[Kaylith] Movie Friends Specials - 01 [BD 1080p FLAC][429FD8C7].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0682",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:285",
+  "input": {
+   "name": "[Zurako] Log Movie - 01 - The Movie (BD 1080p AAC) [7AE12174].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0683",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:286",
+  "input": {
+   "name": "Movie.S03E01-06.DUAL.1080p.Blu-ray.AC3.-HELLYWOOD.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0684",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:287",
+  "input": {
+   "name": "[Coalgirls]_Movie!!_01_(1920x1080_Blu-ray_FLAC)_[8370CB8F].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0685",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:288",
+  "input": {
+   "name": "Movie.Name.2016.2018.1080p.MBluRay.x264-CRUELTY.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0686",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:289",
+  "input": {
+   "name": "Movie.Name.2019.1080p.MBLURAY.x264-MBLURAYFANS.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0687",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:290",
+  "input": {
+   "name": "Movie.Name2017.1080p.MBluRay.x264-TREBLE.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0688",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:291",
+  "input": {
+   "name": "Movie.Name.2011.UHD.BluRay.DD5.1.HDR.x265-CtrlHD/ctrlhd-rotpota-1080p.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0689",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:292",
+  "input": {
+   "name": "Movie Name 2005 1080p UHD BluRay DD+7.1 x264-LoRD.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0690",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:293",
+  "input": {
+   "name": "Movie.Name.2011.1080p.UHD.BluRay.DD5.1.HDR.x265-CtrlHD.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0691",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:294",
+  "input": {
+   "name": "Movie.Name.2016.German.DTS.DL.1080p.UHDBD.x265-TDO.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0692",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:295",
+  "input": {
+   "name": "Movie.Name.2021.1080p.BDLight.x265-AVCDVD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0693",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:296",
+  "input": {
+   "name": "Movie.Title.2012.German.DL.1080p.UHD2BD.x264-QfG",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0694",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:297",
+  "input": {
+   "name": "Movie.Title.2005.1080p.HDDVDRip.x264",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0695",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:298",
+  "input": {
+   "name": "Movie.Title.2019.German.DL.1080p.HDR.UHDBDRip.AV1-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0696",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:299",
+  "input": {
+   "name": "Movie.Title.2014.German.OPUS.DL.1080p.UHDBDRiP.HDR.AV1-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0697",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:300",
+  "input": {
+   "name": "Movie.Title.1999.German.DL.1080p.HDR.UHDBDRip.AV1-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0698",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:301",
+  "input": {
+   "name": "Movie.Title.1993.Uncut.German.DL.1080p.HDR.UHDBDRip.h265-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0699",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:307",
+  "input": {
+   "name": "Movie.S01E02.Chained.Heat.[Bluray2160p].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0700",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:308",
+  "input": {
+   "name": "[FFF] Movie no Movie-san - 10 [BD][2160p-FLAC][0C4091AF]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0701",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:309",
+  "input": {
+   "name": "[coldhell] Movie v2 [BD2160p][5A45EABE].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0702",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:310",
+  "input": {
+   "name": "[Kaylith] Movie Friends Specials - 01 [BD 2160p FLAC][429FD8C7].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0703",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:311",
+  "input": {
+   "name": "[Zurako] Log Movie - 01 - The Movie (BD 2160p AAC) [7AE12174].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0704",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:312",
+  "input": {
+   "name": "Movie.Title.S03E01-06.DUAL.2160p.Blu-ray.AC3.-HELLYWOOD.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0705",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:313",
+  "input": {
+   "name": "[Coalgirls]_Movie!!_01_(3840x2160_Blu-ray_FLAC)_[8370CB8F].mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0706",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:314",
+  "input": {
+   "name": "Movie.Title.2016.2018.2160p.MBluRay.x264-CRUELTY.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0707",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:315",
+  "input": {
+   "name": "Movie.Title.2019.2160p.MBLURAY.x264-MBLURAYFANS.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0708",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:316",
+  "input": {
+   "name": "Movie.Title.2017.2160p.MBluRay.x264-TREBLE.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0709",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:317",
+  "input": {
+   "name": "Movie.Name.2020.German.UHDBD.2160p.HDR10.HEVC.EAC3.DL-pmHD.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0710",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:318",
+  "input": {
+   "name": "Movie.Title.2014.2160p.UHD.BluRay.X265-IAMABLE.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0711",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:319",
+  "input": {
+   "name": "Movie.Title.2014.2160p.BDRip.AAC.7.1.HDR10.x265.10bit-Markll",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0712",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:320",
+  "input": {
+   "name": "Movie.Title.1956.German.DL.2160p.HDR.UHDBDRip.h266-GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0713",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:321",
+  "input": {
+   "name": "Movie.Title.2021.4K.HDR.2160P.UHDBDRip.HEVC-10bit.GROUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0714",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:327",
+  "input": {
+   "name": "Movie.Name.2004.576p.BDRip.x264-HANDJOB",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 576,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0715",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:328",
+  "input": {
+   "name": "Movie.Title.S01E05.576p.BluRay.DD5.1.x264-HiSD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 576,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0716",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:334",
+  "input": {
+   "name": "Movie.1993.720p.BluRay.REMUX.AVC.FLAC.2.0-BLURANiUM",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0717",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:340",
+  "input": {
+   "name": "Movie.Title.2016.REMUX.1080p.BluRay.AVC.DTS-HD.MA.5.1-iFT",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0718",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:341",
+  "input": {
+   "name": "Movie.Name.2008.REMUX.1080p.Bluray.AVC.DTS-HR.MA.5.1-LEGi0N",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0719",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:342",
+  "input": {
+   "name": "Movie.Name.2008.BDREMUX.1080p.Bluray.AVC.DTS-HR.MA.5.1-LEGi0N",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0720",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:343",
+  "input": {
+   "name": "Movie.Title.M.2008.USA.BluRay.Remux.1080p.MPEG-2.DD.5.1-TDD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0721",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:344",
+  "input": {
+   "name": "Movie.Title.2018.1080p.BluRay.REMUX.MPEG-2.DTS-HD.MA.5.1-EPSiLON",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0722",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:345",
+  "input": {
+   "name": "Movie.Title.II.2003.4K.BluRay.Remux.1080p.AVC.DTS-HD.MA.5.1-BMF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0723",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:346",
+  "input": {
+   "name": "Movie Title 2022 (BDRemux 1080p HEVC FLAC) [Netaro]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0724",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:347",
+  "input": {
+   "name": "[Vodes] Movie Title - Other Title (2020) [BDRemux 1080p HEVC Dual-Audio]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0725",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:348",
+  "input": {
+   "name": "This.Wonderful.Movie.1991.German.ML.1080p.BluRay.AVC-GeRMaNSCeNEGRoUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0726",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:349",
+  "input": {
+   "name": "Movie.Name.2011.1080p.DD.2.0.AVC.REMUX-FraMeSToR",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0727",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:350",
+  "input": {
+   "name": "Movie Name 2018 1080p BluRay Hybrid-REMUX AVC TRUEHD 5.1 Dual Audio-ZR-",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0728",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:351",
+  "input": {
+   "name": "Movie.Name.2018.1080p.BluRay.Hybrid-REMUX.AVC.TRUEHD.5.1.Dual.Audio-ZR-",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0729",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:357",
+  "input": {
+   "name": "Movie.Title.2016.REMUX.2160p.BluRay.AVC.DTS-HD.MA.5.1-iFT",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0730",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:358",
+  "input": {
+   "name": "Movie.Name.2008.REMUX.2160p.Bluray.AVC.DTS-HR.MA.5.1-LEGi0N",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0731",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:359",
+  "input": {
+   "name": "Movie.Title.1980.2160p.UHD.BluRay.Remux.HDR.HEVC.DTS-HD.MA.5.1-PmP.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0732",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:360",
+  "input": {
+   "name": "Movie.Title.2016.T1.UHDRemux.2160p.HEVC.Dual.AC3.5.1-TrueHD.5.1.Sub",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0733",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:361",
+  "input": {
+   "name": "[Dolby Vision] Movie.Title.S07.MULTi.UHD.BLURAY.REMUX.DV-NoTag",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0734",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:362",
+  "input": {
+   "name": "Movie.Name.2020.German.UHDBD.2160p.HDR10.HEVC.EAC3.DL.Remux-pmHD.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0735",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:363",
+  "input": {
+   "name": "Movie Name (2021) [Remux-2160p x265 HDR 10-BIT DTS-HD MA 7.1]-FraMeSToR.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0736",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:364",
+  "input": {
+   "name": "This.Wonderful.Movie.1991.German.ML.2160p.BluRay.HEVC-GeRMaNSCeNEGRoUP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0737",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:365",
+  "input": {
+   "name": "Movie.Name.2011.2160p.DD.2.0.AVC.REMUX-FraMeSToR",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0738",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:366",
+  "input": {
+   "name": "Movie Name 2018 2160p BluRay Hybrid-REMUX AVC TRUEHD 5.1 Dual Audio-ZR-",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0739",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:367",
+  "input": {
+   "name": "Movie.Name.2018.2160p.BluRay.Hybrid-REMUX.AVC.TRUEHD.5.1.Dual.Audio-ZR-",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0740",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:373",
+  "input": {
+   "name": "Movie.Title.2013.BDISO",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0741",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:374",
+  "input": {
+   "name": "Movie.Title.2005.MULTi.COMPLETE.BLURAY-VLS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0742",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:375",
+  "input": {
+   "name": "Movie Name (2012) Bluray ISO [USENET-TURK]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0743",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:376",
+  "input": {
+   "name": "Movie Name.1993..BD25.ISO",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0744",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:377",
+  "input": {
+   "name": "Movie.Title.2012.Bluray.1080p.3D.AVC.DTS-HD.MA.5.1.iso",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0745",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:378",
+  "input": {
+   "name": "Movie.Title.1996.Bluray.ISO",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0746",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:379",
+  "input": {
+   "name": "Random.Title.2010.1080p.HD.DVD.AVC.DDP.5.1-GRouP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0747",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:380",
+  "input": {
+   "name": "Movie Title 2005 1080p USA Blu-ray AVC DTS-HD MA 5.1-PTP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0748",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:381",
+  "input": {
+   "name": "Movie Title 2014 1080p Blu-ray AVC DTS-HD MA 5.1-PTP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0749",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:382",
+  "input": {
+   "name": "Movie Title 1976 2160p UHD Blu-ray DTS-HD MA 5.1 DV HDR HEVC-UNTOUCHED",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0750",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:383",
+  "input": {
+   "name": "Movie Title 2004 1080p FRA Blu-ray VC-1 TrueHD 5.1-HDBEE",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0751",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:384",
+  "input": {
+   "name": "BD25.Movie.Title.1994.1080p.DTS-HD",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0752",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:385",
+  "input": {
+   "name": "Movie.Title.1997.1080p.NL.BD-50",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0753",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:386",
+  "input": {
+   "name": "Movie Title 2009 3D BD 2009 UNTOUCHED",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0754",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:387",
+  "input": {
+   "name": "Movie.Title.1982.1080p.HD.DVD.VC-1.DD+.5.1",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0755",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:388",
+  "input": {
+   "name": "Movie.Title.2007.1080p.HD.DVD.DD+.AVC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0756",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:389",
+  "input": {
+   "name": "Movie.Title.2008.1080i.XXX.Blu-ray.MPEG-2.LPCM2.0.ISO",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0757",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:390",
+  "input": {
+   "name": "Movie.Title.2008.BONUS.GERMAN.SUBBED.COMPLETE.BLURAY",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0758",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:391",
+  "input": {
+   "name": "The German 2021 Bluray AVC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0759",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:392",
+  "input": {
+   "name": "German.Only.Movie.2021.French.1080p.BluRay.AVC-UNTAVC",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0760",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:393",
+  "input": {
+   "name": "Movie.Title.2008.US.Directors.Cut.UHD.BD66.Blu-ray",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0761",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:394",
+  "input": {
+   "name": "Movie.2009.Blu.ray.AVC.DTS.HD.MA.5.1",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0762",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:395",
+  "input": {
+   "name": "[BD]Movie.Title.2008.2023.1080p.COMPLETE.BLURAY-RlsGrp",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "BRDISK",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0763",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:401",
+  "input": {
+   "name": "Movie.Title.2015.Open.Matte.1080i.HDTV.DD5.1.MPEG2",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "modifier": "RAWHD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0764",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:402",
+  "input": {
+   "name": "Movie.Title.2009.1080i.HDTV.AAC2.0.MPEG2-PepelefuF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "modifier": "RAWHD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0765",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:408",
+  "input": {
+   "name": "Some.Movie.S02E15",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "UNKNOWN",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0766",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:409",
+  "input": {
+   "name": "Movie Name - 11x11 - Quickie",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "UNKNOWN",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0767",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:410",
+  "input": {
+   "name": "Movie.Name.S01E01.webm",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "UNKNOWN",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0768",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:411",
+  "input": {
+   "name": "Movie.Title.S01E01.The.Web.MT-dd",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "UNKNOWN",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0769",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:21",
+  "input": {
+   "names": [
+    "My series S01E01 SD-TV",
+    "My series S01E01 SD.TV",
+    "My series S01E01 SD TV",
+    "My series S01E01 SD_TV"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0770",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:22",
+  "input": {
+   "names": [
+    "My series S01E01 SD-DVD",
+    "My series S01E01 SD.DVD",
+    "My series S01E01 SD DVD",
+    "My series S01E01 SD_DVD"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "DVD",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0771",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:23",
+  "input": {
+   "names": [
+    "My series S01E01 480p-WEB-DL",
+    "My series S01E01 480p.WEB-DL",
+    "My series S01E01 480p WEB-DL",
+    "My series S01E01 480p_WEB-DL"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 480,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0772",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:24",
+  "input": {
+   "names": [
+    "My series S01E01 HD-TV",
+    "My series S01E01 HD.TV",
+    "My series S01E01 HD TV",
+    "My series S01E01 HD_TV"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0773",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:25",
+  "input": {
+   "names": [
+    "My series S01E01 1080p-HD-TV",
+    "My series S01E01 1080p.HD.TV",
+    "My series S01E01 1080p HD TV",
+    "My series S01E01 1080p_HD_TV"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0774",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:26",
+  "input": {
+   "names": [
+    "My series S01E01 2160p-HD-TV",
+    "My series S01E01 2160p.HD.TV",
+    "My series S01E01 2160p HD TV",
+    "My series S01E01 2160p_HD_TV"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "TV",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0775",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:27",
+  "input": {
+   "names": [
+    "My series S01E01 720p-WEB-DL",
+    "My series S01E01 720p.WEB-DL",
+    "My series S01E01 720p WEB-DL",
+    "My series S01E01 720p_WEB-DL"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0776",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:28",
+  "input": {
+   "names": [
+    "My series S01E01 1080p-WEB-DL",
+    "My series S01E01 1080p.WEB-DL",
+    "My series S01E01 1080p WEB-DL",
+    "My series S01E01 1080p_WEB-DL"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0777",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:29",
+  "input": {
+   "names": [
+    "My series S01E01 2160p-WEB-DL",
+    "My series S01E01 2160p.WEB-DL",
+    "My series S01E01 2160p WEB-DL",
+    "My series S01E01 2160p_WEB-DL"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "WEBDL",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0778",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:30",
+  "input": {
+   "names": [
+    "My series S01E01 720p-BluRay",
+    "My series S01E01 720p.BluRay",
+    "My series S01E01 720p BluRay",
+    "My series S01E01 720p_BluRay"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 720,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0779",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:31",
+  "input": {
+   "names": [
+    "My series S01E01 1080p-BluRay",
+    "My series S01E01 1080p.BluRay",
+    "My series S01E01 1080p BluRay",
+    "My series S01E01 1080p_BluRay"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0780",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:32",
+  "input": {
+   "names": [
+    "My series S01E01 2160p-BluRay",
+    "My series S01E01 2160p.BluRay",
+    "My series S01E01 2160p BluRay",
+    "My series S01E01 2160p_BluRay"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0781",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:33",
+  "input": {
+   "names": [
+    "My series S01E01 1080p-Remux",
+    "My series S01E01 1080p.Remux",
+    "My series S01E01 1080p Remux",
+    "My series S01E01 1080p_Remux"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 1080,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0782",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:34",
+  "input": {
+   "names": [
+    "My series S01E01 2160p-Remux",
+    "My series S01E01 2160p.Remux",
+    "My series S01E01 2160p Remux",
+    "My series S01E01 2160p_Remux"
+   ],
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source": "BLURAY",
+    "resolution": 2160,
+    "modifier": "REMUX",
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0783",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:443",
+  "input": {
+   "name": "Movie - 2018 [HDTV-1080p]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0784",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:444",
+  "input": {
+   "name": "Movie.Title.S10E09.Eddie.Murphy.The.Honeydrippers.1080i.UPSCALE.HDTV.DD5.1.MPEG2-zebra",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0785",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:445",
+  "input": {
+   "name": "Movie.Title.2018.Bluray720p",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0786",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:446",
+  "input": {
+   "name": "Movie.Title.2018.Bluray1080p",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0787",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:447",
+  "input": {
+   "name": "Movie.Title.2018.Bluray2160p",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0788",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:448",
+  "input": {
+   "name": "Movie.Title.2018.848x480.dvd",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0789",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:449",
+  "input": {
+   "name": "Movie.Title.2018.848x480.Bluray",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0790",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:450",
+  "input": {
+   "name": "Movie.Title.2018.1280x720.Bluray",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0791",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:451",
+  "input": {
+   "name": "Movie.Title.2018.1920x1080.Bluray",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0792",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:460",
+  "input": {
+   "name": "Movie.Title.2018.848x480",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Unknown",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0793",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:461",
+  "input": {
+   "name": "Movie.Title.2018.1280x720",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Unknown",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0794",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:462",
+  "input": {
+   "name": "Movie.Title.2018.1920x1080",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Unknown",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0795",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:471",
+  "input": {
+   "name": "Movie.Title.2011.S02E01.WS.PDTV.x264-REPACK-TLA",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Unknown"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0796",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:472",
+  "input": {
+   "name": "Movie.Title.S01E01.Bluray",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Unknown"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0797",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:473",
+  "input": {
+   "name": "Movie.Title.S01E01.HD.TV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Unknown"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0798",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:474",
+  "input": {
+   "name": "Movie.Title.S01E01.SD.TV",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Name",
+    "resolution_detection_source": "Unknown"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0799",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:483",
+  "input": {
+   "name": "Movie.Title.S01E02.Chained.Heat.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Extension"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0800",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:484",
+  "input": {
+   "name": "Movie Name - S01E01 - Title.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Extension"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0801",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:485",
+  "input": {
+   "name": "Movie.Title..9x18.sunshine_days.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Extension"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0802",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:486",
+  "input": {
+   "name": "[CR] Movie Title - 004 [48CE2D0F].avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Extension"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0803",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:495",
+  "input": {
+   "name": "Movie.Name.S01E02.Chained.Heat.1080p.mkv",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0804",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:496",
+  "input": {
+   "name": "Movie Name - S01E01 - Title.720p.avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Name"
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0805",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:505",
+  "input": {
+   "name": "Movie Title 2018 REPACK 720p HDTV x264 aAF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "is_repack": true,
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0806",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:506",
+  "input": {
+   "name": "Movie.Title.2018.REPACK.720p.HDTV.x264-aAF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "is_repack": true,
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0807",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:507",
+  "input": {
+   "name": "Movie.Title.2018.REPACK2.720p.HDTV.x264-aAF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "is_repack": true,
+     "version": 3
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0808",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:508",
+  "input": {
+   "name": "Movie.Title.2018.PROPER.720p.HDTV.x264-aAF",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "is_repack": false,
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0809",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:509",
+  "input": {
+   "name": "Movie.Title.2018.RERIP.720p.BluRay.x264-DEMAND",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "is_repack": true,
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0810",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:510",
+  "input": {
+   "name": "Movie.Title.2018.RERIP2.720p.BluRay.x264-DEMAND",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "is_repack": true,
+     "version": 3
+    }
+   }
+  }
+ }
+]

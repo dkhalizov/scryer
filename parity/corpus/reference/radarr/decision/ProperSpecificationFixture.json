@@ -1,0 +1,181 @@
+[
+ {
+  "id": "RAD-DECISION-1151",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:52",
+  "input": {
+   "spec": "ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "DVD",
+      "revision": {
+       "version": 1
+      }
+     },
+     "added_days_ago": 30
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "added_days_ago counts from today (setup: DateTime.Now, tests: DateTime.Today minus n days); search kind search = a MovieSearchCriteria; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1152",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:61",
+  "input": {
+   "spec": "ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "added_days_ago": 30
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "added_days_ago counts from today (setup: DateTime.Now, tests: DateTime.Today minus n days); search kind search = a MovieSearchCriteria; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1153",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:70",
+  "input": {
+   "spec": "ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "added_days_ago": 30
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "search": {
+     "kind": "search"
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "added_days_ago counts from today (setup: DateTime.Now, tests: DateTime.Today minus n days); search kind search = a MovieSearchCriteria; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1154",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:79",
+  "input": {
+   "spec": "ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "DVD",
+      "revision": {
+       "version": 1
+      }
+     },
+     "added_days_ago": 0
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "added_days_ago counts from today (setup: DateTime.Now, tests: DateTime.Today minus n days); search kind search = a MovieSearchCriteria; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1155",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:92",
+  "input": {
+   "spec": "ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "DVD",
+      "revision": {
+       "version": 1
+      }
+     },
+     "added_days_ago": 0
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "added_days_ago counts from today (setup: DateTime.Now, tests: DateTime.Today minus n days); search kind search = a MovieSearchCriteria; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ }
+]

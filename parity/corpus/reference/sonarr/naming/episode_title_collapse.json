@@ -1,0 +1,512 @@
+[
+ {
+  "id": "SON-NAMING-0025",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:71",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Hey, Baby, What's Wrong (1)",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Hey, Baby, What's Wrong (2)",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Hey, Baby, What's Wrong"
+  }
+ },
+ {
+  "id": "SON-NAMING-0026",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:72",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part 1",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part 2",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Meet the Guys and Girls of Cycle 20"
+  }
+ },
+ {
+  "id": "SON-NAMING-0027",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:73",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part1",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part2",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Meet the Guys and Girls of Cycle 20"
+  }
+ },
+ {
+  "id": "SON-NAMING-0028",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:74",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part01",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part02",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Meet the Guys and Girls of Cycle 20"
+  }
+ },
+ {
+  "id": "SON-NAMING-0029",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:75",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part 01",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 Part 02",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Meet the Guys and Girls of Cycle 20"
+  }
+ },
+ {
+  "id": "SON-NAMING-0030",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:76",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 part 1",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 part 2",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Meet the Guys and Girls of Cycle 20"
+  }
+ },
+ {
+  "id": "SON-NAMING-0031",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:77",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 pt 1",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 pt 2",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Meet the Guys and Girls of Cycle 20"
+  }
+ },
+ {
+  "id": "SON-NAMING-0032",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:78",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 pt. 1",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Meet the Guys and Girls of Cycle 20 pt. 2",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Meet the Guys and Girls of Cycle 20"
+  }
+ },
+ {
+  "id": "SON-NAMING-0033",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:90",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "Scene",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Hello",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "World",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park - S15E06-E07 - Hello + World"
+  }
+ },
+ {
+  "id": "SON-NAMING-0034",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:103",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "renameEpisodes": true,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Episode Title}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "South Park",
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Part 1",
+      "seasonNumber": 15,
+      "episodeNumber": 6,
+      "absoluteEpisodeNumber": 100
+     },
+     {
+      "title": "Part 2",
+      "seasonNumber": 15,
+      "episodeNumber": 7,
+      "absoluteEpisodeNumber": 101
+     }
+    ],
+    "episodeFile": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "releaseGroup": "SonarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Part 1 + Part 2"
+  }
+ }
+]

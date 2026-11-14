@@ -1,0 +1,740 @@
+[
+ {
+  "id": "SON-QUALITY-0097",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:77",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Unknown"
+   }
+  },
+  "expect": {
+   "id": 0,
+   "source": "Unknown",
+   "resolution": 0
+  }
+ },
+ {
+  "id": "SON-QUALITY-0098",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:78",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "SDTV"
+   }
+  },
+  "expect": {
+   "id": 1,
+   "source": "Television",
+   "resolution": 480
+  }
+ },
+ {
+  "id": "SON-QUALITY-0099",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:79",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "DVD"
+   }
+  },
+  "expect": {
+   "id": 2,
+   "source": "DVD",
+   "resolution": 480
+  }
+ },
+ {
+  "id": "SON-QUALITY-0100",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:80",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBDL-1080p"
+   }
+  },
+  "expect": {
+   "id": 3,
+   "source": "Web",
+   "resolution": 1080
+  }
+ },
+ {
+  "id": "SON-QUALITY-0101",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:81",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "HDTV-720p"
+   }
+  },
+  "expect": {
+   "id": 4,
+   "source": "Television",
+   "resolution": 720
+  }
+ },
+ {
+  "id": "SON-QUALITY-0102",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:82",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBDL-720p"
+   }
+  },
+  "expect": {
+   "id": 5,
+   "source": "Web",
+   "resolution": 720
+  }
+ },
+ {
+  "id": "SON-QUALITY-0103",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:83",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Bluray-720p"
+   }
+  },
+  "expect": {
+   "id": 6,
+   "source": "Bluray",
+   "resolution": 720
+  }
+ },
+ {
+  "id": "SON-QUALITY-0104",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:84",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Bluray-1080p"
+   }
+  },
+  "expect": {
+   "id": 7,
+   "source": "Bluray",
+   "resolution": 1080
+  }
+ },
+ {
+  "id": "SON-QUALITY-0105",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:85",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBDL-480p"
+   }
+  },
+  "expect": {
+   "id": 8,
+   "source": "Web",
+   "resolution": 480
+  }
+ },
+ {
+  "id": "SON-QUALITY-0106",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:86",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "HDTV-1080p"
+   }
+  },
+  "expect": {
+   "id": 9,
+   "source": "Television",
+   "resolution": 1080
+  }
+ },
+ {
+  "id": "SON-QUALITY-0107",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:87",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Raw-HD"
+   }
+  },
+  "expect": {
+   "id": 10,
+   "source": "TelevisionRaw",
+   "resolution": 1080
+  }
+ },
+ {
+  "id": "SON-QUALITY-0108",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:92",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBRip-480p"
+   }
+  },
+  "expect": {
+   "id": 12,
+   "source": "WebRip",
+   "resolution": 480
+  }
+ },
+ {
+  "id": "SON-QUALITY-0109",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:97",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Bluray-480p"
+   }
+  },
+  "expect": {
+   "id": 13,
+   "source": "Bluray",
+   "resolution": 480
+  }
+ },
+ {
+  "id": "SON-QUALITY-0110",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:102",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Bluray-576p"
+   }
+  },
+  "expect": {
+   "id": 22,
+   "source": "Bluray",
+   "resolution": 576
+  }
+ },
+ {
+  "id": "SON-QUALITY-0111",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:107",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBRip-720p"
+   }
+  },
+  "expect": {
+   "id": 14,
+   "source": "WebRip",
+   "resolution": 720
+  }
+ },
+ {
+  "id": "SON-QUALITY-0112",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:112",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBRip-1080p"
+   }
+  },
+  "expect": {
+   "id": 15,
+   "source": "WebRip",
+   "resolution": 1080
+  }
+ },
+ {
+  "id": "SON-QUALITY-0113",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:115",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "HDTV-2160p"
+   }
+  },
+  "expect": {
+   "id": 16,
+   "source": "Television",
+   "resolution": 2160
+  }
+ },
+ {
+  "id": "SON-QUALITY-0114",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:118",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBRip-2160p"
+   }
+  },
+  "expect": {
+   "id": 17,
+   "source": "WebRip",
+   "resolution": 2160
+  }
+ },
+ {
+  "id": "SON-QUALITY-0115",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:121",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "WEBDL-2160p"
+   }
+  },
+  "expect": {
+   "id": 18,
+   "source": "Web",
+   "resolution": 2160
+  }
+ },
+ {
+  "id": "SON-QUALITY-0116",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:122",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Bluray-2160p"
+   }
+  },
+  "expect": {
+   "id": 19,
+   "source": "Bluray",
+   "resolution": 2160
+  }
+ },
+ {
+  "id": "SON-QUALITY-0117",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:123",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Bluray-1080p Remux"
+   }
+  },
+  "expect": {
+   "id": 20,
+   "source": "BlurayRaw",
+   "resolution": 1080
+  }
+ },
+ {
+  "id": "SON-QUALITY-0118",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:124",
+  "input": {
+   "op": "quality_declaration",
+   "given": {
+    "quality": "Bluray-2160p Remux"
+   }
+  },
+  "expect": {
+   "id": 21,
+   "source": "BlurayRaw",
+   "resolution": 2160
+  }
+ },
+ {
+  "id": "SON-QUALITY-0119",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:128",
+  "input": {
+   "op": "all_qualities",
+   "given": {}
+  },
+  "expect": {
+   "order": [
+    "Unknown",
+    "SDTV",
+    "DVD",
+    "WEBRip-480p",
+    "WEBDL-480p",
+    "Bluray-480p",
+    "Bluray-576p",
+    "HDTV-720p",
+    "WEBRip-720p",
+    "WEBDL-720p",
+    "Bluray-720p",
+    "Bluray-1080p",
+    "HDTV-1080p",
+    "WEBRip-1080p",
+    "WEBDL-1080p",
+    "Raw-HD",
+    "HDTV-2160p",
+    "WEBRip-2160p",
+    "WEBDL-2160p",
+    "Bluray-2160p",
+    "Bluray-1080p Remux",
+    "Bluray-2160p Remux"
+   ]
+  }
+ },
+ {
+  "id": "SON-QUALITY-0120",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:158",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Unknown"
+   }
+  },
+  "expect": {
+   "weight": 1,
+   "min_size": 1,
+   "max_size": 199.9,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0121",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:159",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "SDTV"
+   }
+  },
+  "expect": {
+   "weight": 2,
+   "min_size": 2,
+   "max_size": 100,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0122",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:160",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBRip-480p"
+   }
+  },
+  "expect": {
+   "weight": 3,
+   "min_size": 2,
+   "max_size": 100,
+   "preferred_size": 95,
+   "group_name": "WEB 480p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0123",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:161",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBDL-480p"
+   }
+  },
+  "expect": {
+   "weight": 3,
+   "min_size": 2,
+   "max_size": 100,
+   "preferred_size": 95,
+   "group_name": "WEB 480p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0124",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:162",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "DVD"
+   }
+  },
+  "expect": {
+   "weight": 4,
+   "min_size": 2,
+   "max_size": 100,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0125",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:163",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Bluray-480p"
+   }
+  },
+  "expect": {
+   "weight": 5,
+   "min_size": 2,
+   "max_size": 100,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0126",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:164",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Bluray-576p"
+   }
+  },
+  "expect": {
+   "weight": 6,
+   "min_size": 2,
+   "max_size": 100,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0127",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:165",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "HDTV-720p"
+   }
+  },
+  "expect": {
+   "weight": 7,
+   "min_size": 3,
+   "max_size": 125,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0128",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:166",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "HDTV-1080p"
+   }
+  },
+  "expect": {
+   "weight": 8,
+   "min_size": 4,
+   "max_size": 125,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0129",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:167",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Raw-HD"
+   }
+  },
+  "expect": {
+   "weight": 9,
+   "min_size": 4,
+   "max_size": null,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0130",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:168",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBRip-720p"
+   }
+  },
+  "expect": {
+   "weight": 10,
+   "min_size": 3,
+   "max_size": 130,
+   "preferred_size": 95,
+   "group_name": "WEB 720p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0131",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:169",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBDL-720p"
+   }
+  },
+  "expect": {
+   "weight": 10,
+   "min_size": 3,
+   "max_size": 130,
+   "preferred_size": 95,
+   "group_name": "WEB 720p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0132",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:170",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Bluray-720p"
+   }
+  },
+  "expect": {
+   "weight": 11,
+   "min_size": 4,
+   "max_size": 130,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0133",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:171",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBRip-1080p"
+   }
+  },
+  "expect": {
+   "weight": 12,
+   "min_size": 4,
+   "max_size": 130,
+   "preferred_size": 95,
+   "group_name": "WEB 1080p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0134",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:172",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBDL-1080p"
+   }
+  },
+  "expect": {
+   "weight": 12,
+   "min_size": 4,
+   "max_size": 130,
+   "preferred_size": 95,
+   "group_name": "WEB 1080p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0135",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:173",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Bluray-1080p"
+   }
+  },
+  "expect": {
+   "weight": 13,
+   "min_size": 4,
+   "max_size": 155,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0136",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:174",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Bluray-1080p Remux"
+   }
+  },
+  "expect": {
+   "weight": 14,
+   "min_size": 35,
+   "max_size": null,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0137",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:175",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "HDTV-2160p"
+   }
+  },
+  "expect": {
+   "weight": 15,
+   "min_size": 35,
+   "max_size": 199.9,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0138",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:176",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBRip-2160p"
+   }
+  },
+  "expect": {
+   "weight": 16,
+   "min_size": 35,
+   "max_size": null,
+   "preferred_size": 95,
+   "group_name": "WEB 2160p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0139",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:177",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "WEBDL-2160p"
+   }
+  },
+  "expect": {
+   "weight": 16,
+   "min_size": 35,
+   "max_size": null,
+   "preferred_size": 95,
+   "group_name": "WEB 2160p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0140",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:178",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Bluray-2160p"
+   }
+  },
+  "expect": {
+   "weight": 17,
+   "min_size": 35,
+   "max_size": null,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ },
+ {
+  "id": "SON-QUALITY-0141",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core/Qualities/Quality.cs:179",
+  "input": {
+   "op": "default_definition",
+   "given": {
+    "quality": "Bluray-2160p Remux"
+   }
+  },
+  "expect": {
+   "weight": 18,
+   "min_size": 35,
+   "max_size": null,
+   "preferred_size": 95,
+   "group_name": null
+  }
+ }
+]

@@ -1,0 +1,469 @@
+[
+ {
+  "id": "SON-DECISION-1074",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:51",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1075",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:61",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "WEBRip"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1076",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:69",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "doesnt",
+       "exist"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1077",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:77",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [],
+      "ignored": [
+       "ignored"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1078",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:85",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [],
+      "ignored": [
+       "edited"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1079",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:93",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "EdiTED"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1080",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:94",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "webrip"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1081",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:95",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "X264"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1082",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:96",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "X264",
+       "NOTTHERE"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1083",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:104",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [],
+      "ignored": [
+       "EdiTED"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1084",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:105",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [],
+      "ignored": [
+       "webrip"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1085",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:106",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [],
+      "ignored": [
+       "X264"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1086",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:107",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [],
+      "ignored": [
+       "X264",
+       "NOTTHERE"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1087",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:115",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "[ www.Speed.cd ] -Whose.Line.is.it.Anyway.US.S10E24.720p.HDTV.x264-BAJSKORV"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "x264"
+      ],
+      "ignored": [
+       "www.Speed.cd"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1088",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:134",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "/WEB/"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1089",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:135",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "/WEB\b/"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "C# regular string: \\b is a backspace character (U+0008), not a regex word boundary."
+ },
+ {
+  "id": "SON-DECISION-1090",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:136",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "/WEb/"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1091",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ReleaseRestrictionsSpecificationFixture.cs:137",
+  "input": {
+   "spec": "ReleaseRestrictionsSpecification",
+   "given": {
+    "series": {
+     "tags": []
+    },
+    "release": {
+     "title": "Dexter.S08E01.EDITED.WEBRip.x264-KYR"
+    },
+    "release_profiles": [
+     {
+      "required": [
+       "/\\.WEB/"
+      ],
+      "ignored": []
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

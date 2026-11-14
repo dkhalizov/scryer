@@ -1,0 +1,83 @@
+[
+ {
+  "id": "SON-QUALITY-0038",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:13",
+  "input": {
+   "op": "definitions_init",
+   "given": {
+    "existing_definitions": []
+   }
+  },
+  "expect": {
+   "inserted_count": 22
+  },
+  "note": "Asserted count is Quality.All.Count; Quality.All lists 22 qualities (src/NzbDrone.Core/Qualities/Quality.cs:128)."
+ },
+ {
+  "id": "SON-QUALITY-0039",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:22",
+  "input": {
+   "op": "definitions_init",
+   "given": {
+    "existing_definitions": [
+     {
+      "quality": "SDTV",
+      "weight": 1,
+      "min_size": 0,
+      "max_size": 100,
+      "id": 20
+     }
+    ]
+   }
+  },
+  "expect": {
+   "inserted_count": 21
+  },
+  "note": "Asserted count is Quality.All.Count - 1; Quality.All lists 22 qualities (src/NzbDrone.Core/Qualities/Quality.cs:128)."
+ },
+ {
+  "id": "SON-QUALITY-0040",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:38",
+  "input": {
+   "op": "definitions_init",
+   "given": {
+    "existing_definitions": [
+     {
+      "quality": "SDTV",
+      "weight": 1,
+      "min_size": 0,
+      "max_size": 100,
+      "id": 20
+     }
+    ]
+   }
+  },
+  "expect": {
+   "updated_count": 1
+  }
+ },
+ {
+  "id": "SON-QUALITY-0041",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:54",
+  "input": {
+   "op": "definitions_init",
+   "given": {
+    "existing_definitions": [
+     {
+      "quality": {
+       "id": 100,
+       "name": "Test"
+      },
+      "weight": 1,
+      "min_size": 0,
+      "max_size": 100,
+      "id": 20
+     }
+    ]
+   }
+  },
+  "expect": {
+   "deleted_count": 1
+  }
+ }
+]

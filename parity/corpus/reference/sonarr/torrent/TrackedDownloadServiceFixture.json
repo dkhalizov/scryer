@@ -1,0 +1,349 @@
+[
+ {
+  "id": "SON-TORRENT-0109",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:39",
+  "input": {
+   "op": "tracked_download.track",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "The torrent release folder",
+     "download_id": "35238"
+    },
+    "history_by_download_id": {
+     "35238": [
+      {
+       "download_id": "35238",
+       "source_title": "TV Series S01",
+       "series_id": 5,
+       "episode_id": 4
+      }
+     ]
+    },
+    "map": [
+     {
+      "when": {
+       "season": 1,
+       "series_title": "TV Series"
+      },
+      "returns": {
+       "series_id": 5,
+       "episode_ids": [
+        4
+       ],
+       "parsed": {
+        "series_title": "TV Series",
+        "season": 1
+       },
+       "mapped_season": 1
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "remote_episode": {
+    "series_id": 5,
+    "first_episode_id": 4,
+    "parsed_season": 1,
+    "mapped_season": 1
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0110",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:89",
+  "input": {
+   "op": "tracked_download.track",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "TV.Series.S01.MULTi.1080p.WEB.H265-RlsGroup",
+     "download_id": "35238"
+    },
+    "history_by_download_id": {
+     "35238": [
+      {
+       "download_id": "35238",
+       "source_title": "TV Series S01",
+       "series_id": 5,
+       "episode_id": 4,
+       "event_type": "Grabbed",
+       "data": {
+        "indexer": "MyIndexer (Prowlarr)"
+       }
+      }
+     ]
+    },
+    "indexers": [
+     {
+      "id": 1,
+      "name": "MyIndexer (Prowlarr)",
+      "multi_languages": [
+       "Original",
+       "French"
+      ]
+     }
+    ],
+    "map": [
+     {
+      "when": "any",
+      "returns": {
+       "series_id": 5,
+       "episode_ids": [
+        4
+       ],
+       "parsed": {
+        "series_title": "TV Series",
+        "season": 1
+       },
+       "mapped_season": 1
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "remote_episode": {
+    "release": {
+     "indexer": "MyIndexer (Prowlarr)"
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0111",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:163",
+  "input": {
+   "op": "tracked_download.track",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "The torrent release folder",
+     "download_id": "35238"
+    },
+    "history_by_download_id": {
+     "35238": [
+      {
+       "download_id": "35238",
+       "source_title": "TV Series Special",
+       "series_id": 5,
+       "episode_id": 4
+      }
+     ]
+    },
+    "special_episode_title_parse": {
+     "series_title": "TV Series",
+     "season": 0,
+     "episodes": [
+      1
+     ]
+    },
+    "map": [
+     {
+      "when": {
+       "season": 0,
+       "series_title": "TV Series"
+      },
+      "returns": {
+       "series_id": 5,
+       "episode_ids": [
+        4
+       ],
+       "parsed": {
+        "series_title": "TV Series",
+        "season": 0,
+        "episodes": [
+         1
+        ]
+       },
+       "mapped_season": 0
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "remote_episode": {
+    "series_id": 5,
+    "first_episode_id": 4,
+    "parsed_season": 0,
+    "mapped_season": 0
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0112",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:229",
+  "input": {
+   "op": "tracked_download.track_then_event",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "TV Series - S01E01",
+     "download_id": "12345",
+     "client_info": {
+      "id": 1,
+      "type": "Blackhole",
+      "name": "Blackhole Client",
+      "protocol": "Torrent"
+     }
+    },
+    "history_by_download_id": {
+     "*": []
+    },
+    "map": [
+     {
+      "when": "any",
+      "returns": {
+       "series_id": 5,
+       "episode_ids": [
+        4
+       ],
+       "parsed": {
+        "series_title": "TV Series",
+        "season": 1,
+        "episodes": [
+         1
+        ]
+       },
+       "mapped_season": 0
+      }
+     }
+    ],
+    "then": {
+     "remap_returns": null,
+     "event": {
+      "type": "EpisodeInfoRefreshed",
+      "series_id": 5,
+      "added": [],
+      "updated": [],
+      "removed": [
+       4
+      ]
+     }
+    }
+   }
+  },
+  "expect": {
+   "tracked_count_before": 1,
+   "tracked_count": 1,
+   "first": {
+    "remote_episode": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0113",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:288",
+  "input": {
+   "op": "tracked_download.track_then_event",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "TV Series - S01E01",
+     "download_id": "12345",
+     "client_info": {
+      "id": 1,
+      "type": "Blackhole",
+      "name": "Blackhole Client",
+      "protocol": "Torrent"
+     }
+    },
+    "history_by_download_id": {
+     "*": []
+    },
+    "map": [
+     {
+      "when": "any",
+      "returns": null
+     }
+    ],
+    "then": {
+     "remap_returns": null,
+     "event": {
+      "type": "EpisodeInfoRefreshed",
+      "series_id": 5,
+      "added": [],
+      "updated": [],
+      "removed": [
+       4
+      ]
+     }
+    }
+   }
+  },
+  "expect": {
+   "tracked_count_before": 1,
+   "tracked_count": 1,
+   "first": {
+    "remote_episode": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0114",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:347",
+  "input": {
+   "op": "tracked_download.track_then_event",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "TV Series - S01E01",
+     "download_id": "12345",
+     "client_info": {
+      "id": 1,
+      "type": "Blackhole",
+      "name": "Blackhole Client",
+      "protocol": "Torrent"
+     }
+    },
+    "history_by_download_id": {
+     "*": []
+    },
+    "map": [
+     {
+      "when": "any",
+      "returns": null
+     }
+    ],
+    "then": {
+     "remap_returns": null,
+     "event": {
+      "type": "SeriesDeleted",
+      "series_ids": [
+       5
+      ],
+      "delete_files": true,
+      "add_import_list_exclusion": true
+     }
+    }
+   }
+  },
+  "expect": {
+   "tracked_count_before": 1,
+   "tracked_count": 1,
+   "first": {
+    "remote_episode": null
+   }
+  }
+ }
+]

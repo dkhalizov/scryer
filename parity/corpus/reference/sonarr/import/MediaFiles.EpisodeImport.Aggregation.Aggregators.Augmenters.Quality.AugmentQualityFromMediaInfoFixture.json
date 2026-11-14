@@ -1,0 +1,410 @@
+[
+ {
+  "id": "SON-IMPORT-0075",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:15",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": null
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0076",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:25",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 0,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "result": null
+  },
+  "note": "Height 1 and title Title1 are NBuilder defaults."
+ },
+ {
+  "id": "SON-IMPORT-0077",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:39",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 4096,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0078",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:40",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 4000,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0079",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:41",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 3840,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0080",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:42",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 3200,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0081",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:43",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 2000,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0082",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:44",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1920,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0083",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:45",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1440,
+     "height": 1080,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0084",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:46",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1800,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0085",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:47",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1490,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 720,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0086",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:48",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1280,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 720,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0087",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:49",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1200,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 720,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0088",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:50",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1000,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 576,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0089",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:51",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 720,
+     "height": 576,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 576,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0090",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:52",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 800,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0091",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:53",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 720,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0092",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:54",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 600,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0093",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:55",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 100,
+     "height": 1,
+     "title": "Title1"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "Unknown"
+  },
+  "note": "Title Title1 is the NBuilder default."
+ },
+ {
+  "id": "SON-IMPORT-0094",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:74",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1920,
+     "height": 1080,
+     "title": "Series.Title.S01E05.WEB.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "Web"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0095",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:94",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1920,
+     "height": 1080,
+     "title": "Series.Title.S01E05.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "Unknown"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0096",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:114",
+  "input": {
+   "op": "AugmentQualityFromMediaInfo",
+   "given": {
+    "media_info": {
+     "width": 1024,
+     "height": 576,
+     "title": "Series.Title.S01E05.Bluray.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 576,
+   "source": "Bluray"
+  }
+ }
+]

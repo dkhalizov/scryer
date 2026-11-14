@@ -1,0 +1,616 @@
+[
+ {
+  "id": "SON-PARSE-0593",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:11",
+  "input": {
+   "name": "Series",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "series"
+  }
+ },
+ {
+  "id": "SON-PARSE-0594",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:12",
+  "input": {
+   "name": "Series (2009)",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "series2009"
+  }
+ },
+ {
+  "id": "SON-PARSE-0595",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:13",
+  "input": {
+   "name": "Series.2010",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "series2010"
+  }
+ },
+ {
+  "id": "SON-PARSE-0596",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:14",
+  "input": {
+   "name": "Series_and_Title_Sonarr",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "seriestitlesonarr"
+  }
+ },
+ {
+  "id": "SON-PARSE-0597",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:21",
+  "input": {
+   "name": "CaPitAl",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "capital"
+  }
+ },
+ {
+  "id": "SON-PARSE-0598",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:22",
+  "input": {
+   "name": "peri.od",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "period"
+  }
+ },
+ {
+  "id": "SON-PARSE-0599",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:23",
+  "input": {
+   "name": "this.^&%^**$%@#$!That",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "thisthat"
+  }
+ },
+ {
+  "id": "SON-PARSE-0600",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:24",
+  "input": {
+   "name": "test/test",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "testtest"
+  }
+ },
+ {
+  "id": "SON-PARSE-0601",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:25",
+  "input": {
+   "name": "90210",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "90210"
+  }
+ },
+ {
+  "id": "SON-PARSE-0602",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:26",
+  "input": {
+   "name": "24",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "24"
+  }
+ },
+ {
+  "id": "SON-PARSE-0603",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:27",
+  "input": {
+   "name": "Test: Something à Deux",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "testsomethingdeux"
+  }
+ },
+ {
+  "id": "SON-PARSE-0604",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:28",
+  "input": {
+   "name": "Parler à",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "parlera"
+  }
+ },
+ {
+  "id": "SON-PARSE-0605",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:35",
+  "input": {
+   "names": [
+    "word.the.word",
+    "word the word",
+    "word-the-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0606",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:36",
+  "input": {
+   "names": [
+    "word.and.word",
+    "word and word",
+    "word-and-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0607",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:37",
+  "input": {
+   "names": [
+    "word.or.word",
+    "word or word",
+    "word-or-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0608",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:38",
+  "input": {
+   "names": [
+    "word.an.word",
+    "word an word",
+    "word-an-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0609",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:39",
+  "input": {
+   "names": [
+    "word.of.word",
+    "word of word",
+    "word-of-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0610",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:56",
+  "input": {
+   "names": [
+    "word.word.the",
+    "word-word-the",
+    "word-word the"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordthe"
+  }
+ },
+ {
+  "id": "SON-PARSE-0611",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:57",
+  "input": {
+   "names": [
+    "word.word.and",
+    "word-word-and",
+    "word-word and"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordand"
+  }
+ },
+ {
+  "id": "SON-PARSE-0612",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:58",
+  "input": {
+   "names": [
+    "word.word.or",
+    "word-word-or",
+    "word-word or"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordor"
+  }
+ },
+ {
+  "id": "SON-PARSE-0613",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:59",
+  "input": {
+   "names": [
+    "word.word.an",
+    "word-word-an",
+    "word-word an"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordan"
+  }
+ },
+ {
+  "id": "SON-PARSE-0614",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:60",
+  "input": {
+   "names": [
+    "word.word.of",
+    "word-word-of",
+    "word-word of"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordof"
+  }
+ },
+ {
+  "id": "SON-PARSE-0615",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:77",
+  "input": {
+   "names": [
+    "word.a.word",
+    "word a word",
+    "word-a-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0616",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:94",
+  "input": {
+   "names": [
+    "word.theword",
+    "word theword",
+    "word-theword",
+    "wordthe.word",
+    "wordthe-word",
+    "wordthe-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordtheword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0617",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:95",
+  "input": {
+   "names": [
+    "word.andword",
+    "word andword",
+    "word-andword",
+    "wordand.word",
+    "wordand-word",
+    "wordand-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordandword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0618",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:96",
+  "input": {
+   "names": [
+    "word.orword",
+    "word orword",
+    "word-orword",
+    "wordor.word",
+    "wordor-word",
+    "wordor-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordorword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0619",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:97",
+  "input": {
+   "names": [
+    "word.aword",
+    "word aword",
+    "word-aword",
+    "worda.word",
+    "worda-word",
+    "worda-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordaword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0620",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:98",
+  "input": {
+   "names": [
+    "word.anword",
+    "word anword",
+    "word-anword",
+    "wordan.word",
+    "wordan-word",
+    "wordan-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordanword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0621",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:99",
+  "input": {
+   "names": [
+    "word.ofword",
+    "word ofword",
+    "word-ofword",
+    "wordof.word",
+    "wordof-word",
+    "wordof-word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "wordofword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0622",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:119",
+  "input": {
+   "name": "The Series",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "theseries"
+  }
+ },
+ {
+  "id": "SON-PARSE-0623",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:120",
+  "input": {
+   "name": "The Series Show With Sonarr Dev",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "theseriesshowwithsonarrdev"
+  }
+ },
+ {
+  "id": "SON-PARSE-0624",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:121",
+  "input": {
+   "name": "The.Series.Show",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "theseriesshow"
+  }
+ },
+ {
+  "id": "SON-PARSE-0625",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:128",
+  "input": {
+   "names": [
+    "the.word.word",
+    "the-word-word",
+    "the word word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "thewordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0626",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:129",
+  "input": {
+   "names": [
+    "and.word.word",
+    "and-word-word",
+    "and word word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "andwordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0627",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:130",
+  "input": {
+   "names": [
+    "or.word.word",
+    "or-word-word",
+    "or word word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "orwordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0628",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:131",
+  "input": {
+   "names": [
+    "a.word.word",
+    "a-word-word",
+    "a word word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "awordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0629",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:132",
+  "input": {
+   "names": [
+    "an.word.word",
+    "an-word-word",
+    "an word word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "anwordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0630",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:133",
+  "input": {
+   "names": [
+    "of.word.word",
+    "of-word-word",
+    "of word word"
+   ],
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "ofwordword"
+  }
+ },
+ {
+  "id": "SON-PARSE-0631",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:150",
+  "input": {
+   "name": "Series Title A",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "seriestitlea"
+  }
+ },
+ {
+  "id": "SON-PARSE-0632",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:156",
+  "input": {
+   "name": "3%",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "3percent"
+  }
+ },
+ {
+  "id": "SON-PARSE-0633",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:157",
+  "input": {
+   "name": "Series Top & 100% Coding Developers",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "seriestop100percentcodingdevelopers"
+  }
+ },
+ {
+  "id": "SON-PARSE-0634",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:158",
+  "input": {
+   "name": "Series Title What's Your F@%king Deal?!",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "seriestitlewhatsyourfkingdeal"
+  }
+ }
+]

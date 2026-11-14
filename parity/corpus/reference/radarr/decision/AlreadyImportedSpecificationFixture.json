@@ -1,0 +1,388 @@
+[
+ {
+  "id": "RAD-DECISION-0012",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:79",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0013",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:87",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 0
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0014",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:95",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0015",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:101",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": [
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "Grabbed"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0016",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:109",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": [
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "DownloadFolderImported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0017",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:120",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": [
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-1080p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "DownloadFolderImported"
+     }
+    ],
+    "release": {
+     "protocol": "torrent",
+     "info_hash": null
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0018",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:136",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": [
+     {
+      "download_id": null,
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-1080p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "DownloadFolderImported"
+     }
+    ],
+    "release": {
+     "protocol": "torrent",
+     "info_hash": "ID-A"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0019",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:152",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": [
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-1080p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "DownloadFolderImported"
+     }
+    ],
+    "release": {
+     "protocol": "torrent",
+     "info_hash": "ID-A"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ },
+ {
+  "id": "RAD-DECISION-0020",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:168",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "movie": {
+     "id": 1,
+     "movie_file_id": 1
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1
+     }
+    },
+    "history": [
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "ID-A",
+      "source_title": "Movie.Title.2018.720p.HDTV.x264-Radarr",
+      "quality": {
+       "quality": "HDTV-1080p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "event": "DownloadFolderImported"
+     }
+    ],
+    "release": {
+     "protocol": "torrent",
+     "info_hash": "ID-A"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "test body is identical to the info-hash test; it never sets the release title; download ids are random uppercase GUIDs in the reference; ID-A stands for one shared value"
+ }
+]

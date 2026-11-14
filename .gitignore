@@ -41,3 +41,19 @@ encryption.key
 # Agent working notes never ship
 *-REPORT.md
 *-PLAN.md
+
+# Parity net: generated reports, except the committed baseline
+/parity/report/*
+!/parity/report/baseline.json
+!/parity/report/baseline.md
+/parity/**/__pycache__/
+/target-parity-*/
+/parity/fuzz/corpus/
+!/parity/report/mutants-baseline.md
+!/parity/report/coverage-baseline.md
+# private, local only (ledger D45)
+/notes/
+/parity/corpus/captured/
+/parity/capture/
+/parity/catalogue/*-captured.yaml
+/parity/catalogue/*-config.yaml

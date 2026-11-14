@@ -1,0 +1,519 @@
+[
+ {
+  "id": "SON-DECISION-1170",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:93",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "user_invoked": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The subject is an empty RemoteEpisode (no series, release or episodes)."
+ },
+ {
+  "id": "SON-DECISION-1171",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:99",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "SDTV",
+     "revision": 1,
+     "age_minutes": 0
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": [],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "user_invoked": false
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Other delay profile fields are NBuilder-generated and not arranged by the test."
+ },
+ {
+  "id": "SON-DECISION-1172",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:110",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "usenet_delay": 0
+    },
+    "release": {
+     "protocol": "Usenet"
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1173",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:118",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "bypass_if_highest_quality": false,
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "Bluray-720p",
+     "revision": 1,
+     "languages": [
+      "French"
+     ],
+     "age_minutes": 0
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "bypass_if_highest_quality is not set by the test (NBuilder default false), as the test name states."
+ },
+ {
+  "id": "SON-DECISION-1174",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:130",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "bypass_if_highest_quality": true,
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "Bluray-720p",
+     "revision": 1,
+     "languages": [
+      "French"
+     ],
+     "age_minutes": 0
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1175",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:143",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "usenet_delay": 60
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "age_hours": 10
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1176",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:154",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "SDTV",
+     "revision": 1,
+     "age_minutes": 0
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1177",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:165",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "HDTV-720p",
+     "revision": 2,
+     "age_minutes": 0
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "scene_name": "Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+      }
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test also mocks IUpgradableSpecification.IsUpgradable to None and IsRevisionUpgrade to true; DelaySpecification compares revisions itself."
+ },
+ {
+  "id": "SON-DECISION-1178",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:183",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "real": 1,
+     "age_minutes": 0
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "scene_name": "Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+      }
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test also mocks IUpgradableSpecification.IsUpgradable to None and IsRevisionUpgrade to true; DelaySpecification compares revisions itself."
+ },
+ {
+  "id": "SON-DECISION-1179",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:201",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "quality": "WEBDL-720p",
+     "revision": 2,
+     "age_minutes": 0
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "scene_name": "Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+      }
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1180",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:214",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "minimum_custom_format_score": 50,
+     "bypass_if_above_custom_format_score": false,
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_minutes": 0,
+     "custom_format_score": 100
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Release quality is not set. bypass_if_above_custom_format_score is not set by the test (NBuilder default false), as the test name states."
+ },
+ {
+  "id": "SON-DECISION-1181",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:226",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "minimum_custom_format_score": 50,
+     "bypass_if_above_custom_format_score": true,
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_minutes": 0,
+     "custom_format_score": 5
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Release quality is not set."
+ },
+ {
+  "id": "SON-DECISION-1182",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:239",
+  "input": {
+   "spec": "RssSync.DelaySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet",
+     "minimum_custom_format_score": 50,
+     "bypass_if_above_custom_format_score": true,
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_minutes": 0,
+     "custom_format_score": 100
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "pending_releases": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Release quality is not set."
+ }
+]

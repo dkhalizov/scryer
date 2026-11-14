@@ -1,0 +1,1704 @@
+[
+ {
+  "id": "SER-REQUESTS-0007",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:232",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "demo",
+     "permissions": [
+      "REQUEST"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 204
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0008",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:241",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 204
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0009",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:250",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 54321,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "admin",
+      "permissions": [
+       "ADMIN"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "demo",
+     "permissions": [
+      "REQUEST"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 401
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0010",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:285",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "APPROVED",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "demo",
+     "permissions": [
+      "REQUEST"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 401
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0011",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:294",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "request": null,
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 404
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0012",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:301",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "concurrent_deletes": 2
+   }
+  },
+  "expect": {
+   "http_statuses_sorted": [
+    204,
+    404
+   ],
+   "request_remaining": 0
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0013",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:317",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "body": {
+     "mediaType": "movie",
+     "serverId": 3,
+     "profileId": 7,
+     "rootFolder": "/updated/movies",
+     "tags": [
+      1,
+      2
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 200,
+   "saved": {
+    "serverId": 3,
+    "profileId": 7,
+    "rootFolder": "/updated/movies"
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0014",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:340",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "APPROVED",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "body": {
+     "mediaType": "movie",
+     "serverId": 3,
+     "rootFolder": "/updated/movies"
+    }
+   }
+  },
+  "expect": {
+   "http_status": 409,
+   "message_matches": "/pending/i",
+   "saved": {
+    "serverId": null,
+    "rootFolder": null
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0015",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:435",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "requests": [
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       1,
+       2
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false
+     },
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       3
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false
+     }
+    ],
+    "edits": [
+     {
+      "request": 0,
+      "actor": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    200
+   ],
+   "seasons": [
+    [
+     1,
+     2
+    ],
+    [
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0016",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:469",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "concurrent": true,
+    "requests": [
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       1
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false
+     },
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       3
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false
+     }
+    ],
+    "edits": [
+     {
+      "request": 0,
+      "actor": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        1,
+        2
+       ]
+      }
+     },
+     {
+      "request": 1,
+      "actor": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        3,
+        2
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    200,
+    200
+   ],
+   "holders_of_season_2": 1,
+   "all_seasons_sorted": [
+    1,
+    2,
+    3
+   ]
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0017",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:515",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "requests": [
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       1
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false
+     }
+    ],
+    "media_seasons": [
+     {
+      "seasonNumber": 2,
+      "status": "AVAILABLE"
+     }
+    ],
+    "edits": [
+     {
+      "request": 0,
+      "actor": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        1,
+        2,
+        3
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    200
+   ],
+   "seasons": [
+    [
+     1,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0018",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:540",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "requests": [
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       1
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false
+     }
+    ],
+    "media_seasons": [
+     {
+      "seasonNumber": 2,
+      "status": "AVAILABLE"
+     }
+    ],
+    "edits": [
+     {
+      "request": 0,
+      "actor": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        2
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    202
+   ]
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0019",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:556",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "requests": [
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST",
+        "REQUEST_ADVANCED"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       1,
+       2
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false
+     }
+    ],
+    "media_seasons": [
+     {
+      "seasonNumber": 1,
+      "status": "AVAILABLE"
+     },
+     {
+      "seasonNumber": 2,
+      "status": "PROCESSING"
+     }
+    ],
+    "edits": [
+     {
+      "request": 0,
+      "actor": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST",
+        "REQUEST_ADVANCED"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        1,
+        2
+       ],
+       "serverId": 3
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    200
+   ],
+   "seasons": [
+    [
+     1,
+     2
+    ]
+   ],
+   "saved": {
+    "serverId": 3
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0021",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:845",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "requests": [
+     {
+      "media_type": "tv",
+      "tmdb_id": 67890,
+      "media_status": "PENDING",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "is4k": false,
+      "seasons": [
+       1
+      ],
+      "season_status": "PENDING",
+      "ignore_quota": false,
+      "stored_options": {
+       "serverId": 1,
+       "profileId": 5,
+       "rootFolder": "/stored",
+       "languageProfileId": 2,
+       "tags": [
+        6
+       ]
+      }
+     }
+    ],
+    "edits": [
+     {
+      "request": 0,
+      "actor": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        1,
+        2
+       ],
+       "serverId": 2,
+       "profileId": 9,
+       "rootFolder": "/chosen",
+       "tags": [
+        3
+       ],
+       "languageProfileId": 4
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    200
+   ],
+   "seasons": [
+    [
+     1,
+     2
+    ]
+   ],
+   "saved_options": {
+    "serverId": 1,
+    "profileId": 5,
+    "rootFolder": "/stored",
+    "languageProfileId": 2,
+    "tags": [
+     6
+    ]
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0022",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:877",
+  "input": {
+   "op": "request.edit",
+   "given": {
+    "requests": [
+     {
+      "media_type": "movie",
+      "tmdb_id": 12345,
+      "media_status": "UNKNOWN",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "is4k": false
+     }
+    ],
+    "edits": [
+     {
+      "request": 0,
+      "actor": {
+       "name": "demo",
+       "permissions": [
+        "REQUEST"
+       ]
+      },
+      "body": {
+       "mediaType": "tv",
+       "seasons": [
+        1
+       ],
+       "serverId": 2,
+       "profileId": 9,
+       "rootFolder": "/chosen",
+       "tags": [
+        3
+       ],
+       "languageProfileId": 4
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    403
+   ]
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0023",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:919",
+  "input": {
+   "op": "request.set_status",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "action": "approve"
+   }
+  },
+  "expect": {
+   "http_status": 200,
+   "status": "APPROVED",
+   "modified_by": "admin",
+   "updated_at_advances": true
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0024",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:919",
+  "input": {
+   "op": "request.set_status",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "action": "decline"
+   }
+  },
+  "expect": {
+   "http_status": 200,
+   "status": "DECLINED",
+   "modified_by": "admin",
+   "updated_at_advances": true
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0025",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:941",
+  "input": {
+   "op": "request.set_status",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "action": "frobnicate"
+   }
+  },
+  "expect": {
+   "http_status": 400,
+   "message_matches": "/approve/i",
+   "status": "PENDING",
+   "modified_by": null
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0026",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:959",
+  "input": {
+   "op": "request.set_status",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "APPROVED",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "action": "decline"
+   }
+  },
+  "expect": {
+   "http_status": 409,
+   "message_matches": "/pending/i",
+   "status": "APPROVED"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0027",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:973",
+  "input": {
+   "op": "request.set_status",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "concurrent_actions": [
+     "approve",
+     "decline"
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses_sorted": [
+    200,
+    409
+   ],
+   "status_if_approve_won": "APPROVED",
+   "status_if_decline_won": "DECLINED"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0028",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:994",
+  "input": {
+   "op": "request.set_status",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "DECLINED",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "action": "pending"
+   }
+  },
+  "expect": {
+   "http_status": 400,
+   "message_matches": "/approve/i",
+   "status": "DECLINED"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0029",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1010",
+  "input": {
+   "op": "request.retry",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "FAILED",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 200,
+   "status": "APPROVED",
+   "modified_by": "admin",
+   "updated_at_advances": true
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0030",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1031",
+  "input": {
+   "op": "request.retry",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "PENDING",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 409,
+   "message_matches": "/failed/i",
+   "status": "PENDING"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0031",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1045",
+  "input": {
+   "op": "request.retry",
+   "given": {
+    "request": {
+     "media_type": "movie",
+     "tmdb_id": 12345,
+     "media_status": "UNKNOWN",
+     "status": "FAILED",
+     "requested_by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "is4k": false
+    },
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "concurrent_retries": 2
+   }
+  },
+  "expect": {
+   "http_statuses_sorted": [
+    200,
+    409
+   ],
+   "sent_to_radarr": 1,
+   "status": "APPROVED"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0032",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1115",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "media": {
+     "media_type": "movie",
+     "tmdb_id": 99001,
+     "status_before_rerequest": "DELETED",
+     "status": "PENDING",
+     "status4k": "UNKNOWN"
+    },
+    "requests": [
+     {
+      "name": "stale",
+      "status": "COMPLETED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false,
+      "is_auto_request": true
+     },
+     {
+      "name": "new",
+      "status": "APPROVED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false
+     }
+    ],
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "delete": [
+     "new"
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    204
+   ],
+   "media_status": "DELETED"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0034",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1179",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "media": {
+     "media_type": "movie",
+     "tmdb_id": 99001,
+     "status_before_rerequest": "DELETED",
+     "status": "PENDING",
+     "status4k": "UNKNOWN"
+    },
+    "requests": [
+     {
+      "name": "stale",
+      "status": "COMPLETED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false,
+      "is_auto_request": true
+     },
+     {
+      "name": "new",
+      "status": "APPROVED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false
+     }
+    ],
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "delete": [
+     "new",
+     "stale"
+    ]
+   }
+  },
+  "expect": {
+   "last_http_status": 204,
+   "media_status": "UNKNOWN",
+   "requests_remaining": 0
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0036",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1254",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "media": {
+     "media_type": "movie",
+     "tmdb_id": 99002,
+     "status": "PENDING",
+     "status4k": "UNKNOWN"
+    },
+    "requests": [
+     {
+      "name": "one",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false
+     },
+     {
+      "name": "two",
+      "status": "PENDING",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false
+     }
+    ],
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "delete": [
+     "one"
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    204
+   ],
+   "media_status": "PENDING"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0037",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1301",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "media": {
+     "media_type": "movie",
+     "tmdb_id": 99005,
+     "status": "PARTIALLY_AVAILABLE",
+     "status4k": "UNKNOWN"
+    },
+    "requests": [
+     {
+      "name": "done",
+      "status": "COMPLETED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "is4k": false
+     }
+    ],
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "delete": [
+     "done"
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    204
+   ],
+   "media_status": "PARTIALLY_AVAILABLE"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0038",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1767",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "radarr": [
+     {
+      "id": 1,
+      "isDefault": true,
+      "is4k": false
+     },
+     {
+      "id": 2,
+      "isDefault": false,
+      "is4k": false
+     }
+    ],
+    "sonarr": [],
+    "by": {
+     "name": "demo",
+     "permissions": [
+      "REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "movie",
+     "mediaId": 88020,
+     "serverId": 2,
+     "profileId": 9,
+     "rootFolder": "/chosen",
+     "tags": [
+      3
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 201,
+   "stored_options": {
+    "serverId": null,
+    "profileId": null,
+    "rootFolder": null,
+    "languageProfileId": null,
+    "tags": null
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0039",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1786",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "sonarr": [
+     {
+      "id": 1,
+      "isDefault": true,
+      "is4k": false
+     },
+     {
+      "id": 2,
+      "isDefault": false,
+      "is4k": false
+     }
+    ],
+    "radarr": [],
+    "by": {
+     "name": "demo",
+     "permissions": [
+      "REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "tv",
+     "mediaId": 88021,
+     "seasons": [
+      1
+     ],
+     "serverId": 2,
+     "profileId": 9,
+     "rootFolder": "/chosen",
+     "tags": [
+      3
+     ],
+     "languageProfileId": 4
+    }
+   }
+  },
+  "expect": {
+   "http_status": 201,
+   "stored_options": {
+    "serverId": null,
+    "profileId": null,
+    "rootFolder": null,
+    "languageProfileId": null,
+    "tags": null
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0041",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1832",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "sonarr": [
+     {
+      "id": 1,
+      "isDefault": true,
+      "is4k": false
+     },
+     {
+      "id": 2,
+      "isDefault": false,
+      "is4k": false
+     }
+    ],
+    "radarr": [],
+    "by": {
+     "name": "demo",
+     "permissions": [
+      "REQUEST",
+      "REQUEST_ADVANCED"
+     ]
+    },
+    "body": {
+     "mediaType": "tv",
+     "mediaId": 88023,
+     "seasons": [
+      1
+     ],
+     "serverId": 2,
+     "profileId": 9,
+     "rootFolder": "/chosen",
+     "tags": [
+      3
+     ],
+     "languageProfileId": 4
+    }
+   }
+  },
+  "expect": {
+   "http_status": 201,
+   "stored_options": {
+    "serverId": 2,
+    "profileId": 9,
+    "rootFolder": "/chosen",
+    "tags": [
+     3
+    ],
+    "languageProfileId": 4
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0042",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1855",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "radarr": [
+     {
+      "id": 1,
+      "isDefault": true,
+      "is4k": false
+     }
+    ],
+    "sonarr": [],
+    "by": {
+     "name": "demo",
+     "permissions": [
+      "REQUEST",
+      "REQUEST_ADVANCED"
+     ]
+    },
+    "body": {
+     "mediaType": "movie",
+     "mediaId": 88024,
+     "serverId": null,
+     "profileId": 9,
+     "rootFolder": "/chosen",
+     "tags": [
+      3
+     ]
+    }
+   }
+  },
+  "expect": {
+   "http_status": 201,
+   "stored_options": {
+    "serverId": null,
+    "profileId": 9,
+    "rootFolder": "/chosen",
+    "tags": [
+     3
+    ],
+    "languageProfileId": null
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0043",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1935",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 99101,
+     "status": "PROCESSING",
+     "status4k": "UNKNOWN",
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "PROCESSING"
+      }
+     ]
+    },
+    "requests": [
+     {
+      "name": "r1",
+      "status": "APPROVED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "seasons": [
+       1
+      ],
+      "season_status": "APPROVED",
+      "is4k": false
+     }
+    ],
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "delete": [
+     "r1"
+    ],
+    "then_request": {
+     "by": {
+      "name": "demo",
+      "permissions": [
+       "REQUEST"
+      ]
+     },
+     "body": {
+      "mediaType": "tv",
+      "mediaId": 99101,
+      "seasons": [
+       1
+      ]
+     }
+    }
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    204
+   ],
+   "season_status": {
+    "1": "UNKNOWN"
+   },
+   "then_request_http_status": 201
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0044",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1960",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 99102,
+     "status": "PROCESSING",
+     "status4k": "UNKNOWN",
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "PROCESSING"
+      },
+      {
+       "seasonNumber": 2,
+       "status": "PROCESSING"
+      }
+     ]
+    },
+    "requests": [
+     {
+      "name": "r1",
+      "status": "APPROVED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "seasons": [
+       1
+      ],
+      "season_status": "APPROVED",
+      "is4k": false
+     }
+    ],
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "delete": [
+     "r1"
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    204
+   ],
+   "season_status": {
+    "1": "UNKNOWN",
+    "2": "PROCESSING"
+   }
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0045",
+  "ref": "Seerr@v3.5.2 server/routes/request.test.ts:1979",
+  "input": {
+   "op": "request.delete",
+   "given": {
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 99103,
+     "status": "PROCESSING",
+     "status4k": "UNKNOWN",
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "PROCESSING"
+      }
+     ]
+    },
+    "requests": [
+     {
+      "name": "r1",
+      "status": "APPROVED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "seasons": [
+       1
+      ],
+      "season_status": "APPROVED",
+      "is4k": false
+     },
+     {
+      "name": "r2",
+      "status": "APPROVED",
+      "requested_by": {
+       "name": "admin",
+       "permissions": [
+        "ADMIN"
+       ]
+      },
+      "seasons": [
+       1
+      ],
+      "season_status": "APPROVED",
+      "is4k": false
+     }
+    ],
+    "actor": {
+     "name": "admin",
+     "permissions": [
+      "ADMIN"
+     ]
+    },
+    "delete": [
+     "r1"
+    ]
+   }
+  },
+  "expect": {
+   "http_statuses": [
+    204
+   ],
+   "season_status": {
+    "1": "PROCESSING"
+   }
+  }
+ }
+]

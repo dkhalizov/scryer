@@ -1,0 +1,55 @@
+[
+ {
+  "id": "SON-IMPORT-0211",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:48",
+  "input": {
+   "op": "NotUnpackingSpecification",
+   "given": {
+    "config": {
+     "download_client_working_folders": "_UNPACK_|_FAILED_"
+    },
+    "path": "/C/Test/Unsorted TV/30.rock/30.rock.s01e01.avi",
+    "size": 100
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0213",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:65",
+  "input": {
+   "op": "NotUnpackingSpecification",
+   "given": {
+    "config": {
+     "download_client_working_folders": "_UNPACK_|_FAILED_"
+    },
+    "path": "/C/Test/Unsorted TV/_UNPACK_30.rock/someSubFolder/30.rock.s01e01.avi",
+    "size": 100,
+    "last_write_offset_hours": 0
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0214",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:74",
+  "input": {
+   "op": "NotUnpackingSpecification",
+   "given": {
+    "config": {
+     "download_client_working_folders": "_UNPACK_|_FAILED_"
+    },
+    "path": "/C/Test/Unsorted TV/_UNPACK_30.rock/someSubFolder/30.rock.s01e01.avi",
+    "size": 100,
+    "last_write_offset_hours": -120
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

@@ -1,0 +1,251 @@
+[
+ {
+  "id": "RAD-DECISION-1147",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/PendingSpecificationFixture.cs:80",
+  "input": {
+   "spec": "PendingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "parsed_languages": [
+     "Spanish"
+    ],
+    "release": {
+     "custom_formats": []
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "pending_queue": []
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "pending_queue_reads": 1
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; release_source is NBuilder-filled unless set, and the read-once verification shows it is not Rss; search kind rss = ReleaseDecisionInformation(false, null); pending_queue_reads is the asserted GetPendingQueue() call count (Times.Once / Times.Never)"
+ },
+ {
+  "id": "RAD-DECISION-1148",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/PendingSpecificationFixture.cs:91",
+  "input": {
+   "spec": "PendingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "parsed_languages": [
+     "Spanish"
+    ],
+    "release": {
+     "custom_formats": []
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "pending_queue": [],
+    "release_source": "Rss"
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "pending_queue_reads": 0
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; release_source is NBuilder-filled unless set, and the read-once verification shows it is not Rss; search kind rss = ReleaseDecisionInformation(false, null); pending_queue_reads is the asserted GetPendingQueue() call count (Times.Once / Times.Never)"
+ },
+ {
+  "id": "RAD-DECISION-1149",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/PendingSpecificationFixture.cs:104",
+  "input": {
+   "spec": "PendingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "parsed_languages": [
+     "Spanish"
+    ],
+    "release": {
+     "custom_formats": []
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "pending_queue": [
+     {
+      "movie_id": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "pending_queue_reads": 1
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; release_source is NBuilder-filled unless set, and the read-once verification shows it is not Rss; search kind rss = ReleaseDecisionInformation(false, null); pending_queue_reads is the asserted GetPendingQueue() call count (Times.Once / Times.Never)"
+ },
+ {
+  "id": "RAD-DECISION-1150",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/PendingSpecificationFixture.cs:128",
+  "input": {
+   "spec": "PendingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "parsed_languages": [
+     "Spanish"
+    ],
+    "release": {
+     "custom_formats": []
+    },
+    "search": {
+     "kind": "rss"
+    },
+    "pending_queue": [
+     {
+      "movie_id": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false,
+   "pending_queue_reads": 1
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; release_source is NBuilder-filled unless set, and the read-once verification shows it is not Rss; search kind rss = ReleaseDecisionInformation(false, null); pending_queue_reads is the asserted GetPendingQueue() call count (Times.Once / Times.Never)"
+ }
+]

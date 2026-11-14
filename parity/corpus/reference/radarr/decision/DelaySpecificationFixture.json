@@ -1,0 +1,482 @@
+[
+ {
+  "id": "RAD-DECISION-0077",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:82",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "remote_movie": "empty",
+    "search": {
+     "kind": "search",
+     "user_invoked": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the reference passes an empty RemoteMovie, not the fixture one; delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0078",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:88",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "search"
+    },
+    "parsed_quality": {
+     "quality": "SDTV"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0079",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:99",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 0
+    },
+    "release": {
+     "protocol": "usenet"
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0080",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:107",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720,
+     "bypass_if_highest_quality": false
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    },
+    "parsed_quality": {
+     "quality": "Bluray-720p"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "bypass_if_highest_quality is not set by the test (Builder<DelayProfile>.CreateNew() fills it); false is inferred from the test name and its passing BeFalse assertion, since with the bypass on a Bluray-720p release (the profile's highest allowed quality) would be accepted; delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0081",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:118",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720,
+     "bypass_if_highest_quality": true
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    },
+    "parsed_quality": {
+     "quality": "Bluray-720p"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0082",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:130",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 60
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 600
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0083",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:141",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    },
+    "parsed_quality": {
+     "quality": "SDTV"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0084",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:152",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p"
+     }
+    },
+    "stubs": {
+     "is_upgradable": "None",
+     "is_revision_upgrade": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the test stubs IUpgradableSpecification: IsUpgradable returns UpgradeableRejectReason.None and IsRevisionUpgrade returns true; delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0085",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:170",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "real": 1
+     }
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p"
+     }
+    },
+    "stubs": {
+     "is_upgradable": "None",
+     "is_revision_upgrade": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the test stubs IUpgradableSpecification: IsUpgradable returns UpgradeableRejectReason.None and IsRevisionUpgrade returns true; delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0086",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:188",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "IUpgradableSpecification is not stubbed here (Moq defaults); delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0087",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:201",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720,
+     "minimum_custom_format_score": 50,
+     "bypass_if_above_custom_format_score": false
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0,
+     "custom_format_score": 100
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "bypass_if_above_custom_format_score is not set by the test (Builder<DelayProfile>.CreateNew() fills it); false is inferred from the test name and its passing BeFalse assertion, since with the bypass on score 100 >= minimum 50 would be accepted; delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0088",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:213",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720,
+     "bypass_if_above_custom_format_score": true,
+     "minimum_custom_format_score": 50
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0,
+     "custom_format_score": 5
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ },
+ {
+  "id": "RAD-DECISION-0089",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:226",
+  "input": {
+   "spec": "DelaySpecification",
+   "given": {
+    "profile": {
+     "items_allowed": [
+      "HDTV-720p",
+      "WEBDL-720p",
+      "Bluray-720p"
+     ],
+     "cutoff": "WEBDL-720p"
+    },
+    "delay_profile": {
+     "preferred_protocol": "usenet",
+     "usenet_delay": 720,
+     "bypass_if_above_custom_format_score": true,
+     "minimum_custom_format_score": 50
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 0,
+     "custom_format_score": 100
+    },
+    "pending_releases": [],
+    "search": {
+     "kind": "rss"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "delay values are minutes; fields the test does not set (other delay-profile fields, quality profile name etc.) are NBuilder-filled in the reference and left out here"
+ }
+]

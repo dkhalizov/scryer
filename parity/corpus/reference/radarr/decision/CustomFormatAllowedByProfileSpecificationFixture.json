@@ -1,0 +1,234 @@
+[
+ {
+  "id": "RAD-DECISION-0023",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:52",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Cool Format",
+       "score": -2
+      },
+      {
+       "format": "Awesome Format",
+       "score": 1
+      }
+     ]
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": [
+      "Awesome Format"
+     ],
+     "custom_format_score": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "format_items scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:21): allowed formats score 2^index, the rest -2^(allowed count); custom_format_score is the test's QualityProfile.CalculateCustomFormatScore over the release formats"
+ },
+ {
+  "id": "RAD-DECISION-0024",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:62",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Cool Format",
+       "score": -2
+      },
+      {
+       "format": "Awesome Format",
+       "score": 1
+      }
+     ]
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": [
+      "Cool Format"
+     ],
+     "custom_format_score": -2
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "format_items scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:21): allowed formats score 2^index, the rest -2^(allowed count); custom_format_score is the test's QualityProfile.CalculateCustomFormatScore over the release formats"
+ },
+ {
+  "id": "RAD-DECISION-0025",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:75",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Cool Format",
+       "score": -2
+      },
+      {
+       "format": "Awesome Format",
+       "score": 1
+      }
+     ]
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": [
+      "Cool Format",
+      "Awesome Format"
+     ],
+     "custom_format_score": -1
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "format_items scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:21): allowed formats score 2^index, the rest -2^(allowed count); custom_format_score is the test's QualityProfile.CalculateCustomFormatScore over the release formats"
+ },
+ {
+  "id": "RAD-DECISION-0026",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:85",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Awesome Format",
+       "score": 1
+      },
+      {
+       "format": "Cool Format",
+       "score": 2
+      }
+     ]
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": [
+      "Cool Format",
+      "Awesome Format"
+     ],
+     "custom_format_score": 3
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "format_items scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:21): allowed formats score 2^index, the rest -2^(allowed count); custom_format_score is the test's QualityProfile.CalculateCustomFormatScore over the release formats"
+ },
+ {
+  "id": "RAD-DECISION-0027",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:95",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Awesome Format",
+       "score": 1
+      },
+      {
+       "format": "Cool Format",
+       "score": 2
+      }
+     ]
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": [],
+     "custom_format_score": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "format_items scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:21): allowed formats score 2^index, the rest -2^(allowed count); custom_format_score is the test's QualityProfile.CalculateCustomFormatScore over the release formats"
+ },
+ {
+  "id": "RAD-DECISION-0028",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:105",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0,
+     "format_items": [
+      {
+       "format": "Awesome Format",
+       "score": 1
+      },
+      {
+       "format": "Cool Format",
+       "score": 2
+      }
+     ]
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": [],
+     "custom_format_score": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "format_items scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:21): allowed formats score 2^index, the rest -2^(allowed count); custom_format_score is the test's QualityProfile.CalculateCustomFormatScore over the release formats"
+ }
+]

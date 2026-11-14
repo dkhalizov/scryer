@@ -1,0 +1,49 @@
+[
+ {
+  "id": "SON-DECISION-0114",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs:46",
+  "input": {
+   "spec": "MultiSeasonSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01-05.720p.BluRay.X264-RlsGrp",
+     "full_season": true,
+     "multi_season": false
+    },
+    "episodes": [
+     {},
+     {},
+     {
+      "air_date_offset_hours": 48
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Other episodes' air dates are NBuilder defaults."
+ },
+ {
+  "id": "SON-DECISION-0115",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs:54",
+  "input": {
+   "spec": "MultiSeasonSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01-05.720p.BluRay.X264-RlsGrp",
+     "full_season": true,
+     "multi_season": true
+    },
+    "episodes": [
+     {},
+     {},
+     {}
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

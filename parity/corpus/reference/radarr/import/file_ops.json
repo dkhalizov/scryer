@@ -1,0 +1,257 @@
+[
+ {
+  "id": "RAD-IMPORT-0047",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:63",
+  "input": {
+   "op": "delete_movie_file",
+   "given": {
+    "root_folder_exists": false,
+    "root_folder_has_subfolders": false,
+    "movie_folder_exists": false,
+    "file_exists": false,
+    "delete_fails": false
+   }
+  },
+  "expect": {
+   "error": "NzbDroneClientException",
+   "warnings": 1
+  },
+  "note": "Manual delete of a movie file. Root folder C:\\Test\\Movies, movie folder 'Movie Title', file 'Some SubFolder' (paths not made OS-agnostic). The recycle bin provider deletes permanently when no recycle bin is set (our config)."
+ },
+ {
+  "id": "RAD-IMPORT-0048",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:70",
+  "input": {
+   "op": "delete_movie_file",
+   "given": {
+    "root_folder_exists": true,
+    "root_folder_has_subfolders": false,
+    "movie_folder_exists": false,
+    "file_exists": false,
+    "delete_fails": false
+   }
+  },
+  "expect": {
+   "error": "NzbDroneClientException",
+   "warnings": 1
+  },
+  "note": "Manual delete of a movie file. Root folder C:\\Test\\Movies, movie folder 'Movie Title', file 'Some SubFolder' (paths not made OS-agnostic). The recycle bin provider deletes permanently when no recycle bin is set (our config)."
+ },
+ {
+  "id": "RAD-IMPORT-0049",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:79",
+  "input": {
+   "op": "delete_movie_file",
+   "given": {
+    "root_folder_exists": true,
+    "root_folder_has_subfolders": true,
+    "movie_folder_exists": false,
+    "file_exists": false,
+    "delete_fails": false
+   }
+  },
+  "expect": {
+   "record_deleted": true,
+   "delete_reason": "Manual",
+   "file_deleted": false
+  },
+  "note": "Manual delete of a movie file. Root folder C:\\Test\\Movies, movie folder 'Movie Title', file 'Some SubFolder' (paths not made OS-agnostic). The recycle bin provider deletes permanently when no recycle bin is set (our config)."
+ },
+ {
+  "id": "RAD-IMPORT-0050",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:91",
+  "input": {
+   "op": "delete_movie_file",
+   "given": {
+    "root_folder_exists": true,
+    "root_folder_has_subfolders": true,
+    "movie_folder_exists": true,
+    "file_exists": false,
+    "delete_fails": false
+   }
+  },
+  "expect": {
+   "record_deleted": true,
+   "delete_reason": "Manual",
+   "file_deleted": false
+  },
+  "note": "Manual delete of a movie file. Root folder C:\\Test\\Movies, movie folder 'Movie Title', file 'Some SubFolder' (paths not made OS-agnostic). The recycle bin provider deletes permanently when no recycle bin is set (our config)."
+ },
+ {
+  "id": "RAD-IMPORT-0051",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:104",
+  "input": {
+   "op": "delete_movie_file",
+   "given": {
+    "root_folder_exists": true,
+    "root_folder_has_subfolders": true,
+    "movie_folder_exists": true,
+    "file_exists": true,
+    "delete_fails": false
+   }
+  },
+  "expect": {
+   "record_deleted": true,
+   "delete_reason": "Manual",
+   "file_deleted": true,
+   "recycle_subfolder": "Movie Title"
+  },
+  "note": "Manual delete of a movie file. Root folder C:\\Test\\Movies, movie folder 'Movie Title', file 'Some SubFolder' (paths not made OS-agnostic). The recycle bin provider deletes permanently when no recycle bin is set (our config)."
+ },
+ {
+  "id": "RAD-IMPORT-0052",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:121",
+  "input": {
+   "op": "delete_movie_file",
+   "given": {
+    "root_folder_exists": true,
+    "root_folder_has_subfolders": true,
+    "movie_folder_exists": true,
+    "file_exists": true,
+    "delete_fails": true
+   }
+  },
+  "expect": {
+   "error": "NzbDroneClientException",
+   "file_delete_attempted": true,
+   "record_deleted": false,
+   "errors_logged": 1
+  },
+  "note": "Manual delete of a movie file. Root folder C:\\Test\\Movies, movie folder 'Movie Title', file 'Some SubFolder' (paths not made OS-agnostic). The recycle bin provider deletes permanently when no recycle bin is set (our config)."
+ },
+ {
+  "id": "RAD-IMPORT-0099",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieFileMovingServiceTests/MoveMovieFileFixture.cs:89",
+  "input": {
+   "op": "move_movie_file",
+   "given": {
+    "root_folder_exists": true,
+    "movie_folder_exists": false
+   }
+  },
+  "expect": {
+   "movie_folder_created_events": 1
+  },
+  "note": "The movie folder is /C/Test/Movies/Movie under root /C/Test/Movies/ (exists); the built file path is mocked."
+ },
+ {
+  "id": "RAD-IMPORT-0100",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieFileMovingServiceTests/MoveMovieFileFixture.cs:100",
+  "input": {
+   "op": "move_movie_file",
+   "given": {
+    "root_folder_exists": true,
+    "movie_folder_exists": true
+   }
+  },
+  "expect": {
+   "movie_folder_created_events": 0
+  },
+  "note": "The movie folder is /C/Test/Movies/Movie under root /C/Test/Movies/ (exists); the built file path is mocked."
+ },
+ {
+  "id": "RAD-IMPORT-0256",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:58",
+  "input": {
+   "op": "upgrade_movie_file",
+   "given": {
+    "movie_path": "/C/Test/Movies/Movie",
+    "existing_file": "A.Movie.2019.avi",
+    "existing_file_on_disk": true,
+    "root_folder_exists": true
+   }
+  },
+  "expect": {
+   "old_file_deleted_from_disk_times": 1
+  },
+  "note": "Upgrading movie /C/Test/Movies/Movie whose existing file is A.Movie.2019.avi; the root folder is the movie folder's parent."
+ },
+ {
+  "id": "RAD-IMPORT-0257",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:68",
+  "input": {
+   "op": "upgrade_movie_file",
+   "given": {
+    "movie_path": "/C/Test/Movies/Movie",
+    "existing_file": "A.Movie.2019.avi",
+    "existing_file_on_disk": true,
+    "root_folder_exists": true
+   }
+  },
+  "expect": {
+   "old_record_deleted_times": 1,
+   "delete_reason": "Upgrade"
+  },
+  "note": "Upgrading movie /C/Test/Movies/Movie whose existing file is A.Movie.2019.avi; the root folder is the movie folder's parent."
+ },
+ {
+  "id": "RAD-IMPORT-0258",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:78",
+  "input": {
+   "op": "upgrade_movie_file",
+   "given": {
+    "movie_path": "/C/Test/Movies/Movie",
+    "existing_file": "A.Movie.2019.avi",
+    "existing_file_on_disk": false,
+    "root_folder_exists": true
+   }
+  },
+  "expect": {
+   "old_record_deleted_times": 1,
+   "delete_reason": "Upgrade"
+  },
+  "note": "Upgrading movie /C/Test/Movies/Movie whose existing file is A.Movie.2019.avi; the root folder is the movie folder's parent."
+ },
+ {
+  "id": "RAD-IMPORT-0259",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:92",
+  "input": {
+   "op": "upgrade_movie_file",
+   "given": {
+    "movie_path": "/C/Test/Movies/Movie",
+    "existing_file": "A.Movie.2019.avi",
+    "existing_file_on_disk": false,
+    "root_folder_exists": true
+   }
+  },
+  "expect": {
+   "old_file_deleted_from_disk_times": 0
+  },
+  "note": "Upgrading movie /C/Test/Movies/Movie whose existing file is A.Movie.2019.avi; the root folder is the movie folder's parent."
+ },
+ {
+  "id": "RAD-IMPORT-0260",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:106",
+  "input": {
+   "op": "upgrade_movie_file",
+   "given": {
+    "movie_path": "/C/Test/Movies/Movie",
+    "existing_file": "A.Movie.2019.avi",
+    "existing_file_on_disk": true,
+    "root_folder_exists": true
+   }
+  },
+  "expect": {
+   "old_files": 1
+  },
+  "note": "Upgrading movie /C/Test/Movies/Movie whose existing file is A.Movie.2019.avi; the root folder is the movie folder's parent."
+ },
+ {
+  "id": "RAD-IMPORT-0261",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:114",
+  "input": {
+   "op": "upgrade_movie_file",
+   "given": {
+    "movie_path": "/C/Test/Movies/Movie",
+    "existing_file": "A.Movie.2019.avi",
+    "existing_file_on_disk": true,
+    "root_folder_exists": false
+   }
+  },
+  "expect": {
+   "error": "RootFolderNotFoundException",
+   "old_record_deleted_times": 0
+  },
+  "note": "Upgrading movie /C/Test/Movies/Movie whose existing file is A.Movie.2019.avi; the root folder is the movie folder's parent."
+ }
+]

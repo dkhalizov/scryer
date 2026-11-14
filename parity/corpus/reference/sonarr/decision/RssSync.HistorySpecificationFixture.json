@@ -1,0 +1,1082 @@
+[
+ {
+  "id": "SON-DECISION-1189",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:106",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {},
+    "search": {
+     "kind": "SeasonSearchCriteria"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1190",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:112",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {}
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1191",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:119",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "DownloadFailed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1192",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:133",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 13
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1193",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:140",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "SDTV",
+      "revision": 1,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1194",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:147",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "SDTV",
+      "revision": 1,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     },
+     "2": {
+      "download_id": "",
+      "quality": "SDTV",
+      "revision": 1,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1195",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:155",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     },
+     "2": {
+      "download_id": "",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1196",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:163",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []. The test sets episode 1's history twice (SDTV, then HDTV-1080p); the later mock setup wins."
+ },
+ {
+  "id": "SON-DECISION-1197",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:171",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     },
+     "2": {
+      "download_id": "",
+      "quality": "SDTV",
+      "revision": 1,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1198",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:179",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "Bluray-1080p"
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "WEBDL-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "WEBDL-1080p",
+      "revision": 1,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1199",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:191",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-1080p"
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "WEBDL-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "WEBDL-1080p",
+      "revision": 1,
+      "languages": [
+       "Spanish"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1200",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:203",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_hours": 1
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1201",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:210",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     },
+     {
+      "id": 2,
+      "season": 12,
+      "episode": 4
+     },
+     {
+      "id": 3,
+      "season": 12,
+      "episode": 5
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "test",
+      "quality": "SDTV",
+      "revision": 1,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_days": 100
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []. The test name says 'false' but it asserts BeTrue."
+ },
+ {
+  "id": "SON-DECISION-1202",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:218",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "WEBDL-1080p"
+    },
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "test",
+      "quality": "WEBDL-1080p",
+      "revision": 1,
+      "languages": [
+       "Spanish"
+      ],
+      "event_type": "Grabbed",
+      "age_days": 100
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ },
+ {
+  "id": "SON-DECISION-1203",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:231",
+  "input": {
+   "spec": "RssSync.HistorySpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "episode": 3
+     }
+    ],
+    "most_recent_history": {
+     "1": {
+      "download_id": "test",
+      "quality": "HDTV-1080p",
+      "revision": 2,
+      "languages": [
+       "English"
+      ],
+      "event_type": "Grabbed",
+      "age_days": 100
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "most_recent_history maps an episode id to its latest history item; history custom formats are []."
+ }
+]

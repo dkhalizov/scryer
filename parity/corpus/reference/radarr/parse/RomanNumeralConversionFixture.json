@@ -1,0 +1,522 @@
+[
+ {
+  "id": "RAD-PARSE-0965",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 1,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "I"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0966",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 2,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "II"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0967",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 3,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "III"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0968",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 4,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "IV"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0969",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 5,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "V"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0970",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 6,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "VI"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0971",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 7,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "VII"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0972",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 8,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "VIII"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0973",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 9,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "IX"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0974",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 10,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "X"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0975",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 11,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XI"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0976",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 12,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XII"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0977",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 13,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XIII"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0978",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 14,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XIV"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0979",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 15,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XV"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0980",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 16,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XVI"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0981",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 17,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XVII"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0982",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 18,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XVIII"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0983",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 19,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XIX"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0984",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:25",
+  "input": {
+   "number": 20,
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToRomanNumeral"
+  },
+  "expect": {
+   "roman": "XX"
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0985",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "I",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 1
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0986",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "II",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 2
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0987",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "III",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 3
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0988",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "IV",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 4
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0989",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "V",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 5
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0990",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "VI",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 6
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0991",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "VII",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 7
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0992",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "VIII",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 8
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0993",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "IX",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 9
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0994",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "X",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 10
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0995",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XI",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 11
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0996",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XII",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 12
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0997",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XIII",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 13
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0998",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XIV",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 14
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-0999",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XV",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 15
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-1000",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XVI",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 16
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-1001",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XVII",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 17
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-1002",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XVIII",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 18
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-1003",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XIX",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 19
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ },
+ {
+  "id": "RAD-PARSE-1004",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36",
+  "input": {
+   "name": "XX",
+   "facet": "unknown",
+   "fn": "RomanNumeral.ToInt"
+  },
+  "expect": {
+   "number": 20
+  },
+  "note": "expected values from src/NzbDrone.Core.Test/Files/ArabicRomanNumeralDictionary.JSON"
+ }
+]

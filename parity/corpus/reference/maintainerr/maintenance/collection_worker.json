@@ -1,0 +1,219 @@
+[
+ {
+  "expect": {
+   "collectionsRead": false,
+   "events": {
+    "CollectionHandler_Failed": 1,
+    "CollectionHandler_Finished": 1
+   }
+  },
+  "id": "MNT-MAINTENANCE-0160",
+  "input": {
+   "given": {
+    "mediaServer": "unreachable"
+   },
+   "op": "collection_worker_execute"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:78"
+ },
+ {
+  "expect": {
+   "handled": []
+  },
+  "id": "MNT-MAINTENANCE-0162",
+  "input": {
+   "given": {
+    "collections": [
+     {
+      "arrAction": "DELETE",
+      "deleteAfterDays": null
+     }
+    ],
+    "media": [
+     "any"
+    ]
+   },
+   "op": "collection_worker_execute"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:115"
+ },
+ {
+  "expect": {
+   "dueCutoff": {
+    "$now_offset_seconds": -2592000
+   }
+  },
+  "id": "MNT-MAINTENANCE-0165",
+  "input": {
+   "given": {
+    "collections": [
+     {
+      "arrAction": "DELETE",
+      "deleteAfterDays": 30
+     }
+    ],
+    "media": []
+   },
+   "op": "collection_worker_execute"
+  },
+  "note": "The test allows 60 s of slack on the cutoff.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:177"
+ },
+ {
+  "expect": {
+   "handled": [
+    "manual"
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0173",
+  "input": {
+   "given": {
+    "collections": [
+     {
+      "arrAction": "DELETE",
+      "type": "movie"
+     }
+    ],
+    "media": [
+     {
+      "includedByRule": true,
+      "manualMembershipSource": null,
+      "mediaServerId": "rule-owned",
+      "ruleEvaluationFailed": true
+     },
+     {
+      "includedByRule": false,
+      "manualMembershipSource": "LOCAL",
+      "mediaServerId": "manual",
+      "ruleEvaluationFailed": true
+     }
+    ]
+   },
+   "op": "collection_worker_execute"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:331"
+ },
+ {
+  "expect": {
+   "deferredLog": true,
+   "handled": [
+    "idle"
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0174",
+  "input": {
+   "given": {
+    "activeSessions": [
+     "playing"
+    ],
+    "collections": [
+     {
+      "arrAction": "DELETE",
+      "type": "movie"
+     }
+    ],
+    "media": [
+     "playing",
+     "idle"
+    ]
+   },
+   "op": "collection_worker_execute"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:370"
+ },
+ {
+  "expect": {
+   "events": {
+    "CollectionHandler_Failed": [
+     "m"
+    ],
+    "CollectionMedia_Handled": 0
+   },
+   "seerrSync": false
+  },
+  "id": "MNT-MAINTENANCE-0175",
+  "input": {
+   "given": {
+    "collections": [
+     {
+      "arrAction": "DELETE",
+      "type": "show"
+     }
+    ],
+    "handleResult": [
+     "failed"
+    ],
+    "media": [
+     "m"
+    ],
+    "seerrConfigured": true
+   },
+   "op": "collection_worker_execute"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:408"
+ },
+ {
+  "expect": {
+   "events": {
+    "CollectionHandler_Failed": 0,
+    "CollectionMedia_Handled": 0
+   },
+   "seerrSync": false
+  },
+  "id": "MNT-MAINTENANCE-0176",
+  "input": {
+   "given": {
+    "collections": [
+     {
+      "arrAction": "DELETE",
+      "type": "show"
+     }
+    ],
+    "handleResult": [
+     "removed-missing"
+    ],
+    "media": [
+     "m"
+    ],
+    "seerrConfigured": true
+   },
+   "op": "collection_worker_execute"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:438"
+ },
+ {
+  "expect": {
+   "events": {
+    "CollectionHandler_Failed": [
+     "1"
+    ]
+   },
+   "handleCalls": 2,
+   "seerrSync": true
+  },
+  "id": "MNT-MAINTENANCE-0177",
+  "input": {
+   "given": {
+    "collections": [
+     {
+      "arrAction": "DELETE",
+      "type": "show"
+     }
+    ],
+    "handleResult": [
+     {
+      "$throws": "boom"
+     },
+     "handled"
+    ],
+    "media": [
+     "1",
+     "2"
+    ],
+    "seerrConfigured": true
+   },
+   "op": "collection_worker_execute"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-worker.server.spec.ts:466"
+ }
+]

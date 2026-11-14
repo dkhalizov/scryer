@@ -1,0 +1,308 @@
+[
+ {
+  "id": "RAD-DECISION-1029",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:21",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD-R",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "items_allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ]
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the test swaps only the quality of the setup's DVD v2 parsed quality, so the revision stays version 2"
+ },
+ {
+  "id": "RAD-DECISION-1030",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:22",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD-R",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "items_allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ]
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the test swaps only the quality of the setup's DVD v2 parsed quality, so the revision stays version 2"
+ },
+ {
+  "id": "RAD-DECISION-1031",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:23",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD-R",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "items_allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ]
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the test swaps only the quality of the setup's DVD v2 parsed quality, so the revision stays version 2"
+ },
+ {
+  "id": "RAD-DECISION-1032",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:28",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD-R",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "items_allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ]
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the test swaps only the quality of the setup's DVD v2 parsed quality, so the revision stays version 2"
+ },
+ {
+  "id": "RAD-DECISION-1033",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:29",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD-R",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "items_allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ]
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-720p",
+     "revision": {
+      "version": 2
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the test swaps only the quality of the setup's DVD v2 parsed quality, so the revision stays version 2"
+ },
+ {
+  "id": "RAD-DECISION-1034",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:30",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD-R",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "items_allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ]
+    },
+    "parsed_quality": {
+     "quality": "Bluray-720p",
+     "revision": {
+      "version": 2
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the test swaps only the quality of the setup's DVD v2 parsed quality, so the revision stays version 2"
+ }
+]

@@ -1,0 +1,225 @@
+[
+ {
+  "id": "RAD-DECISION-0090",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:64",
+  "input": {
+   "spec": "IndexerTagSpecification",
+   "given": {
+    "indexer": {
+     "id": 1,
+     "tags": []
+    },
+    "unknown_indexer_ids": "ModelNotFoundException",
+    "movie": {
+     "monitored": true,
+     "tags": []
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "search": {
+     "kind": "search"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer 1 is the only known indexer; any other id throws ModelNotFoundException from the factory"
+ },
+ {
+  "id": "RAD-DECISION-0091",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:73",
+  "input": {
+   "spec": "IndexerTagSpecification",
+   "given": {
+    "indexer": {
+     "id": 1,
+     "tags": [
+      123
+     ]
+    },
+    "unknown_indexer_ids": "ModelNotFoundException",
+    "movie": {
+     "monitored": true,
+     "tags": []
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "search": {
+     "kind": "search"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "indexer 1 is the only known indexer; any other id throws ModelNotFoundException from the factory"
+ },
+ {
+  "id": "RAD-DECISION-0092",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:82",
+  "input": {
+   "spec": "IndexerTagSpecification",
+   "given": {
+    "indexer": {
+     "id": 1,
+     "tags": []
+    },
+    "unknown_indexer_ids": "ModelNotFoundException",
+    "movie": {
+     "monitored": true,
+     "tags": [
+      123
+     ]
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "search": {
+     "kind": "search"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer 1 is the only known indexer; any other id throws ModelNotFoundException from the factory"
+ },
+ {
+  "id": "RAD-DECISION-0093",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:91",
+  "input": {
+   "spec": "IndexerTagSpecification",
+   "given": {
+    "indexer": {
+     "id": 1,
+     "tags": [
+      123,
+      456
+     ]
+    },
+    "unknown_indexer_ids": "ModelNotFoundException",
+    "movie": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "search": {
+     "kind": "search"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer 1 is the only known indexer; any other id throws ModelNotFoundException from the factory"
+ },
+ {
+  "id": "RAD-DECISION-0094",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:100",
+  "input": {
+   "spec": "IndexerTagSpecification",
+   "given": {
+    "indexer": {
+     "id": 1,
+     "tags": [
+      456
+     ]
+    },
+    "unknown_indexer_ids": "ModelNotFoundException",
+    "movie": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "search": {
+     "kind": "search"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "indexer 1 is the only known indexer; any other id throws ModelNotFoundException from the factory"
+ },
+ {
+  "id": "RAD-DECISION-0095",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:109",
+  "input": {
+   "spec": "IndexerTagSpecification",
+   "given": {
+    "indexer": {
+     "id": 1,
+     "tags": [
+      456
+     ]
+    },
+    "unknown_indexer_ids": "ModelNotFoundException",
+    "movie": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 0
+    },
+    "search": {
+     "kind": "search",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer 1 is the only known indexer; any other id throws ModelNotFoundException from the factory"
+ },
+ {
+  "id": "RAD-DECISION-0096",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:119",
+  "input": {
+   "spec": "IndexerTagSpecification",
+   "given": {
+    "indexer": {
+     "id": 1,
+     "tags": [
+      456
+     ]
+    },
+    "unknown_indexer_ids": "ModelNotFoundException",
+    "movie": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 2
+    },
+    "search": {
+     "kind": "search",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer 1 is the only known indexer; any other id throws ModelNotFoundException from the factory"
+ }
+]

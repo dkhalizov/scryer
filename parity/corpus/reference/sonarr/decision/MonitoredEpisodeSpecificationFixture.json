@@ -1,0 +1,303 @@
+[
+ {
+  "id": "SON-DECISION-0102",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:63",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "search_criteria": null,
+    "subjects": [
+     {
+      "episodes": [
+       {
+        "monitored": true
+       }
+      ]
+     },
+     {
+      "episodes": [
+       {
+        "monitored": true
+       },
+       {
+        "monitored": true
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted_each": [
+    true,
+    true
+   ]
+  },
+  "note": "One test, two assertions: one subject each."
+ },
+ {
+  "id": "SON-DECISION-0103",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:70",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": false
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search_criteria": null
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0104",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:77",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": false
+     }
+    ],
+    "search_criteria": null
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0105",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:84",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": false
+     },
+     {
+      "monitored": false
+     }
+    ],
+    "search_criteria": null
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0106",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:92",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": false
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search_criteria": null
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0107",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:99",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": false
+     }
+    ],
+    "search_criteria": null
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0108",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:106",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": false
+    },
+    "episodes": [
+     {
+      "monitored": true
+     }
+    ],
+    "search_criteria": {
+     "kind": "single_episode"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0109",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:113",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": true
+     }
+    ],
+    "search_criteria": {
+     "kind": "season"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0110",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:119",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": false
+     }
+    ],
+    "search_criteria": {
+     "kind": "season",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0111",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:126",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": false
+     }
+    ],
+    "search_criteria": {
+     "kind": "single_episode",
+     "monitored_episodes_only": false
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0112",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:133",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": false
+     }
+    ],
+    "search_criteria": {
+     "kind": "single_episode",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0113",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredEpisodeSpecificationFixture.cs:140",
+  "input": {
+   "spec": "MonitoredEpisodeSpecification",
+   "given": {
+    "series": {
+     "monitored": true
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": false
+     }
+    ],
+    "search_criteria": null,
+    "release": {
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

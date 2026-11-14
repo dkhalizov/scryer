@@ -1,0 +1,476 @@
+[
+ {
+  "id": "RAD-IMPORT-0008",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:90",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": false,
+    "root_subfolders": [],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "files_listed": false,
+   "movie_folder_created": false,
+   "records_cleaned": false,
+   "warnings": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0009",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:107",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "files_listed": false,
+   "movie_folder_created": false,
+   "records_cleaned": false,
+   "import_decisions_requested": false,
+   "warnings": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0010",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:129",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/OtherMovie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [],
+    "create_empty_movie_folders": true
+   }
+  },
+  "expect": {
+   "movie_folder_created": true
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0011",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:144",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/EXTRAS/file1.mkv",
+     "/C/Test/Movies/Movie/Extras/file2.mkv",
+     "/C/Test/Movies/Movie/EXTRAs/file3.mkv",
+     "/C/Test/Movies/Movie/ExTrAs/file4.mkv",
+     "/C/Test/Movies/Movie/Season 1/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value). The test also asserts the disk is listed exactly twice (an implementation detail, not ported)."
+ },
+ {
+  "id": "RAD-IMPORT-0012",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:167",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/Behind the Scenes/file1.mkv",
+     "/C/Test/Movies/Movie/Deleted Scenes/file2.mkv",
+     "/C/Test/Movies/Movie/Featurettes/file3.mkv",
+     "/C/Test/Movies/Movie/Interviews/file4.mkv",
+     "/C/Test/Movies/Movie/Sample/file5.mkv",
+     "/C/Test/Movies/Movie/Samples/file6.mkv",
+     "/C/Test/Movies/Movie/Scenes/file7.mkv",
+     "/C/Test/Movies/Movie/Shorts/file8.mkv",
+     "/C/Test/Movies/Movie/Trailers/file9.mkv",
+     "/C/Test/Movies/Movie/Other/file9.mkv",
+     "/C/Test/Movies/Movie/The Count of Monte Cristo (2002) (1080p BluRay x265 10bit Tigole).mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0013",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:193",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/Featurettes/An Epic Reborn.mkv",
+     "/C/Test/Movies/Movie/Featurettes/Deleted & Alternate Scenes.mkv",
+     "/C/Test/Movies/Movie/Featurettes/En Garde - Multi-Angle Dailies.mkv",
+     "/C/Test/Movies/Movie/Featurettes/Layer-By-Layer - Sound Design - Multiple Audio.mkv",
+     "/C/Test/Movies/Movie/The Count of Monte Cristo (2002) (1080p BluRay x265 10bit Tigole).mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0014",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:213",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/OtherMovie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "movie_folder_created": false
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0015",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:228",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/OtherMovie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "records_cleaned": true,
+   "import_decisions_requested": false
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value). The test also asserts the movie folder's existence is checked exactly once (an implementation detail, not ported)."
+ },
+ {
+  "id": "RAD-IMPORT-0016",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:245",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/.AppleDouble/file1.mkv",
+     "/C/Test/Movies/Movie/.appledouble/file2.mkv",
+     "/C/Test/Movies/Movie/Season 1/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0017",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:263",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Extras"
+    ],
+    "movie_path": "/C/Test/Movies/Extras",
+    "files": [
+     "/C/Test/Movies/Extras/Extras/file1.mkv",
+     "/C/Test/Movies/Extras/.AppleDouble/file2.mkv",
+     "/C/Test/Movies/Extras/Season 1/s01e01.mkv",
+     "/C/Test/Movies/Extras/Season 1/s01e02.mkv",
+     "/C/Test/Movies/Extras/Season 2/s02e01.mkv",
+     "/C/Test/Movies/Extras/Season 2/s02e02.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 4
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0018",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:286",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/.@__thumb/file1.mkv",
+     "/C/Test/Movies/Movie/.@__THUMB/file2.mkv",
+     "/C/Test/Movies/Movie/.hidden/file2.mkv",
+     "/C/Test/Movies/Movie/Season 1/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0019",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:305",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/Season 1/.@__thumb/file1.mkv",
+     "/C/Test/Movies/Movie/Season 1/.@__THUMB/file2.mkv",
+     "/C/Test/Movies/Movie/Season 1/.hidden/file2.mkv",
+     "/C/Test/Movies/Movie/Season 1/.AppleDouble/s01e01.mkv",
+     "/C/Test/Movies/Movie/Season 1/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0020",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:325",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/@eaDir/file1.mkv",
+     "/C/Test/Movies/Movie/Season 1/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0021",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:342",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/.@__thumb/file1.mkv",
+     "/C/Test/Movies/Movie/Season 1/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0022",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:359",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/TV/.hack"
+    ],
+    "movie_path": "/C/Test/TV/.hack",
+    "files": [
+     "/C/Test/TV/.hack/Season 1/file1.mkv",
+     "/C/Test/TV/.hack/Season 1/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 2
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0023",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:378",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/file1.mkv",
+     "/C/Test/Movies/Movie/s01e01.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 2
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0024",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:395",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/Avatar (2009).mkv",
+     "/C/Test/Movies/Movie/Deleted Scenes-deleted.mkv",
+     "/C/Test/Movies/Movie/The World of Pandora-other.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0025",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:413",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/._24 The Status Quo Combustion.mp4",
+     "/C/Test/Movies/Movie/24 The Status Quo Combustion.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ },
+ {
+  "id": "RAD-IMPORT-0026",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:430",
+  "input": {
+   "op": "disk_scan",
+   "given": {
+    "root_folder": "/C/Test/Movies",
+    "root_folder_exists": true,
+    "root_subfolders": [
+     "/C/Test/Movies/Movie"
+    ],
+    "movie_path": "/C/Test/Movies/Movie",
+    "files": [
+     "/C/Test/Movies/Movie/.DS_Store",
+     "/C/Test/Movies/Movie/.unmanic",
+     "/C/Test/Movies/Movie/.unmanic.part",
+     "/C/Test/Movies/Movie/24 The Status Quo Combustion.mkv"
+    ],
+    "create_empty_movie_folders": false
+   }
+  },
+  "expect": {
+   "import_candidates": 1,
+   "possible_extra_files": 0
+  },
+  "note": "The root folder exists only when the test lists its subfolders; a listed subfolder exists, anything else does not. import_candidates is the number of files handed to import decisions. Unmocked IConfigService members return their default (0 / false / first enum value)."
+ }
+]

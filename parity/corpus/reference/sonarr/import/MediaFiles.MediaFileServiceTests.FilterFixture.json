@@ -1,0 +1,131 @@
+[
+ {
+  "id": "SON-IMPORT-0243",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:29",
+  "input": {
+   "op": "MediaFileService.FilterExistingFiles",
+   "given": {
+    "series": {
+     "id": 10,
+     "path": "/C/"
+    },
+    "files": [
+     "/C/file1.avi",
+     "/C/file2.avi",
+     "/C/file3.avi"
+    ],
+    "existing_relative_paths": []
+   }
+  },
+  "expect": {
+   "result_equivalent_to": [
+    "/C/file1.avi",
+    "/C/file2.avi",
+    "/C/file3.avi"
+   ]
+  }
+ },
+ {
+  "id": "SON-IMPORT-0244",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:46",
+  "input": {
+   "op": "MediaFileService.FilterExistingFiles",
+   "given": {
+    "series": {
+     "id": 10,
+     "path": "/C/"
+    },
+    "files": [
+     "/C/file1.avi",
+     "/C/file2.avi",
+     "/C/file3.avi"
+    ],
+    "existing_relative_paths": [
+     "file1.avi",
+     "file2.avi",
+     "file3.avi"
+    ]
+   }
+  },
+  "expect": {
+   "result": []
+  }
+ },
+ {
+  "id": "SON-IMPORT-0245",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:63",
+  "input": {
+   "op": "MediaFileService.FilterExistingFiles",
+   "given": {
+    "series": {
+     "id": 10,
+     "path": "/C/"
+    },
+    "files": [
+     "/C/file1.avi",
+     "/C/file2.avi",
+     "/C/file3.avi"
+    ],
+    "existing_relative_paths": [
+     "file2.avi"
+    ]
+   }
+  },
+  "expect": {
+   "count": 2,
+   "excludes": [
+    "/C/file2.avi"
+   ]
+  }
+ },
+ {
+  "id": "SON-IMPORT-0247",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:107",
+  "input": {
+   "op": "MediaFileService.FilterExistingFiles",
+   "given": {
+    "series": {
+     "id": 10,
+     "path": "/C/"
+    },
+    "files": [
+     "/C/file1.avi",
+     "/C/FILE2.avi",
+     "/C/file3.avi"
+    ],
+    "existing_relative_paths": [
+     "file2.avi"
+    ]
+   }
+  },
+  "expect": {
+   "count": 3
+  }
+ },
+ {
+  "id": "SON-IMPORT-0248",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:129",
+  "input": {
+   "op": "MediaFileService.FilterExistingFiles",
+   "given": {
+    "series": {
+     "id": 10,
+     "path": "/C/"
+    },
+    "files": [
+     "/C/FILE1.avi"
+    ],
+    "existing_relative_paths": []
+   }
+  },
+  "expect": {
+   "count": 1,
+   "contains": [
+    "/C/FILE1.avi"
+   ],
+   "excludes": [
+    "/c/file1.avi"
+   ]
+  }
+ }
+]

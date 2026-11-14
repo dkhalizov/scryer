@@ -1,0 +1,13 @@
+#!/bin/sh
+# fork: refuse to push the pre-squash history (own/main-private-history,
+# ledger D45): every commit built on the first notes commit carries notes/
+# and captured data.
+first_notes=24f405087
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = 0000000000000000000000000000000000000000 ] && continue
+  if git merge-base --is-ancestor "$first_notes" "$local_sha" 2>/dev/null; then
+    echo "pre-push: $local_ref contains the private pre-squash history (notes, captured data). Push refused (ledger D45)." >&2
+    exit 1
+  fi
+done
+exit 0

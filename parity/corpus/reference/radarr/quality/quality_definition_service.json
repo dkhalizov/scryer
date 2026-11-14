@@ -1,0 +1,85 @@
+[
+ {
+  "id": "RAD-QUALITY-0041",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:13",
+  "input": {
+   "op": "definition_init",
+   "given": {
+    "existing_definitions": []
+   }
+  },
+  "expect": {
+   "inserted": 30
+  },
+  "note": "Quality.All has 30 qualities (src/NzbDrone.Core/Qualities/Quality.cs:128)."
+ },
+ {
+  "id": "RAD-QUALITY-0042",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:22",
+  "input": {
+   "op": "definition_init",
+   "given": {
+    "existing_definitions": [
+     {
+      "quality": "SDTV",
+      "weight": 1,
+      "min_size": 0,
+      "max_size": 100,
+      "id": 20
+     }
+    ]
+   }
+  },
+  "expect": {
+   "inserted": 29
+  },
+  "note": "Quality.All has 30 qualities (src/NzbDrone.Core/Qualities/Quality.cs:128)."
+ },
+ {
+  "id": "RAD-QUALITY-0043",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:38",
+  "input": {
+   "op": "definition_init",
+   "given": {
+    "existing_definitions": [
+     {
+      "quality": "SDTV",
+      "weight": 1,
+      "min_size": 0,
+      "max_size": 100,
+      "id": 20
+     }
+    ]
+   }
+  },
+  "expect": {
+   "updated": 1
+  },
+  "note": "Quality.All has 30 qualities (src/NzbDrone.Core/Qualities/Quality.cs:128)."
+ },
+ {
+  "id": "RAD-QUALITY-0044",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/QualityDefinitionServiceFixture.cs:54",
+  "input": {
+   "op": "definition_init",
+   "given": {
+    "existing_definitions": [
+     {
+      "quality": {
+       "id": 100,
+       "name": "Test"
+      },
+      "weight": 1,
+      "min_size": 0,
+      "max_size": 100,
+      "id": 20
+     }
+    ]
+   }
+  },
+  "expect": {
+   "deleted": 1
+  },
+  "note": "Quality.All has 30 qualities (src/NzbDrone.Core/Qualities/Quality.cs:128)."
+ }
+]

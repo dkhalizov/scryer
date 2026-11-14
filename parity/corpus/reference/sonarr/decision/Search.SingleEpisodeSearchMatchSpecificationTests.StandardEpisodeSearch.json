@@ -1,0 +1,145 @@
+[
+ {
+  "id": "SON-DECISION-1232",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:29",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "season": 10,
+     "episodes": [
+      1
+     ],
+     "mapped_season": 10
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "season": 5,
+     "episode": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1233",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:38",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "season": 10,
+     "episodes": [
+      1
+     ],
+     "mapped_season": 5
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "season": 10,
+     "episode": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1234",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:48",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "season": 10,
+     "episodes": [
+      1
+     ],
+     "mapped_season": 6
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "season": 9,
+     "episode": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1235",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:58",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "season": 5,
+     "episodes": [],
+     "mapped_season": 5
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "season": 5,
+     "episode": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1236",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:66",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "season": 5,
+     "episodes": [
+      2
+     ],
+     "mapped_season": 5
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "season": 5,
+     "episode": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1237",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SingleEpisodeSearchMatchSpecificationTests/StandardEpisodeSearch.cs:74",
+  "input": {
+   "spec": "Search.SingleEpisodeSearchMatchSpecification",
+   "given": {
+    "release": {
+     "season": 5,
+     "episodes": [
+      1
+     ],
+     "mapped_season": 5
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "season": 5,
+     "episode": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test only uses the SetUp facts (a S05E01 release, a S05E01 search) despite its name."
+ }
+]

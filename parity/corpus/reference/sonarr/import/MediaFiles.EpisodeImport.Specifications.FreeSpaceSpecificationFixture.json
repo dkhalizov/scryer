@@ -1,0 +1,166 @@
+[
+ {
+  "id": "SON-IMPORT-0173",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:61",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 0
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "size": 104857600,
+    "available_space": 83886080
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0174",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:71",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 100
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "size": 104857600,
+    "available_space": 157286400
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0175",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:84",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 0
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "size": 104857600,
+    "available_space": 1073741824
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0176",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:93",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 0
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "size": 104857600,
+    "available_space": 1073741824
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "calls": {
+    "GetAvailableSpace(/C/Test/TV)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0177",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:105",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 0
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "size": 104857600,
+    "available_space": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0178",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:114",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 0
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "size": 104857600,
+    "available_space": "throws"
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0179",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:127",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 0
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "existing_file": true
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "calls": {
+    "GetAvailableSpace(any)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0180",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:138",
+  "input": {
+   "op": "FreeSpaceSpecification",
+   "given": {
+    "config": {
+     "minimum_free_space_when_importing_mib": 0
+    },
+    "root_folder": "/C/Test/TV",
+    "series_path": "/C/Test/TV/30 Rock",
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "available_space": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

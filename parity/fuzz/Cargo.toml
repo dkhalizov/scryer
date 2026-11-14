@@ -1,0 +1,69 @@
+# Parity net, phase 5: fuzz targets for naming and the library scan path
+# (notes/11-parity-net-design.md § Checks beyond examples). Standalone crate,
+# own workspace and lockfile, never a member of the root workspace.
+#
+# Usage, from the repo root. Toolchain: nightly-2026-08-21 (nightly
+# 2026-10-31 hits a rustc query cycle compiling russh). RUSTFLAGS lets
+# gotatun's cdylib (via proxy-tunnels) link without the sancov symbols that
+# libFuzzer only provides in the final binary.
+#   export PATH=~/.rustup/toolchains/nightly-2026-08-21-aarch64-apple-darwin/bin:~/.cargo/bin:$PATH
+#   export RUSTFLAGS="-Clink-arg=-Wl,-undefined,dynamic_lookup"; unset CARGO_TARGET_DIR
+#   cargo fuzz run --fuzz-dir parity/fuzz -s none --target-dir parity/fuzz/target naming \
+#     parity/fuzz/corpus/naming -- -dict=parity/fuzz/naming.dict -max_total_time=300
+#   cargo fuzz run --fuzz-dir parity/fuzz -s none --target-dir parity/fuzz/target scan_path \
+#     parity/fuzz/corpus/scan_path -- -max_total_time=300
+# Known red (scan_path): a season of 10000+ is accepted (artifacts/scan_path/).
+# To look for other failures past it: run the built binary with
+#   -fork=1 -ignore_crashes=1 -artifact_prefix=<scratch dir>/
+# Builds land in parity/fuzz/target (ignored by **/target). Crashes go to
+# parity/fuzz/artifacts/<target>/; a crash is a finding, keep the minimized
+# input (cargo fuzz tmin) and report it. -s none: the fuzzed code (rename,
+# filename_parser, the release parser) has no unsafe; ASan would add a long
+# build and catch nothing the panic checks miss.
+# Parser targets live in crates/scryer-release-parser/fuzz; their run copies
+# are under parity/fuzz/corpus/parser/<target>/ (never write into the crate's
+# own corpus). parity/fuzz/corpus/ is gitignored: seed it locally with the
+# release names in parity/corpus/reference/*/{parse,scan} (merged with
+# -merge=1), so repeated-episode, range and anime shapes are reached at load,
+# not by luck. Never seed it from corpus/captured (captured data stays there):
+#   cargo fuzz build --fuzz-dir crates/scryer-release-parser/fuzz -s none \
+#     --target-dir target-parity-b/fuzz-parser-nosan
+#   <bin>/analyze_release_against_targets -seed=1 -max_total_time=300 \
+#     -fork=1 -ignore_ooms=1 -ignore_crashes=1 -artifact_prefix=<scratch>/ \
+#     parity/fuzz/corpus/parser/analyze_release_against_targets
+# Known red (both parser targets): artifacts/parser/*/ hold an OOM from an
+# unbounded episode range collected in build_candidate ("1-4000000000") and a
+# u32 underflow in extend_repeated_episodes ("e16E1-6": episodes [16, 1], then
+# "-6" passes 6 > previous but 6 - first underflows; panics where overflow
+# checks are on, wraps and breaks in release). Keep both inputs out of the
+# corpus dirs so a corpus replay (-runs=0) still flags new regressions.
+
+[package]
+name = "scryer-parity-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+scryer-application = { path = "../../crates/scryer-application" }
+
+[[bin]]
+name = "naming"
+path = "fuzz_targets/naming.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "scan_path"
+path = "fuzz_targets/scan_path.rs"
+test = false
+doc = false
+bench = false
+
+[workspace]
+members = []

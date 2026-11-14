@@ -1,0 +1,340 @@
+[
+ {
+  "expect": {
+   "mediaServerDeleteFromDisk": true,
+   "removeFromCollection": 1,
+   "result": "handled"
+  },
+  "id": "MNT-MAINTENANCE-0131",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "type": "show"
+    }
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:101"
+ },
+ {
+  "expect": {
+   "markedHandled": [
+    42,
+    43
+   ],
+   "order": [
+    "removeFromCollection",
+    "removeMediaFromOtherCollections"
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0132",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "type": "show"
+    },
+    "siblingsListingItem": [
+     42,
+     43
+    ]
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:122"
+ },
+ {
+  "expect": {
+   "order": [
+    "radarrHandleAction",
+    "removeFromCollection"
+   ],
+   "removeFromCollection": 1,
+   "result": "handled"
+  },
+  "id": "MNT-MAINTENANCE-0136",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "radarrResult": true
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:242"
+ },
+ {
+  "expect": {
+   "order": [
+    "radarrHandleAction",
+    "scanFolder"
+   ],
+   "scanFolder": {
+    "folder": "/media/movies/Movie A (2021)",
+    "libraryId": {
+     "$given": "collection.libraryId"
+    }
+   }
+  },
+  "id": "MNT-MAINTENANCE-0137",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "itemPath": "/media/movies/Movie A (2021)/Movie A (2021).mkv",
+    "radarrResult": true
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:273"
+ },
+ {
+  "expect": {
+   "order": [
+    "radarrHandleAction",
+    "scanFolder"
+   ],
+   "scanFolder": {
+    "folder": "C:\\Media\\Movie A (2021)",
+    "libraryId": {
+     "$given": "collection.libraryId"
+    }
+   }
+  },
+  "id": "MNT-MAINTENANCE-0138",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "itemPath": "C:\\Media\\Movie A (2021)\\Movie A (2021).mkv",
+    "radarrResult": true
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:277"
+ },
+ {
+  "expect": {
+   "result": "handled",
+   "scanFolder": false
+  },
+  "id": "MNT-MAINTENANCE-0140",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "itemMetadata": {
+     "$throws": "offline"
+    },
+    "radarrResult": true
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:346"
+ },
+ {
+  "expect": {
+   "result": "handled",
+   "warned": true
+  },
+  "id": "MNT-MAINTENANCE-0141",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "itemPath": "/media/movies/Movie A (2021)/Movie A (2021).mkv",
+    "radarrResult": true,
+    "scanFolder": {
+     "$throws": "offline"
+    }
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:369"
+ },
+ {
+  "expect": {
+   "logRecord": false,
+   "removeFromCollection": 0,
+   "result": "failed",
+   "saveCollection": false
+  },
+  "id": "MNT-MAINTENANCE-0142",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "radarrResult": false
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:398"
+ },
+ {
+  "expect": {
+   "logRecord": false,
+   "markedHandled": [
+    42,
+    {
+     "$given": "collection.id"
+    }
+   ],
+   "removeFromCollection": {
+    "scope": "all"
+   },
+   "result": "removed-missing",
+   "saveCollection": false
+  },
+  "id": "MNT-MAINTENANCE-0143",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "show"
+    },
+    "itemExists": false,
+    "siblingsListingItem": [
+     42
+    ],
+    "sonarrResult": false
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:425"
+ },
+ {
+  "expect": {
+   "removeFromCollection": 0,
+   "removeMediaFromOtherCollections": false,
+   "result": "failed"
+  },
+  "id": "MNT-MAINTENANCE-0144",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "sonarrSettingsId": 1,
+     "type": "show"
+    },
+    "itemExists": {
+     "$throws": "media server down"
+    },
+    "sonarrResult": false
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:478"
+ },
+ {
+  "expect": {
+   "saveCollection": {
+    "handledMediaAmount": 1,
+    "mediaServerId": null
+   }
+  },
+  "id": "MNT-MAINTENANCE-0150",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "mediaServerId": "dead-boxset-id",
+     "type": "movie"
+    },
+    "removeFromCollectionReturns": {
+     "mediaServerId": null
+    }
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:667"
+ },
+ {
+  "expect": {
+   "ombiRemoveMedia": false,
+   "result": "handled",
+   "seerrRemoveMedia": false,
+   "seerrRemoveSeason": false
+  },
+  "id": "MNT-MAINTENANCE-0155",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "forceOmbi": false,
+     "forceSeerr": false,
+     "type": "movie"
+    },
+    "ombiConfigured": true,
+    "seerrConfigured": true
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:821"
+ },
+ {
+  "expect": {
+   "resolveItemSize": false,
+   "saveCollection": {
+    "handledMediaAmount": 1,
+    "handledMediaSizeBytes": 1500000000
+   }
+  },
+  "id": "MNT-MAINTENANCE-0157",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "type": "episode"
+    },
+    "sizeBytes": 1500000000
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:877"
+ },
+ {
+  "expect": {
+   "order": [
+    "resolveItemSize",
+    "deleteFromDisk"
+   ],
+   "saveCollection": {
+    "handledMediaAmount": 1,
+    "handledMediaSizeBytes": 2000000000
+   }
+  },
+  "id": "MNT-MAINTENANCE-0158",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "type": "episode"
+    },
+    "resolvedSize": 2000000000,
+    "sizeBytes": null
+   },
+   "op": "collection_handle_media"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/collections/collection-handler.spec.ts:903"
+ }
+]

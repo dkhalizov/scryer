@@ -1,0 +1,74 @@
+[
+ {
+  "id": "SON-PARSE-0587",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:10",
+  "input": {
+   "name": "Episode Title",
+   "facet": "unknown",
+   "fn": "Parser.NormalizeEpisodeTitle"
+  },
+  "expect": {
+   "normalized_episode_title": "episode title"
+  }
+ },
+ {
+  "id": "SON-PARSE-0588",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:11",
+  "input": {
+   "name": "A.B,C;",
+   "facet": "unknown",
+   "fn": "Parser.NormalizeEpisodeTitle"
+  },
+  "expect": {
+   "normalized_episode_title": "a b c"
+  }
+ },
+ {
+  "id": "SON-PARSE-0589",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:12",
+  "input": {
+   "name": "Episode  Title",
+   "facet": "unknown",
+   "fn": "Parser.NormalizeEpisodeTitle"
+  },
+  "expect": {
+   "normalized_episode_title": "episode title"
+  }
+ },
+ {
+  "id": "SON-PARSE-0590",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:13",
+  "input": {
+   "name": "French Title (1)",
+   "facet": "unknown",
+   "fn": "Parser.NormalizeEpisodeTitle"
+  },
+  "expect": {
+   "normalized_episode_title": "french title"
+  }
+ },
+ {
+  "id": "SON-PARSE-0591",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:14",
+  "input": {
+   "name": "Series.Title.S01.Special.Episode.Title.720p.HDTV.x264-Sonarr",
+   "facet": "unknown",
+   "fn": "Parser.NormalizeEpisodeTitle"
+  },
+  "expect": {
+   "normalized_episode_title": "episode title"
+  }
+ },
+ {
+  "id": "SON-PARSE-0592",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:15",
+  "input": {
+   "name": "Series.Title.S01E00.Episode.Title.720p.HDTV.x264-Sonarr",
+   "facet": "unknown",
+   "fn": "Parser.NormalizeEpisodeTitle"
+  },
+  "expect": {
+   "normalized_episode_title": "episode title"
+  }
+ }
+]

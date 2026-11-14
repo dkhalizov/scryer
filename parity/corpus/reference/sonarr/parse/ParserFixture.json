@@ -1,0 +1,655 @@
+[
+ {
+  "id": "SON-PARSE-0635",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:13",
+  "input": {
+   "name": "Series Title - 4x05 - Title",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "seriestitle"
+  }
+ },
+ {
+  "id": "SON-PARSE-0636",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:14",
+  "input": {
+   "name": "Series & Title - 4x05 - Title",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "seriestitle"
+  }
+ },
+ {
+  "id": "SON-PARSE-0637",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:15",
+  "input": {
+   "name": "Bad Format",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "badformat"
+  }
+ },
+ {
+  "id": "SON-PARSE-0638",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:16",
+  "input": {
+   "name": "Mad Series - Season 1 [Bluray720p]",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "madseries"
+  }
+ },
+ {
+  "id": "SON-PARSE-0639",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:17",
+  "input": {
+   "name": "Mad Series - Season 1 [Bluray1080p]",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "madseries"
+  }
+ },
+ {
+  "id": "SON-PARSE-0640",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:18",
+  "input": {
+   "name": "The Daily Series -",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "thedailyseries"
+  }
+ },
+ {
+  "id": "SON-PARSE-0641",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:19",
+  "input": {
+   "name": "The Series Bros. (2006)",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "theseriesbros2006"
+  }
+ },
+ {
+  "id": "SON-PARSE-0642",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:20",
+  "input": {
+   "name": "Series (2011)",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "series2011"
+  }
+ },
+ {
+  "id": "SON-PARSE-0643",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:21",
+  "input": {
+   "name": "Series Time S02 720p HDTV x264 CRON",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "seriestime"
+  }
+ },
+ {
+  "id": "SON-PARSE-0644",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:22",
+  "input": {
+   "name": "Series Title 0",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "seriestitle0"
+  }
+ },
+ {
+  "id": "SON-PARSE-0645",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:23",
+  "input": {
+   "name": "Series of the Day",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "seriesday"
+  }
+ },
+ {
+  "id": "SON-PARSE-0646",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:24",
+  "input": {
+   "name": "Series of the Day 2",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "seriesday2"
+  }
+ },
+ {
+  "id": "SON-PARSE-0647",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:25",
+  "input": {
+   "name": "[ www.Torrenting.com ] - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "series"
+  }
+ },
+ {
+  "id": "SON-PARSE-0648",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:26",
+  "input": {
+   "name": "www.Torrenting.com - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "series"
+  }
+ },
+ {
+  "id": "SON-PARSE-0649",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:27",
+  "input": {
+   "name": "Series S02E09 HDTV x264-2HD [eztv]-[rarbg.com]",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "series"
+  }
+ },
+ {
+  "id": "SON-PARSE-0650",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:28",
+  "input": {
+   "name": "Series.911.S01.DVDRip.DD2.0.x264-DEEP",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "series 911"
+  }
+ },
+ {
+  "id": "SON-PARSE-0651",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:29",
+  "input": {
+   "name": "www.Torrenting.org - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "series"
+  }
+ },
+ {
+  "id": "SON-PARSE-0652",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:36",
+  "input": {
+   "name": "Series S03E14 720p HDTV X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0653",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:37",
+  "input": {
+   "name": "Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0654",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:38",
+  "input": {
+   "name": "Series-S03E14-720p-HDTV-X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0655",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:39",
+  "input": {
+   "name": "Series_S03E14_720p_HDTV_X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0656",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:40",
+  "input": {
+   "name": "Series 2022 S03E14 720p HDTV X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0657",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:41",
+  "input": {
+   "name": "Series (2022) S03E14 720p HDTV X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0658",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:42",
+  "input": {
+   "name": "Series.2022.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0659",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:43",
+  "input": {
+   "name": "Series-2022-S03E14-720p-HDTV-X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0660",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:44",
+  "input": {
+   "name": "Series_2022_S03E14_720p_HDTV_X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0661",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:45",
+  "input": {
+   "name": "1234 S03E14 720p HDTV X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0662",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:46",
+  "input": {
+   "name": "1234.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0663",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:47",
+  "input": {
+   "name": "1234-S03E14-720p-HDTV-X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0664",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:48",
+  "input": {
+   "name": "1234_S03E14_720p_HDTV_X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0665",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:49",
+  "input": {
+   "name": "1234 2022 S03E14 720p HDTV X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0666",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:50",
+  "input": {
+   "name": "1234 (2022) S03E14 720p HDTV X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0667",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:51",
+  "input": {
+   "name": "1234.2022.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0668",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:52",
+  "input": {
+   "name": "1234-2022-S03E14-720p-HDTV-X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0669",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:53",
+  "input": {
+   "name": "1234_2022_S03E14_720p_HDTV_X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "1234",
+    "year": 2022
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0670",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:61",
+  "input": {
+   "name": "Seriàes",
+   "facet": "unknown",
+   "fn": "Parser.CleanSeriesTitle"
+  },
+  "expect": {
+   "clean_title": "seriaes"
+  }
+ },
+ {
+  "id": "SON-PARSE-0671",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:69",
+  "input": {
+   "name": "Sonar TV - Series Title : 02 Road From Code [S04].mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "no_error": true
+  },
+  "note": "the test only asserts that parsing does not throw"
+ },
+ {
+  "id": "SON-PARSE-0672",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:75",
+  "input": {
+   "name": "[scnzbefnet][509103] 2.Developers.Series.S03E18.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "2 Developers Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-0673",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:81",
+  "input": {
+   "name": "Series.S01E02.Chained.Title.mkv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "quality": {
+    "is_unknown": false,
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Extension"
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0674",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:82",
+  "input": {
+   "name": "Show - S01E01 - Title.avi",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "quality": {
+    "is_unknown": false,
+    "source_detection_source": "Extension",
+    "resolution_detection_source": "Extension"
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0675",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:90",
+  "input": {
+   "name": "Series.S01E02.Chained.Title.mkv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_title": "Series.S01E02.Chained.Title"
+  }
+ },
+ {
+  "id": "SON-PARSE-0676",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:97",
+  "input": {
+   "name": "Босх: Спадок (S2E1) / Series: Legacy (S2E1) (2023) WEB-DL 1080p Ukr/Eng | sub Eng",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "all_titles": [
+     "Босх: Спадок",
+     "Series: Legacy"
+    ]
+   }
+  },
+  "note": "series_title_info.all_titles compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "series_title_info.all_titles": "unordered"
+  }
+ },
+ {
+  "id": "SON-PARSE-0677",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:98",
+  "input": {
+   "name": "Босх: Спадок / Series: Legacy / S2E1-4 of 10 (2023) WEB-DL 1080p Ukr/Eng | sub Eng",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "all_titles": [
+     "Босх: Спадок",
+     "Series: Legacy"
+    ]
+   }
+  },
+  "note": "series_title_info.all_titles compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "series_title_info.all_titles": "unordered"
+  }
+ },
+ {
+  "id": "SON-PARSE-0678",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:99",
+  "input": {
+   "name": "Босх: Спадок AKA Series: Legacy S02 1080p NF WEB-DL Dual- Audio DD+ 5.1 Atmos H.264-APEX",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "all_titles": [
+     "Босх: Спадок",
+     "Series: Legacy"
+    ]
+   }
+  },
+  "note": "series_title_info.all_titles compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "series_title_info.all_titles": "unordered"
+  }
+ },
+ {
+  "id": "SON-PARSE-0679",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:100",
+  "input": {
+   "name": "Босх.Спадок.AKA.Series.Legacy.S02.1080p.NF.WEB-DL.DUAL.DDP5.1.Atmos.H.264-APEX",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "all_titles": [
+     "Босх Спадок",
+     "Series Legacy"
+    ]
+   }
+  },
+  "note": "series_title_info.all_titles compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "series_title_info.all_titles": "unordered"
+  }
+ },
+ {
+  "id": "SON-PARSE-0680",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:107",
+  "input": {
+   "name": "[Reza] Series in Russian - S01E08 [WEBRip 1080p HEVC AAC] (Dual Audio) (Tokidoki Bosotto Russiago de Dereru Tonari no Alya-san)",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "languages": [
+    "Unknown"
+   ]
+  }
+ }
+]

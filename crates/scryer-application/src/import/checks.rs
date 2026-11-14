@@ -94,7 +94,10 @@ fn disk_space_verdict(available: u64, source_size: u64) -> ImportVerdict {
     }
 }
 
-fn disk_space_verdict_for_measurement(available: Option<u64>, source_size: u64) -> ImportVerdict {
+pub fn disk_space_verdict_for_measurement(
+    available: Option<u64>,
+    source_size: u64,
+) -> ImportVerdict {
     available
         .map(|available| disk_space_verdict(available, source_size))
         .unwrap_or(ImportVerdict::Accept)

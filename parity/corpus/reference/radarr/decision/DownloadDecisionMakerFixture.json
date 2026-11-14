@@ -1,0 +1,159 @@
+[
+ {
+  "id": "RAD-DECISION-0030",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:81",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "mode": "rss",
+    "reports": [
+     "Trolls.2016.720p.WEB-DL.DD5.1.H264-FGT"
+    ],
+    "specs": [
+     "fail"
+    ]
+   }
+  },
+  "expect": {
+   "approved": false
+  },
+  "note": "specs are mock specifications: pass = Accept, fail = Reject(Unknown, failN); mapping is mocked to return a movie unless mapped_movie is null"
+ },
+ {
+  "id": "RAD-DECISION-0031",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:91",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "mode": "rss",
+    "reports": [
+     "Trolls.2016.720p.WEB-DL.DD5.1.H264-FGT"
+    ],
+    "specs": [
+     "pass",
+     "fail",
+     "pass",
+     "pass"
+    ]
+   }
+  },
+  "expect": {
+   "approved": false
+  },
+  "note": "specs are mock specifications: pass = Accept, fail = Reject(Unknown, failN); mapping is mocked to return a movie unless mapped_movie is null"
+ },
+ {
+  "id": "RAD-DECISION-0032",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:101",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "mode": "rss",
+    "reports": [
+     "Trolls.2016.720p.WEB-DL.DD5.1.H264-FGT"
+    ],
+    "specs": [
+     "pass",
+     "pass",
+     "pass"
+    ]
+   }
+  },
+  "expect": {
+   "approved": true
+  },
+  "note": "specs are mock specifications: pass = Accept, fail = Reject(Unknown, failN); mapping is mocked to return a movie unless mapped_movie is null"
+ },
+ {
+  "id": "RAD-DECISION-0033",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:111",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "mode": "rss",
+    "reports": [
+     "Trolls.2016.720p.WEB-DL.DD5.1.H264-FGT"
+    ],
+    "specs": [
+     "pass",
+     "pass",
+     "pass",
+     "fail",
+     "fail",
+     "fail"
+    ]
+   }
+  },
+  "expect": {
+   "rejection_count": 3
+  },
+  "note": "specs are mock specifications: pass = Accept, fail = Reject(Unknown, failN); mapping is mocked to return a movie unless mapped_movie is null"
+ },
+ {
+  "id": "RAD-DECISION-0038",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:186",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "mode": "rss",
+    "reports": [
+     "Trolls.2016.720p.WEB-DL.DD5.1.H264-FGT"
+    ],
+    "specs": [
+     "pass",
+     "pass",
+     "pass"
+    ],
+    "mapped_movie": null
+   }
+  },
+  "expect": {
+   "decision_count": 1
+  },
+  "note": "despite the name, only the decision count is asserted; specs are mock specifications: pass = Accept, fail = Reject(Unknown, failN); mapping is mocked to return a movie unless mapped_movie is null"
+ },
+ {
+  "id": "RAD-DECISION-0039",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:198",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "mode": "rss",
+    "reports": [
+     "Trolls.2016.720p.WEB-DL.DD5.1.H264-FGT"
+    ],
+    "specs": [
+     "pass",
+     "pass",
+     "pass"
+    ],
+    "mapped_movie": null
+   }
+  },
+  "expect": {
+   "decision_count": 1
+  },
+  "note": "the DownloadAllowed assertion is commented out in the reference; only the count is asserted; specs are mock specifications: pass = Accept, fail = Reject(Unknown, failN); mapping is mocked to return a movie unless mapped_movie is null"
+ },
+ {
+  "id": "RAD-DECISION-0041",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/DownloadDecisionMakerFixture.cs:227",
+  "input": {
+   "spec": "DownloadDecisionMaker",
+   "given": {
+    "mode": "rss",
+    "reports": [
+     "Trolls.2016.720p.WEB-DL.DD5.1.H264-FGT"
+    ],
+    "specs": [
+     "pass"
+    ],
+    "mapping_throws": true
+   }
+  },
+  "expect": {
+   "decision_count": 1
+  },
+  "note": "the test also expects one logged error; specs are mock specifications: pass = Accept, fail = Reject(Unknown, failN); mapping is mocked to return a movie unless mapped_movie is null"
+ }
+]

@@ -1,0 +1,954 @@
+[
+ {
+  "id": "SON-PARSE-1428",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:12",
+  "input": {
+   "name": "【喵萌奶茶屋】★10月新番★[哥布林杀手/Anime Series Title][12END][720p][繁体][招募翻译校对]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "喵萌奶茶屋",
+   "absolute_episodes": [
+    12
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1429",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:13",
+  "input": {
+   "name": "[桜都字幕组][盾之勇者成名录/Anime Series Title][01][BIG5][720P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "桜都字幕组",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1430",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:14",
+  "input": {
+   "name": "[YMDR][輝夜姬想讓人告白～天才們的戀愛頭腦戰～][Anime Series Title][2019][02][1080p][HEVC][JAP][BIG5][MP4-AAC][繁中]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "YMDR",
+   "absolute_episodes": [
+    2
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1431",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:15",
+  "input": {
+   "name": "【DHR百合組】[天使降臨到我身邊！_Anime Series Title][05][繁體][1080P10][WebRip][HEVC][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "DHR百合組",
+   "absolute_episodes": [
+    5
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1432",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:16",
+  "input": {
+   "name": "【傲娇零&自由字幕组】[刀剑神域III UnderWorld/ Anime Series Title ][17][HEVC-10Bit-2160P AAC][外挂GB/BIG5][WEB-Rip][MKV+ass ]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "傲娇零&自由字幕组",
+   "absolute_episodes": [
+    17
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1433",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:17",
+  "input": {
+   "name": "【悠哈璃羽字幕社＆拉斯观测组】[刀剑神域Alicization _ Anime Series Title ][17][x264 1080p][CHS]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "悠哈璃羽字幕社＆拉斯观测组",
+   "absolute_episodes": [
+    17
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1434",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:18",
+  "input": {
+   "name": "【极影字幕社】 ★04月新番 【巴哈姆特之怒 Virgin Soul】【Anime Series Title】【24】 【END】GB MP4_720P",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "极影字幕社",
+   "absolute_episodes": [
+    24
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1435",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:19",
+  "input": {
+   "name": "[愛戀&漫貓字幕组][10月新番][關於我轉生後成爲史萊姆那件事][18][720P][BIG5][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "愛戀&漫貓字幕组",
+   "absolute_episodes": [
+    18
+   ],
+   "title": "關於我轉生後成爲史萊姆那件事",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1436",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:20",
+  "input": {
+   "name": "【咕咕茶字幕組】★1月新番[天使降臨到了我身邊! / Anime Series Title!][04][1080P][繁體][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "咕咕茶字幕組",
+   "absolute_episodes": [
+    4
+   ],
+   "title": "Anime Series Title!",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1437",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:21",
+  "input": {
+   "name": "【千夏字幕组】【天使降临到了我身边！_Anime Series Title】[第05话][1080p_HEVC][简繁外挂]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "千夏字幕组",
+   "absolute_episodes": [
+    5
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1438",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:22",
+  "input": {
+   "name": "[星空字幕组] 剃须。然后捡到女高中生。 / Anime Series Title [05][1080p][简日内嵌]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "星空字幕组",
+   "absolute_episodes": [
+    5
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1439",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:23",
+  "input": {
+   "name": "【DHR动研字幕组】[多田君不恋爱_Anime Series Title][13完][繁体][720P][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "DHR动研字幕组",
+   "absolute_episodes": [
+    13
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1440",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:24",
+  "input": {
+   "name": "【动漫国字幕组】★01月新番[Anime Series Title～！][01][1080P][简体][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "动漫国字幕组",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime Series Title～！",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1441",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:25",
+  "input": {
+   "name": "[风车字幕组][名侦探柯南][857][米花町反复变化之谜（前篇）][简体][MP4][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "风车字幕组",
+   "absolute_episodes": [
+    857
+   ],
+   "title": "名侦探柯南",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1442",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:26",
+  "input": {
+   "name": "[风车字幕组][名侦探柯南][857集][米花町反复变化之谜（前篇）][简体][MP4][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "风车字幕组",
+   "absolute_episodes": [
+    857
+   ],
+   "title": "名侦探柯南",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1443",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:27",
+  "input": {
+   "name": "【喵萌奶茶屋】★10月新番★[后宫之乌/后宫の乌/Series Title][07][1080p][简日双语][招募翻译校对]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "喵萌奶茶屋",
+   "absolute_episodes": [
+    7
+   ],
+   "title": "Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1444",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:40",
+  "input": {
+   "name": "[Lilith-Raws] 在地下城尋求邂逅是否搞錯了什麼 / Anime-Series Title S04 - 12 [Baha][WEB-DL][1080p][AVC AAC][CHT][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Lilith-Raws",
+   "absolute_episodes": [
+    12
+   ],
+   "title": "Anime-Series Title S4",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1445",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:41",
+  "input": {
+   "name": "[Lilith-Raws] 魔王學院的不適任者 / Anime-Series Title S02 - 01 [Baha][WEB-DL][1080p][AVC AAC][CHT][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Lilith-Raws",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1446",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:42",
+  "input": {
+   "name": "[Lilith-Raws x WitEx.io] 盾之勇者成名录 / Anime-Series Title S02 - 03 [Baha][WEB-DL][1080p][AVC AAC][CHT][MP4] [557.3MB]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Lilith-Raws x WitEx.io",
+   "absolute_episodes": [
+    3
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1447",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:43",
+  "input": {
+   "name": "[SweetSub&LoliHouse] 来自深渊 烈日黄金乡 / Anime-Series Title S2 - 07 [WebRip 1080p HEVC-10bit AAC][简繁日内封字幕]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "SweetSub&LoliHouse",
+   "absolute_episodes": [
+    7
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1448",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:44",
+  "input": {
+   "name": "[LoliHouse] Love Live! 虹咲学园学园偶像同好会 第二季 / Anime-Series Title S2 - 10 [WebRip 1080p HEVC-10bit AAC][简繁内封字幕]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "LoliHouse",
+   "absolute_episodes": [
+    10
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1449",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:45",
+  "input": {
+   "name": "[澄空学园&雪飘工作室&LoliHouse] 辉夜大小姐想让我告白 第三季 / Anime-Series Title S3 - 06 [WebRip 1080p HEVC-10bit AAC][简繁内封字幕]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "澄空学园&雪飘工作室&LoliHouse",
+   "absolute_episodes": [
+    6
+   ],
+   "title": "Anime-Series Title S3",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1450",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:46",
+  "input": {
+   "name": "[诸神字幕组][致不灭的你 第二季][Anime-Series Title S2][10][简繁日语字幕][1080P][MKV HEVC]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "诸神字幕组",
+   "absolute_episodes": [
+    10
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1451",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:47",
+  "input": {
+   "name": "[NC-Raws] 魔王学院的不适任者～史上最强的魔王始祖，转生就读子孙们的学校～第二季 / Anime-Series Title S2 - 01 (Baha 1920x1080 AVC AAC MP4)",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "NC-Raws",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1452",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:48",
+  "input": {
+   "name": "[Lilith-Raws] Anime-Series Title S02 - 11 [Baha][WEB-DL][1080p][AVC AAC][CHT][MP4].mp4",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Lilith-Raws",
+   "absolute_episodes": [
+    11
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1453",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:49",
+  "input": {
+   "name": "[天月搬运组] 不要欺负我，长瀞同学 2nd Attack / Anime-Series Title S02 - 01 [1080P][简繁日外挂]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "天月搬运组",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1454",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:50",
+  "input": {
+   "name": "[Skymoon-Raws] 怕痛的我，把防御力点满就对了 第二季 / Anime-Series Title S02 - 01 [ViuTV][WEB-DL][1080p][AVC AAC][繁体外挂][MP4+ASS](正式版本) ",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Skymoon-Raws",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1455",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:51",
+  "input": {
+   "name": "[Skymoon-Raws] Anime-Series Title S02 - 01 [ViuTV][CHT][WEB-DL][1080p][AVC AAC][MP4+ASS]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Skymoon-Raws",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1456",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:52",
+  "input": {
+   "name": "[orion origin] Anime-Series Title S02[07][1080p][H264 AAC][CHS][ENG＆JPN stidio]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "orion origin",
+   "absolute_episodes": [
+    7
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1457",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:53",
+  "input": {
+   "name": "[UHA-WINGS][Anime-Series Title S02][01][x264 1080p][CHT].mp4",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "UHA-WINGS",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime-Series Title S2",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1458",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:54",
+  "input": {
+   "name": "[Suzuya Raws] 腼腆英雄 东京夺还篇 / Series 2nd Season - 01 [CR WebRip 1080p HEVC-10bit AAC][Multi-Subs]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Suzuya Raws",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Series 2nd Season",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1459",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:55",
+  "input": {
+   "name": "[ANi] SERIES / SERIES 靦腆英雄 - 11 [1080P][Baha][WEB-DL][AAC AVC][CHT][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "ANi",
+   "absolute_episodes": [
+    11
+   ],
+   "title": "SERIES",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1460",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:56",
+  "input": {
+   "name": "[Q] 全职高手 第3季 / Series S3 - 09 (1080p HBR HEVC Multi-Sub)",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Q",
+   "absolute_episodes": [
+    9
+   ],
+   "title": "Series S3",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1461",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:57",
+  "input": {
+   "name": "[Q] 全职高手 第3季 | Series S3 - 09 (1080p HBR HEVC Multi-Sub)",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Q",
+   "absolute_episodes": [
+    9
+   ],
+   "title": "Series S3",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1462",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:70",
+  "input": {
+   "name": "[喵萌奶茶屋&LoliHouse]玛娜利亚魔法学院/巴哈姆特之怒Anime Series Title - 03 [WebRip 1080p HEVC-10bit AAC][简繁内封字幕]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "喵萌奶茶屋&LoliHouse",
+   "absolute_episodes": [
+    3
+   ],
+   "title": "巴哈姆特之怒Anime Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1463",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:71",
+  "input": {
+   "name": "[悠哈璃羽字幕社&拉斯观测组&LoliHouse] 刀剑神域: Alicization / Anime Series: Title - 17 [WebRip 1080p HEVC-10bit AAC][简繁内封字幕]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "悠哈璃羽字幕社&拉斯观测组&LoliHouse",
+   "absolute_episodes": [
+    17
+   ],
+   "title": "Anime Series: Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1464",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:72",
+  "input": {
+   "name": "[ZERO字幕組]嫁給非人類·Anime-Series Title[11][BIG5][1080p]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "ZERO字幕組",
+   "absolute_episodes": [
+    11
+   ],
+   "title": "Anime-Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1465",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:73",
+  "input": {
+   "name": "[Lilith-Raws] 艾梅洛閣下 II 世事件簿 -魔眼蒐集列車 Grace note- / Anime-Series Title - 04 [BiliBili][WEB-DL][1080p][AVC AAC][CHT][MKV]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Lilith-Raws",
+   "absolute_episodes": [
+    4
+   ],
+   "title": "Anime-Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1466",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:74",
+  "input": {
+   "name": "[NC-Raws] 影宅 / Anime-Series Title - 07 [B-Global][WEB-DL][1080p][AVC AAC][CHS_CHT_ENG_TH_SRT][MKV]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "NC-Raws",
+   "absolute_episodes": [
+    7
+   ],
+   "title": "Anime-Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1467",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:75",
+  "input": {
+   "name": "[NC-Raws] ANIME-SERIES TITLE－影宅－ / Anime-Series Title - 07 [Baha][WEB-DL][1080p][AVC AAC][CHT][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "NC-Raws",
+   "absolute_episodes": [
+    7
+   ],
+   "title": "Anime-Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1468",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:76",
+  "input": {
+   "name": "[OPFans楓雪動漫][ANIME SERIES 海賊王][第1008話][典藏版][1080P][MKV][簡繁]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "OPFans",
+   "absolute_episodes": [
+    1008
+   ],
+   "title": "ANIME SERIES",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1469",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:77",
+  "input": {
+   "name": "[Skymoon-Raws][Anime Series 海賊王][1008][ViuTV][WEB-RIP][CHT][SRTx2][1080p][MKV]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "Skymoon-Raws",
+   "absolute_episodes": [
+    1008
+   ],
+   "title": "Anime Series",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1470",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:78",
+  "input": {
+   "name": "[银光字幕组][名侦探柯南·Series Title][871][信长四五〇事件][繁日][HDrip][X264-AAC][720P][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "银光字幕组",
+   "absolute_episodes": [
+    871
+   ],
+   "title": "Series Title",
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1471",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:91",
+  "input": {
+   "name": "[YMDR][慕留人 -火影忍者新時代-][Anime Series Title-][2017][88-91][1080p][AVC][JAP][BIG5][MP4-AAC][繁中]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "YMDR",
+   "absolute_episodes": [
+    88,
+    89,
+    90,
+    91
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  },
+  "note": "absolute_episodes compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "absolute_episodes": "unordered"
+  }
+ },
+ {
+  "id": "SON-PARSE-1472",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:92",
+  "input": {
+   "name": "[诸神字幕组][战栗杀机][ANIME SERIES TITLE][01-24完][简日双语字幕][720P][MP4]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "诸神字幕组",
+   "absolute_episodes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+   ],
+   "title": "ANIME SERIES TITLE",
+   "full_season": false
+  },
+  "note": "absolute_episodes compared ignoring order (BeEquivalentTo)",
+  "compare": {
+   "absolute_episodes": "unordered"
+  }
+ },
+ {
+  "id": "SON-PARSE-1473",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:109",
+  "input": {
+   "name": "[GM-Team][国漫][斗罗大陆][Anime Title][Douro Mainland][2019][215][AVC][GB][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "absolute_episodes": [
+    215
+   ],
+   "title": "Anime Title",
+   "full_season": false,
+   "release_group": "GM-Team"
+  }
+ },
+ {
+  "id": "SON-PARSE-1474",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:110",
+  "input": {
+   "name": "[GM-Team][国漫][斗罗大陆][Anime Title][Douro Mainland][2019][215 END][AVC][GB][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "absolute_episodes": [
+    215
+   ],
+   "title": "Anime Title",
+   "full_season": false,
+   "release_group": "GM-Team"
+  }
+ },
+ {
+  "id": "SON-PARSE-1475",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:111",
+  "input": {
+   "name": "[GM-Team][国漫][斗罗大陆][Anime Title][2019][215 Fin][AVC][GB][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "absolute_episodes": [
+    215
+   ],
+   "title": "Anime Title",
+   "full_season": false,
+   "release_group": "GM-Team"
+  }
+ },
+ {
+  "id": "SON-PARSE-1476",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:112",
+  "input": {
+   "name": "[GM-Team][国漫][Anime Title][Douro Mainland][2019][234][AVC][GB][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "absolute_episodes": [
+    234
+   ],
+   "title": "Anime Title",
+   "full_season": false,
+   "release_group": "GM-Team"
+  }
+ },
+ {
+  "id": "SON-PARSE-1477",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:113",
+  "input": {
+   "name": "[GM-Team][国漫][Anime Title][2019][234][AVC][GB][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "absolute_episodes": [
+    234
+   ],
+   "title": "Anime Title",
+   "full_season": false,
+   "release_group": "GM-Team"
+  }
+ },
+ {
+  "id": "SON-PARSE-1478",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:114",
+  "input": {
+   "name": "[GM-Team][国漫][Anime Title][2019][234 END][AVC][GB][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "absolute_episodes": [
+    234
+   ],
+   "title": "Anime Title",
+   "full_season": false,
+   "release_group": "GM-Team"
+  }
+ },
+ {
+  "id": "SON-PARSE-1479",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:115",
+  "input": {
+   "name": "[GM-Team][国漫][Anime Title][2019][234 Fin][AVC][GB][1080P]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "absolute_episodes": [
+    234
+   ],
+   "title": "Anime Title",
+   "full_season": false,
+   "release_group": "GM-Team"
+  }
+ },
+ {
+  "id": "SON-PARSE-1480",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:126",
+  "input": {
+   "name": "[Subz] My Series - １５８ [h264 10-bit][1080p]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "My Series",
+   "absolute_episodes": [
+    158
+   ],
+   "special_absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1481",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:138",
+  "input": {
+   "name": "[BeanSub][Anime_Series_Title][01][GB][1080P][x264_AAC]",
+   "facet": "anime",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "release_group": "BeanSub",
+   "absolute_episodes": [
+    1
+   ],
+   "title": "Anime Series Title",
+   "full_season": false
+  }
+ }
+]

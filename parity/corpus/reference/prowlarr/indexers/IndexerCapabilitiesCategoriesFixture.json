@@ -1,0 +1,154 @@
+[
+ {
+  "id": "PRW-INDEXERS-0001",
+  "ref": "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:12",
+  "input": {
+   "op": "capabilities.supported_categories",
+   "given": {
+    "mappings": [
+     {
+      "tracker_category": 1,
+      "newznab_category": "MoviesSD",
+      "newznab_id": 2030,
+      "description": "Filme SD"
+     }
+    ],
+    "categories": [
+     2000
+    ]
+   }
+  },
+  "expect": {
+   "count": 1
+  }
+ },
+ {
+  "id": "PRW-INDEXERS-0002",
+  "ref": "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:24",
+  "input": {
+   "op": "capabilities.supported_categories",
+   "given": {
+    "mappings": [
+     {
+      "tracker_category": 1,
+      "newznab_category": "MoviesSD",
+      "newznab_id": 2030,
+      "description": "Filme SD"
+     }
+    ],
+    "categories": [
+     2030
+    ]
+   }
+  },
+  "expect": {
+   "count": 1
+  }
+ },
+ {
+  "id": "PRW-INDEXERS-0003",
+  "ref": "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:36",
+  "input": {
+   "op": "capabilities.supported_categories",
+   "given": {
+    "mappings": [
+     {
+      "tracker_category": 1,
+      "newznab_category": "MoviesSD",
+      "newznab_id": 2030,
+      "description": "Filme SD"
+     }
+    ],
+    "categories": [
+     2040
+    ]
+   }
+  },
+  "expect": {
+   "count": 0
+  }
+ },
+ {
+  "id": "PRW-INDEXERS-0004",
+  "ref": "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:48",
+  "input": {
+   "op": "capabilities.tracker_categories",
+   "given": {
+    "mappings": [
+     {
+      "tracker_category": 1,
+      "newznab_category": "MoviesSD",
+      "newznab_id": 2030,
+      "description": "Filme SD"
+     },
+     {
+      "tracker_category": 2,
+      "newznab_category": "MoviesHD",
+      "newznab_id": 2040,
+      "description": "Filme HD"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "count": 2,
+   "first": "1"
+  }
+ },
+ {
+  "id": "PRW-INDEXERS-0005",
+  "ref": "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:61",
+  "input": {
+   "op": "capabilities.map_tracker_cat_to_newznab",
+   "given": {
+    "mappings": [
+     {
+      "tracker_category": 1,
+      "newznab_category": "MoviesSD",
+      "newznab_id": 2030,
+      "description": "Filme SD"
+     },
+     {
+      "tracker_category": 2,
+      "newznab_category": "MoviesHD",
+      "newznab_id": 2040,
+      "description": "Filme HD"
+     }
+    ],
+    "tracker_category": "2"
+   }
+  },
+  "expect": {
+   "count": 2,
+   "first_id": 2040
+  }
+ },
+ {
+  "id": "PRW-INDEXERS-0006",
+  "ref": "Prowlarr@v2.7.0.5723 src/NzbDrone.Core.Test/IndexerTests/IndexerCapabilitiesCategoriesFixture.cs:74",
+  "input": {
+   "op": "capabilities.map_tracker_cat_desc_to_newznab",
+   "given": {
+    "mappings": [
+     {
+      "tracker_category": 1,
+      "newznab_category": "MoviesSD",
+      "newznab_id": 2030,
+      "description": "Filme SD"
+     },
+     {
+      "tracker_category": 2,
+      "newznab_category": "MoviesHD",
+      "newznab_id": 2040,
+      "description": "Filme HD"
+     }
+    ],
+    "description": "Filme HD"
+   }
+  },
+  "expect": {
+   "count": 2,
+   "first_id": 2040
+  }
+ }
+]

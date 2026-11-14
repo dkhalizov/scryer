@@ -1,0 +1,636 @@
+[
+ {
+  "id": "RAD-PARSE-0361",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:11",
+  "input": {
+   "name": "Conan",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "conan"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0362",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:12",
+  "input": {
+   "name": "Castle (2009)",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "castle2009"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0363",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:13",
+  "input": {
+   "name": "Parenthood.2010",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "parenthood2010"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0364",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:14",
+  "input": {
+   "name": "Law_and_Order_SVU",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "lawordersvu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0365",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:21",
+  "input": {
+   "name": "CaPitAl",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "capital"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0366",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:22",
+  "input": {
+   "name": "peri.od",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "period"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0367",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:23",
+  "input": {
+   "name": "this.^&%^**$%@#$!That",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "thisthat"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0368",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:24",
+  "input": {
+   "name": "test/test",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "testtest"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0369",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:25",
+  "input": {
+   "name": "90210",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "90210"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0370",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:26",
+  "input": {
+   "name": "24",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "24"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0371",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:27",
+  "input": {
+   "name": "I'm a cyborg, but that's OK",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "imcyborgbutthatsok"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0372",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:28",
+  "input": {
+   "name": "Im a cyborg, but thats ok",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "imcyborgbutthatsok"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0373",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:29",
+  "input": {
+   "name": "Test: Something à Deux",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "testsomethingdeux"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0374",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:30",
+  "input": {
+   "name": "Parler à",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "parlera"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0375",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:37",
+  "input": {
+   "names": [
+    "word.the.word",
+    "word the word",
+    "word-the-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0376",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:38",
+  "input": {
+   "names": [
+    "word.and.word",
+    "word and word",
+    "word-and-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0377",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:39",
+  "input": {
+   "names": [
+    "word.or.word",
+    "word or word",
+    "word-or-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0378",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:40",
+  "input": {
+   "names": [
+    "word.an.word",
+    "word an word",
+    "word-an-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0379",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:41",
+  "input": {
+   "names": [
+    "word.of.word",
+    "word of word",
+    "word-of-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0380",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:58",
+  "input": {
+   "names": [
+    "word.word.the",
+    "word-word-the",
+    "word-word the"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordthe"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0381",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:59",
+  "input": {
+   "names": [
+    "word.word.and",
+    "word-word-and",
+    "word-word and"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordand"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0382",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:60",
+  "input": {
+   "names": [
+    "word.word.or",
+    "word-word-or",
+    "word-word or"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordor"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0383",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:61",
+  "input": {
+   "names": [
+    "word.word.an",
+    "word-word-an",
+    "word-word an"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordan"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0384",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:62",
+  "input": {
+   "names": [
+    "word.word.of",
+    "word-word-of",
+    "word-word of"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordwordof"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0385",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:79",
+  "input": {
+   "names": [
+    "word.a.word",
+    "word a word",
+    "word-a-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0386",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:96",
+  "input": {
+   "names": [
+    "word.a.N.K.L.E.word",
+    "word a N K L E word",
+    "word-a-N-K-L-E-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordankleword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0387",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:113",
+  "input": {
+   "names": [
+    "word.N.K.L.E.a.word",
+    "word N K L E a word",
+    "word-N-K-L-E-a-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordnkleaword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0388",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:130",
+  "input": {
+   "names": [
+    "word.theword",
+    "word theword",
+    "word-theword",
+    "wordthe.word",
+    "wordthe-word",
+    "wordthe-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordtheword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0389",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:131",
+  "input": {
+   "names": [
+    "word.andword",
+    "word andword",
+    "word-andword",
+    "wordand.word",
+    "wordand-word",
+    "wordand-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordandword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0390",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:132",
+  "input": {
+   "names": [
+    "word.orword",
+    "word orword",
+    "word-orword",
+    "wordor.word",
+    "wordor-word",
+    "wordor-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordorword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0391",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:133",
+  "input": {
+   "names": [
+    "word.aword",
+    "word aword",
+    "word-aword",
+    "worda.word",
+    "worda-word",
+    "worda-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordaword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0392",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:134",
+  "input": {
+   "names": [
+    "word.anword",
+    "word anword",
+    "word-anword",
+    "wordan.word",
+    "wordan-word",
+    "wordan-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordanword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0393",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:135",
+  "input": {
+   "names": [
+    "word.ofword",
+    "word ofword",
+    "word-ofword",
+    "wordof.word",
+    "wordof-word",
+    "wordof-word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "wordofword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0394",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:155",
+  "input": {
+   "name": "The Office",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "theoffice"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0395",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:156",
+  "input": {
+   "name": "The Tonight Show With Jay Leno",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "thetonightshowwithjayleno"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0396",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:157",
+  "input": {
+   "name": "The.Daily.Show",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "thedailyshow"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0397",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:164",
+  "input": {
+   "names": [
+    "the.word.word",
+    "the-word-word",
+    "the word word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "thewordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0398",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:165",
+  "input": {
+   "names": [
+    "and.word.word",
+    "and-word-word",
+    "and word word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "andwordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0399",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:166",
+  "input": {
+   "names": [
+    "or.word.word",
+    "or-word-word",
+    "or word word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "orwordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0400",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:167",
+  "input": {
+   "names": [
+    "a.word.word",
+    "a-word-word",
+    "a word word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "awordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0401",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:168",
+  "input": {
+   "names": [
+    "an.word.word",
+    "an-word-word",
+    "an word word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "anwordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0402",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:169",
+  "input": {
+   "names": [
+    "of.word.word",
+    "of-word-word",
+    "of word word"
+   ],
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "ofwordword"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0403",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/NormalizeTitleFixture.cs:186",
+  "input": {
+   "name": "Tokyo Ghoul A",
+   "facet": "movie",
+   "fn": "Parser.CleanMovieTitle"
+  },
+  "expect": {
+   "clean_title": "tokyoghoula"
+  }
+ }
+]

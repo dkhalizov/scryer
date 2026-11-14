@@ -1,0 +1,828 @@
+[
+ {
+  "id": "SON-PARSE-1202",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:10",
+  "input": {
+   "name": "30.Series.Season.04.HDTV.XviD-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 4,
+   "title": "30 Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1203",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:11",
+  "input": {
+   "name": "Sonarr.and.Series.S02.720p.x264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 2,
+   "title": "Sonarr and Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1204",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:12",
+  "input": {
+   "name": "The.Series.US.S03.720p.x264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "The Series US",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1205",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:13",
+  "input": {
+   "name": "Series.of.Sonarr.S03.720p.BluRay-CLUE\\REWARD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "Series of Sonarr",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1206",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:14",
+  "input": {
+   "name": "Series Time S02 720p HDTV x264 CRON",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 2,
+   "title": "Series Time",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1207",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:15",
+  "input": {
+   "name": "Series.2021.S04.iNTERNAL.DVDRip.XviD-VCDVaULT",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 4,
+   "title": "Series 2021",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1208",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:16",
+  "input": {
+   "name": "Series Five 0 S01 720p WEB DL DD5 1 H 264 NT",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Five 0",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1209",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:17",
+  "input": {
+   "name": "30 Series S03 WS PDTV XviD FUtV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "30 Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1210",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:18",
+  "input": {
+   "name": "The Series Season 4 WS PDTV XviD FUtV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 4,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1211",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:19",
+  "input": {
+   "name": "Series Season 1 720p WEB DL DD 5 1 h264 TjHD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1212",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:20",
+  "input": {
+   "name": "The Series Season4 WS PDTV XviD FUtV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 4,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1213",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:21",
+  "input": {
+   "name": "Series S 01 720p WEB DL DD 5 1 h264 TjHD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1214",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:22",
+  "input": {
+   "name": "Series Confidential   Season 3",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "Series Confidential",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1215",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:23",
+  "input": {
+   "name": "Series.S01.720p.WEBDL.DD5.1.H.264-NTb",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1216",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:24",
+  "input": {
+   "name": "Series.Makes.It.Right.S02.720p.HDTV.AAC5.1.x265-NOGRP",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 2,
+   "title": "Series Makes It Right",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1217",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:25",
+  "input": {
+   "name": "My.Series.S2014.720p.HDTV.x264-ME",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 2014,
+   "title": "My Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1218",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:26",
+  "input": {
+   "name": "Series.Saison3.VOSTFR.HDTV.XviD-NOTAG",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1219",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:27",
+  "input": {
+   "name": "Series.SAISON.1.VFQ.PDTV.H264-ACC-ROLLED",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1220",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:28",
+  "input": {
+   "name": "Series Title - Series 1 (1970) DivX",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1221",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:29",
+  "input": {
+   "name": "SeriesTitle.S03.540p.AMZN.WEB-DL.DD+2.0.x264-RTN",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "SeriesTitle",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1222",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:30",
+  "input": {
+   "name": "Series.Title.S01.576p.BluRay.DD5.1.x264-HiSD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1223",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:31",
+  "input": {
+   "name": "Series.Stagione.3.HDTV.XviD-NOTAG",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1224",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:32",
+  "input": {
+   "name": "Series.Stagione.3.HDTV.XviD-NOTAG",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1225",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:33",
+  "input": {
+   "name": "Series No More S01 2023 1080p WEB-DL AVC AC3 2.0 Dual Audio -ZR-",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series No More",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1226",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:34",
+  "input": {
+   "name": "Series Title / S1E1-8 of 8 [2024, WEB-DL 1080p] + Original + RUS",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1227",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:35",
+  "input": {
+   "name": "Series Title / S2E1-16 of 16 [2022, WEB-DL] RUS",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 2,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1228",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:36",
+  "input": {
+   "name": "[hchcsen] Mobile Series 00 S01 [BD Remux Dual Audio 1080p AVC 2xFLAC] (Kidou Senshi Gundam 00 Season 1)",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Mobile Series 00",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1229",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:37",
+  "input": {
+   "name": "[HorribleRips] Mobile Series 00 S1 [1080p]",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Mobile Series 00",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1230",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:38",
+  "input": {
+   "name": "[Zoombie] Series 100: Bucket List S01 [Web][MKV][h265 10-bit][1080p][AC3 2.0][Softsubs (Zoombie)]",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series 100: Bucket List",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1231",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:39",
+  "input": {
+   "name": "Seriesless (2016/S01/WEB-DL/1080p/AC3 5.1/DUAL/SUB)",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Seriesless (2016)",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1232",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:50",
+  "input": {
+   "name": "Acropolis Series S05 EXTRAS DVDRip XviD RUNNER",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 5,
+   "title": "Acropolis Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1233",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:51",
+  "input": {
+   "name": "Punky Series S01 EXTRAS DVDRip XviD RUNNER",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Punky Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1234",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:52",
+  "input": {
+   "name": "Instant Series S03 EXTRAS DVDRip XviD OSiTV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "Instant Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1235",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:53",
+  "input": {
+   "name": "The.Series.S03.Extras.01.Deleted.Scenes.720p",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1236",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:54",
+  "input": {
+   "name": "The.Series.S03.Extras.02.720p",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1237",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:66",
+  "input": {
+   "name": "Series.to.Me.S03.SUBPACK.DVDRip.XviD-REWARD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 3,
+   "title": "Series to Me",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1238",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:67",
+  "input": {
+   "name": "The.Series.S02.SUBPACK.DVDRip.XviD-REWARD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 2,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1239",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:68",
+  "input": {
+   "name": "Series.S11.SUBPACK.DVDRip.XviD-REWARD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 11,
+   "title": "Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_season_extra": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1240",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:80",
+  "input": {
+   "name": "The.Series.2016.S02.Part.1.1080p.NF.WEBRip.DD5.1.x264-NTb",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 2,
+   "title": "The Series 2016",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false,
+   "is_partial_season": true,
+   "season_part": 1
+  }
+ },
+ {
+  "id": "SON-PARSE-1241",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:81",
+  "input": {
+   "name": "The.Series.S07.Vol.1.1080p.NF.WEBRip.DD5.1.x264-NTb",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 7,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false,
+   "is_partial_season": true,
+   "season_part": 1
+  }
+ },
+ {
+  "id": "SON-PARSE-1242",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:82",
+  "input": {
+   "name": "The.Series.S06.P1.1080p.Blu-Ray.10-Bit.Dual-Audio.TrueHD.x265-iAHD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 6,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false,
+   "is_partial_season": true,
+   "season_part": 1
+  }
+ },
+ {
+  "id": "SON-PARSE-1243",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:95",
+  "input": {
+   "name": "The Series S01-05 WS BDRip X264-REWARD-No Rars",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "The Series",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1244",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:96",
+  "input": {
+   "name": "Series.Title.S01-S09.1080p.AMZN.WEB-DL.DDP2.0.H.264-NTb",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1245",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:97",
+  "input": {
+   "name": "Series Title S01 - S07 BluRay 1080p x264 REPACK -SacReD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1246",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:98",
+  "input": {
+   "name": "Series Title Season 01-07 BluRay 1080p x264 REPACK -SacReD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1247",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:99",
+  "input": {
+   "name": "Series Title Season 01 - Season 07 BluRay 1080p x264 REPACK -SacReD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1248",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:100",
+  "input": {
+   "name": "Series Title Complete Series S01 S04 (1080p BluRay x265 HEVC 10bit AAC 5.1 Vyndros)",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1249",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:101",
+  "input": {
+   "name": "Series Title S01 S04 (1080p BluRay x265 HEVC 10bit AAC 5.1 Vyndros)",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1250",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:102",
+  "input": {
+   "name": "Series Title S01 04 (1080p BluRay x265 HEVC 10bit AAC 5.1 Vyndros)",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "season": 1,
+   "title": "Series Title",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": true,
+   "is_partial_season": false,
+   "multi_season": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1251",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:115",
+  "input": {
+   "name": "Season 3",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ }
+]

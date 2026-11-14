@@ -1,103 +1,93 @@
-<p align="center">
-  <a href="https://github.com/scryer-media/scryer/releases"><img src="https://img.shields.io/github/v/release/scryer-media/scryer" alt="Release" /></a>
-  <a href="https://securityscorecards.dev/viewer/?uri=github.com/scryer-media/scryer"><img src="https://api.scorecard.dev/projects/github.com/scryer-media/scryer/badge" alt="OpenSSF Scorecard" /></a>
-  <a href="https://www.bestpractices.dev/projects/14165"><img src="https://www.bestpractices.dev/projects/14165/badge"></a>
-</p>
-<p align="center">
-  <a href="https://www.scryer.media/scryer/donate/"><img src="https://img.shields.io/badge/Donate-%E2%9D%A4%EF%B8%8F-db61a2?logo=githubsponsors&logoColor=white" alt="Donate to Scryer" /></a>
-  <a href="https://www.reddit.com/r/scryer_media/"><img src="https://img.shields.io/badge/Reddit-r%2Fscryer__media-FF4500?logo=reddit&logoColor=white" alt="Scryer on Reddit" /></a>
-  <a href="https://discord.gg/SQmtZTanqm"><img src="https://img.shields.io/badge/Discord-Join%20the%20community-5865F2?logo=discord&logoColor=white" alt="Scryer on Discord" /></a>
-</p>
-<hr/>
+# Scryer, personal fork
 
-<p align="center">
-  <img src="docs/img/scryer-introduction.webp" alt="Introducing Scryer" width="960" />
-  <img src="docs/img/scryer-overview.webp" alt="Introducing Scryer" width="960" href="https://www.scryer.media/scryer/" target="_blank"/>
-</p>
-<p align="center">
-  <a href="https://www.reddit.com/r/scryer_media/"><img alt="Join us on Reddit!" src="docs/img/Scryer_Reddit.webp" width="47.3%" /></a>
-  <a href="https://discord.gg/RAVvb2enhz"><img alt="Join us on Discord!" src="docs/img/Scryer_Discord.webp" width="47.3%" /></a>
-</p>
+This is an independent fork of [Scryer](https://github.com/scryer-media/scryer),
+kept to replace an *arr stack: Sonarr, Radarr, Prowlarr, Bazarr, Seerr and
+Maintainerr. qBittorrent stays as the download client. It runs in a home
+media stack on Kubernetes.
 
+This is not the upstream project. It is for personal use. Upstream is a source of
+fixes; a change goes back only now and then, as a separate PR. For the original README, docs, releases and community,
+see [scryer-media/scryer](https://github.com/scryer-media/scryer).
 
-<h3 align="center">
-    <a href="https://www.scryer.media/scryer/docs/installation/"><h3>Getting Started Guide<h3></a>
-</h3>
+All credit for Scryer goes to its upstream authors. This fork adds patches and
+a test net on top of their code.
 
-<p align="center">
-For more information about the tool, please visit the <a href="https://www.scryer.media/scryer">official webiste</a>
-</p>
+## What differs from upstream
 
-## What Scryer Is
+- Patches for gaps that block replacing the *arr tools. Examples: scanned files
+  get a quality, torrent stall recovery, subtitle matching like Bazarr, and
+  release-name parser fixes.
+- A parity net: tests that compare our behaviour with the apps we replace.
+- Working notes and a decision log, kept local (gitignored).
+- No schema migrations of our own, so upstream migrations keep applying.
 
-Scryer is a self-hosted media management application for movies, TV series, and anime.
+## Parity net
 
-At a high level, it:
+Each behaviour of the replaced apps is a catalogue entry with an expected
+answer. A test runs it against our code. A green case that fails breaks the
+run, and a red case that starts passing must be marked green. This keeps
+regressions out while we fix gaps. See [`parity/README.md`](parity/README.md).
 
-- monitors libraries and tracked titles
-- searches for releases through indexers
-- evaluates releases against quality and rules policies
-- coordinates downloads and imports
-- organizes your files for media servers
-- manages subtitles (finds missing ones, time aligns when needed)
-- deeply multi-lingual, interface and metadata (where available)
-- helps you discover new media based on trends and what you already have
-All packaged inside one binary.
+```sh
+parity/run.sh
+```
 
-Conceptually it is "Sonarr + Radarr + Seerr + Bazarr, with some extra bits from other *arr tools", however Scryer is a single machine-code compiled binary that runs very efficiently compared to the *arr tools.
+Status at the last baseline (2026-11-14, `parity/report/baseline.md`).
+Counts include cases captured from our own instances, which stay private.
+Green: matches the reference app. Red: differs today. Waived: difference
+kept on purpose. Unmapped: catalogued, no test yet. Passing is green out of
+green + red.
 
-Scryer also handles Anime much better than the Arr tools, it uses multiple anime datasources (anidb, anilist, MAL, etc), understands the nuances of anime season and episode numbering, handles episode and multiseason packs cleanly, and even knows which episodes and movies are filler or canon!
+| Area | Covers | Green | Red | Waived | Unmapped | Passing |
+|---|---|---|---|---|---|---|
+| parse | release-name parsing | 1956 | 1356 | 0 | 613 | 59% |
+| decision | which release to grab or reject | 554 | 156 | 0 | 336 | 78% |
+| quality | quality ranking, profiles, custom formats | 407 | 39 | 0 | 344 | 91% |
+| naming | file and folder names | 67 | 506 | 0 | 160 | 12% |
+| import | importing finished downloads | 81 | 21 | 0 | 495 | 79% |
+| scan | reading an existing library | 22 | 1 | 0 | 152 | 96% |
+| torrent | download client, seeding | 13 | 8 | 20 | 179 | 62% |
+| requests | user requests (Seerr) | 4 | 2 | 0 | 333 | 67% |
+| maintenance | cleanup rules (Maintainerr) | 16 | 4 | 3 | 391 | 80% |
+| subtitles | subtitle matching (Bazarr) | 64 | 63 | 0 | 88 | 50% |
+| indexers | indexer settings and routing (Prowlarr) | 4 | 28 | 1 | 29 | 12% |
+| notify | notifications | 0 | 0 | 0 | 10 | - |
+| **all** | | **3188** | **2184** | **24** | **3130** | **59%** |
 
-You can read more in the [Arr comparison doc](https://www.scryer.media/scryer/docs/comparison/sonarr-radarr/)
+By reference app:
 
-*Scryer was written from scratch and has no affiliation with the Servarr tools*
+| App | Green | Red | Waived | Unmapped | Passing |
+|---|---|---|---|---|---|
+| Sonarr | 2492 | 1586 | 20 | 1190 | 61% |
+| Radarr | 604 | 514 | 1 | 1039 | 54% |
+| Prowlarr | 8 | 15 | 0 | 51 | 35% |
+| Bazarr | 64 | 63 | 0 | 101 | 50% |
+| Seerr | 4 | 2 | 0 | 325 | 67% |
+| Maintainerr | 16 | 4 | 3 | 391 | 80% |
+| qBittorrent | 0 | 0 | 0 | 33 | - |
 
-## Technical Overview
+## Build and test
 
-Scryer ships as a single Rust binary with:
+The Rust toolchain is pinned in `rust-toolchain.toml`. Run focused tests per
+crate, not the whole workspace:
 
-- an embedded web UI
-- a GraphQL API
-- SQLite- or PostgreSQL-backed application state
-- a plugin runtime for indexers, download clients, subtitle providers, and notifications
+```sh
+cargo fmt --all
+cargo nextest run --locked -p <crate> <test-filter>
+```
 
-## Architecture
+Postgres tests skip unless `SCRYER_TEST_POSTGRES_URL` is set. Never run the
+app against a real library without a deliberate decision to do so.
 
-![How Scryer fits into your media system](docs/img/scryer-architecture.webp)
+## Branches and upstream sync
 
-## Sponsors
+`own/main` is the trunk. `main` mirrors the last upstream release we took.
+Upstream releases and single fixes are merged in when we want them.
+Working notes, data captured from our own instances and the capture tools
+are gitignored and stay local.
 
-Thank you to everyone sponsoring Scryer! [Become a sponsor](https://opencollective.com/scryer-media/projects/scryer).
+Contributor and agent rules for this fork are in [`CLAUDE.md`](CLAUDE.md).
 
-[![Scryer sponsors on Open Collective](https://opencollective.com/scryer/backers.svg?width=890&button=false)](https://opencollective.com/scryer-media/projects/scryer)
+## License
 
-## Docker
-
-Scryer publishes a first-party container image:
-
-- `ghcr.io/scryer-media/scryer:latest`
-- `ghcr.io/scryer-media/scryer:<minor>-latest`
-   - `<minor>-latest` tracks the `0.<minor>.x` release line it was built from
-
-## Unraid & TrueNAS
-
-- [Unraid community appication](https://ca.unraid.net/apps/scryer-1ess99l0zy36id)
-- [TrueNAS community appication](https://apps.truenas.com/catalog/scryer_community/)
-
-For other installation methods (windows, mac, linux), please see the [website docs](https://www.scryer.media/scryer/docs/installation/)
-
-### Support
-If you're facing any issues with installation or issues, feel free to use any of our social platforms (Discord, Reddit, Github) for support!
-
-
-## Development
-
-- [Contributing guide](CONTRIBUTING.md)
-- [Architecture notes](ARCHITECTURE.md)
-- [Issues](https://github.com/scryer-media/scryer/issues)
-
-For installation, upgrade guidance, and end-user documentation, use the website links at the top of this file.
-
-<p align="center">
-  <a href="https://www.scryer.media/scryer/donate/"><img src="docs/img/scryer-donate.webp" alt="Donate to Scryer" /></a>
-</p>
+GPL-3.0, as upstream. See [`LICENSE`](LICENSE).

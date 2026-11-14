@@ -1,0 +1,133 @@
+[
+ {
+  "id": "SER-REQUESTS-0067",
+  "ref": "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:125",
+  "input": {
+   "op": "radarr.add_movie",
+   "given": {
+    "options": {
+     "title": "Test Movie",
+     "qualityProfileId": 1,
+     "profileId": 1,
+     "minimumAvailability": "Released",
+     "tags": [],
+     "year": 2026,
+     "rootFolderPath": "/movies",
+     "tmdbId": 7,
+     "searchNow": true
+    },
+    "existing": {
+     "id": 7,
+     "monitored": true,
+     "hasFile": false,
+     "isAvailable": false
+    }
+   }
+  },
+  "expect": {
+   "search_calls": 0
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0068",
+  "ref": "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:156",
+  "input": {
+   "op": "radarr.add_movie",
+   "given": {
+    "options": {
+     "title": "Test Movie",
+     "qualityProfileId": 1,
+     "profileId": 1,
+     "minimumAvailability": "Released",
+     "tags": [],
+     "year": 2026,
+     "rootFolderPath": "/movies",
+     "tmdbId": 7,
+     "searchNow": true
+    },
+    "existing": {
+     "id": 7,
+     "monitored": true,
+     "hasFile": false,
+     "isAvailable": true
+    }
+   }
+  },
+  "expect": {
+   "search_calls": 1
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0069",
+  "ref": "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:187",
+  "input": {
+   "op": "radarr.add_movie",
+   "given": {
+    "options": {
+     "title": "Test Movie",
+     "qualityProfileId": 1,
+     "profileId": 1,
+     "minimumAvailability": "Released",
+     "tags": [],
+     "year": 2026,
+     "rootFolderPath": "/movies",
+     "tmdbId": 7,
+     "searchNow": true,
+     "monitored": true
+    },
+    "existing": {
+     "id": 7,
+     "monitored": false,
+     "hasFile": false,
+     "tags": []
+    },
+    "update_returns": {
+     "id": 7,
+     "monitored": true,
+     "isAvailable": false
+    }
+   }
+  },
+  "expect": {
+   "update_calls": 1,
+   "search_calls": 0
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0070",
+  "ref": "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:223",
+  "input": {
+   "op": "radarr.add_movie",
+   "given": {
+    "options": {
+     "title": "Test Movie",
+     "qualityProfileId": 1,
+     "profileId": 1,
+     "minimumAvailability": "Released",
+     "tags": [],
+     "year": 2026,
+     "rootFolderPath": "/movies",
+     "tmdbId": 7,
+     "searchNow": true,
+     "monitored": true
+    },
+    "existing": {
+     "id": 7,
+     "monitored": false,
+     "hasFile": false,
+     "tags": []
+    },
+    "update_returns": {
+     "id": 7,
+     "monitored": true,
+     "isAvailable": true
+    }
+   }
+  },
+  "expect": {
+   "update_calls": 1,
+   "search_calls": 1,
+   "search_movie_id": 7
+  }
+ }
+]

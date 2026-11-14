@@ -1,0 +1,50 @@
+[
+ {
+  "id": "SON-PARSE-1513",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ValidateParsedEpisodeInfoFixture.cs:40",
+  "input": {
+   "facet": "series",
+   "fn": "ValidateParsedEpisodeInfo.ValidateForSeriesType",
+   "parsed": {
+    "air_date": null
+   },
+   "series_type": "Standard"
+  },
+  "expect": {
+   "valid": true
+  },
+  "note": "other ParsedEpisodeInfo fields are NBuilder filler, not part of the test"
+ },
+ {
+  "id": "SON-PARSE-1514",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ValidateParsedEpisodeInfoFixture.cs:46",
+  "input": {
+   "facet": "series",
+   "fn": "ValidateParsedEpisodeInfo.ValidateForSeriesType",
+   "parsed": {
+    "air_date": "2018-05-21"
+   },
+   "series_type": "Daily"
+  },
+  "expect": {
+   "valid": true
+  },
+  "note": "other ParsedEpisodeInfo fields are NBuilder filler, not part of the test"
+ },
+ {
+  "id": "SON-PARSE-1515",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ValidateParsedEpisodeInfoFixture.cs:55",
+  "input": {
+   "facet": "series",
+   "fn": "ValidateParsedEpisodeInfo.ValidateForSeriesType",
+   "parsed": {
+    "air_date": "2018-05-21"
+   },
+   "series_type": "Standard"
+  },
+  "expect": {
+   "valid": false
+  },
+  "note": "other ParsedEpisodeInfo fields are NBuilder filler, not part of the test"
+ }
+]

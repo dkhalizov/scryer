@@ -1,0 +1,40 @@
+[
+ {
+  "id": "SON-DECISION-1219",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SeriesSpecificationFixture.cs:29",
+  "input": {
+   "spec": "Search.SeriesSpecification",
+   "given": {
+    "release": {
+     "series_id": 1
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "series_id": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1220",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/Search/SeriesSpecificationFixture.cs:37",
+  "input": {
+   "spec": "Search.SeriesSpecification",
+   "given": {
+    "release": {
+     "series_id": 1
+    },
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "series_id": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

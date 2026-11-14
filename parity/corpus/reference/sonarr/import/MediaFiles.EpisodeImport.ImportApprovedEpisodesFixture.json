@@ -1,0 +1,963 @@
+[
+ {
+  "id": "SON-IMPORT-0130",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:93",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 3,
+      "rejection": "Rejected!",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": false,
+    "history_for_download_id": []
+   }
+  },
+  "expect": {
+   "imported_count": 0,
+   "calls": {
+    "MediaFileService.Add": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0131",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:101",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 5,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": false,
+    "history_for_download_id": [],
+    "existing_files_with_same_relative_path": 0
+   }
+  },
+  "expect": {
+   "result_count": 5
+  }
+ },
+ {
+  "id": "SON-IMPORT-0132",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:109",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 3,
+      "rejection": "Rejected!",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     },
+     {
+      "count": 5,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": false,
+    "history_for_download_id": [],
+    "existing_files_with_same_relative_path": 0
+   }
+  },
+  "expect": {
+   "result_count": 8,
+   "imported_count": 5
+  }
+ },
+ {
+  "id": "SON-IMPORT-0133",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:124",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 5,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     },
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo",
+      "same_local_episode_as": "first approved"
+     }
+    ],
+    "new_download": false,
+    "history_for_download_id": [],
+    "existing_files_with_same_relative_path": 0
+   }
+  },
+  "expect": {
+   "imported_count": 5
+  }
+ },
+ {
+  "id": "SON-IMPORT-0134",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:138",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": []
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpgradeEpisodeFile(copyOnly: false)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0135",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:148",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": []
+   }
+  },
+  "expect": {
+   "events": {
+    "EpisodeImportedEvent": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0136",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:157",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": false,
+    "history_for_download_id": [],
+    "existing_files_with_same_relative_path": 0
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpgradeEpisodeFile(copyOnly: false)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0137",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:169",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo",
+      "label": "file",
+      "size": 1073741824
+     },
+     {
+      "count": 1,
+      "label": "sample",
+      "episodes": "the same episode as 'file'",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "size": 83886080
+     }
+    ],
+    "new_download": false,
+    "history_for_download_id": [],
+    "existing_files_with_same_relative_path": 0
+   }
+  },
+  "expect": {
+   "result_count": 2,
+   "imported": [
+    "file"
+   ]
+  }
+ },
+ {
+  "id": "SON-IMPORT-0138",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:198",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/30.Rock.S01E01/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": [],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/30.Rock.S01E01",
+     "title": "30.Rock.S01E01",
+     "can_move_files": false
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpgradeEpisodeFile(copyOnly: true)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0139",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:211",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/30.Rock.S01E01/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": [],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/30.Rock.S01E01",
+     "title": "30.Rock.S01E01",
+     "can_move_files": false
+    },
+    "import_mode": "Move"
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpgradeEpisodeFile(copyOnly: false)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0140",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:224",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": [],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+    }
+   }
+  },
+  "expect": {
+   "original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0141",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:238",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": [],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0142",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:252",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": [],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0143",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:266",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo",
+      "folder_info": {
+       "release_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+      }
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": []
+   }
+  },
+  "expect": {
+   "original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0145",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:298",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo",
+      "folder_info": {
+       "release_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+      }
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": []
+   }
+  },
+  "expect": {
+   "original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0147",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:332",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo",
+      "folder_info": {
+       "release_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+      }
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": [],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV-Other/Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0148",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:348",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo"
+     }
+    ],
+    "new_download": false,
+    "history_for_download_id": [],
+    "existing_files_with_same_relative_path": 1
+   }
+  },
+  "expect": {
+   "calls": {
+    "MediaFileService.Delete(ManualOverride)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0149",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:361",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo",
+      "folder_info": {
+       "release_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+      }
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": [],
+    "download_client_item": {
+     "output_path": null
+    }
+   }
+  },
+  "expect": {
+   "original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0150",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:377",
+  "input": {
+   "op": "ImportApprovedEpisodes.Import",
+   "given": {
+    "series": {
+     "path": "/C/Test/TV/30 Rock",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "decisions": [
+     {
+      "count": 1,
+      "episodes": "one NBuilder episode each (ids 1..5)",
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "quality": "Bluray-720p",
+      "release_group": "DRONE",
+      "file_episode_info": "empty ParsedEpisodeInfo",
+      "scene_name": "Series.Title.S01E01.dvdrip-DRONE"
+     }
+    ],
+    "new_download": true,
+    "history_for_download_id": []
+   }
+  },
+  "expect": {
+   "calls": {
+    "UpgradeEpisodeFile(copyOnly: false) with SceneName Series.Title.S01E01.dvdrip-DRONE": 1
+   }
+  }
+ }
+]

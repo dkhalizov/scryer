@@ -1,0 +1,590 @@
+[
+ {
+  "id": "RAD-PARSE-0033",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:10",
+  "input": {
+   "name": "Movie Title 2012 Directors Cut",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Directors Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0034",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:11",
+  "input": {
+   "name": "Movie Title 1999 (Despecialized).mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Despecialized"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0035",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:12",
+  "input": {
+   "name": "Movie Title.2012.(Special.Edition.Remastered).[Bluray-1080p].mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Special Edition Remastered"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0036",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:13",
+  "input": {
+   "name": "Movie Title 2012 Extended",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0037",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:14",
+  "input": {
+   "name": "Movie Title 2012 Extended Directors Cut Fan Edit",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Directors Cut Fan Edit"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0038",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:15",
+  "input": {
+   "name": "Movie Title 2012 Director's Cut",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Director's Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0039",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:16",
+  "input": {
+   "name": "Movie Title 2012 Directors Cut",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Directors Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0040",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:17",
+  "input": {
+   "name": "Movie Title.2012.(Extended.Theatrical.Version.IMAX).BluRay.1080p.2012.asdf",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Theatrical Version IMAX"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0041",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:18",
+  "input": {
+   "name": "2021 A Movie (1968) Director's Cut .mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Director's Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0042",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:19",
+  "input": {
+   "name": "2021 A Movie 1968 (Extended Directors Cut FanEdit)",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Directors Cut FanEdit"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0043",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:20",
+  "input": {
+   "name": "A Fake Movie 2035 2012 Directors.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Directors"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0044",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:21",
+  "input": {
+   "name": "Movie 2049 Director's Cut.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Director's Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0045",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:22",
+  "input": {
+   "name": "Movie Title 2012 50th Anniversary Edition.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "50th Anniversary Edition"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0046",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:23",
+  "input": {
+   "name": "Movie 2012 2in1.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "2in1"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0047",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:24",
+  "input": {
+   "name": "Movie 2012 IMAX.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "IMAX"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0048",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:25",
+  "input": {
+   "name": "Movie 2012 Restored.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Restored"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0049",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:26",
+  "input": {
+   "name": "Movie Title.Special.Edition.Fan Edit.2012..BRRip.x264.AAC-m2g",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Special Edition Fan Edit"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0050",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:27",
+  "input": {
+   "name": "Movie Title (Despecialized) 1999.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Despecialized"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0051",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:28",
+  "input": {
+   "name": "Movie Title.(Special.Edition.Remastered).2012.[Bluray-1080p].mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Special Edition Remastered"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0052",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:29",
+  "input": {
+   "name": "Movie Title Extended 2012",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0053",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:30",
+  "input": {
+   "name": "Movie Title Extended Directors Cut Fan Edit 2012",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Directors Cut Fan Edit"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0054",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:31",
+  "input": {
+   "name": "Movie Title Director's Cut 2012",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Director's Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0055",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:32",
+  "input": {
+   "name": "Movie Title Directors Cut 2012",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Directors Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0056",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:33",
+  "input": {
+   "name": "Movie Title.(Extended.Theatrical.Version.IMAX).2012.BluRay.1080p.asdf",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Theatrical Version IMAX"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0057",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:34",
+  "input": {
+   "name": "Movie Director's Cut (1968).mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Director's Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0058",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:35",
+  "input": {
+   "name": "2021 A Movie (Extended Directors Cut FanEdit) 1968 Bluray 1080p",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Directors Cut FanEdit"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0059",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:36",
+  "input": {
+   "name": "A Fake Movie 2035 Directors 2012.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Directors"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0060",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:37",
+  "input": {
+   "name": "Movie Director's Cut 2049.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Director's Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0061",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:38",
+  "input": {
+   "name": "Movie Title 50th Anniversary Edition 2012.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "50th Anniversary Edition"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0062",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:39",
+  "input": {
+   "name": "Movie 2in1 2012.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "2in1"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0063",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:40",
+  "input": {
+   "name": "Movie IMAX 2012.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "IMAX"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0064",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:41",
+  "input": {
+   "name": "Fake Movie Final Cut 2016",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Final Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0065",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:42",
+  "input": {
+   "name": "Fake Movie 2016 Final Cut ",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Final Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0066",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:43",
+  "input": {
+   "name": "My Movie GERMAN Extended Cut 2016",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0067",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:44",
+  "input": {
+   "name": "My.Movie.GERMAN.Extended.Cut.2016",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0068",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:45",
+  "input": {
+   "name": "My.Movie.GERMAN.Extended.Cut",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Extended Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0069",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:46",
+  "input": {
+   "name": "My.Movie.Assembly.Cut.1992.REPACK.1080p.BluRay.DD5.1.x264-Group",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Assembly Cut"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0070",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:47",
+  "input": {
+   "name": "Movie.1987.Ultimate.Hunter.Edition.DTS-HD.DTS.MULTISUBS.1080p.BluRay.x264.HQ-TUSAHD",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Ultimate Hunter Edition"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0071",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:48",
+  "input": {
+   "name": "Movie.1950.Diamond.Edition.1080p.BluRay.x264-nikt0",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Diamond Edition"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0072",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:49",
+  "input": {
+   "name": "Movie.Title.1990.Ultimate.Rekall.Edition.NORDiC.REMUX.1080p.BluRay.AVC.DTS-HD.MA5.1-TWA",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Ultimate Rekall Edition"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0073",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:50",
+  "input": {
+   "name": "Movie.Title.1971.Signature.Edition.1080p.BluRay.FLAC.2.0.x264-TDD",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Signature Edition"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0074",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:51",
+  "input": {
+   "name": "Movie.1979.The.Imperial.Edition.BluRay.720p.DTS.x264-CtrlHD",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Imperial Edition"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0075",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:52",
+  "input": {
+   "name": "Movie.1997.Open.Matte.1080p.BluRay.x264.DTS-FGT",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": "Open Matte"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0076",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:59",
+  "input": {
+   "name": "Movie.Holiday.Special.1978.DVD.REMUX.DD.2.0-ViETNAM",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": ""
+  }
+ },
+ {
+  "id": "RAD-PARSE-0077",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:60",
+  "input": {
+   "name": "Directors.Cut.German.2006.COMPLETE.PAL.DVDR-LoD",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": ""
+  }
+ },
+ {
+  "id": "RAD-PARSE-0078",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:61",
+  "input": {
+   "name": "Movie Impossible: Rogue Movie 2012 Bluray",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": ""
+  }
+ },
+ {
+  "id": "RAD-PARSE-0079",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:62",
+  "input": {
+   "name": "Loving.Movie.2018.TS.FRENCH.MD.x264-DROGUERiE",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": ""
+  }
+ },
+ {
+  "id": "RAD-PARSE-0080",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:63",
+  "input": {
+   "name": "Uncut.Movie.2019.720p.BluRay.x264-YOL0W",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": ""
+  }
+ },
+ {
+  "id": "RAD-PARSE-0081",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:64",
+  "input": {
+   "name": "The.Christmas.Edition.1941.720p.HDTV.x264-CRiMSON",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "edition": ""
+  }
+ }
+]

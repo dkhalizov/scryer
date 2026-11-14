@@ -118,7 +118,8 @@ pub(crate) fn eligible_audio_streams(
         .collect()
 }
 
-pub(crate) fn quality_from_video_dimensions(
+#[doc(hidden)] // fork: parity net seam (was pub(crate); tests/props_quality.rs)
+pub fn quality_from_video_dimensions(
     width: Option<i32>,
     height: Option<i32>,
 ) -> Option<&'static str> {

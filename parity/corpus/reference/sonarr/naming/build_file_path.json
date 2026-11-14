@@ -1,0 +1,303 @@
+[
+ {
+  "id": "SON-NAMING-0001",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:29",
+  "input": {
+   "op": "build_file_path",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season:00}",
+     "specialsFolderFormat": "MySpecials"
+    },
+    "series": {
+     "title": "30 Rock",
+     "path": "/C/Test/30 Rock",
+     "seasonFolder": true,
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     }
+    ],
+    "episodeFile": {
+     "sceneName": "30 Rock - S01E05 - Episode Title"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "path": "/C/Test/30 Rock/Season 01/30 Rock - S01E05 - Episode Title.mkv"
+  },
+  "note": "Paths are the test's AsOsAgnostic form on Linux (C:\\Test -> /C/Test). NamingConfig.Default has renameEpisodes off, so the file name is the cleaned scene name."
+ },
+ {
+  "id": "SON-NAMING-0002",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:30",
+  "input": {
+   "op": "build_file_path",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "MySpecials"
+    },
+    "series": {
+     "title": "30 Rock",
+     "path": "/C/Test/30 Rock",
+     "seasonFolder": true,
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     }
+    ],
+    "episodeFile": {
+     "sceneName": "30 Rock - S01E05 - Episode Title"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "path": "/C/Test/30 Rock/Season 1/30 Rock - S01E05 - Episode Title.mkv"
+  },
+  "note": "Paths are the test's AsOsAgnostic form on Linux (C:\\Test -> /C/Test). NamingConfig.Default has renameEpisodes off, so the file name is the cleaned scene name."
+ },
+ {
+  "id": "SON-NAMING-0003",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:31",
+  "input": {
+   "op": "build_file_path",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season:00}",
+     "specialsFolderFormat": "MySpecials"
+    },
+    "series": {
+     "title": "30 Rock",
+     "path": "/C/Test/30 Rock",
+     "seasonFolder": false,
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     }
+    ],
+    "episodeFile": {
+     "sceneName": "30 Rock - S01E05 - Episode Title"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "path": "/C/Test/30 Rock/30 Rock - S01E05 - Episode Title.mkv"
+  },
+  "note": "Paths are the test's AsOsAgnostic form on Linux (C:\\Test -> /C/Test). NamingConfig.Default has renameEpisodes off, so the file name is the cleaned scene name."
+ },
+ {
+  "id": "SON-NAMING-0004",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:32",
+  "input": {
+   "op": "build_file_path",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "MySpecials"
+    },
+    "series": {
+     "title": "30 Rock",
+     "path": "/C/Test/30 Rock",
+     "seasonFolder": false,
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     }
+    ],
+    "episodeFile": {
+     "sceneName": "30 Rock - S01E05 - Episode Title"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "path": "/C/Test/30 Rock/30 Rock - S01E05 - Episode Title.mkv"
+  },
+  "note": "Paths are the test's AsOsAgnostic form on Linux (C:\\Test -> /C/Test). NamingConfig.Default has renameEpisodes off, so the file name is the cleaned scene name."
+ },
+ {
+  "id": "SON-NAMING-0005",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:33",
+  "input": {
+   "op": "build_file_path",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "ReallyUglySeasonFolder {season}",
+     "specialsFolderFormat": "MySpecials"
+    },
+    "series": {
+     "title": "30 Rock",
+     "path": "/C/Test/30 Rock",
+     "seasonFolder": true,
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     }
+    ],
+    "episodeFile": {
+     "sceneName": "30 Rock - S01E05 - Episode Title"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "path": "/C/Test/30 Rock/ReallyUglySeasonFolder 1/30 Rock - S01E05 - Episode Title.mkv"
+  },
+  "note": "Paths are the test's AsOsAgnostic form on Linux (C:\\Test -> /C/Test). NamingConfig.Default has renameEpisodes off, so the file name is the cleaned scene name."
+ },
+ {
+  "id": "SON-NAMING-0006",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:34",
+  "input": {
+   "op": "build_file_path",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "MySpecials"
+    },
+    "series": {
+     "title": "30 Rock",
+     "path": "/C/Test/30 Rock",
+     "seasonFolder": true,
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title",
+      "seasonNumber": 0,
+      "episodeNumber": 5
+     }
+    ],
+    "episodeFile": {
+     "sceneName": "30 Rock - S00E05 - Episode Title"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "path": "/C/Test/30 Rock/MySpecials/30 Rock - S00E05 - Episode Title.mkv"
+  },
+  "note": "Paths are the test's AsOsAgnostic form on Linux (C:\\Test -> /C/Test). NamingConfig.Default has renameEpisodes off, so the file name is the cleaned scene name."
+ },
+ {
+  "id": "SON-NAMING-0007",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:59",
+  "input": {
+   "op": "build_file_path",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "{Series Title} Season {season:0}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "NCIS: Los Angeles",
+     "path": "/C/Test/NCIS - Los Angeles",
+     "seasonFolder": true,
+     "seriesType": "Standard"
+    },
+    "episodes": [
+     {
+      "title": "Episode Title",
+      "seasonNumber": 1,
+      "episodeNumber": 5
+     }
+    ],
+    "episodeFile": {
+     "sceneName": "S01E05 - Episode Title"
+    },
+    "extension": ".mkv"
+   }
+  },
+  "expect": {
+   "path": "/C/Test/NCIS - Los Angeles/NCIS - Los Angeles Season 1/S01E05 - Episode Title.mkv"
+  },
+  "note": "Paths are the test's AsOsAgnostic form on Linux (C:\\Test -> /C/Test). NamingConfig.Default has renameEpisodes off, so the file name is the cleaned scene name."
+ }
+]

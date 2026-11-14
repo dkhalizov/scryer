@@ -323,7 +323,8 @@ impl TrackedDownload {
     /// Whether an automatic import re-attempt is still inside its backoff
     /// window (the no-video probe, an execution-failure retry, or the
     /// re-check of a completed path still missing after its grace window).
-    pub(crate) fn import_retry_deferred(&self, now: DateTime<Utc>) -> bool {
+    // fork: parity net seam (tests/sm_download_import.rs)
+    pub fn import_retry_deferred(&self, now: DateTime<Utc>) -> bool {
         self.no_video_import_retry
             .as_ref()
             .is_some_and(|retry| retry.next_retry_at > now)
@@ -335,7 +336,8 @@ impl TrackedDownload {
 
     /// Schedules the next automatic re-attempt after an approved import failed
     /// to execute; returns the attempt number just recorded.
-    pub(crate) fn schedule_import_execution_retry(
+    // fork: parity net seam (tests/sm_download_import.rs)
+    pub fn schedule_import_execution_retry(
         &mut self,
         now: DateTime<Utc>,
         message: impl FnOnce(u32, DateTime<Utc>) -> String,
@@ -975,7 +977,8 @@ impl TrackedDownloadService {
     /// So a live entry is never clobbered: it keeps its id, its client item and
     /// its runtime flags. Only an empty slot — restart recovery, where the tick
     /// is the one rebuilding the world — takes the rebuilt entry.
-    pub(crate) fn restore_cleanup_download(&mut self, tracked: TrackedDownload) {
+    // fork: parity net seam (tests/sm_download_import.rs)
+    pub fn restore_cleanup_download(&mut self, tracked: TrackedDownload) {
         let download_id = tracked.download_id;
         self.last_seen_at.insert(download_id, Utc::now());
         self.cache.entry(download_id).or_insert(tracked);
@@ -1122,7 +1125,8 @@ impl TrackedDownloadService {
     /// a torrent grabbed under a seeding profile is never timed out — its
     /// indexer's rules own it and the warning stays visible for the operator.
     /// When it is `false` the clock is dropped and nothing changes.
-    pub(crate) fn fail_persistent_warning_for_download(
+    // fork: parity net seam (tests/sm_download_import.rs)
+    pub fn fail_persistent_warning_for_download(
         &mut self,
         canonical_download_id: DownloadId,
         now: DateTime<Utc>,

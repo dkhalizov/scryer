@@ -147,6 +147,8 @@ pub use ports::{
     IndexerFacetTransition,
 };
 mod quality;
+#[cfg(kani)]
+mod kani_proofs; // fork: parity net seam
 mod rate_limit_signal;
 mod release_facts;
 pub mod request_rules;
@@ -198,6 +200,11 @@ pub(crate) use events::event_views;
 pub(crate) use import::archive_extractor;
 pub use import::archive_extractor::initialize_archive_workspace_ownership;
 pub(crate) use import::checks as import_checks;
+#[doc(hidden)]
+pub use import::checks::{
+    ImportCheckCode, ImportCheckContext, ImportVerdict, check_not_sample, check_not_unpacking,
+    disk_space_verdict_for_measurement,
+}; // fork: parity net seam
 pub(crate) use import::decide as import_decide;
 pub(crate) use import::import as import_workflow;
 pub(crate) use import::parameters as import_parameters;
@@ -219,6 +226,8 @@ pub(crate) use quality::canonical as canonical_scoring;
 pub(crate) use quality::profile as quality_profile;
 pub(crate) use quality::release_group_db;
 pub(crate) use quality::release_parser;
+#[doc(hidden)]
+pub use quality::release_parser::neutral_release_analysis; // fork: parity net seam
 pub(crate) use quality::scoring_weights;
 pub(crate) use rules::user_rule_input;
 
@@ -348,6 +357,39 @@ pub use acquisition::delay_profile::{
     resolve_delay_profile, validate_delay_profile_catalog,
 };
 pub use acquisition::policy::AcquisitionThresholds;
+// fork: parity net seam (crates/scryer-application/tests/parity_decision.rs)
+#[doc(hidden)]
+pub mod parity_seams {
+    // fork: parity net seam (tests/sm_download_import.rs)
+    pub use crate::import::completed_download::execute::mark_importing;
+    pub use crate::acquisition::admission::{
+        AdmissionPolicy, AdmissionRejection, AdmissionRejectionReason, AdmissionScope,
+        AdmissionSubject, AdmissionVerdict, CandidateFacts, Incumbent, QueuedRelease,
+        evaluate_admission,
+    };
+    pub use crate::acquisition::decision_helpers::{CutoffScope, analyzed_cutoff_quality_for_scope};
+    pub use crate::acquisition::delay_profile::{DelayDecisionReason, DelayPolicyContext};
+    pub use crate::acquisition::policy::episode_is_unaired;
+    pub use crate::acquisition::release_search::{
+        ReleaseAutoDecisionCode, cutoff_refusal, incumbent_at_cutoff,
+    };
+    pub use crate::acquisition::seed_goals::meets_minimum_seeders;
+    pub use crate::acquisition::workflow::{ScopeMembership, submission_scope_intersects};
+    pub use crate::quality::profile::{apply_min_score_gate, evaluate_profile_requirements};
+    // fork: parity net seam (tests/props_quality.rs, tests/props_naming.rs)
+    pub use crate::acquisition::decision_helpers::resolution_rank;
+    pub use crate::library::rename::render_title_folder_template;
+    pub use crate::media::release_labels::quality_from_video_dimensions;
+    pub use crate::quality::profile::{
+        normalize_quality_tier, quality_meets_or_exceeds_cutoff, quality_tier_index,
+        resolution_lines,
+    };
+    // fork: parity net seam (parity/fuzz scan_path)
+    pub use crate::library::filename_parser::{
+        LibraryFilenameParse, LibraryFilenameParseInput, LibraryFilenameParseMode,
+        parse_library_filename,
+    };
+}
 pub use acquisition::seed_goals::{
     ReleaseSeedMinimums, ResolvedSeedGoals, SeedGoalRequest, SeedGoalResolutionSource,
     SeedGoalResolver, prowlarr_managed_goal_profile, prowlarr_managed_minimum_seeders,
@@ -469,6 +511,10 @@ pub use library::rename::{
     RenamePlanItem, RenamePlanTitleFolder, RenameWriteAction, build_rename_plan_fingerprint,
     render_rename_template, sanitize_filesystem_component,
 };
+#[doc(hidden)]
+pub use library::rename::{
+    RenamePlanningState, build_series_rename_plan_items_from_media_files,
+}; // fork: parity net seam
 pub(crate) use library::rename::{
     effective_title_folder_path, normalize_season_folder_template_or_default,
     normalize_specials_folder_template_or_default, normalize_title_folder_template_or_default,

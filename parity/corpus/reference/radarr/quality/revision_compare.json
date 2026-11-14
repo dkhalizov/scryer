@@ -1,0 +1,290 @@
+[
+ {
+  "id": "RAD-QUALITY-0091",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:11",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 1
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0092",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:20",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0093",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:29",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 1
+    },
+    "second": {
+     "version": 1,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0094",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:38",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0095",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:47",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 2,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0096",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:56",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 1
+    },
+    "second": {
+     "version": 2,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0097",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:65",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0098",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:74",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 1
+    },
+    "second": {
+     "version": 1,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0099",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:83",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 1
+    },
+    "second": {
+     "version": 2,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0100",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:92",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "gt": false,
+   "lt": false,
+   "ne": false,
+   "ge": true,
+   "le": true,
+   "eq": true
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0101",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:106",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "gt": true,
+   "lt": false,
+   "ne": true,
+   "ge": true,
+   "le": false,
+   "eq": false
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0102",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:120",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 2,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "gt": false,
+   "lt": true,
+   "ne": true,
+   "ge": false,
+   "le": true,
+   "eq": false
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33)"
+ },
+ {
+  "id": "RAD-QUALITY-0103",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:134",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": null
+   }
+  },
+  "expect": {
+   "gt": true,
+   "ge": true,
+   "lt": false,
+   "le": false
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8); QualityModel(quality) uses it (src/NzbDrone.Core/Qualities/QualityModel.cs:33); operators treat a null right side as lower (src/NzbDrone.Core/Qualities/Revision.cs:103). The test asserts only these four operators."
+ }
+]

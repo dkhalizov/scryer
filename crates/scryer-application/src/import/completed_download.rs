@@ -29,7 +29,7 @@ use crate::{
 };
 
 mod check;
-mod execute;
+pub(crate) mod execute; // fork: parity net seam (tests/sm_download_import.rs)
 mod lookup;
 mod path_state;
 mod result_state;

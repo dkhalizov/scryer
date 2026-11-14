@@ -1,0 +1,114 @@
+[
+ {
+  "id": "SON-QUALITY-0042",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:10",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "Television",
+    "resolution": 480
+   }
+  },
+  "expect": {
+   "quality": "SDTV"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0043",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:11",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "Unknown",
+    "resolution": 480
+   }
+  },
+  "expect": {
+   "quality": "SDTV"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0044",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:17",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "Television",
+    "resolution": 720
+   }
+  },
+  "expect": {
+   "quality": "HDTV-720p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0045",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:18",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "Unknown",
+    "resolution": 720
+   }
+  },
+  "expect": {
+   "quality": "HDTV-720p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0046",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:24",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "Television",
+    "resolution": 1080
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0047",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:25",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "Unknown",
+    "resolution": 1080
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0048",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:31",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "Bluray",
+    "resolution": 720
+   }
+  },
+  "expect": {
+   "quality": "Bluray-720p"
+  }
+ },
+ {
+  "id": "SON-QUALITY-0049",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/QualityFinderFixture.cs:32",
+  "input": {
+   "op": "find_by_source_and_resolution",
+   "given": {
+    "source": "DVD",
+    "resolution": 720
+   }
+  },
+  "expect": {
+   "quality": "Bluray-720p"
+  }
+ }
+]

@@ -1,0 +1,115 @@
+[
+ {
+  "id": "SON-DECISION-1108",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:34",
+  "input": {
+   "spec": "SameEpisodesSpecification.IsSatisfiedBy(episodes)",
+   "given": {
+    "release_episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     }
+    ],
+    "episodes_in_file": {
+     "*": [
+      1,
+      2
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "episodes_in_file maps an episode file id to the episode ids in it; \"*\" answers for any file id."
+ },
+ {
+  "id": "SON-DECISION-1109",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:42",
+  "input": {
+   "spec": "SameEpisodesSpecification.IsSatisfiedBy(episodes)",
+   "given": {
+    "release_episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     },
+     {
+      "id": 2,
+      "episode_file_id": 1
+     }
+    ],
+    "episodes_in_file": {
+     "*": [
+      1
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "episodes_in_file maps an episode file id to the episode ids in it; \"*\" answers for any file id."
+ },
+ {
+  "id": "SON-DECISION-1110",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:50",
+  "input": {
+   "spec": "SameEpisodesSpecification.IsSatisfiedBy(episodes)",
+   "given": {
+    "release_episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     },
+     {
+      "id": 2,
+      "episode_file_id": 1
+     }
+    ],
+    "episodes_in_file": {
+     "*": [
+      1,
+      2
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "episodes_in_file maps an episode file id to the episode ids in it; \"*\" answers for any file id."
+ },
+ {
+  "id": "SON-DECISION-1111",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/SameEpisodesSpecificationFixture.cs:58",
+  "input": {
+   "spec": "SameEpisodesSpecification.IsSatisfiedBy(episodes)",
+   "given": {
+    "release_episodes": [
+     {
+      "id": 1,
+      "episode_file_id": 1
+     },
+     {
+      "id": 2,
+      "episode_file_id": 2
+     }
+    ],
+    "episodes_in_file": {
+     "1": [
+      1
+     ],
+     "2": [
+      2
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "episodes_in_file maps an episode file id to the episode ids in it; \"*\" answers for any file id."
+ }
+]

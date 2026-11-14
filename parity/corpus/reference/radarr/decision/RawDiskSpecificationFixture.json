@@ -1,0 +1,279 @@
+[
+ {
+  "id": "RAD-DECISION-1044",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:34",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Movie.title.1998",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-DECISION-1045",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:40",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Movie.title.1998",
+     "protocol": "torrent",
+     "container": "MKV"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-DECISION-1046",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:47",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Movie.title.1998",
+     "protocol": "torrent",
+     "container": "VOB"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1047",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:54",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Movie.title.1998",
+     "protocol": "torrent",
+     "container": "ISO"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1048",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:61",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Movie.title.1998",
+     "protocol": "torrent",
+     "container": "M2TS"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1049",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:68",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Movie.title.1998",
+     "protocol": "torrent",
+     "container": "vob"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1050",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:75",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S02 Disc 1 1080i Blu-ray DTS-HD MA 2.0 AVC-TrollHD",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1051",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:76",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S03 Disc 1 1080p Blu-ray LPCM 2.0 AVC-TrollHD",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1052",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:77",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "SERIES TITLE S02 1080P FULL BLURAY AVC DTS-HD MA 5 1",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1053",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:78",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S06.2016.DISC.3.BluRay.1080p.AVC.Atmos.TrueHD7.1-MTeam",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1054",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:79",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1055",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:80",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1056",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:81",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Someone.the.Entertainer.Presents.S01.NTSC.3xDVD9.MPEG-2.DD2.0",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1057",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:82",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S00.The.Christmas.Special.2011.PAL.DVD5.DD2.0",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1058",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:83",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.of.Desire.2000.S1_D01.NTSC.DVD5",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-1059",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:90",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series Title EP50 USLT NTSC DVDRemux DD2.0",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-DECISION-1060",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:91",
+  "input": {
+   "spec": "RawDiskSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01.NTSC.DVDRip.DD2.0.x264-PLAiD",
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

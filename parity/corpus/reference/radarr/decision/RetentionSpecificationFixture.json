@@ -1,0 +1,122 @@
+[
+ {
+  "id": "RAD-DECISION-1089",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:37",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "release": {
+     "protocol": "usenet",
+     "age_days": 100
+    },
+    "config": {
+     "retention_days": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "age_days is days before now (PublishDate = UtcNow - age)"
+ },
+ {
+  "id": "RAD-DECISION-1090",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:46",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "release": {
+     "protocol": "usenet",
+     "age_days": 100
+    },
+    "config": {
+     "retention_days": 1000
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "age_days is days before now (PublishDate = UtcNow - age)"
+ },
+ {
+  "id": "RAD-DECISION-1091",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:55",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "release": {
+     "protocol": "usenet",
+     "age_days": 100
+    },
+    "config": {
+     "retention_days": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "age_days is days before now (PublishDate = UtcNow - age)"
+ },
+ {
+  "id": "RAD-DECISION-1092",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:64",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "release": {
+     "protocol": "usenet",
+     "age_days": 100
+    },
+    "config": {
+     "retention_days": 10
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "age_days is days before now (PublishDate = UtcNow - age)"
+ },
+ {
+  "id": "RAD-DECISION-1093",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:73",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "release": {
+     "protocol": "usenet",
+     "age_days": 100
+    },
+    "config": {
+     "retention_days": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "despite the name, the test sets the age to 100 days, not today; age_days is days before now (PublishDate = UtcNow - age)"
+ },
+ {
+  "id": "RAD-DECISION-1094",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:82",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "release": {
+     "protocol": "torrent",
+     "age_days": 100
+    },
+    "config": {
+     "retention_days": 10
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "age_days is days before now (PublishDate = UtcNow - age)"
+ }
+]

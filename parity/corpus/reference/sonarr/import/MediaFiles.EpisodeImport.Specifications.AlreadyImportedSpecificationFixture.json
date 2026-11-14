@@ -1,0 +1,160 @@
+[
+ {
+  "id": "SON-IMPORT-0158",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:57",
+  "input": {
+   "op": "AlreadyImportedSpecification",
+   "given": {
+    "episodes": [
+     {
+      "id": 1,
+      "season": 1,
+      "episode_file_id": 1
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "download_client_item": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0159",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:63",
+  "input": {
+   "op": "AlreadyImportedSpecification",
+   "given": {
+    "episodes": [
+     {
+      "id": 1,
+      "season": 1,
+      "episode_file_id": 0
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_id values are NBuilder defaults (DownloadId1, DownloadId2, ...); episode_file_id 1 is NBuilder's."
+ },
+ {
+  "id": "SON-IMPORT-0160",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:71",
+  "input": {
+   "op": "AlreadyImportedSpecification",
+   "given": {
+    "episodes": [
+     {
+      "id": 1,
+      "season": 1,
+      "episode_file_id": 1
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    },
+    "history": [
+     {
+      "episode_id": 1,
+      "event": "Grabbed",
+      "download_id": "DownloadId1"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_id values are NBuilder defaults (DownloadId1, DownloadId2, ...); episode_file_id 1 is NBuilder's."
+ },
+ {
+  "id": "SON-IMPORT-0161",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:86",
+  "input": {
+   "op": "AlreadyImportedSpecification",
+   "given": {
+    "episodes": [
+     {
+      "id": 1,
+      "season": 1,
+      "episode_file_id": 1
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    },
+    "history": [
+     {
+      "episode_id": 1,
+      "event": "Grabbed",
+      "download_id": "DownloadId1",
+      "date_offset_days": 0
+     },
+     {
+      "episode_id": 1,
+      "event": "DownloadFolderImported",
+      "download_id": "DownloadId2",
+      "date_offset_days": -1
+     },
+     {
+      "episode_id": 1,
+      "event": "Grabbed",
+      "download_id": "DownloadId3",
+      "date_offset_days": -2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "download_id values are NBuilder defaults (DownloadId1, DownloadId2, ...); episode_file_id 1 is NBuilder's."
+ },
+ {
+  "id": "SON-IMPORT-0162",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:109",
+  "input": {
+   "op": "AlreadyImportedSpecification",
+   "given": {
+    "episodes": [
+     {
+      "id": 1,
+      "season": 1,
+      "episode_file_id": 1
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    },
+    "history": [
+     {
+      "episode_id": 1,
+      "event": "DownloadFolderImported",
+      "download_id": "DownloadId1",
+      "date_offset_days": -1
+     },
+     {
+      "episode_id": 1,
+      "event": "Grabbed",
+      "download_id": "DownloadId2",
+      "date_offset_days": -2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "download_id values are NBuilder defaults (DownloadId1, DownloadId2, ...); episode_file_id 1 is NBuilder's."
+ }
+]

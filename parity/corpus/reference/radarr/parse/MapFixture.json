@@ -1,0 +1,171 @@
+[
+ {
+  "id": "RAD-PARSE-0520",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:149",
+  "input": {
+   "facet": "movie",
+   "fn": "ParsingService.Map",
+   "movie": {
+    "title": "Fack Ju Göthe 2",
+    "clean_title": "fackjugoethe2",
+    "year": 2015,
+    "alternative_titles": [
+     "Fack Ju Göthe 2: Same same"
+    ],
+    "translations": [
+     {
+      "title": "Translated Title",
+      "clean_title": "translatedtitle"
+     }
+    ],
+    "original_language": "English"
+   },
+   "parsed": [
+    {
+     "movie_titles": [
+      "Fack Ju Göthe 2: Same same"
+     ],
+     "languages": [
+      "English"
+     ],
+     "year": 2015
+    }
+   ],
+   "imdb_id": "",
+   "tmdb_id": 0,
+   "search_criteria_movie": true
+  },
+  "expect": {
+   "maps_to_search_criteria_movie": true
+  }
+ },
+ {
+  "id": "RAD-PARSE-0521",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:155",
+  "input": {
+   "facet": "movie",
+   "fn": "ParsingService.Map",
+   "movie": {
+    "title": "Fack Ju Göthe 2",
+    "clean_title": "fackjugoethe2",
+    "year": 2015,
+    "alternative_titles": [
+     "Fack Ju Göthe 2: Same same"
+    ],
+    "translations": [
+     {
+      "title": "Translated Title",
+      "clean_title": "translatedtitle"
+     }
+    ],
+    "original_language": "English"
+   },
+   "parsed": [
+    {
+     "movie_titles": [
+      "Translated Title"
+     ],
+     "languages": [
+      "English"
+     ],
+     "year": 2015
+    }
+   ],
+   "imdb_id": "",
+   "tmdb_id": 0,
+   "search_criteria_movie": true
+  },
+  "expect": {
+   "maps_to_search_criteria_movie": true
+  }
+ },
+ {
+  "id": "RAD-PARSE-0522",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:161",
+  "input": {
+   "facet": "movie",
+   "fn": "ParsingService.Map",
+   "movie": {
+    "title": "Fack Ju Göthe 2",
+    "clean_title": "fackjugoethe2",
+    "year": 2015,
+    "alternative_titles": [
+     "Fack Ju Göthe 2: Same same"
+    ],
+    "translations": [
+     {
+      "title": "Translated Title",
+      "clean_title": "translatedtitle"
+     }
+    ],
+    "original_language": "English"
+   },
+   "parsed": [
+    {
+     "movie_titles": [
+      "Fack Ju Göthe II"
+     ],
+     "languages": [
+      "English"
+     ],
+     "year": 2015
+    }
+   ],
+   "imdb_id": "",
+   "tmdb_id": 0,
+   "search_criteria_movie": true
+  },
+  "expect": {
+   "maps_to_search_criteria_movie": true
+  }
+ },
+ {
+  "id": "RAD-PARSE-0523",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:167",
+  "input": {
+   "facet": "movie",
+   "fn": "ParsingService.Map",
+   "movie": {
+    "title": "Fack Ju Göthe 2",
+    "clean_title": "fackjugoethe2",
+    "year": 2015,
+    "alternative_titles": [
+     "Fack Ju Göthe 2: Same same"
+    ],
+    "translations": [
+     {
+      "title": "Translated Title",
+      "clean_title": "translatedtitle"
+     }
+    ],
+    "original_language": "English"
+   },
+   "parsed": [
+    {
+     "movie_titles": [
+      "Fack Ju Goethe 2"
+     ],
+     "languages": [
+      "English"
+     ],
+     "year": 2015
+    },
+    {
+     "movie_titles": [
+      "Fack Ju Goethe 2: Same same"
+     ],
+     "languages": [
+      "English"
+     ],
+     "year": 2015
+    }
+   ],
+   "imdb_id": "",
+   "tmdb_id": 0,
+   "search_criteria_movie": true
+  },
+  "expect": {
+   "maps_to_search_criteria_movie": true
+  }
+ }
+]

@@ -54,7 +54,7 @@ use crate::decision_pipeline::{
 
 /// What the candidate is trying to occupy.
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) enum AdmissionScope {
+pub enum AdmissionScope {
     /// A title-scoped file (a movie).
     Title,
     /// One series-movie link.
@@ -65,7 +65,7 @@ pub(crate) enum AdmissionScope {
 
 /// A primary file already occupying part of the target scope.
 #[derive(Debug, Clone)]
-pub(crate) struct Incumbent {
+pub struct Incumbent {
     /// Position of this file's quality in the profile's ordering; lower is
     /// better, `None` when the quality is not one the profile lists.
     pub tier_index: Option<usize>,
@@ -112,7 +112,7 @@ pub(crate) struct Incumbent {
 /// would reintroduce stale decisions instead of applying the current profile,
 /// and it does not exist at all for pre-0.18 rows.
 #[derive(Debug, Clone)]
-pub(crate) struct QueuedRelease {
+pub struct QueuedRelease {
     /// This claim is retained recent-grab history rather than a live client job.
     pub missing_history: bool,
     /// A recent missing grab has met both the quality and score cutoffs.
@@ -168,7 +168,7 @@ pub(crate) fn release_key(title: &str) -> Option<u64> {
 /// outright above this code, so the only thing a delta threshold ever sees is a
 /// same-tier comparison — and there is exactly one number for that.
 #[derive(Debug, Clone, Copy)]
-pub(crate) struct AdmissionPolicy {
+pub struct AdmissionPolicy {
     pub allow_upgrades: bool,
     /// Minimum improvement required to displace a same-tier incumbent.
     pub min_delta: i32,
@@ -262,7 +262,7 @@ impl AdmissionPolicy {
 /// custom-format score when both are equal; folding any of it into the score is
 /// what let a size cliff outweigh a resolution step here.
 #[derive(Debug, Clone, Copy)]
-pub(crate) struct CandidateFacts<'a> {
+pub struct CandidateFacts<'a> {
     pub release_group: Option<&'a str>,
     pub ignore_proper_repack: bool,
     pub tier_index: Option<usize>,
@@ -283,7 +283,7 @@ pub(crate) struct CandidateFacts<'a> {
 }
 
 impl<'a> CandidateFacts<'a> {
-    pub(crate) fn new(tier_index: Option<usize>, revision: i32, score: i32) -> Self {
+    pub fn new(tier_index: Option<usize>, revision: i32, score: i32) -> Self {
         Self {
             tier_index,
             revision,
@@ -309,7 +309,7 @@ impl<'a> CandidateFacts<'a> {
 
     /// The release group, the profile's revision switch and its decision
     /// order, all read off one profile.
-    pub(crate) fn with_profile_policy(
+    pub fn with_profile_policy(
         self,
         group: Option<&'a str>,
         criteria: &crate::QualityProfileCriteria,
@@ -430,7 +430,7 @@ fn ladder_against_incumbent(candidate: CandidateFacts, incumbent: &Incumbent) ->
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) enum AdmissionRejectionReason {
+pub enum AdmissionRejectionReason {
     /// The candidate sits in a lower quality tier than the incumbent. No score
     /// rescues this: a 720p file does not replace a 1080p one because it has a
     /// better release group.
@@ -522,7 +522,7 @@ impl AdmissionRejectionReason {
 }
 
 #[derive(Debug, Clone)]
-pub(crate) struct AdmissionRejection {
+pub struct AdmissionRejection {
     pub reason: AdmissionRejectionReason,
     pub message: String,
     pub incumbent_file_id: String,
@@ -530,7 +530,7 @@ pub(crate) struct AdmissionRejection {
 }
 
 #[derive(Debug, Clone)]
-pub(crate) enum AdmissionVerdict {
+pub enum AdmissionVerdict {
     Admit {
         /// Incumbent file ids the candidate displaces, best-first. Empty when
         /// the scope was unoccupied.
@@ -563,7 +563,7 @@ impl AdmissionVerdict {
         }
     }
 
-    pub(crate) fn rejection(&self) -> Option<&AdmissionRejection> {
+    pub fn rejection(&self) -> Option<&AdmissionRejection> {
         match self {
             Self::Admit { .. } => None,
             Self::Reject(rejection) => Some(rejection),
@@ -600,7 +600,7 @@ impl AdmissionVerdict {
 /// Holding both means callers cannot pair a scope with the wrong incumbent list,
 /// and the primary-only filter happens once here instead of in each gate.
 #[derive(Debug, Clone)]
-pub(crate) struct AdmissionSubject {
+pub struct AdmissionSubject {
     /// Whether this scope is filled by one file per member rather than a single
     /// file spanning all of them.
     ///
@@ -627,7 +627,7 @@ impl AdmissionSubject {
     ///
     /// `is_primary` is supplied by the caller because the two sides derive the
     /// role differently in the store — the point is that both end up filtering.
-    pub(crate) fn new(
+    pub fn new(
         scope: AdmissionScope,
         incumbents: impl IntoIterator<Item = (Incumbent, bool)>,
     ) -> Self {
@@ -656,14 +656,14 @@ impl AdmissionSubject {
     }
 
     /// Attach the scope's in-flight submissions as pseudo-incumbents.
-    pub(crate) fn with_queued(mut self, queued: Vec<QueuedRelease>) -> Self {
+    pub fn with_queued(mut self, queued: Vec<QueuedRelease>) -> Self {
         self.queued = queued;
         self
     }
 
     /// Mark this scope as filled by one file per member — a season pack grab.
     /// See [`AdmissionSubject::per_member`].
-    pub(crate) fn per_member(mut self) -> Self {
+    pub fn per_member(mut self) -> Self {
         self.per_member = true;
         self
     }
@@ -674,7 +674,7 @@ impl AdmissionSubject {
     /// count makes a pack grab a guaranteed partial fetch —
     /// [`AdmissionRejectionReason::SeasonIncomplete`]. Counted by the caller,
     /// which is where the clock and the catalog live.
-    pub(crate) fn with_unaired_members(mut self, unaired_members: usize) -> Self {
+    pub fn with_unaired_members(mut self, unaired_members: usize) -> Self {
         self.unaired_members = unaired_members;
         self
     }
@@ -1169,7 +1169,7 @@ fn evaluate_any_member(
 /// only — on both sides. An incumbent's `score` is its landed total. That
 /// asymmetry is intended: a candidate that merely *claims* to match a file which
 /// measured well must clear what that file actually turned out to be.
-pub(crate) fn evaluate_admission(
+pub fn evaluate_admission(
     subject: &AdmissionSubject,
     candidate: CandidateFacts,
     policy: &AdmissionPolicy,

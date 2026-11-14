@@ -1,0 +1,45 @@
+[
+ {
+  "id": "SON-IMPORT-0185",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/HasAudioTrackSpecificationFixture.cs:46",
+  "input": {
+   "op": "HasAudioTrackSpecification",
+   "given": {
+    "media_info": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0186",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/HasAudioTrackSpecificationFixture.cs:54",
+  "input": {
+   "op": "HasAudioTrackSpecification",
+   "given": {
+    "media_info": {
+     "audio_stream_count": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0187",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/HasAudioTrackSpecificationFixture.cs:62",
+  "input": {
+   "op": "HasAudioTrackSpecification",
+   "given": {
+    "media_info": {
+     "audio_stream_count": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

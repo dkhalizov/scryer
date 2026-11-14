@@ -1,0 +1,189 @@
+[
+ {
+  "id": "RAD-IMPORT-0154",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:44",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\some.show.s01e01.flv",
+    "movie_runtime_minutes": 30
+   }
+  },
+  "expect": {
+   "result": "NotSample",
+   "runtime_probed": false
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0155",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:54",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\some.show.s01e01.strm",
+    "movie_runtime_minutes": 30
+   }
+  },
+  "expect": {
+   "result": "NotSample",
+   "runtime_probed": false
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0156",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:64",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\some movie (2000).iso",
+    "movie_runtime_minutes": 30
+   }
+  },
+  "expect": {
+   "result": "NotSample",
+   "runtime_probed": false
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0157",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:74",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\some movie (2000).img",
+    "movie_runtime_minutes": 30
+   }
+  },
+  "expect": {
+   "result": "NotSample",
+   "runtime_probed": false
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0158",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:84",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\some movie (2000).m2ts",
+    "movie_runtime_minutes": 30
+   }
+  },
+  "expect": {
+   "result": "NotSample",
+   "runtime_probed": false
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0159",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:94",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "movie_runtime_minutes": 30,
+    "probed_runtime_seconds": 120
+   }
+  },
+  "expect": {
+   "runtime_probed_times": 1
+  },
+  "note": "The test asserts the probe only, not the result."
+ },
+ {
+  "id": "RAD-IMPORT-0160",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:105",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "movie_runtime_minutes": 30,
+    "probed_runtime_seconds": 60
+   }
+  },
+  "expect": {
+   "result": "Sample"
+  },
+  "note": "Movie runtime is in minutes, the probed runtime in seconds. Minimum runtime: <=3 min 15 s, <=10 min 90 s, <=30 min 300 s, else 600 s (src/NzbDrone.Core/MediaFiles/MovieImport/DetectSample.cs:78)."
+ },
+ {
+  "id": "RAD-IMPORT-0161",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:113",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "movie_runtime_minutes": 30,
+    "probed_runtime_seconds": 600
+   }
+  },
+  "expect": {
+   "result": "NotSample"
+  },
+  "note": "Movie runtime is in minutes, the probed runtime in seconds. Minimum runtime: <=3 min 15 s, <=10 min 90 s, <=30 min 300 s, else 600 s (src/NzbDrone.Core/MediaFiles/MovieImport/DetectSample.cs:78)."
+ },
+ {
+  "id": "RAD-IMPORT-0162",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:121",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "movie_runtime_minutes": 6,
+    "probed_runtime_seconds": 299
+   }
+  },
+  "expect": {
+   "result": "NotSample"
+  },
+  "note": "Movie runtime is in minutes, the probed runtime in seconds. Minimum runtime: <=3 min 15 s, <=10 min 90 s, <=30 min 300 s, else 600 s (src/NzbDrone.Core/MediaFiles/MovieImport/DetectSample.cs:78)."
+ },
+ {
+  "id": "RAD-IMPORT-0163",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:130",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "movie_runtime_minutes": 2,
+    "probed_runtime_seconds": 60
+   }
+  },
+  "expect": {
+   "result": "NotSample"
+  },
+  "note": "Movie runtime is in minutes, the probed runtime in seconds. Minimum runtime: <=3 min 15 s, <=10 min 90 s, <=30 min 300 s, else 600 s (src/NzbDrone.Core/MediaFiles/MovieImport/DetectSample.cs:78)."
+ },
+ {
+  "id": "RAD-IMPORT-0164",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:139",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "movie_runtime_minutes": 2,
+    "probed_runtime_seconds": 10
+   }
+  },
+  "expect": {
+   "result": "Sample"
+  },
+  "note": "Movie runtime is in minutes, the probed runtime in seconds. Minimum runtime: <=3 min 15 s, <=10 min 90 s, <=30 min 300 s, else 600 s (src/NzbDrone.Core/MediaFiles/MovieImport/DetectSample.cs:78)."
+ },
+ {
+  "id": "RAD-IMPORT-0165",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:148",
+  "input": {
+   "op": "detect_sample",
+   "given": {
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "movie_runtime_minutes": 30,
+    "probed_runtime_seconds": null
+   }
+  },
+  "expect": {
+   "result": "Indeterminate",
+   "errors_logged": 1
+  }
+ }
+]

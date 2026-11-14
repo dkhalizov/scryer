@@ -1,0 +1,86 @@
+[
+ {
+  "id": "SON-IMPORT-0097",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:42",
+  "input": {
+   "op": "AugmentQualityFromReleaseName",
+   "given": {
+    "download_client_item": null
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0098",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:48",
+  "input": {
+   "op": "AugmentQualityFromReleaseName",
+   "given": {
+    "download_client_item": "NBuilder",
+    "latest_grab": null
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0099",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:58",
+  "input": {
+   "op": "AugmentQualityFromReleaseName",
+   "given": {
+    "download_client_item": "NBuilder",
+    "latest_grab": {
+     "source_title": "Series.Title.S01E01.1080p.WEB.x264"
+    }
+   }
+  },
+  "expect": {
+   "source": "Web",
+   "source_confidence": "Tag",
+   "resolution": 1080,
+   "resolution_confidence": "Tag"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0100",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:59",
+  "input": {
+   "op": "AugmentQualityFromReleaseName",
+   "given": {
+    "download_client_item": "NBuilder",
+    "latest_grab": {
+     "source_title": "Series.Title.S01E01.WEB.x264"
+    }
+   }
+  },
+  "expect": {
+   "source": "Web",
+   "source_confidence": "Tag",
+   "resolution": 480,
+   "resolution_confidence": "Fallback"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0101",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:60",
+  "input": {
+   "op": "AugmentQualityFromReleaseName",
+   "given": {
+    "download_client_item": "NBuilder",
+    "latest_grab": {
+     "source_title": "Series.Title.S01E01.720p.x264"
+    }
+   }
+  },
+  "expect": {
+   "source": "Television",
+   "source_confidence": "Fallback",
+   "resolution": 720,
+   "resolution_confidence": "Tag"
+  }
+ }
+]

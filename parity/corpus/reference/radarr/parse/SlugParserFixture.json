@@ -1,0 +1,1149 @@
+[
+ {
+  "id": "RAD-PARSE-1017",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:12",
+  "input": {
+   "name": "tèst",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1018",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:13",
+  "input": {
+   "name": "têst",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1019",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:14",
+  "input": {
+   "name": "tëst",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1020",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:15",
+  "input": {
+   "name": "tËst",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1021",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:16",
+  "input": {
+   "name": "áccent",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "accent"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1022",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:17",
+  "input": {
+   "name": "àccent",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "accent"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1023",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:18",
+  "input": {
+   "name": "âccent",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "accent"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1024",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:19",
+  "input": {
+   "name": "Äccent",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "accent"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1025",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:20",
+  "input": {
+   "name": "åccent",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "accent"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1026",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:21",
+  "input": {
+   "name": "acceñt",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "accent"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1027",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:22",
+  "input": {
+   "name": "ßtest",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1028",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:23",
+  "input": {
+   "name": "œtest",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1029",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:24",
+  "input": {
+   "name": "Œtest",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1030",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:25",
+  "input": {
+   "name": "Øtest",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1031",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:31",
+  "input": {
+   "name": "Test'Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1032",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:32",
+  "input": {
+   "name": "Test$Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1033",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:33",
+  "input": {
+   "name": "Test(Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1034",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:34",
+  "input": {
+   "name": "Test)Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1035",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:35",
+  "input": {
+   "name": "Test*Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1036",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:36",
+  "input": {
+   "name": "Test?Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1037",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:37",
+  "input": {
+   "name": "Test/Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1038",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:38",
+  "input": {
+   "name": "Test=Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1039",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:39",
+  "input": {
+   "name": "Test\\Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1040",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:45",
+  "input": {
+   "name": "ThIS IS A MiXeD CaSe SensItIvE ValUe",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "this-is-a-mixed-case-sensitive-value"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1041",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:51",
+  "input": {
+   "name": "test----",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1042",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:52",
+  "input": {
+   "name": "test____",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1043",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:53",
+  "input": {
+   "name": "test-_--_",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1044",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:59",
+  "input": {
+   "name": "test result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1045",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:60",
+  "input": {
+   "name": "test     result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1046",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:66",
+  "input": {
+   "name": "test     result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1047",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:67",
+  "input": {
+   "name": "test-----result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1048",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:68",
+  "input": {
+   "name": "test_____result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug"
+  },
+  "expect": {
+   "slug": "test_result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1049",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:74",
+  "input": {
+   "name": "Test'Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1050",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:75",
+  "input": {
+   "name": "Test$Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1051",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:76",
+  "input": {
+   "name": "Test(Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1052",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:77",
+  "input": {
+   "name": "Test)Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1053",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:78",
+  "input": {
+   "name": "Test*Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1054",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:79",
+  "input": {
+   "name": "Test?Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1055",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:80",
+  "input": {
+   "name": "Test/Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1056",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:81",
+  "input": {
+   "name": "Test=Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1057",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:82",
+  "input": {
+   "name": "Test\\Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": true
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1058",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:88",
+  "input": {
+   "name": "Test'Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1059",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:89",
+  "input": {
+   "name": "Test$Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1060",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:90",
+  "input": {
+   "name": "Test(Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1061",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:91",
+  "input": {
+   "name": "Test)Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1062",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:92",
+  "input": {
+   "name": "Test*Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1063",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:93",
+  "input": {
+   "name": "Test?Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1064",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:94",
+  "input": {
+   "name": "Test/Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1065",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:95",
+  "input": {
+   "name": "Test=Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1066",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:96",
+  "input": {
+   "name": "Test\\Result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false
+   }
+  },
+  "expect": {
+   "slug": "testresult"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1067",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:102",
+  "input": {
+   "name": "test----",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1068",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:103",
+  "input": {
+   "name": "test____",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1069",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:104",
+  "input": {
+   "name": "test-_-_",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1070",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:105",
+  "input": {
+   "name": "test----",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "-"
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1071",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:106",
+  "input": {
+   "name": "test____",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "-"
+   }
+  },
+  "expect": {
+   "slug": "test____"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1072",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:107",
+  "input": {
+   "name": "test-_-_",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "-"
+   }
+  },
+  "expect": {
+   "slug": "test-_-_"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1073",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:108",
+  "input": {
+   "name": "test----",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "_"
+   }
+  },
+  "expect": {
+   "slug": "test----"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1074",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:109",
+  "input": {
+   "name": "test____",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "_"
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1075",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:110",
+  "input": {
+   "name": "test-_-_",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": "_"
+   }
+  },
+  "expect": {
+   "slug": "test-_-"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1076",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:111",
+  "input": {
+   "name": "test----",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": ""
+   }
+  },
+  "expect": {
+   "slug": "test----"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1077",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:112",
+  "input": {
+   "name": "test____",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": ""
+   }
+  },
+  "expect": {
+   "slug": "test____"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1078",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:113",
+  "input": {
+   "name": "test-_-_",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "deduplicate_chars": "",
+    "trim_end_chars": ""
+   }
+  },
+  "expect": {
+   "slug": "test-_-_"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1079",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:119",
+  "input": {
+   "name": "test----result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1080",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:120",
+  "input": {
+   "name": "test____result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test_result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1081",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:121",
+  "input": {
+   "name": "test_-_-result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1082",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:122",
+  "input": {
+   "name": "test-_-_result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test_result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1083",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:123",
+  "input": {
+   "name": "test----result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-"
+   }
+  },
+  "expect": {
+   "slug": "test-result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1084",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:124",
+  "input": {
+   "name": "test____result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-"
+   }
+  },
+  "expect": {
+   "slug": "test____result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1085",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:125",
+  "input": {
+   "name": "test-_-_result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-"
+   }
+  },
+  "expect": {
+   "slug": "test-_-_result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1086",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:126",
+  "input": {
+   "name": "test----result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "_"
+   }
+  },
+  "expect": {
+   "slug": "test----result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1087",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:127",
+  "input": {
+   "name": "test____result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "_"
+   }
+  },
+  "expect": {
+   "slug": "test_result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1088",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:128",
+  "input": {
+   "name": "test-_-_result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "_"
+   }
+  },
+  "expect": {
+   "slug": "test-_-_result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1089",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:129",
+  "input": {
+   "name": "test----result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": ""
+   }
+  },
+  "expect": {
+   "slug": "test----result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1090",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:130",
+  "input": {
+   "name": "test____result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": ""
+   }
+  },
+  "expect": {
+   "slug": "test____result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1091",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:131",
+  "input": {
+   "name": "test-_-_result",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": ""
+   }
+  },
+  "expect": {
+   "slug": "test-_-_result"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1092",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:137",
+  "input": {
+   "name": "test",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": null,
+    "deduplicate_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1093",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:143",
+  "input": {
+   "name": "test",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "-_",
+    "deduplicate_chars": null
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1094",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:149",
+  "input": {
+   "name": "test",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "",
+    "deduplicate_chars": "-_"
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ },
+ {
+  "id": "RAD-PARSE-1095",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:155",
+  "input": {
+   "name": "test",
+   "facet": "unknown",
+   "fn": "Parser.ToUrlSlug",
+   "args": {
+    "invalid_dash_replacement": false,
+    "trim_end_chars": "-_",
+    "deduplicate_chars": ""
+   }
+  },
+  "expect": {
+   "slug": "test"
+  }
+ }
+]

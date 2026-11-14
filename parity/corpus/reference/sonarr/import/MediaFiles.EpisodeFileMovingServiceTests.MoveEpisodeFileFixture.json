@@ -1,0 +1,74 @@
+[
+ {
+  "id": "SON-IMPORT-0050",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:93",
+  "input": {
+   "op": "EpisodeFileMovingService.MoveEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "episode_file": {
+     "relative_path": "Season 1\\File.avi"
+    },
+    "built_file_path": "/C/Test/TV/Series/Season 01/File Name.avi",
+    "built_season_path": "/C/Test/TV/Series/Season 01",
+    "root_folder": "/C/Test/TV/",
+    "root_folder_exists": true,
+    "series_folder_exists": false,
+    "season_folder_exists": false
+   }
+  },
+  "expect": {
+   "events": {
+    "EpisodeFolderCreatedEvent with SeriesFolder": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0051",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:103",
+  "input": {
+   "op": "EpisodeFileMovingService.MoveEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "episode_file": {
+     "relative_path": "Season 1\\File.avi"
+    },
+    "built_file_path": "/C/Test/TV/Series/Season 01/File Name.avi",
+    "built_season_path": "/C/Test/TV/Series/Season 01",
+    "root_folder": "/C/Test/TV/",
+    "root_folder_exists": true,
+    "series_folder_exists": false,
+    "season_folder_exists": false
+   }
+  },
+  "expect": {
+   "events": {
+    "EpisodeFolderCreatedEvent with SeasonFolder": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0052",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:113",
+  "input": {
+   "op": "EpisodeFileMovingService.MoveEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "episode_file": {
+     "relative_path": "Season 1\\File.avi"
+    },
+    "built_file_path": "/C/Test/TV/Series/Season 01/File Name.avi",
+    "built_season_path": "/C/Test/TV/Series/Season 01",
+    "root_folder": "/C/Test/TV/",
+    "root_folder_exists": true,
+    "series_folder_exists": true,
+    "season_folder_exists": false
+   }
+  },
+  "expect": {
+   "events": {
+    "EpisodeFolderCreatedEvent with SeriesFolder": 0
+   }
+  }
+ }
+]

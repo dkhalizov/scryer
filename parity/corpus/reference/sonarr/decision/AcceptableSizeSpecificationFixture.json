@@ -1,0 +1,1714 @@
+[
+ {
+  "id": "SON-DECISION-0001",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:96",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 50
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "middle (id 5)"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0002",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:97",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 250
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "middle (id 5)"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0003",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:98",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 500
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "middle (id 5)"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0004",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:99",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 100
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60,
+      "position_in_season": "middle (id 5)"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0005",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:100",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 500
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60,
+      "position_in_season": "middle (id 5)"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0006",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:101",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 1000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60,
+      "position_in_season": "middle (id 5)"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0007",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:113",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 250
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "first"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0008",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:114",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 1000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "first"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0009",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:115",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 250
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "first"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0010",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:116",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 2000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "first"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0011",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:128",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 250
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "last"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0012",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:129",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 1000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "last"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0013",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:130",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 250
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "last"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0014",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:131",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 2000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30,
+      "position_in_season": "last"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The test sets the episode runtime to the season's first episode runtime (30), not the row's runtime."
+ },
+ {
+  "id": "SON-DECISION-0015",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:143",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 100
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0016",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:144",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 500
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0017",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:145",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 1000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0018",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:146",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0019",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:147",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 1000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0020",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:148",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 2000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0021",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:159",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 300
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 3,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 4,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 5,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 6,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0022",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:160",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 1500
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 3,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 4,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 5,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 6,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0023",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:161",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 3000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 3,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 4,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 5,
+      "runtime": 30
+     },
+     {
+      "season": 1,
+      "number": 6,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0024",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:162",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 600
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 3,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 4,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 5,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 6,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0025",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:163",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 3000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 3,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 4,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 5,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 6,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0026",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:164",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 6000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 3,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 4,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 5,
+      "runtime": 60
+     },
+     {
+      "season": 1,
+      "number": 6,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0027",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:175",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 10,
+     "max_size": 20
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_bytes": 0
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0028",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:188",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": null
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_bytes": 18457280000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0029",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:200",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": null
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_bytes": 36857280000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0030",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:212",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 60,
+     "series_type": "Daily"
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 300
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 60
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0031",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:226",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 45,
+     "series_type": "Daily"
+    },
+    "quality_definition": {
+     "quality": "Raw-HD",
+     "min_size": 4,
+     "max_size": null
+    },
+    "release": {
+     "quality": "Raw-HD",
+     "revision": 1,
+     "size_mb": 8000
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Raw-HD definition is the reference default (src/NzbDrone.Core/Qualities/Quality.cs:167); revision is the QualityModel default."
+ },
+ {
+  "id": "SON-DECISION-0032",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:240",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {},
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "special": true,
+     "size_bytes": 0
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 30
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test does not set the release size; ReleaseInfo defaults it to 0, and series runtime is the NBuilder default."
+ },
+ {
+  "id": "SON-DECISION-0033",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:248",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 0
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 2,
+      "number": 1,
+      "runtime": 0,
+      "position_in_season": "middle (id 5)"
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0034",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:261",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 0
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 0,
+      "position_in_season": "middle (id 5)",
+      "air_date_offset_hours_from_season_first_episode": 168
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0035",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:277",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 0
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 0,
+      "position_in_season": "middle (id 5)",
+      "air_date_offset_hours_from_season_first_episode": 1
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0036",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:293",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 0
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 2,
+      "number": 1,
+      "runtime": 0
+     },
+     {
+      "season": 2,
+      "number": 2,
+      "runtime": 0
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0037",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:308",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 0
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 0,
+      "air_date_offset_hours_from_season_first_episode": 168
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 0,
+      "air_date_offset_hours_from_season_first_episode": 168
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0038",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:327",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 0
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 0,
+      "air_date_offset_hours_from_season_first_episode": 1
+     },
+     {
+      "season": 1,
+      "number": 2,
+      "runtime": 0,
+      "air_date_offset_hours_from_season_first_episode": 1
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0039",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:346",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "series": {
+     "runtime": 30
+    },
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "size_mb": 200
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "number": 1,
+      "runtime": 0,
+      "air_date_offset_hours_from_season_first_episode": 1
+     }
+    ],
+    "season_episodes": {
+     "season": 1,
+     "count": 10,
+     "runtime": 30,
+     "ids": "1..10 (NBuilder)"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

@@ -1,0 +1,119 @@
+[
+ {
+  "id": "SON-IMPORT-0163",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:51",
+  "input": {
+   "op": "EpisodeTitleSpecification",
+   "given": {
+    "config": {
+     "episode_title_required": "Always"
+    },
+    "naming_requires_episode_title": true,
+    "series": {
+     "type": "Standard",
+     "path": "/C/Test/TV/30 Rock"
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "title": null,
+      "air_date_offset_hours": 0
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi"
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Title1 is NBuilder's default episode title."
+ },
+ {
+  "id": "SON-IMPORT-0164",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:59",
+  "input": {
+   "op": "EpisodeTitleSpecification",
+   "given": {
+    "config": {
+     "episode_title_required": "Always"
+    },
+    "naming_requires_episode_title": true,
+    "series": {
+     "type": "Standard",
+     "path": "/C/Test/TV/30 Rock"
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "title": "TBA",
+      "air_date_offset_hours": 0
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi"
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Title1 is NBuilder's default episode title."
+ },
+ {
+  "id": "SON-IMPORT-0165",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:67",
+  "input": {
+   "op": "EpisodeTitleSpecification",
+   "given": {
+    "config": {
+     "episode_title_required": "Always"
+    },
+    "naming_requires_episode_title": true,
+    "series": {
+     "type": "Standard",
+     "path": "/C/Test/TV/30 Rock"
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "title": "TBA",
+      "air_date_offset_hours": 0
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi",
+    "existing_file": true
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Title1 is NBuilder's default episode title."
+ },
+ {
+  "id": "SON-IMPORT-0166",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:76",
+  "input": {
+   "op": "EpisodeTitleSpecification",
+   "given": {
+    "config": {
+     "episode_title_required": "Always"
+    },
+    "naming_requires_episode_title": true,
+    "series": {
+     "type": "Standard",
+     "path": "/C/Test/TV/30 Rock"
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "title": "TBA",
+      "air_date_offset_hours": -168
+     }
+    ],
+    "path": "/C/Test/Unsorted/30 Rock/30.rock.s01e01.avi"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Title1 is NBuilder's default episode title."
+ }
+]

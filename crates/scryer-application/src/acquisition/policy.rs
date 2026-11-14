@@ -111,7 +111,7 @@ pub(crate) const SEASON_PACK_AIRED_GRACE_HOURS: i64 = 24;
 /// broadcast. Taking midnight literally means a finale airing tomorrow at 21:00
 /// looks ~12 h away, clears the 24 h grace, and the pack is admitted the day
 /// before the episode exists — precisely the partial fetch this rule prevents.
-pub(crate) fn episode_is_unaired(air_date: Option<&str>, now: &DateTime<Utc>) -> bool {
+pub fn episode_is_unaired(air_date: Option<&str>, now: &DateTime<Utc>) -> bool {
     let Some(air) = parse_schedule_baseline_date(air_date) else {
         return false;
     };

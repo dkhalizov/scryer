@@ -1,0 +1,189 @@
+[
+ {
+  "id": "RAD-PARSE-0112",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:14",
+  "input": {
+   "name": "/C/Test/Some.Hashed.Release.2018.720p.WEB-DL.AAC2.0.H.264-Mercury/0e895c37245186812cb08aab1529cf8ee389dd05.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Some Hashed Release",
+   "quality": {
+    "name": "WEBDL-720p"
+   },
+   "release_group": "Mercury"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0113",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:21",
+  "input": {
+   "name": "/C/Test/0e895c37245186812cb08aab1529cf8ee389dd05/Some.Hashed.Release.2018.720p.WEB-DL.AAC2.0.H.264-Mercury.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Some Hashed Release",
+   "quality": {
+    "name": "WEBDL-720p"
+   },
+   "release_group": "Mercury"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0114",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:28",
+  "input": {
+   "name": "/C/Test/Movie.2018.DVDRip.XviD-RADARR/AHFMZXGHEWD660.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie",
+   "quality": {
+    "name": "DVD"
+   },
+   "release_group": "RADARR"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0115",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:35",
+  "input": {
+   "name": "/C/Test/Movie.2018.1080p.BluRay.x264-RADARR/Backup_72023S02-12.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie",
+   "quality": {
+    "name": "Bluray-1080p"
+   },
+   "release_group": "RADARR"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0116",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:42",
+  "input": {
+   "name": "/C/Test/Movie.2018.1080p.BluRay.x264/Backup_72023S02-12.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie",
+   "quality": {
+    "name": "Bluray-1080p"
+   },
+   "release_group": null
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0117",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:49",
+  "input": {
+   "name": "/C/Test/Movie 2018 720p WEB-DL DD5 1 H 264-ECI/123.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie",
+   "quality": {
+    "name": "WEBDL-720p"
+   },
+   "release_group": "ECI"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0118",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:56",
+  "input": {
+   "name": "/C/Test/Movie 2018 720p WEB-DL DD5 1 H 264-ECI/abc.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie",
+   "quality": {
+    "name": "WEBDL-720p"
+   },
+   "release_group": "ECI"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0119",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:63",
+  "input": {
+   "name": "/C/Test/Movie 2018 720p WEB-DL DD5 1 H 264-ECI/b00bs.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie",
+   "quality": {
+    "name": "WEBDL-720p"
+   },
+   "release_group": "ECI"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0120",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:70",
+  "input": {
+   "name": "/C/Test/Movie.Title.2018.720p.HDTV.x264-NZBgeek/cgajsofuejsa501.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie Title",
+   "quality": {
+    "name": "HDTV-720p"
+   },
+   "release_group": "NZBgeek"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0121",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:77",
+  "input": {
+   "name": "/C/Test/Movie.2018.1080p.WEB-DL.DD5.1.H264-RARBG/170424_26.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie",
+   "quality": {
+    "name": "WEBDL-1080p"
+   },
+   "release_group": "RARBG"
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ },
+ {
+  "id": "RAD-PARSE-0122",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:84",
+  "input": {
+   "name": "/C/Test/Movie.Title.2018.720p.HDTV.H.264/abc.xyz.af6021c37f7852.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMoviePath"
+  },
+  "expect": {
+   "title": "Movie Title",
+   "quality": {
+    "name": "HDTV-720p"
+   },
+   "release_group": null
+  },
+  "note": "path is the test's C:\\ path after AsOsAgnostic (POSIX form); title is PrimaryMovieTitle"
+ }
+]

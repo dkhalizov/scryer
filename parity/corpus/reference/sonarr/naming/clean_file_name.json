@@ -1,0 +1,110 @@
+[
+ {
+  "id": "SON-NAMING-0008",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:11",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "name": "Law & Order: Criminal Intent - S10E07 - Icarus [HDTV-720p]",
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    }
+   }
+  },
+  "expect": {
+   "name": "Law & Order - Criminal Intent - S10E07 - Icarus [HDTV-720p]"
+  },
+  "note": "Static FileNameBuilder.CleanFileName(name) uses NamingConfig.Default."
+ },
+ {
+  "id": "SON-NAMING-0009",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:17",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "name": ".hack s01e01",
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    }
+   }
+  },
+  "expect": {
+   "name": "hack s01e01"
+  },
+  "note": "Static FileNameBuilder.CleanFileName(name) uses NamingConfig.Default."
+ },
+ {
+  "id": "SON-NAMING-0010",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:23",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "name": " Series Title - S01E01 - Episode Title",
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series Title - S01E01 - Episode Title"
+  },
+  "note": "Static FileNameBuilder.CleanFileName(name) uses NamingConfig.Default."
+ },
+ {
+  "id": "SON-NAMING-0011",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:24",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "name": "Series Title - S01E01 - Episode Title ",
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "Season {season}",
+     "specialsFolderFormat": "Specials"
+    }
+   }
+  },
+  "expect": {
+   "name": "Series Title - S01E01 - Episode Title"
+  },
+  "note": "Static FileNameBuilder.CleanFileName(name) uses NamingConfig.Default."
+ }
+]

@@ -1,0 +1,274 @@
+[
+ {
+  "id": "RAD-TORRENT-0001",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:100",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.1998",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_movie": {
+     "movie": "movie"
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "movie_by_title": {
+     "Drone.1998": "movie"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.1998.mkv",
+      "movie": null,
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.1999.mkv",
+      "movie": null,
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/MovieImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported. 'movie': 'tracked' is the tracked download's movie; null means LocalMovie.Movie is unset. DownloadId/Category are NBuilder defaults."
+ },
+ {
+  "id": "RAD-TORRENT-0002",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:128",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.1998",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_movie": {
+     "movie": "movie"
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "movie_by_title": {
+     "Drone.1998": "movie"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.1998.mkv",
+      "movie": null,
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.1998.mkv",
+      "movie": null,
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "The test replaces the tracked movie with a new Movie() before importing. Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/MovieImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported. 'movie': 'tracked' is the tracked download's movie; null means LocalMovie.Movie is unset. DownloadId/Category are NBuilder defaults."
+ },
+ {
+  "id": "RAD-TORRENT-0003",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:155",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.1998",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_movie": {
+     "movie": "movie"
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "movie_by_title": {
+     "Drone.1998": "movie"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.1998.mkv",
+      "movie": null,
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.1998.mkv",
+      "movie": null,
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/MovieImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported. 'movie': 'tracked' is the tracked download's movie; null means LocalMovie.Movie is unset. DownloadId/Category are NBuilder defaults."
+ },
+ {
+  "id": "RAD-TORRENT-0004",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:171",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.1998",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_movie": {
+     "movie": "movie"
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "movie_by_title": {
+     "*": "movie"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "movie": "tracked",
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "movie": null,
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "Imported",
+   "download_completed_events": 1,
+   "process_path": {
+    "calls": 1,
+    "path": "/C/DropFolder/MyDownload",
+    "mode": "Auto",
+    "movie": "tracked",
+    "download_item": "tracked"
+   }
+  },
+  "note": "Radarr's rule (CompletedDownloadService.VerifyImport): any imported file for the movie completes the download. The tracked movie is replaced by a new Movie() before import; every title lookup returns the original one. Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/MovieImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported. 'movie': 'tracked' is the tracked download's movie; null means LocalMovie.Movie is unset. DownloadId/Category are NBuilder defaults."
+ },
+ {
+  "id": "RAD-TORRENT-0005",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:191",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Droned Pilot",
+     "download_id": "1234",
+     "category": "Category1"
+    },
+    "remote_movie": {
+     "movie": "movie"
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "movie_by_title": {
+     "Droned 1998": "movie"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "movie": "tracked",
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     }
+    ],
+    "most_recent_history": {
+     "source_title": "Droned 1998"
+    },
+    "movie_by_id": {
+     "*": "movie"
+    }
+   }
+  },
+  "expect": {
+   "state": "Imported",
+   "download_completed_events": 1,
+   "process_path": {
+    "calls": 1,
+    "path": "/C/DropFolder/MyDownload",
+    "mode": "Auto",
+    "movie": "tracked",
+    "download_item": "tracked"
+   }
+  },
+  "note": "Titles other than 'Droned 1998' map to no movie; the title and id lookups return a new Movie(), not the tracked one. Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/MovieImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported. 'movie': 'tracked' is the tracked download's movie; null means LocalMovie.Movie is unset. DownloadId/Category are NBuilder defaults."
+ }
+]

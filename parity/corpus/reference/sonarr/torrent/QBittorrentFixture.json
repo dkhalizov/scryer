@@ -1,0 +1,3710 @@
+[
+ {
+  "id": "SON-TORRENT-0001",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:161",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "error",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Warning"
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0002",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:181",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "pausedDL",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Paused",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0003",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:182",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "stoppedDL",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Paused",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0004",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:203",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Completed",
+    "remaining_size": 0,
+    "remaining_time": 0
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0005",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:204",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Completed",
+    "remaining_size": 0,
+    "remaining_time": 0
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0006",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:205",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "queuedUP",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Completed",
+    "remaining_size": 0,
+    "remaining_time": 0
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0007",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:206",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "uploading",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Completed",
+    "remaining_size": 0,
+    "remaining_time": 0
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0008",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:207",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stalledUP",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Completed",
+    "remaining_size": 0,
+    "remaining_time": 0
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0009",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:208",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "forcedUP",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Completed",
+    "remaining_size": 0,
+    "remaining_time": 0
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0010",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:229",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "queuedDL",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Queued",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0011",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:230",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "checkingDL",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Queued",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0012",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:231",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "checkingUP",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Queued",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0013",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:232",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "metaDL",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Queued",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0014",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:233",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "checkingResumeData",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Queued",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0015",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:254",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 60,
+      "state": "downloading",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Downloading",
+    "remaining_size": {
+     "not": 0
+    },
+    "remaining_time": {
+     "not": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0016",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:275",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "stalledDL",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Warning",
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0017",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:296",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "missingFiles",
+      "label": "",
+      "save_path": ""
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "client_info": {
+     "protocol": "Torrent",
+     "id": 0,
+     "name": null
+    },
+    "download_id": {
+     "not_empty": true
+    },
+    "title": {
+     "not_empty": true
+    },
+    "status": "Warning",
+    "remaining_time": null
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0018",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:317",
+  "input": {
+   "op": "qbittorrent.get_import_item",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Test\\'s.1080p.WEB-DL-DRONE.mkv",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "stalledDL",
+      "label": "",
+      "save_path": "/C/Torrents"
+     }
+    ],
+    "files": [
+     "Droned.S01E01.Tests.1080p.WEB-DL-DRONE.mkv"
+    ],
+    "item": {
+     "download_id": "HASH"
+    }
+   }
+  },
+  "expect": {
+   "output_path": "/C/Torrents/Droned.S01E01.Tests.1080p.WEB-DL-DRONE.mkv"
+  }
+ },
+ {
+  "id": "SON-TORRENT-0019",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:350",
+  "input": {
+   "op": "qbittorrent.get_import_item",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Test\\'s.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "stalledDL",
+      "label": "",
+      "save_path": "/C/Torrents"
+     }
+    ],
+    "files": [
+     "Folder/Droned.S01E01.Tests.1080p.WEB-DL-DRONE.mkv"
+    ],
+    "item": {
+     "download_id": "HASH"
+    }
+   }
+  },
+  "expect": {
+   "output_path": "/C/Torrents/Folder"
+  }
+ },
+ {
+  "id": "SON-TORRENT-0020",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:383",
+  "input": {
+   "op": "qbittorrent.get_import_item",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01.\\1/2",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "stalledDL",
+      "label": "",
+      "save_path": "/C/Torrents"
+     }
+    ],
+    "files": [
+     "Droned.S01.12/E01.mkv",
+     "Droned.S01.12/E02.mkv"
+    ],
+    "item": {
+     "download_id": "HASH"
+    }
+   }
+  },
+  "expect": {
+   "output_path": "/C/Torrents/Droned.S01.12"
+  }
+ },
+ {
+  "id": "SON-TORRENT-0021",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:423",
+  "input": {
+   "op": "qbittorrent.get_import_item",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01.\\1/2",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "/C/Torrents",
+      "content_path": "/C/Torrents/Droned.S01.12"
+     }
+    ],
+    "api_version": "2.6.1",
+    "item": {
+     "download_id": "HASH",
+     "output_path": "/C/Torrents/Droned.S01.12"
+    }
+   }
+  },
+  "expect": {
+   "output_path": "/C/Torrents/Droned.S01.12"
+  },
+  "note": "Torrent files are not set; GivenTorrents serves one file named after the torrent."
+ },
+ {
+  "id": "SON-TORRENT-0022",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:424",
+  "input": {
+   "op": "qbittorrent.get_import_item",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01.\\1/2",
+      "size": 1000,
+      "progress": 0.7,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "/C/Torrents",
+      "content_path": "/C/Torrents/Droned.S01.12"
+     }
+    ],
+    "api_version": "2.6.1",
+    "item": {
+     "download_id": "HASH",
+     "output_path": "/C/Torrents/Droned.S01.12"
+    }
+   }
+  },
+  "expect": {
+   "output_path": "/C/Torrents/Droned.S01.12"
+  },
+  "note": "Torrent files are not set; GivenTorrents serves one file named after the torrent."
+ },
+ {
+  "id": "SON-TORRENT-0023",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:457",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "http://somewhere.com/Droned.S01E01.Pilot.1080p.WEB-DL-DRONE.ext",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 200,
+     "body": "empty"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+   }
+  },
+  "expect": {
+   "download_id": {
+    "not_empty": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0024",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:469",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z6KR&tr=udp",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 200,
+     "body": "empty"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+   }
+  },
+  "expect": {
+   "download_id": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+  }
+ },
+ {
+  "id": "SON-TORRENT-0025",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:482",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "dht_enabled": false
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z6KR",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 200,
+     "body": "empty"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+   }
+  },
+  "expect": {
+   "error": "ReleaseDownloadException"
+  }
+ },
+ {
+  "id": "SON-TORRENT-0026",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:495",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "dht_enabled": false
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z6KR&tr=udp://abc",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 200,
+     "body": "empty"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+   }
+  },
+  "expect": {
+   "error": null,
+   "add_torrent_from_url_calls": 1
+  }
+ },
+ {
+  "id": "SON-TORRENT-0027",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:511",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv",
+     "recent_tv_priority": "First",
+     "older_tv_priority": "First"
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "http://somewhere.com/Droned.S01E01.Pilot.1080p.WEB-DL-DRONE.ext",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 200,
+     "body": "empty"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+   }
+  },
+  "expect": {
+   "move_to_top_calls": 1
+  }
+ },
+ {
+  "id": "SON-TORRENT-0028",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:525",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv",
+     "recent_tv_priority": "First",
+     "older_tv_priority": "First"
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "http://somewhere.com/Droned.S01E01.Pilot.1080p.WEB-DL-DRONE.ext",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 200,
+     "body": "empty"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951",
+    "move_to_top_response": {
+     "status": 403
+    }
+   }
+  },
+  "expect": {
+   "download_id": {
+    "not_empty": true
+   },
+   "warnings_logged": 1
+  }
+ },
+ {
+  "id": "SON-TORRENT-0029",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:544",
+  "input": {
+   "op": "qbittorrent.get_status",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "save_path": "/C/Downloads/Finished/QBittorrent"
+    }
+   }
+  },
+  "expect": {
+   "is_localhost": true,
+   "output_root_folders": {
+    "first": "/C/Downloads/Finished/QBittorrent"
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0030",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:563",
+  "input": {
+   "op": "qbittorrent.get_status",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "save_path": "/C/Downloads/Finished/QBittorrent"
+    },
+    "api_version": "2.0",
+    "categories": {
+     "tv": {
+      "name": "tv",
+      "save_path": "//server/store/downloads"
+     }
+    }
+   }
+  },
+  "expect": {
+   "is_localhost": true,
+   "output_root_folders": {
+    "first": "\\\\server\\store\\downloads"
+   }
+  },
+  "note": "Expected value is a literal (not AsOsAgnostic) in the test."
+ },
+ {
+  "id": "SON-TORRENT-0031",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:591",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "http://somewhere.com/Droned.S01E01.Pilot.1080p.WEB-DL-DRONE.ext",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 303,
+     "location": "magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z6KR&tr=udp"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+   }
+  },
+  "expect": {
+   "download_id": {
+    "not_empty": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0032",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:604",
+  "input": {
+   "op": "qbittorrent.download",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "preferences": {
+     "dht_enabled": true
+    },
+    "release": {
+     "title": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+     "download_url": "http://somewhere.com/Droned.S01E01.Pilot.1080p.WEB-DL-DRONE.ext",
+     "protocol": "Torrent"
+    },
+    "http_get": {
+     "status": 302,
+     "location": "http://test.sonarr.tv/not-a-real-torrent.torrent"
+    },
+    "torrent_file_hash": "CBC2F069FE8BB2F544EAE707D75BCD3DE9DCF951"
+   }
+  },
+  "expect": {
+   "download_id": {
+    "not_empty": true
+   }
+  },
+  "note": "Only the original URL is mocked to redirect; other GETs return 200 with an empty body."
+ },
+ {
+  "id": "SON-TORRENT-0033",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:617",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_unix": 0,
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "uploading",
+      "label": "",
+      "save_path": "",
+      "ratio": 0.5
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  },
+  "note": "Built directly, not via GivenCompletedTorrent: per-torrent limits keep their -2 default (use global) and LastActivity its C# default 0, i.e. the unix epoch (last_activity_unix), not 'now'. No seeding time is arranged: GivenTorrents mocks properties for the lower-case hash with SavePath only. Global seeding and inactive limits are off (-1), so neither is consulted."
+ },
+ {
+  "id": "SON-TORRENT-0034",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:680",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "uploading",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0035",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:691",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0036",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:692",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0037",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:703",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0038",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:704",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0039",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:715",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.1006066990976857,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0040",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:716",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.1006066990976857,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0041",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:727",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 0.9999,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0042",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:728",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 0.9999,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0043",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:739",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": 0.8,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0044",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:740",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": 0.8,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0045",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:751",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.1006066990976857,
+      "ratio_limit": 1.1,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0046",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:752",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.1006066990976857,
+      "ratio_limit": 1.1,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0047",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:763",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 0.9999,
+      "ratio_limit": 1.0,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0048",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:764",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 0.9999,
+      "ratio_limit": 1.0,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0049",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:775",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 0.2,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 0.5,
+      "ratio_limit": 0.8,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0050",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:776",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 0.2,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 0.5,
+      "ratio_limit": 0.8,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  },
+  "note": "Ratios with an f suffix are C# single-precision floats."
+ },
+ {
+  "id": "SON-TORRENT-0051",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:787",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 20,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "uploading",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1800
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0052",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:798",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 20,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0053",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:799",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 20,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0054",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:810",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 40,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": 10,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0055",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:811",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 40,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": 10,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0056",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:822",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 20,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": 40,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1800
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0057",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:823",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 20,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": 40,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1800
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0058",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:834",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 20,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "uploading",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 25,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0059",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:845",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 20,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 25,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0060",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:846",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 20,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 25,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0061",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:857",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 40,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": 10,
+      "last_activity_minutes_ago": 15,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0062",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:858",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 40,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": 10,
+      "last_activity_minutes_ago": 15,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0063",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:869",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 20,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": 40,
+      "last_activity_minutes_ago": 30,
+      "properties": {
+       "seeding_time_s": 1800
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0064",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:870",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 20,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": 40,
+      "last_activity_minutes_ago": 30,
+      "properties": {
+       "seeding_time_s": 1800
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0065",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:881",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": 20,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1800
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0066",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:882",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": 20,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1800
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0067",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:893",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 20,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 25,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0068",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:894",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 2.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": 20,
+     "max_inactive_seeding_time_enabled": true
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 1.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 25,
+      "properties": {
+       "seeding_time_s": 60
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": true,
+    "can_move_files": true
+   }
+  }
+ },
+ {
+  "id": "SON-TORRENT-0069",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:905",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 30,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ],
+    "polls": 2
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   },
+   "torrent_properties_fetches": 1
+  },
+  "note": "Removability is asserted on the first poll; the fetch count after the second."
+ },
+ {
+  "id": "SON-TORRENT-0070",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:906",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": -1,
+     "max_ratio_enabled": false,
+     "max_seeding_time": 30,
+     "max_seeding_time_enabled": true,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "",
+      "save_path": "",
+      "ratio": 2.0,
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_minutes_ago": 0,
+      "properties": {
+       "seeding_time_s": 1200
+      }
+     }
+    ],
+    "polls": 2
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "can_be_removed": false,
+    "can_move_files": false
+   },
+   "torrent_properties_fetches": 1
+  },
+  "note": "Removability is asserted on the first poll; the fetch count after the second."
+ },
+ {
+  "id": "SON-TORRENT-0071",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:922",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_unix": 0,
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "save_path": "",
+      "category": "tv-sonarr",
+      "ratio": 1.0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "category": "tv-sonarr"
+   }
+  },
+  "note": "Label is not set (null). Built directly, not via GivenCompletedTorrent: per-torrent limits keep their -2 default (use global) and LastActivity its C# default 0, i.e. the unix epoch (last_activity_unix), not 'now'. No seeding time is arranged: GivenTorrents mocks properties for the lower-case hash with SavePath only. Global seeding and inactive limits are off (-1), so neither is consulted."
+ },
+ {
+  "id": "SON-TORRENT-0072",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:923",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_unix": 0,
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "save_path": "",
+      "category": "tv-sonarr",
+      "ratio": 1.0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "category": "tv-sonarr"
+   }
+  },
+  "note": "Label is not set (null). Built directly, not via GivenCompletedTorrent: per-torrent limits keep their -2 default (use global) and LastActivity its C# default 0, i.e. the unix epoch (last_activity_unix), not 'now'. No seeding time is arranged: GivenTorrents mocks properties for the lower-case hash with SavePath only. Global seeding and inactive limits are off (-1), so neither is consulted."
+ },
+ {
+  "id": "SON-TORRENT-0073",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:948",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_unix": 0,
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "pausedUP",
+      "label": "tv-sonarr",
+      "save_path": "",
+      "ratio": 1.0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "category": "tv-sonarr"
+   }
+  },
+  "note": "Category is not set (null). Built directly, not via GivenCompletedTorrent: per-torrent limits keep their -2 default (use global) and LastActivity its C# default 0, i.e. the unix epoch (last_activity_unix), not 'now'. No seeding time is arranged: GivenTorrents mocks properties for the lower-case hash with SavePath only. Global seeding and inactive limits are off (-1), so neither is consulted."
+ },
+ {
+  "id": "SON-TORRENT-0074",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:949",
+  "input": {
+   "op": "qbittorrent.get_items",
+   "given": {
+    "settings": {
+     "host": "127.0.0.1",
+     "port": 2222,
+     "tv_category": "tv"
+    },
+    "definition": {
+     "id": 0,
+     "name": null
+    },
+    "preferences": {
+     "max_ratio_action": "Pause",
+     "max_ratio": 1.0,
+     "max_ratio_enabled": true,
+     "max_seeding_time": -1,
+     "max_seeding_time_enabled": false,
+     "max_inactive_seeding_time": -1,
+     "max_inactive_seeding_time_enabled": false
+    },
+    "torrents": [
+     {
+      "ratio_limit": -2,
+      "seeding_time_limit": -2,
+      "inactive_seeding_time_limit": -2,
+      "last_activity_unix": 0,
+      "hash": "HASH",
+      "name": "Droned.S01E01.Pilot.1080p.WEB-DL-DRONE",
+      "size": 1000,
+      "progress": 1.0,
+      "eta": 8640000,
+      "state": "stoppedUP",
+      "label": "tv-sonarr",
+      "save_path": "",
+      "ratio": 1.0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "item_count": 1,
+   "item": {
+    "category": "tv-sonarr"
+   }
+  },
+  "note": "Category is not set (null). Built directly, not via GivenCompletedTorrent: per-torrent limits keep their -2 default (use global) and LastActivity its C# default 0, i.e. the unix epoch (last_activity_unix), not 'now'. No seeding time is arranged: GivenTorrents mocks properties for the lower-case hash with SavePath only. Global seeding and inactive limits are off (-1), so neither is consulted."
+ },
+ {
+  "id": "SON-TORRENT-0075",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:974",
+  "input": {
+   "op": "qbittorrent.parse_torrent_json",
+   "given": {
+    "json": "{ \"eta\": 18446744073709335000 }"
+   }
+  },
+  "expect": {
+   "eta": "18446744073709335000"
+  }
+ }
+]

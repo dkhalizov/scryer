@@ -1,0 +1,100 @@
+[
+ {
+  "id": "SON-IMPORT-0053",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:38",
+  "input": {
+   "op": "AggregateEpisodes",
+   "given": {
+    "file_title": "Series.Title.S01E01",
+    "folder_title": "Series.Title.S01",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv"
+   }
+  },
+  "expect": {
+   "episodes_looked_up_from": "file"
+  },
+  "note": "File and folder infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0054",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:57",
+  "input": {
+   "op": "AggregateEpisodes",
+   "given": {
+    "file_title": "Series.Title.S01E01",
+    "folder_title": "Series.Title.S01",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv",
+    "other_video_files": true
+   }
+  },
+  "expect": {
+   "episodes_looked_up_from": "file"
+  },
+  "note": "File and folder infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0055",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:77",
+  "input": {
+   "op": "AggregateEpisodes",
+   "given": {
+    "file_title": "Series.Title.S01E01",
+    "folder_title": "Series.Title.S01E01",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01E01/Series.Title.S01E01.720p.HDTV-Sonarr.mkv"
+   }
+  },
+  "expect": {
+   "episodes_looked_up_from": "file"
+  },
+  "note": "File and folder infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0056",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:96",
+  "input": {
+   "op": "AggregateEpisodes",
+   "given": {
+    "file_title": "Series.Title.S01E01",
+    "folder_title": "Series.Title.S01E01",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01E01/Series.Title.S01E01.mkv"
+   }
+  },
+  "expect": {
+   "episodes_looked_up_from": "folder"
+  },
+  "note": "File and folder infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0057",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:115",
+  "input": {
+   "op": "AggregateEpisodes",
+   "given": {
+    "file_title": "Series.Title.S01E01",
+    "folder_title": "Series.Title.01",
+    "path": "/C/Test/Unsorted TV/Series.Title.101/Series.Title.S01E01.mkv"
+   }
+  },
+  "expect": {
+   "episodes_looked_up_from": "file"
+  },
+  "note": "File and folder infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0058",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:134",
+  "input": {
+   "op": "AggregateEpisodes",
+   "given": {
+    "file_title": "S00E01",
+    "path": "/C/Test/TV/Series/Specials/S00E01.mkv",
+    "episodes_for_file_info": [],
+    "special_parse": "returns a copy of the file info"
+   }
+  },
+  "expect": {
+   "episodes_looked_up_from": "special"
+  },
+  "note": "File and folder infos come from the reference parser on the titles given."
+ }
+]

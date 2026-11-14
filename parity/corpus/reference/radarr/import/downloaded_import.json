@@ -1,0 +1,436 @@
+[
+ {
+  "id": "RAD-IMPORT-0027",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:97",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ]
+   }
+  },
+  "expect": {
+   "movie_lookup": [
+    "foldername"
+   ]
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0028",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:105",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ],
+    "movie_found": true,
+    "file_locked": true
+   }
+  },
+  "expect": {
+   "imported": false
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0029",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:118",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ],
+    "movie_found": false
+   }
+  },
+  "expect": {
+   "import_decisions_requested": false,
+   "imported": false
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0030",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:132",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ],
+    "movie_found": true,
+    "folder_is_movie_path": true
+   }
+  },
+  "expect": {
+   "folder_video_files_listed": false,
+   "warnings": 1
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0032",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:166",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/c/drop/",
+    "import_mode": "Auto",
+    "movie_found": true,
+    "imported": true,
+    "video_files_after_import": [],
+    "download_client_item": {
+     "download_id": "sab1",
+     "status": "Downloading",
+     "can_move_files": false
+    }
+   }
+  },
+  "expect": {
+   "folder_deleted": false
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0033",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:181",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/c/drop/",
+    "import_mode": "Move",
+    "movie_found": true,
+    "imported": true,
+    "video_files_after_import": [],
+    "download_client_item": {
+     "download_id": "sab1",
+     "status": "Downloading",
+     "can_move_files": false
+    }
+   }
+  },
+  "expect": {
+   "folder_deleted": true
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0034",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:196",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/c/drop/",
+    "import_mode": "Copy",
+    "movie_found": true,
+    "imported": true,
+    "video_files_after_import": [],
+    "download_client_item": {
+     "download_id": "sab1",
+     "status": "Downloading",
+     "can_move_files": true
+    }
+   }
+  },
+  "expect": {
+   "folder_deleted": false
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0035",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:211",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ],
+    "movie_found": true,
+    "imported": true
+   }
+  },
+  "expect": {
+   "folder_deleted": false,
+   "warnings": 1
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0036",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:237",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ],
+    "movie_found": true,
+    "imported": true,
+    "sample_detection": "Sample"
+   }
+  },
+  "expect": {
+   "folder_deleted": true
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0037",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:266",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/C/Test/Unsorted/_UNPACK_47.ronin.2013.hdtv-lol"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ]
+   }
+  },
+  "expect": {
+   "movie_lookup": [
+    "47.ronin.2013.hdtv-lol"
+   ],
+   "lookup_with_prefix": false
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0038",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:267",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/C/Test/Unsorted/_FAILED_47.ronin.2013.hdtv-lol"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ]
+   }
+  },
+  "expect": {
+   "movie_lookup": [
+    "47.ronin.2013.hdtv-lol"
+   ],
+   "lookup_with_prefix": false
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0039",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:286",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/C/folder/file.mkv",
+    "path_is_folder": false,
+    "path_is_file": true,
+    "movie_found": false
+   }
+  },
+  "expect": {
+   "results": 1,
+   "result": "Rejected",
+   "result_path": "/C/folder/file.mkv"
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0040",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:306",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ],
+    "movie_found": true,
+    "imported": true,
+    "sample_detection": "Sample",
+    "files_recursive": [
+     "/c/root/foldername/47.ronin.2013.rar"
+    ],
+    "file_size_mb": 15
+   }
+  },
+  "expect": {
+   "folder_deleted": false,
+   "warnings": 1
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0041",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:345",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/C/media/ba09030e-1234-1234-1234-123456789abc/[HorribleSubs] American Psycho (2000) [720p]/[HorribleSubs] American Psycho (2000) [720p].mkv",
+    "path_is_folder": true,
+    "movie_found": true
+   }
+  },
+  "expect": {
+   "import_decisions_requested": 1
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116). The fixture makes every path a folder, so the .mkv path itself is processed as a folder; the test asserts import decisions are requested once with folder processing."
+ },
+ {
+  "id": "RAD-IMPORT-0042",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:370",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/C/media/ba09030e-1234-1234-1234-123456789abc/Torrents/[HorribleSubs] 47 Ronin (2013) [720p].mkv",
+    "path_is_folder": false,
+    "path_is_file": true,
+    "movie_found": true
+   }
+  },
+  "expect": {
+   "import_decisions_requested": 1,
+   "folder_info": null
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0043",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:394",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/C/media/ba09030e-1234-1234-1234-123456789abc/[HorribleSubs] 47 Ronin (2013) [720p]",
+    "path_is_folder": false,
+    "path_is_file": false
+   }
+  },
+  "expect": {
+   "results": 0,
+   "movie_lookup": [],
+   "errors_logged": 1
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0044",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:413",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_root_folder",
+    "folder": "/c/drop/",
+    "subfolders": [
+     "/c/root/foldername"
+    ],
+    "video_files": [
+     "/c/root/foldername/47.ronin.2013.ext"
+    ],
+    "movie_found": true,
+    "imported": false,
+    "sample_detection": "Sample",
+    "file_size_mb": 15
+   }
+  },
+  "expect": {
+   "folder_deleted": false
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116)."
+ },
+ {
+  "id": "RAD-IMPORT-0045",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:446",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/C/media/ba09030e-1234-1234-1234-123456789abc/[HorribleSubs] American Psycho (2000) [720p]/[HorribleSubs] American Psycho (2000) [720p].mkv",
+    "path_is_folder": true,
+    "movie_found": true,
+    "imported": false,
+    "files_recursive": [
+     "/c/root/foldername/47.ronin.2013.rar"
+    ]
+   }
+  },
+  "expect": {
+   "results": 1,
+   "result": "Rejected"
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116). The fixture makes every path a folder."
+ },
+ {
+  "id": "RAD-IMPORT-0046",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:472",
+  "input": {
+   "op": "downloaded_import",
+   "given": {
+    "entry": "process_path",
+    "path": "/C/media/ba09030e-1234-1234-1234-123456789abc/[HorribleSubs] American Psycho (2000) [720p]/[HorribleSubs] American Psycho (2000) [720p].mkv",
+    "path_is_folder": true,
+    "movie_found": true,
+    "imported": false,
+    "files_recursive": [
+     "/c/root/foldername/47.ronin.2013.exe"
+    ]
+   }
+  },
+  "expect": {
+   "results": 1,
+   "result": "Rejected"
+  },
+  "note": "Fixture: every folder exists; the drop folder holds subfolder /c/root/foldername whose video file is /c/root/foldername/47.ronin.2013.ext. 'imported' means the import step reports an imported file. Sample detection defaults to Indeterminate (DetectSampleResult's first member) unless the test sets Sample. A folder is deleted only for import mode Move (Auto becomes Move without a download client item or when it can move files) after an import, when ShouldDeleteFolder holds (src/NzbDrone.Core/MediaFiles/DownloadedMovieImportService.cs:116). The fixture makes every path a folder."
+ }
+]

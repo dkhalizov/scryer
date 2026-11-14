@@ -1,0 +1,1475 @@
+[
+ {
+  "id": "RAD-IMPORT-0101",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateLanguageFixture.cs:70",
+  "input": {
+   "op": "aggregate_language",
+   "given": {
+    "movie_original_language": "English",
+    "augmenters": []
+   }
+  },
+  "expect": {
+   "languages_contain": "English"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0102",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateLanguageFixture.cs:78",
+  "input": {
+   "op": "aggregate_language",
+   "given": {
+    "movie_original_language": "English",
+    "augmenters": [
+     {
+      "confidence": "Filename",
+      "languages": [
+       "French"
+      ]
+     },
+     {
+      "confidence": "Foldername",
+      "languages": null
+     },
+     {
+      "confidence": "DownloadClientItem",
+      "languages": null
+     },
+     {
+      "confidence": "MediaInfo",
+      "languages": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "languages": [
+    "French"
+   ]
+  },
+  "note": "Language confidence order Default < Filename < Foldername < DownloadClientItem < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/Confidence.cs). A null list means that augmenter found nothing. The test asserts the exact ordered list."
+ },
+ {
+  "id": "RAD-IMPORT-0103",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateLanguageFixture.cs:89",
+  "input": {
+   "op": "aggregate_language",
+   "given": {
+    "movie_original_language": "English",
+    "augmenters": [
+     {
+      "confidence": "Filename",
+      "languages": [
+       "French"
+      ]
+     },
+     {
+      "confidence": "Foldername",
+      "languages": [
+       "German"
+      ]
+     },
+     {
+      "confidence": "DownloadClientItem",
+      "languages": null
+     },
+     {
+      "confidence": "MediaInfo",
+      "languages": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "languages": [
+    "German"
+   ]
+  },
+  "note": "Language confidence order Default < Filename < Foldername < DownloadClientItem < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/Confidence.cs). A null list means that augmenter found nothing. The test asserts the exact ordered list."
+ },
+ {
+  "id": "RAD-IMPORT-0104",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateLanguageFixture.cs:102",
+  "input": {
+   "op": "aggregate_language",
+   "given": {
+    "movie_original_language": "English",
+    "augmenters": [
+     {
+      "confidence": "Filename",
+      "languages": [
+       "French"
+      ]
+     },
+     {
+      "confidence": "Foldername",
+      "languages": [
+       "German"
+      ]
+     },
+     {
+      "confidence": "DownloadClientItem",
+      "languages": [
+       "Spanish"
+      ]
+     },
+     {
+      "confidence": "MediaInfo",
+      "languages": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "languages": [
+    "Spanish"
+   ]
+  },
+  "note": "Language confidence order Default < Filename < Foldername < DownloadClientItem < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/Confidence.cs). A null list means that augmenter found nothing. The test asserts the exact ordered list."
+ },
+ {
+  "id": "RAD-IMPORT-0105",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateLanguageFixture.cs:113",
+  "input": {
+   "op": "aggregate_language",
+   "given": {
+    "movie_original_language": "English",
+    "augmenters": [
+     {
+      "confidence": "Filename",
+      "languages": [
+       "Unknown"
+      ]
+     },
+     {
+      "confidence": "Foldername",
+      "languages": [
+       "French",
+       "German"
+      ]
+     },
+     {
+      "confidence": "DownloadClientItem",
+      "languages": [
+       "Unknown"
+      ]
+     },
+     {
+      "confidence": "MediaInfo",
+      "languages": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "languages": [
+    "French",
+    "German"
+   ]
+  },
+  "note": "Language confidence order Default < Filename < Foldername < DownloadClientItem < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/Confidence.cs). A null list means that augmenter found nothing. The test asserts the exact ordered list."
+ },
+ {
+  "id": "RAD-IMPORT-0106",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateLanguageFixture.cs:124",
+  "input": {
+   "op": "aggregate_language",
+   "given": {
+    "movie_original_language": "English",
+    "augmenters": [
+     {
+      "confidence": "Filename",
+      "languages": [
+       "Unknown"
+      ]
+     },
+     {
+      "confidence": "Foldername",
+      "languages": [
+       "French",
+       "German"
+      ]
+     },
+     {
+      "confidence": "DownloadClientItem",
+      "languages": [
+       "Unknown"
+      ]
+     },
+     {
+      "confidence": "MediaInfo",
+      "languages": [
+       "Japanese",
+       "English"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "languages": [
+    "Japanese",
+    "English"
+   ]
+  },
+  "note": "Language confidence order Default < Filename < Foldername < DownloadClientItem < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/Confidence.cs). A null list means that augmenter found nothing. The test asserts the exact ordered list."
+ },
+ {
+  "id": "RAD-IMPORT-0107",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateLanguageFixture.cs:135",
+  "input": {
+   "op": "aggregate_language",
+   "given": {
+    "movie_original_language": "English",
+    "augmenters": [
+     {
+      "confidence": "Filename",
+      "languages": [
+       "Unknown"
+      ]
+     },
+     {
+      "confidence": "Foldername",
+      "languages": [
+       "French",
+       "German"
+      ]
+     },
+     {
+      "confidence": "DownloadClientItem",
+      "languages": [
+       "Unknown"
+      ]
+     },
+     {
+      "confidence": "MediaInfo",
+      "languages": [
+       "Unknown"
+      ]
+     }
+    ]
+   }
+  },
+  "expect": {
+   "languages": [
+    "French",
+    "German"
+   ]
+  },
+  "note": "Language confidence order Default < Filename < Foldername < DownloadClientItem < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/Confidence.cs). A null list means that augmenter found nothing. The test asserts the exact ordered list."
+ },
+ {
+  "id": "RAD-IMPORT-0108",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:54",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "null_result",
+      "order": 0,
+      "result": null
+     },
+     {
+      "augmenter": "file_extension",
+      "order": 1,
+      "source": "TV",
+      "source_confidence": "Fallback",
+      "resolution": 720,
+      "resolution_confidence": "Fallback",
+      "modifier": "NONE",
+      "modifier_confidence": "Fallback",
+      "revision": {
+       "version": 1,
+       "real": 0
+      },
+      "revision_confidence": "Fallback"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "quality": "HDTV-720p",
+   "source_detection": "Extension",
+   "resolution_detection": "Extension"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0109",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:70",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_extension",
+      "order": 1,
+      "source": "TV",
+      "source_confidence": "Fallback",
+      "resolution": 720,
+      "resolution_confidence": "Fallback",
+      "modifier": "NONE",
+      "modifier_confidence": "Fallback",
+      "revision": {
+       "version": 1,
+       "real": 0
+      },
+      "revision_confidence": "Fallback"
+     },
+     {
+      "augmenter": "file_name",
+      "order": 2,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Fallback",
+      "revision": {
+       "version": 1,
+       "real": 0
+      },
+      "revision_confidence": "Default"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "quality": "SDTV",
+   "source_detection": "Name",
+   "resolution_detection": "Name"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0110",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:82",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_extension",
+      "order": 1,
+      "source": "TV",
+      "source_confidence": "Fallback",
+      "resolution": 720,
+      "resolution_confidence": "Fallback",
+      "modifier": "NONE",
+      "modifier_confidence": "Fallback",
+      "revision": {
+       "version": 1,
+       "real": 0
+      },
+      "revision_confidence": "Fallback"
+     },
+     {
+      "augmenter": "media_info",
+      "order": 4,
+      "source": "UNKNOWN",
+      "source_confidence": "Default",
+      "resolution": 1080,
+      "resolution_confidence": "MediaInfo",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": null,
+      "revision_confidence": "Default"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p",
+   "source_detection": "Extension",
+   "resolution_detection": "MediaInfo"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0111",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:94",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_name",
+      "order": 2,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Fallback",
+      "revision": {
+       "version": 1,
+       "real": 0
+      },
+      "revision_confidence": "Default"
+     },
+     {
+      "augmenter": "media_info",
+      "order": 4,
+      "source": "UNKNOWN",
+      "source_confidence": "Default",
+      "resolution": 1080,
+      "resolution_confidence": "MediaInfo",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": null,
+      "revision_confidence": "Default"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p",
+   "source_detection": "Name",
+   "resolution_detection": "MediaInfo"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0112",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:106",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_name",
+      "order": 2,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Fallback",
+      "revision": {
+       "version": 1,
+       "real": 0
+      },
+      "revision_confidence": "Default"
+     },
+     {
+      "augmenter": "release_name",
+      "order": 5,
+      "source": "WEBDL",
+      "source_confidence": "MediaInfo",
+      "resolution": 0,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": null,
+      "revision_confidence": "Default"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "quality": "WEBDL-480p",
+   "source_detection": "Name",
+   "resolution_detection": "Name"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0113",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:118",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_name",
+      "order": 2,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Fallback",
+      "revision": {
+       "version": 1,
+       "real": 0
+      },
+      "revision_confidence": "Default"
+     },
+     {
+      "augmenter": "release_name",
+      "order": 5,
+      "source": "WEBDL",
+      "source_confidence": "MediaInfo",
+      "resolution": 0,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": null,
+      "revision_confidence": "Default"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "revision_version": 1,
+   "revision_detection": "Unknown"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0114",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:129",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_name",
+      "order": 2,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": {
+       "version": 2,
+       "real": 0
+      },
+      "revision_confidence": "Tag"
+     },
+     {
+      "augmenter": "release_name",
+      "order": 5,
+      "source": "WEBDL",
+      "source_confidence": "MediaInfo",
+      "resolution": 0,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": null,
+      "revision_confidence": "Default"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "revision_version": 2,
+   "revision_detection": "Name"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0115",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:143",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_name",
+      "order": 2,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": {
+       "version": 0,
+       "real": 0
+      },
+      "revision_confidence": "Tag"
+     },
+     {
+      "augmenter": "release_name",
+      "order": 5,
+      "source": "WEBDL",
+      "source_confidence": "MediaInfo",
+      "resolution": 0,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": null,
+      "revision_confidence": "Default"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "revision_version": 0,
+   "revision_detection": "Name"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0116",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateQualityFixture.cs:157",
+  "input": {
+   "op": "aggregate_quality",
+   "given": {
+    "augmenter_results": [
+     {
+      "augmenter": "file_name",
+      "order": 2,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": {
+       "version": 0,
+       "real": 0
+      },
+      "revision_confidence": "Tag"
+     },
+     {
+      "augmenter": "release_name",
+      "order": 5,
+      "source": "TV",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "modifier": "NONE",
+      "modifier_confidence": "Default",
+      "revision": {
+       "version": 2,
+       "real": 0
+      },
+      "revision_confidence": "Tag"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "revision_version": 2,
+   "revision_detection": "Name"
+  },
+  "note": "Augmenter results are stand-ins (role names are the fixture's mock names). Confidence order Fallback < Default < Tag < MediaInfo (src/NzbDrone.Core/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/Confidence.cs). SourceOnly/ResolutionOnly leave the other fields UNKNOWN/0/NONE at Default confidence with no revision (AugmentQualityResult.cs). Revision() is version 1."
+ },
+ {
+  "id": "RAD-IMPORT-0117",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:23",
+  "input": {
+   "op": "aggregate_release_group",
+   "given": {
+    "file_title": "Movie.Title.2008.WEB-DL-Wizzy",
+    "folder_title": "Movie.Title.2008.WEB-DL-Drone",
+    "download_client_title": "Movie.Title.2008.WEB-DL-Viva",
+    "path": "/C/Test/Unsorted Movies/Movie.Title.2008/Movie.Title.2008.WEB-DL.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Viva"
+  },
+  "note": "Each title goes through Radarr's movie title parser (Parser.ParseMovieTitle(title, false))."
+ },
+ {
+  "id": "RAD-IMPORT-0118",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:43",
+  "input": {
+   "op": "aggregate_release_group",
+   "given": {
+    "file_title": "Movie.Title.2008.WEB-DL-Wizzy",
+    "folder_title": "Movie.Title.2008.WEB-DL-Drone",
+    "download_client_title": "Movie.Title.2008.WEB-DL",
+    "path": "/C/Test/Unsorted Movies/Movie.Title.2008/Movie.Title.2008.WEB-DL.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Drone"
+  },
+  "note": "Each title goes through Radarr's movie title parser (Parser.ParseMovieTitle(title, false))."
+ },
+ {
+  "id": "RAD-IMPORT-0119",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:63",
+  "input": {
+   "op": "aggregate_release_group",
+   "given": {
+    "file_title": "Movie.Title.2008.WEB-DL-Wizzy",
+    "folder_title": "Movie.Title.2008.WEB-DL",
+    "download_client_title": "Movie.Title.2008.WEB-DL",
+    "path": "/C/Test/Unsorted Movies/Movie.Title.2008/Movie.Title.2008.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Wizzy"
+  },
+  "note": "Each title goes through Radarr's movie title parser (Parser.ParseMovieTitle(title, false))."
+ },
+ {
+  "id": "RAD-IMPORT-0120",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:83",
+  "input": {
+   "op": "aggregate_release_group",
+   "given": {
+    "file_title": "Lock Stock and Two Smoking Barrels (1998) [imdb-tt0120735][Bluray-1080p][8bit][x264][DTS-HD MA 5.1]-FraMeSToR",
+    "folder_title": "Lock Stock and Two Smoking Barrels (1998) {imdb-tt0120735}",
+    "download_client_title": "Movie.Title.2008.WEB-DL",
+    "path": "/C/Test/Unsorted Movies/Movie.Title.2008/Movie.Title.2008.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "FraMeSToR"
+  },
+  "note": "Each title goes through Radarr's movie title parser (Parser.ParseMovieTitle(title, false))."
+ },
+ {
+  "id": "RAD-IMPORT-0121",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:103",
+  "input": {
+   "op": "aggregate_release_group",
+   "given": {
+    "file_title": "Lock Stock and Two Smoking Barrels (1998) [tmdb-100][Bluray-1080p][8bit][x264][DTS-HD MA 5.1]-FraMeSToR",
+    "folder_title": "Lock Stock and Two Smoking Barrels (1998) {tmdb-100}",
+    "download_client_title": "Movie.Title.2008.WEB-DL",
+    "path": "/C/Test/Unsorted Movies/Movie.Title.2008/Movie.Title.2008.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "FraMeSToR"
+  },
+  "note": "Each title goes through Radarr's movie title parser (Parser.ParseMovieTitle(title, false))."
+ },
+ {
+  "id": "RAD-IMPORT-0262",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:12",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "Name (2020)/Name (2020) - [AAC 2.0].mkv",
+    "original_file_path": "",
+    "path": "Name (2020) - [AAC 2.0].default.eng.forced.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "title": null,
+   "copy": 0
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's."
+ },
+ {
+  "id": "RAD-IMPORT-0263",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:13",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "Name (2020)/Name (2020) - [AAC 2.0].mkv",
+    "original_file_path": "",
+    "path": "Name (2020) - [AAC 2.0].eng.default.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "title": null,
+   "copy": 0
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's."
+ },
+ {
+  "id": "RAD-IMPORT-0264",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:14",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "Name (2020)/Name (2020) - [AAC 2.0].mkv",
+    "original_file_path": "",
+    "path": "Name (2020) - [AAC 2.0].fra.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "title": null,
+   "copy": 0
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's."
+ },
+ {
+  "id": "RAD-IMPORT-0265",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:15",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "",
+    "original_file_path": "Name (2020)/Name (2020) - [AAC 2.0].mkv",
+    "path": "Name (2020) - [AAC 2.0].default.eng.forced.ass",
+    "file_name_before_rename": "Name (2020)/Name (2020) - [FLAC 2.0].mkv"
+   }
+  },
+  "expect": {
+   "title": null,
+   "copy": 0
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's."
+ },
+ {
+  "id": "RAD-IMPORT-0266",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:16",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "",
+    "original_file_path": "Name (2020)/Name (2020) - [AAC 2.0].mkv",
+    "path": "Name (2020) - [AAC 2.0].eng.default.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "title": null,
+   "copy": 0
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's."
+ },
+ {
+  "id": "RAD-IMPORT-0267",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:17",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "",
+    "original_file_path": "Name (2020)/Name (2020) - [AAC 2.0].mkv",
+    "path": "Name (2020) - [AAC 2.0].fra.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "title": null,
+   "copy": 0
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's."
+ },
+ {
+  "id": "RAD-IMPORT-0268",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:32",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "Default (2020)/Default (2020) - [AAC 2.0].mkv",
+    "original_file_path": null,
+    "path": "Default (2020) - [AAC 2.0].default.eng.forced.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "language_tags_exclude": [
+    "default"
+   ]
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's. The test leaves OriginalFilePath unset (null)."
+ },
+ {
+  "id": "RAD-IMPORT-0269",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:33",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "Default (2020)/Default (2020) - [AAC 2.0].mkv",
+    "original_file_path": null,
+    "path": "Default (2020) - [AAC 2.0].eng.default.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "language_tags_exclude": [
+    "default"
+   ]
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's. The test leaves OriginalFilePath unset (null)."
+ },
+ {
+  "id": "RAD-IMPORT-0270",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:34",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "Default (2020)/Default (2020) - [AAC 2.0].mkv",
+    "original_file_path": null,
+    "path": "Default (2020) - [AAC 2.0].default.eng.testtitle.forced.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "language_tags_exclude": [
+    "default"
+   ]
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's. The test leaves OriginalFilePath unset (null)."
+ },
+ {
+  "id": "RAD-IMPORT-0271",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateSubtitleInfoFixture.cs:35",
+  "input": {
+   "op": "subtitle_info",
+   "given": {
+    "relative_path": "Default (2020)/Default (2020) - [AAC 2.0].mkv",
+    "original_file_path": null,
+    "path": "Default (2020) - [AAC 2.0].testtitle.eng.default.ass",
+    "file_name_before_rename": null
+   }
+  },
+  "expect": {
+   "language_tags_exclude": [
+    "default"
+   ]
+  },
+  "note": "CleanSubtitleTitleInfo(movieFile, path, fileNameBeforeRename) as called for an existing subtitle file found on scan (src/NzbDrone.Core/Extras/Subtitles/ExistingSubtitleImporter.cs:66). relative_path and original_file_path are the movie file record's. The test leaves OriginalFilePath unset (null)."
+ },
+ {
+  "id": "RAD-IMPORT-0122",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:15",
+  "input": {
+   "op": "augment_language_media_info",
+   "given": {
+    "audio_languages": null
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0123",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:25",
+  "input": {
+   "op": "augment_language_media_info",
+   "given": {
+    "audio_languages": [
+     "eng"
+    ]
+   }
+  },
+  "expect": {
+   "language_set": [
+    "English"
+   ]
+  },
+  "note": "The test asserts count and membership, not order."
+ },
+ {
+  "id": "RAD-IMPORT-0124",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:42",
+  "input": {
+   "op": "augment_language_media_info",
+   "given": {
+    "audio_languages": [
+     "eng",
+     "eng"
+    ]
+   }
+  },
+  "expect": {
+   "language_set": [
+    "English"
+   ]
+  },
+  "note": "The test asserts count and membership, not order."
+ },
+ {
+  "id": "RAD-IMPORT-0125",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:59",
+  "input": {
+   "op": "augment_language_media_info",
+   "given": {
+    "audio_languages": [
+     "pirate",
+     "pirate"
+    ]
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0126",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:75",
+  "input": {
+   "op": "augment_language_media_info",
+   "given": {
+    "audio_languages": [
+     "eng",
+     "pirate"
+    ]
+   }
+  },
+  "expect": {
+   "language_set": [
+    "English"
+   ]
+  },
+  "note": "The test asserts count and membership, not order."
+ },
+ {
+  "id": "RAD-IMPORT-0127",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:92",
+  "input": {
+   "op": "augment_language_media_info",
+   "given": {
+    "audio_languages": [
+     "eng",
+     "ger"
+    ]
+   }
+  },
+  "expect": {
+   "language_set": [
+    "English",
+    "German"
+   ]
+  },
+  "note": "The test asserts count and membership, not order."
+ },
+ {
+  "id": "RAD-IMPORT-0128",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:16",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": null
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0129",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:26",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 0
+    }
+   }
+  },
+  "expect": {
+   "result": null
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0130",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:40",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 4096,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0131",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:41",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 4000,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0132",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:42",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 3840,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0133",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:43",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 3200,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 2160,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0134",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:44",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 2000,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0135",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:45",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1920,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0136",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:46",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1440,
+     "height": 1080
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0137",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:47",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1800,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0138",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:48",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1490,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 720,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0139",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:49",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1280,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 720,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0140",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:50",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1200,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 720,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0141",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:51",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1024,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 576,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0142",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:52",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 768,
+     "height": 576
+    }
+   }
+  },
+  "expect": {
+   "resolution": 576,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0143",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:53",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 800,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0144",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:54",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 720,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0145",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:55",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 600,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0146",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:56",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 100,
+     "height": 1
+    }
+   }
+  },
+  "expect": {
+   "resolution": 480,
+   "source": "UNKNOWN"
+  },
+  "note": "Media info fields the test does not set are NBuilder fillers."
+ },
+ {
+  "id": "RAD-IMPORT-0147",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:75",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1920,
+     "height": 1080,
+     "title": "Movie.Title.2008.WEB.x264-Radarr"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "WEBDL"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0148",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:95",
+  "input": {
+   "op": "augment_quality_media_info",
+   "given": {
+    "media_info": {
+     "width": 1920,
+     "height": 1080,
+     "title": "Movie.Title.2008.x264-Radarr"
+    }
+   }
+  },
+  "expect": {
+   "resolution": 1080,
+   "source": "UNKNOWN"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0149",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:42",
+  "input": {
+   "op": "augment_quality_release_name",
+   "given": {
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0150",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:48",
+  "input": {
+   "op": "augment_quality_release_name",
+   "given": {
+    "download_client_item": true,
+    "latest_grab_title": null
+   }
+  },
+  "expect": {
+   "result": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0151",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:58",
+  "input": {
+   "op": "augment_quality_release_name",
+   "given": {
+    "download_client_item": true,
+    "latest_grab_title": "Series.Title.S01E01.1080p.WEB.x264"
+   }
+  },
+  "expect": {
+   "source": "WEBDL",
+   "source_confidence": "Tag",
+   "resolution": 1080,
+   "resolution_confidence": "Tag"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0152",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:59",
+  "input": {
+   "op": "augment_quality_release_name",
+   "given": {
+    "download_client_item": true,
+    "latest_grab_title": "Series.Title.S01E01.WEB.x264"
+   }
+  },
+  "expect": {
+   "source": "WEBDL",
+   "source_confidence": "Tag",
+   "resolution": 480,
+   "resolution_confidence": "Fallback"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0153",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:60",
+  "input": {
+   "op": "augment_quality_release_name",
+   "given": {
+    "download_client_item": true,
+    "latest_grab_title": "Series.Title.S01E01.720p.x264"
+   }
+  },
+  "expect": {
+   "source": "TV",
+   "source_confidence": "Fallback",
+   "resolution": 720,
+   "resolution_confidence": "Tag"
+  }
+ }
+]

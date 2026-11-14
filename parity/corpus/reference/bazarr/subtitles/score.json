@@ -1,0 +1,208 @@
+[
+ {
+  "expect": {
+   "no_error": true
+  },
+  "id": "BAZ-SUBTITLES-0055",
+  "input": {
+   "given": {
+    "matches": [
+     "hash"
+    ],
+    "subtitle": {
+     "language": "en",
+     "provider": "karagarga"
+    },
+    "video": {
+     "alternative_titles": [
+      "Dune: Part One"
+     ],
+     "audio_codec": "Dolby Digital",
+     "imdb_id": "tt1160419",
+     "kind": "Movie",
+     "name": "Dune.2021.1080p.WEBRip.DD5.1.x264-SHITBOX",
+     "release_group": "SHITBOX",
+     "resolution": "1080p",
+     "source": "Web",
+     "title": "Dune",
+     "video_codec": "H.264",
+     "year": 2021
+    }
+   },
+   "op": "compute_score"
+  },
+  "note": "the test only asserts that scoring does not raise",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:8"
+ },
+ {
+  "expect": {
+   "no_error": true
+  },
+  "id": "BAZ-SUBTITLES-0056",
+  "input": {
+   "given": {
+    "matches": [
+     "hash"
+    ],
+    "subtitle": {
+     "language": "en",
+     "provider": "karagarga"
+    },
+    "video": {
+     "episode": 1,
+     "kind": "Episode",
+     "name": "Breaking.Bad.S01E01.720p.BluRay.X264-REWARD.mkv",
+     "release_group": "REWARD",
+     "resolution": "720p",
+     "season": 1,
+     "series": "Breaking Bad",
+     "series_imdb_id": "tt0903747",
+     "series_tvdb_id": 81189,
+     "source": "Blu-Ray",
+     "video_codec": "H.264"
+    }
+   },
+   "op": "compute_score"
+  },
+  "note": "the test only asserts that scoring does not raise",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:13"
+ },
+ {
+  "expect": {
+   "weights": {
+    "episode": {
+     "audio_codec": 3,
+     "episode": 30,
+     "hash": 359,
+     "hearing_impaired": 1,
+     "release_group": 14,
+     "resolution": 2,
+     "season": 30,
+     "series": 180,
+     "source": 7,
+     "streaming_service": 1,
+     "video_codec": 2,
+     "year": 90
+    },
+    "movie": {
+     "audio_codec": 3,
+     "edition": 1,
+     "hash": 119,
+     "hearing_impaired": 1,
+     "release_group": 13,
+     "resolution": 2,
+     "source": 7,
+     "streaming_service": 1,
+     "title": 60,
+     "video_codec": 2,
+     "year": 30
+    }
+   }
+  },
+  "id": "BAZ-SUBTITLES-0057",
+  "input": {
+   "given": {
+    "custom": null
+   },
+   "op": "compute_score_weights"
+  },
+  "note": "Expected table is score.DEFAULT_SCORES (custom_libs/subliminal_patch/score.py:31), read from the source.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:18"
+ },
+ {
+  "expect": {
+   "weights": {
+    "episode": {
+     "audio_codec": 3,
+     "episode": 30,
+     "hash": 359,
+     "hearing_impaired": 1,
+     "release_group": 14,
+     "resolution": 2,
+     "season": 30,
+     "series": 180,
+     "source": 7,
+     "streaming_service": 1,
+     "video_codec": 2,
+     "year": 90
+    },
+    "movie": {
+     "audio_codec": 3,
+     "edition": 1,
+     "hash": 119,
+     "hearing_impaired": 1,
+     "release_group": 13,
+     "resolution": 2,
+     "source": 7,
+     "streaming_service": 1,
+     "title": 60,
+     "video_codec": 2,
+     "year": 30
+    }
+   }
+  },
+  "id": "BAZ-SUBTITLES-0058",
+  "input": {
+   "given": {
+    "custom": {
+     "episode": {
+      "hash": 321
+     },
+     "movie": {
+      "hash": 120
+     }
+    }
+   },
+   "op": "compute_score_weights"
+  },
+  "note": "Rule in score.py:62 (_check_hash_sum): sum of the other weights - 1 must equal hash.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:22"
+ },
+ {
+  "expect": {
+   "weights": {
+    "movie": {
+     "release_group": 12,
+     "source": 8
+    }
+   }
+  },
+  "id": "BAZ-SUBTITLES-0059",
+  "input": {
+   "given": {
+    "custom": {
+     "episode": {
+      "audio_codec": 3,
+      "episode": 30,
+      "hash": 359,
+      "hearing_impaired": 1,
+      "release_group": 14,
+      "resolution": 2,
+      "season": 30,
+      "series": 180,
+      "source": 7,
+      "streaming_service": 1,
+      "video_codec": 2,
+      "year": 90
+     },
+     "movie": {
+      "audio_codec": 3,
+      "edition": 1,
+      "hash": 119,
+      "hearing_impaired": 1,
+      "release_group": 12,
+      "resolution": 2,
+      "source": 8,
+      "streaming_service": 1,
+      "title": 60,
+      "video_codec": 2,
+      "year": 30
+     }
+    }
+   },
+   "op": "compute_score_weights"
+  },
+  "note": "The test copies DEFAULT_SCORES shallowly and edits two movie weights; only those two are asserted.",
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_score.py:29"
+ }
+]

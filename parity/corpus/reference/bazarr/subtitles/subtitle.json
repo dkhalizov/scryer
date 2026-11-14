@@ -1,0 +1,122 @@
+[
+ {
+  "expect": {
+   "edition_in_matches": false
+  },
+  "id": "BAZ-SUBTITLES-0060",
+  "input": {
+   "given": {
+    "guess": {},
+    "video": {
+     "alternative_titles": [
+      "Dune: Part One"
+     ],
+     "audio_codec": "Dolby Digital",
+     "edition": "Director's Cut",
+     "imdb_id": "tt1160419",
+     "kind": "Movie",
+     "name": "Dune.2021.1080p.WEBRip.DD5.1.x264-SHITBOX",
+     "release_group": "SHITBOX",
+     "resolution": "1080p",
+     "source": "Web",
+     "title": "Dune",
+     "video_codec": "H.264",
+     "year": 2021
+    }
+   },
+   "op": "guess_matches"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:4"
+ },
+ {
+  "expect": {
+   "edition_in_matches": false
+  },
+  "id": "BAZ-SUBTITLES-0061",
+  "input": {
+   "given": {
+    "guess": {
+     "edition": "Director's Cut"
+    },
+    "video": {
+     "alternative_titles": [
+      "Dune: Part One"
+     ],
+     "audio_codec": "Dolby Digital",
+     "edition": null,
+     "imdb_id": "tt1160419",
+     "kind": "Movie",
+     "name": "Dune.2021.1080p.WEBRip.DD5.1.x264-SHITBOX",
+     "release_group": "SHITBOX",
+     "resolution": "1080p",
+     "source": "Web",
+     "title": "Dune",
+     "video_codec": "H.264",
+     "year": 2021
+    }
+   },
+   "op": "guess_matches"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:11"
+ },
+ {
+  "expect": {
+   "edition_in_matches": true
+  },
+  "id": "BAZ-SUBTITLES-0062",
+  "input": {
+   "given": {
+    "guess": {
+     "edition": "Director's Cut"
+    },
+    "video": {
+     "alternative_titles": [
+      "Dune: Part One"
+     ],
+     "audio_codec": "Dolby Digital",
+     "edition": "Director's Cut",
+     "imdb_id": "tt1160419",
+     "kind": "Movie",
+     "name": "Dune.2021.1080p.WEBRip.DD5.1.x264-SHITBOX",
+     "release_group": "SHITBOX",
+     "resolution": "1080p",
+     "source": "Web",
+     "title": "Dune",
+     "video_codec": "H.264",
+     "year": 2021
+    }
+   },
+   "op": "guess_matches"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:18"
+ },
+ {
+  "expect": {
+   "edition_in_matches": true
+  },
+  "id": "BAZ-SUBTITLES-0063",
+  "input": {
+   "given": {
+    "guess": {},
+    "video": {
+     "alternative_titles": [
+      "Dune: Part One"
+     ],
+     "audio_codec": "Dolby Digital",
+     "edition": null,
+     "imdb_id": "tt1160419",
+     "kind": "Movie",
+     "name": "Dune.2021.1080p.WEBRip.DD5.1.x264-SHITBOX",
+     "release_group": "SHITBOX",
+     "resolution": "1080p",
+     "source": "Web",
+     "title": "Dune",
+     "video_codec": "H.264",
+     "year": 2021
+    }
+   },
+   "op": "guess_matches"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_subtitle.py:25"
+ }
+]

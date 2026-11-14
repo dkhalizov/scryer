@@ -1,0 +1,332 @@
+[
+ {
+  "id": "RAD-TORRENT-0007",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:44",
+  "input": {
+   "op": "tracked_download.track",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "A Movie 1998",
+     "download_id": "35238"
+    },
+    "history_by_download_id": {
+     "35238": [
+      {
+       "download_id": "35238",
+       "source_title": "TV Series S01",
+       "movie_id": 3
+      }
+     ]
+    },
+    "map": [
+     {
+      "when": {
+       "primary_movie_title": "A Movie"
+      },
+      "returns": {
+       "movie_id": 3,
+       "parsed": {
+        "movie_titles": [
+         "A Movie"
+        ],
+        "year": 1998
+       }
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "remote_movie": {
+    "movie_id": 3
+   }
+  }
+ },
+ {
+  "id": "RAD-TORRENT-0008",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:90",
+  "input": {
+   "op": "tracked_download.track",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "A Movie 1998",
+     "download_id": "35238"
+    },
+    "history_by_download_id": {
+     "35238": [
+      {
+       "download_id": "35238",
+       "source_title": "TV Series S01",
+       "movie_id": 3,
+       "event_type": "Grabbed",
+       "data": {
+        "indexer": "MyIndexer (Prowlarr)"
+       }
+      }
+     ]
+    },
+    "indexers": [
+     {
+      "id": 1,
+      "name": "MyIndexer (Prowlarr)",
+      "multi_languages": [
+       "Original",
+       "French"
+      ]
+     }
+    ],
+    "map": [
+     {
+      "when": "any",
+      "returns": {
+       "movie_id": 3,
+       "parsed": {
+        "movie_titles": [
+         "A Movie"
+        ],
+        "year": 1998
+       }
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "remote_movie": {
+    "release": {
+     "indexer": "MyIndexer (Prowlarr)"
+    }
+   }
+  }
+ },
+ {
+  "id": "RAD-TORRENT-0009",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:161",
+  "input": {
+   "op": "tracked_download.track_then_event",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "A Movie 1998",
+     "download_id": "12345",
+     "client_info": {
+      "id": 1,
+      "type": "Blackhole",
+      "name": "Blackhole Client",
+      "protocol": "Torrent"
+     }
+    },
+    "history_by_download_id": {
+     "*": []
+    },
+    "map": [
+     {
+      "when": "any",
+      "returns": {
+       "movie_id": 3,
+       "parsed": {
+        "movie_titles": [
+         "A Movie"
+        ],
+        "year": 1998
+       }
+      }
+     }
+    ],
+    "then": {
+     "remap_returns": null,
+     "event": {
+      "type": "MoviesDeleted",
+      "movie_ids": [
+       3
+      ],
+      "delete_files": false,
+      "add_import_list_exclusion": false
+     }
+    }
+   }
+  },
+  "expect": {
+   "tracked_count_before": 1,
+   "tracked_count": 1,
+   "first": {
+    "remote_movie": null
+   }
+  },
+  "note": "GivenDownloadHistory's 35238 history is overridden by a later catch-all setup returning no history (the item id is 12345 anyway)."
+ },
+ {
+  "id": "RAD-TORRENT-0010",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:218",
+  "input": {
+   "op": "tracked_download.track_then_event",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "A Movie 1998",
+     "download_id": "12345",
+     "client_info": {
+      "id": 1,
+      "type": "Blackhole",
+      "name": "Blackhole Client",
+      "protocol": "Torrent"
+     }
+    },
+    "history_by_download_id": {
+     "*": []
+    },
+    "map": [
+     {
+      "when": "any",
+      "returns": null
+     }
+    ],
+    "then": {
+     "remap_returns": null,
+     "event": {
+      "type": "MoviesDeleted",
+      "movie_ids": [
+       3
+      ],
+      "delete_files": false,
+      "add_import_list_exclusion": false
+     }
+    }
+   }
+  },
+  "expect": {
+   "tracked_count_before": 1,
+   "tracked_count": 1,
+   "first": {
+    "remote_movie": null
+   }
+  },
+  "note": "GivenDownloadHistory's 35238 history is overridden by a later catch-all setup returning no history (the item id is 12345 anyway)."
+ },
+ {
+  "id": "RAD-TORRENT-0011",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:275",
+  "input": {
+   "op": "tracked_download.track_then_event",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "A Movie 1998",
+     "download_id": "35238"
+    },
+    "history_by_download_id": {
+     "35238": []
+    },
+    "latest_download_history": {
+     "35238": {
+      "movie_id": 5,
+      "event_type": "DownloadImported"
+     }
+    },
+    "map": [
+     {
+      "when": {
+       "year": 1998,
+       "movie_title": "A Movie"
+      },
+      "returns": {
+       "movie_id": 5,
+       "parsed": {
+        "movie_titles": [
+         "A Movie"
+        ],
+        "year": 1998
+       }
+      }
+     }
+    ],
+    "then": {
+     "event": {
+      "type": "MovieGrabbed",
+      "download_id": "35238",
+      "remote_movie": "mapped"
+     },
+     "latest_download_history": {
+      "35238": {
+       "movie_id": 5,
+       "event_type": "DownloadGrabbed"
+      }
+     },
+     "track_again": true
+    }
+   }
+  },
+  "expect": {
+   "states": [
+    "Imported",
+    "Downloading"
+   ]
+  }
+ },
+ {
+  "id": "RAD-TORRENT-0012",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadServiceFixture.cs:339",
+  "input": {
+   "op": "tracked_download.track",
+   "given": {
+    "client": {
+     "id": 1,
+     "protocol": "Torrent"
+    },
+    "item": {
+     "title": "A Movie 1998",
+     "download_id": "35238"
+    },
+    "history_by_download_id": {
+     "35238": []
+    },
+    "latest_download_history": {
+     "35238": {
+      "movie_id": 5,
+      "event_type": "DownloadImported"
+     }
+    },
+    "map": [
+     {
+      "when": {
+       "year": 1998,
+       "movie_title": "A Movie"
+      },
+      "returns": {
+       "movie_id": 5,
+       "parsed": {
+        "movie_titles": [
+         "A Movie"
+        ],
+        "year": 1998
+       }
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "remote_movie": {
+    "movie_id": 5,
+    "parsed_year": 1998
+   }
+  }
+ }
+]

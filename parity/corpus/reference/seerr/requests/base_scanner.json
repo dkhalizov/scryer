@@ -1,0 +1,90 @@
+[
+ {
+  "id": "SER-REQUESTS-0050",
+  "ref": "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:157",
+  "input": {
+   "op": "scanner.process_show",
+   "given": {
+    "media": {
+     "media_type": "tv",
+     "status": "PROCESSING",
+     "status4k": "UNKNOWN",
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "PROCESSING",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "request": {
+     "status": "APPROVED",
+     "is4k": false,
+     "seasons": [
+      1
+     ],
+     "season_status": "APPROVED"
+    },
+    "decline_requests_on_status_reset": false,
+    "scanned_seasons": [
+     {
+      "seasonNumber": 1,
+      "episodes": 0,
+      "episodes4k": 0,
+      "totalEpisodes": 10
+     }
+    ],
+    "resolve": true
+   }
+  },
+  "expect": {
+   "request_status": "APPROVED"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0052",
+  "ref": "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:183",
+  "input": {
+   "op": "scanner.process_show",
+   "given": {
+    "media": {
+     "media_type": "tv",
+     "status": "PROCESSING",
+     "status4k": "UNKNOWN",
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "PROCESSING",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "request": {
+     "status": "APPROVED",
+     "is4k": false,
+     "seasons": [
+      1
+     ],
+     "season_status": "APPROVED"
+    },
+    "decline_requests_on_status_reset": false,
+    "scanned_seasons": [
+     {
+      "seasonNumber": 1,
+      "episodes": 0,
+      "episodes4k": 0,
+      "totalEpisodes": 10
+     }
+    ],
+    "resolve": false
+   }
+  },
+  "expect": {
+   "season_status": {
+    "1": "UNKNOWN"
+   },
+   "media_status": "UNKNOWN",
+   "request_status": "APPROVED"
+  }
+ }
+]

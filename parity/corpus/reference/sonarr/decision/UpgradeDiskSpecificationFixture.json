@@ -1,0 +1,1354 @@
+[
+ {
+  "id": "SON-DECISION-1134",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:127",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 0,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1135",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:134",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1136",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:142",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1137",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:149",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1138",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:157",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1139",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:163",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1140",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:170",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1141",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:177",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "WEBDL-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "WEBDL-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1142",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:185",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "upgrade_allowed": true,
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "WEBDL-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": [],
+     "custom_format_score": 10
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "WEBDL-1080p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1143",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:199",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1144",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:213",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1145",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:227",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1146",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:242",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1147",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:257",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1148",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:272",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1149",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:287",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1150",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:302",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 2,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1151",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:316",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-720p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": [
+      "My Format"
+     ]
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "GivenProfile replaces the profile's format items with an empty list (no custom formats are registered), so the initializer's GetSampleFormatItems(\"My Format\") has no effect."
+ },
+ {
+  "id": "SON-DECISION-1152",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:339",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "HDTV-1080p",
+     "upgrade_allowed": true,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "WEBDL-1080p",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "WEBDL-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1153",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:355",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "Raw-HD",
+     "upgrade_allowed": false,
+     "min_format_score": 0
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": []
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "WEBDL-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1154",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:371",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "SDTV",
+     "upgrade_allowed": false,
+     "min_format_score": 0,
+     "cutoff_format_score": 10000,
+     "format_items": [
+      {
+       "format": "My Format",
+       "score": 50
+      }
+     ]
+    },
+    "release": {
+     "quality": "WEBDL-1080p",
+     "revision": 1,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": [
+      "My Format"
+     ]
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "WEBDL-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1155",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:404",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all",
+     "cutoff": "SDTV",
+     "upgrade_allowed": false,
+     "min_format_score": 0,
+     "cutoff_format_score": 10000,
+     "format_items": [
+      {
+       "format": "My Format",
+       "score": 50
+      }
+     ]
+    },
+    "release": {
+     "quality": "WEBDL-1080p",
+     "revision": 2,
+     "languages": [
+      "English"
+     ],
+     "custom_formats": [
+      "My Format"
+     ]
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "WEBDL-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ],
+       "added_age_days": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "existing_file_custom_formats": [],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

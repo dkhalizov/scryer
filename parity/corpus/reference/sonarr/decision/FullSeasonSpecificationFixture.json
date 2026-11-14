@@ -1,0 +1,137 @@
+[
+ {
+  "id": "SON-DECISION-0089",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:46",
+  "input": {
+   "spec": "FullSeasonSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "full_season": false
+    },
+    "episodes": [
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": 48
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0090",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:54",
+  "input": {
+   "spec": "FullSeasonSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "full_season": true
+    },
+    "episodes": [
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": -192
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0091",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:60",
+  "input": {
+   "spec": "FullSeasonSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "full_season": true
+    },
+    "episodes": [
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": 23
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0092",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:68",
+  "input": {
+   "spec": "FullSeasonSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "full_season": true
+    },
+    "episodes": [
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": 48
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0093",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:75",
+  "input": {
+   "spec": "FullSeasonSpecification",
+   "given": {
+    "release": {
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "full_season": true
+    },
+    "episodes": [
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": -192
+     },
+     {
+      "air_date_offset_hours": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

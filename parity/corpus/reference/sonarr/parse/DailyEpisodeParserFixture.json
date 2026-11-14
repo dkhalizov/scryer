@@ -1,0 +1,646 @@
+[
+ {
+  "id": "SON-PARSE-0230",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:13",
+  "input": {
+   "name": "Series Title 2011 04 18 Emma Roberts HDTV XviD BFF",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title",
+   "air_date": "2011-04-18",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0231",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:14",
+  "input": {
+   "name": "A Late Talk Show 2011 04 15 1080i HDTV DD5 1 MPEG2 TrollHD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "A Late Talk Show",
+   "air_date": "2011-04-15",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0232",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:15",
+  "input": {
+   "name": "A.Late.Talk.Show.2010.10.11.Johnny.Knoxville.iTouch-MW",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "A Late Talk Show",
+   "air_date": "2010-10-11",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0233",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:16",
+  "input": {
+   "name": "A Late Talk Show - 2011-04-12 - Gov. Deval Patrick",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "A Late Talk Show",
+   "air_date": "2011-04-12",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0234",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:17",
+  "input": {
+   "name": "2011.01.10 - A Late Talk Show- HD TV.mkv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "",
+   "air_date": "2011-01-10",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0235",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:18",
+  "input": {
+   "name": "2011.03.13 - A Late Talk Show - HD TV.mkv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "",
+   "air_date": "2011-03-13",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0236",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:19",
+  "input": {
+   "name": "A Late Talk Show - 2011-06-16 - Larry David, \"Bachelorette\" Ashley Hebert, Pitbull with Ne-Yo",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "A Late Talk Show",
+   "air_date": "2011-06-16",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0237",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:20",
+  "input": {
+   "name": "2020.A.Late.Talk.Show.2012.16.02.PDTV.XviD-C4TV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "2020 A Late Talk Show",
+   "air_date": "2012-02-16",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0238",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:21",
+  "input": {
+   "name": "2020.A.Late.Talk.Show.2012.13.02.PDTV.XviD-C4TV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "2020 A Late Talk Show",
+   "air_date": "2012-02-13",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0239",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:22",
+  "input": {
+   "name": "2020.A.Late.Talk.Show.2011.12.02.PDTV.XviD-C4TV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "2020 A Late Talk Show",
+   "air_date": "2011-12-02",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0240",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:23",
+  "input": {
+   "name": "Series Title - 2013-10-30 - Episode Title (1) [HDTV-720p]",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title",
+   "air_date": "2013-10-30",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0241",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:24",
+  "input": {
+   "name": "The_Series_US_04.28.2014_hdtv.x264.Poke.mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "The Series US",
+   "air_date": "2014-04-28",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0242",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:25",
+  "input": {
+   "name": "A.Late.Talk.Show.140722.720p.HDTV.x264-YesTV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "A Late Talk Show",
+   "air_date": "2014-07-22",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0243",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:26",
+  "input": {
+   "name": "A_Late_Talk_Show_140722_720p_HDTV_x264-YesTV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "A Late Talk Show",
+   "air_date": "2014-07-22",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0244",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:29",
+  "input": {
+   "name": "The Show Series 2015 02 09 WEBRIP s01e13",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "The Show Series",
+   "air_date": "2015-02-09",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0245",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:30",
+  "input": {
+   "name": "Tree_Series_2018_06_22_Seth_Meyers_720p_HEVC_x265-MeGusta",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Tree Series",
+   "air_date": "2018-06-22",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0246",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:31",
+  "input": {
+   "name": "20161024- Exotic Payback.21x41_720.mkv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "",
+   "air_date": "2016-10-24",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0247",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:32",
+  "input": {
+   "name": "2018-11-14.1080.all.mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "",
+   "air_date": "2018-11-14",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0248",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:33",
+  "input": {
+   "name": "2019_08_20_1080_all.mp4",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "",
+   "air_date": "2019-08-20",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0249",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:34",
+  "input": {
+   "name": "Series and Title 20201013 Ep7432 [720p WebRip (x264)] [SUBS]",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series and Title",
+   "air_date": "2020-10-13",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0250",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:35",
+  "input": {
+   "name": "Series Title (1955) - 1954-01-23 05 00 00 - Cottage for Sale.ts",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title (1955)",
+   "air_date": "1954-01-23",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0251",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:36",
+  "input": {
+   "name": "Series Title - 30-04-2024 HDTV 1080p H264 AAC",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title",
+   "air_date": "2024-04-30",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0252",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:37",
+  "input": {
+   "name": "Series On TitleClub E76 2024 08 08 1080p WEB H264-RnB96 [TJET]",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series On TitleClub",
+   "air_date": "2024-08-08",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0253",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:52",
+  "input": {
+   "name": "Series.Title.2015.09.07.Part1.720p.HULU.WEBRip.AAC2.0.H.264-Sonarr",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title",
+   "air_date": "2015-09-07",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false,
+   "daily_part": 1
+  }
+ },
+ {
+  "id": "SON-PARSE-0254",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:53",
+  "input": {
+   "name": "Series.Title.2015.09.07.Part2.720p.HULU.WEBRip.AAC2.0.H.264-Sonarr",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title",
+   "air_date": "2015-09-07",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false,
+   "daily_part": 2
+  }
+ },
+ {
+  "id": "SON-PARSE-0255",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:54",
+  "input": {
+   "name": "Series.Title.2015.09.07.Part.1.720p.HULU.WEBRip.AAC2.0.H.264-Sonarr",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title",
+   "air_date": "2015-09-07",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false,
+   "daily_part": 1
+  }
+ },
+ {
+  "id": "SON-PARSE-0256",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:55",
+  "input": {
+   "name": "Series.Title.2015.09.07.Part.2.720p.HULU.WEBRip.AAC2.0.H.264-Sonarr",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "title": "Series Title",
+   "air_date": "2015-09-07",
+   "episodes": [],
+   "absolute_episodes": [],
+   "full_season": false,
+   "daily_part": 2
+  }
+ },
+ {
+  "id": "SON-PARSE-0257",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:69",
+  "input": {
+   "name": "A Late Talk Show 1950 10 14 Emma Roberts HDTV XviD BFF",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0258",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:70",
+  "input": {
+   "name": "A Late Talk Show 1950 10 14 1080i HDTV DD5 1 MPEG2 TrollHD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0259",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:71",
+  "input": {
+   "name": "A.Late.Talk.Show.1950.10.14.Johnny.Knoxville.iTouch-MW",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0260",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:72",
+  "input": {
+   "name": "A Late Talk Show - 1950-10-14 - Gov. Deval Patrick",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0261",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:73",
+  "input": {
+   "name": "1950.10.14 - A Late Talk Show  - HD TV.mkv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0262",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:74",
+  "input": {
+   "name": "A Late Talk Show - 1950-10-14 - Larry David, \"Bachelorette\" Ashley Hebert, Pitbull with Ne-Yo",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0263",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:75",
+  "input": {
+   "name": "2020.NZ.1950.10.14.PDTV.XviD-C4TV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0264",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:82",
+  "input": {
+   "name_template": "A Late Talk Show {year} {month} {day} Emma Roberts HDTV XviD BFF",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "date is DateTime.Now + 2 days, month and day zero-padded"
+ },
+ {
+  "id": "SON-PARSE-0265",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:83",
+  "input": {
+   "name_template": "A Late Talk Show {year} {month} {day} 1080i HDTV DD5 1 MPEG2 TrollHD",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "date is DateTime.Now + 2 days, month and day zero-padded"
+ },
+ {
+  "id": "SON-PARSE-0266",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:84",
+  "input": {
+   "name_template": "A.Late.Talk.Show.{year}.{month}.{day}.Johnny.Knoxville.iTouch-MW",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "date is DateTime.Now + 2 days, month and day zero-padded"
+ },
+ {
+  "id": "SON-PARSE-0267",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:85",
+  "input": {
+   "name_template": "A Late Talk Show  - {year}-{month}-{day} - Gov. Deval Patrick",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "date is DateTime.Now + 2 days, month and day zero-padded"
+ },
+ {
+  "id": "SON-PARSE-0268",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:86",
+  "input": {
+   "name_template": "{year}.{month}.{day} - A Late Talk Show  - HD TV.mkv",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "date is DateTime.Now + 2 days, month and day zero-padded"
+ },
+ {
+  "id": "SON-PARSE-0269",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:87",
+  "input": {
+   "name_template": "A Late Talk Show - {year}-{month}-{day} - Larry David, \"Bachelorette\" Ashley Hebert, Pitbull with Ne-Yo",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "date is DateTime.Now + 2 days, month and day zero-padded"
+ },
+ {
+  "id": "SON-PARSE-0270",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:88",
+  "input": {
+   "name_template": "2020.NZ.{year}.{month}.{day}.PDTV.XviD-C4TV",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "date is DateTime.Now + 2 days, month and day zero-padded"
+ },
+ {
+  "id": "SON-PARSE-0271",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:98",
+  "input": {
+   "name_template": "{year}.{month}.{day} - A Talk Show - HD TV.mkv",
+   "now_offset_days": 2,
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "reference formats DateTime.Now + 2 days as yyyy.MM.dd"
+ },
+ {
+  "id": "SON-PARSE-0272",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:106",
+  "input": {
+   "name": "Tmc - Quotidien - 05-06-2024 HDTV 1080p H264 AAC",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ }
+]

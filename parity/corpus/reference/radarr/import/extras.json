@@ -1,0 +1,162 @@
+[
+ {
+  "id": "RAD-IMPORT-0001",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:120",
+  "input": {
+   "op": "import_extras",
+   "given": {
+    "import_extra_files": false,
+    "extra_file_extensions": "nfo,srt",
+    "release_folder": "/C/Test/Unsorted TV/Movie.Title.2022",
+    "movie_file": "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+    "release_files": [
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.nfo"
+    ],
+    "job_folder": false
+   }
+  },
+  "expect": {
+   "extra_handlers_consulted": false
+  },
+  "note": "Extra file import after a movie import from release folder /C/Test/Unsorted TV/Movie.Title.2022. Fixture defaults: import extra files on, extensions 'nfo,srt'; two stand-in extra handlers: 'subtitle' takes only .srt, 'other' takes anything (Order 0 then 1). Our config has extra file import off."
+ },
+ {
+  "id": "RAD-IMPORT-0002",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:142",
+  "input": {
+   "op": "import_extras",
+   "given": {
+    "import_extra_files": false,
+    "extra_file_extensions": "nfo,srt",
+    "release_folder": "/C/Test/Unsorted TV/Movie.Title.2022",
+    "movie_file": "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+    "release_files": [
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie Title - 2022.sub"
+    ],
+    "job_folder": false
+   }
+  },
+  "expect": {
+   "extra_handlers_consulted": false
+  },
+  "note": "Extra file import after a movie import from release folder /C/Test/Unsorted TV/Movie.Title.2022. Fixture defaults: import extra files on, extensions 'nfo,srt'; two stand-in extra handlers: 'subtitle' takes only .srt, 'other' takes anything (Order 0 then 1). Our config has extra file import off. The test also turns extra file import off."
+ },
+ {
+  "id": "RAD-IMPORT-0003",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:143",
+  "input": {
+   "op": "import_extras",
+   "given": {
+    "import_extra_files": false,
+    "extra_file_extensions": "nfo,srt",
+    "release_folder": "/C/Test/Unsorted TV/Movie.Title.2022",
+    "movie_file": "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+    "release_files": [
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie Title - 2022.ass"
+    ],
+    "job_folder": false
+   }
+  },
+  "expect": {
+   "extra_handlers_consulted": false
+  },
+  "note": "Extra file import after a movie import from release folder /C/Test/Unsorted TV/Movie.Title.2022. Fixture defaults: import extra files on, extensions 'nfo,srt'; two stand-in extra handlers: 'subtitle' takes only .srt, 'other' takes anything (Order 0 then 1). Our config has extra file import off. The test also turns extra file import off."
+ },
+ {
+  "id": "RAD-IMPORT-0004",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:164",
+  "input": {
+   "op": "import_extras",
+   "given": {
+    "import_extra_files": true,
+    "extra_file_extensions": "nfo,srt",
+    "release_folder": "/C/Test/Unsorted TV/Movie.Title.2022",
+    "movie_file": "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+    "release_files": [
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.en.srt"
+    ],
+    "job_folder": false
+   }
+  },
+  "expect": {
+   "subtitle_handler_files": [
+    "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.en.srt"
+   ],
+   "other_handler_got_it": false
+  },
+  "note": "Extra file import after a movie import from release folder /C/Test/Unsorted TV/Movie.Title.2022. Fixture defaults: import extra files on, extensions 'nfo,srt'; two stand-in extra handlers: 'subtitle' takes only .srt, 'other' takes anything (Order 0 then 1). Our config has extra file import off."
+ },
+ {
+  "id": "RAD-IMPORT-0005",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:183",
+  "input": {
+   "op": "import_extras",
+   "given": {
+    "import_extra_files": true,
+    "extra_file_extensions": "nfo,srt",
+    "release_folder": "/C/Test/Unsorted TV/Movie.Title.2022",
+    "movie_file": "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+    "release_files": [
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.nfo"
+    ],
+    "job_folder": false
+   }
+  },
+  "expect": {
+   "other_handler_files": [
+    "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.nfo"
+   ],
+   "subtitle_handler_got_it": false
+  },
+  "note": "Extra file import after a movie import from release folder /C/Test/Unsorted TV/Movie.Title.2022. Fixture defaults: import extra files on, extensions 'nfo,srt'; two stand-in extra handlers: 'subtitle' takes only .srt, 'other' takes anything (Order 0 then 1). Our config has extra file import off."
+ },
+ {
+  "id": "RAD-IMPORT-0006",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:202",
+  "input": {
+   "op": "import_extras",
+   "given": {
+    "import_extra_files": true,
+    "extra_file_extensions": "nfo,srt",
+    "release_folder": "/C/Test/Unsorted TV/Movie.Title.2022",
+    "movie_file": "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+    "release_files": [
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.en.srt"
+    ],
+    "job_folder": true
+   }
+  },
+  "expect": {
+   "release_folder_listing": "recursive"
+  },
+  "note": "Extra file import after a movie import from release folder /C/Test/Unsorted TV/Movie.Title.2022. Fixture defaults: import extra files on, extensions 'nfo,srt'; two stand-in extra handlers: 'subtitle' takes only .srt, 'other' takes anything (Order 0 then 1). Our config has extra file import off."
+ },
+ {
+  "id": "RAD-IMPORT-0007",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:223",
+  "input": {
+   "op": "import_extras",
+   "given": {
+    "import_extra_files": true,
+    "extra_file_extensions": "nfo,srt",
+    "release_folder": "/C/Test/Unsorted TV/Movie.Title.2022",
+    "movie_file": "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+    "release_files": [
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.mkv",
+     "/C/Test/Unsorted TV/Movie.Title.2022/Movie.Title.2022.en.srt"
+    ],
+    "job_folder": false
+   }
+  },
+  "expect": {
+   "release_folder_listing": "top_level"
+  },
+  "note": "Extra file import after a movie import from release folder /C/Test/Unsorted TV/Movie.Title.2022. Fixture defaults: import extra files on, extensions 'nfo,srt'; two stand-in extra handlers: 'subtitle' takes only .srt, 'other' takes anything (Order 0 then 1). Our config has extra file import off."
+ }
+]

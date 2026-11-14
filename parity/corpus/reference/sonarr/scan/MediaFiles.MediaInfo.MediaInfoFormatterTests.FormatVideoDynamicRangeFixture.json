@@ -1,0 +1,104 @@
+[
+ {
+  "id": "SON-SCAN-0122",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:11",
+  "input": {
+   "op": "FormatVideoDynamicRange",
+   "given": {
+    "media_info": {
+     "video_hdr_format": "None",
+     "schema_revision": 8
+    }
+   }
+  },
+  "expect": {
+   "result": ""
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0123",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:12",
+  "input": {
+   "op": "FormatVideoDynamicRange",
+   "given": {
+    "media_info": {
+     "video_hdr_format": "Hlg10",
+     "schema_revision": 8
+    }
+   }
+  },
+  "expect": {
+   "result": "HDR"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0124",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:13",
+  "input": {
+   "op": "FormatVideoDynamicRange",
+   "given": {
+    "media_info": {
+     "video_hdr_format": "Pq10",
+     "schema_revision": 8
+    }
+   }
+  },
+  "expect": {
+   "result": "HDR"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0125",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:14",
+  "input": {
+   "op": "FormatVideoDynamicRange",
+   "given": {
+    "media_info": {
+     "video_hdr_format": "Hdr10",
+     "schema_revision": 8
+    }
+   }
+  },
+  "expect": {
+   "result": "HDR"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0126",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:15",
+  "input": {
+   "op": "FormatVideoDynamicRange",
+   "given": {
+    "media_info": {
+     "video_hdr_format": "Hdr10Plus",
+     "schema_revision": 8
+    }
+   }
+  },
+  "expect": {
+   "result": "HDR"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0127",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:16",
+  "input": {
+   "op": "FormatVideoDynamicRange",
+   "given": {
+    "media_info": {
+     "video_hdr_format": "DolbyVision",
+     "schema_revision": 8
+    }
+   }
+  },
+  "expect": {
+   "result": "HDR"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ }
+]

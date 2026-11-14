@@ -1,0 +1,476 @@
+[
+ {
+  "id": "SON-SCAN-0060",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:13",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "mp2",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "droned.s01e03.swedish.720p.hdtv.x264-prince"
+   }
+  },
+  "expect": {
+   "result": "MP2"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0061",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:14",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "vorbis",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "DB Super HDTV"
+   }
+  },
+  "expect": {
+   "result": "Vorbis"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0062",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:15",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "pcm_s16le",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "DW DVDRip XviD-idTV, "
+   }
+  },
+  "expect": {
+   "result": "PCM"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0063",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:16",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "truehd",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": "TrueHD"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0064",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:17",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "truehd",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "TrueHD"
+   }
+  },
+  "expect": {
+   "result": "TrueHD"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0065",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:18",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "truehd",
+     "audio_codec_id": "thd+",
+     "audio_profile": " "
+    },
+    "scene_name": "Atmos"
+   }
+  },
+  "expect": {
+   "result": "TrueHD Atmos"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0066",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:19",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "truehd",
+     "audio_codec_id": "thd+",
+     "audio_profile": " "
+    },
+    "scene_name": "TrueHD.Atmos.7.1"
+   }
+  },
+  "expect": {
+   "result": "TrueHD Atmos"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0067",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:20",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "truehd",
+     "audio_codec_id": "thd+",
+     "audio_profile": " "
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": "TrueHD Atmos"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0068",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:21",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "wmav1",
+     "audio_codec_id": "",
+     "audio_profile": ""
+    },
+    "scene_name": "Droned.wmv"
+   }
+  },
+  "expect": {
+   "result": "WMA"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0069",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:22",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "wmav2",
+     "audio_codec_id": "",
+     "audio_profile": ""
+    },
+    "scene_name": "B.N.S04E18.720p.WEB-DL"
+   }
+  },
+  "expect": {
+   "result": "WMA"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0070",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:23",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "opus",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "Roadkill Ep3x11 - YouTube.webm"
+   }
+  },
+  "expect": {
+   "result": "Opus"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0071",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:24",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "mp3",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "climbing.mp4"
+   }
+  },
+  "expect": {
+   "result": "MP3"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0072",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:25",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "dts",
+     "audio_codec_id": "",
+     "audio_profile": "DTS-HD MA"
+    },
+    "scene_name": "DTS-HD.MA"
+   }
+  },
+  "expect": {
+   "result": "DTS-HD MA"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0073",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:26",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "dts",
+     "audio_codec_id": "",
+     "audio_profile": "DTS:X"
+    },
+    "scene_name": "DTS-X"
+   }
+  },
+  "expect": {
+   "result": "DTS-X"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0074",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:27",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "dts",
+     "audio_codec_id": "",
+     "audio_profile": "DTS-HD MA"
+    },
+    "scene_name": "DTS-HD.MA"
+   }
+  },
+  "expect": {
+   "result": "DTS-HD MA"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0075",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:28",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "dts",
+     "audio_codec_id": "",
+     "audio_profile": "DTS-ES"
+    },
+    "scene_name": "DTS-ES"
+   }
+  },
+  "expect": {
+   "result": "DTS-ES"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0076",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:29",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "dts",
+     "audio_codec_id": "",
+     "audio_profile": "DTS-ES"
+    },
+    "scene_name": "DTS"
+   }
+  },
+  "expect": {
+   "result": "DTS-ES"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0077",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:30",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "dts",
+     "audio_codec_id": "",
+     "audio_profile": "DTS-HD HRA"
+    },
+    "scene_name": "DTSHD-HRA"
+   }
+  },
+  "expect": {
+   "result": "DTS-HD HRA"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0078",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:31",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "dts",
+     "audio_codec_id": "",
+     "audio_profile": "DTS"
+    },
+    "scene_name": "DTS"
+   }
+  },
+  "expect": {
+   "result": "DTS"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0079",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:32",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "eac3",
+     "audio_codec_id": "ec+3",
+     "audio_profile": " "
+    },
+    "scene_name": "EAC3.Atmos"
+   }
+  },
+  "expect": {
+   "result": "EAC3 Atmos"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0080",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:33",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "eac3",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "DDP5.1"
+   }
+  },
+  "expect": {
+   "result": "EAC3"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0081",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:34",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "ac3",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "DD5.1"
+   }
+  },
+  "expect": {
+   "result": "AC3"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0082",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:35",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "adpcm_ima_qt",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "Custom?"
+   }
+  },
+  "expect": {
+   "result": "PCM"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0083",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:36",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "adpcm_ms",
+     "audio_codec_id": "",
+     "audio_profile": " "
+    },
+    "scene_name": "Custom"
+   }
+  },
+  "expect": {
+   "result": "PCM"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0084",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:50",
+  "input": {
+   "op": "FormatAudioCodec",
+   "given": {
+    "media_info": {
+     "audio_format": "Other Audio Format",
+     "audio_codec_id": "Other Audio Codec"
+    },
+    "scene_name": "My.Series.S01E01-Sonarr"
+   }
+  },
+  "expect": {
+   "result": "Other Audio Format"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ }
+]

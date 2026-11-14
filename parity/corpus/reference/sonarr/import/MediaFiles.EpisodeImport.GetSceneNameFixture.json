@@ -1,0 +1,243 @@
+[
+ {
+  "id": "SON-IMPORT-0117",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:53",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/TV/Series Title/Series Title - S02E23 - Episode Title.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "download_client_info": {
+     "release_title": "series.title.s02e23.dvdrip.x264-ingot",
+     "full_season": false
+    }
+   }
+  },
+  "expect": {
+   "scene_name": "series.title.s02e23.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0118",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:65",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/series.title.s02.dvdrip.x264-ingot/series.title.s02e23.dvdrip.x264-ingot",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "download_client_info": {
+     "release_title": "series.title.s02.dvdrip.x264-ingot",
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0119",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:81",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/series.title.s02.dvdrip.x264-ingot/series.title.s02e23.dvdrip.x264-ingot",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "download_client_info": {
+     "release_title": "series.title.s02.dvdrip.x264-ingot",
+     "full_season": false
+    },
+    "other_video_files": true
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0120",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:98",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/series.title.s02.dvdrip.x264-ingot/series.title.s02e23.dvdrip.x264-ingot.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE"
+   }
+  },
+  "expect": {
+   "scene_name": "series.title.s02e23.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0121",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:108",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/series.title.s02e23.dvdrip.x264-ingot/aaaaa.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE"
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0122",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:118",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/TV/Series Title/Series Title - S02E23 - Episode Title.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "folder_info": {
+     "release_title": "series.title.s02e23.dvdrip.x264-ingot"
+    }
+   }
+  },
+  "expect": {
+   "scene_name": "series.title.s02e23.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0123",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:130",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/series.title.s02e23.dvdrip.x264-ingot/aaaaa.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "folder_info": {
+     "release_title": "aaaaa"
+    }
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0124",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:145",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/series.title.s02e23.dvdrip.x264-ingot/aaaaa.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "folder_info": {
+     "release_title": "series.title.s02.dvdrip.x264-ingot",
+     "full_season": true
+    }
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0125",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:161",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/[HorribleSubs] Series Title (01-62) [1080p] (Batch)/[HorribleSubs] Series Title - 14 [1080p].mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "download_client_info": {
+     "release_title": "[HorribleSubs] Series Title (01-62) [1080p] (Batch)",
+     "full_season": false
+    },
+    "folder_info": {
+     "release_title": "series.title.s02.dvdrip.x264-ingot",
+     "full_season": false
+    },
+    "other_video_files": true
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0126",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:187",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/Unsorted TV/series.title.s02e23.dvdrip.x264-ingot/aaaaa.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "folder_info": {
+     "release_title": "series.title.s02.dvdrip.x264-ingot",
+     "full_season": false
+    },
+    "other_video_files": true
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "SON-IMPORT-0127",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:204",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/TV/Series Title/Series Title - S02E23 - Episode Title.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "download_client_info": {
+     "release_title": "series.title.s02e23.dvdrip.x264-ingot.mkv"
+    }
+   }
+  },
+  "expect": {
+   "scene_name": "series.title.s02e23.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0128",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:205",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/TV/Series Title/Series Title - S02E23 - Episode Title.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "download_client_info": {
+     "release_title": "series.title.s02e23.dvdrip.x264-ingot.par2"
+    }
+   }
+  },
+  "expect": {
+   "scene_name": "series.title.s02e23.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0129",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:206",
+  "input": {
+   "op": "SceneNameCalculator.GetSceneName",
+   "given": {
+    "path": "/C/Test/TV/Series Title/Series Title - S02E23 - Episode Title.mkv",
+    "quality": "Bluray-720p",
+    "release_group": "DRONE",
+    "download_client_info": {
+     "release_title": "series.title.s02e23.dvdrip.x264-ingot.nzb"
+    }
+   }
+  },
+  "expect": {
+   "scene_name": "series.title.s02e23.dvdrip.x264-ingot"
+  }
+ }
+]

@@ -1,0 +1,74 @@
+[
+ {
+  "id": "SON-DECISION-1029",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:39",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "release": {
+     "protocol": "Usenet"
+    },
+    "delay_profile": {
+     "enable_usenet": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1030",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:48",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "release": {
+     "protocol": "Torrent"
+    },
+    "delay_profile": {
+     "enable_torrent": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1031",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:57",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "release": {
+     "protocol": "Usenet"
+    },
+    "delay_profile": {
+     "enable_usenet": false
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1032",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:66",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "release": {
+     "protocol": "Torrent"
+    },
+    "delay_profile": {
+     "enable_torrent": false
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

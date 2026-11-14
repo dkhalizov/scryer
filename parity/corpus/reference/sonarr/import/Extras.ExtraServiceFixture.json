@@ -1,0 +1,137 @@
+[
+ {
+  "id": "SON-IMPORT-0021",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:128",
+  "input": {
+   "op": "ExtraService.ImportEpisode",
+   "given": {
+    "config": {
+     "import_extra_files": false,
+     "extra_file_extensions": "nfo,srt"
+    },
+    "is_read_only": true,
+    "series_path": "/C/Test/TV/Series Title",
+    "episode_file": {
+     "path": "/C/Test/TV/Series Title/Season 1/Series Title - S01E01.mkv"
+    },
+    "local_episode": {
+     "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv"
+    },
+    "files_in_download_folder": [
+     "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv",
+     "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.nfo"
+    ],
+    "extra_services": [
+     {
+      "name": "subtitles",
+      "order": 0,
+      "accepts": [
+       ".srt"
+      ]
+     },
+     {
+      "name": "other",
+      "order": 1,
+      "accepts": "any"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "subtitles.CanImportFile(isReadOnly: true)": 0,
+    "other.CanImportFile(isReadOnly: true)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0022",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:150",
+  "input": {
+   "op": "ExtraService.ImportEpisode",
+   "given": {
+    "config": {
+     "import_extra_files": false,
+     "extra_file_extensions": "nfo,srt"
+    },
+    "is_read_only": true,
+    "series_path": "/C/Test/TV/Series Title",
+    "episode_file": {
+     "path": "/C/Test/TV/Series Title/Season 1/Series Title - S01E01.mkv"
+    },
+    "local_episode": {
+     "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv"
+    },
+    "files_in_download_folder": [
+     "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv",
+     "/C/Test/Unsorted TV/Series.Title.S01/Series Title - S01E01.sub"
+    ],
+    "extra_services": [
+     {
+      "name": "subtitles",
+      "order": 0,
+      "accepts": [
+       ".srt"
+      ]
+     },
+     {
+      "name": "other",
+      "order": 1,
+      "accepts": "any"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "subtitles.CanImportFile(isReadOnly: true)": 0,
+    "other.CanImportFile(isReadOnly: true)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0023",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:151",
+  "input": {
+   "op": "ExtraService.ImportEpisode",
+   "given": {
+    "config": {
+     "import_extra_files": false,
+     "extra_file_extensions": "nfo,srt"
+    },
+    "is_read_only": true,
+    "series_path": "/C/Test/TV/Series Title",
+    "episode_file": {
+     "path": "/C/Test/TV/Series Title/Season 1/Series Title - S01E01.mkv"
+    },
+    "local_episode": {
+     "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv"
+    },
+    "files_in_download_folder": [
+     "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv",
+     "/C/Test/Unsorted TV/Series.Title.S01/Series Title - S01E01.ass"
+    ],
+    "extra_services": [
+     {
+      "name": "subtitles",
+      "order": 0,
+      "accepts": [
+       ".srt"
+      ]
+     },
+     {
+      "name": "other",
+      "order": 1,
+      "accepts": "any"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "subtitles.CanImportFile(isReadOnly: true)": 0,
+    "other.CanImportFile(isReadOnly: true)": 0
+   }
+  }
+ }
+]

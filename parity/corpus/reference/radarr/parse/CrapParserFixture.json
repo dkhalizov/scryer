@@ -1,0 +1,392 @@
+[
+ {
+  "id": "RAD-PARSE-0007",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:13",
+  "input": {
+   "name": "76El6LcgLzqb426WoVFg1vVVVGx4uCYopQkfjmLe",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0008",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:14",
+  "input": {
+   "name": "Vrq6e1Aba3U amCjuEgV5R2QvdsLEGYF3YQAQkw8",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0009",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:15",
+  "input": {
+   "name": "TDAsqTea7k4o6iofVx3MQGuDK116FSjPobMuh8oB",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0010",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:16",
+  "input": {
+   "name": "yp4nFodAAzoeoRc467HRh1mzuT17qeekmuJ3zFnL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0011",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:17",
+  "input": {
+   "name": "oxXo8S2272KE1 lfppvxo3iwEJBrBmhlQVK1gqGc",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0012",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:18",
+  "input": {
+   "name": "dPBAtu681Ycy3A4NpJDH6kNVQooLxqtnsW1Umfiv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0013",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:19",
+  "input": {
+   "name": "password - \"bdc435cb-93c4-4902-97ea-ca00568c3887.337\" yEnc",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0014",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:20",
+  "input": {
+   "name": "185d86a343e39f3341e35c4dad3f9959",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0015",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:21",
+  "input": {
+   "name": "ba27283b17c00d01193eacc02a8ba98eeb523a76",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0016",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:22",
+  "input": {
+   "name": "45a55debe3856da318cc35882ad07e43cd32fd15",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0017",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:23",
+  "input": {
+   "name": "86420f8ee425340d8894bf3bc636b66404b95f18",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0018",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:24",
+  "input": {
+   "name": "ce39afb7da6cf7c04eba3090f0a309f609883862",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0019",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:25",
+  "input": {
+   "name": "THIS SHOULD NEVER PARSE",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0020",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:26",
+  "input": {
+   "name": "Vh1FvU3bJXw6zs8EEUX4bMo5vbbMdHghxHirc.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0021",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:27",
+  "input": {
+   "name": "0e895c37245186812cb08aab1529cf8ee389dd05.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0022",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:28",
+  "input": {
+   "name": "08bbc153931ce3ca5fcafe1b92d3297285feb061.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0023",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:29",
+  "input": {
+   "name": "185d86a343e39f3341e35c4dad3ff159",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0024",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:30",
+  "input": {
+   "name": "ah63jka93jf0jh26ahjas961.mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0025",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:31",
+  "input": {
+   "name": "qrdSD3rYzWb7cPdVIGSn4E7",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0026",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:32",
+  "input": {
+   "name": "QZC4HDl7ncmzyUj9amucWe1ddKU1oFMZDd8r0dEDUsTd",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0027",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:33",
+  "input": {
+   "name": "abc.xyz.af6021c37f7852",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0028",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:40",
+  "input": {
+   "names": [
+    "5E96EB6652095794DF2CB17350F36D65",
+    "5F47E414BD562EDD5A59060437F9D118",
+    "19535F4CB7142CD9CEB47A3B85EB2362",
+    "3B36532103CB1253E97B4EB6D277D929",
+    "CAEB2FE8423ADC6EB0B6FBCC6EC8A025",
+    "05B789910CAC35AE2FD672B6A24C89C8",
+    "7863EE0CFD3924C017E742901A98E083",
+    "12E990AFFBCC28BBF3F5267558A7B4DA",
+    "402BB6DA2DFECB647B18F6457640A050",
+    "160A38B5775AE98D1D33576DA6AE30B5",
+    "295267850505E38766A6C217AE631CE3",
+    "A7B1C2C6FBD2AE5BFE1AA5459C2E34B7",
+    "29688CE9C78AB804EC0FCEE81B6B06B5",
+    "038606FE6283EA720A09A7CA64758B1F",
+    "E7212CE276D59DB7019FBE01C9BE6FD8",
+    "8C02D4DFABEEDF12639B2CB9F81A014B",
+    "9185AC0CB29EC85593F2E4E5FE7BDAA0",
+    "91D81374EF4BBC2D295EFC79B1B81A7A",
+    "28FFDE20E32C08E3F0546652551EADB9",
+    "4DC474C347450979B70FAD1C88F5A9E5",
+    "55E7CE9D009AAC677B6AF3C37216596E",
+    "F86C122D224DBD26380EAAD86D67D32E",
+    "1F43F68A857194E67D8A12961FD7B443",
+    "21BA3A20DBB91C6800648DF3F82C9A46",
+    "3920D6DB20350D63E3B9AFD596688E4A",
+    "D3FCBD6D6F12B222EDA470242C4A9643",
+    "671CF26F82A47721306A39975E1B02BE",
+    "8EDC05B837C752E81CD513673A7D133C",
+    "42400BB3C68D5A01F8F3DDB1EE364C07",
+    "5AFDE35377D8708AEC6EBEF9C48A7674",
+    "F40FE2075D1C363E3B7918739B28FDC6",
+    "034720294185F21FD172979CC87EB2C9",
+    "B9D0DB8EF5887E27DD57248C5F2AED58",
+    "E8255A2E656DAF4334E2657C935A8E77",
+    "3E60B40C0FAF739CE8D9D3A56BF9C274",
+    "16892E1DBF45E8697084FB886F93E5E3",
+    "7DEB3AB3D8ACFA04A62BF99DBDD75A15",
+    "8245D2090FCA731792A5F89182DE305D",
+    "25C199FFF8E20780957464142B036AC8",
+    "C24C113D0A0898F968BA0845D3BBB4AB",
+    "B12E05688F5A6501488AE3D28DB8E41C",
+    "8E69998AB57C8113BD33DC71F688D27E",
+    "2DCEEFA49C13614938F971BA93ACE308",
+    "5618FD33C2B8BB2E42586315024EE505",
+    "BB10398DF99A2B8A8913118D1B55A674",
+    "A9C3A0E0FC925E3CD3CF0BFEC8DC7915",
+    "89BD9B58FC55D85BEF0C7EB8126922E3",
+    "A13E7969FFF37B54513CCA681E8D3AA2",
+    "22CAFB2D496CEFAA01D71B873DF5F10B",
+    "A4D9968DA378919E53269BDB0A2595D3",
+    "F0F12A3DC8D081A8F98947C0D4778FA4",
+    "366E4F60AD458A9CE926F58CC4303F62",
+    "431156FFA1F8D881053336F0D368F12E",
+    "458F769E915BF0F8F9E912C403D01CDF",
+    "A0654332421BA8B6895A5E46D268DC63",
+    "A3A6FC977FD932DEF120C22BF5C32FA5",
+    "E725CE35611C5AD75F49F31C3E629500",
+    "A1C8DB6C181B7746047EFAD92C99FD6E",
+    "56E8DB0E08592FEC443127A71D674DBB",
+    "2B740BB3FF81192033A4EBE138FC1BFB",
+    "C1AACDA7F2B24F1C3105FF14CE474F9B",
+    "60CD205B1E480E6B661FC56F709E3F60",
+    "CCDD0B9B217CADA2369108CB7F1C5F0B",
+    "1A1FDFCB4F7F0FA32C4E5B16F408A5E1",
+    "7C563FFD2F47026558417E641C71FF7E",
+    "AD0DAE9350D8402FB3C9863C2AED3470",
+    "A33E462AF8B8F95456A892755371F047",
+    "74D98B3928E1DE094A8D65F55F8B5EBA",
+    "A3A89AE42189E273163B0BCE34EBB193",
+    "1F06FEDDE5A58965F1DEA6D88FE1AFE7",
+    "2DC716B2DB635C7BCCFAC9602C27D842",
+    "3E70731EE0FACE9D2891A93472F02682",
+    "AF35C56D573198CF93DA247369738A4C",
+    "E55B433FCD74F27548A0B03219AD0508",
+    "4F35D3176D2B7BE0A3A71EED553F390E",
+    "98B06D41EE9AEE7B06F0CC8E8A0913F7",
+    "AD93CD92E978DFFC033B97B470AE77C1",
+    "F1B76D6D2B8D85BF9FE4874B012CB72F",
+    "D0EC2962A153495D3300FABACCB27F61",
+    "CA878CC6AD1A75C7B2A50682D3310064",
+    "577A0D0F34662397D1314ABC3048494B",
+    "7990F1FD3EF7CDF5C288514FDE926A72",
+    "541E3899F49D81081F20378097AFAF0B",
+    "ABB5A9AB873C888036F1C6750FAC17A5",
+    "F2D8A63E75EBEE2685D27BF3D96963C6",
+    "0E702AECF5FED9A7D79FE85C9122A482",
+    "27CA76C4F27366C758F14AA698E49F7C",
+    "BA7F3F15ADA935D85E0D1FD546DEDE6B",
+    "05B4575698D23CDB6F32A1F5001570AE",
+    "6E6B6E3A29C796C235EF9019280E4B97",
+    "7DCBC2300741EA272725B662CFF43037",
+    "E3C09179D5F2357BB24DB0F452083C3E",
+    "1F6826C92280048DC2C85273EB22C1A4",
+    "02B16BECEBB66B059C084556C96548DB",
+    "18B985746DFDEA17BDAD8C2A7B2F0714",
+    "F274096A879657C9DAC4F09626B84C3D",
+    "7FA602B949A615C1D12650028E16C076",
+    "DF21A38F439B39E09487A9D0033111B0",
+    "D39F67B3DDE773E5F4F2647D02345943",
+    "EABD2584E248FAFD6E0352B787C4CCCA"
+   ],
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  },
+  "note": "names: 100 chained MD5 digests (upper hex, no dashes) starting from the seed \"CRAPPY TEST SEED\", as the test computes them"
+ },
+ {
+  "id": "RAD-PARSE-0031",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:92",
+  "input": {
+   "name": "thebiggestmovie1618finale",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ },
+ {
+  "id": "RAD-PARSE-0032",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:98",
+  "input": {
+   "name": "Big Movie (S01E18) Complete 360p HDTV AAC H.264-NEXT",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "should_parse": false
+  }
+ }
+]

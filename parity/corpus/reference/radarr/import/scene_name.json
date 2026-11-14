@@ -1,0 +1,162 @@
+[
+ {
+  "id": "RAD-IMPORT-0166",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:48",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Movies/Movie Title/Movie Title - 2022 - Episode Title.mkv",
+    "other_video_files": false,
+    "download_client_release_title": "movie.title.2022.dvdrip.x264-ingot",
+    "folder_release_title": null
+   }
+  },
+  "expect": {
+   "scene_name": "movie.title.2022.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0167",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:60",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Unsorted Movies/movie.title.2022.dvdrip.x264-ingot",
+    "other_video_files": true,
+    "download_client_release_title": "movie.title.2022.dvdrip.x264-ingot",
+    "folder_release_title": null
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0168",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:76",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Unsorted Movies/movie.title.2022.dvdrip.x264-ingot.mkv",
+    "other_video_files": false,
+    "download_client_release_title": null,
+    "folder_release_title": null
+   }
+  },
+  "expect": {
+   "scene_name": "movie.title.2022.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0169",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:86",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Unsorted Movies/movie.title.2022.dvdrip.x264-ingot/aaaaa.mkv",
+    "other_video_files": false,
+    "download_client_release_title": null,
+    "folder_release_title": null
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0170",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:96",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Movies/Movie Title/Movie Title - 2022 - Episode Title.mkv",
+    "other_video_files": false,
+    "download_client_release_title": null,
+    "folder_release_title": "movie.title.2022.dvdrip.x264-ingot"
+   }
+  },
+  "expect": {
+   "scene_name": "movie.title.2022.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0171",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:108",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Unsorted Movies/movie.title.2022.dvdrip.x264-ingot/aaaaa.mkv",
+    "other_video_files": false,
+    "download_client_release_title": null,
+    "folder_release_title": "aaaaa"
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0172",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:123",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Unsorted Movies/movie.title.2022.dvdrip.x264-ingot/aaaaa.mkv",
+    "other_video_files": true,
+    "download_client_release_title": null,
+    "folder_release_title": "movie.title.2022.dvdrip.x264-ingot"
+   }
+  },
+  "expect": {
+   "scene_name": null
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0173",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:139",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Movies/Movie Title/Movie Title - 2022 - Episode Title.mkv",
+    "other_video_files": false,
+    "download_client_release_title": "movie.title.2022.dvdrip.x264-ingot.mkv",
+    "folder_release_title": null
+   }
+  },
+  "expect": {
+   "scene_name": "movie.title.2022.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0174",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:140",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Movies/Movie Title/Movie Title - 2022 - Episode Title.mkv",
+    "other_video_files": false,
+    "download_client_release_title": "movie.title.2022.dvdrip.x264-ingot.par2",
+    "folder_release_title": null
+   }
+  },
+  "expect": {
+   "scene_name": "movie.title.2022.dvdrip.x264-ingot"
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0175",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:141",
+  "input": {
+   "op": "scene_name",
+   "given": {
+    "path": "/C/Test/Movies/Movie Title/Movie Title - 2022 - Episode Title.mkv",
+    "other_video_files": false,
+    "download_client_release_title": "movie.title.2022.dvdrip.x264-ingot.nzb",
+    "folder_release_title": null
+   }
+  },
+  "expect": {
+   "scene_name": "movie.title.2022.dvdrip.x264-ingot"
+  }
+ }
+]

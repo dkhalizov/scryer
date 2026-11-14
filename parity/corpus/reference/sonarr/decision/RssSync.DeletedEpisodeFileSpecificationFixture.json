@@ -1,0 +1,258 @@
+[
+ {
+  "id": "SON-DECISION-1183",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:92",
+  "input": {
+   "spec": "RssSync.DeletedEpisodeFileSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Series\\My.Series"
+    },
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "My.Series.S01E01.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "auto_unmonitor_previously_downloaded_episodes": false
+    },
+    "files_on_disk": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Paths go through AsOsAgnostic() in the test (C:\\ prefix becomes a POSIX root on Linux)."
+ },
+ {
+  "id": "SON-DECISION-1184",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:100",
+  "input": {
+   "spec": "RssSync.DeletedEpisodeFileSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Series\\My.Series"
+    },
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "My.Series.S01E01.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "auto_unmonitor_previously_downloaded_episodes": true
+    },
+    "files_on_disk": [],
+    "search": {
+     "kind": "SeasonSearchCriteria"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Paths go through AsOsAgnostic() in the test (C:\\ prefix becomes a POSIX root on Linux)."
+ },
+ {
+  "id": "SON-DECISION-1185",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:106",
+  "input": {
+   "spec": "RssSync.DeletedEpisodeFileSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Series\\My.Series"
+    },
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "My.Series.S01E01.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "auto_unmonitor_previously_downloaded_episodes": true
+    },
+    "files_on_disk": [
+     "C:\\Series\\My.Series\\My.Series.S01E01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Paths go through AsOsAgnostic() in the test (C:\\ prefix becomes a POSIX root on Linux)."
+ },
+ {
+  "id": "SON-DECISION-1186",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:114",
+  "input": {
+   "spec": "RssSync.DeletedEpisodeFileSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Series\\My.Series"
+    },
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "My.Series.S01E01.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "auto_unmonitor_previously_downloaded_episodes": true
+    },
+    "files_on_disk": []
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Paths go through AsOsAgnostic() in the test (C:\\ prefix becomes a POSIX root on Linux)."
+ },
+ {
+  "id": "SON-DECISION-1187",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:120",
+  "input": {
+   "spec": "RssSync.DeletedEpisodeFileSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Series\\My.Series"
+    },
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "My.Series.S01E01.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     },
+     {
+      "episode_file_id": 2,
+      "file": {
+       "id": 2,
+       "relative_path": "My.Series.S01E02.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "auto_unmonitor_previously_downloaded_episodes": true
+    },
+    "files_on_disk": [
+     "C:\\Series\\My.Series\\My.Series.S01E01.mkv",
+     "C:\\Series\\My.Series\\My.Series.S01E02.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Paths go through AsOsAgnostic() in the test (C:\\ prefix becomes a POSIX root on Linux)."
+ },
+ {
+  "id": "SON-DECISION-1188",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DeletedEpisodeFileSpecificationFixture.cs:129",
+  "input": {
+   "spec": "RssSync.DeletedEpisodeFileSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Series\\My.Series"
+    },
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "My.Series.S01E01.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     },
+     {
+      "episode_file_id": 2,
+      "file": {
+       "id": 2,
+       "relative_path": "My.Series.S01E02.mkv",
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "auto_unmonitor_previously_downloaded_episodes": true
+    },
+    "files_on_disk": [
+     "C:\\Series\\My.Series\\My.Series.S01E01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Paths go through AsOsAgnostic() in the test (C:\\ prefix becomes a POSIX root on Linux)."
+ }
+]

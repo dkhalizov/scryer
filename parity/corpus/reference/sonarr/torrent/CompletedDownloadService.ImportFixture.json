@@ -1,0 +1,611 @@
+[
+ {
+  "id": "SON-TORRENT-0087",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:115",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      1
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [
+       1
+      ],
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E02.mkv",
+      "episode_ids": [
+       2
+      ],
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0088",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:139",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": []
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [
+       1
+      ],
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E02.mkv",
+      "episode_ids": [
+       2
+      ],
+      "rejected": true,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Rejected"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0089",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:162",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      1
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [
+       1
+      ],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E02.mkv",
+      "episode_ids": [
+       2
+      ],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0090",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:178",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      0,
+      0,
+      0
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "The three remote episodes are new Episode() objects: ids all 0. Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0091",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:206",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      0,
+      0,
+      0
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 2,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     }
+    ],
+    "already_imported": true
+   }
+  },
+  "expect": {
+   "state": "ImportBlocked",
+   "download_completed_events": 0
+  },
+  "note": "The three remote episodes are new Episode() objects: ids all 0. The already-imported check is mocked true only for the exact history list. Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0092",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:241",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      1,
+      2
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [
+       1
+      ],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E02.mkv",
+      "episode_ids": [
+       2
+      ],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "Imported",
+   "download_completed_events": 1,
+   "process_path": {
+    "calls": 1,
+    "path": "/C/DropFolder/MyDownload",
+    "mode": "Auto"
+   }
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0093",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:266",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      1,
+      2
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 2,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [
+       1
+      ],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E02.mkv",
+      "episode_ids": [
+       2
+      ],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     }
+    ],
+    "already_imported": true
+   }
+  },
+  "expect": {
+   "state": "Imported",
+   "download_completed_events": 1,
+   "process_path": {
+    "calls": 1,
+    "path": "/C/DropFolder/MyDownload",
+    "mode": "Auto"
+   }
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0094",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:302",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      1,
+      2
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Drone.S01E01.HDTV": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01-E02.mkv",
+      "episode_ids": [
+       1,
+       2
+      ],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "Imported",
+   "download_completed_events": 1,
+   "process_path": {
+    "calls": 1,
+    "path": "/C/DropFolder/MyDownload",
+    "mode": "Auto"
+   }
+  },
+  "note": "Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0095",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:323",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Drone.S01E01.HDTV",
+     "download_id": "DownloadId1",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      0
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "*": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [
+       0
+      ],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     },
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [],
+      "rejected": false,
+      "errors": [
+       "Test Failure"
+      ],
+      "result": "Skipped"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "state": "Imported",
+   "download_completed_events": 1,
+   "process_path": {
+    "calls": 1,
+    "path": "/C/DropFolder/MyDownload",
+    "mode": "Auto"
+   }
+  },
+  "note": "The one remote episode is new Episode() (id 0). Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ },
+ {
+  "id": "SON-TORRENT-0096",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:346",
+  "input": {
+   "op": "completed_download.import",
+   "given": {
+    "tracked_state": "Downloading",
+    "download_item": {
+     "status": "Completed",
+     "output_path": "/C/DropFolder/MyDownload",
+     "title": "Droned Pilot",
+     "download_id": "1234",
+     "category": "Category1"
+    },
+    "remote_episode": {
+     "series": "series",
+     "episode_ids": [
+      1
+     ]
+    },
+    "client": {
+     "id": 1,
+     "name": "testClient"
+    },
+    "series_by_title": {
+     "Droned S01E01": "series"
+    },
+    "history_by_download_id_count": 0,
+    "import_results": [
+     {
+      "path": "C:\\TestPath\\Droned.S01E01.mkv",
+      "episode_ids": [
+       1
+      ],
+      "rejected": false,
+      "errors": [],
+      "result": "Imported"
+     }
+    ],
+    "most_recent_history": {
+     "source_title": "Droned S01E01"
+    },
+    "series_by_id": {
+     "*": "series"
+    }
+   }
+  },
+  "expect": {
+   "state": "Imported",
+   "download_completed_events": 1,
+   "process_path": {
+    "calls": 1,
+    "path": "/C/DropFolder/MyDownload",
+    "mode": "Auto"
+   }
+  },
+  "note": "Titles other than 'Droned S01E01' map to no series. Each import result's 'result' follows ImportResult.Result (src/NzbDrone.Core/MediaFiles/EpisodeImport/ImportResult.cs): errors + approved = Skipped, errors + rejected = Rejected, no errors = Imported."
+ }
+]

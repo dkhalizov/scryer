@@ -1,0 +1,404 @@
+[
+ {
+  "id": "SON-SCAN-0040",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:32",
+  "input": {
+   "op": "VideoFileInfoReader.GetRunTime",
+   "given": {
+    "file": "src/NzbDrone.Core.Test/Files/Media/H264_sample.mp4"
+   }
+  },
+  "expect": {
+   "run_time_seconds": 10
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types. run_time_seconds is TimeSpan.Seconds (the seconds component), as the test asserts."
+ },
+ {
+  "id": "SON-SCAN-0041",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:40",
+  "input": {
+   "op": "VideoFileInfoReader.GetMediaInfo",
+   "given": {
+    "file": "src/NzbDrone.Core.Test/Files/Media/H264_sample.mp4"
+   }
+  },
+  "expect": {
+   "video_format": "h264",
+   "video_codec_id": "avc1",
+   "video_profile": "Constrained Baseline",
+   "audio_format": "aac",
+   "audio_codec_id": "mp4a",
+   "audio_profile": "LC",
+   "audio_bitrate": 125509,
+   "audio_channels": 2,
+   "audio_channel_positions": "stereo",
+   "audio_languages": [
+    "eng"
+   ],
+   "height": 320,
+   "run_time_seconds": 10,
+   "scan_type": "Progressive",
+   "subtitles": [],
+   "video_bitrate": 193694,
+   "video_fps": 24,
+   "width": 480,
+   "video_bit_depth": 8,
+   "video_colour_primaries": "smpte170m",
+   "video_transfer_characteristics": "bt709",
+   "title": "Sample Title"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types. run_time_seconds is TimeSpan.Seconds (the seconds component), as the test asserts."
+ },
+ {
+  "id": "SON-SCAN-0042",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:70",
+  "input": {
+   "op": "VideoFileInfoReader.GetMediaInfo",
+   "given": {
+    "file": "src/NzbDrone.Core.Test/Files/Media/H264_sample.mp4",
+    "copied_to": "<temp dir>/H264_Pokémon.mkv"
+   }
+  },
+  "expect": {
+   "video_format": "h264",
+   "video_codec_id": "avc1",
+   "video_profile": "Constrained Baseline",
+   "audio_format": "aac",
+   "audio_codec_id": "mp4a",
+   "audio_profile": "LC",
+   "audio_bitrate": 125509,
+   "audio_channels": 2,
+   "audio_channel_positions": "stereo",
+   "audio_languages": [
+    "eng"
+   ],
+   "height": 320,
+   "run_time_seconds": 10,
+   "scan_type": "Progressive",
+   "subtitles": [],
+   "video_bitrate": 193694,
+   "video_fps": 24,
+   "width": 480,
+   "video_colour_primaries": "smpte170m",
+   "video_transfer_characteristics": "bt709",
+   "title": "Sample Title"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types. run_time_seconds is TimeSpan.Seconds (the seconds component), as the test asserts."
+ },
+ {
+  "id": "SON-SCAN-0043",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:106",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 8,
+    "colour_primaries": "",
+    "transfer_characteristics": "",
+    "side_data": []
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0044",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:107",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "",
+    "transfer_characteristics": "",
+    "side_data": []
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0045",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:108",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt709",
+    "transfer_characteristics": "bt709",
+    "side_data": []
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0046",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:109",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 8,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": []
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0047",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:110",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "bt2020-10",
+    "side_data": []
+   }
+  },
+  "expect": {
+   "hdr_format": "None"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0048",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:111",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "arib-std-b67",
+    "side_data": []
+   }
+  },
+  "expect": {
+   "hdr_format": "Hlg10"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0049",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:112",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": []
+   }
+  },
+  "expect": {
+   "hdr_format": "Pq10"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0050",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:113",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "SideData"
+    ]
+   }
+  },
+  "expect": {
+   "hdr_format": "Pq10"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0051",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:114",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "MasteringDisplayMetadata"
+    ]
+   }
+  },
+  "expect": {
+   "hdr_format": "Hdr10"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0052",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:115",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "ContentLightLevelMetadata"
+    ]
+   }
+  },
+  "expect": {
+   "hdr_format": "Hdr10"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0053",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:116",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "HdrDynamicMetadataSpmte2094"
+    ]
+   }
+  },
+  "expect": {
+   "hdr_format": "Hdr10Plus"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0054",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:117",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ]
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVision"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0055",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:118",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ],
+    "dv_bl_signal_compatibility_id": 1
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHdr10"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0056",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:119",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData",
+     "HdrDynamicMetadataSpmte2094"
+    ],
+    "dv_bl_signal_compatibility_id": 1
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHdr10Plus"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0057",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:120",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData",
+     "HdrDynamicMetadataSpmte2094"
+    ],
+    "dv_bl_signal_compatibility_id": 6
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHdr10Plus"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0058",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:121",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ],
+    "dv_bl_signal_compatibility_id": 2
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionSdr"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ },
+ {
+  "id": "SON-SCAN-0059",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:122",
+  "input": {
+   "op": "VideoFileInfoReader.GetHdrFormat",
+   "given": {
+    "bit_depth": 10,
+    "colour_primaries": "bt2020",
+    "transfer_characteristics": "smpte2084",
+    "side_data": [
+     "DoviConfigurationRecordSideData"
+    ],
+    "dv_bl_signal_compatibility_id": 4
+   }
+  },
+  "expect": {
+   "hdr_format": "DolbyVisionHlg"
+  },
+  "note": "file is a path in the reference repo at the tag; the fixture is [DiskAccessTest] and reads it with ffprobe. HDR rows call the static GetHdrFormat(bitDepth, primaries, transfer, sideData); side data names are FFMpegCore types."
+ }
+]

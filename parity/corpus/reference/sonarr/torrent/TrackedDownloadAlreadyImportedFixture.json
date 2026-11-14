@@ -1,0 +1,154 @@
+[
+ {
+  "id": "SON-TORRENT-0103",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:59",
+  "input": {
+   "op": "tracked_download.is_imported",
+   "given": {
+    "episode_ids": [
+     1
+    ],
+    "history": []
+   }
+  },
+  "expect": {
+   "imported": false
+  }
+ },
+ {
+  "id": "SON-TORRENT-0104",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:69",
+  "input": {
+   "op": "tracked_download.is_imported",
+   "given": {
+    "episode_ids": [
+     1
+    ],
+    "history": [
+     {
+      "episode_id": 1,
+      "event_type": "Grabbed"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "imported": false
+  }
+ },
+ {
+  "id": "SON-TORRENT-0105",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:81",
+  "input": {
+   "op": "tracked_download.is_imported",
+   "given": {
+    "episode_ids": [
+     1,
+     2
+    ],
+    "history": [
+     {
+      "episode_id": 1,
+      "event_type": "Grabbed"
+     },
+     {
+      "episode_id": 2,
+      "event_type": "Grabbed"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "imported": false
+  }
+ },
+ {
+  "id": "SON-TORRENT-0106",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:94",
+  "input": {
+   "op": "tracked_download.is_imported",
+   "given": {
+    "episode_ids": [
+     1,
+     2
+    ],
+    "history": [
+     {
+      "episode_id": 1,
+      "event_type": "DownloadFolderImported"
+     },
+     {
+      "episode_id": 1,
+      "event_type": "Grabbed"
+     },
+     {
+      "episode_id": 2,
+      "event_type": "Grabbed"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "imported": false
+  }
+ },
+ {
+  "id": "SON-TORRENT-0107",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:107",
+  "input": {
+   "op": "tracked_download.is_imported",
+   "given": {
+    "episode_ids": [
+     1
+    ],
+    "history": [
+     {
+      "episode_id": 1,
+      "event_type": "DownloadFolderImported"
+     },
+     {
+      "episode_id": 1,
+      "event_type": "Grabbed"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "imported": true
+  }
+ },
+ {
+  "id": "SON-TORRENT-0108",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/TrackedDownloads/TrackedDownloadAlreadyImportedFixture.cs:119",
+  "input": {
+   "op": "tracked_download.is_imported",
+   "given": {
+    "episode_ids": [
+     1,
+     2
+    ],
+    "history": [
+     {
+      "episode_id": 1,
+      "event_type": "DownloadFolderImported"
+     },
+     {
+      "episode_id": 1,
+      "event_type": "Grabbed"
+     },
+     {
+      "episode_id": 2,
+      "event_type": "DownloadFolderImported"
+     },
+     {
+      "episode_id": 2,
+      "event_type": "Grabbed"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "imported": true
+  }
+ }
+]

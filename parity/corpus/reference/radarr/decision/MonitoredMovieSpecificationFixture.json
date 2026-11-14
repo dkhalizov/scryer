@@ -1,0 +1,77 @@
+[
+ {
+  "id": "RAD-DECISION-0073",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredMovieSpecificationFixture.cs:48",
+  "input": {
+   "spec": "MonitoredMovieSpecification",
+   "given": {
+    "movie": {
+     "monitored": true
+    },
+    "search": {
+     "kind": "rss"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "two asserts on identical inputs (single and multi RemoteMovie share the movie)"
+ },
+ {
+  "id": "RAD-DECISION-0074",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredMovieSpecificationFixture.cs:55",
+  "input": {
+   "spec": "MonitoredMovieSpecification",
+   "given": {
+    "movie": {
+     "monitored": false
+    },
+    "search": {
+     "kind": "rss"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-0075",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredMovieSpecificationFixture.cs:62",
+  "input": {
+   "spec": "MonitoredMovieSpecification",
+   "given": {
+    "movie": {
+     "monitored": false
+    },
+    "search": {
+     "kind": "rss"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "same inputs as not_monitored_series_should_be_skipped"
+ },
+ {
+  "id": "RAD-DECISION-0076",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/MonitoredMovieSpecificationFixture.cs:69",
+  "input": {
+   "spec": "MonitoredMovieSpecification",
+   "given": {
+    "movie": {
+     "monitored": false
+    },
+    "search": {
+     "kind": "search",
+     "user_invoked": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

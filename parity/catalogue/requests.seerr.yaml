@@ -1,0 +1,598 @@
+# Seerr request-lifecycle tests (and untested rules, from source), ported by parity/extract/seerr_requests.py.
+# Corpus: corpus/reference/seerr/requests/. in_scope: false rows say why after "out of scope:".
+
+- id: SER-REQUESTS-0001
+  behaviour: "Of two concurrent movie requests from a user with a movie quota of 1, one fails with QuotaRestrictedError and one is saved; out of scope: our quotas are 0 = unlimited (main.json defaultQuotas, users.json)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:85"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0002
+  behaviour: "Two concurrent requests from one user for the same movie save one request; the other fails as a duplicate"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:98"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0003
+  behaviour: "A second request for the same movie that omits is4k is rejected as a duplicate of the first"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:111"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0004
+  behaviour: "Concurrent requests from two users for the same movie save one request; the other fails as a duplicate"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:125"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0005
+  behaviour: "Concurrent series requests for seasons [1, 2] and [2, 3] both succeed and season 2 is requested only once (3 season requests in all)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:145"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0006
+  behaviour: "Concurrent 4K and non-4K requests for one movie create two requests and one media row; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.test.ts:175"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0007
+  behaviour: "The owner may delete their own pending request"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:232"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0008
+  behaviour: "An admin may delete another user's pending request"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:241"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0009
+  behaviour: "A user who is neither the owner nor allowed to manage requests may not delete a pending request"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:250"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0010
+  behaviour: "The owner without MANAGE_REQUESTS may not delete their own request once it is approved"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:285"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0011
+  behaviour: "Deleting a request that does not exist answers not found"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:294"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0012
+  behaviour: "Two racing deletes of one request: one succeeds, the other finds nothing, and the request is gone"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:301"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0013
+  behaviour: "An admin edit of a pending movie request saves the new server, profile and root folder"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:317"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0014
+  behaviour: "Editing a request that is no longer pending is refused (conflict) and changes nothing"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:340"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0015
+  behaviour: "Editing a series request to add a season another request already holds leaves that season with the other request"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:435"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0016
+  behaviour: "Two concurrent edits that both add season 2 succeed, and season 2 ends up in exactly one request"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:469"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0017
+  behaviour: "Editing a series request does not add a season the media already has available"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:515"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0018
+  behaviour: "An edit whose every requested season is already available answers 202 (accepted, nothing to add)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:540"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0019
+  behaviour: "An edit keeps seasons the request already holds even after they became available or processing"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:556"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0020
+  behaviour: "With a series quota of 1, adding a season the media already has is not charged and not added; out of scope: our quotas are 0 = unlimited (main.json defaultQuotas, users.json)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:586"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0021
+  behaviour: "A regular requester's season edit ignores the server, profile, root folder, language profile and tags it sends and keeps the stored ones"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:845"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0022
+  behaviour: "A regular requester may not edit their movie request into a series request"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:877"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0023
+  behaviour: "Approving a pending request makes it APPROVED and records the approver as modifiedBy"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:919"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0024
+  behaviour: "Declining a pending request makes it DECLINED and records the decliner as modifiedBy"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:919"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0025
+  behaviour: "An unknown status action is rejected and the request stays PENDING with no modifiedBy"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:941"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0026
+  behaviour: "Declining an approved request is refused (conflict) and it stays APPROVED"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:959"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0027
+  behaviour: "Of a concurrent approve and decline only one applies; the request ends in that one's status"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:973"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0028
+  behaviour: "The 'pending' status action no longer exists: it is rejected and a declined request stays DECLINED"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:994"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0029
+  behaviour: "Retrying a FAILED request makes it APPROVED again and records the retrier as modifiedBy"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1010"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0030
+  behaviour: "Retrying a request that has not failed is refused (conflict) and it stays PENDING"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1031"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0031
+  behaviour: "Two concurrent retries of a failed movie request send it to Radarr once and leave it APPROVED"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1045"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0032
+  behaviour: "Deleting the re-request of a DELETED movie, while its old completed auto-request remains, puts the media back to DELETED"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1115"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0033
+  behaviour: "The same restoration for the 4K status; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1128"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0034
+  behaviour: "Deleting both the re-request and the old completed request of a DELETED movie resets the media to UNKNOWN with no requests left"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1179"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0035
+  behaviour: "The same reset for the 4K status; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1201"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0036
+  behaviour: "Deleting one of two pending requests for a PENDING movie leaves the media PENDING"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1254"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0037
+  behaviour: "Deleting the only (completed) request of a PARTIALLY_AVAILABLE movie leaves it PARTIALLY_AVAILABLE"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1301"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0038
+  behaviour: "A regular requester's movie request ignores the server, profile, root folder and tags it sends (all stored empty)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1767"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0039
+  behaviour: "A regular requester's series request ignores the server, profile, root folder, language profile and tags it sends"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1786"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0040
+  behaviour: "A non-4K request naming a 4K server falls back to the default server and stores no options; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1806"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0041
+  behaviour: "A requester with REQUEST_ADVANCED keeps the server, profile, root folder, language profile and tags it sends"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1832"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0042
+  behaviour: "A REQUEST_ADVANCED movie request with serverId null keeps its profile, root folder and tags"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1855"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0043
+  behaviour: "Deleting the approved request that covers a PROCESSING season resets the season to UNKNOWN, and the season can be requested again"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1935"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0044
+  behaviour: "Deleting a request resets only the seasons it covered; another PROCESSING season stays PROCESSING"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1960"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0045
+  behaviour: "A PROCESSING season stays PROCESSING when another approved request still covers it"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1979"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0046
+  behaviour: "Deleting a non-4K request resets the season status but leaves its 4K status PROCESSING; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/request.test.ts:1995"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0047
+  behaviour: "Watchlist sync requests each watchlisted movie that is UNKNOWN or DELETED and each show that is DELETED, once, and skips AVAILABLE and BLOCKLISTED media"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/watchlistsync.test.ts:103"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0048
+  behaviour: "Watchlist sync re-requests a DELETED movie even though the user's earlier completed auto-request for it exists"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/watchlistsync.test.ts:164"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0049
+  behaviour: "A Plex full scan that finds a requested show with no episodes yet leaves its approved request APPROVED"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/scanners/plex/plex.test.ts:242"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0050
+  behaviour: "A media-server scan (no request declining) that finds no episodes for a requested season leaves the approved request APPROVED"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:157"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0051
+  behaviour: "An *arr scan that finds no episodes for a requested season declines the request; out of scope: only the Radarr/Sonarr scanners opt into declineRequestsOnStatusReset or report abandoned entries (server/lib/scanners/radarr/index.ts:24, sonarr/index.ts:33) and syncEnabled is off on both"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:170"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0052
+  behaviour: "A media-server scan that finds no episodes resets the PROCESSING season and the show to UNKNOWN at once and leaves the request APPROVED"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:183"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0053
+  behaviour: "An *arr scan's deferred reset is dropped when the show was set PROCESSING again before resolve; out of scope: only the Radarr/Sonarr scanners opt into declineRequestsOnStatusReset or report abandoned entries (server/lib/scanners/radarr/index.ts:24, sonarr/index.ts:33) and syncEnabled is off on both"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:202"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0054
+  behaviour: "An abandoned movie entry (not processing, no file) resets a PROCESSING movie to UNKNOWN and leaves the request APPROVED; out of scope: only the Radarr/Sonarr scanners opt into declineRequestsOnStatusReset or report abandoned entries (server/lib/scanners/radarr/index.ts:24, sonarr/index.ts:33) and syncEnabled is off on both"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:229"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0055
+  behaviour: "An *arr scan defers an abandoned movie's reset to resolve, then resets it to UNKNOWN and declines the request; out of scope: only the Radarr/Sonarr scanners opt into declineRequestsOnStatusReset or report abandoned entries (server/lib/scanners/radarr/index.ts:24, sonarr/index.ts:33) and syncEnabled is off on both"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/scanners/baseScanner.test.ts:247"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0056
+  behaviour: "Availability sync marks every season with no episodes in Plex and no files in Sonarr DELETED, keeps the one with episodes AVAILABLE, and makes the show PARTIALLY_AVAILABLE"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:959"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0057
+  behaviour: "A show gone from its Sonarr and Plex is DELETED even if a second Sonarr has another series at the same id; out of scope: we have one Sonarr server (sonarr.json)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1060"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0058
+  behaviour: "When Plex fails to list a season's episodes, availability sync keeps the season and the show AVAILABLE"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1140"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0059
+  behaviour: "With no Sonarr link, availability sync marks seasons without episodes in Plex DELETED, keeps the others AVAILABLE, and makes the show PARTIALLY_AVAILABLE"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1217"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0060
+  behaviour: "With a 4K Sonarr, a season's 4K status is removed when the shared Plex item has no 4K episodes for it; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1761"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0061
+  behaviour: "With a 4K Sonarr, a season's non-4K status is removed when the shared Plex item only has 4K episodes for it; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1841"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0062
+  behaviour: "Without a 4K Sonarr server, a season whose only episodes in Plex are 4K keeps its non-4K AVAILABLE status (and the show stays AVAILABLE)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1924"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0063
+  behaviour: "With a 4K Sonarr, the show's 4K status is kept when no season's episodes can be fetched; out of scope: we have no 4K Radarr or Sonarr server (radarr.json, sonarr.json; public.json movie4kEnabled/series4kEnabled off)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1979"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0064
+  behaviour: "An AVAILABLE show stays AVAILABLE when only its specials season is missing from Jellyfin; out of scope: we use Plex, not Jellyfin (main.json mediaServerType 1)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:2057"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0065
+  behaviour: "An AVAILABLE show stays AVAILABLE when only its specials season (season 0) is missing from Plex"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:2143"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0066
+  behaviour: "A specials season removed from Jellyfin becomes DELETED and the show stays AVAILABLE; out of scope: we use Plex, not Jellyfin (main.json mediaServerType 1)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:2225"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0067
+  behaviour: "Adding (search on) a movie Radarr already has, monitored and not yet available, does not start a search"
+  source: reference
+  ref: "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:125"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0068
+  behaviour: "Adding (search on) a movie Radarr already has, monitored, available and without a file, starts one search"
+  source: reference
+  ref: "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:156"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0069
+  behaviour: "Adding (search on) a movie Radarr has unmonitored updates it to monitored once and does not search when it is not yet available"
+  source: reference
+  ref: "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:187"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0070
+  behaviour: "Adding (search on) a movie Radarr has unmonitored updates it to monitored once and searches for movie 7 when it is available"
+  source: reference
+  ref: "Seerr@v3.5.2 server/api/servarr/radarr.test.ts:223"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0071
+  behaviour: "A movie request from a user with AUTO_APPROVE (or AUTO_APPROVE_MOVIE or MANAGE_REQUESTS) is created APPROVED (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:340"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_requests::ser_requests]
+- id: SER-REQUESTS-0072
+  behaviour: "A movie request from a user with REQUEST only is created PENDING (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:340"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_requests::ser_requests]
+- id: SER-REQUESTS-0073
+  behaviour: "A series request for 'all' seasons covers every TMDB season except season 0 and seasons with no episodes (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:384"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0074
+  behaviour: "With specials disabled, season 0 is dropped from an explicit season list (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:392"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0075
+  behaviour: "A new series request drops seasons held by another active (not DECLINED or COMPLETED) request of the same 4K kind and seasons whose media status is other than UNKNOWN or DELETED (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:434"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0076
+  behaviour: "A new series request with no seasons left after those drops fails with NoSeasonsAvailableError (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:439"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0077
+  behaviour: "A series request from a user with AUTO_APPROVE (or AUTO_APPROVE_TV or MANAGE_REQUESTS) is created APPROVED (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:455"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_requests::ser_requests]
+- id: SER-REQUESTS-0078
+  behaviour: "A series request from a user with REQUEST only is created PENDING (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:455"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_requests::ser_requests]
+- id: SER-REQUESTS-0084
+  behaviour: "A series request from a user with AUTO_APPROVE (or AUTO_APPROVE_TV or MANAGE_REQUESTS) creates every season request APPROVED (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:493"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0085
+  behaviour: "A series request from a user with REQUEST only creates every season request PENDING (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/entity/MediaRequest.ts:493"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0079
+  behaviour: "Watchlist sync skips a user without AUTO_REQUEST, AUTO_REQUEST_MOVIE or AUTO_REQUEST_TV (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/watchlistsync.ts:46"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0080
+  behaviour: "Watchlist sync requests a show for 'all' seasons, non-4K, as an auto-request by the watchlist's owner (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/lib/watchlistsync.ts:149"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0081
+  behaviour: "A Plex user signing in for the first time with new Plex sign-in on is created as a PLEX user with the default permissions (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/routes/auth.ts:198"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0082
+  behaviour: "An approved movie is sent to Radarr with search on add unless the server has preventSearch (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/subscriber/MediaRequestSubscriber.ts:401"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SER-REQUESTS-0083
+  behaviour: "An approved series is sent to Sonarr with search on add unless the server has preventSearch (no reference test; from the implementing source)"
+  source: reference
+  ref: "Seerr@v3.5.2 server/subscriber/MediaRequestSubscriber.ts:773"
+  in_scope: true
+  status: unmapped
+  tests: []

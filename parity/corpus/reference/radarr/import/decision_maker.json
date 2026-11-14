@@ -1,0 +1,136 @@
+[
+ {
+  "id": "RAD-IMPORT-0195",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportDecisionMakerFixture.cs:111",
+  "input": {
+   "op": "import_decisions",
+   "given": {
+    "files": 1,
+    "specs": [
+     "accept",
+     "accept",
+     "accept",
+     "reject",
+     "reject",
+     "reject"
+    ]
+   }
+  },
+  "expect": {
+   "each_spec_evaluated_times": 1
+  },
+  "note": "Specifications are stand-ins that always accept or always reject; the file is one approved-by-parse video file."
+ },
+ {
+  "id": "RAD-IMPORT-0196",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportDecisionMakerFixture.cs:128",
+  "input": {
+   "op": "import_decisions",
+   "given": {
+    "files": 1,
+    "specs": [
+     "reject"
+    ]
+   }
+  },
+  "expect": {
+   "approved": false
+  },
+  "note": "Specifications are stand-ins that always accept or always reject; the file is one approved-by-parse video file."
+ },
+ {
+  "id": "RAD-IMPORT-0197",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportDecisionMakerFixture.cs:138",
+  "input": {
+   "op": "import_decisions",
+   "given": {
+    "files": 1,
+    "specs": [
+     "accept",
+     "reject",
+     "accept",
+     "accept"
+    ]
+   }
+  },
+  "expect": {
+   "approved": false
+  },
+  "note": "Specifications are stand-ins that always accept or always reject; the file is one approved-by-parse video file."
+ },
+ {
+  "id": "RAD-IMPORT-0198",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportDecisionMakerFixture.cs:148",
+  "input": {
+   "op": "import_decisions",
+   "given": {
+    "files": 1,
+    "specs": [
+     "accept",
+     "accept",
+     "accept"
+    ]
+   }
+  },
+  "expect": {
+   "approved": true
+  },
+  "note": "Specifications are stand-ins that always accept or always reject; the file is one approved-by-parse video file."
+ },
+ {
+  "id": "RAD-IMPORT-0199",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportDecisionMakerFixture.cs:159",
+  "input": {
+   "op": "import_decisions",
+   "given": {
+    "files": 1,
+    "specs": [
+     "accept",
+     "accept",
+     "accept",
+     "reject",
+     "reject",
+     "reject"
+    ]
+   }
+  },
+  "expect": {
+   "rejections": 3
+  },
+  "note": "Specifications are stand-ins that always accept or always reject; the file is one approved-by-parse video file."
+ },
+ {
+  "id": "RAD-IMPORT-0200",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportDecisionMakerFixture.cs:169",
+  "input": {
+   "op": "import_decisions",
+   "given": {
+    "files": 3,
+    "specs": [
+     "accept"
+    ],
+    "augmentation": "throws"
+   }
+  },
+  "expect": {
+   "files_analysed": 3,
+   "errors_logged": 3
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0202",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportDecisionMakerFixture.cs:215",
+  "input": {
+   "op": "import_decisions",
+   "given": {
+    "files": 1,
+    "specs": [],
+    "augmentation": "throws"
+   }
+  },
+  "expect": {
+   "decisions": 1,
+   "errors_logged": 1
+  }
+ }
+]

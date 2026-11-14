@@ -1,0 +1,16 @@
+[
+ {
+  "expect": {
+   "is_list": true
+  },
+  "id": "BAZ-SUBTITLES-0023",
+  "input": {
+   "given": {
+    "settings": "default"
+   },
+   "op": "get_language_equals"
+  },
+  "note": "The default is [] (bazarr/app/config.py:168), the same as ours; the test asserts only the type.",
+  "ref": "Bazarr@v1.5.6 tests/bazarr/test_app_get_providers.py:50"
+ }
+]

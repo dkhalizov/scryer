@@ -1,0 +1,31 @@
+[
+ {
+  "id": "RAD-TORRENT-0006",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/IndexerTests/SeedConfigProviderFixture.cs:55",
+  "input": {
+   "op": "seed_config.get",
+   "given": {
+    "release": {
+     "protocol": "Torrent",
+     "indexer_id": 1
+    },
+    "parsed": {},
+    "indexer_settings": {
+     "fail_downloads": [
+      "Executables"
+     ],
+     "seed_criteria": {
+      "seed_time": 10
+     }
+    }
+   }
+  },
+  "expect": {
+   "seed_config": {
+    "not": null
+   },
+   "seed_time_min": 10
+  },
+  "note": "Other seed criteria are TorznabSettings defaults (unset). Radarr has one seed time for movies; Sonarr's counterpart tests the season-pack seed time."
+ }
+]

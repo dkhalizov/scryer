@@ -204,7 +204,7 @@ impl QualityProfileCriteria {
     /// profile without one has no quality half, so any file meets it and only
     /// `cutoff_score` decides whether the scope is done. Without a cutoff score
     /// either, the first file satisfies the scope.
-    pub(crate) fn quality_cutoff_met(&self, quality: Option<&str>) -> bool {
+    pub fn quality_cutoff_met(&self, quality: Option<&str>) -> bool {
         let quality = quality.map(str::trim).filter(|quality| !quality.is_empty());
         if !self.tier_cutoff_applies() {
             return quality.is_some();
@@ -912,7 +912,8 @@ fn normalize_codec(raw: Option<&str>) -> Option<String> {
         .map(|codec| codec.to_string())
 }
 
-pub(crate) fn normalize_quality_tier(raw: Option<&str>) -> Option<String> {
+#[doc(hidden)] // fork: parity net seam (was pub(crate); tests/props_quality.rs)
+pub fn normalize_quality_tier(raw: Option<&str>) -> Option<String> {
     raw.map(|value| {
         let value = value.trim().to_ascii_lowercase();
         let clean = value;
@@ -937,7 +938,8 @@ pub(crate) fn normalize_quality_tier(raw: Option<&str>) -> Option<String> {
 /// election ranked `1080i` and every compound Sonarr-style label as worse than
 /// 480p, so a scope holding one could elect the wrong file as its cutoff
 /// quality.
-pub(crate) fn resolution_lines(raw: Option<&str>) -> Option<u32> {
+#[doc(hidden)] // fork: parity net seam (was pub(crate); tests/props_quality.rs)
+pub fn resolution_lines(raw: Option<&str>) -> Option<u32> {
     let value = raw?.trim().to_ascii_lowercase();
     if value.is_empty() {
         return None;
@@ -966,7 +968,8 @@ pub(crate) fn resolution_lines(raw: Option<&str>) -> Option<u32> {
 /// This is Sonarr's `QualityProfile.GetIndex`: the single source of "is this
 /// better than that" for quality, used by the admission gate and by search
 /// ordering so the two can never disagree about what outranks what.
-pub(crate) fn quality_tier_index(
+#[doc(hidden)] // fork: parity net seam (was pub(crate); tests/props_quality.rs)
+pub fn quality_tier_index(
     criteria: &QualityProfileCriteria,
     quality: Option<&str>,
 ) -> Option<usize> {

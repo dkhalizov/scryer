@@ -1,0 +1,2111 @@
+# Sonarr import fixtures (completed download handling, import decisions and specifications,
+# aggregation, file transfer, upgrade and delete, extras), ported by parity/extract/sonarr_import.py.
+# Corpus: corpus/reference/sonarr/import/. Ruled-out fixtures: RULED_OUT in the script.
+
+- id: SON-IMPORT-0001
+  behaviour: "When every file of a completed download is rejected, the download is ImportBlocked and not completed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:115"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0002
+  behaviour: "A download whose grab maps to no episodes and whose files are rejected is ImportBlocked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:139"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0003
+  behaviour: "When every file of a completed download is skipped (approved but with an error), the download is ImportBlocked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:162"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0004
+  behaviour: "When only one of three grabbed episodes is imported, the download is ImportBlocked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:178"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0005
+  behaviour: "When only one of three grabbed episodes is imported, the download stays ImportBlocked even if history says imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:206"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0006
+  behaviour: "When every grabbed episode is imported, the download is Imported and DownloadCompletedEvent is published"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:241"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0007
+  behaviour: "A download is Imported when one episode imported now and history shows the rest already imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:266"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0008
+  behaviour: "A download is Imported when one multi-episode file covers both grabbed episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:302"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0009
+  behaviour: "A download is Imported when its episode imported even though another file was skipped"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:323"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0010
+  behaviour: "A badly named download is Imported when its episodes import (series found by id)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ImportFixture.cs:346"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0011
+  behaviour: "A download with status Downloading is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0012
+  behaviour: "A download with status Failed is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0013
+  behaviour: "A download with status Queued is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:108"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0014
+  behaviour: "A download with status Paused is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:109"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0015
+  behaviour: "A download with status Warning is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:110"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0016
+  behaviour: "A completed download with no grab history and no category is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:120"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0017
+  behaviour: "A completed download with no grab history but a category, whose series matches, becomes ImportPending"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:131"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0018
+  behaviour: "A completed download with an empty output path is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:143"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0019
+  behaviour: "A badly named download whose title matches no series is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:153"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0020
+  behaviour: "A completed download whose title maps to no series is not made ready to import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/CompletedDownloadServiceTests/ProcessFixture.cs:170"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0021
+  behaviour: "With extra-file import off, an .nfo next to the episode is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:128"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0022
+  behaviour: "With extra-file import off, a .sub file next to the episode is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:150"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0023
+  behaviour: "With extra-file import off, a .ass file next to the episode is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:151"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0024
+  behaviour: "An .srt next to the episode is handed to the subtitle service"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:172"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0025
+  behaviour: "An .nfo next to the episode is handed to the other-extras service"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:191"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0026
+  behaviour: "Importing from a job folder searches it recursively for extra files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:210"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0027
+  behaviour: "Importing a lone file searches only its folder for extra files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Extras/ExtraServiceFixture.cs:231"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0028
+  behaviour: "A download folder's series is looked up by the folder name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:98"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0029
+  behaviour: "A locked video file is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0030
+  behaviour: "A folder that matches no series is neither evaluated nor imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:119"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0031
+  behaviour: "A download folder that is an existing series folder is not scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:133"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0032
+  behaviour: "When nothing imports, the folder size is never checked"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:154"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0033
+  behaviour: "After an import, the download folder is kept while a non-sample video file remains"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:167"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0034
+  behaviour: "After an import, the download folder is deleted when only sample files remain"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:193"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0035
+  behaviour: "A _UNPACK_ prefix is stripped from the folder name before the series lookup"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:223"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0036
+  behaviour: "A _FAILED_ prefix is stripped from the folder name before the series lookup"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:224"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0037
+  behaviour: "Processing a lone file of an unknown series returns one Rejected result for that path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:243"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0038
+  behaviour: "After an import, the download folder is kept when a RAR file over 10 MiB remains"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:263"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0039
+  behaviour: "Importing a folder passes the folder's parsed info (absolute episode 9) to the decision maker"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:303"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0040
+  behaviour: "Importing a lone file passes no folder info to the decision maker"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:328"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0041
+  behaviour: "A path that is neither a folder nor a file yields no results"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:352"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0042
+  behaviour: "The download folder is kept when no file was imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:371"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0043
+  behaviour: "In Auto mode, a download whose client cannot move files keeps its folder after import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:405"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0044
+  behaviour: "In Move mode, the download folder is deleted after import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:420"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0045
+  behaviour: "In Copy mode, the download folder is kept after import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:435"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0046
+  behaviour: "A folder with nothing importable but a RAR file yields one Rejected result"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:450"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0047
+  behaviour: "A folder with nothing importable but an .exe file yields one Rejected result"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DownloadedEpisodesImportServiceFixture.cs:476"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0048
+  behaviour: "A permission error while inheriting folder permissions does not fail the move"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:69"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0049
+  behaviour: "An invalid-operation error while inheriting folder permissions does not fail the move"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:81"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0050
+  behaviour: "Moving an episode into a new series folder publishes a series-folder-created event"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:93"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0051
+  behaviour: "Moving an episode into a new season folder publishes a season-folder-created event"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:103"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0052
+  behaviour: "No series-folder-created event is published when the series folder already exists"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeFileMovingServiceTests/MoveEpisodeFileFixture.cs:113"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0053
+  behaviour: "A full-season folder name is not used to find the file's episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:38"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0054
+  behaviour: "A folder holding other video files is not used to find the file's episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:57"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0055
+  behaviour: "When the file name looks like a scene name, it is used instead of the folder name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:77"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0056
+  behaviour: "A single-episode folder with one video file is used to find the episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:96"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0057
+  behaviour: "When the folder name has only an absolute number and the file has season/episode, the file is used"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:115"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0058
+  behaviour: "When the file's episodes are not found, the special-episode parse of the title is used"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateEpisodesFixture.cs:134"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0059
+  behaviour: "With only the file extension known, the import quality is HDTV-720p from the extension"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:54"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0060
+  behaviour: "A name-derived TV 480p beats an extension guess and yields SDTV"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:70"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0061
+  behaviour: "A media-info 1080 resolution with an extension TV source yields HDTV-1080p"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:82"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0062
+  behaviour: "A media-info 1080 resolution with a name TV source yields HDTV-1080p"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:94"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0063
+  behaviour: "A WEB source from the grabbed release name turns a name-derived TV 480p into WEBDL-480p"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0064
+  behaviour: "Without a version tag the import revision is 1"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:118"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0065
+  behaviour: "A proper tag in the name gives revision 2"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:129"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0066
+  behaviour: "A v0 tag in the file name gives revision 0"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:143"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0067
+  behaviour: "A v2 tag in the release name beats a v0 tag in the file name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:157"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0068
+  behaviour: "A name Bluray source with a media-info 576 resolution yields Bluray-576p"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:174"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0069
+  behaviour: "A name TV source with a media-info 576 resolution yields SDTV"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:192"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0070
+  behaviour: "A full-season download name does not set the file's release group"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:23"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0071
+  behaviour: "A full-season folder name does not set the file's release group"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:41"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0072
+  behaviour: "The download name's release group wins over folder and file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:59"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0073
+  behaviour: "Without a group in the download name, the folder's release group wins over the file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:79"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0074
+  behaviour: "Without a group in download or folder name, the file's release group is used"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:99"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0075
+  behaviour: "Without media info, no quality is derived from it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:15"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0076
+  behaviour: "Media info with width 0 yields no quality"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:25"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0077
+  behaviour: "Media info 4096x1 maps to resolution 2160 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:39"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0078
+  behaviour: "Media info 4000x1 maps to resolution 2160 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:40"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0079
+  behaviour: "Media info 3840x1 maps to resolution 2160 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:41"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0080
+  behaviour: "Media info 3200x1 maps to resolution 2160 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:42"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0081
+  behaviour: "Media info 2000x1 maps to resolution 1080 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:43"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0082
+  behaviour: "Media info 1920x1 maps to resolution 1080 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:44"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0083
+  behaviour: "Media info 1440x1080 maps to resolution 1080 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:45"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0084
+  behaviour: "Media info 1800x1 maps to resolution 1080 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:46"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0085
+  behaviour: "Media info 1490x1 maps to resolution 720 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:47"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0086
+  behaviour: "Media info 1280x1 maps to resolution 720 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:48"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0087
+  behaviour: "Media info 1200x1 maps to resolution 720 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:49"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0088
+  behaviour: "Media info 1000x1 maps to resolution 576 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:50"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0089
+  behaviour: "Media info 720x576 maps to resolution 576 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:51"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0090
+  behaviour: "Media info 800x1 maps to resolution 480 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:52"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0091
+  behaviour: "Media info 720x1 maps to resolution 480 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:53"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0092
+  behaviour: "Media info 600x1 maps to resolution 480 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:54"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0093
+  behaviour: "Media info 100x1 maps to resolution 480 with unknown source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:55"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0094
+  behaviour: "A WEB tag in the media-info title sets the source to Web"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:74"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0095
+  behaviour: "A media-info title without a source tag leaves the source unknown"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:94"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0096
+  behaviour: "A Bluray tag in the media-info title sets the source at 576"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:114"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0097
+  behaviour: "Without a download, no quality is derived from the release name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:42"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0098
+  behaviour: "Without a grab in download history, no quality comes from the release name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:48"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0099
+  behaviour: "The grabbed title Series.Title.S01E01.1080p.WEB.x264 gives source Web (Tag) and resolution 1080 (Tag)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:58"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0100
+  behaviour: "The grabbed title Series.Title.S01E01.WEB.x264 gives source Web (Tag) and resolution 480 (Fallback)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:59"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0101
+  behaviour: "The grabbed title Series.Title.S01E01.720p.x264 gives source Television (Fallback) and resolution 720 (Tag)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:60"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0102
+  behaviour: "A special (season 0) is never a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:57"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0103
+  behaviour: "An .flv file is never a sample and its runtime is not read"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:67"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0104
+  behaviour: "A .strm file is never a sample and its runtime is not read"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:79"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0105
+  behaviour: "The file's runtime is read to decide sample status"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:91"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0106
+  behaviour: "A 60 s file of a 30-minute series is a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:103"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0107
+  behaviour: "A 600 s file of a 30-minute series is not a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:113"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0108
+  behaviour: "A 299 s file of a 6-minute series is not a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:123"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0109
+  behaviour: "A 60 s file of a 2-minute series is not a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:134"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0110
+  behaviour: "A 10 s file of a 2-minute series is a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:145"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0111
+  behaviour: "An unreadable runtime makes the result Indeterminate"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:156"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0112
+  behaviour: "A daily series' season-0 episode is still checked by runtime"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:170"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0113
+  behaviour: "An anime special is never a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:182"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0114
+  behaviour: "With media info present, its runtime (120 s) is used and the file is not re-read; a 30-minute episode is a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:193"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0115
+  behaviour: "The episode runtime (30) is used over the series runtime (5); a 120 s file is a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:206"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0116
+  behaviour: "With no series or episode runtime, 45 minutes is assumed and a 120 s file is a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:217"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0117
+  behaviour: "The download's release title is used as the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:53"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0118
+  behaviour: "A full-season download title is not used as the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:65"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0119
+  behaviour: "A download title is not used as the scene name when the download has other video files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:81"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0120
+  behaviour: "A file name that looks like a scene name is used as the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:98"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0121
+  behaviour: "A file name that does not look like a scene name is not used"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:108"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0122
+  behaviour: "A folder name that looks like a scene name is used as the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:118"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0123
+  behaviour: "A folder name that does not look like a scene name is not used"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:130"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0124
+  behaviour: "A full-season folder name is not used as the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:145"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0125
+  behaviour: "A batch download or folder name is not used as the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:161"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0126
+  behaviour: "A folder name is not used as the scene name when the folder has other video files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:187"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0127
+  behaviour: "A .mkv extension on the download title is dropped from the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:204"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0128
+  behaviour: "A .par2 extension on the download title is dropped from the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:205"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0129
+  behaviour: "A .nzb extension on the download title is dropped from the scene name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:206"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0130
+  behaviour: "With only rejected decisions nothing is imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:93"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0131
+  behaviour: "Each of five approved decisions yields a result"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:101"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0132
+  behaviour: "Of rejected and approved decisions, only the approved ones are imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:109"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0133
+  behaviour: "A second decision for an already imported episode is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:124"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0134
+  behaviour: "A new download is moved, not copied, into the series folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:138"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0135
+  behaviour: "Importing a new download publishes EpisodeImportedEvent"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:148"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0136
+  behaviour: "A file that is not a new download is not moved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:157"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0137
+  behaviour: "Of two files for one episode, only the larger one is imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:169"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0138
+  behaviour: "A download whose client cannot move files is copied"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:198"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0139
+  behaviour: "An explicit Move import mode moves even when the client cannot move files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:211"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0140
+  behaviour: "A single-file download records only the file name as the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:224"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0141
+  behaviour: "A download in a job folder records folder/file as the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:238"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0142
+  behaviour: "Intermediate folders below the job folder are kept in the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:252"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0143
+  behaviour: "Without a download item, the folder's release title anchors the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:266"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0144
+  behaviour: "A file directly under a drive root records just its file name as the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:281"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0145
+  behaviour: "A file directly under / records just its file name as the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:298"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0146
+  behaviour: "A file directly under a UNC share records just its file name as the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:315"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0147
+  behaviour: "When the file is outside the download's output folder, the folder's release title anchors the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:332"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0148
+  behaviour: "An existing episode file record with the same relative path is deleted (ManualOverride) before import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:348"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0149
+  behaviour: "When the download has no output path, the folder's release title anchors the original path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:361"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0150
+  behaviour: "The scene name is stored on the imported episode file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportApprovedEpisodesFixture.cs:377"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0151
+  behaviour: "Every import specification is evaluated once even when some reject"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:99"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0152
+  behaviour: "A file rejected by its only specification is not approved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:116"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0153
+  behaviour: "A file rejected by one of several specifications is not approved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:126"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0154
+  behaviour: "A file accepted by every specification is approved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:136"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0155
+  behaviour: "A decision carries one rejection per rejecting specification"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:147"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0156
+  behaviour: "An aggregation error on one file does not stop the others"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:157"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0157
+  behaviour: "An aggregation error still yields a decision for the file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/ImportDecisionMakerFixture.cs:205"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0158
+  behaviour: "Without a download item the already-imported check accepts"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:57"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0159
+  behaviour: "An episode without a file is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:63"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0160
+  behaviour: "An episode with a grab but no import in history is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:71"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0161
+  behaviour: "An episode grabbed again after an import is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:86"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0162
+  behaviour: "An episode whose download was already imported is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/AlreadyImportedSpecificationFixture.cs:109"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0163
+  behaviour: "A just-aired episode without a title is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:51"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0164
+  behaviour: "A just-aired episode titled TBA is not imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:59"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0165
+  behaviour: "A file already in the series folder skips the title check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:67"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0166
+  behaviour: "An episode that aired 7 days ago is imported even if titled TBA"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:76"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0167
+  behaviour: "When the naming format has no episode title, a TBA title is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:85"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0168
+  behaviour: "With the setting 'never', the title check accepts"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:97"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0169
+  behaviour: "With 'bulk season releases', a non-bulk release is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:107"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0170
+  behaviour: "With 'bulk season releases', a season whose episodes did not all air the same day is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:121"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0171
+  behaviour: "With 'bulk season releases', a TBA title in a same-day season drop is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:138"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0172
+  behaviour: "With 'bulk season releases', a TBA title is rejected when some season episodes lack an air date"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/EpisodeTitleSpecificationFixture.cs:157"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0173
+  behaviour: "A 100 MiB file is rejected with 80 MiB free"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:61"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0174
+  behaviour: "A 100 MiB file is rejected with 150 MiB free when 100 MiB must stay free"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:71"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0175
+  behaviour: "A 100 MiB file is accepted with 1 GiB free"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:84"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0176
+  behaviour: "Free space is measured on the series folder's parent"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:93"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0177
+  behaviour: "Unknown free space accepts the file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:105"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0178
+  behaviour: "An error reading free space accepts the file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:114"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0179
+  behaviour: "A file already in the series folder skips the free-space check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:127"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0180
+  behaviour: "Unknown free space accepts a file of unset size"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:138"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0181
+  behaviour: "With the free-space check skipped, the file is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FreeSpaceSpecificationFixture.cs:150"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0182
+  behaviour: "A file whose name did not parse passes the full-season check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FullSeasonSpecificationFixture.cs:32"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0183
+  behaviour: "A single file named as a full season is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FullSeasonSpecificationFixture.cs:39"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0184
+  behaviour: "A file named as an episode passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/FullSeasonSpecificationFixture.cs:47"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0185
+  behaviour: "A file without media info passes the audio-track check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/HasAudioTrackSpecificationFixture.cs:46"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0186
+  behaviour: "A file with no audio streams is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/HasAudioTrackSpecificationFixture.cs:54"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0187
+  behaviour: "A file with one audio stream is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/HasAudioTrackSpecificationFixture.cs:62"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0188
+  behaviour: "A file already in the series folder passes the folder check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:59"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0189
+  behaviour: "A file in an unparseable folder passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:67"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0190
+  behaviour: "An unparseable file name passes the folder check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:76"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0191
+  behaviour: "A file inside a full-season folder passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:85"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0192
+  behaviour: "File and folder naming the same episode pass"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:98"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0193
+  behaviour: "A file for one episode of a multi-episode folder passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:111"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0194
+  behaviour: "A file for episodes 5-6 in a folder for episodes 1-2 is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:124"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0195
+  behaviour: "A file for episode 5 in a folder for episode 1 is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:137"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0196
+  behaviour: "A two-episode file whose episodes differ from the folder's is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:148"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0197
+  behaviour: "A season-2 file inside a season-1 full-season folder is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:161"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0198
+  behaviour: "A season-2 file inside a folder for season-1 episodes is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:179"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0199
+  behaviour: "A season-1 file inside a season-1 full-season folder passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:196"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0200
+  behaviour: "File and folder names that both map to the same special pass"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:214"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0201
+  behaviour: "A file with an absolute number in a standard-numbered folder for the same episode passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:246"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0202
+  behaviour: "A file whose episode's scene season matches a full-season folder passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesFolderSpecificationFixture.cs:263"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0203
+  behaviour: "A file already in the series folder passes the grab check"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:69"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0204
+  behaviour: "Without a download item the grab check accepts"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:77"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0205
+  behaviour: "Without grab info the check accepts"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:83"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0206
+  behaviour: "A file for the grabbed episode passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:91"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0207
+  behaviour: "A file for one of the grabbed episodes passes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:99"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0208
+  behaviour: "A file for an episode that was not grabbed is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0209
+  behaviour: "A file for an episode outside a multi-episode grab is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:115"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0210
+  behaviour: "A file already in the series folder is never treated as a sample"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotSampleSpecificationFixture.cs:41"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0211
+  behaviour: "A file outside a working folder is not unpacking"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:48"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0212
+  behaviour: "A file in a working folder untouched for an hour is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:54"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0213
+  behaviour: "A file in an _UNPACK_ folder written just now is still unpacking"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:65"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0214
+  behaviour: "On Linux a file in an _UNPACK_ folder is still unpacking even if last written 5 days ago"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:74"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_import::son_import]
+- id: SON-IMPORT-0215
+  behaviour: "An episode without a file accepts any import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:48"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0216
+  behaviour: "Episodes without files accept any import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:61"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0217
+  behaviour: "HDTV-720p replaces an SDTV file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:74"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0218
+  behaviour: "Same quality with a different language is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:92"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0219
+  behaviour: "A lower quality is rejected even with a different language"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:110"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0220
+  behaviour: "HDTV-720p replaces an SDTV file shared by two episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:128"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0221
+  behaviour: "Same quality with a different language is accepted for two episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:145"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0222
+  behaviour: "A lower quality is rejected for two episodes even with a different language"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:163"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0223
+  behaviour: "HDTV-720p does not replace Bluray-720p"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:181"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0224
+  behaviour: "HDTV-720p does not replace a Bluray-720p file shared by two episodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:198"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0225
+  behaviour: "A two-episode import is rejected when it is not an upgrade for one of the episodes' files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:215"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0226
+  behaviour: "With propers preferred, a v1 file does not replace a v2 file of the same quality"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:239"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0227
+  behaviour: "Bluray-2160p replaces Bluray-1080p regardless of formats and language"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:261"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0228
+  behaviour: "Same quality and equal format scores with a different language is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:295"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0229
+  behaviour: "With propers not preferred, a v1 file may replace a v2 file of the same quality"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:329"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0230
+  behaviour: "With propers not preferred, a v1 file may replace a v2 file of the same quality (Bluray-1080p)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:350"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0231
+  behaviour: "Same quality with equal (empty) format scores is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:373"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0232
+  behaviour: "Same quality with an equal format score is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:406"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0233
+  behaviour: "Episodes whose file record is missing accept the import"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:439"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0234
+  behaviour: "Same quality with a higher format score (20 over 10) is accepted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:452"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0235
+  behaviour: "A quality upgrade is accepted even with a lower format score (20 under 50)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:491"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0236
+  behaviour: "Same quality with a lower format score (20 under 50) is rejected"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:530"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0237
+  behaviour: "Deleting a file fails when the root folder is missing"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:63"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0238
+  behaviour: "Deleting a file fails when the root folder is empty (unmounted)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:70"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0239
+  behaviour: "With the series folder missing, only the database record is removed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:79"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0240
+  behaviour: "With the file missing, only the database record is removed"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:91"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0241
+  behaviour: "An existing file is deleted from disk and database"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:104"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0242
+  behaviour: "A disk error while deleting keeps the database record and fails"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:121"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0243
+  behaviour: "With no known files, every candidate is new"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:29"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0244
+  behaviour: "When every candidate is already known, none is new"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:46"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0245
+  behaviour: "A known file is filtered out of the candidates"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:63"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0246
+  behaviour: "Known files match candidates case-insensitively"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:84"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0247
+  behaviour: "On Linux, a known file does not match a candidate that differs only in case"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0248
+  behaviour: "Filtering keeps the candidate's casing"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:129"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0249
+  behaviour: "Upgrading one episode deletes its old file once"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:96"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0250
+  behaviour: "An old file shared by two episodes is deleted once"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0251
+  behaviour: "Two different old files are each deleted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:116"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0252
+  behaviour: "The replaced file's record is deleted with reason Upgrade"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:126"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0253
+  behaviour: "A replaced file missing on disk still has its record deleted (Upgrade)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:136"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0254
+  behaviour: "A replaced file missing on disk is not deleted again"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:150"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0255
+  behaviour: "The replaced file is returned in OldFiles"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:164"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0256
+  behaviour: "Both replaced files are returned in OldFiles"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:172"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0257
+  behaviour: "With the root folder missing, the upgrade fails and no record is deleted"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:180"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0258
+  behaviour: "An episode whose file record is missing imports without deleting"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:194"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0259
+  behaviour: "Transferring a file onto itself fails without touching it"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:56"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0260
+  behaviour: "Hardlinking to the same path in different case fails"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:65"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0261
+  behaviour: "A case-only rename moves through a temporary backup name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:73"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0262
+  behaviour: "A failed case-only rename restores the original file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:101"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0263
+  behaviour: "A failed case-only rename whose rollback also fails still raises"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:125"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0264
+  behaviour: "Moving a file into a path below itself fails"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:152"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0265
+  behaviour: "A successful hardlink reports mode HardLink"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:160"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0266
+  behaviour: "HardLink mode fails when the hardlink cannot be made"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:170"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0267
+  behaviour: "Moving onto a CIFS mount copies then deletes the source"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:178"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0268
+  behaviour: "Moving within one CIFS mount is a plain move"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:196"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0269
+  behaviour: "Copy mode copies the file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:214"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0270
+  behaviour: "Move mode moves the file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:223"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0271
+  behaviour: "With overwrite, an existing target is deleted before the move"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:232"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0272
+  behaviour: "Without overwrite, an existing target stops the move untouched"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:246"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0273
+  behaviour: "A copy is verified by comparing source and target sizes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:260"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0274
+  behaviour: "A partial copy is deleted and the transfer fails"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:272"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0275
+  behaviour: "A partial copy whose cleanup fails still raises"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:288"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0276
+  behaviour: "A move is verified by comparing source and target sizes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:307"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0277
+  behaviour: "A partial move whose source is gone keeps the partial target and fails"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:319"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0278
+  behaviour: "A partial move whose source remains deletes the partial target"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:338"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0279
+  behaviour: "A move that fails because the target already exists does not delete the target"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:354"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0280
+  behaviour: "A partial move whose cleanup fails still raises"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:374"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0281
+  behaviour: "Folder transfer: CopyFolder should copy folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:393"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0282
+  behaviour: "Folder transfer: CopyFolder should overwrite existing folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:407"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0283
+  behaviour: "Folder transfer: CopyFolder should detect caseinsensitive parents"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:424"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0284
+  behaviour: "Folder transfer: CopyFolder should detect caseinsensitive folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:441"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0285
+  behaviour: "Folder transfer: CopyFolder should not copy casesensitive folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:458"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0286
+  behaviour: "Folder transfer: CopyFolder should ignore nfs temp file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:476"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0287
+  behaviour: "Folder transfer: MoveFolder should move folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:492"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0288
+  behaviour: "Folder transfer: MoveFolder should overwrite existing folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:508"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0289
+  behaviour: "Folder transfer: MoveFolder should detect caseinsensitive parents"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:525"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0290
+  behaviour: "Folder transfer: MoveFolder should rename caseinsensitive folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:542"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0291
+  behaviour: "Folder transfer: MoveFolder should rename casesensitive folder"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:561"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0292
+  behaviour: "A copy onto a read-only destination fails"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:582"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0293
+  behaviour: "Folder transfer: MirrorFolder should remove additional files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:592"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0294
+  behaviour: "Folder transfer: MirrorFolder should not remove nfs files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:610"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0295
+  behaviour: "Folder transfer: MirrorFolder should add new files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:630"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0296
+  behaviour: "Folder transfer: MirrorFolder should ignore nfs temp file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:647"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0297
+  behaviour: "Folder transfer: MirrorFolder should not touch equivalent files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:665"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0298
+  behaviour: "Folder transfer: MirrorFolder should handle trailing slash"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:684"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0299
+  behaviour: "Folder transfer: TransferFolder should use movefolder if on same mount"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:701"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0300
+  behaviour: "Folder transfer: TransferFolder should not use movefolder if on same mount but target already exists"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:718"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-IMPORT-0301
+  behaviour: "Folder transfer: TransferFolder should not use movefolder if on different mount"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:736"
+  in_scope: false
+  status: unmapped
+  tests: []

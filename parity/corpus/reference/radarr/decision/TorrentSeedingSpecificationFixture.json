@@ -1,0 +1,221 @@
+[
+ {
+  "id": "RAD-DECISION-1156",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:55",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "ReleaseInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp"
+    },
+    "indexer": {
+     "id": 1,
+     "settings": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ },
+ {
+  "id": "RAD-DECISION-1157",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:68",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "TorrentInfo",
+     "indexer_id": 0,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 0
+    },
+    "indexer": {
+     "id": 1,
+     "settings": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ },
+ {
+  "id": "RAD-DECISION-1158",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:76",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 0
+    },
+    "indexer": null,
+    "indexer_lookup_throws": "ModelNotFoundException"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ },
+ {
+  "id": "RAD-DECISION-1159",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:86",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": null
+    },
+    "indexer": {
+     "id": 1,
+     "settings": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ },
+ {
+  "id": "RAD-DECISION-1160",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:94",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 5
+    },
+    "indexer": {
+     "id": 1,
+     "settings": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ },
+ {
+  "id": "RAD-DECISION-1161",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:95",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 6
+    },
+    "indexer": {
+     "id": 1,
+     "settings": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ },
+ {
+  "id": "RAD-DECISION-1162",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:103",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 0
+    },
+    "indexer": {
+     "id": 1,
+     "settings": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ },
+ {
+  "id": "RAD-DECISION-1163",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/TorrentSeedingSpecificationFixture.cs:104",
+  "input": {
+   "spec": "TorrentSeedingSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "release": {
+     "release_class": "TorrentInfo",
+     "indexer_id": 1,
+     "title": "Series.Title.S01.720p.BluRay.X264-RlsGrp",
+     "seeders": 4
+    },
+    "indexer": {
+     "id": 1,
+     "settings": {
+      "minimum_seeders": 5
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "indexer settings are a TorrentRssIndexerSettings with MinimumSeeders 5"
+ }
+]

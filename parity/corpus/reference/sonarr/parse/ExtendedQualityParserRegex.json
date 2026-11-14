@@ -1,0 +1,482 @@
+[
+ {
+  "id": "SON-PARSE-0273",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:11",
+  "input": {
+   "name": "Series.Title.S04E05.HDTV.XviD-LOL",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0274",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:12",
+  "input": {
+   "name": "Series.Title.S04E05.Garnets.or.Gold.REAL.REAL.PROPER.HDTV.x264-W4F",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0275",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:13",
+  "input": {
+   "name": "Series.Title.S03E17.REAL.PROPER.720p.HDTV.x264-ORENJI-RP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0276",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:14",
+  "input": {
+   "name": "Series.Title.S05E09.REAL.PROPER.HDTV.x264-KILLERS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0277",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:15",
+  "input": {
+   "name": "Series.Title.S14E01.REAL.PROPER.720p.HDTV.x264-KILLERS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0278",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:16",
+  "input": {
+   "name": "Series.Title.s02e06.real.proper.720p.webrip.x264-2hd",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0279",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:17",
+  "input": {
+   "name": "Series.Title.S21E07.Super.Duper.Real.Proper.HDTV.x264-FTP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0280",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:18",
+  "input": {
+   "name": "Series.Title.S21E07.PROPER.HDTV.x264-RiVER-RP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0281",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:19",
+  "input": {
+   "name": "Series.Title.S07E11.PROPER.REAL.RERIP.1080p.BluRay.x264-TENEIGHTY",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0282",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:20",
+  "input": {
+   "name": "[MGS] - Series Title - Episode 02v2 - [D8B6C90D]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0283",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:21",
+  "input": {
+   "name": "[Hatsuyuki] Series Title - 07 [v2][848x480][23D8F455].avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0284",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:22",
+  "input": {
+   "name": "[DeadFish] Series Title - 01v3 [720p][AAC]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0285",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:23",
+  "input": {
+   "name": "[DeadFish] Series Title - 01v4 [720p][AAC]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0286",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:24",
+  "input": {
+   "name": "The Real Housewives of Some Place - S01E01 - Why are we doing this?",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "real": 0
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0287",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:30",
+  "input": {
+   "name": "Series.Title.S04E05.HDTV.XviD-LOL",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0288",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:31",
+  "input": {
+   "name": "Series.Title.S04E05.Garnets.or.Gold.REAL.REAL.PROPER.HDTV.x264-W4F",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0289",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:32",
+  "input": {
+   "name": "Series.Title.S03E17.REAL.PROPER.720p.HDTV.x264-ORENJI-RP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0290",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:33",
+  "input": {
+   "name": "Series.Title.S05E09.REAL.PROPER.HDTV.x264-KILLERS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0291",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:34",
+  "input": {
+   "name": "Series.Title.S14E01.REAL.PROPER.720p.HDTV.x264-KILLERS",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0292",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:35",
+  "input": {
+   "name": "Series.Title.Is.the.New.Black.s02e06.real.proper.720p.webrip.x264-2hd",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0293",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:36",
+  "input": {
+   "name": "Series.Title.S21E07.Super.Duper.Real.Proper.HDTV.x264-FTP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0294",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:37",
+  "input": {
+   "name": "Series.Title.S21E07.PROPER.HDTV.x264-RiVER-RP",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0295",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:38",
+  "input": {
+   "name": "Series.Title.S07E11.PROPER.REAL.RERIP.1080p.BluRay.x264-TENEIGHTY",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0296",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:39",
+  "input": {
+   "name": "[MGS] - Series Title - Episode 02v2 - [D8B6C90D]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0297",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:40",
+  "input": {
+   "name": "[Hatsuyuki] Series Title - 07 [v2][848x480][23D8F455].avi",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0298",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:41",
+  "input": {
+   "name": "[DeadFish] Series Title - 01v3 [720p][AAC]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 3
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0299",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:42",
+  "input": {
+   "name": "[DeadFish]Series Title - 01v4 [720p][AAC]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 4
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0300",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:43",
+  "input": {
+   "name": "[Vivid-Asenshi] Series Title - 04v2 [266EE983]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0301",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:44",
+  "input": {
+   "name": "[Vivid-Asenshi] Series Title - 03v2 [66A05817]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0302",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:45",
+  "input": {
+   "name": "[Vivid-Asenshi] Series Title - 02v2 [1F67AB55]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ }
+]

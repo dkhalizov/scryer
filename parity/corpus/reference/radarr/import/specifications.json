@@ -1,0 +1,1990 @@
+[
+ {
+  "id": "RAD-IMPORT-0203",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecificationFixture.cs:49",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "AlreadyImported",
+    "download_client_item": null,
+    "movie_has_file": true
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "NBuilder fills unset scalars sequentially: ints get the object's index (so a built Movie has Id 1 and MovieFileId 1, i.e. HasFile), strings get '<Property><index>' (DownloadClientItem.DownloadId 'DownloadId1', history rows 'DownloadId1'..'DownloadIdN'). The download client item is 'DownloadId1'; history only counts rows with the same DownloadId (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecification.cs:43), so the given download_ids decide the outcome as much as the dates."
+ },
+ {
+  "id": "RAD-IMPORT-0204",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecificationFixture.cs:55",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "AlreadyImported",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    },
+    "movie_has_file": false
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "NBuilder fills unset scalars sequentially: ints get the object's index (so a built Movie has Id 1 and MovieFileId 1, i.e. HasFile), strings get '<Property><index>' (DownloadClientItem.DownloadId 'DownloadId1', history rows 'DownloadId1'..'DownloadIdN'). The download client item is 'DownloadId1'; history only counts rows with the same DownloadId (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecification.cs:43), so the given download_ids decide the outcome as much as the dates."
+ },
+ {
+  "id": "RAD-IMPORT-0205",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecificationFixture.cs:63",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "AlreadyImported",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    },
+    "movie_has_file": true,
+    "history": [
+     {
+      "event": "Grabbed",
+      "download_id": "DownloadId1"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "NBuilder fills unset scalars sequentially: ints get the object's index (so a built Movie has Id 1 and MovieFileId 1, i.e. HasFile), strings get '<Property><index>' (DownloadClientItem.DownloadId 'DownloadId1', history rows 'DownloadId1'..'DownloadIdN'). The download client item is 'DownloadId1'; history only counts rows with the same DownloadId (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecification.cs:43), so the given download_ids decide the outcome as much as the dates."
+ },
+ {
+  "id": "RAD-IMPORT-0206",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecificationFixture.cs:78",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "AlreadyImported",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    },
+    "movie_has_file": true,
+    "history": [
+     {
+      "event": "Grabbed",
+      "download_id": "DownloadId1",
+      "days_ago": 0
+     },
+     {
+      "event": "DownloadFolderImported",
+      "download_id": "DownloadId2",
+      "days_ago": 1
+     },
+     {
+      "event": "Grabbed",
+      "download_id": "DownloadId3",
+      "days_ago": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "NBuilder fills unset scalars sequentially: ints get the object's index (so a built Movie has Id 1 and MovieFileId 1, i.e. HasFile), strings get '<Property><index>' (DownloadClientItem.DownloadId 'DownloadId1', history rows 'DownloadId1'..'DownloadIdN'). The download client item is 'DownloadId1'; history only counts rows with the same DownloadId (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecification.cs:43), so the given download_ids decide the outcome as much as the dates."
+ },
+ {
+  "id": "RAD-IMPORT-0207",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecificationFixture.cs:101",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "AlreadyImported",
+    "download_client_item": {
+     "download_id": "DownloadId1"
+    },
+    "movie_has_file": true,
+    "history": [
+     {
+      "event": "DownloadFolderImported",
+      "download_id": "DownloadId1",
+      "days_ago": 1
+     },
+     {
+      "event": "Grabbed",
+      "download_id": "DownloadId2",
+      "days_ago": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "NBuilder fills unset scalars sequentially: ints get the object's index (so a built Movie has Id 1 and MovieFileId 1, i.e. HasFile), strings get '<Property><index>' (DownloadClientItem.DownloadId 'DownloadId1', history rows 'DownloadId1'..'DownloadIdN'). The download client item is 'DownloadId1'; history only counts rows with the same DownloadId (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/AlreadyImportedSpecification.cs:43), so the given download_ids decide the outcome as much as the dates."
+ },
+ {
+  "id": "RAD-IMPORT-0208",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:52",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": false,
+    "file_size_mb": 100,
+    "free_space_mb": 80
+   }
+  },
+  "expect": {
+   "accepted": false,
+   "warnings": 1
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0209",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:62",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 100,
+    "skip_free_space_check": false,
+    "file_size_mb": 100,
+    "free_space_mb": 150
+   }
+  },
+  "expect": {
+   "accepted": false,
+   "warnings": 1
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0210",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:76",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": false,
+    "file_size_mb": 100,
+    "free_space_mb": 1024
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0211",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:85",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": false,
+    "file_size_mb": 100,
+    "free_space_mb": 1024
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "free_space_read_for": "/C/Test/TV"
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0212",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:97",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": false,
+    "file_size_mb": 100,
+    "free_space_mb": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0213",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:106",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": false,
+    "file_size_mb": 100,
+    "free_space_mb": "error"
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "errors_logged": 1
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0214",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:119",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": true,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": false
+   }
+  },
+  "expect": {
+   "accepted": true,
+   "free_space_read": false
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0215",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:130",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": false,
+    "free_space_mb": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0216",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:142",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "FreeSpace",
+    "movie_path": "/C/Test/TV/30 Rock",
+    "existing_file": false,
+    "minimum_free_space_mb": 0,
+    "skip_free_space_check": true
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Unmocked IConfigService members return their default (0 / false / first enum value). So MinimumFreeSpaceWhenImporting is 0 MB and SkipFreeSpaceCheckWhenImporting false unless the test sets them; LocalMovie.Size defaults to 0. Free space is read for the movie folder's parent (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/FreeSpaceSpecification.cs:41)."
+ },
+ {
+  "id": "RAD-IMPORT-0217",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualityFixture.cs:39",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "GrabbedReleaseQuality",
+    "file_quality": "Bluray-720p",
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The check only logs a mismatch (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualitySpecification.cs:44)."
+ },
+ {
+  "id": "RAD-IMPORT-0218",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualityFixture.cs:45",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "GrabbedReleaseQuality",
+    "file_quality": "Bluray-720p",
+    "download_client_item": true,
+    "history": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The check only logs a mismatch (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualitySpecification.cs:44)."
+ },
+ {
+  "id": "RAD-IMPORT-0219",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualityFixture.cs:53",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "GrabbedReleaseQuality",
+    "file_quality": "Bluray-720p",
+    "download_client_item": true,
+    "history": [
+     {
+      "event": "Unknown"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The check only logs a mismatch (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualitySpecification.cs:44)."
+ },
+ {
+  "id": "RAD-IMPORT-0220",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualityFixture.cs:66",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "GrabbedReleaseQuality",
+    "file_quality": "Bluray-720p",
+    "download_client_item": true,
+    "history": [
+     {
+      "event": "Grabbed",
+      "quality": "Unknown"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The check only logs a mismatch (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualitySpecification.cs:44)."
+ },
+ {
+  "id": "RAD-IMPORT-0221",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualityFixture.cs:80",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "GrabbedReleaseQuality",
+    "file_quality": "Bluray-720p",
+    "download_client_item": true,
+    "history": [
+     {
+      "event": "Grabbed",
+      "quality": "Bluray-720p"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The check only logs a mismatch (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualitySpecification.cs:44)."
+ },
+ {
+  "id": "RAD-IMPORT-0222",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualityFixture.cs:94",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "GrabbedReleaseQuality",
+    "file_quality": "Bluray-720p",
+    "download_client_item": true,
+    "history": [
+     {
+      "event": "Grabbed",
+      "quality": "HDTV-720p"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The check only logs a mismatch (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/GrabbedReleaseQualitySpecification.cs:44)."
+ },
+ {
+  "id": "RAD-IMPORT-0223",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/HasAudioTrackSpecificationFixture.cs:37",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "HasAudioTrack",
+    "media_info": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0224",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/HasAudioTrackSpecificationFixture.cs:45",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "HasAudioTrack",
+    "media_info": {
+     "audio_stream_count": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0225",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/HasAudioTrackSpecificationFixture.cs:53",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "HasAudioTrack",
+    "media_info": {
+     "audio_stream_count": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0226",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/MatchesGrabSpecificationFixture.cs:68",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "MatchesGrab",
+    "movie_id": 1,
+    "existing_file": true,
+    "download_client_item": false,
+    "grabbed_movie_ids": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "grabbed_movie_ids null: LocalMovie.Release is null (GivenHistoryForMovies returns early with no movies)."
+ },
+ {
+  "id": "RAD-IMPORT-0227",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/MatchesGrabSpecificationFixture.cs:76",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "MatchesGrab",
+    "movie_id": 1,
+    "existing_file": false,
+    "download_client_item": false,
+    "grabbed_movie_ids": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "grabbed_movie_ids null: LocalMovie.Release is null (GivenHistoryForMovies returns early with no movies)."
+ },
+ {
+  "id": "RAD-IMPORT-0228",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/MatchesGrabSpecificationFixture.cs:82",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "MatchesGrab",
+    "movie_id": 1,
+    "existing_file": false,
+    "download_client_item": true,
+    "grabbed_movie_ids": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "grabbed_movie_ids null: LocalMovie.Release is null (GivenHistoryForMovies returns early with no movies)."
+ },
+ {
+  "id": "RAD-IMPORT-0229",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/MatchesGrabSpecificationFixture.cs:90",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "MatchesGrab",
+    "movie_id": 1,
+    "existing_file": false,
+    "download_client_item": true,
+    "grabbed_movie_ids": [
+     1
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "grabbed_movie_ids null: LocalMovie.Release is null (GivenHistoryForMovies returns early with no movies)."
+ },
+ {
+  "id": "RAD-IMPORT-0230",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/MatchesGrabSpecificationFixture.cs:98",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "MatchesGrab",
+    "movie_id": 1,
+    "existing_file": false,
+    "download_client_item": true,
+    "grabbed_movie_ids": [
+     2
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "grabbed_movie_ids null: LocalMovie.Release is null (GivenHistoryForMovies returns early with no movies)."
+ },
+ {
+  "id": "RAD-IMPORT-0231",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:27",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/x.men.2018.avi",
+    "files_in_folder": [
+     "/C/Test/Downloaded/x.men.2018.avi"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0232",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:31",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/Captain.Phillips.2013.MULTi.1080p.BluRay.x264-LOST/lost-captainphillips.2013.1080p.mkv",
+    "files_in_folder": [
+     "/C/Test/Downloaded/Captain.Phillips.2013.MULTi.1080p.BluRay.x264-LOST/lost-captainphillips.2013.1080p.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0233",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:35",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/Harry.Potter.And.The.Deathly.Hallows.Part.1.2010.1080p.BluRay.x264-EbP/Harry.Potter.And.The.Deathly.Hallows.Part.1.2010.1080p.BluRay.x264-EbP.mkv",
+    "files_in_folder": [
+     "/C/Test/Downloaded/Harry.Potter.And.The.Deathly.Hallows.Part.1.2010.1080p.BluRay.x264-EbP/Harry.Potter.And.The.Deathly.Hallows.Part.1.2010.1080p.BluRay.x264-EbP.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0234",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:52",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/Bad Boys (2006) part1.mkv",
+    "files_in_folder": [
+     "/C/Test/Downloaded/Bad Boys (2006) part1.mkv",
+     "/C/Test/Downloaded/Bad Boys (2006) part2.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0235",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:58",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/Bad Boys (2006) pt1.mkv",
+    "files_in_folder": [
+     "/C/Test/Downloaded/Bad Boys (2006) pt1.mkv",
+     "/C/Test/Downloaded/Bad Boys (2006) pt2.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0236",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:63",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/Bad Boys (2006) P1.mkv",
+    "files_in_folder": [
+     "/C/Test/Downloaded/Bad Boys (2006) P1.mkv",
+     "/C/Test/Downloaded/Bad Boys (2006) P2.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0237",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:68",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/blah blah - cd 1.mvk",
+    "files_in_folder": [
+     "/C/Test/Downloaded/blah blah - cd 1.mvk",
+     "/C/Test/Downloaded/blah blah - cd 2.mvk"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0238",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:73",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/blah blah - dvd a.mvk",
+    "files_in_folder": [
+     "/C/Test/Downloaded/blah blah - dvd a.mvk",
+     "/C/Test/Downloaded/blah blah - dvd b.mvk"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0239",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:91",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/blah blah - cd a.mvk",
+    "files_in_folder": [
+     "/C/Test/Downloaded/blah blah - cd a.mvk",
+     "/C/Test/Downloaded/blah blah - cd 2.mvk"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0240",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotMultiPartSpecificationFixture.cs:109",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotMultiPart",
+    "path": "/C/Test/Downloaded/blah blah - cd a.mvk",
+    "files_in_folder": [
+     "/C/Test/Downloaded/blah blah - cd a.mvk",
+     "/C/Test/Downloaded/ping pong - cd b.mvk"
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The file is the first path of the row; the folder listing is the whole row."
+ },
+ {
+  "id": "RAD-IMPORT-0241",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotSampleSpecificationFixture.cs:30",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotSample",
+    "existing_file": true
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0242",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotUnpackingSpecificationFixture.cs:48",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotUnpacking",
+    "working_folders": "_UNPACK_|_FAILED_",
+    "path": "/C/Test/Unsorted TV/30.rock/30.rock.s01e01.avi"
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-IMPORT-0244",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotUnpackingSpecificationFixture.cs:65",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotUnpacking",
+    "working_folders": "_UNPACK_|_FAILED_",
+    "path": "/C/Test/Unsorted TV/_UNPACK_30.rock/someSubFolder/30.rock.s01e01.avi",
+    "last_write_ago_minutes": 0
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "On non-Windows any file under a working folder is rejected regardless of age (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/NotUnpackingSpecification.cs:40)."
+ },
+ {
+  "id": "RAD-IMPORT-0245",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotUnpackingSpecificationFixture.cs:74",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "NotUnpacking",
+    "working_folders": "_UNPACK_|_FAILED_",
+    "path": "/C/Test/Unsorted TV/_UNPACK_30.rock/someSubFolder/30.rock.s01e01.avi",
+    "last_write_ago_minutes": 7200,
+    "os": "posix"
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "On non-Windows any file under a working folder is rejected regardless of age (src/NzbDrone.Core/MediaFiles/MovieImport/Specifications/NotUnpackingSpecification.cs:40)."
+ },
+ {
+  "id": "RAD-IMPORT-0246",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:39",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "PreferAndUpgrade",
+    "file_quality": "HDTV-720p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "movie_file_id": 0,
+    "existing_file": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0247",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:48",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "PreferAndUpgrade",
+    "file_quality": "HDTV-720p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0248",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:61",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "PreferAndUpgrade",
+    "file_quality": "HDTV-720p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "Bluray-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0249",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:74",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "PreferAndUpgrade",
+    "file_quality": "HDTV-720p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0250",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:91",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "DoNotPrefer",
+    "file_quality": "HDTV-720p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0251",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:108",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "DoNotPrefer",
+    "file_quality": "Bluray-1080p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2,
+      "real": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0252",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:127",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "PreferAndUpgrade",
+    "file_quality": "HDTV-720p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "movie_file_id": 1,
+    "existing_file": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0253",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:136",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "DoNotPrefer",
+    "file_quality": "Bluray-1080p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "file_custom_format_score": 20,
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "custom_format_score": 10
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0254",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:171",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "DoNotPrefer",
+    "file_quality": "Bluray-1080p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "file_custom_format_score": 20,
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "Bluray-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "custom_format_score": 50
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ },
+ {
+  "id": "RAD-IMPORT-0255",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:206",
+  "input": {
+   "op": "import_spec",
+   "given": {
+    "spec": "Upgrade",
+    "profile_items": [
+     {
+      "quality": "Unknown",
+      "allowed": true
+     },
+     {
+      "quality": "CAM",
+      "allowed": true
+     },
+     {
+      "quality": "TELECINE",
+      "allowed": true
+     },
+     {
+      "quality": "DVDSCR",
+      "allowed": true
+     },
+     {
+      "quality": "REGIONAL",
+      "allowed": true
+     },
+     {
+      "quality": "SDTV",
+      "allowed": true
+     },
+     {
+      "quality": "DVD",
+      "allowed": true
+     },
+     {
+      "quality": "DVD-R",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-720p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "HDTV-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-480p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-720p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "WEBDL-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-480p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-576p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-720p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-1080p",
+      "allowed": true
+     },
+     {
+      "quality": "Bluray-2160p",
+      "allowed": true
+     },
+     {
+      "quality": "BR-DISK",
+      "allowed": true
+     },
+     {
+      "quality": "Raw-HD",
+      "allowed": true
+     }
+    ],
+    "propers": "DoNotPrefer",
+    "file_quality": "Bluray-1080p",
+    "file_revision": {
+     "version": 1,
+     "real": 0
+    },
+    "file_custom_format_score": 20,
+    "movie_file_id": 1,
+    "existing_file": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "custom_format_score": 50
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile items from QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:68): all 22 allowed, in that order. Unmocked IConfigService members return their default (0 / false / first enum value). So propers default to PreferAndUpgrade (ProperDownloadTypes.cs: first member). Existing custom format score: one format, scored in the profile and parsed from the existing file, so the score is that format's weight."
+ }
+]

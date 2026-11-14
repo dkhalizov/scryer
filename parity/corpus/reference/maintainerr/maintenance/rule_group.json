@@ -1,0 +1,693 @@
+[
+ {
+  "expect": {
+   "throws": "boom"
+  },
+  "id": "MNT-MAINTENANCE-0352",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     {
+      "$throws": "boom"
+     }
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "SMALLER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "6"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "imdb",
+       "prop": 31,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:144"
+ },
+ {
+  "expect": {
+   "matched": [],
+   "result": false,
+   "ruleResult": {
+    "action": "smaller",
+    "firstValue": null,
+    "result": false,
+    "secondValue": 6
+   }
+  },
+  "id": "MNT-MAINTENANCE-0353",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     null
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "SMALLER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "6"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "imdb",
+       "prop": 31,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:169"
+ },
+ {
+  "expect": {
+   "matched": [
+    "media-1"
+   ],
+   "result": true,
+   "ruleResult": {
+    "action": "bigger",
+    "firstValue": 10,
+    "result": true,
+    "secondValue": null
+   },
+   "sectionResult": true
+  },
+  "id": "MNT-MAINTENANCE-0354",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     10,
+     null
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "BIGGER",
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "lastVal": {
+       "app": "PLEX",
+       "name": "lastViewedAt",
+       "prop": 6,
+       "type": "DATE"
+      },
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:210"
+ },
+ {
+  "expect": {
+   "matched": []
+  },
+  "id": "MNT-MAINTENANCE-0355",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     [],
+     {
+      "$undefined": true
+     }
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "NOT_EQUALS",
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "lastVal": {
+       "app": "PLEX",
+       "name": "lastViewedAt",
+       "prop": 6,
+       "type": "DATE"
+      },
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:241"
+ },
+ {
+  "expect": {
+   "matched": [],
+   "result": false,
+   "ruleResult": {
+    "action": "before",
+    "firstValue": null,
+    "result": false,
+    "secondValue": {
+     "$date": "2024-01-01T00:00:00.000Z"
+    }
+   }
+  },
+  "id": "MNT-MAINTENANCE-0357",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     null
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "BEFORE",
+      "customVal": {
+       "ruleTypeId": "DATE",
+       "value": "2024-01-01T00:00:00.000Z"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "lastViewedAt",
+       "prop": 6,
+       "type": "DATE"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:297"
+ },
+ {
+  "expect": {
+   "ruleResult": {
+    "result": false,
+    "secondValue": {
+     "$now_offset_seconds": -28512000
+    }
+   }
+  },
+  "id": "MNT-MAINTENANCE-0358",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     null
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "BEFORE",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "28512000"
+      },
+      "firstVal": {
+       "app": "JELLYFIN",
+       "name": "lastViewedAt",
+       "prop": 0,
+       "type": "DATE"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:332"
+ },
+ {
+  "expect": {
+   "matchedCount": 1,
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0363",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     0,
+     0
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "EQUALS",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     },
+     {
+      "action": "BIGGER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 2,
+      "operator": null,
+      "section": 1
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:521"
+ },
+ {
+  "expect": {
+   "matchedCount": 1,
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0364",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     5,
+     5
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "EQUALS",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     },
+     {
+      "action": "BIGGER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 2,
+      "operator": null,
+      "section": 1
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:522"
+ },
+ {
+  "expect": {
+   "matchedCount": 0,
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0365",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     null,
+     null
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "EQUALS",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     },
+     {
+      "action": "BIGGER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 2,
+      "operator": null,
+      "section": 1
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:523"
+ },
+ {
+  "expect": {
+   "matched": [
+    "media-1"
+   ],
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0366",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     0,
+     0
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "EQUALS",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     },
+     {
+      "action": "SMALLER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "1"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 2,
+      "operator": null,
+      "section": 1
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:542"
+ },
+ {
+  "expect": {
+   "matched": [
+    "in-range"
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0369",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValuesByMedia": {
+     "in-range": [
+      5,
+      5
+     ],
+     "missing": [
+      5,
+      null
+     ],
+     "too-high": [
+      15,
+      15
+     ]
+    },
+    "media": [
+     "in-range",
+     "too-high",
+     "missing"
+    ],
+    "rules": [
+     {
+      "action": "BIGGER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "0"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     },
+     {
+      "action": "SMALLER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "10"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 2,
+      "operator": "0",
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:704"
+ },
+ {
+  "expect": {
+   "transientFailure": {
+    "media-1": true
+   }
+  },
+  "id": "MNT-MAINTENANCE-0370",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     {
+      "$undefined": true
+     }
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "SMALLER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "6"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "imdb",
+       "prop": 31,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:745"
+ },
+ {
+  "expect": {
+   "transientFailure": {
+    "media-1": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0371",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     null
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "SMALLER",
+      "customVal": {
+       "ruleTypeId": "NUMBER",
+       "value": "6"
+      },
+      "firstVal": {
+       "app": "PLEX",
+       "name": "imdb",
+       "prop": 31,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:767"
+ },
+ {
+  "expect": {
+   "transientFailure": {
+    "media-1": true
+   }
+  },
+  "id": "MNT-MAINTENANCE-0372",
+  "input": {
+   "given": {
+    "dataType": "movie",
+    "getterValues": [
+     10,
+     {
+      "$undefined": true
+     }
+    ],
+    "media": [
+     "media-1"
+    ],
+    "rules": [
+     {
+      "action": "BIGGER",
+      "firstVal": {
+       "app": "PLEX",
+       "name": "viewCount",
+       "prop": 5,
+       "type": "NUMBER"
+      },
+      "id": 1,
+      "lastVal": {
+       "app": "PLEX",
+       "name": "lastViewedAt",
+       "prop": 6,
+       "type": "DATE"
+      },
+      "operator": null,
+      "section": 0
+     }
+    ]
+   },
+   "op": "executeRulesWithData"
+  },
+  "note": "Property ids and types are the test's mocked rule constants (spec :82), not the real table. getterValues are the mocked getter results in call order.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:789"
+ }
+]

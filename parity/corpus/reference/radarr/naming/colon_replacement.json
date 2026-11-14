@@ -1,0 +1,343 @@
+[
+ {
+  "id": "RAD-NAMING-0006",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:47",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "CSI: Vegas"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8)."
+ },
+ {
+  "id": "RAD-NAMING-0007",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:56",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "CSI: Vegas"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8)."
+ },
+ {
+  "id": "RAD-NAMING-0008",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:57",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Dash",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "CSI: Vegas"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI- Vegas"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"Dash\" (ours \"smart\")."
+ },
+ {
+  "id": "RAD-NAMING-0009",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:58",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Delete",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "CSI: Vegas"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI Vegas"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"Delete\" (ours \"smart\")."
+ },
+ {
+  "id": "RAD-NAMING-0010",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:59",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "SpaceDash",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "CSI: Vegas"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"SpaceDash\" (ours \"smart\")."
+ },
+ {
+  "id": "RAD-NAMING-0011",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:60",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "SpaceDashSpace",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "CSI: Vegas"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "CSI - Vegas"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"SpaceDashSpace\" (ours \"smart\")."
+ },
+ {
+  "id": "RAD-NAMING-0012",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:71",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "Movie:Title"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Movie-Title"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8)."
+ },
+ {
+  "id": "RAD-NAMING-0013",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:72",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Dash",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "Movie:Title"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Movie-Title"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"Dash\" (ours \"smart\")."
+ },
+ {
+  "id": "RAD-NAMING-0014",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:73",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Delete",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "Movie:Title"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "MovieTitle"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"Delete\" (ours \"smart\")."
+ },
+ {
+  "id": "RAD-NAMING-0015",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:74",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "SpaceDash",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "Movie:Title"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Movie -Title"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"SpaceDash\" (ours \"smart\")."
+ },
+ {
+  "id": "RAD-NAMING-0016",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:75",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "SpaceDashSpace",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "Movie:Title"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Movie - Title"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): colon_replacement_format \"SpaceDashSpace\" (ours \"smart\")."
+ }
+]

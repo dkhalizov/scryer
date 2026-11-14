@@ -1,0 +1,411 @@
+[
+ {
+  "id": "RAD-IMPORT-0176",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:86",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": false,
+    "decisions": [
+     {
+      "rejected": true
+     },
+     {
+      "rejected": true
+     },
+     {
+      "rejected": true
+     }
+    ]
+   }
+  },
+  "expect": {
+   "imported": 0,
+   "files_recorded": 0
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0177",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:94",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": false,
+    "decisions": [
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "results": 1
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0178",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:102",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": false,
+    "decisions": [
+     {
+      "rejected": true
+     },
+     {
+      "rejected": true
+     },
+     {
+      "rejected": true
+     },
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "results": 4,
+   "imported": 1
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0179",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:117",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": false,
+    "decisions": [
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     },
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "imported": 1
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0180",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:131",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "file_placed_times": 1,
+   "copy_only": false
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0181",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:141",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "movie_file_imported_events": 1
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0182",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:150",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": false,
+    "decisions": [
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "file_placed_times": 0
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0183",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:162",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": false,
+    "decisions": [
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1,
+      "size_mb": 1024
+     },
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - 2017 - Pilot.avi",
+      "movie": 1,
+      "size_mb": 80
+     }
+    ]
+   }
+  },
+  "expect": {
+   "results": 2,
+   "imported": 1,
+   "imported_size_mb": 1024
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0184",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:190",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/TV/30.Rock.S01E01/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ],
+    "download_client_item": {
+     "title": "30.Rock.S01E01",
+     "output_path": "/C/Test/Unsorted/TV/30.Rock.S01E01",
+     "can_move_files": false
+    }
+   }
+  },
+  "expect": {
+   "file_placed_times": 1,
+   "copy_only": true
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0185",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:203",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/TV/30.Rock.S01E01/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1
+     }
+    ],
+    "download_client_item": {
+     "title": "30.Rock.S01E01",
+     "output_path": "/C/Test/Unsorted/TV/30.Rock.S01E01",
+     "can_move_files": false
+    },
+    "import_mode": "Move"
+   }
+  },
+  "expect": {
+   "file_placed_times": 1,
+   "copy_only": false
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ },
+ {
+  "id": "RAD-IMPORT-0186",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:216",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "movie": 1
+     }
+    ],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+    }
+   }
+  },
+  "expect": {
+   "recorded_original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  },
+  "note": "Expected path is the test's backslash path through AsOsAgnostic."
+ },
+ {
+  "id": "RAD-IMPORT-0187",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:230",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "movie": 1
+     }
+    ],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "recorded_original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  },
+  "note": "Expected path is the test's backslash path through AsOsAgnostic."
+ },
+ {
+  "id": "RAD-IMPORT-0188",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:244",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv",
+      "movie": 1
+     }
+    ],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/Series.Title.S01E01.720p.HDTV.x264-Sonarr"
+    }
+   }
+  },
+  "expect": {
+   "recorded_original_file_path": "Series.Title.S01E01.720p.HDTV.x264-Sonarr/subfolder/Series.Title.S01E01.720p.HDTV.x264-Sonarr.mkv"
+  },
+  "note": "Expected path is the test's backslash path through AsOsAgnostic."
+ },
+ {
+  "id": "RAD-IMPORT-0189",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:258",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/movies/Transformers.2007.720p.BluRay.x264-Radarr/subfolder/Transformers.2007.720p.BluRay.x264-Radarr.mkv",
+      "movie": 1,
+      "folder_info": {
+       "original_title": "Transformers.2007.720p.BluRay.x264-Radarr"
+      }
+     }
+    ],
+    "download_client_item": null
+   }
+  },
+  "expect": {
+   "recorded_original_file_path": "Transformers.2007.720p.BluRay.x264-Radarr/subfolder/Transformers.2007.720p.BluRay.x264-Radarr.mkv"
+  },
+  "note": "Expected path is the test's backslash path through AsOsAgnostic."
+ },
+ {
+  "id": "RAD-IMPORT-0192",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:306",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/movie/Transformers.2007.720p.BluRay.x264-Radarr/subfolder/Transformers.2007.720p.BluRay.x264-Radarr.mkv",
+      "movie": 1,
+      "folder_info": {
+       "release_title": "Transformers.2007.720p.BluRay.x264-Radarr"
+      }
+     }
+    ],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/movie-Other/Transformers.2007.720p.BluRay.x264-Radarr"
+    }
+   }
+  },
+  "expect": {
+   "recorded_original_file_path": "subfolder/Transformers.2007.720p.BluRay.x264-Radarr.mkv"
+  },
+  "note": "Expected path is the test's backslash path through AsOsAgnostic."
+ },
+ {
+  "id": "RAD-IMPORT-0193",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:322",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/Unsorted/movies/Transformers.2007.720p.BluRay.x264-Radarr/subfolder/Transformers.2007.720p.BluRay.x264-Radarr.mkv",
+      "movie": 1,
+      "folder_info": {
+       "release_title": "Transformers.2007.720p.BluRay.x264-Radarr"
+      }
+     }
+    ],
+    "download_client_item": {
+     "output_path": "/C/Test/Unsorted/TV/30.Rock.S01E01"
+    }
+   }
+  },
+  "expect": {
+   "recorded_original_file_path": "subfolder/Transformers.2007.720p.BluRay.x264-Radarr.mkv"
+  },
+  "note": "Expected path is the test's backslash path through AsOsAgnostic. Despite the name, the download client item keeps the fixture's output path /C/Test/Unsorted/TV/30.Rock.S01E01."
+ },
+ {
+  "id": "RAD-IMPORT-0194",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:337",
+  "input": {
+   "op": "import_approved",
+   "given": {
+    "new_download": true,
+    "decisions": [
+     {
+      "path": "/C/Test/TV/30 Rock/30 Rock - S01E01 - Pilot.avi",
+      "movie": 1,
+      "scene_name": "Movie.Title.2022.dvdrip-DRONE"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "file_placed_times": 1,
+   "recorded_scene_name": "Movie.Title.2022.dvdrip-DRONE"
+  },
+  "note": "copy_only is UpgradeMovieFile's third argument: true copies (hardlinks when enabled) instead of moving. The approved file starts at the movie folder path; GivenNewDownload moves it under the download output path."
+ }
+]

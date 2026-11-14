@@ -1,0 +1,1371 @@
+[
+ {
+  "id": "SON-PARSE-1075",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:10",
+  "input": {
+   "name": "Series.2009.S01E14.English.HDTV.XviD-LOL",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "LOL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1076",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:11",
+  "input": {
+   "name": "Series 2009 S01E14 English HDTV XviD LOL",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1077",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:12",
+  "input": {
+   "name": "Series Now S05 EXTRAS DVDRip XviD RUNNER",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1078",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:13",
+  "input": {
+   "name": "Series.Title.S01.EXTRAS.DVDRip.XviD-RUNNER",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RUNNER"
+  }
+ },
+ {
+  "id": "SON-PARSE-1079",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:14",
+  "input": {
+   "name": "2020.Series.2011.12.02.PDTV.XviD-C4TV",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "C4TV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1080",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:15",
+  "input": {
+   "name": "The.Series.S03E115.DVDRip.XviD-OSiTV",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "OSiTV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1081",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:16",
+  "input": {
+   "name": "Series Title - S01E01 - Pilot [HTDV-480p]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1082",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:17",
+  "input": {
+   "name": "Series Title - S01E01 - Pilot [HTDV-720p]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1083",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:18",
+  "input": {
+   "name": "Series Title - S01E01 - Pilot [HTDV-1080p]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1084",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:19",
+  "input": {
+   "name": "The.Series.Title.S04E13.720p.WEB-DL.AAC2.0.H.264-Cyphanix",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Cyphanix"
+  }
+ },
+ {
+  "id": "SON-PARSE-1085",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:20",
+  "input": {
+   "name": "Series.S02E01.720p.WEB-DL.DD5.1.H.264.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1086",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:21",
+  "input": {
+   "name": "Series Title S01E01 Episode Title",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1087",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:22",
+  "input": {
+   "name": "The Series Title - 2014-06-02 - Thomas Piketty.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1088",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:23",
+  "input": {
+   "name": "The Series Title S12E17 May 23, 2014.mp4",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1089",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:24",
+  "input": {
+   "name": "Reizen Waes - S01E08 - Transistrië, Zuid-Ossetië en Abchazië SDTV.avi",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1090",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:25",
+  "input": {
+   "name": "The Series Title 10x11 - Wild Devs Cant Be Broken [rl].avi",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "rl"
+  }
+ },
+ {
+  "id": "SON-PARSE-1091",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:26",
+  "input": {
+   "name": "[ www.Torrenting.com ] - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DIMENSION"
+  }
+ },
+ {
+  "id": "SON-PARSE-1092",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:27",
+  "input": {
+   "name": "Series S02E09 HDTV x264-2HD [eztv]-[rarbg.com]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "2HD"
+  }
+ },
+ {
+  "id": "SON-PARSE-1093",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:28",
+  "input": {
+   "name": "7s-Series-s02e01-720p.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1094",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:29",
+  "input": {
+   "name": "The.Series.S09E13.720p.HEVC.x265-MeGusta-Pre",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "MeGusta"
+  }
+ },
+ {
+  "id": "SON-PARSE-1095",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:30",
+  "input": {
+   "name": "Series Title - S01E01 - Episode Title [RlsGroup]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RlsGroup"
+  }
+ },
+ {
+  "id": "SON-PARSE-1096",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:31",
+  "input": {
+   "name": "Red Series S01 E01-E02 1080p AMZN WEBRip DDP5.1 x264 monkee",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1097",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:32",
+  "input": {
+   "name": "Series.Title.S01E05.The-Aniversary.WEBDL-1080p.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1098",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:33",
+  "input": {
+   "name": "Series.Title.S01E05.The-Aniversary.HDTV-1080p.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1099",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:34",
+  "input": {
+   "name": "Series US (2010) S04 (1080p BDRip x265 10bit DTS-HD MA 5 1 - WEM)[TAoE]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1100",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:35",
+  "input": {
+   "name": "The.Series.S03E04.2160p.Amazon.WEBRip.DTS-HD.MA.5.1.x264",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1101",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:36",
+  "input": {
+   "name": "SomeShow.S20E13.1080p.BluRay.DTS-X.MA.5.1.x264",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1102",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:37",
+  "input": {
+   "name": "SomeShow.S20E13.1080p.BluRay.DTS-MA.5.1.x264",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1103",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:38",
+  "input": {
+   "name": "SomeShow.S20E13.1080p.BluRay.DTS-ES.5.1.x264",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1104",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:39",
+  "input": {
+   "name": "SomeShow.S20E13.1080p.Blu-Ray.DTS-ES.5.1.x264",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1105",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:40",
+  "input": {
+   "name": "SomeShow.S20E13.1080p.Blu-Ray.DTS-ES.5.1.x264-ROUGH [PublicHD]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "ROUGH"
+  }
+ },
+ {
+  "id": "SON-PARSE-1106",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:41",
+  "input": {
+   "name": "SomeShow S01E168 1080p WEB-DL AAC 2.0 x264-Erai-raws",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Erai-raws"
+  }
+ },
+ {
+  "id": "SON-PARSE-1107",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:42",
+  "input": {
+   "name": "The.Good.Series.S05E03.Series.of.Intelligence.1080p.10bit.AMZN.WEB-DL.DDP5.1.HEVC-Vyndros",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Vyndros"
+  }
+ },
+ {
+  "id": "SON-PARSE-1108",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:43",
+  "input": {
+   "name": "[Tenrai-Sensei] Series [BD][1080p][HEVC 10bit x265][Dual Audio]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Tenrai-Sensei"
+  }
+ },
+ {
+  "id": "SON-PARSE-1109",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:44",
+  "input": {
+   "name": "[Erai-raws] Series - 0955 ~ 1005 [1080p]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Erai-raws"
+  }
+ },
+ {
+  "id": "SON-PARSE-1110",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:45",
+  "input": {
+   "name": "[Exiled-Destiny] Series Title",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Exiled-Destiny"
+  }
+ },
+ {
+  "id": "SON-PARSE-1111",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:46",
+  "input": {
+   "name": "Series.Title.S01E09.1080p.DSNP.WEB-DL.DDP2.0.H.264-VARYG",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "VARYG"
+  }
+ },
+ {
+  "id": "SON-PARSE-1112",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:47",
+  "input": {
+   "name": "Stargate SG-1 (1997) - S01E01-02 - Children of the Gods (Showtime) (1080p.BD.DD5.1.x265-TheSickle[TAoE])",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "TheSickle"
+  }
+ },
+ {
+  "id": "SON-PARSE-1113",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:55",
+  "input": {
+   "name": "Show.Name.2009.S01.1080p.BluRay.DTS5.1.x264-D-Z0N3",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "D-Z0N3"
+  }
+ },
+ {
+  "id": "SON-PARSE-1114",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:56",
+  "input": {
+   "name": "Show.Name.S01E01.1080p.WEB-DL.H264.Fight-BB.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Fight-BB"
+  }
+ },
+ {
+  "id": "SON-PARSE-1115",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:57",
+  "input": {
+   "name": "Show Name (2021) Season 1 S01 (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Tigole"
+  }
+ },
+ {
+  "id": "SON-PARSE-1116",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:58",
+  "input": {
+   "name": "Show Name (2021) Season 1 S01 (1080p BluRay x265 HEVC 10bit AAC 2.0 afm72) [QxR]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "afm72"
+  }
+ },
+ {
+  "id": "SON-PARSE-1117",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:59",
+  "input": {
+   "name": "Show Name (2021) Season 1 S01 (1080p DSNP WEB-DL x265 HEVC 10bit EAC3 5.1 Silence) [QxR]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Silence"
+  }
+ },
+ {
+  "id": "SON-PARSE-1118",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:60",
+  "input": {
+   "name": "Show Name (2021) Season 1 S01 (1080p BluRay x265 HEVC 10bit AAC 2.0 Panda) [QxR]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Panda"
+  }
+ },
+ {
+  "id": "SON-PARSE-1119",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:61",
+  "input": {
+   "name": "Show Name (2020) Season 1 S01 (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 2.0 Ghost) [QxR]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Ghost"
+  }
+ },
+ {
+  "id": "SON-PARSE-1120",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:62",
+  "input": {
+   "name": "Show Name (2020) Season 1 S01 (1080p WEB-DL x265 HEVC 10bit AC3 5.1 MONOLITH) [QxR]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "MONOLITH"
+  }
+ },
+ {
+  "id": "SON-PARSE-1121",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:63",
+  "input": {
+   "name": "The Show S08E09 The Series.1080p.AMZN.WEB-DL.x265.10bit.EAC3.6.0-Qman[UTR]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "UTR"
+  }
+ },
+ {
+  "id": "SON-PARSE-1122",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:64",
+  "input": {
+   "name": "The Show S03E07 Fire and Series[1080p x265 10bit S87 Joy]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Joy"
+  }
+ },
+ {
+  "id": "SON-PARSE-1123",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:65",
+  "input": {
+   "name": "The Show (2016) - S02E01 - Soul Series #1 (1080p NF WEBRip x265 ImE)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "ImE"
+  }
+ },
+ {
+  "id": "SON-PARSE-1124",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:66",
+  "input": {
+   "name": "The Show (2020) - S02E03 - Fighting His Series(1080p ATVP WEB-DL x265 t3nzin)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "t3nzin"
+  }
+ },
+ {
+  "id": "SON-PARSE-1125",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:67",
+  "input": {
+   "name": "[Anime Time] A Show [BD][Dual Audio][1080p][HEVC 10bit x265][AAC][Eng Sub] [Batch] Title)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anime Time"
+  }
+ },
+ {
+  "id": "SON-PARSE-1126",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:68",
+  "input": {
+   "name": "[Project Angel] Anime Series [DVD 480p] [10-bit x265 HEVC | Opus]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Project Angel"
+  }
+ },
+ {
+  "id": "SON-PARSE-1127",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:69",
+  "input": {
+   "name": "[Hakata Ramen] Show Title - Season 2 - Revival of The Commandments",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Hakata Ramen"
+  }
+ },
+ {
+  "id": "SON-PARSE-1128",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:70",
+  "input": {
+   "name": "Show Name (2022) S01 (2160p DSNP WEB-DL H265 DV HDR DDP Atmos 5.1 English - HONE)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HONE"
+  }
+ },
+ {
+  "id": "SON-PARSE-1129",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:71",
+  "input": {
+   "name": "Show Title (2021) S01 (2160p ATVP WEB-DL Hybrid H265 DV HDR10+ DDP Atmos 5.1 English - HONE)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HONE"
+  }
+ },
+ {
+  "id": "SON-PARSE-1130",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:72",
+  "input": {
+   "name": "Series.Title.S01E09.1080p.DSNP.WEB-DL.DDP2.0.H.264-VARYG (Blue Lock, Multi-Subs)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "VARYG"
+  }
+ },
+ {
+  "id": "SON-PARSE-1131",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:73",
+  "input": {
+   "name": "Series.Title (2014) S09E10 (1080p AMZN WEB-DL x265 HEVC 10bit DDP 5.1 Vyndros)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Vyndros"
+  }
+ },
+ {
+  "id": "SON-PARSE-1132",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:74",
+  "input": {
+   "name": "Series Title S02E03 Title 4k to 1080p DSNP WEBrip x265 DDP 5 1 Releaser[SEV]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SEV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1133",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:75",
+  "input": {
+   "name": "Series Title Season 01 S01 1080p AMZN UHD WebRip x265 DDP 5.1 Atmos Releaser-SEV",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SEV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1134",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:76",
+  "input": {
+   "name": "Series Title - S01.E06 - Title 1080p AMZN WebRip x265 DDP 5.1 Atmos Releaser [SEV]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SEV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1135",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:77",
+  "input": {
+   "name": "Series Title (2005) - S01E01 - A Hard Day's Night (1080p DSNP WEB-DL x265 Garshasp).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Garshasp"
+  }
+ },
+ {
+  "id": "SON-PARSE-1136",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:78",
+  "input": {
+   "name": "Series Title (2015) - S02E04 - Smoke & Mirrors (1080p BluRay x265 Kappa).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Kappa"
+  }
+ },
+ {
+  "id": "SON-PARSE-1137",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:79",
+  "input": {
+   "name": "Series Title (2020) - S02E03 - A Great Odyssey (1080p BluRay x265 Kappa).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Kappa"
+  }
+ },
+ {
+  "id": "SON-PARSE-1138",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:80",
+  "input": {
+   "name": "Series Title (2019) - S01E01 - Episode 1 (1080p WEB-DL x265 Natty).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Natty"
+  }
+ },
+ {
+  "id": "SON-PARSE-1139",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:81",
+  "input": {
+   "name": "Series Title (1999) - S03E01-E02 - Mermaid Man and Barnacle Boy IV & Doing Time (1080p AMZN WEB-DL x265 RCVR).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RCVR"
+  }
+ },
+ {
+  "id": "SON-PARSE-1140",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:82",
+  "input": {
+   "name": "Series Title (2021) - S01E02 - Here Goes Nothing (1080p WEB-DL x265 SAMPA).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SAMPA"
+  }
+ },
+ {
+  "id": "SON-PARSE-1141",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:83",
+  "input": {
+   "name": "Series Title (2021) - S01E01 - Aftermath (1080p DSNP WEB-DL x265 YOGI).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "YOGI"
+  }
+ },
+ {
+  "id": "SON-PARSE-1142",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:84",
+  "input": {
+   "name": "Series Title (2012) - S01E01 - Episode 1 (1080p BluRay x265 r00t).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "r00t"
+  }
+ },
+ {
+  "id": "SON-PARSE-1143",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:85",
+  "input": {
+   "name": "Series Title - S01E01 - Girls Gone Wild Exposed (720p x265 EDGE2020).mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EDGE2020"
+  }
+ },
+ {
+  "id": "SON-PARSE-1144",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:86",
+  "input": {
+   "name": "Series.Title.S01E02.1080p.BluRay.Remux.AVC.FLAC.2.0-E.N.D",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "E.N.D"
+  }
+ },
+ {
+  "id": "SON-PARSE-1145",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:87",
+  "input": {
+   "name": "Show Name (2016) Season 1 S01 (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 5 1 RZeroX) QxR",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RZeroX"
+  }
+ },
+ {
+  "id": "SON-PARSE-1146",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:88",
+  "input": {
+   "name": "Series Title S01 1080p Blu-ray Remux AVC FLAC 2.0 - KRaLiMaRKo",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "KRaLiMaRKo"
+  }
+ },
+ {
+  "id": "SON-PARSE-1147",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:89",
+  "input": {
+   "name": "Series Title S01 1080p Blu-ray Remux AVC DTS-HD MA 2.0 - BluDragon",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "BluDragon"
+  }
+ },
+ {
+  "id": "SON-PARSE-1148",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:90",
+  "input": {
+   "name": "Example (2013) S01E01 (1080p iP WEBRip x265 SDR AAC 2.0 English - DarQ)",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DarQ"
+  }
+ },
+ {
+  "id": "SON-PARSE-1149",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:91",
+  "input": {
+   "name": "Series.Title.S08E03.720p.WEB.DL.AAC2.0.H.264.KCRT",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "KCRT"
+  }
+ },
+ {
+  "id": "SON-PARSE-1150",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:92",
+  "input": {
+   "name": "Series Title S02E05 2160p WEB-DL DV HDR ENG DDP5.1 Atmos H265 MP4-BEN THE MEN",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "BEN THE MEN"
+  }
+ },
+ {
+  "id": "SON-PARSE-1151",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:93",
+  "input": {
+   "name": "Series Title S02E05 2160p AMZN WEB-DL DV HDR10 PLUS DDP5 1 Atmos H265 MKV-BEN THE MEN-xpost",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "BEN THE MEN"
+  }
+ },
+ {
+  "id": "SON-PARSE-1152",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:94",
+  "input": {
+   "name": "Series.S01E05.1080p.WEB-DL.DDP5.1.H264-BEN.THE.MEN",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "BEN.THE.MEN"
+  }
+ },
+ {
+  "id": "SON-PARSE-1153",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:100",
+  "input": {
+   "name": "C:\\Test\\Doctor.Series.2005.s01e01.internal.bdrip.x264-archivist.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "release_group": "archivist"
+  },
+  "note": "path passed as written (no AsOsAgnostic)"
+ },
+ {
+  "id": "SON-PARSE-1154",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:108",
+  "input": {
+   "name": "Series.Title.S02E04.720p.WEBRip.x264-SKGTV English",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SKGTV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1155",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:109",
+  "input": {
+   "name": "Series.Title.S02E04.720p.WEBRip.x264-SKGTV_English",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SKGTV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1156",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:110",
+  "input": {
+   "name": "Series.Title.S02E04.720p.WEBRip.x264-SKGTV.English",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SKGTV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1157",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:118",
+  "input": {
+   "name": "Series.Title.S02E04.720p.WEB-DL.AAC2.0.H.264-EVL-RP",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1158",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:119",
+  "input": {
+   "name": "Series.Title.S02E04.720p.WEB-DL.AAC2.0.H.264-EVL-RP-RP",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1159",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:120",
+  "input": {
+   "name": "Series.Title.S02E04.720p.WEB-DL.AAC2.0.H.264-EVL-Obfuscated",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1160",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:121",
+  "input": {
+   "name": "Series.Title.S04E04.720p.BluRay.x264-xHD-NZBgeek",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "xHD"
+  }
+ },
+ {
+  "id": "SON-PARSE-1161",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:122",
+  "input": {
+   "name": "Series.Title.S05E11.720p.HDTV.X264-DIMENSION-NZBgeek",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DIMENSION"
+  }
+ },
+ {
+  "id": "SON-PARSE-1162",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:123",
+  "input": {
+   "name": "Series.Title.S04E04.720p.BluRay.x264-xHD-1",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "xHD"
+  }
+ },
+ {
+  "id": "SON-PARSE-1163",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:124",
+  "input": {
+   "name": "Series.Title.S05E11.720p.HDTV.X264-DIMENSION-1",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DIMENSION"
+  }
+ },
+ {
+  "id": "SON-PARSE-1164",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:125",
+  "input": {
+   "name": "series.title.s40e11.kevin.hart_sia.720p.hdtv.x264-w4f-sample.mkv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "w4f"
+  }
+ },
+ {
+  "id": "SON-PARSE-1165",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:126",
+  "input": {
+   "name": "The.Series.2017.S05E02.1080p.WEB-DL.DD5.1.H264-EVL-Scrambled",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "EVL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1166",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:127",
+  "input": {
+   "name": "Series.S01E08.Haunted.Hayride.720p.AMZN.WEBRip.DDP5.1.x264-NTb-postbot",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-1167",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:128",
+  "input": {
+   "name": "Series.S01E08.Haunted.Hayride.720p.AMZN.WEBRip.DDP5.1.x264-NTb-xpost",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-1168",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:129",
+  "input": {
+   "name": "Series.Title.S08E05.The.Forgotten.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-Rakuv",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-1169",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:130",
+  "input": {
+   "name": "The.Series.S30E01.Devs.Not.Dead.1080p.AMZN.WEB-DL.DDP5.1.H264-QOQ-Rakuv02",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "QOQ"
+  }
+ },
+ {
+  "id": "SON-PARSE-1170",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:131",
+  "input": {
+   "name": "Lie.To.Developers.S01E13.720p.BluRay.x264-SiNNERS-Rakuvfinhel",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "SiNNERS"
+  }
+ },
+ {
+  "id": "SON-PARSE-1171",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:132",
+  "input": {
+   "name": "Who.is.Sonarr.S01E01.INTERNAL.720p.HDTV.x264-aAF-RakuvUS-Obfuscated",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "aAF"
+  }
+ },
+ {
+  "id": "SON-PARSE-1172",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:133",
+  "input": {
+   "name": "Deadly.Development.S01E10.Sink.With.Code.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTG-WhiteRev",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTG"
+  }
+ },
+ {
+  "id": "SON-PARSE-1173",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:134",
+  "input": {
+   "name": "The.Sonarr.Series.S09E12.Developers.REPACK.1080p.AMZN.WEB-DL.DD.5.1.H.264-CasStudio-BUYMORE",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "CasStudio"
+  }
+ },
+ {
+  "id": "SON-PARSE-1174",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:135",
+  "input": {
+   "name": "2.Tired.Developers.S02E24.1080p.AMZN.WEBRip.DD5.1.x264-CasStudio-AsRequested",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "CasStudio"
+  }
+ },
+ {
+  "id": "SON-PARSE-1175",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:136",
+  "input": {
+   "name": "Series.S04E11.Lines.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-AlternativeToRequested",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-1176",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:137",
+  "input": {
+   "name": "Series.S16E04.Third.Wheel.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-GEROV",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-1177",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:138",
+  "input": {
+   "name": "Series.and.Title.S10E06.Dev.n.Play.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb-Z0iDS3N",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-1178",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:139",
+  "input": {
+   "name": "Absolute.Series.S02E06.The.House.of.Sonarr.DVDRip.x264-MaG-Chamele0n",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "MaG"
+  }
+ },
+ {
+  "id": "SON-PARSE-1179",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:140",
+  "input": {
+   "name": "The.Series.Title.S08E08.1080p.BluRay.x264-ROVERS-4P",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "ROVERS"
+  }
+ },
+ {
+  "id": "SON-PARSE-1180",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:141",
+  "input": {
+   "name": "Series.Title.S01E02.720p.BluRay.X264-REWARD-4Planet",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "REWARD"
+  }
+ },
+ {
+  "id": "SON-PARSE-1181",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:142",
+  "input": {
+   "name": "Series.S01E01.Rites.of.Passage.1080p.BluRay.x264-DON-AlteZachen",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "DON"
+  }
+ },
+ {
+  "id": "SON-PARSE-1182",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:143",
+  "input": {
+   "name": "Series.Title.S04E06.Episode.Name.720p.WEB-DL.DD5.1.H.264-HarrHD-RePACKPOST",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HarrHD"
+  }
+ },
+ {
+  "id": "SON-PARSE-1183",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:149",
+  "input": {
+   "name": "[FFF] Series Title!! - S01E11 - Someday, With Sonarr",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "FFF"
+  }
+ },
+ {
+  "id": "SON-PARSE-1184",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:150",
+  "input": {
+   "name": "[HorribleSubs] Series Title!! - S01E12 - Sonarr Going Well!!",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "HorribleSubs"
+  }
+ },
+ {
+  "id": "SON-PARSE-1185",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:151",
+  "input": {
+   "name": "[Anime-Koi] Series Title - S01E06 - Guys From Sonarr",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anime-Koi"
+  }
+ },
+ {
+  "id": "SON-PARSE-1186",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:152",
+  "input": {
+   "name": "[Anime-Koi] Series Title - S01E07 - A High-Grade Sonarr",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anime-Koi"
+  }
+ },
+ {
+  "id": "SON-PARSE-1187",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:153",
+  "input": {
+   "name": "[Anime-Koi] Series Title 2 - 01 [h264-720p][28D54E2C]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "Anime-Koi"
+  }
+ },
+ {
+  "id": "SON-PARSE-1188",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:162",
+  "input": {
+   "name": "Terrible.Anime.Title.001.DBOX.480p.x264-iKaos [v3] [6AFFEF6B]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ }
+]

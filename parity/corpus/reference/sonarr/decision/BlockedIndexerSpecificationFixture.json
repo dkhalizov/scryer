@@ -1,0 +1,40 @@
+[
+ {
+  "id": "SON-DECISION-0057",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/BlockedIndexerSpecificationFixture.cs:39",
+  "input": {
+   "spec": "BlockedIndexerSpecification",
+   "given": {
+    "release": {
+     "indexer_id": 1
+    },
+    "blocked_indexers": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0058",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/BlockedIndexerSpecificationFixture.cs:45",
+  "input": {
+   "spec": "BlockedIndexerSpecification",
+   "given": {
+    "release": {
+     "indexer_id": 1
+    },
+    "blocked_indexers": [
+     {
+      "provider_id": 1,
+      "disabled_till_offset_hours": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false,
+   "permanent": false
+  }
+ }
+]

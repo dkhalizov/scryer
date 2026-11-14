@@ -1,0 +1,523 @@
+[
+ {
+  "id": "RAD-PARSE-0123",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:12",
+  "input": {
+   "name": "en",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0124",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:13",
+  "input": {
+   "name": "eng",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0125",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:14",
+  "input": {
+   "name": "en-US",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0126",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:15",
+  "input": {
+   "name": "en-GB",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0127",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:22",
+  "input": {
+   "name": "enus",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "result": null
+  },
+  "note": "result null: IsoLanguages.Find returns no IsoLanguage at all (result.Should().Be(null)), not one with a null Language"
+ },
+ {
+  "id": "RAD-PARSE-0128",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:23",
+  "input": {
+   "name": "enusa",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "result": null
+  },
+  "note": "result null: IsoLanguages.Find returns no IsoLanguage at all (result.Should().Be(null)), not one with a null Language"
+ },
+ {
+  "id": "RAD-PARSE-0129",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:24",
+  "input": {
+   "name": "wo",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "result": null
+  },
+  "note": "result null: IsoLanguages.Find returns no IsoLanguage at all (result.Should().Be(null)), not one with a null Language"
+ },
+ {
+  "id": "RAD-PARSE-0130",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:25",
+  "input": {
+   "name": "fr-CA",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "result": null
+  },
+  "note": "result null: IsoLanguages.Find returns no IsoLanguage at all (result.Should().Be(null)), not one with a null Language"
+ },
+ {
+  "id": "RAD-PARSE-0131",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:32",
+  "input": {
+   "name": "pt",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Portuguese"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0132",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:33",
+  "input": {
+   "name": "por",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Portuguese"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0133",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:34",
+  "input": {
+   "name": "pt-PT",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Portuguese"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0134",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:41",
+  "input": {
+   "name": "de-AU",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "result": null
+  },
+  "note": "result null: IsoLanguages.Find returns no IsoLanguage at all (result.Should().Be(null)), not one with a null Language"
+ },
+ {
+  "id": "RAD-PARSE-0135",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:48",
+  "input": {
+   "name": "te",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Telugu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0136",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:49",
+  "input": {
+   "name": "tel",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Telugu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0137",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:50",
+  "input": {
+   "name": "te-IN",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Telugu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0138",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:57",
+  "input": {
+   "name": "af",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Afrikaans"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0139",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:58",
+  "input": {
+   "name": "afr",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Afrikaans"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0140",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:59",
+  "input": {
+   "name": "af-ZA",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Afrikaans"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0141",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:66",
+  "input": {
+   "name": "mr",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Marathi"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0142",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:67",
+  "input": {
+   "name": "mar",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Marathi"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0143",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:68",
+  "input": {
+   "name": "mr-IN",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Marathi"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0144",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:75",
+  "input": {
+   "name": "tl",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Tagalog"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0145",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:76",
+  "input": {
+   "name": "tgl",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Tagalog"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0146",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:77",
+  "input": {
+   "name": "tl-PH",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Tagalog"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0147",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:84",
+  "input": {
+   "name": "ur",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Urdu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0148",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:85",
+  "input": {
+   "name": "urd",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Urdu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0149",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:86",
+  "input": {
+   "name": "ur-PK",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Urdu"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0150",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:93",
+  "input": {
+   "name": "rm",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Romansh"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0151",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:94",
+  "input": {
+   "name": "roh",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Romansh"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0152",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:95",
+  "input": {
+   "name": "rm-CH",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Romansh"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0153",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:102",
+  "input": {
+   "name": "mn",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Mongolian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0154",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:103",
+  "input": {
+   "name": "mon",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Mongolian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0155",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:104",
+  "input": {
+   "name": "khk",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Mongolian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0156",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:105",
+  "input": {
+   "name": "mvf",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Mongolian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0157",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:106",
+  "input": {
+   "name": "mn-Cyrl",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Mongolian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0158",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:113",
+  "input": {
+   "name": "bn",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Bengali"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0159",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:114",
+  "input": {
+   "name": "ben",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Bengali"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0160",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:115",
+  "input": {
+   "name": "bn-BD",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Bengali"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0161",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:116",
+  "input": {
+   "name": "bn-IN",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Bengali"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0162",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:123",
+  "input": {
+   "name": "ka",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Georgian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0163",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:124",
+  "input": {
+   "name": "geo",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Georgian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0164",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:125",
+  "input": {
+   "name": "kat",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Georgian"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0165",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:126",
+  "input": {
+   "name": "ka-GE",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Georgian"
+  }
+ }
+]

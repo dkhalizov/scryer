@@ -1,0 +1,347 @@
+[
+ {
+  "id": "SON-IMPORT-0102",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:57",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 30
+    },
+    "episodes": [
+     {
+      "season": 0
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p"
+   }
+  },
+  "expect": {
+   "result": "NotSample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0103",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:67",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 30
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\some.show.s01e01.flv",
+    "quality": "HDTV-720p"
+   }
+  },
+  "expect": {
+   "result": "NotSample",
+   "calls": {
+    "GetRunTime": 0
+   }
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0104",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:79",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 30
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\some.show.s01e01.strm",
+    "quality": "HDTV-720p"
+   }
+  },
+  "expect": {
+   "result": "NotSample",
+   "calls": {
+    "GetRunTime": 0
+   }
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0106",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:103",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 30
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 60,
+    "media_info": {
+     "runtime_seconds": 60
+    }
+   }
+  },
+  "expect": {
+   "result": "Sample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0107",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:113",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 30
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 600,
+    "media_info": {
+     "runtime_seconds": 600
+    }
+   }
+  },
+  "expect": {
+   "result": "NotSample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0108",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:123",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 6
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 299,
+    "media_info": {
+     "runtime_seconds": 299
+    }
+   }
+  },
+  "expect": {
+   "result": "NotSample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0109",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:134",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 2
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 60,
+    "media_info": {
+     "runtime_seconds": 60
+    }
+   }
+  },
+  "expect": {
+   "result": "NotSample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0110",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:145",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 2
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 10,
+    "media_info": {
+     "runtime_seconds": 10
+    }
+   }
+  },
+  "expect": {
+   "result": "Sample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0111",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:156",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "series",
+    "series": {
+     "type": "Standard",
+     "runtime": 30
+    },
+    "episodes": [
+     {
+      "season": 1
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": null
+   }
+  },
+  "expect": {
+   "result": "Indeterminate"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0114",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:193",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "local_episode",
+    "series": {
+     "type": "Standard",
+     "runtime": 30
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "runtime": 30
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 120,
+    "media_info": {
+     "runtime_seconds": 120
+    }
+   }
+  },
+  "expect": {
+   "result": "Sample",
+   "calls": {
+    "GetRunTime": 0
+   }
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0115",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:206",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "local_episode",
+    "series": {
+     "type": "Standard",
+     "runtime": 5
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "runtime": 30
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 120,
+    "media_info": {
+     "runtime_seconds": 120
+    }
+   }
+  },
+  "expect": {
+   "result": "Sample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ },
+ {
+  "id": "SON-IMPORT-0116",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:217",
+  "input": {
+   "op": "DetectSample.IsSample",
+   "given": {
+    "call": "local_episode",
+    "series": {
+     "type": "Standard",
+     "runtime": 0
+    },
+    "episodes": [
+     {
+      "season": 1,
+      "runtime": 0
+     }
+    ],
+    "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi",
+    "quality": "HDTV-720p",
+    "file_runtime_seconds": 120,
+    "media_info": {
+     "runtime_seconds": 120
+    }
+   }
+  },
+  "expect": {
+   "result": "Sample"
+  },
+  "note": "call 'series' is IsSample(series, path, isSpecial) with isSpecial from the episodes' season 0; 'local_episode' is IsSample(localEpisode)."
+ }
+]

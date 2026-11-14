@@ -1,0 +1,107 @@
+[
+ {
+  "id": "RAD-NAMING-0001",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:11",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": false,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "name": "Mission: Impossible - no [HDTV-720p]"
+   }
+  },
+  "expect": {
+   "name": "Mission - Impossible - no [HDTV-720p]"
+  },
+  "note": "FileNameBuilder.CleanFileName(name) uses NamingConfig.Default (src/NzbDrone.Core/Organizer/FileNameBuilder.cs:259)."
+ },
+ {
+  "id": "RAD-NAMING-0002",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:17",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": false,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "name": ".45 (2006)"
+   }
+  },
+  "expect": {
+   "name": "45 (2006)"
+  },
+  "note": "FileNameBuilder.CleanFileName(name) uses NamingConfig.Default (src/NzbDrone.Core/Organizer/FileNameBuilder.cs:259)."
+ },
+ {
+  "id": "RAD-NAMING-0003",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:23",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": false,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "name": " The Movie Title"
+   }
+  },
+  "expect": {
+   "name": "The Movie Title"
+  },
+  "note": "FileNameBuilder.CleanFileName(name) uses NamingConfig.Default (src/NzbDrone.Core/Organizer/FileNameBuilder.cs:259)."
+ },
+ {
+  "id": "RAD-NAMING-0004",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:24",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": false,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "name": "The Movie Title "
+   }
+  },
+  "expect": {
+   "name": "The Movie Title"
+  },
+  "note": "FileNameBuilder.CleanFileName(name) uses NamingConfig.Default (src/NzbDrone.Core/Organizer/FileNameBuilder.cs:259)."
+ },
+ {
+  "id": "RAD-NAMING-0005",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:25",
+  "input": {
+   "op": "clean_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": false,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "name": " The Movie Title "
+   }
+  },
+  "expect": {
+   "name": "The Movie Title"
+  },
+  "note": "FileNameBuilder.CleanFileName(name) uses NamingConfig.Default (src/NzbDrone.Core/Organizer/FileNameBuilder.cs:259)."
+ }
+]

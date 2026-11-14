@@ -1,0 +1,85 @@
+[
+ {
+  "id": "SON-IMPORT-0070",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:23",
+  "input": {
+   "op": "AggregateReleaseGroup",
+   "given": {
+    "file_title": "Series.Title.S01E01.WEB-DL-Wizzy",
+    "download_client_title": "Series.Title.S01.WEB-DL-Viva",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.WEB-DL.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Wizzy"
+  },
+  "note": "Parsed infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0071",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:41",
+  "input": {
+   "op": "AggregateReleaseGroup",
+   "given": {
+    "file_title": "Series.Title.S01E01.WEB-DL-Wizzy",
+    "folder_title": "Series.Title.S01.WEB-DL-Drone",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.WEB-DL.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Wizzy"
+  },
+  "note": "Parsed infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0072",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:59",
+  "input": {
+   "op": "AggregateReleaseGroup",
+   "given": {
+    "file_title": "Series.Title.S01E01.WEB-DL-Wizzy",
+    "folder_title": "Series.Title.S01E01.WEB-DL-Drone",
+    "download_client_title": "Series.Title.S01E01.WEB-DL-Viva",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.WEB-DL.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Viva"
+  },
+  "note": "Parsed infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0073",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:79",
+  "input": {
+   "op": "AggregateReleaseGroup",
+   "given": {
+    "file_title": "Series.Title.S01E01.WEB-DL-Wizzy",
+    "folder_title": "Series.Title.S01E01.WEB-DL-Drone",
+    "download_client_title": "Series.Title.S01E01.WEB-DL",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.WEB-DL.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Drone"
+  },
+  "note": "Parsed infos come from the reference parser on the titles given."
+ },
+ {
+  "id": "SON-IMPORT-0074",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:99",
+  "input": {
+   "op": "AggregateReleaseGroup",
+   "given": {
+    "file_title": "Series.Title.S01E01.WEB-DL-Wizzy",
+    "folder_title": "Series.Title.S01E01.WEB-DL",
+    "download_client_title": "Series.Title.S01E01.WEB-DL",
+    "path": "/C/Test/Unsorted TV/Series.Title.S01/Series.Title.S01E01.mkv"
+   }
+  },
+  "expect": {
+   "release_group": "Wizzy"
+  },
+  "note": "Parsed infos come from the reference parser on the titles given."
+ }
+]

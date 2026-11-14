@@ -1,0 +1,332 @@
+[
+ {
+  "id": "RAD-DECISION-0001",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:49",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 30
+    },
+    "release": {
+     "size_mb": 50
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0002",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:50",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 30
+    },
+    "release": {
+     "size_mb": 250
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0003",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:51",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 30
+    },
+    "release": {
+     "size_mb": 500
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0004",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:52",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 60
+    },
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0005",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:53",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 60
+    },
+    "release": {
+     "size_mb": 500
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0006",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:54",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 60
+    },
+    "release": {
+     "size_mb": 1000
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0007",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:64",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 10,
+     "max_size": 20
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 120
+    },
+    "release": {
+     "size_bytes": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0008",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:76",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": null
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 30
+    },
+    "release": {
+     "size_bytes": 18457280000
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0009",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:87",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": null
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 60
+    },
+    "release": {
+     "size_bytes": 36857280000
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0010",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:98",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 0
+    },
+    "release": {
+     "size_mb": 1095
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "first of two asserts in this test; the test also expects one logged warning; quality_definition sizes are MB per minute of runtime"
+ },
+ {
+  "id": "RAD-DECISION-0011",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:98",
+  "input": {
+   "spec": "AcceptableSizeSpecification",
+   "given": {
+    "quality_definition": {
+     "quality": "SDTV",
+     "min_size": 2,
+     "max_size": 10
+    },
+    "parsed_quality": {
+     "quality": "SDTV",
+     "revision": {
+      "version": 2
+     }
+    },
+    "movie": {
+     "runtime": 0
+    },
+    "release": {
+     "size_mb": 1105
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "second of two asserts in this test; the test also expects one logged warning; quality_definition sizes are MB per minute of runtime"
+ }
+]

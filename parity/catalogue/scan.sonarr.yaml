@@ -1,0 +1,1040 @@
+# Sonarr disk-scan fixtures (series folder scan, DB cleanup, media info refresh, ffprobe reading,
+# HDR detection, media-info formatting), ported by parity/extract/sonarr_scan.py (ledger D25).
+# Corpus: corpus/reference/sonarr/scan/. Ruled-out fixtures: RULED_OUT in the script.
+
+- id: SON-SCAN-0001
+  behaviour: "A series whose folder and root folder are both missing is not scanned, created or cleaned, with a warning"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:90"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0002
+  behaviour: "A series whose folder is missing under an empty root folder is not scanned, created, cleaned or imported"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0003
+  behaviour: "A missing series folder is created when create-empty-series-folders is on"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:129"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0004
+  behaviour: "A missing series folder is not created when create-empty-series-folders is off"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:144"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0005
+  behaviour: "A missing series folder under a non-empty root folder cleans the DB of the series' files and imports nothing"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:159"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0006
+  behaviour: "Video files under Behind the Scenes, Deleted Scenes, Featurettes, Interviews, Samples, Scenes, Shorts, Trailers and Other subfolders are not scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:176"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0007
+  behaviour: "Video files in a Featurettes subfolder are not scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:201"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0008
+  behaviour: "With create-empty-series-folders on, a missing series folder still cleans the DB and imports nothing"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:221"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0009
+  behaviour: "Video files at the root of the series folder are scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:239"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0010
+  behaviour: "An Extras subfolder is skipped in any letter case; the folder is listed once for video and once for other files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:256"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0011
+  behaviour: "A .AppleDouble subfolder is skipped in any letter case"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:279"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0012
+  behaviour: "A series folder named Extras is scanned; its own Extras and .AppleDouble subfolders are still skipped"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:297"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0013
+  behaviour: "Subfolders starting with a period (.@__thumb in any case, .hidden) are skipped"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:320"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0014
+  behaviour: "A video file whose name starts with a period is scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:339"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0015
+  behaviour: "Period-prefixed subfolders inside a season folder are skipped"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:355"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0016
+  behaviour: "A Synology @eaDir subfolder is skipped"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:375"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0017
+  behaviour: "A .@__thumb subfolder is skipped"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:392"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0018
+  behaviour: "A series folder whose own name starts with a period (.hack) is scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:409"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0019
+  behaviour: "Files named with an extra suffix (-deleted, -other) are not scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:428"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0020
+  behaviour: "macOS resource-fork files (._ prefix) are not scanned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:446"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0021
+  behaviour: "Excluded files (.DS_Store, .unmanic, .unmanic.part) are neither scanned nor offered as possible extra files"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:463"
+  in_scope: true
+  status: red
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0022
+  behaviour: "DB files that are on disk and linked to episodes leave episodes untouched"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:62"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0023
+  behaviour: "DB files missing from disk are deleted with reason MissingFromDisk"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:75"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0024
+  behaviour: "DB files on disk that no episode links to are deleted with reason NoLinkedEpisodes"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:90"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0025
+  behaviour: "Episodes linked to a file id absent from the DB are unlinked (episode file id set to 0)"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0026
+  behaviour: "Episodes whose linked file is in the DB and on disk are not updated"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:116"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0027
+  behaviour: "On scan, files with current media info (schema 11) are skipped; files without media info are re-read and saved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:58"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0028
+  behaviour: "On scan, files with media info at the minimum schema (8) are skipped; files without media info are re-read"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:85"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0029
+  behaviour: "On scan, files with media info below the minimum schema (0) are re-read and saved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:112"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0030
+  behaviour: "On scan, files that do not exist on disk are not read or saved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:139"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0031
+  behaviour: "On scan, a file whose media info cannot be read does not stop the others"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:162"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0032
+  behaviour: "On scan, media info is not read when media info is disabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:190"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0033
+  behaviour: "Update reads no media info when media info is disabled"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:220"
+  in_scope: false
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0034
+  behaviour: "Updating a file reads its media info once and saves the file"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:243"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0035
+  behaviour: "When media info cannot be read, the file keeps its old media info"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:264"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0036
+  behaviour: "When media info cannot be read, the file is not saved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:280"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0037
+  behaviour: "A .iso file whose media info read returns nothing is read once and not saved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:297"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0038
+  behaviour: "A .m3u file whose media info read returns nothing is read once and not saved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:298"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0039
+  behaviour: "A .strm file whose media info read returns nothing is read once and not saved"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/UpdateMediaInfoServiceFixture.cs:299"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0040
+  behaviour: "The sample H.264 file's runtime is read as 10 seconds"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:32"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0041
+  behaviour: "The sample H.264 file's streams are read with codec, profile, bitrates, size, fps and colour"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:40"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0042
+  behaviour: "Media info is read from a file whose name has non-ASCII characters"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:70"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0043
+  behaviour: "8-bit unset/unset with no side data is HDR format None"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:106"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0044
+  behaviour: "10-bit unset/unset with no side data is HDR format None"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:107"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0045
+  behaviour: "10-bit bt709/bt709 with no side data is HDR format None"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:108"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0046
+  behaviour: "8-bit bt2020/smpte2084 with no side data is HDR format None"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:109"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0047
+  behaviour: "10-bit bt2020/bt2020-10 with no side data is HDR format None"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:110"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0048
+  behaviour: "10-bit bt2020/arib-std-b67 with no side data is HDR format Hlg10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:111"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0049
+  behaviour: "10-bit bt2020/smpte2084 with no side data is HDR format Pq10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:112"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0050
+  behaviour: "10-bit bt2020/smpte2084 with SideData is HDR format Pq10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:113"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0051
+  behaviour: "10-bit bt2020/smpte2084 with MasteringDisplayMetadata is HDR format Hdr10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:114"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0052
+  behaviour: "10-bit bt2020/smpte2084 with ContentLightLevelMetadata is HDR format Hdr10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:115"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0053
+  behaviour: "10-bit bt2020/smpte2084 with HdrDynamicMetadataSpmte2094 is HDR format Hdr10Plus"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:116"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0054
+  behaviour: "10-bit bt2020/smpte2084 with DoviConfigurationRecordSideData is HDR format DolbyVision"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:117"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0055
+  behaviour: "10-bit bt2020/smpte2084 with DoviConfigurationRecordSideData (DV compatibility id 1) is HDR format DolbyVisionHdr10"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:118"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0056
+  behaviour: "10-bit bt2020/smpte2084 with DoviConfigurationRecordSideData, HdrDynamicMetadataSpmte2094 (DV compatibility id 1) is HDR format DolbyVisionHdr10Plus"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:119"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0057
+  behaviour: "10-bit bt2020/smpte2084 with DoviConfigurationRecordSideData, HdrDynamicMetadataSpmte2094 (DV compatibility id 6) is HDR format DolbyVisionHdr10Plus"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:120"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0058
+  behaviour: "10-bit bt2020/smpte2084 with DoviConfigurationRecordSideData (DV compatibility id 2) is HDR format DolbyVisionSdr"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:121"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0059
+  behaviour: "10-bit bt2020/smpte2084 with DoviConfigurationRecordSideData (DV compatibility id 4) is HDR format DolbyVisionHlg"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/VideoFileInfoReaderFixture.cs:122"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0060
+  behaviour: "Audio mp2/-/- with scene name 'droned.s01e03.swedish.720p.hdtv.x264-prince' formats as 'MP2'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:13"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0061
+  behaviour: "Audio vorbis/-/- with scene name 'DB Super HDTV' formats as 'Vorbis'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:14"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0062
+  behaviour: "Audio pcm_s16le/-/- with scene name 'DW DVDRip XviD-idTV, ' formats as 'PCM'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:15"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0063
+  behaviour: "Audio truehd/-/- with scene name '' formats as 'TrueHD'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:16"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0064
+  behaviour: "Audio truehd/-/- with scene name 'TrueHD' formats as 'TrueHD'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:17"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0065
+  behaviour: "Audio truehd/thd+/- with scene name 'Atmos' formats as 'TrueHD Atmos'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:18"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0066
+  behaviour: "Audio truehd/thd+/- with scene name 'TrueHD.Atmos.7.1' formats as 'TrueHD Atmos'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:19"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0067
+  behaviour: "Audio truehd/thd+/- with scene name '' formats as 'TrueHD Atmos'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:20"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0068
+  behaviour: "Audio wmav1/-/- with scene name 'Droned.wmv' formats as 'WMA'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:21"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0069
+  behaviour: "Audio wmav2/-/- with scene name 'B.N.S04E18.720p.WEB-DL' formats as 'WMA'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:22"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0070
+  behaviour: "Audio opus/-/- with scene name 'Roadkill Ep3x11 - YouTube.webm' formats as 'Opus'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:23"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0071
+  behaviour: "Audio mp3/-/- with scene name 'climbing.mp4' formats as 'MP3'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:24"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0072
+  behaviour: "Audio dts/-/DTS-HD MA with scene name 'DTS-HD.MA' formats as 'DTS-HD MA'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:25"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0073
+  behaviour: "Audio dts/-/DTS:X with scene name 'DTS-X' formats as 'DTS-X'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:26"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0074
+  behaviour: "Audio dts/-/DTS-HD MA with scene name 'DTS-HD.MA' formats as 'DTS-HD MA'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:27"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0075
+  behaviour: "Audio dts/-/DTS-ES with scene name 'DTS-ES' formats as 'DTS-ES'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:28"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0076
+  behaviour: "Audio dts/-/DTS-ES with scene name 'DTS' formats as 'DTS-ES'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:29"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0077
+  behaviour: "Audio dts/-/DTS-HD HRA with scene name 'DTSHD-HRA' formats as 'DTS-HD HRA'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:30"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0078
+  behaviour: "Audio dts/-/DTS with scene name 'DTS' formats as 'DTS'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:31"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0079
+  behaviour: "Audio eac3/ec+3/- with scene name 'EAC3.Atmos' formats as 'EAC3 Atmos'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:32"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0080
+  behaviour: "Audio eac3/-/- with scene name 'DDP5.1' formats as 'EAC3'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:33"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0081
+  behaviour: "Audio ac3/-/- with scene name 'DD5.1' formats as 'AC3'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:34"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0082
+  behaviour: "Audio adpcm_ima_qt/-/- with scene name 'Custom?' formats as 'PCM'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:35"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0083
+  behaviour: "Audio adpcm_ms/-/- with scene name 'Custom' formats as 'PCM'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:36"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0084
+  behaviour: "An unknown audio format is reported as its raw format name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:50"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0085
+  behaviour: "Video mpeg2video/- with scene name 'Droned.S01E02.1080i.HDTV.DD5.1.MPEG2-NTb' formats as 'MPEG2'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:11"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0086
+  behaviour: "Video mpeg2video/- with scene name '' formats as 'MPEG2'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:12"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0087
+  behaviour: "Video mpeg1video/- with scene name 'The.Simpsons.S13E04.INTERNAL-ANiVCD.mpg' formats as 'MPEG'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:13"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0088
+  behaviour: "Video vc1/WVC1 with scene name 'B.N.S04E18.720p.WEB-DL' formats as 'VC1'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:14"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0089
+  behaviour: "Video vc1/V_MS/VFW/FOURCC/WVC1 with scene name '' formats as 'VC1'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:15"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0090
+  behaviour: "Video vc1/WMV3 with scene name 'It's Always Sunny S07E13 The Gang's RevengeHDTV.XviD-2HD.avi' formats as 'VC1'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:16"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0091
+  behaviour: "Video h264/V.MPEG4/ISO/AVC with scene name 'pd.2015.S03E08.720p.iP.WEBRip.AAC2.0.H264-BTW' formats as 'h264'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:17"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0092
+  behaviour: "Video h264/V_MPEG4/ISO/AVC with scene name 'Resistance.2019.S01E03.1080p.RTE.WEB-DL.AAC2.0.x264-RTN' formats as 'x264'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:18"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0093
+  behaviour: "Video wmv1/WMV1 with scene name 'Droned.wmv' formats as 'WMV'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:19"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0094
+  behaviour: "Video wmv2/WMV2 with scene name 'Droned.wmv' formats as 'WMV'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:20"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0095
+  behaviour: "Video mpeg4/XVID with scene name '' formats as 'XviD'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:21"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0096
+  behaviour: "Video mpeg4/DIVX with scene name '' formats as 'DivX'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:22"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0097
+  behaviour: "Video mpeg4/divx with scene name '' formats as 'DivX'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:23"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0098
+  behaviour: "Video mpeg4/DIV3 with scene name 'spsm.dvdrip.divx.avi'.' formats as 'DivX'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:24"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0099
+  behaviour: "Video msmpeg4/DIV3 with scene name 'Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi' formats as 'DivX'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:25"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0100
+  behaviour: "Video msmpeg4v2/DIV3 with scene name 'Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi' formats as 'DivX'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:26"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0101
+  behaviour: "Video msmpeg4v3/DIV3 with scene name 'Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi' formats as 'DivX'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:27"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0102
+  behaviour: "Video vp6f/4 with scene name 'Top Gear - S12E01 - Lorries - SD TV.flv' formats as 'VP6'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:28"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0103
+  behaviour: "Video vp6/4 with scene name 'Top Gear - S12E01 - Lorries - SD TV.flv' formats as 'VP6'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:29"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0104
+  behaviour: "Video vp7/VP70 with scene name 'Sweet Seymour.avi' formats as 'VP7'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:30"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0105
+  behaviour: "Video vp8/V_VP8 with scene name 'Dick.mkv' formats as 'VP8'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:31"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0106
+  behaviour: "Video vp9/V_VP9 with scene name 'Roadkill Ep3x11 - YouTube.webm' formats as 'VP9'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:32"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0107
+  behaviour: "Video h264/x264 with scene name 'Ghost Advent - S04E05 - Stanley Hotel SDTV.avi' formats as 'x264'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:33"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0108
+  behaviour: "Video hevc/V_MPEGH/ISO/HEVC with scene name 'The BBT S11E12 The Matrimonial Metric 1080p 10bit AMZN WEB-DL' formats as 'h265'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:34"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0109
+  behaviour: "Video mpeg4/mp4v-20 with scene name '' formats as ''"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:35"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0110
+  behaviour: "Video mpeg4/XVID with scene name 'American.Chopper.S06E07.Mountain.Creek.Bike.DSR.XviD-KRS' formats as 'XviD'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:36"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0111
+  behaviour: "Video rpza/V_QUICKTIME with scene name 'Custom' formats as ''"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:37"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0112
+  behaviour: "Video mpeg4/FMP4 with scene name '' formats as ''"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:38"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0113
+  behaviour: "Video mpeg4/MP42 with scene name '' formats as ''"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:39"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0114
+  behaviour: "Video mpeg4/mp43 with scene name 'Bubble.Guppies.S01E13.480p.WEB-DL.H.264-BTN-Custom' formats as ''"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:40"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0115
+  behaviour: "Video h264/x264 with scene name 'Some.Video.S01E01.h264' formats as 'x264'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:53"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0116
+  behaviour: "Video hevc/x265 with scene name 'Some.Video.S01E01.h265' formats as 'x265'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:54"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0117
+  behaviour: "Video h264/- with scene name 'Some.Video.S01E01.x264' formats as 'x264'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:55"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0118
+  behaviour: "Video hevc/- with scene name 'Some.Video.S01E01.x265' formats as 'x265'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:56"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0119
+  behaviour: "Video h264/- with scene name 'Some.Video.S01E01' formats as 'h264'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:57"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0120
+  behaviour: "Video hevc/- with scene name 'Some.Video.S01E01' formats as 'h265'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:58"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0121
+  behaviour: "An unknown video format is reported as its raw format name"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:71"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0122
+  behaviour: "HDR format None formats as dynamic range ''"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:11"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0123
+  behaviour: "HDR format Hlg10 formats as dynamic range 'HDR'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:12"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0124
+  behaviour: "HDR format Pq10 formats as dynamic range 'HDR'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:13"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0125
+  behaviour: "HDR format Hdr10 formats as dynamic range 'HDR'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:14"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0126
+  behaviour: "HDR format Hdr10Plus formats as dynamic range 'HDR'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:15"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0127
+  behaviour: "HDR format DolbyVision formats as dynamic range 'HDR'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:16"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0128
+  behaviour: "HDR format None formats as dynamic range type ''"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:11"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0129
+  behaviour: "HDR format Hlg10 formats as dynamic range type 'HLG'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:12"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0130
+  behaviour: "HDR format Pq10 formats as dynamic range type 'PQ'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:13"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0131
+  behaviour: "HDR format Hdr10 formats as dynamic range type 'HDR10'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:14"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0132
+  behaviour: "HDR format Hdr10Plus formats as dynamic range type 'HDR10Plus'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:15"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0133
+  behaviour: "HDR format DolbyVision formats as dynamic range type 'DV'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:16"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0134
+  behaviour: "HDR format DolbyVisionHdr10 formats as dynamic range type 'DV HDR10'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:17"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0135
+  behaviour: "HDR format DolbyVisionHdr10Plus formats as dynamic range type 'DV HDR10Plus'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:18"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0136
+  behaviour: "HDR format DolbyVisionHlg formats as dynamic range type 'DV HLG'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:19"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0137
+  behaviour: "HDR format DolbyVisionSdr formats as dynamic range type 'DV SDR'"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:20"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0138
+  behaviour: "GetVideoFiles with no flag lists the path recursively, once, and never top level only"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:44"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0139
+  behaviour: "GetVideoFiles(path, true) lists recursively, once"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:55"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0140
+  behaviour: "GetVideoFiles(path, false) lists the top level only, once"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:66"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: SON-SCAN-0141
+  behaviour: "Of 6 listed files only the 4 with a video extension are returned"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:77"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0142
+  behaviour: "FilterPaths drops files under a 'Extras' subfolder and keeps the files directly in the path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:86"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0143
+  behaviour: "FilterPaths drops files under a '@eadir' subfolder and keeps the files directly in the path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:87"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0144
+  behaviour: "FilterPaths drops files under a 'extrafanart' subfolder and keeps the files directly in the path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:88"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0145
+  behaviour: "FilterPaths drops files under a 'Plex Versions' subfolder and keeps the files directly in the path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:89"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0146
+  behaviour: "FilterPaths drops files under a '.secret' subfolder and keeps the files directly in the path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:90"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0147
+  behaviour: "FilterPaths drops files under a '.hidden' subfolder and keeps the files directly in the path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:91"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]
+- id: SON-SCAN-0148
+  behaviour: "FilterPaths drops files under a '.unwanted' subfolder and keeps the files directly in the path"
+  source: reference
+  ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ProviderTests/DiskScanProviderTests/GetVideoFilesFixture.cs:92"
+  in_scope: true
+  status: green
+  tests: [scryer-application::parity_scan::son_scan]

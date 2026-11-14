@@ -1,0 +1,153 @@
+[
+ {
+  "id": "SON-DECISION-0083",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:41",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Test\\TV\\Series"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 0
+    },
+    "disk": {
+     "available_mb": 200
+    },
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Series path is passed through AsOsAgnostic() in the test."
+ },
+ {
+  "id": "SON-DECISION-0084",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:51",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Test\\TV\\Series"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 50
+    },
+    "disk": {
+     "available_mb": 200
+    },
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Series path is passed through AsOsAgnostic() in the test."
+ },
+ {
+  "id": "SON-DECISION-0085",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:61",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Test\\TV\\Series"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 0
+    },
+    "disk": {
+     "available_mb": 200
+    },
+    "release": {
+     "size_mb": 1000
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Series path is passed through AsOsAgnostic() in the test."
+ },
+ {
+  "id": "SON-DECISION-0086",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:71",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Test\\TV\\Series"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 150
+    },
+    "disk": {
+     "available_mb": 200
+    },
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Series path is passed through AsOsAgnostic() in the test."
+ },
+ {
+  "id": "SON-DECISION-0087",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:81",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Test\\TV\\Series"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 150,
+     "skip_free_space_check_when_importing": true
+    },
+    "disk": {
+     "available_mb": 200
+    },
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Series path is passed through AsOsAgnostic() in the test."
+ },
+ {
+  "id": "SON-DECISION-0088",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FreeSpaceSpecificationFixture.cs:95",
+  "input": {
+   "spec": "FreeSpaceSpecification",
+   "given": {
+    "series": {
+     "path": "C:\\Test\\TV\\Series"
+    },
+    "config": {
+     "minimum_free_space_when_importing_mb": 150
+    },
+    "disk": {
+     "root_folder_missing": true
+    },
+    "release": {
+     "size_mb": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Free-space lookup throws DirectoryNotFoundException. Series path is passed through AsOsAgnostic() in the test."
+ }
+]

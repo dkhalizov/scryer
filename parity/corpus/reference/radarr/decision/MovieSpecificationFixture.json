@@ -1,0 +1,40 @@
+[
+ {
+  "id": "RAD-DECISION-0097",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/MovieSpecificationFixture.cs:32",
+  "input": {
+   "spec": "MovieSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "search": {
+     "kind": "search",
+     "movie_id": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "RAD-DECISION-0098",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/Search/MovieSpecificationFixture.cs:40",
+  "input": {
+   "spec": "MovieSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "search": {
+     "kind": "search",
+     "movie_id": 1
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

@@ -1,0 +1,11 @@
+[package]
+name = "scryer-parity"
+version = "0.0.0"
+edition.workspace = true
+publish = false
+description = "Test-only support for the parity net: catalogue, ratchet, report"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+serde_norway = "0.9.42"

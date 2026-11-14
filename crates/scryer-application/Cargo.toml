@@ -87,6 +87,12 @@ libc = "0.2"
 windows-sys = { version = "0.61.2", features = ["Win32_Storage_FileSystem", "Win32_Security", "Win32_System_JobObjects", "Win32_System_Threading", "Win32_System_Diagnostics_ToolHelp"] }
 
 [dev-dependencies]
+# fork: parity net property tests (notes/11-parity-net-design.md)
+proptest = { version = "1.12", default-features = false, features = ["std"] }
+# fork: parity net state-machine test (tests/sm_download_import.rs)
+proptest-state-machine = "0.9"
+# fork: parity net harness (notes/11-parity-net-design.md)
+scryer-parity = { path = "../../parity/harness" }
 application-updater = { git = "https://github.com/scryer-media/application-updater.git", rev = "e55801ce7f66c744667d4fe27dd12432a4697f33", features = ["test-seams"] }
 tokio = { workspace = true, features = ["test-util"] }
 wiremock = { workspace = true }
@@ -106,3 +112,7 @@ quinn = { version = "0.11", default-features = false, features = ["runtime-tokio
 rustls = { version = "0.23", default-features = false, features = ["std", "aws_lc_rs"] }
 h3 = { git = "https://github.com/scryer-media/proxy-tunnels.git", tag = "v0.3.3" }
 h3-quinn = { git = "https://github.com/scryer-media/proxy-tunnels.git", tag = "v0.3.3" }
+
+# fork: parity net seam (cfg(kani) gates src/kani_proofs.rs)
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ["cfg(kani)"] }

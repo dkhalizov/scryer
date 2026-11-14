@@ -1,0 +1,280 @@
+[
+ {
+  "id": "SON-DECISION-1092",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:39",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1093",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:53",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1094",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:69",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "release_group": "Sonarr"
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1095",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:90",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "release_group": "Sonarr"
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1096",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:111",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "release_group": "NotSonarr"
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1097",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:132",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "release_group": ""
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1098",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:153",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": null
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "release_group": "Sonarr"
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1099",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:176",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "release_group": "Sonarr"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1100",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:198",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "release_group": "Sonarr"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1101",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:220",
+  "input": {
+   "spec": "RepackSpecification",
+   "given": {
+    "release": {
+     "quality": "SDTV",
+     "revision": 2,
+     "repack": true,
+     "release_group": "Sonarr"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "release_group": "Sonarr"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

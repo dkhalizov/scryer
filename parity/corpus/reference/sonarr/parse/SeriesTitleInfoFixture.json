@@ -1,0 +1,72 @@
+[
+ {
+  "id": "SON-PARSE-1252",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs:10",
+  "input": {
+   "name": "Series.Title.S01E01.pilot.720p.hdtv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "year": 0
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-1253",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs:20",
+  "input": {
+   "name": "Series.Title.S01E01.pilot.720p.hdtv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_equals_title_without_year": true
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-1254",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs:30",
+  "input": {
+   "name": "Series.Title.2004.S01E01.pilot.720p.hdtv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "year": 2004
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-1255",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs:40",
+  "input": {
+   "name": "Series.Title.2004.S01E01.pilot.720p.hdtv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title": "Series Title 2004"
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-1256",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs:50",
+  "input": {
+   "name": "Series.Title.2004.S01E01.pilot.720p.hdtv",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "series_title_info": {
+    "title_without_year": "Series Title"
+   }
+  }
+ }
+]

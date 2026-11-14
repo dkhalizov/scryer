@@ -1,0 +1,167 @@
+[
+ {
+  "id": "RAD-IMPORT-0053",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:29",
+  "input": {
+   "op": "filter_existing_files",
+   "given": {
+    "movie_path": "/C/",
+    "files": [
+     "/C/file1.avi",
+     "/C/file2.avi",
+     "/C/file3.avi"
+    ],
+    "known_relative_paths": []
+   }
+  },
+  "expect": {
+   "result_set": [
+    "/C/file1.avi",
+    "/C/file2.avi",
+    "/C/file3.avi"
+   ]
+  },
+  "note": "Movie 10 at /C/; known files are the movie's file records (relative paths)."
+ },
+ {
+  "id": "RAD-IMPORT-0054",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:46",
+  "input": {
+   "op": "filter_existing_files",
+   "given": {
+    "movie_path": "/C/",
+    "files": [
+     "/C/file1.avi",
+     "/C/file2.avi",
+     "/C/file3.avi"
+    ],
+    "known_relative_paths": [
+     "file1.avi",
+     "file2.avi",
+     "file3.avi"
+    ]
+   }
+  },
+  "expect": {
+   "result": []
+  },
+  "note": "Movie 10 at /C/; known files are the movie's file records (relative paths)."
+ },
+ {
+  "id": "RAD-IMPORT-0055",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:63",
+  "input": {
+   "op": "filter_existing_files",
+   "given": {
+    "movie_path": "/C/",
+    "files": [
+     "/C/file1.avi",
+     "/C/file2.avi",
+     "/C/file3.avi"
+    ],
+    "known_relative_paths": [
+     "file2.avi"
+    ]
+   }
+  },
+  "expect": {
+   "count": 2,
+   "excludes": [
+    "/C/file2.avi"
+   ]
+  },
+  "note": "Movie 10 at /C/; known files are the movie's file records (relative paths)."
+ },
+ {
+  "id": "RAD-IMPORT-0057",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:107",
+  "input": {
+   "op": "filter_existing_files",
+   "given": {
+    "movie_path": "/C/",
+    "files": [
+     "/C/file1.avi",
+     "/C/FILE2.avi",
+     "/C/file3.avi"
+    ],
+    "known_relative_paths": [
+     "file2.avi"
+    ]
+   }
+  },
+  "expect": {
+   "count": 3
+  },
+  "note": "Movie 10 at /C/; known files are the movie's file records (relative paths)."
+ },
+ {
+  "id": "RAD-IMPORT-0058",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileServiceTests/FilterFixture.cs:129",
+  "input": {
+   "op": "filter_existing_files",
+   "given": {
+    "movie_path": "/C/",
+    "files": [
+     "/C/FILE1.avi"
+    ],
+    "known_relative_paths": []
+   }
+  },
+  "expect": {
+   "count": 1,
+   "contains": [
+    "/C/FILE1.avi"
+   ],
+   "excludes": [
+    "/C/file1.avi"
+   ]
+  },
+  "note": "Movie 10 at /C/; known files are the movie's file records (relative paths)."
+ },
+ {
+  "id": "RAD-IMPORT-0059",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:49",
+  "input": {
+   "op": "clean_file_records",
+   "given": {
+    "records": 10,
+    "missing_from_disk": 0
+   }
+  },
+  "expect": {
+   "movie_updated": false
+  },
+  "note": "Movie at /C/Test/TV/Series with 10 file records."
+ },
+ {
+  "id": "RAD-IMPORT-0060",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:62",
+  "input": {
+   "op": "clean_file_records",
+   "given": {
+    "records": 10,
+    "missing_from_disk": 2
+   }
+  },
+  "expect": {
+   "records_deleted": 2,
+   "delete_reason": "MissingFromDisk"
+  },
+  "note": "Movie at /C/Test/TV/Series with 10 file records."
+ },
+ {
+  "id": "RAD-IMPORT-0063",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:105",
+  "input": {
+   "op": "clean_file_records",
+   "given": {
+    "records": 10,
+    "missing_from_disk": 0
+   }
+  },
+  "expect": {
+   "movie_updated": false
+  },
+  "note": "Movie at /C/Test/TV/Series with 10 file records."
+ }
+]

@@ -1,0 +1,1085 @@
+[
+ {
+  "id": "RAD-DECISION-1107",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:103",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": null,
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1108",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:110",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV"
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1109",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:117",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "WEBDL-1080p"
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-1080p"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1110",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:129",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "WEBDL-1080p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-1080p"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1111",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:137",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1112",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:151",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "Bluray-1080p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1113",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:165",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p",
+      "revision": {
+       "version": 1
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1114",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:180",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1115",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:195",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the body is identical to should_return_false_if_cutoff_is_met_and_quality_is_higher; no language is set; existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1116",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:210",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the body is identical to should_return_false_if_cutoff_is_met_and_quality_is_higher; no language is set; existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1117",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:225",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "no language is set despite the name; existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1118",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:240",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "SDTV",
+      "revision": {
+       "version": 2
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "DVD",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "no language is set despite the name; existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1119",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:254",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-720p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "HDTV-720p"
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p"
+    },
+    "release": {
+     "custom_formats": [
+      "My Format"
+     ]
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the profile literal's GetSampleFormatItems(\"My Format\") runs while no custom formats are registered, and GivenProfile then resets format items, so My Format scores nothing; existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1120",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:277",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "HDTV-1080p",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": true,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "WEBDL-1080p",
+      "revision": {
+       "version": 1
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-1080p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1121",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:293",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Raw-HD",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "format_items": [],
+     "min_format_score": 0,
+     "cutoff_format_score": 0
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "WEBDL-1080p"
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "Bluray-1080p"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1122",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:309",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "SDTV",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format",
+       "score": 50
+      }
+     ],
+     "min_format_score": 0,
+     "cutoff_format_score": 10000
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "WEBDL-1080p"
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-1080p"
+    },
+    "release": {
+     "custom_formats": [
+      "My Format"
+     ]
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1123",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:342",
+  "input": {
+   "spec": "UpgradeDiskSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "SDTV",
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format",
+       "score": 50
+      }
+     ],
+     "min_format_score": 0,
+     "cutoff_format_score": 10000
+    },
+    "existing_file": {
+     "quality": {
+      "quality": "WEBDL-1080p",
+      "revision": {
+       "version": 1
+      }
+     },
+     "custom_formats": []
+    },
+    "parsed_quality": {
+     "quality": "WEBDL-1080p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": [
+      "My Format"
+     ]
+    },
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "existing_file.custom_formats is what the mocked ParseCustomFormat(MovieFile) returns; setup format items GetSampleFormatItems(\"None\") are empty (no custom formats registered); download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ }
+]

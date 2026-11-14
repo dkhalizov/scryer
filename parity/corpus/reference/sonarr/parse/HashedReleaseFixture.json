@@ -1,0 +1,344 @@
+[
+ {
+  "id": "SON-PARSE-0303",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:14",
+  "input": {
+   "name": "/C/Test/Some.Hashed.Release.S01E01.720p.WEB-DL.AAC2.0.H.264-Mercury/0e895c37245186812cb08aab1529cf8ee389dd05.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Some Hashed Release",
+   "quality": {
+    "name": "WEBDL-720p",
+    "source": "Web",
+    "resolution": 720
+   },
+   "release_group": "Mercury"
+  }
+ },
+ {
+  "id": "SON-PARSE-0304",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:21",
+  "input": {
+   "name": "/C/Test/0e895c37245186812cb08aab1529cf8ee389dd05/Some.Hashed.Release.S01E01.720p.WEB-DL.AAC2.0.H.264-Mercury.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Some Hashed Release",
+   "quality": {
+    "name": "WEBDL-720p",
+    "source": "Web",
+    "resolution": 720
+   },
+   "release_group": "Mercury"
+  }
+ },
+ {
+  "id": "SON-PARSE-0305",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:28",
+  "input": {
+   "name": "/C/Test/Fake.Dir.S01E01-Test/yrucreM-462.H.0.2CAA.LD-BEW.p027.10E10S.esaeleR.dehsaH.emoS.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Some Hashed Release",
+   "quality": {
+    "name": "WEBDL-720p",
+    "source": "Web",
+    "resolution": 720
+   },
+   "release_group": "Mercury"
+  }
+ },
+ {
+  "id": "SON-PARSE-0306",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:35",
+  "input": {
+   "name": "/C/Test/Fake.Dir.S01E01-Test/yrucreM-LN 1.5DD LD-BEW P0801 10E10S esaeleR dehsaH emoS.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Some Hashed Release",
+   "quality": {
+    "name": "WEBDL-1080p",
+    "source": "Web",
+    "resolution": 1080
+   },
+   "release_group": "Mercury"
+  }
+ },
+ {
+  "id": "SON-PARSE-0307",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:42",
+  "input": {
+   "name": "/C/Test/Title.S01E10.DVDRip.XviD-SONARR/AHFMZXGHEWD660.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Title",
+   "quality": {
+    "name": "DVD",
+    "source": "DVD",
+    "resolution": 480
+   },
+   "release_group": "SONARR"
+  }
+ },
+ {
+  "id": "SON-PARSE-0308",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:49",
+  "input": {
+   "name": "/C/Test/Show Title.S02E12.1080p.BluRay.x264-SONARR/Backup_72023S02-12.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Show Title",
+   "quality": {
+    "name": "Bluray-1080p",
+    "source": "Bluray",
+    "resolution": 1080
+   },
+   "release_group": "SONARR"
+  }
+ },
+ {
+  "id": "SON-PARSE-0309",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:56",
+  "input": {
+   "name": "/C/Test/Title S04E08 Chupacabra 720p WEB-DL DD5 1 H 264-ECI/123.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Title",
+   "quality": {
+    "name": "WEBDL-720p",
+    "source": "Web",
+    "resolution": 720
+   },
+   "release_group": "ECI"
+  }
+ },
+ {
+  "id": "SON-PARSE-0310",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:63",
+  "input": {
+   "name": "/C/Test/Title S04E08 Chupacabra 720p WEB-DL DD5 1 H 264-ECI/abc.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Title",
+   "quality": {
+    "name": "WEBDL-720p",
+    "source": "Web",
+    "resolution": 720
+   },
+   "release_group": "ECI"
+  }
+ },
+ {
+  "id": "SON-PARSE-0311",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:70",
+  "input": {
+   "name": "/C/Test/Title S04E08 Chupacabra 720p WEB-DL DD5 1 H 264-ECI/b00bs.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Title",
+   "quality": {
+    "name": "WEBDL-720p",
+    "source": "Web",
+    "resolution": 720
+   },
+   "release_group": "ECI"
+  }
+ },
+ {
+  "id": "SON-PARSE-0312",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:77",
+  "input": {
+   "name": "/C/Test/The.Show.Title.S02E23.720p.HDTV.x264-NZBgeek/cgajsofuejsa501.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "The Show Title",
+   "quality": {
+    "name": "HDTV-720p",
+    "source": "Television",
+    "resolution": 720
+   },
+   "release_group": "NZBgeek"
+  }
+ },
+ {
+  "id": "SON-PARSE-0313",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:84",
+  "input": {
+   "name": "/C/Test/Show.Title.S03E04.1080p.WEB-DL.DD5.1.H264-RARBG/170424_26.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Show Title",
+   "quality": {
+    "name": "WEBDL-1080p",
+    "source": "Web",
+    "resolution": 1080
+   },
+   "release_group": "RARBG"
+  }
+ },
+ {
+  "id": "SON-PARSE-0314",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:91",
+  "input": {
+   "name": "/C/Test/XxQVHK4GJMP3n2dLpmhW/XxQVHK4GJMP3n2dLpmhW/MKV/010E70S.nuF.fo.snoS.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Sons of Fun",
+   "quality": {
+    "name": "HDTV-720p",
+    "source": "Television",
+    "resolution": 720
+   },
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0315",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:98",
+  "input": {
+   "name": "50E50S.denorD.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Droned",
+   "quality": {
+    "name": "HDTV-720p",
+    "source": "Television",
+    "resolution": 720
+   },
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0316",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:105",
+  "input": {
+   "name": "/C/Test/XxQVHK4GJMP3n2dLpmhW/XxQVHK4GJMP3n2dLpmhW/50E50S.denorD.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Droned",
+   "quality": {
+    "name": "HDTV-720p",
+    "source": "Television",
+    "resolution": 720
+   },
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0317",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:112",
+  "input": {
+   "name": "/C/Test/Series.Title.S02E24.720p.HDTV.H.264/abc.xyz.af6021c37f7852.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Series Title",
+   "quality": {
+    "name": "HDTV-720p",
+    "source": "Television",
+    "resolution": 720
+   },
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0318",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:119",
+  "input": {
+   "name": "/C/Test/tv/Series.Title.S04E03.Episode.Name.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb/cwnOJYks5E2WP7zGuzPkdkRK3JkWw0.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Series Title",
+   "quality": {
+    "name": "WEBDL-1080p",
+    "source": "Web",
+    "resolution": 1080
+   },
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-0319",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:126",
+  "input": {
+   "name": "/C/Test/tv/Series.Title.2017.S04E07.Episode.Name.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb/s2e2fYzx5xJhuBjHn5ZXE07Ebi.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Series Title 2017",
+   "quality": {
+    "name": "WEBDL-1080p",
+    "source": "Web",
+    "resolution": 1080
+   },
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-0320",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:133",
+  "input": {
+   "name": "/C/Test/tv/Series.Title.S04E03.Episode.Name.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb/zM0vnVU1SoV4uwTihfzTHkYmJPBemgN3MqXG1fY.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Series Title",
+   "quality": {
+    "name": "WEBDL-1080p",
+    "source": "Web",
+    "resolution": 1080
+   },
+   "release_group": "NTb"
+  }
+ },
+ {
+  "id": "SON-PARSE-0321",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:140",
+  "input": {
+   "name": "/C/Test/tv/Series.Title.2019.S02E02.The.Episode.of.Names.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb/46XuzmawYQeUBwNdH2Hw2996.mkv",
+   "facet": "series",
+   "fn": "Parser.ParsePath"
+  },
+  "expect": {
+   "title": "Series Title 2019",
+   "quality": {
+    "name": "WEBDL-1080p",
+    "source": "Web",
+    "resolution": 1080
+   },
+   "release_group": "NTb"
+  }
+ }
+]

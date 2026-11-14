@@ -1,0 +1,2582 @@
+[
+ {
+  "id": "SON-DECISION-1000",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:87",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "real": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1001",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:101",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 2
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1002",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:115",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "SDTV",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1003",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:129",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1004",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:143",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 2,
+        "episode": 2
+       },
+       {
+        "id": 3,
+        "episode": 3
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       },
+       {
+        "id": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1005",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:157",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisodeSd",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "SDTV",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 100,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisodeHdSmallOld",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1000,
+      "size_mb": 1200,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisodeSmallYoung",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 10,
+      "size_mb": 1250,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisodeHdLargeYoung",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 3000,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisodeHdLargeYoung"
+  }
+ },
+ {
+  "id": "SON-DECISION-1006",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:175",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": 200
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisodeSmall",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 1200,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisodeLarge",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 10000,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisodeLarge"
+  }
+ },
+ {
+  "id": "SON-DECISION-1007",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:192",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": 46
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 500,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 2000,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode3",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 3000,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode4",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 1,
+      "size_mb": 5000,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode3"
+  }
+ },
+ {
+  "id": "SON-DECISION-1008",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:213",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 10,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 5,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1009",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:227",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 500,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 500,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "throws": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1010",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:242",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1011",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:258",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Torrent"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  }
+ },
+ {
+  "id": "SON-DECISION-1012",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:274",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       },
+       {
+        "id": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "full_season": true
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  }
+ },
+ {
+  "id": "SON-DECISION-1013",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:290",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60,
+     "series_type": "Anime"
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       },
+       {
+        "id": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  },
+  "note": "The test asserts the head has remoteEpisode1's episode count (2)."
+ },
+ {
+  "id": "SON-DECISION-1014",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:307",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       },
+       {
+        "id": 2,
+        "episode": 2
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  },
+  "note": "The test asserts the head has remoteEpisode2's episode count (1)."
+ },
+ {
+  "id": "SON-DECISION-1015",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:321",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "seeders": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "seeders": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1016",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:347",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "seeders": 10,
+      "peers": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "seeders": 10,
+      "peers": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1017",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:374",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "seeders": 0,
+      "peers": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Torrent",
+      "seeders": 0,
+      "peers": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1018",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:402",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 250,
+      "protocol": "Torrent",
+      "seeders": 1000,
+      "peers": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 200,
+      "protocol": "Torrent",
+      "seeders": 1100,
+      "peers": 10
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  },
+  "note": "The test sets torrentInfo1.Size after cloning it, so remoteEpisode1 is 250 MB and remoteEpisode2 200 MB."
+ },
+ {
+  "id": "SON-DECISION-1019",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:431",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 100,
+      "size_mb": 200,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 150,
+      "size_mb": 250,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  }
+ },
+ {
+  "id": "SON-DECISION-1020",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:451",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "Bluray-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 250,
+      "protocol": "Torrent",
+      "seeders": 100,
+      "peers": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "SDTV",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 200,
+      "protocol": "Torrent",
+      "seeders": 1100,
+      "peers": 10
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  },
+  "note": "The test sets torrentInfo1.Size after cloning it, so remoteEpisode1 is 250 MB and remoteEpisode2 200 MB."
+ },
+ {
+  "id": "SON-DECISION-1021",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:480",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "SDTV",
+       "revision": 1
+      },
+      "languages": [
+       "French"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "German"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1022",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:494",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  }
+ },
+ {
+  "id": "SON-DECISION-1023",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:511",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 2
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 0
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1024",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:532",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 2
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 0
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode2"
+  }
+ },
+ {
+  "id": "SON-DECISION-1025",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:553",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 2
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 0
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    }
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  }
+ },
+ {
+  "id": "SON-DECISION-1026",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:576",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1,
+       "real": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25,
+      "custom_format_score": 0
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    }
+   }
+  },
+  "expect": {
+   "first": "remoteEpisode1"
+  }
+ },
+ {
+  "id": "SON-DECISION-1027",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:600",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 50
+     },
+     {
+      "label": "remoteEpisode3",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteEpisode3",
+    "remoteEpisode1",
+    "remoteEpisode2"
+   ]
+  }
+ },
+ {
+  "id": "SON-DECISION-1028",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:616",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisions",
+   "given": {
+    "series": {
+     "runtime": 60
+    },
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "DVD",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p"
+     ],
+     "allowed": "all"
+    },
+    "delay_profile": {
+     "preferred_protocol": "Usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "candidates": [
+     {
+      "label": "remoteEpisode1",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     },
+     {
+      "label": "remoteEpisode2",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 50
+     },
+     {
+      "label": "remoteEpisode3",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "SDTV",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 1
+     },
+     {
+      "label": "remoteEpisode4",
+      "episodes": [
+       {
+        "id": 1,
+        "episode": 1
+       }
+      ],
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": 1
+      },
+      "languages": [
+       "English"
+      ],
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "Usenet",
+      "indexer_priority": 25
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteEpisode4",
+    "remoteEpisode2",
+    "remoteEpisode1",
+    "remoteEpisode3"
+   ]
+  }
+ }
+]

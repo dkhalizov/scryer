@@ -1,0 +1,142 @@
+[
+ {
+  "id": "SON-IMPORT-0237",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:63",
+  "input": {
+   "op": "MediaFileDeletionService.DeleteEpisodeFile",
+   "given": {
+    "root_folder": "C:\\Test\\TV",
+    "series_folder": "Series Title",
+    "episode_file": {
+     "relative_path": "Series Title - S01E01"
+    },
+    "root_folder_exists": false,
+    "root_folder_has_folders": false,
+    "series_folder_exists": false,
+    "file_exists": false
+   }
+  },
+  "expect": {
+   "throws": "NzbDroneClientException"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0238",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:70",
+  "input": {
+   "op": "MediaFileDeletionService.DeleteEpisodeFile",
+   "given": {
+    "root_folder": "C:\\Test\\TV",
+    "series_folder": "Series Title",
+    "episode_file": {
+     "relative_path": "Series Title - S01E01"
+    },
+    "root_folder_exists": true,
+    "root_folder_has_folders": false,
+    "series_folder_exists": false,
+    "file_exists": false
+   }
+  },
+  "expect": {
+   "throws": "NzbDroneClientException"
+  }
+ },
+ {
+  "id": "SON-IMPORT-0239",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:79",
+  "input": {
+   "op": "MediaFileDeletionService.DeleteEpisodeFile",
+   "given": {
+    "root_folder": "C:\\Test\\TV",
+    "series_folder": "Series Title",
+    "episode_file": {
+     "relative_path": "Series Title - S01E01"
+    },
+    "root_folder_exists": true,
+    "root_folder_has_folders": true,
+    "series_folder_exists": false,
+    "file_exists": false
+   }
+  },
+  "expect": {
+   "calls": {
+    "MediaFileService.Delete(Manual)": 1,
+    "RecycleBin.DeleteFile(file)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0240",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:91",
+  "input": {
+   "op": "MediaFileDeletionService.DeleteEpisodeFile",
+   "given": {
+    "root_folder": "C:\\Test\\TV",
+    "series_folder": "Series Title",
+    "episode_file": {
+     "relative_path": "Series Title - S01E01"
+    },
+    "root_folder_exists": true,
+    "root_folder_has_folders": true,
+    "series_folder_exists": true,
+    "file_exists": false
+   }
+  },
+  "expect": {
+   "calls": {
+    "MediaFileService.Delete(Manual)": 1,
+    "RecycleBin.DeleteFile(file)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0241",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:104",
+  "input": {
+   "op": "MediaFileDeletionService.DeleteEpisodeFile",
+   "given": {
+    "root_folder": "C:\\Test\\TV",
+    "series_folder": "Series Title",
+    "episode_file": {
+     "relative_path": "Series Title - S01E01"
+    },
+    "root_folder_exists": true,
+    "root_folder_has_folders": true,
+    "series_folder_exists": true,
+    "file_exists": true
+   }
+  },
+  "expect": {
+   "calls": {
+    "RecycleBin.DeleteFile(file, 'Series Title')": 1,
+    "MediaFileService.Delete(Manual)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0242",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteEpisodeFileFixture.cs:121",
+  "input": {
+   "op": "MediaFileDeletionService.DeleteEpisodeFile",
+   "given": {
+    "root_folder": "C:\\Test\\TV",
+    "series_folder": "Series Title",
+    "episode_file": {
+     "relative_path": "Series Title - S01E01"
+    },
+    "root_folder_exists": true,
+    "root_folder_has_folders": true,
+    "series_folder_exists": true,
+    "file_exists": true,
+    "delete_file_throws": "IOException"
+   }
+  },
+  "expect": {
+   "throws": "NzbDroneClientException",
+   "calls": {
+    "RecycleBin.DeleteFile(file, 'Series Title')": 1,
+    "MediaFileService.Delete(Manual)": 0
+   }
+  }
+ }
+]

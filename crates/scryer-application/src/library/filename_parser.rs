@@ -14,8 +14,9 @@ use crate::helpers::{
     has_usable_release_title_signal, normalize_release_title_signal, parse_usable_release_title,
 };
 
+// fork: parity net seam (was pub(crate); parity/fuzz scan_path)
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub(crate) enum LibraryFilenameParseMode {
+pub enum LibraryFilenameParseMode {
     TitleOnly,
     TitleScan,
 }
@@ -76,8 +77,9 @@ pub(crate) struct LibraryFilenameExistingRecord<'a> {
     pub(crate) snapshot_matches: bool,
 }
 
+// fork: parity net seam (was pub(crate); parity/fuzz scan_path)
 #[derive(Clone, Debug)]
-pub(crate) struct LibraryFilenameParseInput<'a> {
+pub struct LibraryFilenameParseInput<'a> {
     pub(crate) path: &'a Path,
     pub(crate) display_name: Option<&'a str>,
     pub(crate) library_root: Option<&'a Path>,
@@ -87,7 +89,8 @@ pub(crate) struct LibraryFilenameParseInput<'a> {
     pub(crate) series_movie_links: &'a [SeriesMovieLink],
     pub(crate) episodes: &'a [Episode],
     pub(crate) existing_record: Option<LibraryFilenameExistingRecord<'a>>,
-    pub(crate) mode: LibraryFilenameParseMode,
+    // fork: parity net seam (was pub(crate); parity/fuzz scan_path)
+    pub mode: LibraryFilenameParseMode,
     pub(crate) fallback_policy: LibraryFilenameFallbackPolicy,
     /// Community (per-cour) anime numbering for this title, when the catalog
     /// stores one. `None` for every non-anime title and for anime whose
@@ -96,7 +99,8 @@ pub(crate) struct LibraryFilenameParseInput<'a> {
 }
 
 impl<'a> LibraryFilenameParseInput<'a> {
-    pub(crate) fn title_only(path: &'a Path, library_root: Option<&'a Path>) -> Self {
+    // fork: parity net seam (was pub(crate); parity/fuzz scan_path)
+    pub fn title_only(path: &'a Path, library_root: Option<&'a Path>) -> Self {
         Self {
             path,
             display_name: None,
@@ -138,11 +142,14 @@ pub(crate) enum LibraryFilenameTarget {
     },
 }
 
+// fork: parity net seam (was pub(crate); parity/fuzz scan_path)
 #[derive(Clone, Debug)]
-pub(crate) struct LibraryFilenameParse {
+pub struct LibraryFilenameParse {
     pub(crate) query_evidence: LibraryQueryEvidence,
-    pub(crate) parsed_release: crate::ParsedReleaseMetadata,
-    pub(crate) episode_identity: Option<crate::ParsedEpisodeMetadata>,
+    // fork: parity net seam (was pub(crate); parity/fuzz scan_path)
+    pub parsed_release: crate::ParsedReleaseMetadata,
+    // fork: parity net seam (was pub(crate); parity/fuzz scan_path)
+    pub episode_identity: Option<crate::ParsedEpisodeMetadata>,
     pub(crate) target: LibraryFilenameTarget,
     pub(crate) strategy: LibraryFilenameParseStrategy,
     pub(crate) release_fallback_used: bool,
@@ -267,9 +274,8 @@ struct QueryEvidenceBuild {
     parsed_release: Option<crate::ParsedReleaseMetadata>,
 }
 
-pub(crate) fn parse_library_filename(
-    input: &LibraryFilenameParseInput<'_>,
-) -> LibraryFilenameParse {
+// fork: parity net seam (was pub(crate); parity/fuzz scan_path)
+pub fn parse_library_filename(input: &LibraryFilenameParseInput<'_>) -> LibraryFilenameParse {
     parse_library_filename_with_index(input, None)
 }
 

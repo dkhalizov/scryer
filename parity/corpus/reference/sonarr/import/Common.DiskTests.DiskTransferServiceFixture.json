@@ -1,0 +1,722 @@
+[
+ {
+  "id": "SON-IMPORT-0259",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:56",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/source/my.video.mkv",
+    "mode": "HardLink",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException",
+   "calls": {
+    "TryCreateHardLink(/C/source/my.video.mkv, /C/source/my.video.mkv)": 0
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0260",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:65",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/source/MY.VIDEO.MKV",
+    "mode": "HardLink",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0261",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:73",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/source/MY.VIDEO.MKV",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "on_call": {
+     "MoveFile(/C/source/my.video.mkv, /C/source/my.video.mkv.backup~, true)": "source becomes backup"
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "MoveFile(/C/source/my.video.mkv.backup~, /C/source/MY.VIDEO.MKV, false)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0262",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:101",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/source/MY.VIDEO.MKV",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "faults": {
+     "MoveFile(/C/source/my.video.mkv.backup~, /C/source/MY.VIDEO.MKV, false)": "IOException"
+    },
+    "on_call": {
+     "MoveFile(/C/source/my.video.mkv, /C/source/my.video.mkv.backup~, true)": "source becomes backup"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException",
+   "calls": {
+    "MoveFile(/C/source/my.video.mkv.backup~, /C/source/my.video.mkv, false)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0263",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:125",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/source/MY.VIDEO.MKV",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "faults": {
+     "MoveFile(/C/source/my.video.mkv.backup~, /C/source/MY.VIDEO.MKV, false)": "IOException",
+     "MoveFile(/C/source/my.video.mkv.backup~, /C/source/my.video.mkv, false)": "IOException"
+    },
+    "on_call": {
+     "MoveFile(/C/source/my.video.mkv, /C/source/my.video.mkv.backup~, true)": "source becomes backup"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes. The test also expects one logged error."
+ },
+ {
+  "id": "SON-IMPORT-0264",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:152",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/source/my.video.mkv/child",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0265",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:160",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "HardLink",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "on_call": {
+     "TryCreateHardLink(/C/source/my.video.mkv, /C/target/my.video.mkv)": "succeeds, target appears"
+    }
+   }
+  },
+  "expect": {
+   "result": "HardLink"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0266",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:170",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "HardLink",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "faults": {
+     "TryCreateHardLink(any, any)": "returns false"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0267",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:178",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source",
+      "drive_format": "ext4"
+     },
+     "target": {
+      "root": "/C/target",
+      "drive_format": "cifs"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 0,
+    "CopyFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 1,
+    "DeleteFile(/C/source/my.video.mkv)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0268",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:196",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source",
+      "drive_format": "cifs"
+     },
+     "target": "same as source"
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 1,
+    "CopyFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 0,
+    "DeleteFile(/C/source/my.video.mkv)": 0
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0269",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:214",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Copy",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "CopyFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0270",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:223",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0271",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:232",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000,
+     "/C/target/my.video.mkv": 1000
+    },
+    "overwrite": true
+   }
+  },
+  "expect": {
+   "calls": {
+    "DeleteFile(/C/target/my.video.mkv)": 1,
+    "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0272",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:246",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000,
+     "/C/target/my.video.mkv": 1000
+    },
+    "overwrite": false
+   }
+  },
+  "expect": {
+   "throws": "DestinationAlreadyExistsException",
+   "calls": {
+    "DeleteFile(/C/target/my.video.mkv)": 0,
+    "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": 0
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0273",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:260",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Copy",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetFileSize(/C/source/my.video.mkv)": 1,
+    "GetFileSize(/C/target/my.video.mkv)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0274",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:272",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Copy",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "on_call": {
+     "CopyFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": "target appears with 900 bytes"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException",
+   "calls": {
+    "DeleteFile(/C/target/my.video.mkv)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0275",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:288",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Copy",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "faults": {
+     "DeleteFile(/C/target/my.video.mkv)": "IOException"
+    },
+    "on_call": {
+     "CopyFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": "target appears with 900 bytes"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes. The test also expects one logged error."
+ },
+ {
+  "id": "SON-IMPORT-0276",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:307",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetFileSize(/C/source/my.video.mkv)": 1,
+    "GetFileSize(/C/target/my.video.mkv)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0277",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:319",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "on_call": {
+     "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": "source disappears, target appears with 900 bytes"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException",
+   "calls": {
+    "DeleteFile(/C/target/my.video.mkv)": 0
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes. The test also expects one logged error."
+ },
+ {
+  "id": "SON-IMPORT-0278",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:338",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "on_call": {
+     "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": "target appears with 900 bytes"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException",
+   "calls": {
+    "DeleteFile(/C/target/my.video.mkv)": 1
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ },
+ {
+  "id": "SON-IMPORT-0279",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:354",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "faults": {
+     "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": "FileAlreadyExistsException"
+    }
+   }
+  },
+  "expect": {
+   "throws": "FileAlreadyExistsException",
+   "calls": {
+    "DeleteFile(/C/target/my.video.mkv)": 0
+   }
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes. The test first arranges a partial-target callback, then replaces that setup with the throw."
+ },
+ {
+  "id": "SON-IMPORT-0280",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:374",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Move",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "faults": {
+     "DeleteFile(/C/target/my.video.mkv)": "IOException"
+    },
+    "on_call": {
+     "MoveFile(/C/source/my.video.mkv, /C/target/my.video.mkv, false)": "target appears with 900 bytes"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes. The test also expects one logged error."
+ },
+ {
+  "id": "SON-IMPORT-0292",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Common.Test/DiskTests/DiskTransferServiceFixture.cs:582",
+  "input": {
+   "op": "DiskTransferService.TransferFile",
+   "given": {
+    "source": "/C/source/my.video.mkv",
+    "target": "/C/target/my.video.mkv",
+    "mode": "Copy",
+    "mounts": {
+     "source": {
+      "root": "/C/source"
+     },
+     "target": {
+      "root": "/C/target"
+     }
+    },
+    "existing_files": {
+     "/C/source/my.video.mkv": 1000
+    },
+    "faults": {
+     "CopyFile(any, any, false)": "IOException"
+    }
+   }
+  },
+  "expect": {
+   "throws": "IOException"
+  },
+  "note": "Emulated disk: Copy/Move/Delete update existence; files are 1000 bytes unless stated; verification compares source and target sizes."
+ }
+]

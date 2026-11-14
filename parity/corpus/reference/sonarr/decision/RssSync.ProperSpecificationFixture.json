@@ -1,0 +1,294 @@
+[
+ {
+  "id": "SON-DECISION-1211",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:63",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 30
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ },
+ {
+  "id": "SON-DECISION-1212",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:72",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 30
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ },
+ {
+  "id": "SON-DECISION-1213",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:82",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 0
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 30
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ },
+ {
+  "id": "SON-DECISION-1214",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:92",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "added_days_ago": 30
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ },
+ {
+  "id": "SON-DECISION-1215",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:101",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "added_days_ago": 30
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ },
+ {
+  "id": "SON-DECISION-1216",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:110",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ },
+ {
+  "id": "SON-DECISION-1217",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:123",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ },
+ {
+  "id": "SON-DECISION-1218",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:136",
+  "input": {
+   "spec": "RssSync.ProperSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "DVD",
+       "revision": 1,
+       "added_days_ago": 0
+      }
+     },
+     {
+      "episode_file_id": 0
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "added_days_ago counts from DateTime.Today (0 = added today/now)."
+ }
+]

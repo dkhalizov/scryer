@@ -1,0 +1,158 @@
+[
+ {
+  "id": "SON-PARSE-1189",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:10",
+  "input": {
+   "name": "Series.Title.S04E13.Helen.Keller.The.Musical.720p.WEBRip.AAC2.0.H.264-GC",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1190",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:11",
+  "input": {
+   "name": "Series.Title.S07E02.720p.WEB-DL.DD5.1.H.264-pcsyndicate",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1191",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:12",
+  "input": {
+   "name": "Series.Title.2009.S05E06.Baby.Shower.720p.WEB-DL.DD5.1.H.264-iT00NZ",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1192",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:13",
+  "input": {
+   "name": "Series.Title.S04E17.720p.HDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1193",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:14",
+  "input": {
+   "name": "Series.Title.S04.720p.HDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": true
+  }
+ },
+ {
+  "id": "SON-PARSE-1194",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:20",
+  "input": {
+   "name": "S08E05 - Virtual In-Stanity [WEBDL-720p]",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1195",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:21",
+  "input": {
+   "name": "S08E05 - Virtual In-Stanity.With.Dots [WEBDL-720p]",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1196",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:22",
+  "input": {
+   "name": "Something",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1197",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:23",
+  "input": {
+   "name": "86de66b7ef385e2fa56a3e41b98481ea1658bfab",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1198",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:24",
+  "input": {
+   "name": "Series.Title.S04E17.720p.HDTV.X264",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1199",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:25",
+  "input": {
+   "name": "S04E17.720p.HDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1200",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:26",
+  "input": {
+   "name": "Series.Title.S04E17-DIMENSION",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ },
+ {
+  "id": "SON-PARSE-1201",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:27",
+  "input": {
+   "name": "Series.Title.720p.HDTV.X264-DIMENSION",
+   "facet": "unknown",
+   "fn": "SceneChecker.IsSceneTitle"
+  },
+  "expect": {
+   "is_scene_title": false
+  }
+ }
+]

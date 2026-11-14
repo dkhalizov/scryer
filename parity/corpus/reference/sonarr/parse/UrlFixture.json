@@ -1,0 +1,374 @@
+[
+ {
+  "id": "SON-PARSE-1482",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:11",
+  "input": {
+   "name": "[www.test.com] - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1483",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:12",
+  "input": {
+   "name": "test.net - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1484",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:13",
+  "input": {
+   "name": "[www.test-hyphen.com] - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1485",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:14",
+  "input": {
+   "name": "www.test123.org - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1486",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:15",
+  "input": {
+   "name": "[test.co.uk] - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1487",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:16",
+  "input": {
+   "name": "www.test-hyphen.net.au - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1488",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:17",
+  "input": {
+   "name": "[www.test123.co.nz] - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1489",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:18",
+  "input": {
+   "name": "test-hyphen123.org.au - Series.S03E14.720p.HDTV.X264-DIMENSION",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1490",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:19",
+  "input": {
+   "name": "[www.test123.de] - Mad Series - Season 1 [Bluray720p]",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Mad Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1491",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:20",
+  "input": {
+   "name": "www.test-hyphen.de - Mad Series - Season 1 [Bluray1080p]",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Mad Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1492",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:21",
+  "input": {
+   "name": "[test-hyphen123.co.za] - The Daily Series - 2023-05-26",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "The Daily Series"
+  }
+ },
+ {
+  "id": "SON-PARSE-1493",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:22",
+  "input": {
+   "name": "www.test123.co.za - The Series Bros. (2006) - S01E01",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "The Series Bros. (2006)"
+  }
+ },
+ {
+  "id": "SON-PARSE-1494",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:23",
+  "input": {
+   "name": "[www.test-hyphen.ca] - Series (2011) S01",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series (2011)"
+  }
+ },
+ {
+  "id": "SON-PARSE-1495",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:24",
+  "input": {
+   "name": "test123.ca - Series Time S02 720p HDTV x264 CRON",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series Time"
+  }
+ },
+ {
+  "id": "SON-PARSE-1496",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:25",
+  "input": {
+   "name": "[www.test-hyphen123.co.za] - Series Title S01E01",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series Title"
+  }
+ },
+ {
+  "id": "SON-PARSE-1497",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:26",
+  "input": {
+   "name": "(seriesawake.com) Series Super - 57 [720p] [English Subbed]",
+   "facet": "series",
+   "fn": "Parser.ParseSeriesName"
+  },
+  "expect": {
+   "series_name_clean": "Series Super"
+  }
+ },
+ {
+  "id": "SON-PARSE-1498",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:34",
+  "input": {
+   "name": "Series.2009.S01E14.English.HDTV.XviD-LOL[www.abb.com]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "LOL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1499",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:35",
+  "input": {
+   "name": "Series 2009 S01E14 English HDTV XviD LOL[www.academy.org]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1500",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:36",
+  "input": {
+   "name": "Series Now S05 EXTRAS DVDRip XviD RUNNER[www.aetna.net]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1501",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:37",
+  "input": {
+   "name": "Series.Title.S01.EXTRAS.DVDRip.XviD-RUNNER[www.alfaromeo.io]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RUNNER"
+  }
+ },
+ {
+  "id": "SON-PARSE-1502",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:38",
+  "input": {
+   "name": "2020.Series.2011.12.02.PDTV.XviD-C4TV[rarbg.to]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "C4TV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1503",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:39",
+  "input": {
+   "name": "Series.Title.S01E14.English.HDTV.XviD-LOL[www.abbott.gov]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "LOL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1504",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:40",
+  "input": {
+   "name": "Series 2020 S01E14 English HDTV XviD LOL[www.actor.org]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1505",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:41",
+  "input": {
+   "name": "Series Live S05 EXTRAS DVDRip XviD RUNNER[www.agency.net]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1506",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:42",
+  "input": {
+   "name": "Series.Title.S02.EXTRAS.DVDRip.XviD-RUNNER[www.airbus.io]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RUNNER"
+  }
+ },
+ {
+  "id": "SON-PARSE-1507",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:43",
+  "input": {
+   "name": "2021.Series.2012.12.02.PDTV.XviD-C4TV[rarbg.to]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "C4TV"
+  }
+ },
+ {
+  "id": "SON-PARSE-1508",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:44",
+  "input": {
+   "name": "Series.2020.S01E14.English.HDTV.XviD-LOL[www.afl.com]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "LOL"
+  }
+ },
+ {
+  "id": "SON-PARSE-1509",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:45",
+  "input": {
+   "name": "Series 2021 S01E14 English HDTV XviD LOL[www.adult.org]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1510",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:46",
+  "input": {
+   "name": "Series Future S05 EXTRAS DVDRip XviD RUNNER[www.allstate.net]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": null
+  }
+ },
+ {
+  "id": "SON-PARSE-1511",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:47",
+  "input": {
+   "name": "Series.Title.S03.EXTRAS.DVDRip.XviD-RUNNER[www.ally.io]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "RUNNER"
+  }
+ },
+ {
+  "id": "SON-PARSE-1512",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:48",
+  "input": {
+   "name": "2022.Series.2013.12.02.PDTV.XviD-C4TV[rarbg.to]",
+   "facet": "unknown",
+   "fn": "Parser.ParseReleaseGroup"
+  },
+  "expect": {
+   "release_group": "C4TV"
+  }
+ }
+]

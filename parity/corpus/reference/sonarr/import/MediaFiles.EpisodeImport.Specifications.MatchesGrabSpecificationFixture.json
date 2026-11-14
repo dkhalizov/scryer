@@ -1,0 +1,139 @@
+[
+ {
+  "id": "SON-IMPORT-0203",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:69",
+  "input": {
+   "op": "MatchesGrabSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "episodes": [
+     1
+    ],
+    "download_client_item": null,
+    "grabbed_release_episode_ids": null,
+    "existing_file": true
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0204",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:77",
+  "input": {
+   "op": "MatchesGrabSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "episodes": [
+     1
+    ],
+    "download_client_item": null,
+    "grabbed_release_episode_ids": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0205",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:83",
+  "input": {
+   "op": "MatchesGrabSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "episodes": [
+     1
+    ],
+    "download_client_item": "NBuilder",
+    "grabbed_release_episode_ids": null
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0206",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:91",
+  "input": {
+   "op": "MatchesGrabSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "episodes": [
+     1
+    ],
+    "download_client_item": "NBuilder",
+    "grabbed_release_episode_ids": [
+     1
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0207",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:99",
+  "input": {
+   "op": "MatchesGrabSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "episodes": [
+     1
+    ],
+    "download_client_item": "NBuilder",
+    "grabbed_release_episode_ids": [
+     1,
+     2
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-IMPORT-0208",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:107",
+  "input": {
+   "op": "MatchesGrabSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "episodes": [
+     1
+    ],
+    "download_client_item": "NBuilder",
+    "grabbed_release_episode_ids": [
+     2
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-IMPORT-0209",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/MatchesGrabSpecificationFixture.cs:115",
+  "input": {
+   "op": "MatchesGrabSpecification",
+   "given": {
+    "path": "/C/Test/Unsorted/Series.Title.S01E01.720p.HDTV-Sonarr/S01E05.mkv",
+    "episodes": [
+     1
+    ],
+    "download_client_item": "NBuilder",
+    "grabbed_release_episode_ids": [
+     2,
+     3
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

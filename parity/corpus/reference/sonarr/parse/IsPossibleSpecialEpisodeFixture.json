@@ -1,0 +1,95 @@
+[
+ {
+  "id": "SON-PARSE-0322",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:10",
+  "input": {
+   "facet": "series",
+   "fn": "ParsedEpisodeInfo.IsPossibleSpecialEpisode",
+   "parsed": {
+    "episodes": [
+     7
+    ],
+    "season": 1,
+    "title": ""
+   }
+  },
+  "expect": {
+   "is_possible_special_episode": false
+  }
+ },
+ {
+  "id": "SON-PARSE-0323",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:23",
+  "input": {
+   "facet": "series",
+   "fn": "ParsedEpisodeInfo.IsPossibleSpecialEpisode",
+   "parsed": {
+    "season": 1,
+    "title": ""
+   }
+  },
+  "expect": {
+   "is_possible_special_episode": true
+  }
+ },
+ {
+  "id": "SON-PARSE-0324",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:35",
+  "input": {
+   "name": "Title.the.Series.S02.Special-Inside.Chesters.Mill.HDTV.x264-BAJSKORV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "is_possible_special_episode": true
+  }
+ },
+ {
+  "id": "SON-PARSE-0325",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:36",
+  "input": {
+   "name": "Title.the.Series.S02.Special-Inside.Chesters.Mill.720p.HDTV.x264-BAJSKORV",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "is_possible_special_episode": true
+  }
+ },
+ {
+  "id": "SON-PARSE-0326",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:37",
+  "input": {
+   "name": "Title.the.Series.S05.Special.HDTV.x264-2HD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "is_possible_special_episode": true
+  }
+ },
+ {
+  "id": "SON-PARSE-0327",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:43",
+  "input": {
+   "name": "Title.the.Series.S11E00.A.Christmas.Carol.Special.720p.HDTV-FieldOfView",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "is_possible_special_episode": true
+  }
+ },
+ {
+  "id": "SON-PARSE-0328",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:49",
+  "input": {
+   "name": "Big.Special.Show.S05.HDTV.x264-2HD",
+   "facet": "series",
+   "fn": "Parser.ParseTitle"
+  },
+  "expect": {
+   "is_possible_special_episode": false
+  }
+ }
+]

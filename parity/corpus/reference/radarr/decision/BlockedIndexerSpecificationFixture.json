@@ -1,0 +1,41 @@
+[
+ {
+  "id": "RAD-DECISION-0021",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/BlockedIndexerSpecificationFixture.cs:39",
+  "input": {
+   "spec": "BlockedIndexerSpecification",
+   "given": {
+    "release": {
+     "indexer_id": 1
+    },
+    "blocked_indexers": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "RAD-DECISION-0022",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/BlockedIndexerSpecificationFixture.cs:45",
+  "input": {
+   "spec": "BlockedIndexerSpecification",
+   "given": {
+    "release": {
+     "indexer_id": 1
+    },
+    "blocked_indexers": [
+     {
+      "provider_id": 1,
+      "disabled_till": "now"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false,
+   "rejection_type": "Temporary"
+  },
+  "note": "rejection_type is the specification's own Type property (Subject.Type), not a field of the decision"
+ }
+]

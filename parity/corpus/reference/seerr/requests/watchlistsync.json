@@ -1,0 +1,134 @@
+[
+ {
+  "id": "SER-REQUESTS-0047",
+  "ref": "Seerr@v3.5.2 server/lib/watchlistsync.test.ts:103",
+  "input": {
+   "op": "watchlist.sync",
+   "given": {
+    "user": {
+     "permissions": [
+      "AUTO_REQUEST"
+     ],
+     "plex_token": true,
+     "watchlistSyncMovies": true,
+     "watchlistSyncTv": true
+    },
+    "media": [
+     {
+      "media_type": "movie",
+      "tmdb_id": 100,
+      "status": "DELETED"
+     },
+     {
+      "media_type": "movie",
+      "tmdb_id": 101,
+      "status": "UNKNOWN"
+     },
+     {
+      "media_type": "movie",
+      "tmdb_id": 102,
+      "status": "AVAILABLE"
+     },
+     {
+      "media_type": "movie",
+      "tmdb_id": 103,
+      "status": "BLOCKLISTED"
+     },
+     {
+      "media_type": "tv",
+      "tmdb_id": 200,
+      "status": "DELETED"
+     },
+     {
+      "media_type": "tv",
+      "tmdb_id": 201,
+      "status": "AVAILABLE"
+     }
+    ],
+    "watchlist": [
+     {
+      "type": "movie",
+      "tmdbId": 100
+     },
+     {
+      "type": "movie",
+      "tmdbId": 101
+     },
+     {
+      "type": "movie",
+      "tmdbId": 102
+     },
+     {
+      "type": "movie",
+      "tmdbId": 103
+     },
+     {
+      "type": "show",
+      "tmdbId": 200,
+      "tvdbId": 200000
+     },
+     {
+      "type": "show",
+      "tmdbId": 201,
+      "tvdbId": 201000
+     }
+    ]
+   }
+  },
+  "expect": {
+   "each_requested_once": true,
+   "requested": [
+    "movie:100",
+    "movie:101",
+    "tv:200"
+   ],
+   "not_requested": [
+    "movie:102",
+    "movie:103",
+    "tv:201"
+   ]
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0048",
+  "ref": "Seerr@v3.5.2 server/lib/watchlistsync.test.ts:164",
+  "input": {
+   "op": "watchlist.sync",
+   "given": {
+    "user": {
+     "permissions": [
+      "AUTO_REQUEST"
+     ],
+     "plex_token": true,
+     "watchlistSyncMovies": true,
+     "watchlistSyncTv": true
+    },
+    "media": [
+     {
+      "media_type": "movie",
+      "tmdb_id": 100,
+      "status": "DELETED"
+     }
+    ],
+    "requests": [
+     {
+      "media": "movie:100",
+      "status": "COMPLETED",
+      "is4k": false,
+      "is_auto_request": true,
+      "requested_by": "sync user"
+     }
+    ],
+    "watchlist": [
+     {
+      "type": "movie",
+      "tmdbId": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "request_calls_for_movie_100": 1
+  }
+ }
+]

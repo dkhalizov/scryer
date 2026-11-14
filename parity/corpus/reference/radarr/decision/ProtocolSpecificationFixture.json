@@ -1,0 +1,78 @@
+[
+ {
+  "id": "RAD-DECISION-1025",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:39",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "delay_profile": {
+     "enable_usenet": true
+    },
+    "release": {
+     "protocol": "usenet"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the delay profile comes from BestForTags(movie tags); fields the test does not set are left out"
+ },
+ {
+  "id": "RAD-DECISION-1026",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:48",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "delay_profile": {
+     "enable_torrent": true
+    },
+    "release": {
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "the delay profile comes from BestForTags(movie tags); fields the test does not set are left out"
+ },
+ {
+  "id": "RAD-DECISION-1027",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:57",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "delay_profile": {
+     "enable_usenet": false
+    },
+    "release": {
+     "protocol": "usenet"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the delay profile comes from BestForTags(movie tags); fields the test does not set are left out"
+ },
+ {
+  "id": "RAD-DECISION-1028",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/ProtocolSpecificationFixture.cs:66",
+  "input": {
+   "spec": "ProtocolSpecification",
+   "given": {
+    "delay_profile": {
+     "enable_torrent": false
+    },
+    "release": {
+     "protocol": "torrent"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "the delay profile comes from BestForTags(movie tags); fields the test does not set are left out"
+ }
+]

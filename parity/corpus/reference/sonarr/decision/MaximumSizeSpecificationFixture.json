@@ -1,0 +1,92 @@
+[
+ {
+  "id": "SON-DECISION-0094",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:30",
+  "input": {
+   "spec": "MaximumSizeSpecification",
+   "given": {
+    "config": {
+     "maximum_size_mb": 0
+    },
+    "release": {
+     "size_mb": 1000
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0095",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:39",
+  "input": {
+   "spec": "MaximumSizeSpecification",
+   "given": {
+    "config": {
+     "maximum_size_mb": 2000
+    },
+    "release": {
+     "size_mb": 1999
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0096",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:48",
+  "input": {
+   "spec": "MaximumSizeSpecification",
+   "given": {
+    "config": {
+     "maximum_size_mb": 2000
+    },
+    "release": {
+     "size_mb": 2000
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0097",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:57",
+  "input": {
+   "spec": "MaximumSizeSpecification",
+   "given": {
+    "config": {
+     "maximum_size_mb": 2000
+    },
+    "release": {
+     "size_mb": 2001
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-0098",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs:66",
+  "input": {
+   "spec": "MaximumSizeSpecification",
+   "given": {
+    "config": {
+     "maximum_size_mb": 2000
+    },
+    "release": {
+     "size_mb": 0
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

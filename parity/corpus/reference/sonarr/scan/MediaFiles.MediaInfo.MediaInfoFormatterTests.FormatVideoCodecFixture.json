@@ -1,0 +1,667 @@
+[
+ {
+  "id": "SON-SCAN-0085",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:11",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg2video",
+     "video_codec_id": ""
+    },
+    "scene_name": "Droned.S01E02.1080i.HDTV.DD5.1.MPEG2-NTb"
+   }
+  },
+  "expect": {
+   "result": "MPEG2"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0086",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:12",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg2video",
+     "video_codec_id": ""
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": "MPEG2"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0087",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:13",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg1video",
+     "video_codec_id": ""
+    },
+    "scene_name": "The.Simpsons.S13E04.INTERNAL-ANiVCD.mpg"
+   }
+  },
+  "expect": {
+   "result": "MPEG"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0088",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:14",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vc1",
+     "video_codec_id": "WVC1"
+    },
+    "scene_name": "B.N.S04E18.720p.WEB-DL"
+   }
+  },
+  "expect": {
+   "result": "VC1"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0089",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:15",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vc1",
+     "video_codec_id": "V_MS/VFW/FOURCC/WVC1"
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": "VC1"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0090",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:16",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vc1",
+     "video_codec_id": "WMV3"
+    },
+    "scene_name": "It's Always Sunny S07E13 The Gang's RevengeHDTV.XviD-2HD.avi"
+   }
+  },
+  "expect": {
+   "result": "VC1"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0091",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:17",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "h264",
+     "video_codec_id": "V.MPEG4/ISO/AVC"
+    },
+    "scene_name": "pd.2015.S03E08.720p.iP.WEBRip.AAC2.0.H264-BTW"
+   }
+  },
+  "expect": {
+   "result": "h264"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0092",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:18",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "h264",
+     "video_codec_id": "V_MPEG4/ISO/AVC"
+    },
+    "scene_name": "Resistance.2019.S01E03.1080p.RTE.WEB-DL.AAC2.0.x264-RTN"
+   }
+  },
+  "expect": {
+   "result": "x264"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0093",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:19",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "wmv1",
+     "video_codec_id": "WMV1"
+    },
+    "scene_name": "Droned.wmv"
+   }
+  },
+  "expect": {
+   "result": "WMV"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0094",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:20",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "wmv2",
+     "video_codec_id": "WMV2"
+    },
+    "scene_name": "Droned.wmv"
+   }
+  },
+  "expect": {
+   "result": "WMV"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0095",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:21",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "XVID"
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": "XviD"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0096",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:22",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "DIVX"
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": "DivX"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0097",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:23",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "divx"
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": "DivX"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0098",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:24",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "DIV3"
+    },
+    "scene_name": "spsm.dvdrip.divx.avi'."
+   }
+  },
+  "expect": {
+   "result": "DivX"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0099",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:25",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "msmpeg4",
+     "video_codec_id": "DIV3"
+    },
+    "scene_name": "Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi"
+   }
+  },
+  "expect": {
+   "result": "DivX"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0100",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:26",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "msmpeg4v2",
+     "video_codec_id": "DIV3"
+    },
+    "scene_name": "Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi"
+   }
+  },
+  "expect": {
+   "result": "DivX"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0101",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:27",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "msmpeg4v3",
+     "video_codec_id": "DIV3"
+    },
+    "scene_name": "Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi"
+   }
+  },
+  "expect": {
+   "result": "DivX"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0102",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:28",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vp6f",
+     "video_codec_id": "4"
+    },
+    "scene_name": "Top Gear - S12E01 - Lorries - SD TV.flv"
+   }
+  },
+  "expect": {
+   "result": "VP6"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0103",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:29",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vp6",
+     "video_codec_id": "4"
+    },
+    "scene_name": "Top Gear - S12E01 - Lorries - SD TV.flv"
+   }
+  },
+  "expect": {
+   "result": "VP6"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0104",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:30",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vp7",
+     "video_codec_id": "VP70"
+    },
+    "scene_name": "Sweet Seymour.avi"
+   }
+  },
+  "expect": {
+   "result": "VP7"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0105",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:31",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vp8",
+     "video_codec_id": "V_VP8"
+    },
+    "scene_name": "Dick.mkv"
+   }
+  },
+  "expect": {
+   "result": "VP8"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0106",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:32",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "vp9",
+     "video_codec_id": "V_VP9"
+    },
+    "scene_name": "Roadkill Ep3x11 - YouTube.webm"
+   }
+  },
+  "expect": {
+   "result": "VP9"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0107",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:33",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "h264",
+     "video_codec_id": "x264"
+    },
+    "scene_name": "Ghost Advent - S04E05 - Stanley Hotel SDTV.avi"
+   }
+  },
+  "expect": {
+   "result": "x264"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0108",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:34",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "hevc",
+     "video_codec_id": "V_MPEGH/ISO/HEVC"
+    },
+    "scene_name": "The BBT S11E12 The Matrimonial Metric 1080p 10bit AMZN WEB-DL"
+   }
+  },
+  "expect": {
+   "result": "h265"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0109",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:35",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "mp4v-20"
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": ""
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0110",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:36",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "XVID"
+    },
+    "scene_name": "American.Chopper.S06E07.Mountain.Creek.Bike.DSR.XviD-KRS"
+   }
+  },
+  "expect": {
+   "result": "XviD"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0111",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:37",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "rpza",
+     "video_codec_id": "V_QUICKTIME"
+    },
+    "scene_name": "Custom"
+   }
+  },
+  "expect": {
+   "result": ""
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0112",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:38",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "FMP4"
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": ""
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0113",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:39",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "MP42"
+    },
+    "scene_name": ""
+   }
+  },
+  "expect": {
+   "result": ""
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0114",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:40",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "mpeg4",
+     "video_codec_id": "mp43"
+    },
+    "scene_name": "Bubble.Guppies.S01E13.480p.WEB-DL.H.264-BTN-Custom"
+   }
+  },
+  "expect": {
+   "result": ""
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0115",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:53",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "h264",
+     "video_codec_id": "x264"
+    },
+    "scene_name": "Some.Video.S01E01.h264"
+   }
+  },
+  "expect": {
+   "result": "x264"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0116",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:54",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "hevc",
+     "video_codec_id": "x265"
+    },
+    "scene_name": "Some.Video.S01E01.h265"
+   }
+  },
+  "expect": {
+   "result": "x265"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0117",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:55",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "h264",
+     "video_codec_id": ""
+    },
+    "scene_name": "Some.Video.S01E01.x264"
+   }
+  },
+  "expect": {
+   "result": "x264"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0118",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:56",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "hevc",
+     "video_codec_id": ""
+    },
+    "scene_name": "Some.Video.S01E01.x265"
+   }
+  },
+  "expect": {
+   "result": "x265"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0119",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:57",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "h264",
+     "video_codec_id": ""
+    },
+    "scene_name": "Some.Video.S01E01"
+   }
+  },
+  "expect": {
+   "result": "h264"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0120",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:58",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "hevc",
+     "video_codec_id": ""
+    },
+    "scene_name": "Some.Video.S01E01"
+   }
+  },
+  "expect": {
+   "result": "h265"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ },
+ {
+  "id": "SON-SCAN-0121",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:71",
+  "input": {
+   "op": "FormatVideoCodec",
+   "given": {
+    "media_info": {
+     "video_format": "VideoCodec"
+    },
+    "scene_name": null
+   }
+  },
+  "expect": {
+   "result": "VideoCodec"
+  },
+  "note": "MediaInfoFormatter is static; media_info lists only the MediaInfoModel fields the test sets."
+ }
+]

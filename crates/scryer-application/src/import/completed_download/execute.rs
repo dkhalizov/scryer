@@ -8,7 +8,8 @@ use crate::import_workflow::import_completed_download_for_tracked;
 use scryer_logging::{ActorContext, LogContext, ResourceContext, WorkflowContext, context_span};
 use tracing::Instrument;
 
-pub(crate) fn mark_importing(td: &mut TrackedDownload) {
+// fork: parity net seam (tests/sm_download_import.rs)
+pub fn mark_importing(td: &mut TrackedDownload) {
     td.state = TrackedDownloadState::Importing;
     td.waiting_for_completed_history = false;
     td.status = TrackedDownloadStatus::Ok;

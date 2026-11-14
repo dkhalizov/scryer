@@ -1,0 +1,242 @@
+[
+ {
+  "id": "SON-DECISION-1033",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:22",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1034",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:23",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1035",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:24",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "Bluray-1080p",
+     "revision": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1036",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:29",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "SDTV",
+     "revision": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1037",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:30",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "WEBDL-720p",
+     "revision": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1038",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QualityAllowedByProfileSpecificationFixture.cs:31",
+  "input": {
+   "spec": "QualityAllowedByProfileSpecification",
+   "given": {
+    "profile": {
+     "qualities": [
+      "Unknown",
+      "SDTV",
+      "WEBDL-480p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "Raw-HD",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-720p",
+      "Bluray-2160p",
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "allowed": [
+      "DVD",
+      "HDTV-720p",
+      "Bluray-1080p"
+     ],
+     "cutoff": "Bluray-1080p"
+    },
+    "release": {
+     "quality": "Bluray-720p",
+     "revision": 2
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

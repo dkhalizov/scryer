@@ -1,0 +1,204 @@
+[
+ {
+  "id": "SON-DECISION-0059",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:52",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Cool Format",
+       "score": -2
+      },
+      {
+       "format": "Awesome Format",
+       "score": 1
+      }
+     ]
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "custom_formats": [
+      "Awesome Format"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:19)."
+ },
+ {
+  "id": "SON-DECISION-0060",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:62",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Cool Format",
+       "score": -2
+      },
+      {
+       "format": "Awesome Format",
+       "score": 1
+      }
+     ]
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "custom_formats": [
+      "Cool Format"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:19)."
+ },
+ {
+  "id": "SON-DECISION-0061",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:75",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Cool Format",
+       "score": -2
+      },
+      {
+       "format": "Awesome Format",
+       "score": 1
+      }
+     ]
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "custom_formats": [
+      "Cool Format",
+      "Awesome Format"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:19)."
+ },
+ {
+  "id": "SON-DECISION-0062",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:85",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Awesome Format",
+       "score": 1
+      },
+      {
+       "format": "Cool Format",
+       "score": 2
+      }
+     ]
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "custom_formats": [
+      "Cool Format",
+      "Awesome Format"
+     ]
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:19)."
+ },
+ {
+  "id": "SON-DECISION-0063",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:95",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 1,
+     "format_items": [
+      {
+       "format": "Awesome Format",
+       "score": 1
+      },
+      {
+       "format": "Cool Format",
+       "score": 2
+      }
+     ]
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:19)."
+ },
+ {
+  "id": "SON-DECISION-0064",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/CustomFormatAllowedByProfileSpecificationFixture.cs:105",
+  "input": {
+   "spec": "CustomFormatAllowedbyProfileSpecification",
+   "given": {
+    "profile": {
+     "cutoff": "Bluray-1080p",
+     "min_format_score": 0,
+     "format_items": [
+      {
+       "format": "Awesome Format",
+       "score": 1
+      },
+      {
+       "format": "Cool Format",
+       "score": 2
+      }
+     ]
+    },
+    "release": {
+     "quality": "DVD",
+     "revision": 2,
+     "custom_formats": []
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Scores come from CustomFormatsTestHelpers.GetSampleFormatItems (src/NzbDrone.Core.Test/CustomFormats/CustomFormatsTestHelpers.cs:19)."
+ }
+]

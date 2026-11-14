@@ -1,0 +1,235 @@
+[
+ {
+  "expect": {
+   "value": false
+  },
+  "id": "MNT-MAINTENANCE-0179",
+  "input": {
+   "given": {
+    "item": {
+     "type": "movie"
+    },
+    "property": "isWatched",
+    "watchState": {
+     "isWatched": false,
+     "viewCount": 0
+    }
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:195"
+ },
+ {
+  "expect": {
+   "value": {
+    "$date": "2024-10-27T03:33:20.000Z"
+   }
+  },
+  "id": "MNT-MAINTENANCE-0189",
+  "input": {
+   "given": {
+    "history": [],
+    "item": {
+     "type": "movie"
+    },
+    "itemLastViewedAt": {
+     "$date": "2024-10-27T03:33:20.000Z"
+    },
+    "property": "lastViewedAt"
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:285"
+ },
+ {
+  "expect": {
+   "value": {
+    "$date": "2025-02-19T21:20:00.000Z"
+   }
+  },
+  "id": "MNT-MAINTENANCE-0191",
+  "input": {
+   "given": {
+    "history": [
+     {
+      "viewedAt": {
+       "$date": "2025-02-19T21:20:00.000Z"
+      }
+     }
+    ],
+    "item": {
+     "type": "movie"
+    },
+    "itemLastViewedAt": {
+     "$date": "2024-10-27T03:33:20.000Z"
+    },
+    "property": "lastViewedAt"
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:317"
+ },
+ {
+  "expect": {
+   "value": {
+    "$date": "2024-07-03T09:46:40.000Z"
+   }
+  },
+  "id": "MNT-MAINTENANCE-0192",
+  "input": {
+   "given": {
+    "history": [
+     {
+      "viewedAt": {
+       "$date": "2023-11-14T22:13:20.000Z"
+      }
+     },
+     {
+      "viewedAt": {
+       "$date": "2024-07-03T09:46:40.000Z"
+      }
+     },
+     {
+      "viewedAt": {
+       "$date": "2024-03-09T16:00:00.000Z"
+      }
+     }
+    ],
+    "item": {
+     "type": "movie"
+    },
+    "property": "lastViewedAt"
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:336"
+ },
+ {
+  "expect": {
+   "value": [
+    "bob",
+    "alice"
+   ]
+  },
+  "id": "MNT-MAINTENANCE-0242",
+  "input": {
+   "given": {
+    "history": [
+     {
+      "accountID": 1
+     },
+     {
+      "accountID": 999
+     },
+     {
+      "accountID": 2
+     }
+    ],
+    "item": {
+     "type": "movie"
+    },
+    "property": "seenBy",
+    "users": [
+     {
+      "plexId": 2,
+      "username": "bob"
+     },
+     {
+      "plexId": 1,
+      "username": "alice"
+     },
+     {
+      "plexId": 3,
+      "username": "charlie"
+     }
+    ]
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:1658"
+ },
+ {
+  "expect": {
+   "value": []
+  },
+  "id": "MNT-MAINTENANCE-0243",
+  "input": {
+   "given": {
+    "history": [],
+    "item": {
+     "type": "movie"
+    },
+    "property": "seenBy",
+    "users": [
+     {
+      "plexId": 1,
+      "username": "alice"
+     }
+    ]
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:1688"
+ },
+ {
+  "expect": {
+   "value": {
+    "$undefined": true
+   }
+  },
+  "id": "MNT-MAINTENANCE-0244",
+  "input": {
+   "given": {
+    "history": {
+     "$throws": "plex unreachable"
+    },
+    "item": {
+     "type": "movie"
+    },
+    "property": "seenBy",
+    "users": [
+     {
+      "plexId": 1,
+      "username": "alice"
+     }
+    ]
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:1703"
+ },
+ {
+  "expect": {
+   "value": {
+    "$undefined": true
+   }
+  },
+  "id": "MNT-MAINTENANCE-0245",
+  "input": {
+   "given": {
+    "history": [
+     {
+      "accountID": 1
+     }
+    ],
+    "item": {
+     "type": "movie"
+    },
+    "property": "seenBy",
+    "users": {
+     "$throws": "plex.tv user data unavailable"
+    }
+   },
+   "op": "plex_get"
+  },
+  "note": "The item is the spec's movie fixture (makeMetadata, :48, ratingKey 12345); the spec has no episode case. In the getter source (plex-getter.service.ts) isWatched (:157) and lastViewedAt (:279) have no type branch; lastViewedAt passes metadata.type on to getWatchHistory.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:1718"
+ }
+]

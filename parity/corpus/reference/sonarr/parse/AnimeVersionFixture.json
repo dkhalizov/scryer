@@ -1,0 +1,98 @@
+[
+ {
+  "id": "SON-PARSE-0193",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:11",
+  "input": {
+   "name": "Anime Title - S01E01 - (BD 1080p HEVC FLAC) [Dual Audio] [Group]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0194",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:12",
+  "input": {
+   "name": "Anime Title - S01E01v2 - (BD 1080p HEVC FLAC) [Dual Audio] [Group]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0195",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:13",
+  "input": {
+   "name": "Anime Title - S01E01 v2 - (BD 1080p HEVC FLAC) [Dual Audio] [Group]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0196",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:14",
+  "input": {
+   "name": "[SubsPlease] Anime Title - 01 (1080p) [B1F227CF]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 1
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0197",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:15",
+  "input": {
+   "name": "[SubsPlease] Anime Title - 01v2 (1080p) [B1F227CF]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ },
+ {
+  "id": "SON-PARSE-0198",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:16",
+  "input": {
+   "name": "[SubsPlease] Anime Title - 01 v2 (1080p) [B1F227CF]",
+   "facet": "unknown",
+   "fn": "QualityParser.ParseQuality"
+  },
+  "expect": {
+   "quality": {
+    "revision": {
+     "version": 2
+    }
+   }
+  }
+ }
+]

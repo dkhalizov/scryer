@@ -1,0 +1,89 @@
+[
+ {
+  "id": "SON-NAMING-0204",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/GetSeasonFolderFixture.cs:23",
+  "input": {
+   "op": "get_season_folder",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "{Series.Title}.{season:00}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Venture Bros."
+    },
+    "seasonNumber": 1
+   }
+  },
+  "expect": {
+   "name": "Venture.Bros.01"
+  }
+ },
+ {
+  "id": "SON-NAMING-0205",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/GetSeasonFolderFixture.cs:24",
+  "input": {
+   "op": "get_season_folder",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "{Series Title} Season {season:00}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Venture Bros."
+    },
+    "seasonNumber": 1
+   }
+  },
+  "expect": {
+   "name": "Venture Bros. Season 01"
+  }
+ },
+ {
+  "id": "SON-NAMING-0206",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/GetSeasonFolderFixture.cs:25",
+  "input": {
+   "op": "get_season_folder",
+   "given": {
+    "naming": {
+     "renameEpisodes": false,
+     "replaceIllegalCharacters": true,
+     "colonReplacementFormat": "Smart",
+     "customColonReplacementFormat": "",
+     "multiEpisodeStyle": "PrefixedRange",
+     "standardEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "dailyEpisodeFormat": "{Series Title} - {Air-Date} - {Episode Title} {Quality Full}",
+     "animeEpisodeFormat": "{Series Title} - S{season:00}E{episode:00} - {Episode Title} {Quality Full}",
+     "seriesFolderFormat": "{Series Title}",
+     "seasonFolderFormat": "{Series Title} Season {season:00}",
+     "specialsFolderFormat": "Specials"
+    },
+    "series": {
+     "title": "Series Title?"
+    },
+    "seasonNumber": 1
+   }
+  },
+  "expect": {
+   "name": "Series Title! Season 01"
+  }
+ }
+]

@@ -1,0 +1,114 @@
+[
+ {
+  "expect": {
+   "radarr": {
+    "deleteMovie": false,
+    "updateMovie": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0001",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "lookupCandidates": [],
+    "media": {
+     "tmdbId": {
+      "$undefined": true
+     }
+    }
+   },
+   "op": "radarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/radarr-action-handler.spec.ts:64"
+ },
+ {
+  "expect": {
+   "mediaServerDeleteFromDisk": false,
+   "radarr": {
+    "deleteMovie": false,
+    "updateMovie": false
+   },
+   "result": false
+  },
+  "id": "MNT-MAINTENANCE-0004",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "media": {
+     "tmdbId": 1
+    },
+    "radarrMovie": {
+     "$undefined": true
+    }
+   },
+   "op": "radarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/radarr-action-handler.spec.ts:131"
+ },
+ {
+  "expect": {
+   "mediaServerDeleteFromDisk": true,
+   "radarr": {
+    "deleteMovie": false,
+    "updateMovie": false
+   },
+   "result": true
+  },
+  "id": "MNT-MAINTENANCE-0005",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "media": {
+     "tmdbId": 1
+    },
+    "radarrMovie": null
+   },
+   "op": "radarr_handle_action"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/radarr-action-handler.spec.ts:157"
+ },
+ {
+  "expect": {
+   "radarr": {
+    "deleteMovie": {
+     "addImportExclusion": false,
+     "deleteFiles": true,
+     "id": 5
+    },
+    "updateMovie": false
+   }
+  },
+  "id": "MNT-MAINTENANCE-0006",
+  "input": {
+   "given": {
+    "collection": {
+     "arrAction": "DELETE",
+     "listExclusions": false,
+     "radarrSettingsId": 1,
+     "type": "movie"
+    },
+    "media": {
+     "tmdbId": 1
+    },
+    "radarrMovie": {
+     "id": 5
+    }
+   },
+   "op": "radarr_handle_action"
+  },
+  "note": "listExclusions is the createCollection default (test/utils/data.ts:88), false.",
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/actions/radarr-action-handler.spec.ts:185"
+ }
+]

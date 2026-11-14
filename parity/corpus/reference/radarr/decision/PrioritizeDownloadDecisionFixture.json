@@ -1,0 +1,2546 @@
+[
+ {
+  "id": "RAD-DECISION-1000",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:94",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1,
+        "real": 0
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1,
+        "real": 1
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1001",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:108",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p",
+       "revision": {
+        "version": 2
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1002",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:122",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "SDTV"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1003",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:136",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovieSd",
+      "quality": {
+       "quality": "SDTV"
+      },
+      "age_days": 1,
+      "size_mb": 100,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovieHdSmallOld",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1000,
+      "size_mb": 1200,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovieSmallYoung",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 10,
+      "size_mb": 1250,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovieHdLargeYoung",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 3000,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovieHdLargeYoung"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1004",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:154",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": 2
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovieSmall",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 400,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovieLarge",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 15000,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovieSmall"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1005",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:171",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": 2
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 0
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovieSmall",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 400,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovieLarge",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 15000,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovieLarge"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1006",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:188",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": 390
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovieSmall",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 100,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovieLarge",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 15000,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovieLarge"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1007",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:205",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": 46
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 100,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 500,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie3",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 7000,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie4",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 1,
+      "size_mb": 15000,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie3"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1008",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:226",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 10,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 5,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1009",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:240",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1010",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:256",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "torrent"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie1"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1011",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:272",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1012",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:300",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 10,
+      "peers": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 10,
+      "peers": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1013",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:329",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 0,
+      "peers": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 0,
+      "peers": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1014",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:359",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 250,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 1000,
+      "peers": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 200,
+      "protocol": "torrent",
+      "indexer_priority": 0,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0,
+      "release_class": "TorrentInfo",
+      "seeders": 1100,
+      "peers": 10
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie1"
+   ]
+  },
+  "note": "the test clones torrentInfo1 at 200 MB, then sets torrentInfo1 (not 2) to 250 MB; the sizes here are what the objects hold; each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1015",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:390",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 100,
+      "size_mb": 200,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 150,
+      "size_mb": 250,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie1"
+   ]
+  },
+  "note": "publish dates here use UtcNow; the GivenRemoteMovie default uses Now; each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1016",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:410",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "Bluray-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "Bluray-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [
+       "My Format 1"
+      ],
+      "custom_format_score": 1
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1017",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:429",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "Bluray-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [
+       "My Format 1"
+      ],
+      "custom_format_score": 1
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "Bluray-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [
+       "My Format 2"
+      ],
+      "custom_format_score": 2
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1018",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:450",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "Bluray-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [
+       "My Format 1"
+      ],
+      "custom_format_score": 1
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "Bluray-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [
+       "My Format 1",
+       "My Format 2"
+      ],
+      "custom_format_score": 3
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1019",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:469",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 2
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1020",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:490",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 2
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1021",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:511",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 1
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 2
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie1"
+   ]
+  },
+  "note": "the test asserts the first result's quality, version 1 and score 10; each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1022",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:534",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 1,
+        "real": 0
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 10
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "WEBDL-1080p",
+       "revision": {
+        "version": 1,
+        "real": 1
+       }
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie1"
+   ]
+  },
+  "note": "the test asserts the first result's quality, version 1, real 0 and score 10; each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1023",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:558",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "WEBDL-1080p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "WEBDL-1080p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 50,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie3",
+      "quality": {
+       "quality": "WEBDL-1080p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 1,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie3",
+    "remoteMovie1",
+    "remoteMovie2"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1024",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:574",
+  "input": {
+   "spec": "DownloadDecisionPriorizationService.PrioritizeDecisionsForMovies",
+   "given": {
+    "delay_profile": {
+     "preferred_protocol": "usenet"
+    },
+    "quality_definition": {
+     "preferred_size": null
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "upgrade_allowed": false,
+     "format_items": [
+      {
+       "format": "My Format 1",
+       "score": 1
+      },
+      {
+       "format": "My Format 2",
+       "score": 2
+      }
+     ],
+     "min_format_score": 0
+    },
+    "movie": {
+     "title": "A Movie",
+     "runtime": 150
+    },
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    },
+    "releases": [
+     {
+      "label": "remoteMovie1",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie2",
+      "quality": {
+       "quality": "WEBDL-1080p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 50,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie3",
+      "quality": {
+       "quality": "SDTV"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 1,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     },
+     {
+      "label": "remoteMovie4",
+      "quality": {
+       "quality": "WEBDL-1080p"
+      },
+      "age_days": 0,
+      "size_mb": 0,
+      "protocol": "usenet",
+      "indexer_priority": 25,
+      "title": "A Movie 1998",
+      "custom_formats": [],
+      "custom_format_score": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "order": [
+    "remoteMovie4",
+    "remoteMovie2",
+    "remoteMovie1",
+    "remoteMovie3"
+   ]
+  },
+  "note": "each release has its own Movie with the same profile; format scores come from GetSampleFormatItems(My Format 1, My Format 2) = 1 and 2; quality_definition.preferred_size is MB per minute; age_days is days before now; expect.order is the prefix of the sorted result the test asserts, not necessarily the full order; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ }
+]

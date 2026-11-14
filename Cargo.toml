@@ -43,6 +43,7 @@ members = [
     "crates/scryer-mock-apis",
     "crates/scryer-mediainfo",
     "crates/scryer-media-types",
+    "parity/harness",
 ]
 exclude = ["test-plugins/test-indexer", "benchmarks/criterion"]
 resolver = "2"

@@ -1,0 +1,501 @@
+[
+ {
+  "id": "SON-SCAN-0001",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:90",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": false
+   }
+  },
+  "expect": {
+   "warnings": 1,
+   "calls": {
+    "GetFiles(series.Path, true)": 0,
+    "CreateFolder(series.Path)": 0,
+    "MediaFileTableCleanupService.Clean": 0
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0002",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:107",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": []
+   }
+  },
+  "expect": {
+   "warnings": 1,
+   "calls": {
+    "GetFiles(series.Path, true)": 0,
+    "CreateFolder(series.Path)": 0,
+    "MediaFileTableCleanupService.Clean": 0,
+    "GetImportDecisions(any, series, false)": 0
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0004",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:144",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/OtherSeries"
+    ],
+    "config": {
+     "create_empty_series_folders": false
+    }
+   }
+  },
+  "expect": {
+   "calls": {
+    "CreateFolder(series.Path)": 0
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0005",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:159",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/OtherSeries"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "FolderExists(series.Path)": 1,
+    "MediaFileTableCleanupService.Clean": 1,
+    "GetImportDecisions(any, series, false)": 0
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0006",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:176",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/Behind the Scenes/file1.mkv",
+     "/C/Test/TV/Series/Deleted Scenes/file2.mkv",
+     "/C/Test/TV/Series/Featurettes/file3.mkv",
+     "/C/Test/TV/Series/Interviews/file4.mkv",
+     "/C/Test/TV/Series/Samples/file5.mkv",
+     "/C/Test/TV/Series/Scenes/file6.mkv",
+     "/C/Test/TV/Series/Shorts/file7.mkv",
+     "/C/Test/TV/Series/Trailers/file8.mkv",
+     "/C/Test/TV/Series/Other/file9.mkv",
+     "/C/Test/TV/Series/Series Title S01E01 (1080p BluRay x265 10bit Tigole).mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0007",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:201",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/Featurettes/An Epic Reborn.mkv",
+     "/C/Test/TV/Series/Featurettes/Deleted & Alternate Scenes.mkv",
+     "/C/Test/TV/Series/Featurettes/En Garde - Multi-Angle Dailies.mkv",
+     "/C/Test/TV/Series/Featurettes/Layer-By-Layer - Sound Design - Multiple Audio.mkv",
+     "/C/Test/TV/Series/Series Title S01E01 (1080p BluRay x265 10bit Tigole).mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0009",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:239",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/file1.mkv",
+     "/C/Test/TV/Series/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 2, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0010",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:256",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/EXTRAS/file1.mkv",
+     "/C/Test/TV/Series/Extras/file2.mkv",
+     "/C/Test/TV/Series/EXTRAs/file3.mkv",
+     "/C/Test/TV/Series/ExTrAs/file4.mkv",
+     "/C/Test/TV/Series/Season 1/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetFiles(any, any)": 2,
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0011",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:279",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/.AppleDouble/file1.mkv",
+     "/C/Test/TV/Series/.appledouble/file2.mkv",
+     "/C/Test/TV/Series/Season 1/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0012",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:297",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Extras",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Extras"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Extras/Extras/file1.mkv",
+     "/C/Test/TV/Extras/.AppleDouble/file2.mkv",
+     "/C/Test/TV/Extras/Season 1/s01e01.mkv",
+     "/C/Test/TV/Extras/Season 1/s01e02.mkv",
+     "/C/Test/TV/Extras/Season 2/s02e01.mkv",
+     "/C/Test/TV/Extras/Season 2/s02e02.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 4, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0013",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:320",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/.@__thumb/file1.mkv",
+     "/C/Test/TV/Series/.@__THUMB/file2.mkv",
+     "/C/Test/TV/Series/.hidden/file2.mkv",
+     "/C/Test/TV/Series/Season 1/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0014",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:339",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/Season 1/.s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0015",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:355",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/Season 1/.@__thumb/file1.mkv",
+     "/C/Test/TV/Series/Season 1/.@__THUMB/file2.mkv",
+     "/C/Test/TV/Series/Season 1/.hidden/file2.mkv",
+     "/C/Test/TV/Series/Season 1/.AppleDouble/s01e01.mkv",
+     "/C/Test/TV/Series/Season 1/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0016",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:375",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/@eaDir/file1.mkv",
+     "/C/Test/TV/Series/Season 1/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0017",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:392",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/.@__thumb/file1.mkv",
+     "/C/Test/TV/Series/Season 1/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0018",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:409",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/.hack",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/.hack"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/.hack/Season 1/file1.mkv",
+     "/C/Test/TV/.hack/Season 1/s01e01.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 2, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0019",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:428",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/Series Title S01E01.mkv",
+     "/C/Test/TV/Series/Deleted Scenes-deleted.mkv",
+     "/C/Test/TV/Series/The World of Pandora-other.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0020",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:446",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/._24 The Status Quo Combustion.mp4",
+     "/C/Test/TV/Series/24 The Status Quo Combustion.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ },
+ {
+  "id": "SON-SCAN-0021",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:463",
+  "input": {
+   "op": "DiskScanService.Scan",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder": "/C/Test/TV",
+    "root_folder_exists": true,
+    "root_folder_subfolders": [
+     "/C/Test/TV/Series"
+    ],
+    "files_on_disk": [
+     "/C/Test/TV/Series/.DS_Store",
+     "/C/Test/TV/Series/.unmanic",
+     "/C/Test/TV/Series/.unmanic.part",
+     "/C/Test/TV/Series/24 The Status Quo Combustion.mkv"
+    ]
+   }
+  },
+  "expect": {
+   "calls": {
+    "GetImportDecisions(l => l.Count == 1, series, false)": 1
+   },
+   "events": {
+    "SeriesScannedEvent": {
+     "count": 1,
+     "possible_extra_files": 0
+    }
+   }
+  },
+  "note": "Root folder for the series is /C/Test/TV (GetBestRootFolderPath); folders not listed as existing do not exist; the series has no episode files in the DB. GetFiles returns files_on_disk for every call (video and non-video listing). GetImportDecisions(l => l.Count == n, ...) means it was called with a list of n files."
+ }
+]

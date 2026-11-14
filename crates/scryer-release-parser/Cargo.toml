@@ -13,4 +13,6 @@ smallvec = { version = "1.16", features = ["serde"] }
 unicode-normalization = "0.1"
 
 [dev-dependencies]
+# fork: parity net property tests (notes/11-parity-net-design.md)
+proptest = { version = "1.12", default-features = false, features = ["std"] }
 serde_json.workspace = true

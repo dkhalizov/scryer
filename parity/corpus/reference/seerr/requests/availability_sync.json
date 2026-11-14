@@ -1,0 +1,458 @@
+[
+ {
+  "id": "SER-REQUESTS-0056",
+  "ref": "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:959",
+  "input": {
+   "op": "availability.sync",
+   "given": {
+    "media_server": "PLEX",
+    "sonarr": [
+     {
+      "is4k": false,
+      "syncEnabled": true
+     }
+    ],
+    "tmdb_seasons": [
+     {
+      "season_number": 1,
+      "episode_count": 10
+     },
+     {
+      "season_number": 2,
+      "episode_count": 10
+     },
+     {
+      "season_number": 3,
+      "episode_count": 10
+     },
+     {
+      "season_number": 4,
+      "episode_count": 10
+     }
+    ],
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 2000,
+     "status": "AVAILABLE",
+     "externalServiceId": 200,
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 2,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 3,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 4,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 5,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 6,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 7,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 8,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "plex": {
+     "show_seasons": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "season_episodes": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 21,
+      "7": 0,
+      "8": 0
+     }
+    },
+    "sonarr_series": {
+     "id": 200,
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "episodeFileCount": 0,
+       "totalEpisodeCount": 10
+      },
+      {
+       "seasonNumber": 2,
+       "episodeFileCount": 0,
+       "totalEpisodeCount": 10
+      },
+      {
+       "seasonNumber": 3,
+       "episodeFileCount": 0,
+       "totalEpisodeCount": 10
+      },
+      {
+       "seasonNumber": 4,
+       "episodeFileCount": 0,
+       "totalEpisodeCount": 10
+      },
+      {
+       "seasonNumber": 5,
+       "episodeFileCount": 0,
+       "totalEpisodeCount": 10
+      },
+      {
+       "seasonNumber": 6,
+       "episodeFileCount": 21,
+       "totalEpisodeCount": 10
+      },
+      {
+       "seasonNumber": 7,
+       "episodeFileCount": 0,
+       "totalEpisodeCount": 10
+      },
+      {
+       "seasonNumber": 8,
+       "episodeFileCount": 0,
+       "totalEpisodeCount": 10
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "season_status": {
+    "1": "DELETED",
+    "2": "DELETED",
+    "3": "DELETED",
+    "4": "DELETED",
+    "5": "DELETED",
+    "6": "AVAILABLE",
+    "7": "DELETED",
+    "8": "DELETED"
+   },
+   "media_status": "PARTIALLY_AVAILABLE"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0058",
+  "ref": "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1140",
+  "input": {
+   "op": "availability.sync",
+   "given": {
+    "media_server": "PLEX",
+    "sonarr": [
+     {
+      "is4k": false,
+      "syncEnabled": true
+     }
+    ],
+    "tmdb_seasons": [
+     {
+      "season_number": 1,
+      "episode_count": 10
+     },
+     {
+      "season_number": 2,
+      "episode_count": 10
+     },
+     {
+      "season_number": 3,
+      "episode_count": 10
+     },
+     {
+      "season_number": 4,
+      "episode_count": 10
+     }
+    ],
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 2001,
+     "status": "AVAILABLE",
+     "externalServiceId": 201,
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "plex": {
+     "show_seasons": [
+      1
+     ],
+     "season_episodes": {
+      "1": "error: Connection refused"
+     }
+    },
+    "sonarr_series": {
+     "id": 201,
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "episodeFileCount": 10,
+       "totalEpisodeCount": 10
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "season_status": {
+    "1": "AVAILABLE"
+   },
+   "media_status": "AVAILABLE"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0059",
+  "ref": "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1217",
+  "input": {
+   "op": "availability.sync",
+   "given": {
+    "media_server": "PLEX",
+    "sonarr": [
+     {
+      "is4k": false,
+      "syncEnabled": true
+     }
+    ],
+    "tmdb_seasons": [
+     {
+      "season_number": 1,
+      "episode_count": 10
+     },
+     {
+      "season_number": 2,
+      "episode_count": 10
+     },
+     {
+      "season_number": 3,
+      "episode_count": 10
+     },
+     {
+      "season_number": 4,
+      "episode_count": 10
+     }
+    ],
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 2002,
+     "status": "AVAILABLE",
+     "externalServiceId": null,
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 2,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 3,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 4,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "plex": {
+     "show_seasons": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "season_episodes": {
+      "1": 0,
+      "2": 10,
+      "3": 0,
+      "4": 10
+     }
+    },
+    "sonarr_series": "lookup fails (404)"
+   }
+  },
+  "expect": {
+   "season_status": {
+    "1": "DELETED",
+    "2": "AVAILABLE",
+    "3": "DELETED",
+    "4": "AVAILABLE"
+   },
+   "media_status": "PARTIALLY_AVAILABLE"
+  }
+ },
+ {
+  "id": "SER-REQUESTS-0062",
+  "ref": "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:1924",
+  "input": {
+   "op": "availability.sync",
+   "given": {
+    "media_server": "PLEX",
+    "sonarr": [
+     {
+      "is4k": false,
+      "syncEnabled": true
+     }
+    ],
+    "tmdb_seasons": [
+     {
+      "season_number": 1,
+      "episode_count": 10
+     },
+     {
+      "season_number": 2,
+      "episode_count": 10
+     },
+     {
+      "season_number": 3,
+      "episode_count": 10
+     },
+     {
+      "season_number": 4,
+      "episode_count": 10
+     }
+    ],
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 687173,
+     "status": "AVAILABLE",
+     "externalServiceId": null,
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "plex": {
+     "show_seasons": [
+      1
+     ],
+     "season_episodes": {
+      "1": [
+       {
+        "versions": [
+         {
+          "width": 3840,
+          "videoResolution": "4k"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "sonarr_series": "lookup fails (404)"
+   }
+  },
+  "expect": {
+   "season_status": {
+    "1": "AVAILABLE"
+   },
+   "media_status": "AVAILABLE"
+  },
+  "note": "externalServiceId unset and the Sonarr lookup are the beforeEach defaults (availabilitySync.test.ts:442)."
+ },
+ {
+  "id": "SER-REQUESTS-0065",
+  "ref": "Seerr@v3.5.2 server/lib/availabilitySync.test.ts:2143",
+  "input": {
+   "op": "availability.sync",
+   "given": {
+    "media_server": "PLEX",
+    "sonarr": [
+     {
+      "is4k": false,
+      "syncEnabled": true
+     }
+    ],
+    "tmdb_seasons": [
+     {
+      "season_number": 0,
+      "episode_count": 3
+     },
+     {
+      "season_number": 1,
+      "episode_count": 10
+     }
+    ],
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 13863,
+     "status": "AVAILABLE",
+     "externalServiceId": 301,
+     "seasons": [
+      {
+       "seasonNumber": 0,
+       "status": "UNKNOWN",
+       "status4k": "UNKNOWN"
+      },
+      {
+       "seasonNumber": 1,
+       "status": "AVAILABLE",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "plex": {
+     "show_seasons": [
+      1
+     ],
+     "season_episodes": {
+      "1": 10
+     }
+    },
+    "sonarr_series": {
+     "id": 301,
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "episodeFileCount": 10,
+       "totalEpisodeCount": 10
+      }
+     ]
+    }
+   }
+  },
+  "expect": {
+   "media_status": "AVAILABLE"
+  }
+ }
+]

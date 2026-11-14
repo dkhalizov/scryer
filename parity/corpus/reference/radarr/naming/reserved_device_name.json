@@ -1,0 +1,114 @@
+[
+ {
+  "id": "RAD-NAMING-0115",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:47",
+  "input": {
+   "op": "get_movie_folder",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie.Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "movie": {
+     "title": "Con Game",
+     "year": 2021
+    }
+   }
+  },
+  "expect": {
+   "name": "Con_Game (2021)"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Off our config (corpus/captured/radarr/config/naming.json): movie_folder_format \"{Movie.Title} ({Release Year})\" uses tokens we do not use (ours \"{Movie Title} ({Release Year})\")."
+ },
+ {
+  "id": "RAD-NAMING-0116",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:48",
+  "input": {
+   "op": "get_movie_folder",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie.Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "movie": {
+     "title": "Com1 Sat",
+     "year": 2021
+    }
+   }
+  },
+  "expect": {
+   "name": "Com1_Sat (2021)"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Off our config (corpus/captured/radarr/config/naming.json): movie_folder_format \"{Movie.Title} ({Release Year})\" uses tokens we do not use (ours \"{Movie Title} ({Release Year})\")."
+ },
+ {
+  "id": "RAD-NAMING-0117",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:58",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie.Title} ({Release Year})"
+    },
+    "movie": {
+     "title": "Con Game",
+     "year": 2021
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Con_Game (2021)"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): standard_movie_format \"{Movie.Title} ({Release Year})\" uses tokens we do not use (ours \"{Movie Title} ({Release Year}) {Quality Full}\")."
+ },
+ {
+  "id": "RAD-NAMING-0118",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:59",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie.Title} ({Release Year})"
+    },
+    "movie": {
+     "title": "Com1 Sat",
+     "year": 2021
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "Com1_Sat (2021)"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): standard_movie_format \"{Movie.Title} ({Release Year})\" uses tokens we do not use (ours \"{Movie Title} ({Release Year}) {Quality Full}\")."
+ }
+]

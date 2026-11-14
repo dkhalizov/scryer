@@ -1,0 +1,1181 @@
+[
+ {
+  "id": "SON-IMPORT-0215",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:48",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 0,
+      "file": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0216",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:61",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 0,
+      "file": null
+     },
+     {
+      "episode_file_id": 0,
+      "file": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0217",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:74",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1,
+       "languages": [
+        "Spanish"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0218",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:92",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0219",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:110",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0220",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:128",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0221",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:145",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ]
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0222",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:163",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ]
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0223",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:181",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-720p",
+       "revision": 1
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0224",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:198",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-720p",
+       "revision": 1
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-720p",
+       "revision": 1
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0225",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:215",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "SDTV",
+       "revision": 1
+      }
+     },
+     {
+      "episode_file_id": 2,
+      "file": {
+       "quality": "Bluray-720p",
+       "revision": 1
+      }
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0226",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:239",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "HDTV-720p",
+       "revision": 2,
+       "languages": [
+        "Spanish"
+       ]
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0227",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:261",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "Bluray-2160p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1,
+       "languages": [
+        "French"
+       ]
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file_custom_formats": [],
+    "local_episode_custom_formats": [],
+    "local_episode_file_info": "NBuilder"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66). Propers are DoNotPrefer here; the outcome does not depend on it (revisions are equal or qualities differ)."
+ },
+ {
+  "id": "SON-IMPORT-0228",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:295",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1,
+       "languages": [
+        "English"
+       ]
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file_custom_formats": [],
+    "local_episode_custom_formats": [],
+    "local_episode_file_info": "NBuilder"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66). Propers are DoNotPrefer here; the outcome does not depend on it (revisions are equal or qualities differ)."
+ },
+ {
+  "id": "SON-IMPORT-0231",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:373",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file_custom_formats": [],
+    "local_episode_custom_formats": [],
+    "local_episode_file_info": "NBuilder"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66). Propers are DoNotPrefer here; the outcome does not depend on it (revisions are equal or qualities differ)."
+ },
+ {
+  "id": "SON-IMPORT-0232",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:406",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file_custom_formats": [],
+    "local_episode_custom_formats": [],
+    "local_episode_file_info": "NBuilder"
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66). Propers are DoNotPrefer here; the outcome does not depend on it (revisions are equal or qualities differ)."
+ },
+ {
+  "id": "SON-IMPORT-0233",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:439",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all"
+     }
+    },
+    "local_episode": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": null
+     },
+     {
+      "episode_file_id": 1,
+      "file": null
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66)."
+ },
+ {
+  "id": "SON-IMPORT-0234",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:452",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all",
+      "format_items": [
+       {
+        "format": "Name1",
+        "score": 10
+       }
+      ]
+     }
+    },
+    "local_episode": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file_custom_formats": [
+     "Name1"
+    ],
+    "local_episode_custom_formats": [
+     "Name1"
+    ],
+    "local_episode_custom_format_score": 20
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66). Name1 is NBuilder's custom format name. Propers are DoNotPrefer here; the outcome does not depend on it (revisions are equal or qualities differ)."
+ },
+ {
+  "id": "SON-IMPORT-0235",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:491",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all",
+      "format_items": [
+       {
+        "format": "Name1",
+        "score": 50
+       }
+      ]
+     }
+    },
+    "local_episode": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-720p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file_custom_formats": [
+     "Name1"
+    ],
+    "local_episode_custom_formats": [
+     "Name1"
+    ],
+    "local_episode_custom_format_score": 20
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66). Name1 is NBuilder's custom format name. Propers are DoNotPrefer here; the outcome does not depend on it (revisions are equal or qualities differ)."
+ },
+ {
+  "id": "SON-IMPORT-0236",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:530",
+  "input": {
+   "op": "UpgradeSpecification (import)",
+   "given": {
+    "series": {
+     "type": "Standard",
+     "profile": {
+      "qualities": [
+       "Unknown",
+       "SDTV",
+       "WEBDL-480p",
+       "DVD",
+       "HDTV-720p",
+       "HDTV-1080p",
+       "HDTV-2160p",
+       "Raw-HD",
+       "WEBDL-720p",
+       "WEBDL-1080p",
+       "WEBDL-2160p",
+       "Bluray-720p",
+       "Bluray-1080p",
+       "Bluray-2160p"
+      ],
+      "allowed": "all",
+      "format_items": [
+       {
+        "format": "Name1",
+        "score": 50
+       }
+      ]
+     }
+    },
+    "local_episode": {
+     "quality": "Bluray-1080p",
+     "revision": 1,
+     "languages": [
+      "Spanish"
+     ],
+     "path": "C:\\Test\\30 Rock\\30.rock.s01e01.avi"
+    },
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "quality": "Bluray-1080p",
+       "revision": 1
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotPrefer"
+    },
+    "existing_file_custom_formats": [
+     "Name1"
+    ],
+    "local_episode_custom_formats": [
+     "Name1"
+    ],
+    "local_episode_custom_format_score": 20
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Profile qualities are QualityFixture.GetDefaultQualities() (src/NzbDrone.Core.Test/Qualities/QualityFixture.cs:66). Name1 is NBuilder's custom format name. Propers are DoNotPrefer here; the outcome does not depend on it (revisions are equal or qualities differ)."
+ }
+]

@@ -1,0 +1,574 @@
+[
+ {
+  "id": "RAD-DECISION-1035",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:87",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1036",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:94",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 2,
+      "tracked_download_state": "Downloading"
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1037",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:105",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 1,
+      "tracked_download_state": "Downloading",
+      "quality": {
+       "quality": "SDTV"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1038",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:123",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Unknown",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 1,
+      "tracked_download_state": "Downloading",
+      "quality": {
+       "quality": "DVD"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1039",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:138",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 1,
+      "tracked_download_state": "Downloading",
+      "quality": {
+       "quality": "HDTV-720p"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1040",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:155",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "DVD",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 1,
+      "tracked_download_state": "Downloading",
+      "quality": {
+       "quality": "HDTV-720p"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1041",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:173",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": false
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 1,
+      "tracked_download_state": "Downloading",
+      "quality": {
+       "quality": "Bluray-1080p"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1042",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:191",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "Bluray-1080p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "DVD"
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 1,
+      "tracked_download_state": "FailedPending",
+      "quality": {
+       "quality": "DVD"
+      }
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "PreferAndUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ },
+ {
+  "id": "RAD-DECISION-1043",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:210",
+  "input": {
+   "spec": "QueueSpecification",
+   "given": {
+    "movie": {
+     "id": 1
+    },
+    "profile": {
+     "items_allowed": [
+      "Unknown",
+      "CAM",
+      "TELECINE",
+      "DVDSCR",
+      "REGIONAL",
+      "SDTV",
+      "DVD",
+      "DVD-R",
+      "HDTV-720p",
+      "HDTV-1080p",
+      "HDTV-2160p",
+      "WEBDL-480p",
+      "WEBDL-720p",
+      "WEBDL-1080p",
+      "WEBDL-2160p",
+      "Bluray-480p",
+      "Bluray-576p",
+      "Bluray-720p",
+      "Bluray-1080p",
+      "Bluray-2160p",
+      "BR-DISK",
+      "Raw-HD"
+     ],
+     "cutoff": "HDTV-720p",
+     "format_items": [],
+     "min_format_score": 0,
+     "upgrade_allowed": true
+    },
+    "parsed_quality": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2
+     }
+    },
+    "release": {
+     "custom_formats": []
+    },
+    "queue": [
+     {
+      "movie_id": 1,
+      "tracked_download_state": "Downloading",
+      "quality": {
+       "quality": "HDTV-720p"
+      },
+      "languages": [
+       "English"
+      ],
+      "custom_formats": []
+     }
+    ],
+    "config": {
+     "download_propers_and_repacks": "DoNotUpgrade"
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "movie id 1 is the NBuilder default for the first built Movie; queued items' custom formats are parsed by a mock that returns none; download_propers_and_repacks is the Moq default PreferAndUpgrade (first value of src/NzbDrone.Core/Qualities/ProperDownloadTypes.cs:5) unless the test sets it"
+ }
+]

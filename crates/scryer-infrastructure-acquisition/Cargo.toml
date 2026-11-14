@@ -44,6 +44,8 @@ metrics-util = { version = "0.20", default-features = false, features = ["debugg
 # The in-process SSH server double, so tunnel tests prove egress really
 # travelled through a tunnel rather than merely failing to go direct.
 scryer-tunnel = { workspace = true, features = ["test-support"] }
+# Parity net harness (parity/README.md): catalogue, ratchet, report.
+scryer-parity = { path = "../../parity/harness" }
 tempfile = "3"
 # Paused-clock tests (`start_paused`) drive timers and run the runtime to idle.
 tokio = { workspace = true, features = ["test-util"] }

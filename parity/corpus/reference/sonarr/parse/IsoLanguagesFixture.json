@@ -1,0 +1,158 @@
+[
+ {
+  "id": "SON-PARSE-0329",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:12",
+  "input": {
+   "name": "en",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "SON-PARSE-0330",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:13",
+  "input": {
+   "name": "eng",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "SON-PARSE-0331",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:14",
+  "input": {
+   "name": "en-US",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "SON-PARSE-0332",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:15",
+  "input": {
+   "name": "en-GB",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "English"
+  }
+ },
+ {
+  "id": "SON-PARSE-0333",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:22",
+  "input": {
+   "name": "enus",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0334",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:23",
+  "input": {
+   "name": "enusa",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0335",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:24",
+  "input": {
+   "name": "wo",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0336",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:25",
+  "input": {
+   "name": "fr-CA",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0337",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:32",
+  "input": {
+   "name": "pt",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Portuguese"
+  }
+ },
+ {
+  "id": "SON-PARSE-0338",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:33",
+  "input": {
+   "name": "por",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Portuguese"
+  }
+ },
+ {
+  "id": "SON-PARSE-0339",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:34",
+  "input": {
+   "name": "pt-PT",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Portuguese"
+  }
+ },
+ {
+  "id": "SON-PARSE-0340",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:41",
+  "input": {
+   "name": "de-AU",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": null
+  }
+ },
+ {
+  "id": "SON-PARSE-0341",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:48",
+  "input": {
+   "name": "cze",
+   "facet": "unknown",
+   "fn": "IsoLanguages.Find"
+  },
+  "expect": {
+   "language": "Czech"
+  }
+ }
+]

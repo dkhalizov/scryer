@@ -1,0 +1,280 @@
+[
+ {
+  "id": "SON-DECISION-1204",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:71",
+  "input": {
+   "spec": "RssSync.IndexerTagSpecification",
+   "given": {
+    "indexers": {
+     "1": {
+      "tags": []
+     }
+    },
+    "series": {
+     "monitored": true,
+     "tags": []
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1205",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:80",
+  "input": {
+   "spec": "RssSync.IndexerTagSpecification",
+   "given": {
+    "indexers": {
+     "1": {
+      "tags": [
+       123
+      ]
+     }
+    },
+    "series": {
+     "monitored": true,
+     "tags": []
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1206",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:89",
+  "input": {
+   "spec": "RssSync.IndexerTagSpecification",
+   "given": {
+    "indexers": {
+     "1": {
+      "tags": []
+     }
+    },
+    "series": {
+     "monitored": true,
+     "tags": [
+      123
+     ]
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1207",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:98",
+  "input": {
+   "spec": "RssSync.IndexerTagSpecification",
+   "given": {
+    "indexers": {
+     "1": {
+      "tags": [
+       123,
+       456
+      ]
+     }
+    },
+    "series": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1208",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:107",
+  "input": {
+   "spec": "RssSync.IndexerTagSpecification",
+   "given": {
+    "indexers": {
+     "1": {
+      "tags": [
+       456
+      ]
+     }
+    },
+    "series": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 1
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1209",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:116",
+  "input": {
+   "spec": "RssSync.IndexerTagSpecification",
+   "given": {
+    "indexers": {
+     "1": {
+      "tags": [
+       456
+      ]
+     }
+    },
+    "series": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 0
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1210",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/IndexerTagSpecificationFixture.cs:126",
+  "input": {
+   "spec": "RssSync.IndexerTagSpecification",
+   "given": {
+    "indexers": {
+     "1": {
+      "tags": [
+       456
+      ]
+     }
+    },
+    "series": {
+     "monitored": true,
+     "tags": [
+      123,
+      789
+     ]
+    },
+    "release": {
+     "indexer_id": 2
+    },
+    "episodes": [
+     {
+      "monitored": true
+     },
+     {
+      "monitored": true
+     }
+    ],
+    "search": {
+     "kind": "SingleEpisodeSearchCriteria",
+     "monitored_episodes_only": true
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Only indexer 1 exists; any other id is not found."
+ }
+]

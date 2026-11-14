@@ -1,0 +1,2966 @@
+[
+ {
+  "id": "RAD-PARSE-0166",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:13",
+  "input": {
+   "name": "Movie.Title.1994.English.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "English"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0167",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:14",
+  "input": {
+   "name": "Movie Title 1994 Eng 1080p XviD-GROUP",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "English"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0168",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:15",
+  "input": {
+   "name": "Movie Title 1994 EN 1080p XviD-GROUP",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "English"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0169",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:23",
+  "input": {
+   "name": "The Danish Movie 2015",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0170",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:24",
+  "input": {
+   "name": "Movie.Title.2018.2160p.WEBRip.x265.10bit.HDR.DD5.1-GASMASK",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0171",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:25",
+  "input": {
+   "name": "Movie.Title.2010.720p.BluRay.x264.-[YTS.LT]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0172",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:26",
+  "input": {
+   "name": "Movie.Title.2010.SUBFRENCH.1080p.WEB.x264-GROUP",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0173",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:27",
+  "input": {
+   "name": "Movie.Title.2010.En.1080p.WEB.x264-GROUP",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0174",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:35",
+  "input": {
+   "name": "Movie Title - 2022.en.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0175",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:36",
+  "input": {
+   "name": "Movie Title - 2022.EN.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0176",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:37",
+  "input": {
+   "name": "Movie Title - 2022.eng.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0177",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:38",
+  "input": {
+   "name": "Movie Title - 2022.ENG.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0178",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:39",
+  "input": {
+   "name": "Movie Title - 2022.English.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0179",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:40",
+  "input": {
+   "name": "Movie Title - 2022.english.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0180",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:41",
+  "input": {
+   "name": "Movie Title - 2022.en.cc.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0181",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:42",
+  "input": {
+   "name": "Movie Title - 2022.en.sdh.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0182",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:43",
+  "input": {
+   "name": "Movie Title - 2022.en.forced.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0183",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:44",
+  "input": {
+   "name": "Movie Title - 2022.en.sdh.forced.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0184",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:51",
+  "input": {
+   "name": "Movie.Title.1994.French.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0185",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:52",
+  "input": {
+   "name": "Movie Title : Other Title 2011 AVC.1080p.Blu-ray HD.VOSTFR.VFF",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0186",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:53",
+  "input": {
+   "name": "Movie Title - Other Title 2011 Bluray 4k HDR HEVC AC3 VFF",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0187",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:54",
+  "input": {
+   "name": "Movie Title  2019 AVC.1080p.Blu-ray Remux HD.VOSTFR.VFF",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0188",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:55",
+  "input": {
+   "name": "Movie Title  : Other Title 2010 x264.720p.Blu-ray Rip HD.VOSTFR.VFF. ONLY",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0189",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:56",
+  "input": {
+   "name": "Movie Title  2019 HEVC.2160p.Blu-ray 4K.VOSTFR.VFF. JATO",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0190",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:57",
+  "input": {
+   "name": "Movie.Title.1956.MULTi.VF.Bluray.1080p.REMUX.AC3.x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0191",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:58",
+  "input": {
+   "name": "Movie.Title.2016.ENG-ITA-FRA.AAC.1080p.WebDL.x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0192",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:59",
+  "input": {
+   "name": "Movie Title 2016 (BDrip 1080p ENG-ITA-FRA) Multisub x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0193",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:60",
+  "input": {
+   "name": "Movie.Title.2016.ENG-ITA-FRE.AAC.1080p.WebDL.x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0194",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:61",
+  "input": {
+   "name": "Movie Title 2016 (BDrip 1080p ENG-ITA-FRE) Multisub x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0195",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:69",
+  "input": {
+   "name": "Movie 1990 1080p Eng Fra [mkvonly]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French",
+    "English"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0196",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:70",
+  "input": {
+   "name": "Movie Directory 25 Anniversary 1990 Eng Fre Multi Subs 720p [H264 mp4]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French",
+    "English"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0197",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:71",
+  "input": {
+   "name": "Foreign-Words-Here-Movie-(1990)-[DVDRip]-H264-Fra-Ac3-2-0-Eng-5-1",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "French",
+    "English"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0198",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:80",
+  "input": {
+   "name": "Movie.Title.1994.Spanish.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0199",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:81",
+  "input": {
+   "name": "Movie Title (2020)[BDRemux AVC 1080p][E-AC3 DD Plus 5.1 Castellano-Inglés Subs]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0200",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:82",
+  "input": {
+   "name": "Movie Title (2020) [UHDRemux2160p HDR][DTS-HD MA 5.1 AC3 5.1 Castellano - True-HD 7.1 Atmos Inglés Subs]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0201",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:83",
+  "input": {
+   "name": "Movie Title (2016) [UHDRemux 2160p SDR] [Castellano DD 5.1 - Inglés DTS-HD MA 5.1 Subs]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0202",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:84",
+  "input": {
+   "name": "Movie Title 2022 [HDTV 720p][Cap.101][AC3 5.1 Castellano][www.pctnew.ORG]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0203",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:85",
+  "input": {
+   "name": "Movie Title 2022 [HDTV 720p][Cap.206][AC3 5.1 Español Castellano]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0204",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:86",
+  "input": {
+   "name": "Movie Title 2022 [Remux-1080p 8-bit h264 DTS-HD MA 2.0][ES.EN]-HiFi",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0205",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:87",
+  "input": {
+   "name": "Movie Title 2022 [BDRemux 1080p AVC ES DTS-HD MA 5.1 Subs][HDO].mkv",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0206",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:88",
+  "input": {
+   "name": "Movie.Name.2022.BluRay.1080p.H264.DTS[EN+ES].[EN+ES+IT]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Spanish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0207",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:96",
+  "input": {
+   "name": "Movie.Title.1994.German.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0208",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:97",
+  "input": {
+   "name": "Movie.Title.2016.GERMAN.DUBBED.WS.WEBRiP.XviD.REPACK-TVP",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0209",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:98",
+  "input": {
+   "name": "Movie Title 2016 - Kampfhaehne - mkv - by Videomann",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0210",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:99",
+  "input": {
+   "name": "Movie.Title.2016.Ger.Dub.AAC.1080p.WebDL.x264-TKP21",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0211",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:100",
+  "input": {
+   "name": "Movie.Title.2016.Ger.AAC.1080p.WebDL.x264-TKP21",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0212",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:101",
+  "input": {
+   "name": "Movie.Title.2016.Hun/Ger/Ita.AAC.1080p.WebDL.x264-TKP21",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0213",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:102",
+  "input": {
+   "name": "Movie.Title.2016.1080p.10Bit.HEVC.WEBRip.HIN-ENG-GER.DD5.1.H.265",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0214",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:103",
+  "input": {
+   "name": "Movie.Title.2016.HU-IT-DE.AAC.1080p.WebDL.x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0215",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:104",
+  "input": {
+   "name": "Movie.Title.2016.SwissGerman.WEB-DL.h264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0216",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:112",
+  "input": {
+   "name": "Movie.Title.1994.Italian.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Italian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0217",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:113",
+  "input": {
+   "name": "Movie.Title.2016.ENG-FRE-ITA.AAC.1080p.WebDL.x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Italian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0218",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:114",
+  "input": {
+   "name": "Movie Title 2016 (BDrip 1080p ENG-FRE-ITA) Multisub x264",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Italian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0219",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:122",
+  "input": {
+   "name": "Movie.Title.1994.Danish.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Danish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0220",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:130",
+  "input": {
+   "name": "Movie.Title.1994.Dutch.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Dutch"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0221",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:138",
+  "input": {
+   "name": "Movie.Title.1994.Japanese.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Japanese"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0222",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:139",
+  "input": {
+   "name": "Movie.Title (1988) 2160p HDR 5.1 Eng - Jap x265 10bit",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Japanese"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0223",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:140",
+  "input": {
+   "name": "Movie Title (1985) (1080p.AC3 ITA-ENG-JAP)",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Japanese"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0224",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:148",
+  "input": {
+   "name": "Movie.Title.1994.Icelandic.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Icelandic"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0225",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:156",
+  "input": {
+   "name": "Movie.Title.1994.Chinese.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Chinese"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0226",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:164",
+  "input": {
+   "name": "Movie.Title.1994.Russian.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Russian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0227",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:165",
+  "input": {
+   "name": "Movie.Title.2020.WEB-DLRip.AVC.AC3.EN.RU.ENSub.RUSub-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Russian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0228",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:166",
+  "input": {
+   "name": "Movie Title (2020) WEB-DL (720p) Rus-Eng",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Russian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0229",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:174",
+  "input": {
+   "name": "Movie.Title.1994.Romanian.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Romanian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0230",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:175",
+  "input": {
+   "name": "Movie.Title.1994.1080p.XviD.RoDubbed-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Romanian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0231",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:183",
+  "input": {
+   "name": "Movie.Title.1994.Hindi.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Hindi"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0232",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:191",
+  "input": {
+   "name": "Movie.Title.1994.Thai.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Thai"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0233",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:199",
+  "input": {
+   "name": "Movie.Title.1994.Bulgarian.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Bulgarian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0234",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:200",
+  "input": {
+   "name": "Movie.Title.1994.BGAUDIO.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Bulgarian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0235",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:201",
+  "input": {
+   "name": "Movie.Title.1994.BG.AUDIO.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Bulgarian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0236",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:209",
+  "input": {
+   "name": "Movie.Title.1994.Dublado.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Portuguese (Brazil)"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0237",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:210",
+  "input": {
+   "name": "Movie.Title.2.2019.1080p.Bluray.Dublado.WWW.TPF.GRATIS",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Portuguese (Brazil)"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0238",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:211",
+  "input": {
+   "name": "Movie.Title.2014.1080p.Bluray.Brazilian.WWW.TPF.GRATIS",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Portuguese (Brazil)"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0239",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:212",
+  "input": {
+   "name": "Movie.Title.2014.1080p.AMZN.WEB-DL.DDP2.0.H.264.pt-BR.ENG-LCD",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Portuguese (Brazil)"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0240",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:220",
+  "input": {
+   "name": "Movie.Title.1994.Polish.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0241",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:221",
+  "input": {
+   "name": "Movie.Title.1994.PL.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0242",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:222",
+  "input": {
+   "name": "Movie.Title.1994.PLDUB.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0243",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:223",
+  "input": {
+   "name": "Movie.Title.1994.DUBPL.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0244",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:224",
+  "input": {
+   "name": "Movie.Title.1994.PL-DUB.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0245",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:225",
+  "input": {
+   "name": "Movie.Title.1994.DUB-PL.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0246",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:226",
+  "input": {
+   "name": "Movie.Title.1994.PLLEK.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0247",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:227",
+  "input": {
+   "name": "Movie.Title.1994.LEKPL.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0248",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:228",
+  "input": {
+   "name": "Movie.Title.1994.PL-LEK.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Polish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0249",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:236",
+  "input": {
+   "name": "Movie.Title.1994.PL-SUB.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0250",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:237",
+  "input": {
+   "name": "Movie.Title.1994.PLSUB.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0251",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:238",
+  "input": {
+   "name": "Movie.Title.1994.SUB-PL.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Unknown"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0252",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:246",
+  "input": {
+   "name": "Movie.Title.1994.Vietnamese.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Vietnamese"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0253",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:247",
+  "input": {
+   "name": "Movie.Title.1994.VIE.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Vietnamese"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0254",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:255",
+  "input": {
+   "name": "Movie.Title.1994.Swedish.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Swedish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0255",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:263",
+  "input": {
+   "name": "Movie.Title.1994.Norwegian.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Norwegian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0256",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:271",
+  "input": {
+   "name": "Movie.Title.1994.Finnish.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Finnish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0257",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:279",
+  "input": {
+   "name": "Movie.Title.1994.Turkish.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Turkish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0258",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:287",
+  "input": {
+   "name": "Movie.Title.1994.Portuguese.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Portuguese"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0259",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:295",
+  "input": {
+   "name": "Movie.Title.1994.Flemish.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Flemish"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0260",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:303",
+  "input": {
+   "name": "Movie.Title.1994.Greek.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Greek"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0261",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:311",
+  "input": {
+   "name": "Movie.Title.1994.Korean.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Korean"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0262",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:312",
+  "input": {
+   "name": "Movie Title [2006] BDRip 720p [Kor Rus] GROUP",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Korean"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0263",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:313",
+  "input": {
+   "name": "Movie.Title.2019.KOR.1080p.HDRip.H264.AAC-GROUP",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Korean"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0264",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:321",
+  "input": {
+   "name": "Movie.Title.1994.Hungarian.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Hungarian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0265",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:329",
+  "input": {
+   "name": "Movie.Title.1994.Hebrew.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Hebrew"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0266",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:330",
+  "input": {
+   "name": "Movie.Title.1994.1080p.BluRay.HebDubbed.Also.English.x264-P2P",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Hebrew"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0267",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:338",
+  "input": {
+   "name": "Movie.Title.1994.AC3.LT.EN-CNN",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Lithuanian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0268",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:346",
+  "input": {
+   "name": "Movie.Title.1994.CZ.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Czech"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0269",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:354",
+  "input": {
+   "name": "Movie.Title.2019.ARABIC.WEBRip.x264-VXT",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Arabic"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0270",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:361",
+  "input": {
+   "name": "Movie.Title [1989, BDRip] MVO + DVO + UKR (MVO) + Sub",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Ukrainian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0271",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:362",
+  "input": {
+   "name": "Movie.Title (2006) BDRemux 1080p 2xUkr | Sub Ukr",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Ukrainian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0272",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:363",
+  "input": {
+   "name": "Movie.Title [1984, BDRip 720p] MVO + MVO + Dub + AVO + 3xUkr",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Ukrainian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0273",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:364",
+  "input": {
+   "name": "Movie.Title.2019.UKRAINIAN.WEBRip.x264-VXT",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Ukrainian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0274",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:372",
+  "input": {
+   "name": "Movie.Title [1937, BDRip 1080p] Dub UKR/Eng + Sub rus",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Ukrainian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0275",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:373",
+  "input": {
+   "name": "Movie.Title.[2003.BDRemux.1080p].Dub.MVO.(2xUkr/Fra).Sub.(Rus/Fra)",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Ukrainian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0276",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:381",
+  "input": {
+   "name": "Movie.Title.2019.PERSIAN.WEBRip.x264-VXT",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Persian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0277",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:388",
+  "input": {
+   "name": "Movie.Title.2019.BENGALI.WEBRip.x264-VXT",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Bengali"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0278",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:395",
+  "input": {
+   "name": "Movie Title (2018) Telugu DVDScr X264 AAC 700 MB",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Telugu"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0279",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:396",
+  "input": {
+   "name": "Movie.Title.2022.Tel.WEBRip.x264-VXT",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Telugu"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0280",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:397",
+  "input": {
+   "name": "Movie Title (2019) Proper HDRip - 720p - x264 - HQ Line Auds - [Telugu + Tamil + Hindi + English] - 1.1GB",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Telugu"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0281",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:404",
+  "input": {
+   "name": "Movie.Title.1994.HDTV.x264.SK-iCZi",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Slovak"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0282",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:405",
+  "input": {
+   "name": "Movie.Title.2019.1080p.HDTV.x265.iNTERNAL.SK-iCZi",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Slovak"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0283",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:406",
+  "input": {
+   "name": "Movie.Title.2018.SLOVAK.DUAL.2160p.UHD.BluRay.x265-iCZi",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Slovak"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0284",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:407",
+  "input": {
+   "name": "Movie.Title.1990.SLOVAK.HDTV.x264-iCZi",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Slovak"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0285",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:414",
+  "input": {
+   "name": "Movie.Title.2022.LV.WEBRip.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Latvian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0286",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:415",
+  "input": {
+   "name": "Movie.Title.2022.lv.WEBRip.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Latvian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0287",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:416",
+  "input": {
+   "name": "Movie.Title.2022.LATVIAN.WEBRip.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Latvian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0288",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:417",
+  "input": {
+   "name": "Movie.Title.2022.Latvian.WEBRip.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Latvian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0289",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:418",
+  "input": {
+   "name": "Movie.Title.2022.1080p.WEB-DL.DDP5.1.Atmos.H.264.Lat.Eng",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Latvian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0290",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:419",
+  "input": {
+   "name": "Movie.Title.2022.1080p.WEB-DL.LAV.RUS-NPPK",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Latvian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0291",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:426",
+  "input": {
+   "name": "Movie.Title.2019.720p_Eng-Spa(Latino)_MovieClubMx",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_first": "Spanish (Latino)"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0292",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:427",
+  "input": {
+   "name": "Movie.Title.1.WEB-DL.720p.Complete.Latino.YG",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_first": "Spanish (Latino)"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0293",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:428",
+  "input": {
+   "name": "Movie.Title.1080p.WEB.H264.Latino.YG",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_first": "Spanish (Latino)"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0294",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:429",
+  "input": {
+   "name": "Movie Title latino",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_first": "Spanish (Latino)"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0295",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:430",
+  "input": {
+   "name": "Movie Title (Temporada 11 Completa) Audio Dual Ingles/Latino 1920x1080",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_first": "Spanish (Latino)"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0296",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:431",
+  "input": {
+   "name": "Movie title 7x4 audio latino",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_first": "Spanish (Latino)"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0297",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:438",
+  "input": {
+   "name": "Movie.Title.1994.Catalan.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Catalan"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0298",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:439",
+  "input": {
+   "name": "Movie.Title.2024.Catalán.1080p.XviD-LOL",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Catalan"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0299",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:440",
+  "input": {
+   "name": "Movie.Title.(2024).(Catala.Spanish.Subs).WEBRip.1080p.x264-EAC3",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Catalan"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0300",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:441",
+  "input": {
+   "name": "Movie.Title.(2024).(Spanish.Catala.English.Subs).BDRip.1080p.x264-EAC3",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Catalan"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0301",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:442",
+  "input": {
+   "name": "Movie Title [2024] [BDrip 1080p-x264-AC3 5.1 català-español-english+sub]",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle",
+   "is_dir": true
+  },
+  "expect": {
+   "languages_include": [
+    "Catalan"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0302",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:450",
+  "input": {
+   "name": "Movie Title (2024) Malayalam BRRip 1080p x264 DTS 5.1 E-subs-MBRHDRG",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Malayalam"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0303",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:451",
+  "input": {
+   "name": "Movie.Title.2024.Malayalam.1080p.AMZN.WEB-DL.DD+5.1.H.264-Shadow.BonsaiHD",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Malayalam"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0304",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:452",
+  "input": {
+   "name": "Movie.Title.2024.2160p.Malayalam.WEB-DL.H.265.SDR.DDP5.1-NbT",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Malayalam"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0305",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:459",
+  "input": {
+   "name": "Movie Title (2024) Kannada 1080p HD AVC MP4 x264 .9.8GB TEAMTR",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Kannada"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0306",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:460",
+  "input": {
+   "name": "Movie.Title.2024.Kannada.1080p.AMZN.WEB-DL.DD+2.0.x264-Telly",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Kannada"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0307",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:467",
+  "input": {
+   "name": "Movie Title (2024) Albanian 1080p HD AVC MP4 x264 .9.8GB TEAMTR",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Albanian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0308",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:468",
+  "input": {
+   "name": "Movie.Title.2024.Albanian.1080p.AMZN.WEB-DL.DD+2.0.x264-Telly",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Albanian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0309",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:475",
+  "input": {
+   "name": "Movie Title (2024) Afrikaans 1080p HD AVC MP4 x264 .9.8GB TEAMTR",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Afrikaans"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0310",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:476",
+  "input": {
+   "name": "Movie.Title.2024.Afrikaans.1080p.AMZN.WEB-DL.DD+2.0.x264-Telly",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Afrikaans"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0311",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:483",
+  "input": {
+   "name": "Movie Title 2015 Marathi 1080p WebRip x264 AC3 5.1 ESubs [TMB]",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Marathi"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0312",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:484",
+  "input": {
+   "name": "Movie.Title.(2018).720p.CensorRip.Marathi.x264.AAC.-.LHDm@Telly",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Marathi"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0313",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:491",
+  "input": {
+   "name": "Movie Title 2024 1080p Tagalog WEB-DL HEVC x265 BONE",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Tagalog"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0314",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:492",
+  "input": {
+   "name": "Movie.Title.2022.720p.Tagalog.WEB-DL.AAC.x264-Mkvking",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Tagalog"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0315",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:499",
+  "input": {
+   "name": "Movie Title 2024 1080p Urdu WEB-DL HEVC x265 BONE",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Urdu"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0316",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:500",
+  "input": {
+   "name": "Movie.Title.2022.720p.Urdu.WEB-DL.AAC.x264-Mkvking",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Urdu"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0317",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:507",
+  "input": {
+   "name": "The.Movie.Name.2016.Romansh.WEB-DL.h264-RlsGrp",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Romansh"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0318",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:508",
+  "input": {
+   "name": "The.Movie.Name.2016.Rumantsch.WEB.DL.h264-RlsGrp",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Romansh"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0319",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:509",
+  "input": {
+   "name": "The Movie Name 2016 Romansch WEB DL h264-RlsGrp",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Romansh"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0320",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:516",
+  "input": {
+   "name": "Movie.Title.2025.Mongolian.WEB-DL.h264",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Mongolian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0321",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:517",
+  "input": {
+   "name": "Movie.Title.2025.Khalkha.WEB-DL.h264",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Mongolian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0322",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:524",
+  "input": {
+   "name": "Movie.Title.1994.Georgian.WEB-DL.h264",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Georgian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0323",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:525",
+  "input": {
+   "name": "Movie.Title.2016.Geo.WEB-DL.h264",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Georgian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0324",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:526",
+  "input": {
+   "name": "Movie.Title.2016.KA.WEB-DL.h264",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Georgian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0325",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:527",
+  "input": {
+   "name": "Movie.Title.2016.RU-KA.WEB-DL.h264",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseLanguages"
+  },
+  "expect": {
+   "languages_include": [
+    "Georgian"
+   ]
+  }
+ },
+ {
+  "id": "RAD-PARSE-0326",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:534",
+  "input": {
+   "name": "Movie.Title.en.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0327",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:535",
+  "input": {
+   "name": "Movie Title.eng.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0328",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:536",
+  "input": {
+   "name": "Movie.Title.eng.forced.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0329",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:537",
+  "input": {
+   "name": "Movie-Title-eng-forced.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "English"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0330",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:544",
+  "input": {
+   "name": "Movie Title.sub",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguage"
+  },
+  "expect": {
+   "subtitle_language": "Unknown"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0331",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:551",
+  "input": {
+   "name": "The.Movie.Name.2016.German.DTS.DL.720p.BluRay.x264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "German",
+    "Original"
+   ],
+   "languages_count": 2
+  }
+ },
+ {
+  "id": "RAD-PARSE-0332",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:560",
+  "input": {
+   "name": "The.Movie.Name.2016.GERMAN.WEB-DL.h264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ],
+   "languages_count": 1
+  }
+ },
+ {
+  "id": "RAD-PARSE-0333",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:561",
+  "input": {
+   "name": "The.Movie.Name.2016.GERMAN.WEB.DL.h264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ],
+   "languages_count": 1
+  }
+ },
+ {
+  "id": "RAD-PARSE-0334",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:562",
+  "input": {
+   "name": "The Movie Name 2016 GERMAN WEB DL h264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ],
+   "languages_count": 1
+  }
+ },
+ {
+  "id": "RAD-PARSE-0335",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:563",
+  "input": {
+   "name": "The.Movie.Name.2016.GERMAN.WEBDL.h264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "German"
+   ],
+   "languages_count": 1
+  }
+ },
+ {
+  "id": "RAD-PARSE-0336",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:571",
+  "input": {
+   "name": "Movie.Title.2025.Original.1080P.WEB.H264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Original"
+   ],
+   "languages_count": 1
+  }
+ },
+ {
+  "id": "RAD-PARSE-0337",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:572",
+  "input": {
+   "name": "Movie.Title.2025.Orig.1080P.WEB.H264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Original"
+   ],
+   "languages_count": 1
+  }
+ },
+ {
+  "id": "RAD-PARSE-0338",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:573",
+  "input": {
+   "name": "Movie Title 2025 [HEVC, HDR10, Dolby Vision, WEB-DL 2160p] [Hybrid] 3 XX + Original",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "Original"
+   ],
+   "languages_count": 1
+  }
+ },
+ {
+  "id": "RAD-PARSE-0339",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:581",
+  "input": {
+   "name": "The.Movie.Name.2023.German.ML.EAC3.720p.NF.WEB.H264-RlsGrp",
+   "facet": "movie",
+   "fn": "Parser.ParseMovieTitle"
+  },
+  "expect": {
+   "languages_include": [
+    "German",
+    "Original",
+    "English"
+   ],
+   "languages_count": 3
+  }
+ },
+ {
+  "id": "RAD-PARSE-0340",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:591",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].testtitle.default.eng.forced.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "default",
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0341",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:592",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].eng.default.testtitle.forced.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "default",
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0342",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:593",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].default.eng.testtitle.forced.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "default",
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0343",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:594",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].testtitle.forced.eng.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0344",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:595",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].eng.forced.testtitle.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0345",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:596",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].forced.eng.testtitle.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0346",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:597",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].testtitle.default.fra.forced.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "default",
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "French"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0347",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:598",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].fra.default.testtitle.forced.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "default",
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "French"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0348",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:599",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].default.fra.testtitle.forced.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "default",
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "French"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0349",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:600",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].testtitle.forced.fra.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "French"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0350",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:601",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].fra.forced.testtitle.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "French"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0351",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:602",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].forced.fra.testtitle.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [
+     "forced"
+    ],
+    "title": "testtitle",
+    "language": "French"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0352",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:603",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].ru-something-else.srt",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [],
+    "title": "something-else",
+    "language": "Russian"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0353",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:604",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].Full Subtitles.eng.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [],
+    "title": "Full Subtitles",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0354",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:605",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].mytitle - 1.en.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [],
+    "title": "mytitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0355",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:606",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].mytitle 1.en.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [],
+    "title": "mytitle 1",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0356",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:607",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].mytitle.en.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language_tags": [],
+    "title": "mytitle",
+    "language": "English"
+   }
+  },
+  "note": "FluentAssertions BeEquivalentTo: language_tags order-insensitive, title case-insensitive",
+  "compare": {
+   "subtitle_info.language_tags": "unordered",
+   "subtitle_info.title": "ignore_case"
+  }
+ },
+ {
+  "id": "RAD-PARSE-0357",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:617",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].default.forced.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language": "Unknown",
+    "language_tags": [],
+    "raw_title": null
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0358",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:618",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].default.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language": "Unknown",
+    "language_tags": [],
+    "raw_title": null
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0359",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:619",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language": "Unknown",
+    "language_tags": [],
+    "raw_title": null
+   }
+  }
+ },
+ {
+  "id": "RAD-PARSE-0360",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:620",
+  "input": {
+   "name": "Name (2020) - [AAC 2.0].testtitle.ass",
+   "facet": "unknown",
+   "fn": "LanguageParser.ParseSubtitleLanguageInformation"
+  },
+  "expect": {
+   "subtitle_info": {
+    "language": "Unknown",
+    "language_tags": [],
+    "raw_title": null
+   }
+  }
+ }
+]

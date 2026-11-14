@@ -1,0 +1,59 @@
+[
+ {
+  "id": "SON-DECISION-0099",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MinimumAgeSpecificationFixture.cs:37",
+  "input": {
+   "spec": "MinimumAgeSpecification",
+   "given": {
+    "config": {
+     "minimum_age_minutes": 0
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0100",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MinimumAgeSpecificationFixture.cs:46",
+  "input": {
+   "spec": "MinimumAgeSpecification",
+   "given": {
+    "config": {
+     "minimum_age_minutes": 30
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0101",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MinimumAgeSpecificationFixture.cs:55",
+  "input": {
+   "spec": "MinimumAgeSpecification",
+   "given": {
+    "config": {
+     "minimum_age_minutes": 30
+    },
+    "release": {
+     "protocol": "usenet",
+     "age_minutes": 10
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ }
+]

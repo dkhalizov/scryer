@@ -1,0 +1,355 @@
+[
+ {
+  "id": "SON-DECISION-0040",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:90",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": false
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1
+    },
+    "history": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0041",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:98",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 0
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1
+    },
+    "history": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0042",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:106",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1
+    },
+    "history": []
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-0043",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:112",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1
+    },
+    "history": [
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-720p",
+      "revision": 1,
+      "event": "Grabbed"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "<GUID-A> stands for Guid.NewGuid().ToString().ToUpper(): an upper-case GUID; the spec compares InfoHash.ToUpper() with the history download id."
+ },
+ {
+  "id": "SON-DECISION-0044",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:120",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1
+    },
+    "history": [
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-720p",
+      "revision": 1,
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-720p",
+      "revision": 1,
+      "event": "DownloadFolderImported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "<GUID-A> stands for Guid.NewGuid().ToString().ToUpper(): an upper-case GUID; the spec compares InfoHash.ToUpper() with the history download id."
+ },
+ {
+  "id": "SON-DECISION-0045",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:131",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "protocol": "torrent",
+     "info_hash": null,
+     "title": "Title1"
+    },
+    "history": [
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-720p",
+      "revision": 1,
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-1080p",
+      "revision": 1,
+      "event": "DownloadFolderImported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Release title is NBuilder's default (Title1). <GUID-A> stands for Guid.NewGuid().ToString().ToUpper(): an upper-case GUID; the spec compares InfoHash.ToUpper() with the history download id."
+ },
+ {
+  "id": "SON-DECISION-0046",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:147",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "protocol": "torrent",
+     "info_hash": "<GUID-A>",
+     "title": "Title1"
+    },
+    "history": [
+     {
+      "download_id": null,
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-720p",
+      "revision": 1,
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-1080p",
+      "revision": 1,
+      "event": "DownloadFolderImported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "Release title is NBuilder's default (Title1). <GUID-A> stands for Guid.NewGuid().ToString().ToUpper(): an upper-case GUID; the spec compares InfoHash.ToUpper() with the history download id."
+ },
+ {
+  "id": "SON-DECISION-0047",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:163",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "protocol": "torrent",
+     "info_hash": "<GUID-A>",
+     "title": "Title1"
+    },
+    "history": [
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-720p",
+      "revision": 1,
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-1080p",
+      "revision": 1,
+      "event": "DownloadFolderImported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Release title is NBuilder's default (Title1). <GUID-A> stands for Guid.NewGuid().ToString().ToUpper(): an upper-case GUID; the spec compares InfoHash.ToUpper() with the history download id."
+ },
+ {
+  "id": "SON-DECISION-0048",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:179",
+  "input": {
+   "spec": "AlreadyImportedSpecification",
+   "given": {
+    "config": {
+     "enable_completed_download_handling": true
+    },
+    "episodes": [
+     {
+      "id": 1,
+      "season": 12,
+      "number": 3,
+      "episode_file_id": 1
+     }
+    ],
+    "release": {
+     "quality": "HDTV-720p",
+     "revision": 1,
+     "protocol": "torrent",
+     "info_hash": "<GUID-A>",
+     "title": "Title1"
+    },
+    "history": [
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-720p",
+      "revision": 1,
+      "event": "Grabbed"
+     },
+     {
+      "download_id": "<GUID-A>",
+      "source_title": "Series.Title.S01E01.720p.HDTV.x264-Sonarr",
+      "quality": "HDTV-1080p",
+      "revision": 1,
+      "event": "DownloadFolderImported"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "accepted": false
+  },
+  "note": "Arrange is identical to the info-hash test above; the release title is NBuilder's default (Title1), not the history source title, so the title match the name describes is not what this test sets up. <GUID-A> stands for Guid.NewGuid().ToString().ToUpper(): an upper-case GUID; the spec compares InfoHash.ToUpper() with the history download id."
+ }
+]

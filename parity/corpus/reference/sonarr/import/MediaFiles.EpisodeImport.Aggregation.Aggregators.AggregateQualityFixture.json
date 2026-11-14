@@ -1,0 +1,378 @@
+[
+ {
+  "id": "SON-IMPORT-0059",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:54",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "extension",
+      "order": 1,
+      "source": "Television",
+      "source_confidence": "Fallback",
+      "resolution": 720,
+      "resolution_confidence": "Fallback",
+      "revision": 1,
+      "revision_confidence": "Fallback"
+     },
+     {
+      "name": "null",
+      "returns": null
+     }
+    ],
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "quality": "HDTV-720p",
+   "source_detection": "Extension",
+   "resolution_detection": "Extension"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0060",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:70",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "extension",
+      "order": 1,
+      "source": "Television",
+      "source_confidence": "Fallback",
+      "resolution": 720,
+      "resolution_confidence": "Fallback",
+      "revision": 1,
+      "revision_confidence": "Fallback"
+     },
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 1,
+      "revision_confidence": "Default"
+     }
+    ],
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "quality": "SDTV",
+   "source_detection": "Name",
+   "resolution_detection": "Name"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0061",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:82",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "extension",
+      "order": 1,
+      "source": "Television",
+      "source_confidence": "Fallback",
+      "resolution": 720,
+      "resolution_confidence": "Fallback",
+      "revision": 1,
+      "revision_confidence": "Fallback"
+     },
+     {
+      "name": "mediainfo",
+      "order": 4,
+      "resolution": 1080,
+      "resolution_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p",
+   "source_detection": "Extension",
+   "resolution_detection": "MediaInfo"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0062",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:94",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 1,
+      "revision_confidence": "Default"
+     },
+     {
+      "name": "mediainfo",
+      "order": 4,
+      "resolution": 1080,
+      "resolution_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "quality": "HDTV-1080p",
+   "source_detection": "Name",
+   "resolution_detection": "MediaInfo"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0063",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:106",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 1,
+      "revision_confidence": "Default"
+     },
+     {
+      "name": "release_name",
+      "order": 5,
+      "source": "Web",
+      "source_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": true
+   }
+  },
+  "expect": {
+   "quality": "WEBDL-480p",
+   "source_detection": "Name",
+   "resolution_detection": "Name"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0064",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:118",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 1,
+      "revision_confidence": "Default"
+     },
+     {
+      "name": "release_name",
+      "order": 5,
+      "source": "Web",
+      "source_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": true
+   }
+  },
+  "expect": {
+   "revision": 1,
+   "revision_detection": "Unknown"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0065",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:129",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 2,
+      "revision_confidence": "Tag"
+     },
+     {
+      "name": "release_name",
+      "order": 5,
+      "source": "Web",
+      "source_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": true
+   }
+  },
+  "expect": {
+   "revision": 2,
+   "revision_detection": "Name"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0066",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:143",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 0,
+      "revision_confidence": "Tag"
+     },
+     {
+      "name": "release_name",
+      "order": 5,
+      "source": "Web",
+      "source_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": true
+   }
+  },
+  "expect": {
+   "revision": 0,
+   "revision_detection": "Name"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0067",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:157",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 0,
+      "revision_confidence": "Tag"
+     },
+     {
+      "name": "release_name",
+      "order": 5,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 2,
+      "revision_confidence": "Tag"
+     }
+    ],
+    "download_client_item": true
+   }
+  },
+  "expect": {
+   "revision": 2,
+   "revision_detection": "Name"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0068",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:174",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Bluray",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 0,
+      "revision_confidence": "Tag"
+     },
+     {
+      "name": "mediainfo",
+      "order": 4,
+      "resolution": 576,
+      "resolution_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "quality": "Bluray-576p",
+   "source_detection": "Name",
+   "resolution_detection": "MediaInfo"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ },
+ {
+  "id": "SON-IMPORT-0069",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/AggregateQualityFixture.cs:192",
+  "input": {
+   "op": "AggregateQuality",
+   "given": {
+    "augmenters": [
+     {
+      "name": "name",
+      "order": 2,
+      "source": "Television",
+      "source_confidence": "Default",
+      "resolution": 480,
+      "resolution_confidence": "Default",
+      "revision": 0,
+      "revision_confidence": "Tag"
+     },
+     {
+      "name": "mediainfo",
+      "order": 4,
+      "resolution": 576,
+      "resolution_confidence": "MediaInfo"
+     }
+    ],
+    "download_client_item": false
+   }
+  },
+  "expect": {
+   "quality": "SDTV",
+   "source_detection": "Name",
+   "resolution_detection": "MediaInfo"
+  },
+  "note": "new Revision() is version 1; ResolutionOnly/SourceOnly results leave the other parts unset."
+ }
+]

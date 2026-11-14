@@ -1,0 +1,290 @@
+[
+ {
+  "id": "SON-IMPORT-0249",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:96",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "calls": {
+    "RecycleBin.DeleteFile": 1
+   }
+  },
+  "note": "Old files go through the recycle-bin provider's DeleteFile; with no recycle bin configured (mediamanagement.json#recycleBin) that is a permanent delete."
+ },
+ {
+  "id": "SON-IMPORT-0250",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:106",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     },
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "calls": {
+    "RecycleBin.DeleteFile": 1
+   }
+  },
+  "note": "Old files go through the recycle-bin provider's DeleteFile; with no recycle bin configured (mediamanagement.json#recycleBin) that is a permanent delete."
+ },
+ {
+  "id": "SON-IMPORT-0251",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:116",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     },
+     {
+      "episode_file_id": 2,
+      "file": {
+       "id": 2,
+       "relative_path": "Season 01\\30.rock.s01e02.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "calls": {
+    "RecycleBin.DeleteFile": 2
+   }
+  },
+  "note": "Old files go through the recycle-bin provider's DeleteFile; with no recycle bin configured (mediamanagement.json#recycleBin) that is a permanent delete."
+ },
+ {
+  "id": "SON-IMPORT-0252",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:126",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "calls": {
+    "MediaFileService.Delete(Upgrade)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0253",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:136",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": false,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "calls": {
+    "MediaFileService.Delete(old file, Upgrade)": 1
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0254",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:150",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": false,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "calls": {
+    "RecycleBin.DeleteFile": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0255",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:164",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "old_files_count": 1
+  }
+ },
+ {
+  "id": "SON-IMPORT-0256",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:172",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     },
+     {
+      "episode_file_id": 2,
+      "file": {
+       "id": 2,
+       "relative_path": "Season 01\\30.rock.s01e02.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "old_files_count": 2
+  }
+ },
+ {
+  "id": "SON-IMPORT-0257",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:180",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": false,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": {
+       "id": 1,
+       "relative_path": "Season 01\\30.rock.s01e01.avi"
+      }
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "throws": "RootFolderNotFoundException",
+   "calls": {
+    "MediaFileService.Delete(old file, Upgrade)": 0
+   }
+  }
+ },
+ {
+  "id": "SON-IMPORT-0258",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:194",
+  "input": {
+   "op": "UpgradeMediaFileService.UpgradeEpisodeFile",
+   "given": {
+    "series_path": "/C/Test/TV/Series",
+    "root_folder_exists": true,
+    "files_exist": true,
+    "episodes": [
+     {
+      "episode_file_id": 1,
+      "file": null
+     }
+    ],
+    "new_episode_file": "NBuilder"
+   }
+  },
+  "expect": {
+   "calls": {
+    "MediaFileService.Delete(any)": 0
+   }
+  }
+ }
+]

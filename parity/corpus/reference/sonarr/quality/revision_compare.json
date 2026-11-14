@@ -1,0 +1,269 @@
+[
+ {
+  "id": "SON-QUALITY-0084",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:11",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 1
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0085",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:20",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0086",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:29",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 1
+    },
+    "second": {
+     "version": 1,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": 1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0087",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:38",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0088",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:47",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 2,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0089",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:56",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 1
+    },
+    "second": {
+     "version": 2,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": -1
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0090",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:65",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0091",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:74",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 1
+    },
+    "second": {
+     "version": 1,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0092",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:83",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 1
+    },
+    "second": {
+     "version": 2,
+     "real": 1
+    }
+   }
+  },
+  "expect": {
+   "sign": 0
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0093",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:92",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "gt": false,
+   "lt": false,
+   "ne": false,
+   "ge": true,
+   "le": true,
+   "eq": true
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0094",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:106",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 2,
+     "real": 0
+    },
+    "second": {
+     "version": 1,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "gt": true,
+   "lt": false,
+   "ne": true,
+   "ge": true,
+   "le": false,
+   "eq": false
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ },
+ {
+  "id": "SON-QUALITY-0095",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:120",
+  "input": {
+   "op": "revision_compare",
+   "given": {
+    "first": {
+     "version": 1,
+     "real": 0
+    },
+    "second": {
+     "version": 2,
+     "real": 0
+    }
+   }
+  },
+  "expect": {
+   "gt": false,
+   "lt": true,
+   "ne": true,
+   "ge": false,
+   "le": true,
+   "eq": false
+  },
+  "note": "Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:12)"
+ }
+]

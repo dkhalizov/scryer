@@ -1,0 +1,38 @@
+[
+ {
+  "expect": {
+   "jobs": {
+    "execute-global-schedule-rules": "*/5 * * * * *",
+    "rule-group-executor-1": "*/10 * * * * *",
+    "rule-group-executor-3": "*/15 * * * * *"
+   }
+  },
+  "id": "MNT-MAINTENANCE-0281",
+  "input": {
+   "given": {
+    "ruleGroups": [
+     {
+      "id": 1,
+      "isActive": true,
+      "ruleHandlerCronSchedule": "*/10 * * * * *"
+     },
+     {
+      "id": 2,
+      "isActive": true,
+      "ruleHandlerCronSchedule": {
+       "$undefined": true
+      }
+     },
+     {
+      "id": 3,
+      "isActive": true,
+      "ruleHandlerCronSchedule": "*/15 * * * * *"
+     }
+    ],
+    "rules_handler_job_cron": "*/5 * * * * *"
+   },
+   "op": "scheduler_bootstrap"
+  },
+  "ref": "Maintainerr@v3.32.0 apps/server/src/modules/rules/tasks/rule-executor-scheduler.service.spec.ts:72"
+ }
+]

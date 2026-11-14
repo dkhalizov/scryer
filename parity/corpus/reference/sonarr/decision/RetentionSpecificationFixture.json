@@ -1,0 +1,117 @@
+[
+ {
+  "id": "SON-DECISION-1102",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:37",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "config": {
+     "retention_days": 0
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_days": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1103",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:46",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "config": {
+     "retention_days": 1000
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_days": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1104",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:55",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "config": {
+     "retention_days": 100
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_days": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ },
+ {
+  "id": "SON-DECISION-1105",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:64",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "config": {
+     "retention_days": 10
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_days": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": false
+  }
+ },
+ {
+  "id": "SON-DECISION-1106",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:73",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "config": {
+     "retention_days": 0
+    },
+    "release": {
+     "protocol": "Usenet",
+     "age_days": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  },
+  "note": "The test name says 'came out today' but it arranges WithAge(100)."
+ },
+ {
+  "id": "SON-DECISION-1107",
+  "ref": "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RetentionSpecificationFixture.cs:82",
+  "input": {
+   "spec": "RetentionSpecification",
+   "given": {
+    "config": {
+     "retention_days": 10
+    },
+    "release": {
+     "protocol": "Torrent",
+     "age_days": 100
+    }
+   }
+  },
+  "expect": {
+   "accepted": true
+  }
+ }
+]

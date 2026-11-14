@@ -1,0 +1,159 @@
+[
+ {
+  "id": "RAD-NAMING-0017",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:86",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title}"
+    },
+    "movie": {
+     "title": "South Park"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8)."
+ },
+ {
+  "id": "RAD-NAMING-0041",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:313",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": false,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} ({Release Year}) {Quality Full}"
+    },
+    "movie": {
+     "title": "South Park"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest",
+     "scene_name": "30.Rock.S01E01.xvid:LOL",
+     "relative_path": "30 Rock - S01E01 - Test"
+    }
+   }
+  },
+  "expect": {
+   "name": "30.Rock.S01E01.xvid-LOL"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8). Off our config (corpus/captured/radarr/config/naming.json): rename_movies false (ours true)."
+ },
+ {
+  "id": "RAD-NAMING-0071",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:530",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} [{Quality Full}]"
+    },
+    "movie": {
+     "title": "South Park"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park [HDTV-720p]"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8)."
+ },
+ {
+  "id": "RAD-NAMING-0072",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:539",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} [{Quality Full}]"
+    },
+    "movie": {
+     "title": "South Park"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 2,
+      "real": 0
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park [HDTV-720p Proper]"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8)."
+ },
+ {
+  "id": "RAD-NAMING-0073",
+  "ref": "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:550",
+  "input": {
+   "op": "build_file_name",
+   "given": {
+    "naming": {
+     "rename_movies": true,
+     "replace_illegal_characters": true,
+     "colon_replacement_format": "Smart",
+     "movie_folder_format": "{Movie Title} ({Release Year})",
+     "standard_movie_format": "{Movie Title} [{Quality Full}]"
+    },
+    "movie": {
+     "title": "South Park"
+    },
+    "movie_file": {
+     "quality": "HDTV-720p",
+     "revision": {
+      "version": 1,
+      "real": 1
+     },
+     "release_group": "RadarrTest"
+    }
+   }
+  },
+  "expect": {
+   "name": "South Park [HDTV-720p REAL]"
+  },
+  "note": "Naming starts from NamingConfig.Default (src/NzbDrone.Core/Organizer/NamingConfig.cs:7). Revision() defaults to version 1, real 0 (src/NzbDrone.Core/Qualities/Revision.cs:8)."
+ }
+]

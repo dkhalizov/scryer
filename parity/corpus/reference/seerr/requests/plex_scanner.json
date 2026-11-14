@@ -1,0 +1,50 @@
+[
+ {
+  "id": "SER-REQUESTS-0049",
+  "ref": "Seerr@v3.5.2 server/lib/scanners/plex/plex.test.ts:242",
+  "input": {
+   "op": "plex.full_scan",
+   "given": {
+    "libraries": [
+     {
+      "name": "TV Shows",
+      "type": "show",
+      "enabled": true
+     }
+    ],
+    "media": {
+     "media_type": "tv",
+     "tmdb_id": 6100,
+     "status": "PROCESSING",
+     "status4k": "UNKNOWN",
+     "seasons": [
+      {
+       "seasonNumber": 1,
+       "status": "PROCESSING",
+       "status4k": "UNKNOWN"
+      }
+     ]
+    },
+    "request": {
+     "status": "APPROVED",
+     "is4k": false,
+     "seasons": [
+      1
+     ],
+     "season_status": "APPROVED"
+    },
+    "plex": {
+     "show_seasons": [
+      1
+     ],
+     "season_episodes": {
+      "1": 0
+     }
+    }
+   }
+  },
+  "expect": {
+   "request_status": "APPROVED"
+  }
+ }
+]

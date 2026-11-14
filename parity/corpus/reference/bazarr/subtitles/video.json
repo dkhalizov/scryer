@@ -1,0 +1,83 @@
+[
+ {
+  "expect": {
+   "kind": "Episode",
+   "other": null,
+   "streaming_service": "foo"
+  },
+  "id": "BAZ-SUBTITLES-0064",
+  "input": {
+   "given": {
+    "guess": {
+     "random_key": "bar",
+     "streaming_service": "foo",
+     "type": "episode"
+    },
+    "name": "Breaking.Bad.S01E01.Bluray.mkv"
+   },
+   "op": "video_fromguess"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:5"
+ },
+ {
+  "expect": {
+   "edition": "foo",
+   "kind": "Movie",
+   "other": "Proper"
+  },
+  "id": "BAZ-SUBTITLES-0065",
+  "input": {
+   "given": {
+    "guess": {
+     "edition": "foo",
+     "other": "Proper",
+     "random_key": "bar",
+     "type": "movie"
+    },
+    "name": "Taxi.Driver.1976.Bluray.mkv"
+   },
+   "op": "video_fromguess"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:15"
+ },
+ {
+  "expect": {
+   "episode": 1,
+   "release_group": "FOO",
+   "resolution": "1080p",
+   "season": 1,
+   "series": "Breaking Bad",
+   "source": "Web",
+   "streaming_service": "Netflix",
+   "title": null,
+   "video_codec": "H.264"
+  },
+  "id": "BAZ-SUBTITLES-0066",
+  "input": {
+   "given": {
+    "name": "Breaking.Bad.S01E01.NF.WEB-DL.1080p.x264-FOO.mkv"
+   },
+   "op": "video_fromname"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:25"
+ },
+ {
+  "expect": {
+   "audio_codec": "FLAC",
+   "other": "Proper",
+   "resolution": "2160p",
+   "source": "Ultra HD Blu-ray",
+   "title": "Some Flick",
+   "video_codec": "H.265",
+   "year": 2022
+  },
+  "id": "BAZ-SUBTITLES-0067",
+  "input": {
+   "given": {
+    "name": "Some.Flick.2022.UHD.Bluray.Proper.2160p.FLAC.HEVC-FOO.mkv"
+   },
+   "op": "video_fromname"
+  },
+  "ref": "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:39"
+ }
+]

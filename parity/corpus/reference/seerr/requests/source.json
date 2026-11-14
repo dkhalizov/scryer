@@ -1,0 +1,396 @@
+[
+ {
+  "id": "SER-REQUESTS-0071",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:340",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "by": {
+     "permissions": [
+      "REQUEST",
+      "AUTO_APPROVE",
+      "AUTO_REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "movie",
+     "is4k": false
+    }
+   }
+  },
+  "expect": {
+   "status": "APPROVED"
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0072",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:340",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "by": {
+     "permissions": [
+      "REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "movie",
+     "is4k": false
+    }
+   }
+  },
+  "expect": {
+   "status": "PENDING"
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0073",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:384",
+  "input": {
+   "op": "request.requested_seasons",
+   "given": {
+    "seasons": "all",
+    "enableSpecialEpisodes": false,
+    "tmdb_seasons": [
+     {
+      "season_number": 0,
+      "episode_count": 3
+     },
+     {
+      "season_number": 1,
+      "episode_count": 10
+     },
+     {
+      "season_number": 2,
+      "episode_count": 10
+     },
+     {
+      "season_number": 3,
+      "episode_count": 0
+     }
+    ]
+   }
+  },
+  "expect": {
+   "requested_seasons": [
+    1,
+    2
+   ]
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0074",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:392",
+  "input": {
+   "op": "request.requested_seasons",
+   "given": {
+    "seasons": [
+     0,
+     1
+    ],
+    "enableSpecialEpisodes": false
+   }
+  },
+  "expect": {
+   "requested_seasons": [
+    1
+   ]
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0075",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:434",
+  "input": {
+   "op": "request.requested_seasons",
+   "given": {
+    "seasons": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "is4k": false,
+    "other_requests": [
+     {
+      "status": "APPROVED",
+      "is4k": false,
+      "seasons": [
+       1
+      ]
+     },
+     {
+      "status": "DECLINED",
+      "is4k": false,
+      "seasons": [
+       3
+      ]
+     }
+    ],
+    "media_seasons": [
+     {
+      "seasonNumber": 2,
+      "status": "AVAILABLE"
+     },
+     {
+      "seasonNumber": 4,
+      "status": "DELETED"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "requested_seasons": [
+    3,
+    4
+   ]
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0076",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:439",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "body": {
+     "mediaType": "tv",
+     "seasons": [
+      1
+     ]
+    },
+    "media_seasons": [
+     {
+      "seasonNumber": 1,
+      "status": "AVAILABLE"
+     }
+    ]
+   }
+  },
+  "expect": {
+   "error": "NoSeasonsAvailableError"
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0077",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:455",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "by": {
+     "permissions": [
+      "REQUEST",
+      "AUTO_APPROVE",
+      "AUTO_REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "tv",
+     "is4k": false,
+     "seasons": [
+      1
+     ]
+    }
+   }
+  },
+  "expect": {
+   "status": "APPROVED"
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0078",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:455",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "by": {
+     "permissions": [
+      "REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "tv",
+     "is4k": false,
+     "seasons": [
+      1
+     ]
+    }
+   }
+  },
+  "expect": {
+   "status": "PENDING"
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0084",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:493",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "by": {
+     "permissions": [
+      "REQUEST",
+      "AUTO_APPROVE",
+      "AUTO_REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "tv",
+     "is4k": false,
+     "seasons": [
+      1
+     ]
+    }
+   }
+  },
+  "expect": {
+   "season_status": "APPROVED"
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0085",
+  "ref": "Seerr@v3.5.2 server/entity/MediaRequest.ts:493",
+  "input": {
+   "op": "request.create",
+   "given": {
+    "by": {
+     "permissions": [
+      "REQUEST"
+     ]
+    },
+    "body": {
+     "mediaType": "tv",
+     "is4k": false,
+     "seasons": [
+      1
+     ]
+    }
+   }
+  },
+  "expect": {
+   "season_status": "PENDING"
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0079",
+  "ref": "Seerr@v3.5.2 server/lib/watchlistsync.ts:46",
+  "input": {
+   "op": "watchlist.sync",
+   "given": {
+    "user": {
+     "permissions": [
+      "REQUEST",
+      "AUTO_APPROVE"
+     ],
+     "plex_token": true,
+     "watchlistSyncMovies": true,
+     "watchlistSyncTv": true
+    },
+    "watchlist": [
+     {
+      "type": "movie",
+      "tmdbId": 100
+     }
+    ]
+   }
+  },
+  "expect": {
+   "requested": []
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0080",
+  "ref": "Seerr@v3.5.2 server/lib/watchlistsync.ts:149",
+  "input": {
+   "op": "watchlist.sync",
+   "given": {
+    "user": {
+     "permissions": [
+      "AUTO_REQUEST"
+     ],
+     "plex_token": true,
+     "watchlistSyncMovies": true,
+     "watchlistSyncTv": true
+    },
+    "watchlist": [
+     {
+      "type": "show",
+      "tmdbId": 200,
+      "tvdbId": 200000
+     }
+    ]
+   }
+  },
+  "expect": {
+   "request": {
+    "mediaType": "tv",
+    "mediaId": 200,
+    "seasons": "all",
+    "is4k": false,
+    "isAutoRequest": true
+   }
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0081",
+  "ref": "Seerr@v3.5.2 server/routes/auth.ts:198",
+  "input": {
+   "op": "auth.plex_sign_in",
+   "given": {
+    "newPlexLogin": true,
+    "defaultPermissions": 8388768,
+    "existing_user": false,
+    "first_user": false,
+    "has_server_access": true
+   }
+  },
+  "expect": {
+   "user_created": true,
+   "userType": "PLEX",
+   "permissions": 8388768
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0082",
+  "ref": "Seerr@v3.5.2 server/subscriber/MediaRequestSubscriber.ts:401",
+  "input": {
+   "op": "request.send_to_radarr",
+   "given": {
+    "radarr": {
+     "preventSearch": false
+    }
+   }
+  },
+  "expect": {
+   "searchNow": true
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ },
+ {
+  "id": "SER-REQUESTS-0083",
+  "ref": "Seerr@v3.5.2 server/subscriber/MediaRequestSubscriber.ts:773",
+  "input": {
+   "op": "request.send_to_sonarr",
+   "given": {
+    "sonarr": {
+     "preventSearch": false
+    }
+   }
+  },
+  "expect": {
+   "searchNow": true
+  },
+  "note": "No reference test; expectation read from the implementing source line."
+ }
+]
