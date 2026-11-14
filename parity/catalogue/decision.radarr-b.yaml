@@ -1224,7 +1224,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:61"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision_guards]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs|should_return_true_when_episodeFile_was_added_more_than_7_days_ago_but_is_for_search|0|8ecc4d92f6f4
 - id: RAD-DECISION-1153

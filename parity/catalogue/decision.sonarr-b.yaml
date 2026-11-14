@@ -1259,7 +1259,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:201"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_delay]
 - id: SON-DECISION-1180
   behaviour: "A custom format score of 100 above minimum 50 does not bypass the delay when the bypass is disabled"
@@ -1357,14 +1357,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:140"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1194
   behaviour: "A DVD release is accepted over recent SDTV grabs of both episodes"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/HistorySpecificationFixture.cs:147"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_history]
 - id: SON-DECISION-1195
   behaviour: "A DVD release is rejected over recent HDTV-1080p grabs of both episodes"
@@ -1504,7 +1504,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:92"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_guards]
 - id: SON-DECISION-1215
   behaviour: "A search accepts the proper regardless of file age"

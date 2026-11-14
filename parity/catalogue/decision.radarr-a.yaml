@@ -416,7 +416,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs:120"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision_history]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/HistorySpecificationFixture.cs|should_not_be_upgradable_if_episode_is_of_same_quality_as_existing|0|bb725b06ce19
 - id: RAD-DECISION-0053
