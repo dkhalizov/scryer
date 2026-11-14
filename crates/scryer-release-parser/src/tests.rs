@@ -5800,3 +5800,39 @@ fn dotted_title_before_dash_is_not_a_site() {
         }
     }
 }
+
+// fork (P22): arr R2160p forms (`3840x2160`, `4K` next to UHD/HEVC/BD/H.265)
+// and the bare `UHD`/`[4K]` fallback read as 2160p; an explicit `<n>p` wins.
+#[test]
+fn four_k_and_uhd_names_read_as_2160p_unless_a_resolution_is_explicit() {
+    let target = context(ContextFacetHint::Series, "Emberfall");
+    for (raw, quality) in [
+        ("Emberfall.s05e13.4K.UHD.WEB.DL", "2160p"),
+        ("Emberfall.s05e13.UHD.4K.Bluray", "2160p"),
+        (
+            "Emberfall S02 2013 WEB-DL 4k H265 AAC 2Audio-HDSWEB",
+            "2160p",
+        ),
+        ("Emberfall - S01E01 - Pilot [HEVC-4k DTSHD-MA-6ch]", "2160p"),
+        (
+            "[Dolby Vision] Emberfall.S07.MULTi.UHD.BLURAY.REMUX.DV-NoTag",
+            "2160p",
+        ),
+        (
+            "[Coalgirls]_Emberfall_01_(3840x2160_Blu-ray_FLAC)_[8370CB8F].mkv",
+            "2160p",
+        ),
+        ("[NOGRP][Emberfall][19][HEVC][GB][4K]", "2160p"),
+        (
+            "Emberfall.2003.4K.BluRay.Remux.1080p.AVC.DTS-HD.MA.5.1-BMF",
+            "1080p",
+        ),
+        (
+            "Emberfall 2005 1080p UHD BluRay DD+7.1 x264-LoRD.mkv",
+            "1080p",
+        ),
+    ] {
+        let parsed = crate::best_parse_for_target(raw, &target);
+        assert_eq!(parsed.quality.as_deref(), Some(quality), "{raw}");
+    }
+}

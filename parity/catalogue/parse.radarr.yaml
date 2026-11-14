@@ -5205,7 +5205,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:235"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0648
   # key: "QualityParserFixture.cs|should_parse_webdl2160p_quality|c2226808b129d783|0"
@@ -5669,7 +5669,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:313"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0706
   # key: "QualityParserFixture.cs|should_parse_bluray2160p_quality|105db9bf7600e775|0"
@@ -5893,7 +5893,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:361"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0734
   # key: "QualityParserFixture.cs|should_parse_remux2160p_quality|f6844182a534314f|0"

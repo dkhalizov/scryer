@@ -7756,7 +7756,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:284"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl2160p_quality|9b8deb2205ba|0
 - id: SON-PARSE-0967
@@ -7764,7 +7764,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:285"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl2160p_quality|295feb96eaf4|0
 - id: SON-PARSE-0968
@@ -7780,7 +7780,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:287"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl2160p_quality|dccbcadec70f|0
 - id: SON-PARSE-0970
@@ -8180,7 +8180,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:362"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray2160p_quality|684d7a376b23|0
 - id: SON-PARSE-1020
@@ -8188,7 +8188,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:363"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray2160p_quality|250fb905c734|0
 - id: SON-PARSE-1021
@@ -8252,7 +8252,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:376"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray2160p_remux_quality|4cee1c7d12d8|0
 - id: SON-PARSE-1029

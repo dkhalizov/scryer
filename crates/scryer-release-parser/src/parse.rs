@@ -257,6 +257,9 @@ pub(crate) fn analyze_inputs(inputs: AnalysisInputs<'_>) -> ReleaseParseAnalysis
         let technical_recovery =
             recover_independent_technical_metadata(&lexed.tokens, &technical_candidate);
         apply_independent_technical_metadata(&mut best_candidate.projected, technical_recovery);
+        if best_candidate.projected.quality.is_none() {
+            best_candidate.projected.quality = uhd_fallback_quality(&lexed.tokens);
+        }
         // Resolve stereo claims once more against the same conservative title
         // union used for independent recovery, including conflicting evidence.
         let mut stereo_candidate = technical_candidate.clone();
@@ -9219,6 +9222,60 @@ fn detect_compound_metadata(token: &str) -> CompoundMetadata {
     }
 
     metadata
+}
+
+// fork (P22): the arrs' R2160p forms (`3840x2160`, `4K` beside UHD/HEVC/BD/H.265)
+// and their AlternativeResolution fallback (bare `UHD`, `[4K]`) read as 2160p.
+// Only a fallback: any explicit `<n>p`/`<n>i` token wins, so `1080p UHD BluRay`
+// stays 1080p.
+fn uhd_fallback_quality(tokens: &[Token]) -> Option<String> {
+    if tokens
+        .iter()
+        .any(|token| parse_resolution_quality_token(&token.normalized).is_some())
+    {
+        return None;
+    }
+    let joined = |separator: SeparatorKind| {
+        matches!(
+            separator,
+            SeparatorKind::Hyphen
+                | SeparatorKind::Underscore
+                | SeparatorKind::Dot
+                | SeparatorKind::Space
+        )
+    };
+    let partner = |index: usize| {
+        tokens
+            .get(index)
+            .is_some_and(|token| match token.normalized.as_str() {
+                "UHD" | "HEVC" | "BD" | "H265" => true,
+                "H" => tokens
+                    .get(index + 1)
+                    .is_some_and(|next| next.normalized == "265"),
+                "265" => index
+                    .checked_sub(1)
+                    .and_then(|previous| tokens.get(previous))
+                    .is_some_and(|previous| previous.normalized == "H"),
+                _ => false,
+            })
+    };
+    let found = tokens
+        .iter()
+        .enumerate()
+        .any(|(index, token)| match token.normalized.as_str() {
+            "UHD" | "3840X2160" => true,
+            "4K" => {
+                (token.separator_before == SeparatorKind::OpenBracket
+                    && token.separator_after == SeparatorKind::CloseBracket)
+                    || (joined(token.separator_after) && partner(index + 1))
+                    || (joined(token.separator_before)
+                        && index
+                            .checked_sub(1)
+                            .is_some_and(|previous| partner(previous)))
+            }
+            _ => false,
+        });
+    found.then(|| "2160p".to_string())
 }
 
 fn detect_compound_quality(token: &str) -> Option<String> {
