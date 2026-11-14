@@ -12,12 +12,12 @@ fails if an outcome disagrees with it (ratchet).
 | import | 151 | 60 | 0 | 386 | 59 | 597 |
 | scan | 70 | 66 | 0 | 39 | 11 | 175 |
 | torrent | 17 | 9 | 20 | 174 | 6 | 220 |
-| requests | 10 | 9 | 0 | 320 | 29 | 339 |
+| requests | 12 | 7 | 0 | 320 | 29 | 339 |
 | maintenance | 37 | 6 | 3 | 368 | 269 | 414 |
 | subtitles | 123 | 18 | 0 | 74 | 27 | 215 |
 | indexers | 7 | 29 | 1 | 25 | 0 | 62 |
 | notify | 0 | 0 | 0 | 10 | 3 | 10 |
-| **all** | 4177 | 2312 | 24 | 2013 | 661 | 8526 |
+| **all** | 4179 | 2310 | 24 | 2013 | 661 | 8526 |
 
 ## Run
 
@@ -26,63 +26,7 @@ Suites run: 142 of 142. Cases recorded: 6491. Ratchet violations: 0. Catalogue e
 
 ## Moved since baseline
 
-- BAZ-SUBTITLES-5001: Red → Green
-- BAZ-SUBTITLES-6002: Red → Green
-- BAZ-SUBTITLES-6004: Red → Green
-- BAZ-SUBTITLES-6005: Red → Green
-- BAZ-SUBTITLES-6006: Red → Green
-- BAZ-SUBTITLES-6007: Red → Green
-- BAZ-SUBTITLES-6008: Red → Green
-- BAZ-SUBTITLES-6009: Red → Green
-- BAZ-SUBTITLES-6010: Red → Green
-- BAZ-SUBTITLES-6011: Red → Green
-- BAZ-SUBTITLES-6012: Red → Green
-- BAZ-SUBTITLES-6013: Red → Green
-- BAZ-SUBTITLES-6014: Red → Green
-- BAZ-SUBTITLES-6015: Red → Green
-- BAZ-SUBTITLES-6016: Red → Green
-- BAZ-SUBTITLES-6023: Red → Green
-- BAZ-SUBTITLES-6024: Red → Green
-- BAZ-SUBTITLES-6025: Red → Green
-- BAZ-SUBTITLES-6026: Red → Green
-- BAZ-SUBTITLES-6027: Red → Green
-- BAZ-SUBTITLES-6028: Red → Green
-- BAZ-SUBTITLES-6030: Red → Green
-- BAZ-SUBTITLES-6032: Red → Green
-- BAZ-SUBTITLES-6033: Red → Green
-- BAZ-SUBTITLES-6036: Red → Green
-- BAZ-SUBTITLES-6037: Red → Green
-- BAZ-SUBTITLES-6040: Red → Green
-- BAZ-SUBTITLES-6041: Red → Green
-- BAZ-SUBTITLES-6042: Red → Green
-- BAZ-SUBTITLES-6043: Red → Green
-- BAZ-SUBTITLES-6044: Red → Green
-- BAZ-SUBTITLES-6046: Red → Green
-- BAZ-SUBTITLES-6047: Red → Green
-- BAZ-SUBTITLES-6048: Red → Green
-- BAZ-SUBTITLES-6063: Red → Green
-- BAZ-SUBTITLES-6072: Red → Green
-- BAZ-SUBTITLES-6074: Red → Green
-- BAZ-SUBTITLES-6075: Red → Green
-- BAZ-SUBTITLES-6077: Red → Green
-- BAZ-SUBTITLES-6078: Red → Green
-- BAZ-SUBTITLES-6080: Red → Green
-- BAZ-SUBTITLES-6081: Red → Green
-- BAZ-SUBTITLES-6082: Red → Green
-- BAZ-SUBTITLES-6083: Red → Green
-- BAZ-SUBTITLES-6084: Red → Green
-- BAZ-SUBTITLES-6085: Red → Green
-- BAZ-SUBTITLES-6086: Red → Green
-- BAZ-SUBTITLES-6087: Red → Green
-- BAZ-SUBTITLES-6091: Red → Green
-- BAZ-SUBTITLES-6095: Red → Green
-- BAZ-SUBTITLES-6098: Red → Green
-- BAZ-SUBTITLES-6101: Red → Green
-- BAZ-SUBTITLES-6102: Red → Green
-- BAZ-SUBTITLES-6104: Red → Green
-- BAZ-SUBTITLES-6106: Red → Green
-- BAZ-SUBTITLES-6113: Red → Green
-- BAZ-SUBTITLES-6115: Red → Green
-- BAZ-SUBTITLES-6116: Red → Green
+- SER-REQUESTS-5004: Red → Green
+- SER-REQUESTS-5005: Red → Green
 
-58 changed status, 0 added, 0 removed.
+2 changed status, 0 added, 0 removed.

@@ -750,15 +750,16 @@ impl LibraryPermissionMask {
         }
     }
 
+    // fork (P8): admins and title managers file requests that auto-approve,
+    // as in Seerr. Upstream excluded Manage Titles holders here.
     pub fn is_strictly_requestable(self) -> bool {
-        !self.contains(Self::MANAGE_TITLES) && self.with_request_shadowing().contains(Self::REQUEST)
+        self.with_request_shadowing().contains(Self::REQUEST)
     }
 
+    // fork (P8): see is_strictly_requestable.
     pub fn can_auto_approve_requests(self) -> bool {
-        !self.contains(Self::MANAGE_TITLES)
-            && self
-                .with_request_shadowing()
-                .contains(Self::AUTO_APPROVE_REQUESTS)
+        self.with_request_shadowing()
+            .contains(Self::AUTO_APPROVE_REQUESTS)
     }
 
     pub fn contains(self, required: Self) -> bool {

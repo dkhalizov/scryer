@@ -125,7 +125,7 @@ test("administrator fallback yields to explicit library grants", () => {
   );
   assert.equal(
     hasAnyLibraryPermission(admin, LIBRARY_PERMISSIONS.request),
-    false,
+    true, // fork (P8, D62): admins file requests
   );
   assert.equal(
     hasLibraryPermission(admin, null, LIBRARY_PERMISSIONS.view),
@@ -149,7 +149,7 @@ test("administrator request grants remain strictly requestable", () => {
       "library-created-later",
       LIBRARY_PERMISSIONS.request,
     ),
-    false,
+    true, // fork (P8, D62): the admin fallback holds Manage Titles
   );
   assert.equal(
     hasLibraryPermission(

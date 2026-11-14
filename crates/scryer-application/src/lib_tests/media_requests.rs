@@ -275,8 +275,9 @@ fn library_permission_request_shadowing_expands_and_normalizes_masks() {
         scryer_domain::LibraryPermission::AutoApproveRequests,
         scryer_domain::LibraryPermission::Request,
     ]);
-    assert!(!manage_titles.is_strictly_requestable());
-    assert!(!manage_titles.can_auto_approve_requests());
+    // fork (P8, D62): a Manage Titles mask requests and auto-approves.
+    assert!(manage_titles.is_strictly_requestable());
+    assert!(manage_titles.can_auto_approve_requests());
     assert!(
         manage_titles
             .with_request_shadowing()
@@ -1225,7 +1226,8 @@ async fn submit_media_request_requires_request_permission_and_matching_facet() {
 }
 
 #[tokio::test]
-async fn submit_media_request_rejects_manage_titles_shadowed_request_permission() {
+async fn a_title_manager_files_a_request_that_auto_approves() {
+    // fork (P8, D62): upstream refused this; Seerr lets managers file.
     let harness = bootstrap_media_request_app();
     let library_id = scryer_domain::default_library_id_for_facet(&MediaFacet::Movie);
     let manager = library_permission_user(
@@ -1238,20 +1240,15 @@ async fn submit_media_request_rejects_manage_titles_shadowed_request_permission(
         ],
     );
 
-    let error = harness
+    harness
         .app
         .submit_media_request(&manager, media_request_input(library_id, 9037))
         .await
-        .expect_err("manage titles should suppress personal request submission");
+        .expect("a title manager files a request");
 
-    assert!(
-        matches!(
-            error,
-            AppError::Unauthorized(_) | AppError::UnauthorizedReason { .. }
-        ),
-        "unexpected error: {error:?}"
-    );
-    assert!(harness.media_requests.requests.lock().await.is_empty());
+    let requests = harness.media_requests.requests.lock().await;
+    assert_eq!(requests.len(), 1);
+    assert_eq!(requests[0].status, MediaRequestStatus::Approved);
 }
 
 #[tokio::test]
@@ -1290,22 +1287,32 @@ async fn submit_media_request_allows_mixed_manage_and_request_libraries() {
         )
         .await
         .expect("request-only library should accept submission");
-    let managed_error = harness
+    // fork (P8, D62): the managed library accepts the request too.
+    harness
         .app
-        .submit_media_request(&actor, media_request_input(managed_library_id, 9039))
+        .submit_media_request(
+            &actor,
+            media_request_input(managed_library_id.clone(), 9039),
+        )
         .await
-        .expect_err("managed library should reject personal submission");
+        .expect("managed library should accept submission");
 
-    assert!(
-        matches!(
-            managed_error,
-            AppError::Unauthorized(_) | AppError::UnauthorizedReason { .. }
-        ),
-        "unexpected managed-library error: {managed_error:?}"
-    );
     let requests = harness.media_requests.requests.lock().await;
-    assert_eq!(requests.len(), 1);
-    assert_eq!(requests[0].library_id, request_library_id);
+    assert_eq!(requests.len(), 2);
+    let status_in = |library: &str| {
+        requests
+            .iter()
+            .find(|r| r.library_id == library)
+            .map(|r| r.status.clone())
+    };
+    assert_eq!(
+        status_in(&managed_library_id),
+        Some(MediaRequestStatus::Approved)
+    );
+    assert_eq!(
+        status_in(&request_library_id),
+        Some(MediaRequestStatus::Pending)
+    );
     drop(requests);
 
     let requestable_libraries = harness
@@ -1317,8 +1324,11 @@ async fn submit_media_request_allows_mixed_manage_and_request_libraries() {
         )
         .await
         .expect("requestable libraries should load");
-    assert_eq!(requestable_libraries.len(), 1);
-    assert_eq!(requestable_libraries[0].id, request_library_id);
+    let mut ids: Vec<_> = requestable_libraries.iter().map(|l| l.id.clone()).collect();
+    ids.sort();
+    let mut expected = vec![managed_library_id, request_library_id];
+    expected.sort();
+    assert_eq!(ids, expected);
 }
 
 #[tokio::test]

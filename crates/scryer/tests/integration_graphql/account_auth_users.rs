@@ -3226,8 +3226,9 @@ async fn token_is_revoked_after_permission_change_until_relogin() {
         authorization
             .has_library_permission(&library_id, scryer_domain::LibraryPermission::ManageTitles,)
     );
+    // fork (P8, D62): Manage Titles no longer excludes Request.
     assert!(
-        !authorization
+        authorization
             .has_library_permission(&library_id, scryer_domain::LibraryPermission::Request)
     );
 }

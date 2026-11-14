@@ -47,12 +47,12 @@ green + red.
 | import | importing finished downloads | 151 | 60 | 0 | 386 | 72% |
 | scan | reading an existing library | 70 | 66 | 0 | 39 | 51% |
 | torrent | download client, seeding | 17 | 9 | 20 | 174 | 65% |
-| requests | user requests (Seerr) | 10 | 9 | 0 | 320 | 53% |
+| requests | user requests (Seerr) | 12 | 7 | 0 | 320 | 63% |
 | maintenance | cleanup rules (Maintainerr) | 37 | 6 | 3 | 368 | 86% |
 | subtitles | subtitle matching (Bazarr) | 123 | 18 | 0 | 74 | 87% |
 | indexers | indexer settings and routing (Prowlarr) | 7 | 29 | 1 | 25 | 19% |
 | notify | notifications | 0 | 0 | 0 | 10 | - |
-| **all** | | **4177** | **2312** | **24** | **2013** | **64%** |
+| **all** | | **4179** | **2310** | **24** | **2013** | **64%** |
 
 By reference app:
 
@@ -62,7 +62,7 @@ By reference app:
 | Radarr | 852 | 772 | 1 | 533 | 52% |
 | Prowlarr | 12 | 16 | 0 | 46 | 43% |
 | Bazarr | 124 | 21 | 0 | 83 | 86% |
-| Seerr | 8 | 8 | 0 | 315 | 50% |
+| Seerr | 10 | 6 | 0 | 315 | 62% |
 | Maintainerr | 36 | 6 | 3 | 369 | 86% |
 | qBittorrent | 1 | 0 | 0 | 32 | 100% |
 

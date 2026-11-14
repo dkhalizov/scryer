@@ -339,17 +339,13 @@ function libraryPermissionMatches(
 ): boolean {
   const explicit = new Set<string>(values);
   switch (permission) {
+    // fork (P8): admins and title managers file requests that auto-approve.
     case LIBRARY_PERMISSIONS.request:
-      return (
-        !explicit.has(LIBRARY_PERMISSIONS.manageTitles) &&
-        libraryPermissionsWithRequestShadowing(values).includes(permission)
-      );
     case LIBRARY_PERMISSIONS.autoApproveRequests:
-      return (
-        !explicit.has(LIBRARY_PERMISSIONS.manageTitles) &&
-        libraryPermissionsWithRequestShadowing(values).includes(permission)
+      return libraryPermissionsWithRequestShadowing(values).includes(
+        permission,
       );
-    // Unlike the request pair, Manage Subtitles is genuinely held by a Manage
+    // Like the request pair (fork P8), Manage Subtitles is held by a Manage
     // Titles holder: the server answers `has_library_permission` for it through
     // the same shadow, so the UI must agree or a title manager sees no button
     // for something the server would let them do.

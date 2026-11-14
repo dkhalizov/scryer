@@ -119,9 +119,8 @@ pub enum MediaRequestAdmission {
     #[default]
     Evaluate,
     /// The request waits for a person even when grants or rules would approve
-    /// it. A denial still stands. A requester who manages titles in the
-    /// library may file one too: Manage Titles shadows Request, and the hold
-    /// keeps their grants from approving it.
+    /// it. A denial still stands. Title managers and admins hold Request
+    /// themselves (fork P8), and the hold keeps their grants from approving it.
     HoldForReview,
 }
 
@@ -445,8 +444,8 @@ impl AppUseCase {
         })
     }
 
-    /// The grant a submission needs. Every request needs Request, except a
-    /// held one, which a title manager may also file: it waits for review
+    /// The grant a submission needs: Request, which a title manager holds
+    /// through Manage Titles (fork P8). A held request still waits for review
     /// whatever their grants allow, so Manage Titles cannot approve it.
     async fn require_request_submission_permission(
         &self,
@@ -462,8 +461,9 @@ impl AppUseCase {
     }
 
     /// The grant a requester needs to see, change and withdraw a request of
-    /// their own: either one that let them file it. A title manager files held
-    /// requests without Request, and must not be left unable to take one back.
+    /// their own: either one that let them file it. Since fork P8 a title
+    /// manager holds Request, so the ManageTitles branch below is redundant;
+    /// it is kept to keep the upstream diff small.
     async fn require_own_request_permission(
         &self,
         actor: &User,

@@ -1510,3 +1510,22 @@ fn legacy_download_failure_event_defaults_the_separate_reason_code() {
         event
     );
 }
+
+#[test]
+fn title_managers_and_admins_file_requests_that_auto_approve() {
+    let stored = LibraryPermissionMask::from_permissions([
+        LibraryPermission::View,
+        LibraryPermission::ManageTitles,
+    ])
+    .normalized_for_storage();
+    let manager = UserAuthorization {
+        default_library: stored,
+        loaded: true,
+        ..UserAuthorization::default()
+    };
+    for auth in [manager, UserAuthorization::full_admin()] {
+        assert!(auth.has_library_permission("lib", LibraryPermission::Request));
+        assert!(auth.has_library_permission("lib", LibraryPermission::AutoApproveRequests));
+        assert!(auth.has_any_library_permission(LibraryPermission::Request));
+    }
+}

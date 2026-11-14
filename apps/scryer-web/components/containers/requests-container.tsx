@@ -390,8 +390,8 @@ export function RequestsContainer({ facet }: RequestsContainerProps) {
 
           nextAdminLibraries = (adminLibrariesResult.data?.libraries ??
             []) as LibraryRecord[];
-          // A title manager files held requests without the Request grant, so
-          // their own requests live in the libraries they manage too.
+          // A title manager holds Request (fork P8), so the managed libraries
+          // are requestable too; the extra lookup is kept for the upstream diff.
           const requestLibraries = (requesterLibrariesResult.data?.libraries ??
             []) as LibraryRecord[];
           const requestLibraryIds = new Set(

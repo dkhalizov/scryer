@@ -744,7 +744,8 @@ async fn a_held_request_from_a_title_manager_goes_through_ordinary_review() {
 }
 
 #[tokio::test]
-async fn a_title_manager_still_cannot_file_an_ordinary_request() {
+async fn a_title_manager_files_an_ordinary_request_that_auto_approves() {
+    // fork (P8, D62): reverses upstream's "still cannot file".
     let harness = bootstrap_media_request_app();
     let library_id = scryer_domain::default_library_id_for_facet(&MediaFacet::Movie);
     let manager = library_permission_user(
@@ -753,20 +754,15 @@ async fn a_title_manager_still_cannot_file_an_ordinary_request() {
         &[LibraryPermission::ManageTitles],
     );
 
-    let error = harness
+    harness
         .app
         .submit_media_request(&manager, media_request_input(library_id, 9068))
         .await
-        .expect_err("Manage Titles alone does not make a title requestable");
+        .expect("Manage Titles files a request");
 
-    assert!(
-        matches!(
-            error,
-            AppError::Unauthorized(_) | AppError::UnauthorizedReason { .. }
-        ),
-        "{error:?}"
-    );
-    assert!(harness.media_requests.requests.lock().await.is_empty());
+    let requests = harness.media_requests.requests.lock().await;
+    assert_eq!(requests.len(), 1);
+    assert_eq!(requests[0].status, MediaRequestStatus::Approved);
 }
 
 const LIST_LABEL: &str = "fixture-label";
