@@ -9235,27 +9235,36 @@ fn uhd_fallback_quality(tokens: &[Token]) -> Option<String> {
     {
         return None;
     }
-    let joined = |separator: SeparatorKind| {
-        matches!(
-            separator,
-            SeparatorKind::Hyphen
-                | SeparatorKind::Underscore
-                | SeparatorKind::Dot
-                | SeparatorKind::Space
-        )
+    // fork (P22 review): arr `4k[-_. ]` and `H\.?265` allow exactly one
+    // separator character, so a folded run like `4K - HEVC` is not adjacent.
+    let gap = |a: usize, b: usize| tokens[b].span.start.checked_sub(tokens[a].span.end);
+    let adjacent = |a: usize, b: usize| {
+        b < tokens.len()
+            && gap(a, b) == Some(1)
+            && matches!(
+                tokens[a].separator_after,
+                SeparatorKind::Hyphen
+                    | SeparatorKind::Underscore
+                    | SeparatorKind::Dot
+                    | SeparatorKind::Space
+            )
+    };
+    let h265 = |h: usize| {
+        tokens.get(h).is_some_and(|t| t.normalized == "H")
+            && tokens.get(h + 1).is_some_and(|t| t.normalized == "265")
+            && match gap(h, h + 1) {
+                Some(0) => true,
+                Some(1) => tokens[h].separator_after == SeparatorKind::Dot,
+                _ => false,
+            }
     };
     let partner = |index: usize| {
         tokens
             .get(index)
             .is_some_and(|token| match token.normalized.as_str() {
                 "UHD" | "HEVC" | "BD" | "H265" => true,
-                "H" => tokens
-                    .get(index + 1)
-                    .is_some_and(|next| next.normalized == "265"),
-                "265" => index
-                    .checked_sub(1)
-                    .and_then(|previous| tokens.get(previous))
-                    .is_some_and(|previous| previous.normalized == "H"),
+                "H" => h265(index),
+                "265" => index.checked_sub(1).is_some_and(h265),
                 _ => false,
             })
     };
@@ -9267,11 +9276,10 @@ fn uhd_fallback_quality(tokens: &[Token]) -> Option<String> {
             "4K" => {
                 (token.separator_before == SeparatorKind::OpenBracket
                     && token.separator_after == SeparatorKind::CloseBracket)
-                    || (joined(token.separator_after) && partner(index + 1))
-                    || (joined(token.separator_before)
-                        && index
-                            .checked_sub(1)
-                            .is_some_and(|previous| partner(previous)))
+                    || (adjacent(index, index + 1) && partner(index + 1))
+                    || index
+                        .checked_sub(1)
+                        .is_some_and(|previous| adjacent(previous, index) && partner(previous))
             }
             _ => false,
         });

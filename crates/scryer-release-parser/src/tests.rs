@@ -5807,32 +5807,44 @@ fn dotted_title_before_dash_is_not_a_site() {
 fn four_k_and_uhd_names_read_as_2160p_unless_a_resolution_is_explicit() {
     let target = context(ContextFacetHint::Series, "Emberfall");
     for (raw, quality) in [
-        ("Emberfall.s05e13.4K.UHD.WEB.DL", "2160p"),
-        ("Emberfall.s05e13.UHD.4K.Bluray", "2160p"),
+        ("Emberfall.s05e13.4K.UHD.WEB.DL", Some("2160p")),
+        ("Emberfall.s05e13.UHD.4K.Bluray", Some("2160p")),
         (
             "Emberfall S02 2013 WEB-DL 4k H265 AAC 2Audio-HDSWEB",
-            "2160p",
+            Some("2160p"),
         ),
-        ("Emberfall - S01E01 - Pilot [HEVC-4k DTSHD-MA-6ch]", "2160p"),
+        (
+            "Emberfall - S01E01 - Pilot [HEVC-4k DTSHD-MA-6ch]",
+            Some("2160p"),
+        ),
         (
             "[Dolby Vision] Emberfall.S07.MULTi.UHD.BLURAY.REMUX.DV-NoTag",
-            "2160p",
+            Some("2160p"),
         ),
         (
             "[Coalgirls]_Emberfall_01_(3840x2160_Blu-ray_FLAC)_[8370CB8F].mkv",
-            "2160p",
+            Some("2160p"),
         ),
-        ("[NOGRP][Emberfall][19][HEVC][GB][4K]", "2160p"),
+        ("[NOGRP][Emberfall][19][HEVC][GB][4K]", Some("2160p")),
         (
             "Emberfall.2003.4K.BluRay.Remux.1080p.AVC.DTS-HD.MA.5.1-BMF",
-            "1080p",
+            Some("1080p"),
         ),
         (
             "Emberfall 2005 1080p UHD BluRay DD+7.1 x264-LoRD.mkv",
-            "1080p",
+            Some("1080p"),
         ),
+        // fork (P22 review): 4K needs an arr partner one separator away; a
+        // UHD never overrides an explicit resolution.
+        ("Emberfall.s05e13.4K.WEB.DL", None),
+        ("Emberfall.2011.Bluray.4k.HDR.AC3", None),
+        ("Emberfall.s05e13.(4K).WEB.DL", None),
+        ("Emberfall.s05e13.4K - HEVC.WEB.DL", None),
+        ("Emberfall.s05e13.4K.H_265.WEB.DL", None),
+        ("Emberfall.s05e13.4K.H.265.WEB.DL", Some("2160p")),
+        ("Emberfall.S01E01.720p.UHD.WEB-DL.1080p", Some("720p")),
     ] {
         let parsed = crate::best_parse_for_target(raw, &target);
-        assert_eq!(parsed.quality.as_deref(), Some(quality), "{raw}");
+        assert_eq!(parsed.quality.as_deref(), quality, "{raw}");
     }
 }
