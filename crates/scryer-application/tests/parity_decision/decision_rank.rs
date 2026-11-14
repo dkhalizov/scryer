@@ -131,7 +131,12 @@ fn rank_suite(file: &str, mapped: &[&str], key: &str, order: bool, name: &str) {
 }
 
 fn rank_case(g: &Value, key: &str, order: bool) -> Result<Value, String> {
-    let profile = super::build_profile(&super::fixture_spec(&g["profile"], &g["config"])?)?;
+    // Every candidate names its quality (header, D54).
+    let named: Vec<_> = g[key].as_array().into_iter().flatten()
+        .filter_map(|c| super::side(&c["quality"], None, 0).ok())
+        .map(|s| s.q)
+        .collect();
+    let profile = super::build_profile(&super::fixture_spec(&g["profile"], &g["config"])?, &named)?;
     if !g["quality_definition"]["preferred_size"].is_null() {
         return Err("no Scryer setting for a per-quality preferred size (quality definition preferredSize, MB/min); Scryer's size fit uses its own expected bitrate".into());
     }

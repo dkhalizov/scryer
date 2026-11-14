@@ -190,7 +190,6 @@ fn history_case(radarr: bool, g: &Value) -> Result<Value, String> {
         return Err("no Scryer setting for completed download handling off".into());
     }
     let p = &g["profile"];
-    let profile = super::build_profile(&super::fixture_spec(p, &g["config"])?)?;
     let (release, members, is_rss, event_key) = if radarr {
         for k in ["release_custom_formats", "history_custom_formats"] {
             if g[k].as_array().is_some_and(|a| !a.is_empty()) {
@@ -225,6 +224,10 @@ fn history_case(radarr: bool, g: &Value) -> Result<Value, String> {
         Value::Object(map) => map.iter().map(|(k, v)| (Some(k.clone()), v)).collect(),
         _ => vec![],
     };
+    // History items name their quality even when the loader would skip them.
+    let mut named = vec![release.q];
+    named.extend(rows.iter().filter_map(|(_, item)| super::side(item, None, 0).ok()).map(|h| h.q));
+    let profile = super::build_profile(&super::fixture_spec(p, &g["config"])?, &named)?;
     let mut queued = Vec::new();
     for (key, item) in rows {
         // The loader's scope filter (canonical_context.rs grabbed_release_claims_for_scope).
@@ -417,7 +420,8 @@ fn anime_comparable(g: &Value) -> bool {
 }
 
 fn whole_verdict(g: &Value, (release, members, held): Parts) -> Result<Value, String> {
-    let profile = super::build_profile(&super::fixture_spec(&g["profile"], &g["config"])?)?;
+    let named: Vec<_> = std::iter::once(release.q).chain(held.iter().map(|h| h.side.q)).collect();
+    let profile = super::build_profile(&super::fixture_spec(&g["profile"], &g["config"])?, &named)?;
     let refusal = super::grab_refusal(&profile, &release, &held, members.as_deref(), Vec::new(), false);
     Ok(super::accepted(refusal.is_none()))
 }
@@ -453,7 +457,8 @@ fn proper_case(app: &str, g: &Value) -> Result<Value, String> {
         }
         (release, Some(members), held)
     };
-    let profile = super::build_profile(&super::fixture_spec(p, &g["config"])?)?;
+    let named: Vec<_> = std::iter::once(release.q).chain(held.iter().map(|h| h.side.q)).collect();
+    let profile = super::build_profile(&super::fixture_spec(p, &g["config"])?, &named)?;
     let refusal = super::grab_refusal(&profile, &release, &held, members.as_deref(), Vec::new(), is_rss);
     Ok(super::accepted(!matches!(
         refusal,

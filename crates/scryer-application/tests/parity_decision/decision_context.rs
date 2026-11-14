@@ -603,6 +603,7 @@ fn already_imported(g: &Value, radarr: bool) -> Result<Value, String> {
             episode_id: episode.clone(),
             series_movie_link_ids: vec![],
             quality_label: None,
+            source_type: None,
             created_at: super::now().to_rfc3339(),
         };
         let scope = if radarr { AdmissionScope::Title } else { AdmissionScope::Episodes(vec!["e1".into()]) };

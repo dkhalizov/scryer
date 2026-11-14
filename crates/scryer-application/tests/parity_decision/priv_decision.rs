@@ -329,7 +329,7 @@ fn propers_case(app: &str) -> Case {
     let mut expected = Vec::new();
     let mut actual = Vec::new();
     for pid in profiles_in_use(app) {
-        let profile = super::build_profile(&super::captured_spec(app, pid)?)?;
+        let profile = super::build_profile(&super::captured_spec(app, pid)?, &[])?;
         let file = super::release_at(&profile, 0, 0, Some(PROPER_GROUP)).ok_or("profile has no tier")?;
         let proper = Side { revision: 1, ..file.clone() };
         let held = [Held { id: "f1".into(), side: file.clone(), episode: None, added_days_ago: 0 }];

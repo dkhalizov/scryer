@@ -141,7 +141,6 @@ fn delay_case(radarr: bool, g: &Value) -> Result<Value, String> {
     {
         return Err("custom-format score not translated in this stream".into());
     }
-    let profile = super::build_profile(&super::fixture_spec(&g["profile"], &g["config"])?)?;
     let release = &g["release"];
     let (release_fact, facet) = if radarr {
         (&g["parsed_quality"], MediaFacet::Movie)
@@ -151,25 +150,27 @@ fn delay_case(radarr: bool, g: &Value) -> Result<Value, String> {
     let release_group = if radarr { &g["parsed_release_group"] } else { &release["release_group"] };
     let release_side = super::side(release_fact, super::proper_group(release_group), 0)?;
 
-    let (scope, incumbents) = if radarr {
+    let (scope, held) = if radarr {
         let mut v = Vec::new();
         if !g["existing_file"].is_null() {
             let f = &g["existing_file"];
             let s = super::side(f, super::proper_group(&f["release_group"]), 0)?;
-            v.push(super::incumbent(&profile, "f1", &s, None, 0));
+            v.push(super::Held { id: "f1".into(), side: s, episode: None, added_days_ago: 0 });
         }
         (AdmissionScope::Title, v)
     } else {
-        let (members, held) = super::episode_files(g, &g["profile"])?;
-        let v = held
-            .into_iter()
-            .map(|mut h| {
-                h.side.group.get_or_insert_with(|| super::PROPER_GROUP.into());
-                super::incumbent(&profile, &h.id, &h.side, h.episode.as_deref(), h.added_days_ago)
-            })
-            .collect();
-        (AdmissionScope::Episodes(members), v)
+        let (members, mut held) = super::episode_files(g, &g["profile"])?;
+        for h in &mut held {
+            h.side.group.get_or_insert_with(|| super::PROPER_GROUP.into());
+        }
+        (AdmissionScope::Episodes(members), held)
     };
+    let named: Vec<_> = std::iter::once(release_side.q).chain(held.iter().map(|h| h.side.q)).collect();
+    let profile = super::build_profile(&super::fixture_spec(&g["profile"], &g["config"])?, &named)?;
+    let incumbents: Vec<_> = held
+        .iter()
+        .map(|h| super::incumbent(&profile, &h.id, &h.side, h.episode.as_deref(), h.added_days_ago))
+        .collect();
     let subject = AdmissionSubject::new(scope, incumbents.into_iter().map(|i| (i, true)));
 
     let age = release["age_minutes"]
