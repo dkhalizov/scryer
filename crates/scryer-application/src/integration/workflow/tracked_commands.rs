@@ -1086,6 +1086,8 @@ impl AppUseCase {
 /// privateness at all. The warning stays visible for the operator, who can
 /// resolve or replace the download; Sonarr's `FailedDownloadService` acts only
 /// on `Failed`/`IsEncrypted` and lets warnings persist the same way.
+/// (fork P3: an incomplete torrent that stops progressing is still failed by
+/// the stall check, on the client-failure cleanup rail.)
 ///
 /// Usenet clients keep the timeout: no seeding obligation exists, and a stuck
 /// usenet download is exactly what failed-download handling is for. For NZBGet
@@ -1239,6 +1241,39 @@ async fn process_tracked_download_snapshot(
                     "tracked: state transition after check"
                 );
             }
+        }
+    }
+
+    // fork (P3, D65): stalled torrents, per client so the outage guard sees
+    // all of a client's torrents at once. Read once per snapshot.
+    let stall_timeout = crate::tracked_downloads::torrent_stall_timeout(
+        app.read_setting_i64_value(crate::TORRENT_STALL_TIMEOUT_MINUTES_SETTING_KEY, None)
+            .await
+            .ok()
+            .flatten(),
+    );
+    let mut torrents_by_client: HashMap<String, Vec<scryer_domain::download_identity::DownloadId>> =
+        HashMap::new();
+    for &download_id in &seen_order {
+        if let Some(td) = runtime.tracker.get_by_download_id(download_id)
+            && crate::seeding_gate::client_type_is_torrent(app, &td.client_type)
+        {
+            torrents_by_client
+                .entry(td.client_id.clone())
+                .or_default()
+                .push(download_id);
+        }
+    }
+    for download_ids in torrents_by_client.values() {
+        for download_id in
+            runtime
+                .tracker
+                .fail_stalled_torrents_for_client(download_ids, Utc::now(), stall_timeout)
+        {
+            tracing::info!(
+                %download_id,
+                "tracked: torrent made no progress within the stall timeout; queueing failed-download handling"
+            );
         }
     }
 

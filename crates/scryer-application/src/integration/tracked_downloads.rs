@@ -477,6 +477,27 @@ pub struct TrackOutcome {
     pub newly_tracked: bool,
 }
 
+/// fork (P3): when a torrent's stall window started (last growth, first
+/// sight, or the end of an outage), the progress seen then, and when its
+/// progress last grew.
+#[derive(Clone, Copy)]
+struct StallClock {
+    since: DateTime<Utc>,
+    progress: u8,
+    last_grew: Option<DateTime<Utc>>,
+}
+
+/// fork (P3): a client counts as alive when one of its eligible torrents grew
+/// this recently (capped by the timeout).
+const STALL_ALIVE_WINDOW: chrono::Duration = chrono::Duration::minutes(60);
+
+/// fork (P3): `download_client.torrent_stall_timeout_minutes` as a timeout.
+/// Missing means the default; zero or less turns the check off.
+pub(crate) fn torrent_stall_timeout(minutes: Option<i64>) -> Option<chrono::Duration> {
+    let minutes = minutes.unwrap_or(crate::TORRENT_STALL_TIMEOUT_MINUTES_DEFAULT);
+    (minutes > 0).then(|| chrono::Duration::minutes(minutes))
+}
+
 /// In-memory cache of tracked downloads with title resolution and state management.
 ///
 /// Warning timers are intentionally runtime-only: a restart gives a still-warned
@@ -487,6 +508,8 @@ pub struct TrackedDownloadService {
     cache: HashMap<DownloadId, TrackedDownload>,
     last_seen_at: HashMap<DownloadId, DateTime<Utc>>,
     warning_since: HashMap<DownloadId, DateTime<Utc>>,
+    /// fork (P3): torrent stall clocks, see [`Self::fail_stalled_torrents_for_client`].
+    stall_since: HashMap<DownloadId, StallClock>,
     /// The catalog generation each download's title was last resolved against.
     /// A newer generation is what the dirty-matcher flag used to say: the
     /// catalog has changed, so an unmatched or parse-matched download is worth
@@ -1122,8 +1145,9 @@ impl TrackedDownloadService {
     /// `now` is passed in so the timeout stays deterministic in tests.
     ///
     /// `timeout_applies` is decided by the caller (`warning_timeout_applies`):
-    /// a torrent grabbed under a seeding profile is never timed out — its
-    /// indexer's rules own it and the warning stays visible for the operator.
+    /// a Scryer-origin torrent is never timed out, with or without a seeding
+    /// profile; the warning stays visible for the operator (a stalled torrent
+    /// is handled by [`Self::fail_stalled_torrents_for_client`] instead).
     /// When it is `false` the clock is dropped and nothing changes.
     // fork: parity net seam (tests/sm_download_import.rs)
     pub fn fail_persistent_warning_for_download(
@@ -1193,6 +1217,116 @@ impl TrackedDownloadService {
         // cleanup rail so only this path reaches its terminal removal gate.
         tracked.burned_by_import_gate = payload_completed;
         true
+    }
+
+    /// fork (P3, D65): fail this client's Scryer-origin torrents whose progress
+    /// has not grown for `timeout` (`None` turns the check off).
+    ///
+    /// Eligible: tracked Downloading (payload incomplete), client Downloading
+    /// or Warning (never Queued, Paused or seeding). Outage guard: with two or
+    /// more eligible, the client is alive only while one of them grew within
+    /// [`STALL_ALIVE_WINDOW`]; otherwise it is a client or VPN outage, nothing
+    /// fails and every clock restarts, so outage time never counts. Known
+    /// limit: two or more dead swarms with nothing else downloading never fail.
+    pub fn fail_stalled_torrents_for_client(
+        &mut self,
+        download_ids: &[DownloadId],
+        now: DateTime<Utc>,
+        timeout: Option<chrono::Duration>,
+    ) -> Vec<DownloadId> {
+        let mut eligible = Vec::new();
+        for &download_id in download_ids {
+            let Some(tracked) = self.cache.get(&download_id) else {
+                continue;
+            };
+            let progress = tracked.client_item.progress_percent;
+            let stall_eligible = timeout.is_some()
+                && tracked.client_item.is_scryer_origin
+                && !tracked.blocklist_confirmation_failed
+                && tracked.state == TrackedDownloadState::Downloading
+                && matches!(
+                    tracked.client_item.state,
+                    DownloadQueueState::Downloading | DownloadQueueState::Warning
+                )
+                && progress < 100;
+            if !stall_eligible {
+                self.stall_since.remove(&download_id);
+                continue;
+            }
+            let clock = self.stall_since.entry(download_id).or_insert(StallClock {
+                since: now,
+                progress,
+                last_grew: None,
+            });
+            if progress > clock.progress {
+                *clock = StallClock {
+                    since: now,
+                    progress,
+                    last_grew: Some(now),
+                };
+            } else if progress < clock.progress {
+                // A recheck lowered it: count growth from here.
+                clock.since = now;
+                clock.progress = progress;
+            }
+            eligible.push(download_id);
+        }
+        let Some(timeout) = timeout else {
+            return Vec::new();
+        };
+
+        let alive_window = timeout.min(STALL_ALIVE_WINDOW);
+        let outage = eligible.len() >= 2
+            && !eligible.iter().any(|download_id| {
+                self.stall_since[download_id]
+                    .last_grew
+                    .is_some_and(|grew| now - grew < alive_window)
+            });
+        if outage {
+            for download_id in &eligible {
+                if let Some(clock) = self.stall_since.get_mut(download_id) {
+                    clock.since = now;
+                }
+            }
+            return Vec::new();
+        }
+        let clock = |download_id: &DownloadId| self.stall_since[download_id];
+        let stalled: Vec<DownloadId> = eligible
+            .into_iter()
+            .filter(|download_id| now - clock(download_id).since >= timeout)
+            .collect();
+        for &download_id in &stalled {
+            self.fail_stalled_torrent_for_download(download_id, timeout);
+        }
+        stalled
+    }
+
+    /// fork (P3): the warning timeout's incomplete-payload rail. FailedPending
+    /// makes Phase 2 dispatch `process_failed` (blocklist, re-search), and
+    /// `burned_by_import_gate = false` keeps cleanup on the client-failure
+    /// origin, so removal still needs "remove failed" plus the seeding gate.
+    fn fail_stalled_torrent_for_download(
+        &mut self,
+        canonical_download_id: DownloadId,
+        timeout: chrono::Duration,
+    ) {
+        self.stall_since.remove(&canonical_download_id);
+        let Some(tracked) = self.cache.get_mut(&canonical_download_id) else {
+            return;
+        };
+        tracked.state = TrackedDownloadState::FailedPending;
+        tracked.status = TrackedDownloadStatus::Error;
+        tracked.burned_by_import_gate = false;
+        let reason = format!(
+            "No download progress for {} min (stalled)",
+            timeout.num_minutes()
+        );
+        // The failed-download handler reads its blocklist reason from here.
+        tracked.client_item.attention_reason = Some(reason.clone());
+        tracked.status_messages.push(TrackedStatusMessage::new(
+            TrackedStatusMessageKind::Informational,
+            reason,
+        ));
     }
 
     /// States whose work continues after a queue/history item legitimately
@@ -1296,7 +1430,7 @@ impl TrackedDownloadService {
         authoritative_client_ids: Option<&HashSet<String>>,
     ) -> Vec<ClientJobLocator> {
         let mut unavailable_sources = Vec::new();
-        for td in self.cache.values_mut() {
+        for (download_id, td) in self.cache.iter_mut() {
             if tracked_client_type_is_excluded(&td.client_type, excluded_client_types) {
                 continue;
             }
@@ -1304,6 +1438,9 @@ impl TrackedDownloadService {
                 .is_some_and(|client_ids| !client_ids.contains(&td.client_id))
             {
                 td.snapshot_missing_since = None;
+                // fork (P3): an unread client's torrents were not observed;
+                // their stall window restarts when it answers again.
+                self.stall_since.remove(download_id);
                 continue;
             }
             if seen_ids.contains(&td.id) {
@@ -1356,7 +1493,7 @@ impl TrackedDownloadService {
 
         let now = Utc::now();
         let mut unavailable_sources = Vec::new();
-        for td in self.cache.values_mut() {
+        for (download_id, td) in self.cache.iter_mut() {
             if !tracked_matches_snapshot_scope(td, client_id.as_deref(), client_type) {
                 continue;
             }
@@ -1364,6 +1501,8 @@ impl TrackedDownloadService {
                 .is_some_and(|client_ids| !client_ids.contains(&td.client_id))
             {
                 td.snapshot_missing_since = None;
+                // fork (P3): see the unscoped variant.
+                self.stall_since.remove(download_id);
                 continue;
             }
             if seen_ids.contains(&td.id) {
@@ -1475,6 +1614,12 @@ impl TrackedDownloadService {
 
     fn clear_untracked_warning_clocks(&mut self) {
         self.warning_since.retain(|id, _| {
+            self.cache
+                .get(id)
+                .is_some_and(|tracked| tracked.is_trackable)
+        });
+        // fork (P3)
+        self.stall_since.retain(|id, _| {
             self.cache
                 .get(id)
                 .is_some_and(|tracked| tracked.is_trackable)
@@ -7979,6 +8124,351 @@ mod tests {
         assert_eq!(tracked.state, TrackedDownloadState::Downloading);
         assert!(tracked.status_messages.is_empty());
         assert!(!tracker.warning_since.contains_key(&download_id));
+    }
+
+    // fork (P3): torrent stall recovery (D65).
+    const STALL: chrono::Duration = chrono::Duration::minutes(360);
+
+    fn stall_tracker(names: &[&str]) -> (TrackedDownloadService, Vec<DownloadId>) {
+        let mut tracker = TrackedDownloadService::new();
+        let ids = names
+            .iter()
+            .map(|name| tracker.insert_for_tests(build_tracked_download(name)))
+            .collect();
+        (tracker, ids)
+    }
+
+    fn set_progress(tracker: &mut TrackedDownloadService, id: DownloadId, progress: u8) {
+        tracker
+            .get_mut_by_download_id(id)
+            .expect("tracked download")
+            .client_item
+            .progress_percent = progress;
+    }
+
+    #[test]
+    fn stalled_torrent_fails_after_the_timeout() {
+        let (mut tracker, ids) = stall_tracker(&["stalled"]);
+        let t0 = Utc::now();
+
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(&ids, t0, Some(STALL))
+                .is_empty()
+        );
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(
+                    &ids,
+                    t0 + STALL - Duration::seconds(1),
+                    Some(STALL)
+                )
+                .is_empty()
+        );
+        assert_eq!(
+            tracker.fail_stalled_torrents_for_client(&ids, t0 + STALL, Some(STALL)),
+            ids
+        );
+
+        let tracked = tracker
+            .get_by_download_id(ids[0])
+            .expect("tracked download");
+        assert_eq!(tracked.state, TrackedDownloadState::FailedPending);
+        assert_eq!(tracked.status, TrackedDownloadStatus::Error);
+        assert_eq!(
+            status_texts(&tracked.status_messages),
+            vec!["No download progress for 360 min (stalled)"]
+        );
+        // The incomplete-payload rail of the warning timeout: client-failure
+        // cleanup, not the import-gate one.
+        assert!(!tracked.burned_by_import_gate);
+        assert!(!tracker.stall_since.contains_key(&ids[0]));
+    }
+
+    #[test]
+    fn stall_progress_growth_resets_the_clock() {
+        let (mut tracker, ids) = stall_tracker(&["growing"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+        set_progress(&mut tracker, ids[0], 11);
+        tracker.fail_stalled_torrents_for_client(&ids, t0 + Duration::hours(5), Some(STALL));
+
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(&ids, t0 + STALL, Some(STALL))
+                .is_empty()
+        );
+        assert_eq!(
+            tracker.get_by_download_id(ids[0]).expect("tracked").state,
+            TrackedDownloadState::Downloading
+        );
+        assert_eq!(
+            tracker.fail_stalled_torrents_for_client(
+                &ids,
+                t0 + Duration::hours(5) + STALL,
+                Some(STALL)
+            ),
+            ids
+        );
+    }
+
+    #[test]
+    fn ineligible_torrents_never_stall() {
+        let cases: [(&str, fn(&mut TrackedDownload)); 8] = [
+            ("queued", |td| {
+                td.client_item.state = DownloadQueueState::Queued
+            }),
+            ("paused", |td| {
+                td.client_item.state = DownloadQueueState::Paused
+            }),
+            // Seeding torrents map to Completed in the plugin adapter.
+            ("seeding", |td| {
+                td.client_item.state = DownloadQueueState::Completed
+            }),
+            ("import-pending", |td| {
+                td.state = TrackedDownloadState::ImportPending
+            }),
+            ("import-blocked", |td| {
+                td.state = TrackedDownloadState::ImportBlocked
+            }),
+            ("foreign", |td| td.client_item.is_scryer_origin = false),
+            ("complete", |td| td.client_item.progress_percent = 100),
+            ("bcf", |td| td.blocklist_confirmation_failed = true),
+        ];
+        for (name, mutate) in cases {
+            let (mut tracker, ids) = stall_tracker(&[name]);
+            let before = {
+                let td = tracker.get_mut_by_download_id(ids[0]).expect("tracked");
+                mutate(td);
+                td.state
+            };
+            let t0 = Utc::now();
+            tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+            assert!(
+                tracker
+                    .fail_stalled_torrents_for_client(&ids, t0 + STALL * 2, Some(STALL))
+                    .is_empty(),
+                "{name} must never stall"
+            );
+            assert_eq!(
+                tracker.get_by_download_id(ids[0]).expect("tracked").state,
+                before
+            );
+            assert!(
+                !tracker.stall_since.contains_key(&ids[0]),
+                "{name} keeps no clock"
+            );
+        }
+    }
+
+    #[test]
+    fn a_warned_torrent_below_full_progress_can_stall() {
+        let (mut tracker, ids) = stall_tracker(&["warned"]);
+        tracker
+            .get_mut_by_download_id(ids[0])
+            .expect("tracked")
+            .client_item
+            .state = DownloadQueueState::Warning;
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+        assert_eq!(
+            tracker.fail_stalled_torrents_for_client(&ids, t0 + STALL, Some(STALL)),
+            ids
+        );
+    }
+
+    #[test]
+    fn stall_timeout_none_disables_the_check() {
+        let (mut tracker, ids) = stall_tracker(&["off"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(&ids, t0 + STALL * 2, None)
+                .is_empty()
+        );
+        assert!(!tracker.stall_since.contains_key(&ids[0]));
+        assert_eq!(
+            tracker.get_by_download_id(ids[0]).expect("tracked").state,
+            TrackedDownloadState::Downloading
+        );
+    }
+
+    #[test]
+    fn stall_timeout_setting_zero_is_off_and_missing_is_the_default() {
+        assert_eq!(torrent_stall_timeout(Some(0)), None);
+        assert_eq!(torrent_stall_timeout(Some(-5)), None);
+        assert_eq!(torrent_stall_timeout(Some(30)), Some(Duration::minutes(30)));
+        assert_eq!(torrent_stall_timeout(None), Some(STALL));
+    }
+
+    #[test]
+    fn stall_outage_guard_fails_none_when_every_torrent_of_a_client_is_stuck() {
+        let (mut tracker, ids) = stall_tracker(&["outage-a", "outage-b"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(&ids, t0 + STALL * 2, Some(STALL))
+                .is_empty()
+        );
+        for id in &ids {
+            assert_eq!(
+                tracker.get_by_download_id(*id).expect("tracked").state,
+                TrackedDownloadState::Downloading
+            );
+        }
+    }
+
+    #[test]
+    fn stall_outage_guard_lets_one_stalled_torrent_fail_beside_a_progressing_one() {
+        let (mut tracker, ids) = stall_tracker(&["stuck", "moving"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+        set_progress(&mut tracker, ids[1], 40);
+        tracker.fail_stalled_torrents_for_client(&ids, t0 + Duration::hours(1), Some(STALL));
+        set_progress(&mut tracker, ids[1], 80);
+        tracker.fail_stalled_torrents_for_client(&ids, t0 + Duration::minutes(330), Some(STALL));
+
+        assert_eq!(
+            tracker.fail_stalled_torrents_for_client(&ids, t0 + STALL, Some(STALL)),
+            vec![ids[0]]
+        );
+        assert_eq!(
+            tracker.get_by_download_id(ids[1]).expect("tracked").state,
+            TrackedDownloadState::Downloading
+        );
+    }
+
+    #[test]
+    fn stall_outage_guard_holds_when_torrents_last_grew_at_different_times() {
+        // Review of P3: A grew at t0+1m, B at t0+2m, then the VPN dropped.
+        // Neither may fail when its own window runs out.
+        let (mut tracker, ids) = stall_tracker(&["outage-a", "outage-b"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+        set_progress(&mut tracker, ids[0], 11);
+        tracker.fail_stalled_torrents_for_client(&ids, t0 + Duration::minutes(1), Some(STALL));
+        set_progress(&mut tracker, ids[1], 11);
+        tracker.fail_stalled_torrents_for_client(&ids, t0 + Duration::minutes(2), Some(STALL));
+
+        for at in [
+            t0 + STALL + Duration::minutes(1),
+            t0 + STALL + Duration::minutes(2),
+            t0 + STALL * 2,
+        ] {
+            assert!(
+                tracker
+                    .fail_stalled_torrents_for_client(&ids, at, Some(STALL))
+                    .is_empty()
+            );
+        }
+    }
+
+    #[test]
+    fn stall_clocks_restart_after_an_outage() {
+        let (mut tracker, ids) = stall_tracker(&["after-a", "after-b"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+        let outage_end = t0 + Duration::hours(7);
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(&ids, outage_end, Some(STALL))
+                .is_empty()
+        );
+        // B reconnects first: A must get a full window from the outage's end.
+        set_progress(&mut tracker, ids[1], 40);
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(
+                    &ids,
+                    outage_end + Duration::minutes(1),
+                    Some(STALL)
+                )
+                .is_empty()
+        );
+        set_progress(&mut tracker, ids[1], 70);
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(
+                    &ids,
+                    outage_end + STALL - Duration::minutes(1),
+                    Some(STALL)
+                )
+                .is_empty()
+        );
+        set_progress(&mut tracker, ids[1], 71);
+        assert_eq!(
+            tracker.fail_stalled_torrents_for_client(&ids, outage_end + STALL, Some(STALL)),
+            vec![ids[0]]
+        );
+    }
+
+    #[test]
+    fn stall_clock_does_not_age_while_the_client_is_unread() {
+        // A failed client read sends no items and leaves the client out of the
+        // authoritative set, so the torrent is not observed until it answers.
+        let (mut tracker, ids) = stall_tracker(&["unread"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+        tracker.update_trackable_excluding_client_types_for_authoritative_clients(
+            &HashSet::new(),
+            &[],
+            Some(&HashSet::new()),
+        );
+        let back = t0 + Duration::hours(7);
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(&ids, back, Some(STALL))
+                .is_empty()
+        );
+        assert_eq!(
+            tracker.fail_stalled_torrents_for_client(&ids, back + STALL, Some(STALL)),
+            ids
+        );
+    }
+
+    #[test]
+    fn stall_outage_guard_holds_beside_a_fresh_torrent_that_has_not_grown() {
+        let (mut tracker, ids) = stall_tracker(&["old", "fresh"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids[..1], t0, Some(STALL));
+        tracker.fail_stalled_torrents_for_client(&ids, t0 + Duration::hours(5), Some(STALL));
+        assert!(
+            tracker
+                .fail_stalled_torrents_for_client(&ids, t0 + STALL, Some(STALL))
+                .is_empty()
+        );
+    }
+
+    #[test]
+    fn stall_failure_reason_reaches_the_blocklist() {
+        let (mut tracker, ids) = stall_tracker(&["reason"]);
+        let t0 = Utc::now();
+        tracker.fail_stalled_torrents_for_client(&ids, t0, Some(STALL));
+        tracker.fail_stalled_torrents_for_client(&ids, t0 + STALL, Some(STALL));
+        assert_eq!(
+            tracker
+                .get_by_download_id(ids[0])
+                .expect("tracked")
+                .client_item
+                .attention_reason
+                .as_deref(),
+            Some("No download progress for 360 min (stalled)")
+        );
+    }
+
+    #[test]
+    fn stall_clock_is_pruned_when_the_download_stops_being_tracked() {
+        let (mut tracker, ids) = stall_tracker(&["gone"]);
+        tracker.fail_stalled_torrents_for_client(&ids, Utc::now(), Some(STALL));
+        assert!(tracker.stall_since.contains_key(&ids[0]));
+
+        tracker.update_trackable(&HashSet::new());
+
+        assert!(!tracker.stall_since.contains_key(&ids[0]));
     }
 
     #[test]

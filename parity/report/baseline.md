@@ -5,19 +5,19 @@ fails if an outcome disagrees with it (ratchet).
 
 | Area | Green | Red | Waived | Unmapped | Out of scope | Total |
 |---|---|---|---|---|---|---|
-| parse | 2224 | 1584 | 0 | 117 | 68 | 3925 |
-| decision | 644 | 272 | 0 | 130 | 13 | 1046 |
-| quality | 470 | 98 | 0 | 222 | 33 | 790 |
-| naming | 424 | 161 | 0 | 148 | 143 | 733 |
-| import | 151 | 60 | 0 | 386 | 59 | 597 |
-| scan | 70 | 66 | 0 | 39 | 11 | 175 |
-| torrent | 17 | 9 | 20 | 174 | 6 | 220 |
-| requests | 12 | 7 | 0 | 320 | 29 | 339 |
-| maintenance | 37 | 6 | 3 | 368 | 269 | 414 |
-| subtitles | 123 | 18 | 0 | 74 | 27 | 215 |
-| indexers | 7 | 29 | 1 | 25 | 0 | 62 |
-| notify | 0 | 0 | 0 | 10 | 3 | 10 |
-| **all** | 4179 | 2310 | 24 | 2013 | 661 | 8526 |
+| parse | 2224 | 1488 | 96 | 117 | 68 | 3925 |
+| decision | 644 | 193 | 80 | 129 | 13 | 1046 |
+| quality | 470 | 93 | 5 | 222 | 33 | 790 |
+| naming | 424 | 158 | 3 | 148 | 143 | 733 |
+| import | 151 | 44 | 16 | 386 | 59 | 597 |
+| scan | 70 | 34 | 32 | 39 | 11 | 175 |
+| torrent | 25 | 1 | 24 | 170 | 6 | 220 |
+| requests | 12 | 3 | 4 | 320 | 29 | 339 |
+| maintenance | 37 | 5 | 7 | 365 | 269 | 414 |
+| subtitles | 123 | 11 | 7 | 74 | 27 | 215 |
+| indexers | 7 | 28 | 24 | 3 | 0 | 62 |
+| notify | 0 | 0 | 2 | 8 | 3 | 10 |
+| **all** | 4187 | 2058 | 300 | 1981 | 661 | 8526 |
 
 ## Run
 
@@ -26,7 +26,289 @@ Suites run: 142 of 142. Cases recorded: 6491. Ratchet violations: 0. Catalogue e
 
 ## Moved since baseline
 
-- SER-REQUESTS-5004: Red → Green
-- SER-REQUESTS-5005: Red → Green
+- BAZ-NOTIFY-5001: Unmapped → Waived
+- BAZ-NOTIFY-5006: Unmapped → Waived
+- BAZ-SCAN-5003: Red → Waived
+- BAZ-SCAN-5005: Red → Waived
+- BAZ-SCAN-5007: Red → Waived
+- BAZ-SUBTITLES-0058: Red → Waived
+- BAZ-SUBTITLES-0059: Red → Waived
+- BAZ-SUBTITLES-0064: Red → Waived
+- BAZ-SUBTITLES-0065: Red → Waived
+- BAZ-SUBTITLES-5012: Red → Waived
+- BAZ-SUBTITLES-5013: Red → Waived
+- BAZ-SUBTITLES-5015: Red → Waived
+- MNT-MAINTENANCE-0005: Unmapped → Waived
+- MNT-MAINTENANCE-0042: Unmapped → Waived
+- MNT-MAINTENANCE-0174: Red → Waived
+- MNT-MAINTENANCE-0298: Unmapped → Waived
+- PRW-INDEXERS-5006: Unmapped → Waived
+- PRW-INDEXERS-5009: Unmapped → Waived
+- PRW-INDEXERS-5011: Unmapped → Waived
+- PRW-INDEXERS-5014: Unmapped → Waived
+- PRW-INDEXERS-5019: Unmapped → Waived
+- PRW-INDEXERS-5020: Unmapped → Waived
+- PRW-INDEXERS-5021: Unmapped → Waived
+- PRW-INDEXERS-5022: Unmapped → Waived
+- PRW-INDEXERS-5023: Unmapped → Waived
+- PRW-INDEXERS-5024: Unmapped → Waived
+- PRW-INDEXERS-5025: Unmapped → Waived
+- PRW-INDEXERS-5026: Unmapped → Waived
+- PRW-INDEXERS-5027: Unmapped → Waived
+- PRW-INDEXERS-5028: Unmapped → Waived
+- PRW-INDEXERS-5029: Unmapped → Waived
+- PRW-INDEXERS-5030: Unmapped → Waived
+- PRW-INDEXERS-5031: Red → Waived
+- PRW-INDEXERS-5032: Unmapped → Waived
+- PRW-INDEXERS-5033: Unmapped → Waived
+- PRW-INDEXERS-5034: Unmapped → Waived
+- PRW-INDEXERS-5035: Unmapped → Waived
+- PRW-INDEXERS-5036: Unmapped → Waived
+- PRW-INDEXERS-5037: Unmapped → Waived
+- PRW-TORRENT-5005: Red → Green
+- PRW-TORRENT-5007: Red → Green
+- PRW-TORRENT-5009: Red → Green
+- PRW-TORRENT-5017: Red → Green
+- RAD-DECISION-0012: Red → Waived
+- RAD-DECISION-0051: Red → Waived
+- RAD-DECISION-0056: Red → Waived
+- RAD-DECISION-0057: Red → Waived
+- RAD-DECISION-0058: Red → Waived
+- RAD-DECISION-0065: Red → Waived
+- RAD-DECISION-0066: Red → Waived
+- RAD-DECISION-0067: Red → Waived
+- RAD-DECISION-0068: Red → Waived
+- RAD-DECISION-0069: Red → Waived
+- RAD-DECISION-0090: Red → Waived
+- RAD-DECISION-0091: Red → Waived
+- RAD-DECISION-0092: Red → Waived
+- RAD-DECISION-0093: Red → Waived
+- RAD-DECISION-0094: Red → Waived
+- RAD-DECISION-0095: Red → Waived
+- RAD-DECISION-0096: Red → Waived
+- RAD-DECISION-1004: Red → Waived
+- RAD-DECISION-1005: Red → Waived
+- RAD-DECISION-1006: Red → Waived
+- RAD-DECISION-1007: Red → Waived
+- RAD-DECISION-1061: Red → Waived
+- RAD-DECISION-1062: Red → Waived
+- RAD-DECISION-1063: Red → Waived
+- RAD-DECISION-1064: Red → Waived
+- RAD-DECISION-1065: Red → Waived
+- RAD-DECISION-1066: Red → Waived
+- RAD-DECISION-1067: Red → Waived
+- RAD-DECISION-1068: Red → Waived
+- RAD-DECISION-1069: Red → Waived
+- RAD-DECISION-1070: Red → Waived
+- RAD-DECISION-1071: Red → Waived
+- RAD-DECISION-1072: Red → Waived
+- RAD-DECISION-1073: Red → Waived
+- RAD-DECISION-1074: Red → Waived
+- RAD-DECISION-1075: Red → Waived
+- RAD-DECISION-1076: Red → Waived
+- RAD-DECISION-1077: Red → Waived
+- RAD-DECISION-1078: Red → Waived
+- RAD-DECISION-5043: Red → Waived
+- RAD-DECISION-5044: Unmapped → Waived
+- RAD-IMPORT-0118: Red → Waived
+- RAD-IMPORT-0119: Red → Waived
+- RAD-IMPORT-0120: Red → Waived
+- RAD-IMPORT-0121: Red → Waived
+- RAD-IMPORT-0152: Red → Waived
+- RAD-IMPORT-0153: Red → Waived
+- RAD-IMPORT-0170: Red → Waived
+- RAD-IMPORT-0185: Red → Waived
+- RAD-IMPORT-0216: Red → Waived
+- RAD-NAMING-0041: Red → Waived
+- RAD-PARSE-0129: Red → Waived
+- RAD-PARSE-0130: Red → Waived
+- RAD-PARSE-0134: Red → Waived
+- RAD-PARSE-0357: Red → Waived
+- RAD-PARSE-0364: Red → Waived
+- RAD-PARSE-0371: Red → Waived
+- RAD-PARSE-0372: Red → Waived
+- RAD-PARSE-0373: Red → Waived
+- RAD-PARSE-0374: Red → Waived
+- RAD-PARSE-0375: Red → Waived
+- RAD-PARSE-0376: Red → Waived
+- RAD-PARSE-0377: Red → Waived
+- RAD-PARSE-0378: Red → Waived
+- RAD-PARSE-0379: Red → Waived
+- RAD-PARSE-0380: Red → Waived
+- RAD-PARSE-0383: Red → Waived
+- RAD-PARSE-0385: Red → Waived
+- RAD-PARSE-0403: Red → Waived
+- RAD-PARSE-0404: Red → Waived
+- RAD-PARSE-0522: Red → Waived
+- RAD-PARSE-0523: Red → Waived
+- RAD-PARSE-0799: Red → Waived
+- RAD-PARSE-0800: Red → Waived
+- RAD-PARSE-0801: Red → Waived
+- RAD-PARSE-0802: Red → Waived
+- RAD-PARSE-0803: Red → Waived
+- RAD-PARSE-1031: Red → Waived
+- RAD-PARSE-1032: Red → Waived
+- RAD-PARSE-1033: Red → Waived
+- RAD-PARSE-1034: Red → Waived
+- RAD-PARSE-1035: Red → Waived
+- RAD-PARSE-1036: Red → Waived
+- RAD-PARSE-1037: Red → Waived
+- RAD-PARSE-1038: Red → Waived
+- RAD-PARSE-1039: Red → Waived
+- RAD-PARSE-1048: Red → Waived
+- RAD-PARSE-1058: Red → Waived
+- RAD-PARSE-1059: Red → Waived
+- RAD-PARSE-1060: Red → Waived
+- RAD-PARSE-1061: Red → Waived
+- RAD-PARSE-1062: Red → Waived
+- RAD-PARSE-1063: Red → Waived
+- RAD-PARSE-1064: Red → Waived
+- RAD-PARSE-1065: Red → Waived
+- RAD-PARSE-1066: Red → Waived
+- RAD-PARSE-1071: Red → Waived
+- RAD-PARSE-1072: Red → Waived
+- RAD-PARSE-1073: Red → Waived
+- RAD-PARSE-1075: Red → Waived
+- RAD-PARSE-1076: Red → Waived
+- RAD-PARSE-1077: Red → Waived
+- RAD-PARSE-1078: Red → Waived
+- RAD-PARSE-1080: Red → Waived
+- RAD-PARSE-1082: Red → Waived
+- RAD-PARSE-1084: Red → Waived
+- RAD-PARSE-1085: Red → Waived
+- RAD-PARSE-1086: Red → Waived
+- RAD-PARSE-1087: Red → Waived
+- RAD-PARSE-1088: Red → Waived
+- RAD-PARSE-1089: Red → Waived
+- RAD-PARSE-1090: Red → Waived
+- RAD-PARSE-1091: Red → Waived
+- RAD-QUALITY-0023: Red → Waived
+- RAD-QUALITY-0163: Red → Waived
+- RAD-QUALITY-0164: Red → Waived
+- RAD-REQUESTS-5005: Red → Waived
+- RAD-SCAN-5013: Red → Waived
+- RAD-TORRENT-0009: Unmapped → Waived
+- RAD-TORRENT-0010: Unmapped → Waived
+- SER-REQUESTS-0073: Red → Waived
+- SER-REQUESTS-0074: Red → Waived
+- SER-REQUESTS-5007: Red → Waived
+- SON-DECISION-0040: Red → Waived
+- SON-DECISION-0089: Red → Waived
+- SON-DECISION-0094: Red → Waived
+- SON-DECISION-0095: Red → Waived
+- SON-DECISION-0096: Red → Waived
+- SON-DECISION-0097: Red → Waived
+- SON-DECISION-0098: Red → Waived
+- SON-DECISION-0113: Red → Waived
+- SON-DECISION-1006: Red → Waived
+- SON-DECISION-1007: Red → Waived
+- SON-DECISION-1074: Red → Waived
+- SON-DECISION-1075: Red → Waived
+- SON-DECISION-1076: Red → Waived
+- SON-DECISION-1077: Red → Waived
+- SON-DECISION-1078: Red → Waived
+- SON-DECISION-1079: Red → Waived
+- SON-DECISION-1080: Red → Waived
+- SON-DECISION-1081: Red → Waived
+- SON-DECISION-1082: Red → Waived
+- SON-DECISION-1083: Red → Waived
+- SON-DECISION-1084: Red → Waived
+- SON-DECISION-1085: Red → Waived
+- SON-DECISION-1086: Red → Waived
+- SON-DECISION-1087: Red → Waived
+- SON-DECISION-1088: Red → Waived
+- SON-DECISION-1089: Red → Waived
+- SON-DECISION-1090: Red → Waived
+- SON-DECISION-1091: Red → Waived
+- SON-DECISION-1192: Red → Waived
+- SON-DECISION-1201: Red → Waived
+- SON-DECISION-1202: Red → Waived
+- SON-DECISION-1203: Red → Waived
+- SON-DECISION-1204: Red → Waived
+- SON-DECISION-1205: Red → Waived
+- SON-DECISION-1206: Red → Waived
+- SON-DECISION-1207: Red → Waived
+- SON-DECISION-1208: Red → Waived
+- SON-DECISION-1209: Red → Waived
+- SON-DECISION-1210: Red → Waived
+- SON-IMPORT-0070: Red → Waived
+- SON-IMPORT-0073: Red → Waived
+- SON-IMPORT-0074: Red → Waived
+- SON-IMPORT-0100: Red → Waived
+- SON-IMPORT-0101: Red → Waived
+- SON-IMPORT-0122: Red → Waived
+- SON-IMPORT-0139: Red → Waived
+- SON-NAMING-0060: Red → Waived
+- SON-NAMING-0061: Red → Waived
+- SON-PARSE-0305: Red → Waived
+- SON-PARSE-0306: Red → Waived
+- SON-PARSE-0314: Red → Waived
+- SON-PARSE-0315: Red → Waived
+- SON-PARSE-0316: Red → Waived
+- SON-PARSE-0335: Red → Waived
+- SON-PARSE-0336: Red → Waived
+- SON-PARSE-0340: Red → Waived
+- SON-PARSE-0506: Red → Waived
+- SON-PARSE-0591: Red → Waived
+- SON-PARSE-0592: Red → Waived
+- SON-PARSE-0596: Red → Waived
+- SON-PARSE-0603: Red → Waived
+- SON-PARSE-0604: Red → Waived
+- SON-PARSE-0605: Red → Waived
+- SON-PARSE-0606: Red → Waived
+- SON-PARSE-0607: Red → Waived
+- SON-PARSE-0608: Red → Waived
+- SON-PARSE-0609: Red → Waived
+- SON-PARSE-0610: Red → Waived
+- SON-PARSE-0613: Red → Waived
+- SON-PARSE-0615: Red → Waived
+- SON-PARSE-0631: Red → Waived
+- SON-PARSE-0645: Red → Waived
+- SON-PARSE-0646: Red → Waived
+- SON-PARSE-0670: Red → Waived
+- SON-PARSE-0673: Red → Waived
+- SON-PARSE-0674: Red → Waived
+- SON-PARSE-0763: Red → Waived
+- SON-PARSE-1062: Red → Waived
+- SON-PARSE-1063: Red → Waived
+- SON-PARSE-1064: Red → Waived
+- SON-PARSE-1065: Red → Waived
+- SON-PARSE-1066: Red → Waived
+- SON-QUALITY-0033: Red → Waived
+- SON-QUALITY-0129: Red → Waived
+- SON-SCAN-0024: Red → Waived
+- SON-SCAN-0028: Red → Waived
+- SON-SCAN-0041: Red → Waived
+- SON-SCAN-0042: Red → Waived
+- SON-SCAN-0049: Red → Waived
+- SON-SCAN-0050: Red → Waived
+- SON-SCAN-0065: Red → Waived
+- SON-SCAN-0066: Red → Waived
+- SON-SCAN-0067: Red → Waived
+- SON-SCAN-0079: Red → Waived
+- SON-SCAN-0084: Red → Waived
+- SON-SCAN-0091: Red → Waived
+- SON-SCAN-0092: Red → Waived
+- SON-SCAN-0107: Red → Waived
+- SON-SCAN-0108: Red → Waived
+- SON-SCAN-0109: Red → Waived
+- SON-SCAN-0112: Red → Waived
+- SON-SCAN-0113: Red → Waived
+- SON-SCAN-0114: Red → Waived
+- SON-SCAN-0115: Red → Waived
+- SON-SCAN-0116: Red → Waived
+- SON-SCAN-0117: Red → Waived
+- SON-SCAN-0118: Red → Waived
+- SON-SCAN-0119: Red → Waived
+- SON-SCAN-0120: Red → Waived
+- SON-SCAN-0121: Red → Waived
+- SON-SCAN-0132: Red → Waived
+- SON-SCAN-0137: Red → Waived
+- SON-TORRENT-0114: Unmapped → Waived
+- SON-TORRENT-0124: Unmapped → Waived
+- SON-TORRENT-5005: Red → Green
+- SON-TORRENT-5006: Red → Green
+- SON-TORRENT-5007: Red → Green
+- SON-TORRENT-5008: Red → Green
 
-2 changed status, 0 added, 0 removed.
+284 changed status, 0 added, 0 removed.

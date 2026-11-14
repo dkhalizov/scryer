@@ -32,6 +32,11 @@ pub const MINIMUM_SEEDERS_FLOOR_DEFAULT: i32 = 1;
 /// here — one place, side by side — and `the_floor_default_json_is_the_floor_default`
 /// keeps the two encodings from drifting.
 pub const MINIMUM_SEEDERS_FLOOR_DEFAULT_JSON: &str = "1";
+/// fork (P3, D65): minutes without progress before a Scryer-origin torrent is
+/// failed and searched again; 0 turns the check off.
+pub const TORRENT_STALL_TIMEOUT_MINUTES_SETTING_KEY: &str =
+    "download_client.torrent_stall_timeout_minutes";
+pub const TORRENT_STALL_TIMEOUT_MINUTES_DEFAULT: i64 = 360;
 pub const LEGACY_NZBGET_CATEGORY_SETTING_KEY: &str = "nzbget.category";
 pub const NZBGET_RECENT_PRIORITY_SETTING_KEY: &str = "nzbget.recent_priority";
 pub const NZBGET_OLDER_PRIORITY_SETTING_KEY: &str = "nzbget.older_priority";

@@ -40,30 +40,30 @@ green + red.
 
 | Area | Covers | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|---|
-| parse | release-name parsing | 2224 | 1584 | 0 | 117 | 58% |
-| decision | which release to grab or reject | 644 | 272 | 0 | 130 | 70% |
-| quality | quality ranking, profiles, custom formats | 470 | 98 | 0 | 222 | 83% |
-| naming | file and folder names | 424 | 161 | 0 | 148 | 72% |
-| import | importing finished downloads | 151 | 60 | 0 | 386 | 72% |
-| scan | reading an existing library | 70 | 66 | 0 | 39 | 51% |
-| torrent | download client, seeding | 17 | 9 | 20 | 174 | 65% |
-| requests | user requests (Seerr) | 12 | 7 | 0 | 320 | 63% |
-| maintenance | cleanup rules (Maintainerr) | 37 | 6 | 3 | 368 | 86% |
-| subtitles | subtitle matching (Bazarr) | 123 | 18 | 0 | 74 | 87% |
-| indexers | indexer settings and routing (Prowlarr) | 7 | 29 | 1 | 25 | 19% |
-| notify | notifications | 0 | 0 | 0 | 10 | - |
-| **all** | | **4179** | **2310** | **24** | **2013** | **64%** |
+| parse | release-name parsing | 2224 | 1488 | 96 | 117 | 60% |
+| decision | which release to grab or reject | 644 | 193 | 80 | 129 | 77% |
+| quality | quality ranking, profiles, custom formats | 470 | 93 | 5 | 222 | 83% |
+| naming | file and folder names | 424 | 158 | 3 | 148 | 73% |
+| import | importing finished downloads | 151 | 44 | 16 | 386 | 77% |
+| scan | reading an existing library | 70 | 34 | 32 | 39 | 67% |
+| torrent | download client, seeding | 25 | 1 | 24 | 170 | 96% |
+| requests | user requests (Seerr) | 12 | 3 | 4 | 320 | 80% |
+| maintenance | cleanup rules (Maintainerr) | 37 | 5 | 7 | 365 | 88% |
+| subtitles | subtitle matching (Bazarr) | 123 | 11 | 7 | 74 | 92% |
+| indexers | indexer settings and routing (Prowlarr) | 7 | 28 | 24 | 3 | 20% |
+| notify | notifications | 0 | 0 | 2 | 8 | - |
+| **all** | | **4187** | **2058** | **300** | **1981** | **67%** |
 
 By reference app:
 
 | App | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|
-| Sonarr | 3144 | 1489 | 20 | 635 | 68% |
-| Radarr | 852 | 772 | 1 | 533 | 52% |
-| Prowlarr | 12 | 16 | 0 | 46 | 43% |
-| Bazarr | 124 | 21 | 0 | 83 | 86% |
-| Seerr | 10 | 6 | 0 | 315 | 62% |
-| Maintainerr | 36 | 6 | 3 | 369 | 86% |
+| Sonarr | 3148 | 1373 | 134 | 633 | 70% |
+| Radarr | 852 | 655 | 121 | 530 | 57% |
+| Prowlarr | 16 | 11 | 23 | 24 | 59% |
+| Bazarr | 124 | 11 | 12 | 81 | 92% |
+| Seerr | 10 | 3 | 3 | 315 | 77% |
+| Maintainerr | 36 | 5 | 7 | 366 | 88% |
 | qBittorrent | 1 | 0 | 0 | 32 | 100% |
 
 ## Build and test

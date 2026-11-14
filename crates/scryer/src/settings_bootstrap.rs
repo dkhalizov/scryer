@@ -362,6 +362,15 @@ pub(crate) fn service_setting_seeds() -> &'static [ServiceSettingSeed] {
             default_value_json: MINIMUM_SEEDERS_FLOOR_DEFAULT_JSON,
             is_sensitive: false,
         },
+        // fork (P3, D65): data, not schema; 0 turns stall recovery off.
+        ServiceSettingSeed {
+            category: SETTINGS_CATEGORY_SERVICE,
+            scope: SETTINGS_SCOPE_SYSTEM,
+            key_name: scryer_application::TORRENT_STALL_TIMEOUT_MINUTES_SETTING_KEY,
+            data_type: "number",
+            default_value_json: "360",
+            is_sensitive: false,
+        },
         ServiceSettingSeed {
             category: SETTINGS_CATEGORY_GENERAL,
             scope: SETTINGS_SCOPE_SYSTEM,
@@ -2282,6 +2291,28 @@ mod tests {
                 && seed.key_name == AUDIO_PERSONA_MIGRATION_SENTINEL_KEY
                 && seed.data_type == "bool"
         }));
+    }
+
+    // fork (P3): the stall timeout is seeded data, not a schema migration.
+    #[test]
+    fn service_setting_seeds_include_torrent_stall_timeout() {
+        let seed = service_setting_seeds()
+            .iter()
+            .find(|seed| {
+                seed.scope == SETTINGS_SCOPE_SYSTEM
+                    && seed.key_name
+                        == scryer_application::TORRENT_STALL_TIMEOUT_MINUTES_SETTING_KEY
+            })
+            .expect("torrent stall timeout seed");
+        assert_eq!(
+            seed.key_name,
+            "download_client.torrent_stall_timeout_minutes"
+        );
+        assert_eq!(seed.data_type, "number");
+        assert_eq!(
+            seed.default_value_json,
+            scryer_application::TORRENT_STALL_TIMEOUT_MINUTES_DEFAULT.to_string()
+        );
     }
 
     #[test]

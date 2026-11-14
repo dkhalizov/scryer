@@ -11,6 +11,9 @@
 //! - `TrackedDownloadService::fail_persistent_warning_for_download` (24 h
 //!   client-warning timeout, `now` passed in, so the clock is the model's);
 //! - `failed_download_handler::check` (client failure -> FailedPending);
+//! - `TrackedDownloadService::fail_stalled_torrents_for_client` (fork P3:
+//!   6 h without progress; one torrent, so the outage guard never trips, and
+//!   progress never grows, so only eligibility resets the clock);
 //! - `TrackedDownloadService::update_trackable` (client stopped listing it);
 //! - `completed_download_handler::mark_importing` (dispatch starts an import);
 //! - `TrackedDownload::schedule_import_execution_retry` (import failed to run,
@@ -95,6 +98,7 @@ use std::sync::atomic::{AtomicUsize, Ordering::Relaxed};
 
 const HOUR: i64 = 3600;
 const WARNING_TIMEOUT_SECS: i64 = 24 * HOUR; // TrackedDownloadService::WARNING_FAILURE_TIMEOUT
+const STALL_TIMEOUT_SECS: i64 = 6 * HOUR; // fork (P3): the 360 min default
 
 /// Backoff after the n-th failed import execution, as documented on
 /// `import_execution_retry_delay`: 30 s, 2 min, 5 min, then 15 min.
@@ -152,6 +156,7 @@ struct Model {
     listed: bool,
     now_s: i64,
     warning_since_s: Option<i64>,
+    stall_since_s: Option<i64>,
     retry_attempts: u32,
     retry_due_s: Option<i64>,
 }
@@ -204,6 +209,7 @@ fn client_state_weighted(warning: u32) -> impl Strategy<Value = DownloadQueueSta
 // Coverage counters (see "Coverage floor"); one test per process under nextest.
 static IMPORTED_SEES_FAILURE: AtomicUsize = AtomicUsize::new(0);
 static WARNING_TIMEOUT_FIRES: AtomicUsize = AtomicUsize::new(0);
+static STALL_FIRES: AtomicUsize = AtomicUsize::new(0);
 static DISPATCH_HELD_BY_BACKOFF: AtomicUsize = AtomicUsize::new(0);
 static REDISPATCH_AFTER_RETRY: AtomicUsize = AtomicUsize::new(0);
 
@@ -244,6 +250,7 @@ impl ReferenceStateMachine for Lifecycle {
                 listed: true,
                 now_s: 0,
                 warning_since_s: None,
+                stall_since_s: None,
                 retry_attempts: 0,
                 retry_due_s: None,
             })
@@ -316,6 +323,23 @@ impl ReferenceStateMachine for Lifecycle {
                 {
                     m.state = TrackedDownloadState::FailedPending;
                 }
+                // fail_stalled_torrents_for_client (fork P3)
+                let stall_eligible = m.scryer_origin
+                    && !m.blocklist_confirmation_failed
+                    && m.state == TrackedDownloadState::Downloading
+                    && matches!(
+                        client,
+                        DownloadQueueState::Downloading | DownloadQueueState::Warning
+                    );
+                if !stall_eligible {
+                    m.stall_since_s = None;
+                } else {
+                    let since = *m.stall_since_s.get_or_insert(m.now_s);
+                    if m.now_s - since >= STALL_TIMEOUT_SECS {
+                        m.state = TrackedDownloadState::FailedPending;
+                        m.stall_since_s = None;
+                    }
+                }
             }
             Step::Tick { secs } => m.now_s += secs,
             Step::ClientRemoves => {
@@ -332,6 +356,7 @@ impl ReferenceStateMachine for Lifecycle {
                 if !preserve {
                     m.trackable = false;
                     m.warning_since_s = None;
+                    m.stall_since_s = None;
                 }
             }
             Step::ImportStarts => m.state = TrackedDownloadState::Importing,
@@ -420,6 +445,12 @@ impl Sut {
         self.svc
             .fail_persistent_warning_for_download(download_id(), now, applies);
         failed_download_handler::check(self.td_mut());
+        // fork (P3): after the Phase 1 loop, per client.
+        self.svc.fail_stalled_torrents_for_client(
+            &[download_id()],
+            now,
+            Some(Duration::seconds(STALL_TIMEOUT_SECS)),
+        );
     }
     fn snapshot(&self) -> (TrackedDownloadState, TrackedDownloadStatus, Vec<String>, bool) {
         let td = self.td();
@@ -494,11 +525,22 @@ impl StateMachineTest for LifecycleTest {
                 {
                     IMPORTED_SEES_FAILURE.fetch_add(1, Relaxed);
                 }
+                // The stall (fork P3) owns Downloading; the warning timeout
+                // fires from the import states.
                 if client == DownloadQueueState::Warning
-                    && before != TrackedDownloadState::FailedPending
+                    && !matches!(
+                        before,
+                        TrackedDownloadState::FailedPending | TrackedDownloadState::Downloading
+                    )
                     && after.state == TrackedDownloadState::FailedPending
                 {
                     WARNING_TIMEOUT_FIRES.fetch_add(1, Relaxed);
+                }
+                if client != DownloadQueueState::Failed
+                    && before == TrackedDownloadState::Downloading
+                    && after.state == TrackedDownloadState::FailedPending
+                {
+                    STALL_FIRES.fetch_add(1, Relaxed);
                 }
                 sut.observe(client, now, timeout_applies);
                 let once = sut.snapshot();
@@ -584,14 +626,16 @@ impl StateMachineTest for LifecycleTest {
 }
 
 /// Each coverage floor is about a third of what the fixed seed reaches today.
-const COVERAGE_FLOORS: [(&str, &AtomicUsize, usize); 4] = [
+const COVERAGE_FLOORS: [(&str, &AtomicUsize, usize); 5] = [
     ("imported download sees a scryer-origin client failure", &IMPORTED_SEES_FAILURE, FLOOR_IMPORTED),
     ("warning timeout fires", &WARNING_TIMEOUT_FIRES, FLOOR_WARNING),
+    ("torrent stall fires", &STALL_FIRES, FLOOR_STALL),
     ("dispatch held back by retry backoff", &DISPATCH_HELD_BY_BACKOFF, FLOOR_HELD),
     ("re-dispatch after an import retry", &REDISPATCH_AFTER_RETRY, FLOOR_REDISPATCH),
 ];
 const FLOOR_IMPORTED: usize = 70;
 const FLOOR_WARNING: usize = 7;
+const FLOOR_STALL: usize = 3;
 const FLOOR_HELD: usize = 50;
 const FLOOR_REDISPATCH: usize = 20;
 
