@@ -111,6 +111,24 @@
 //! - QBT-TORRENT-5015 mapped in parity_torrent/priv_torrent.rs (suite
 //!   qbt_torrent_excluded_files); the other QBT-TORRENT-* reasons are in that
 //!   header (qBittorrent's own preferences, pod hooks, sidecars, CronJobs).
+//!
+//! Notify (no parity_notify test file; same reasons as the Notify paragraph of
+//! parity_indexers.rs):
+//! - SON-NOTIFY-5001, RAD-NOTIFY-5001, PRW-NOTIFY-5001 (no connection
+//!   configured, nothing sent): Scryer's dispatcher
+//!   (`start_notification_dispatcher`, scryer-application
+//!   notifications/dispatcher.rs:103) takes an `AppUseCase` and reads the
+//!   domain-event repository and notification targets; no seam reaches it, and
+//!   an empty config yields only an absence of calls (mock-interaction).
+//! - BAZ-NOTIFY-5001, 5006 (Sonarr/Radarr rescan after a subtitle download),
+//!   BAZ-NOTIFY-5002 (Plex refresh after a subtitle download): concept absent;
+//!   a search of scryer-application src for subtitle shows only release
+//!   parsing and file-name facts, no subtitle-download step that could trigger
+//!   a rescan or a media-server refresh.
+//! - BAZ-NOTIFY-5003 (Bazarr notification providers, none enabled): Bazarr's own
+//!   provider list; Scryer's targets are operator configuration behind
+//!   `AppUseCase`, and the captured value is empty, so no input to compare.
+//! - BAZ-NOTIFY-5004, 5005 and SER-NOTIFY-5001 are in_scope: false.
 
 use std::collections::BTreeMap;
 use std::sync::Arc;
