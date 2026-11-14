@@ -320,22 +320,22 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DownloadedMoviesImportServiceFixture.cs:472"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_unwanted_executable]
 - id: RAD-IMPORT-0047
   behaviour: "Deleting a movie file fails when the root folder is missing"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:63"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_root_guard]
 - id: RAD-IMPORT-0048
   behaviour: "Deleting a movie file fails when the root folder is empty (guards an unmounted share)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileDeletionService/DeleteMovieFileFixture.cs:70"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_root_guard]
 - id: RAD-IMPORT-0049
   behaviour: "With the movie folder gone, deleting a movie file removes only its record"
   source: reference
@@ -411,15 +411,15 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:49"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_orphan_records]
 - id: RAD-IMPORT-0060
   behaviour: "Cleaning deletes the records of files missing from disk, with reason MissingFromDisk"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:62"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_orphan_records]
 - id: RAD-IMPORT-0061
   behaviour: "Records not linked to the movie are deleted ([Ignore] in the reference; never runs)"
   source: reference
@@ -439,8 +439,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MediaFileTableCleanupServiceFixture.cs:105"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_orphan_records]
 - id: RAD-IMPORT-0064
   behaviour: "On a movie scan, files with current media info are not re-probed"
   source: reference
@@ -817,36 +817,36 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:23"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0118
   behaviour: "The folder's release group beats the file's when the download title has none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:43"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0119
   behaviour: "The file's release group is used when folder and download titles have none"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:63"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0120
   behaviour: "An {imdb-..} tag in a folder name is not taken as a release group"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:83"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0121
   behaviour: "A {tmdb-..} tag in a folder name is not taken as a release group"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/AggregateReleaseGroupFixture.cs:103"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0262
   behaviour: "Subtitle 'Name (2020) - [AAC 2.0].default.eng.forced.ass' next to movie file 'Name (2020)/Name (2020) - [AAC 2.0].mkv' parses with no title and copy 0"
   source: reference
@@ -929,36 +929,36 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:25"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0124
   behaviour: "Duplicate audio languages give one language"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:42"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0125
   behaviour: "Only unrecognised audio languages give nothing"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:59"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0126
   behaviour: "Unrecognised audio languages are dropped"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:75"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0127
   behaviour: "Audio languages 'eng' and 'ger' give English and German"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Language/AugmentLanguageFromMediaInfoFixture.cs:92"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0128
   behaviour: "Without media info the media info quality augmenter gives nothing"
   source: reference
@@ -1125,22 +1125,22 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:58"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0152
   behaviour: "The grabbed title 'Series.Title.S01E01.WEB.x264' gives source WEBDL (Tag) and 480p (Fallback)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:59"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0153
   behaviour: "The grabbed title 'Series.Title.S01E01.720p.x264' gives source TV (Fallback) and 720p (Tag)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromReleaseNameFixture.cs:60"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0154
   behaviour: "A .flv file is never a sample and its runtime is not probed"
   source: reference
@@ -1230,71 +1230,71 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:48"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0167
   behaviour: "The download client item's title is not the scene name when the download has other video files"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:60"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0168
   behaviour: "A scene-looking file name is the scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:76"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0169
   behaviour: "A file name that does not look like a scene name gives no scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:86"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0170
   behaviour: "A scene-looking folder title is the scene name when the file name is not one"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:96"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0171
   behaviour: "A folder title that does not look like a scene name gives no scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:108"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0172
   behaviour: "The folder title is not the scene name when the folder has other video files"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:123"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0173
   behaviour: "A '.mkv' extension is stripped from the download client item's title for the scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:139"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0174
   behaviour: "A '.par2' extension is stripped from the download client item's title for the scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:140"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0175
   behaviour: "A '.nzb' extension is stripped from the download client item's title for the scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:141"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0176
   behaviour: "Nothing is imported or recorded when every decision is rejected"
   source: reference
@@ -1349,22 +1349,22 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:162"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_largest]
 - id: RAD-IMPORT-0184
   behaviour: "A download the client still needs (cannot move files) is copied, not moved"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:190"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_mode]
 - id: RAD-IMPORT-0185
   behaviour: "An explicit Move import mode moves even when the client cannot move files"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/ImportApprovedMoviesFixture.cs:203"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_mode]
 - id: RAD-IMPORT-0186
   behaviour: "A download that is a single file records just its file name as the original path"
   source: reference
@@ -1580,8 +1580,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/FreeSpaceSpecificationFixture.cs:142"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0217
   behaviour: "Without a download client item the grabbed-quality check passes"
   source: reference
@@ -1790,71 +1790,71 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:39"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0247
   behaviour: "HDTV-720p replaces an existing SDTV file"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:48"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0248
   behaviour: "HDTV-720p does not replace an existing Bluray-720p file"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:61"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0249
   behaviour: "With propers preferred, HDTV-720p v1 does not replace an existing HDTV-720p v2 file"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:74"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0250
   behaviour: "With propers not preferred, HDTV-720p v1 may replace an existing HDTV-720p v2 file"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:91"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0251
   behaviour: "With propers not preferred, Bluray-1080p v1 may replace an existing Bluray-1080p v2 file"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:108"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0252
   behaviour: "A movie whose file record cannot be loaded accepts the import"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:127"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0253
   behaviour: "Same quality with a higher custom format score (20 over 10) is an upgrade"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:136"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0254
   behaviour: "A higher quality is an upgrade even with a lower custom format score (20 under 50)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:171"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0255
   behaviour: "Same quality with a lower custom format score (20 under 50) is not an upgrade"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:206"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0256
   behaviour: "Importing an upgrade deletes the old file from disk once"
   source: reference
@@ -1895,5 +1895,5 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/UpgradeMediaFileServiceFixture.cs:114"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_import::rad_root_guard]

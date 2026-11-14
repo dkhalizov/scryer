@@ -3,9 +3,15 @@
 //! Suites:
 //! - `scryer-application::parity_import::son_import`: corpus/reference/sonarr/import
 //! - `scryer-application::parity_import::rad_import`: corpus/reference/radarr/import
+//! - `scryer-application::parity_import::son_import_specs`,
+//!   `rad_import_specs`: specification fixtures, in parity_import/import_specs.rs.
 //! - `scryer-application::parity_import::son_import_config`,
 //!   `rad_import_config`: config entries, checked from the captured JSON they
 //!   reference (corpus/captured/<app>/config/*.json).
+//! - `son_transfer_move`, `son_root_guard`, `rad_root_guard`,
+//!   `rad_orphan_records`, `son_unwanted_executable`, `rad_unwanted_executable`,
+//!   `son_import_mode`, `rad_import_mode`, `rad_import_largest`: orchestration
+//!   sub-decisions, in parity_import/import_orchestration.rs.
 //!
 //! Scryer code under test:
 //! - Import checks (crates/scryer-application/src/import/checks.rs):
@@ -59,27 +65,23 @@
 //!   measured; Scryer measures the destination volume, not observable here.
 //!
 //! Unmapped (tests: []), with reasons. Sonarr (corpus/reference/sonarr/import):
-//! - CompletedDownloadService Import/Check (20), DownloadedEpisodesImportService
-//!   (18), ImportApprovedEpisodes (19), ImportDecisionMaker (5),
-//!   DiskTransferService (23), EpisodeFileMovingService (3),
-//!   MediaFileDeletionService (6), UpgradeMediaFileService (10),
-//!   MediaFileService.FilterExistingFiles (5), ExtraService (3): orchestration
-//!   through AppUseCase (import/workflow/*.rs, pub(crate)) with repositories,
-//!   download clients, file transfer and events; no in-memory seam, and most
-//!   assertions are mock calls or published events.
-//! - Aggregation and augmenters (AggregateEpisodes 6, AggregateQuality 11,
-//!   AggregateReleaseGroup 5, AugmentQualityFromReleaseName 5) and
-//!   GetSceneName (13): Scryer picks
-//!   release evidence inside the crate-private import workflow
-//!   (import/workflow/paths.rs:247 release_evidence_for_resolution) and has no
-//!   source/resolution confidence levels; parsing a title itself is covered by
-//!   the parse and quality areas.
-//! - Specifications AlreadyImported (5, download-history rule; Scryer's
+//! - Orchestration fixtures (CompletedDownloadService, DownloadedEpisodesImportService,
+//!   ImportApprovedEpisodes, ImportDecisionMaker, DiskTransferService,
+//!   EpisodeFileMovingService, MediaFileDeletionService, UpgradeMediaFileService,
+//!   FilterExistingFiles, ExtraService): stream import_orchestration
+//!   (parity_import/import_orchestration.rs) maps SON 0047, 0138, 0139, 0237, 0238,
+//!   0257, 0261, 0264, 0270-0272; its header lists the rest with reasons.
+//! - Aggregation and augmenters: AggregateReleaseGroup (5),
+//!   AugmentQualityFromReleaseName with a grab (3) and GetSceneName (13) are
+//!   mapped in parity_import/import_aggregate.rs; AggregateEpisodes (6),
+//!   AggregateQuality (11) and AugmentQualityFromReleaseName without a grab (2)
+//!   stay unmapped, reasons in that header.
+//! - Specifications: Upgrade (20), MatchesGrab 0206-0209 and MatchesFolder
+//!   0192/0193/0195 are mapped in parity_import/import_specs.rs. The other
+//!   groups (AlreadyImported: download-history rule, Scryer's
 //!   check_not_already_imported, checks.rs:227, is a different content-identity
-//!   rule), EpisodeTitle (4), FullSeason (3), HasAudioTrack (3), MatchesFolder
-//!   (15), MatchesGrab (7), Upgrade (20): title resolution and
-//!   import/decide.rs:271 decide_import (pub(crate), needs AppUseCase, profiles
-//!   and media analysis).
+//!   rule; EpisodeTitle, FullSeason, HasAudioTrack, the remaining MatchesGrab
+//!   and MatchesFolder cases) are listed there with reasons.
 //! - SON-IMPORT-0210 (NotSample), SON-IMPORT-0179 (FreeSpace): the spec is
 //!   skipped for a file already in the series folder. Scryer's library scan
 //!   never runs import checks, so there is no skip to observe.
@@ -88,24 +90,23 @@
 //!   volume.
 //!
 //! Radarr (corpus/reference/radarr/import):
-//! - disk_scan without file listings (RAD-IMPORT-0008..0010, 0014, 0015): root
-//!   folder warnings, folder creation, record cleanup; AppUseCase scan pipeline.
-//! - decision_maker (7), downloaded_import (19), import_approved (17),
-//!   file_ops (14), media_file_service (8), extras (7): orchestration, as for
-//!   Sonarr.
-//! - aggregation other than augment_quality_media_info (42), scene_name (10):
-//!   as for Sonarr.
-//! - media_info (30): update_media_info needs AppUseCase and an analyzer;
-//!   hdr_format lives in scryer-mediainfo (crate-private codec.rs:1812).
-//! - specifications: AlreadyImported (5), GrabbedReleaseQuality (6),
-//!   HasAudioTrack (3), MatchesGrab (5), Upgrade (10): as for Sonarr's
-//!   specifications. NotMultiPart (10): no import check rejects multi-part
-//!   files; the nearest code, location/conflicts.rs:436 stacked_part_number
-//!   and :467 holds_multi_part_media, is private and serves the conflict
-//!   keep-one feature, not import. NotSample RAD-IMPORT-0241 and FreeSpace
-//!   RAD-IMPORT-0214 (existing file), 0211 (which folder is measured), 0216
-//!   (SkipFreeSpaceCheckWhenImporting: Scryer has no such option, and the case
-//!   gives no free space to compare).
+//! - Orchestration (disk_scan without listings, decision_maker, downloaded_import,
+//!   import_approved, file_ops, media_file_service, extras): stream
+//!   import_orchestration (parity_import/import_orchestration.rs) maps RAD 0046,
+//!   0047, 0048, 0059, 0060, 0063, 0183, 0184, 0185, 0261; its header lists the rest
+//!   with reasons.
+//! - aggregation and scene_name: aggregate_release_group, augment_language_media_info,
+//!   augment_quality_release_name with a grab and scene_name are mapped in
+//!   parity_import/import_aggregate.rs; aggregate_language, aggregate_quality,
+//!   augment_quality_release_name without a grab (2), subtitle_info,
+//!   update_media_info (13) and hdr_format (17) stay unmapped, reasons in that
+//!   header.
+//! - specifications: Upgrade (10) and FreeSpace RAD-IMPORT-0216 (red: no skip
+//!   setting) are mapped in parity_import/import_specs.rs. Unmapped, with
+//!   reasons listed there: AlreadyImported (5), GrabbedReleaseQuality (6),
+//!   HasAudioTrack (3), MatchesGrab (5), NotMultiPart (10), NotSample
+//!   RAD-IMPORT-0241 and FreeSpace RAD-IMPORT-0214 (existing file), 0211 (which
+//!   folder is measured).
 //! - detect_sample RAD-IMPORT-0159: asserts only that runtime is probed once.
 //!
 //! Config entries mapped: SON-IMPORT-5002 / RAD-IMPORT-5002 (working folders)
@@ -127,6 +128,13 @@ use scryer_application::{
 };
 use scryer_parity::Suite;
 use serde_json::{Value, json};
+
+#[path = "parity_import/import_aggregate.rs"]
+mod import_aggregate;
+#[path = "parity_import/import_orchestration.rs"]
+mod import_orchestration;
+#[path = "parity_import/import_specs.rs"]
+mod import_specs;
 
 const MIB: u64 = 1024 * 1024;
 
