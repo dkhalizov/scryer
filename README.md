@@ -49,10 +49,10 @@ green + red.
 | torrent | download client, seeding | 17 | 9 | 20 | 174 | 65% |
 | requests | user requests (Seerr) | 10 | 9 | 0 | 320 | 53% |
 | maintenance | cleanup rules (Maintainerr) | 37 | 6 | 3 | 368 | 86% |
-| subtitles | subtitle matching (Bazarr) | 65 | 76 | 0 | 74 | 46% |
+| subtitles | subtitle matching (Bazarr) | 123 | 18 | 0 | 74 | 87% |
 | indexers | indexer settings and routing (Prowlarr) | 7 | 29 | 1 | 25 | 19% |
 | notify | notifications | 0 | 0 | 0 | 10 | - |
-| **all** | | **4119** | **2370** | **24** | **2013** | **63%** |
+| **all** | | **4177** | **2312** | **24** | **2013** | **64%** |
 
 By reference app:
 
@@ -61,7 +61,7 @@ By reference app:
 | Sonarr | 3144 | 1489 | 20 | 635 | 68% |
 | Radarr | 852 | 772 | 1 | 533 | 52% |
 | Prowlarr | 12 | 16 | 0 | 46 | 43% |
-| Bazarr | 66 | 79 | 0 | 83 | 46% |
+| Bazarr | 124 | 21 | 0 | 83 | 86% |
 | Seerr | 8 | 8 | 0 | 315 | 50% |
 | Maintainerr | 36 | 6 | 3 | 369 | 86% |
 | qBittorrent | 1 | 0 | 0 | 32 | 100% |

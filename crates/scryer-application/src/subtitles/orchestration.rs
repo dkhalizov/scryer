@@ -2500,9 +2500,15 @@ async fn search_automatic_subtitles_for_file(
     let file_path = stored_path_to_path_buf(&mf.file_path);
     let episode_context = media_file_episode_context(app, title, mf).await;
 
+    // fork (P7): (language, hi, forced) of each subtitle saved in this loop.
+    let mut saved_this_cycle: Vec<(String, bool, bool)> = Vec::new();
     for lang_pref in &missing {
         if app.restore_coordinator().shutdown_workers.is_cancelled() {
             break;
+        }
+        // fork (P7): an earlier item saved a subtitle this one accepts (Bazarr check_if_still_required).
+        if super::wanted::satisfied_by_saved(&saved_this_cycle, lang_pref) {
+            continue;
         }
         outcome.searched += 1;
         let query = build_subtitle_query(
@@ -2562,13 +2568,7 @@ async fn search_automatic_subtitles_for_file(
         }
 
         // Pick the best result above min_score
-        let best = filtered_results
-            .iter()
-            .filter(|r| r.score >= min_score)
-            .filter(|r| r.hearing_impaired == lang_pref.hearing_impaired)
-            .filter(|r| r.forced == lang_pref.forced)
-            .max_by_key(|r| r.score)
-            .copied();
+        let best = super::wanted::pick_best_subtitle(&filtered_results, lang_pref, min_score);
 
         let best = match best {
             Some(b) => b,
@@ -2690,6 +2690,7 @@ async fn search_automatic_subtitles_for_file(
         .await;
         match download_result {
             Ok((dest_path, _file)) => {
+                saved_this_cycle.push((best.language.clone(), best.hearing_impaired, best.forced));
                 let key = SubtitleSearchBackoffKey::from(lang_pref);
                 if !automatic
                     || backoff_rows.iter().any(|row| {

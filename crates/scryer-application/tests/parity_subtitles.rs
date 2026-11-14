@@ -1,7 +1,7 @@
 //! Parity net, area `subtitles` (notes/11-parity-net-design.md, parity/README.md).
 //!
 //! Scryer under test: `subtitles::scoring` (weights, `percent_to_raw_threshold`,
-//! `compute_verified_score`), `subtitles::wanted::compute_missing_subtitles`
+//! `compute_verified_score`), `subtitles::wanted::compute_missing_subtitles_from_streams`
 //! and `subtitles::language::normalize_subtitle_language_code`.
 //!
 //! Translation table, Bazarr -> Scryer:
@@ -14,7 +14,7 @@
 //! | item_type `episode` / `movie`, video kind `Episode` / `Movie` | `SubtitleScoreKind::Episode` / `Movie` |
 //! | language profile item `{language, hi, forced}` | `SubtitleLanguagePref { code: normalize_subtitle_language_code(language), hearing_impaired: hi, forced }` (hi/forced as bool or "True"/"False") |
 //! | a kept subtitle `{language, hi, forced}` | one `SubtitleDownload` with those values |
-//! | "profile is satisfied" | `compute_missing_subtitles(prefs, [download], [])` is empty |
+//! | "profile is satisfied" | `compute_missing_subtitles_from_streams(prefs, [download], [])` is empty (the production function, D61) |
 //! | score "94.17%" | raw = round(percent x Bazarr max / 100), Bazarr max = hash + hearing_impaired from config/scores.json |
 //! | minimum score percent (settings general/minimum_score[_movie]) | `percent_to_raw_threshold(kind, percent)` |
 //! | `video_fromname(file name)` | `parse_release_metadata(name without its container extension)`, read through the fields `build_subtitle_query` takes from it (`subtitles/orchestration.rs:2113-2190`; Scryer parses scene and grabbed release names, which carry no extension) |
@@ -78,7 +78,9 @@ use scryer_application::subtitles::language::normalize_subtitle_language_code;
 use scryer_application::subtitles::scoring::{
     ScoreWeights, SubtitleScoreKind, compute_verified_score, percent_to_raw_threshold,
 };
-use scryer_application::subtitles::wanted::{SubtitleLanguagePref, compute_missing_subtitles};
+use scryer_application::subtitles::wanted::{
+    SubtitleLanguagePref, compute_missing_subtitles_from_streams,
+};
 use scryer_domain::{ExternalSubtitleSourceKind, SubtitleDownload};
 use scryer_parity::{Catalogue, Suite, corpus};
 use serde_json::{Value, json};
@@ -208,7 +210,7 @@ fn download(language: &str, hearing_impaired: bool, forced: bool) -> SubtitleDow
 }
 
 fn satisfies(prefs: &[SubtitleLanguagePref], language: &str, hi: bool, forced: bool) -> bool {
-    compute_missing_subtitles(prefs, &[download(language, hi, forced)], &[]).is_empty()
+    compute_missing_subtitles_from_streams(prefs, &[download(language, hi, forced)], &[]).is_empty()
 }
 
 fn catalogue_ref(catalogue: &Catalogue, id: &str) -> String {
@@ -224,7 +226,9 @@ fn catalogue_ref(catalogue: &Catalogue, id: &str) -> String {
 
 #[test]
 fn baz_subtitles() {
-    let Some(mut suite) = Suite::open("scryer-application::parity_subtitles::baz_subtitles") else { return };
+    let Some(mut suite) = Suite::open("scryer-application::parity_subtitles::baz_subtitles") else {
+        return;
+    };
     let cases: Vec<Value> = corpus("corpus/reference/bazarr/subtitles/score.json");
     for case in &cases {
         let id = case["id"].as_str().unwrap();
@@ -275,7 +279,11 @@ fn baz_subtitles() {
             continue;
         }
         let name = case["input"]["given"]["name"].as_str().unwrap();
-        let stem = std::path::Path::new(name).file_stem().unwrap().to_str().unwrap();
+        let stem = std::path::Path::new(name)
+            .file_stem()
+            .unwrap()
+            .to_str()
+            .unwrap();
         let parsed = parse_release_metadata(stem);
         let expect = case["expect"].as_object().unwrap();
         let episode = expect.contains_key("series");
@@ -321,7 +329,10 @@ fn baz_subtitles() {
 
 #[test]
 fn baz_subtitles_config() {
-    let Some(mut suite) = Suite::open("scryer-application::parity_subtitles::baz_subtitles_config") else { return };
+    let Some(mut suite) = Suite::open("scryer-application::parity_subtitles::baz_subtitles_config")
+    else {
+        return;
+    };
     let catalogue = Catalogue::load();
     let scores: Value = corpus("corpus/captured/bazarr/config/scores.json");
     let settings: Value = corpus("corpus/captured/bazarr/config/settings.json");
@@ -410,7 +421,11 @@ fn baz_subtitles_config() {
 
 #[test]
 fn baz_subtitles_captured() {
-    let Some(mut suite) = Suite::open("scryer-application::parity_subtitles::baz_subtitles_captured") else { return };
+    let Some(mut suite) =
+        Suite::open("scryer-application::parity_subtitles::baz_subtitles_captured")
+    else {
+        return;
+    };
     let scores: Value = corpus("corpus/captured/bazarr/config/scores.json");
     let settings: Value = corpus("corpus/captured/bazarr/config/settings.json");
     for file in ["history-episodes.json", "history-movies.json"] {
@@ -481,10 +496,11 @@ fn baz_subtitles_captured() {
                 )
             })
             .collect();
-        let actual: Vec<(Option<String>, bool, bool)> = compute_missing_subtitles(&prefs, &[], &[])
-            .into_iter()
-            .map(|p| (Some(p.code), p.forced, p.hearing_impaired))
-            .collect();
+        let actual: Vec<(Option<String>, bool, bool)> =
+            compute_missing_subtitles_from_streams(&prefs, &[], &[])
+                .into_iter()
+                .map(|p| (Some(p.code), p.forced, p.hearing_impaired))
+                .collect();
         suite.check(id, expected, actual);
     }
     suite.finish();

@@ -70,8 +70,7 @@ pub fn compute_missing_subtitles(
 
             !existing_downloads.iter().any(|dl| {
                 same_subtitle_language(&dl.language, lang)
-                    && dl.forced == want.forced
-                    && dl.hearing_impaired == want.hearing_impaired
+                    && subtitle_kind_satisfies(want, dl.hearing_impaired, dl.forced)
             })
         })
         .cloned()
@@ -97,12 +96,54 @@ pub fn compute_missing_subtitles_from_streams(
 
             !existing_downloads.iter().any(|dl| {
                 same_subtitle_language(&dl.language, lang)
-                    && dl.forced == want.forced
-                    && dl.hearing_impaired == want.hearing_impaired
+                    && subtitle_kind_satisfies(want, dl.hearing_impaired, dl.forced)
             })
         })
         .cloned()
         .collect()
+}
+
+// fork (P7): Bazarr's rule. A forced item takes only forced, an HI item only HI,
+// and a plain item (hi=false, forced=false) takes a plain or an HI subtitle.
+pub fn subtitle_kind_satisfies(
+    want: &SubtitleLanguagePref,
+    hearing_impaired: bool,
+    forced: bool,
+) -> bool {
+    if want.forced {
+        forced
+    } else if forced {
+        false
+    } else {
+        hearing_impaired || !want.hearing_impaired
+    }
+}
+
+/// fork (P7): the download pick's selection step. Best-scoring result at or above
+/// `min_score` whose kind satisfies `want`.
+pub(crate) fn pick_best_subtitle<'a>(
+    results: &[&'a super::provider::SubtitleMatch],
+    want: &SubtitleLanguagePref,
+    min_score: i32,
+) -> Option<&'a super::provider::SubtitleMatch> {
+    results
+        .iter()
+        .filter(|r| r.score >= min_score)
+        .filter(|r| subtitle_kind_satisfies(want, r.hearing_impaired, r.forced))
+        // Equal scores (a hash match drops the scorer's +1 HI point): prefer the exact HI match.
+        .max_by_key(|r| (r.score, r.hearing_impaired == want.hearing_impaired))
+        .copied()
+}
+
+/// fork (P7): whether a subtitle already saved this cycle, as (language, hi, forced),
+/// satisfies `want`, so a later item for the same language needs no download.
+pub(crate) fn satisfied_by_saved(
+    saved: &[(String, bool, bool)],
+    want: &SubtitleLanguagePref,
+) -> bool {
+    saved.iter().any(|(lang, hi, forced)| {
+        same_subtitle_language(lang, &want.code) && subtitle_kind_satisfies(want, *hi, *forced)
+    })
 }
 
 fn embedded_stream_satisfies(
@@ -124,11 +165,7 @@ fn embedded_stream_satisfies(
     }
 
     let embedded_hi = stream_name_is_hearing_impaired(stream.name.as_deref());
-    if wanted.hearing_impaired {
-        embedded_hi
-    } else {
-        !embedded_hi
-    }
+    subtitle_kind_satisfies(wanted, embedded_hi, false)
 }
 
 fn stream_name_is_hearing_impaired(name: Option<&str>) -> bool {
@@ -332,17 +369,136 @@ mod tests {
     }
 
     #[test]
-    fn non_hi_wanted_but_hi_downloaded_still_missing() {
+    fn non_hi_wanted_is_satisfied_by_hi_download() {
+        // fork (P7): Bazarr's rule, a plain item accepts a plain or an HI subtitle.
         let wanted = vec![SubtitleLanguagePref {
             code: "eng".into(),
             hearing_impaired: false,
             forced: false,
         }];
-        // Download has hearing_impaired = true but we want non-HI
         let downloads = vec![make_download("eng", false, true)];
-        let missing = compute_missing_subtitles(&wanted, &downloads, &[]);
-        assert_eq!(missing.len(), 1);
-        assert!(!missing[0].hearing_impaired);
+        assert!(compute_missing_subtitles(&wanted, &downloads, &[]).is_empty());
+        assert!(compute_missing_subtitles_from_streams(&wanted, &downloads, &[]).is_empty());
+        let sdh = [make_stream("eng", false, Some("English SDH"))];
+        assert!(compute_missing_subtitles_from_streams(&wanted, &[], &sdh).is_empty());
+    }
+
+    fn make_match(
+        id: &str,
+        score: i32,
+        hi: bool,
+        forced: bool,
+    ) -> super::super::provider::SubtitleMatch {
+        super::super::provider::SubtitleMatch {
+            provider: "p".into(),
+            provider_file_id: id.into(),
+            language: "eng".into(),
+            release_info: None,
+            score,
+            score_percent: 0,
+            hearing_impaired: hi,
+            forced,
+            ai_translated: false,
+            machine_translated: false,
+            uploader: None,
+            download_count: None,
+            hash_matched: false,
+        }
+    }
+
+    fn pref(hi: bool, forced: bool) -> SubtitleLanguagePref {
+        SubtitleLanguagePref {
+            code: "eng".into(),
+            hearing_impaired: hi,
+            forced,
+        }
+    }
+
+    #[test]
+    fn pick_plain_item_takes_hi_result_when_only_one() {
+        let hi = make_match("hi", 300, true, false);
+        let forced = make_match("f", 400, false, true);
+        let best = pick_best_subtitle(&[&hi, &forced], &pref(false, false), 200);
+        assert_eq!(best.unwrap().provider_file_id, "hi");
+    }
+
+    #[test]
+    fn pick_plain_result_beats_hi_with_higher_score() {
+        // The scorer gives a plain result for a plain item +1 over an HI one.
+        let plain = make_match("plain", 301, false, false);
+        let hi = make_match("hi", 300, true, false);
+        let best = pick_best_subtitle(&[&hi, &plain], &pref(false, false), 200);
+        assert_eq!(best.unwrap().provider_file_id, "plain");
+    }
+
+    #[test]
+    fn pick_equal_scores_prefer_exact_hi_match_in_either_order() {
+        let plain = make_match("plain", 300, false, false);
+        let hi = make_match("hi", 300, true, false);
+        for order in [[&plain, &hi], [&hi, &plain]] {
+            let best = pick_best_subtitle(&order, &pref(false, false), 200);
+            assert_eq!(best.unwrap().provider_file_id, "plain");
+            let best = pick_best_subtitle(&order, &pref(true, false), 200);
+            assert_eq!(best.unwrap().provider_file_id, "hi");
+        }
+    }
+
+    #[test]
+    fn saved_hi_subtitle_satisfies_later_plain_and_hi_items_only() {
+        let saved = [("eng".to_string(), true, false)];
+        assert!(satisfied_by_saved(&saved, &pref(false, false)));
+        assert!(satisfied_by_saved(&saved, &pref(true, false)));
+        assert!(!satisfied_by_saved(&saved, &pref(false, true)));
+        let saved_plain = [("eng".to_string(), false, false)];
+        assert!(!satisfied_by_saved(&saved_plain, &pref(true, false)));
+        assert!(!satisfied_by_saved(&[], &pref(false, false)));
+    }
+
+    #[test]
+    fn forced_item_and_forced_hi_subtitle_accept_each_other() {
+        // Bazarr: forced wins, hi is not compared for a forced item.
+        assert!(subtitle_kind_satisfies(&pref(false, true), true, true));
+        assert!(subtitle_kind_satisfies(&pref(true, true), false, true));
+        let wanted = vec![pref(false, true)];
+        assert!(
+            compute_missing_subtitles(&wanted, &[make_download("eng", true, true)], &[]).is_empty()
+        );
+        let wanted = vec![pref(true, true)];
+        assert!(
+            compute_missing_subtitles_from_streams(
+                &wanted,
+                &[make_download("eng", true, false)],
+                &[]
+            )
+            .is_empty()
+        );
+    }
+
+    #[test]
+    fn pick_hi_item_never_takes_plain_result() {
+        let plain = make_match("plain", 400, false, false);
+        assert!(pick_best_subtitle(&[&plain], &pref(true, false), 200).is_none());
+    }
+
+    #[test]
+    fn pick_respects_min_score() {
+        let hi = make_match("hi", 100, true, false);
+        assert!(pick_best_subtitle(&[&hi], &pref(false, false), 200).is_none());
+    }
+
+    #[test]
+    fn forced_wanted_is_not_satisfied_by_hi_download() {
+        let wanted = vec![SubtitleLanguagePref {
+            code: "eng".into(),
+            hearing_impaired: false,
+            forced: true,
+        }];
+        let downloads = vec![make_download("eng", false, true)];
+        assert_eq!(compute_missing_subtitles(&wanted, &downloads, &[]).len(), 1);
+        assert_eq!(
+            compute_missing_subtitles_from_streams(&wanted, &downloads, &[]).len(),
+            1
+        );
     }
 
     // ── Forced wanted, non-forced embedded ──────────────────────────
