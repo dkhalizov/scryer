@@ -5771,6 +5771,7 @@ fn website_prefix_bounds() {
         "www.a.b.co.uk - Emberfall.S01E01",
         "example.net - ",
         "[www.example.com]",
+        "www.site.com - ",
     ] {
         assert_eq!(crate::sanitize::website_prefix_len(raw), None, "{raw}");
     }
@@ -5787,6 +5788,9 @@ fn dotted_title_before_dash_is_not_a_site() {
         ("Show.Name - S01E01 - Pilot.mkv", Some("SHOW NAME")),
         ("Series.Title - 11x11 - Title", Some("SERIES TITLE")),
         ("[Naruto-Kun.Hu] Emberfall - 12 [1080p]", None),
+        ("[Nagi.no.Ko].S02E01.1080p.WEB-DL", None),
+        ("[Dr.Stone] - 05 [1080p]", None),
+        ("show.name - s01e01.mkv", Some("SHOW NAME")),
     ] {
         let target = context(ContextFacetHint::Series, title.unwrap_or("Emberfall"));
         let (observed, _, stripped) = first_observed_title(raw, &target);

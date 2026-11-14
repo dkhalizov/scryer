@@ -65,6 +65,16 @@ pub(crate) fn website_prefix_len(s: &str) -> Option<usize> {
     {
         return None;
     }
+    // ponytail: a host needs `www.` or short lower-case TLDs so `Show.Name -
+    // S01E01` and `[Dr.Stone]` stay title text. Ceilings: a lower-case
+    // `csi.ny - 1x01` still strips; a no-www `.info`/`Site.World` host is
+    // not stripped (stays unmatched, as before). Upgrade: a TLD list.
+    let short_lower = rest[1..]
+        .iter()
+        .all(|l| l.len() <= 3 && l.bytes().all(|c| c.is_ascii_lowercase()));
+    if !www && !short_lower {
+        return None;
+    }
     let mut end = host_end;
     if let Some(close) = close {
         end = skip(end, |c| c == b' ');
@@ -72,17 +82,8 @@ pub(crate) fn website_prefix_len(s: &str) -> Option<usize> {
             return None;
         }
         end += 1;
-    } else {
-        // ponytail: unbracketed hosts need `www.` or short lower-case TLDs so
-        // `Show.Name - S01E01` stays title text. Ceilings: a lower-case
-        // `csi.ny - 1x01` still strips; a no-www `.info`/`Site.World` host is
-        // not stripped (stays unmatched, as before). Upgrade: a TLD list.
-        let short_lower = rest[1..]
-            .iter()
-            .all(|l| l.len() <= 3 && l.bytes().all(|c| c.is_ascii_lowercase()));
-        if (!www && !short_lower) || skip(end, |c| matches!(c, b' ' | b'-')) - end < 2 {
-            return None;
-        }
+    } else if skip(end, |c| matches!(c, b' ' | b'-')) - end < 2 {
+        return None;
     }
     end = skip(end, |c| matches!(c, b' ' | b'-'));
     (end < b.len()).then_some(end)
