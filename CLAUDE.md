@@ -3,7 +3,7 @@
 This checkout is our **independent fork** of Scryer, used to replace our *arr
 stack. We took it to avoid writing a Rust replacement from scratch, not to
 contribute upstream. `own/main` is the trunk: upstream code + our changes.
-`notes/` and private parity data are local only (gitignored, ledger D45). Upstream is a source of fixes we may pull, nothing more.
+`notes/` and private parity data are local only (gitignored, ledger D45). Upstream is a source of fixes we cherry-pick one by one; no wholesale merges (ledger D63).
 
 ## Before any work
 
@@ -26,16 +26,16 @@ because anything goes upstream:
   run the app, a scan or an import against a real library or instance
   without the user's explicit go-ahead for that exact target.
 - Deterministic tests; focused test runs per crate (`09-dev-setup.md`).
-- Both databases stay working (SQLite and Postgres), so upstream merges keep
-  applying cleanly.
-- **No schema migrations of our own while we still merge upstream.**
-  Versions must be contiguous (`scryer-infrastructure-datastore/src/migrations/assets.rs:592`),
-  so our 0342 and upstream's 0342 would collide on a live database. Repair
-  data in code (scan, analysis, startup) instead. If a migration becomes
-  unavoidable, stop and ask: it means we stop taking upstream migrations.
+- Both databases stay working (SQLite and Postgres), so upstream fixes keep
+  cherry-picking cleanly.
+- **No schema migrations without asking.** Versions must be contiguous
+  (`scryer-infrastructure-datastore/src/migrations/assets.rs:592`), and our
+  numbering no longer follows upstream's (we stopped at 0341). Repair data in
+  code (scan, analysis, startup) instead. If a migration becomes unavoidable,
+  or an upstream fix needs one, stop and ask.
 - Keep `skills/` in step with API changes we make.
-- Keep changes at seams, small diffs in shared files, so upstream merges stay
-  cheap.
+- Keep changes at seams, small diffs in shared files, so upstream fixes stay
+  cheap to cherry-pick.
 
 Dropped: upstream PR rules, Markdown approval, issue-first comments,
 outside-name bans, `fork:` commit prefixes.
