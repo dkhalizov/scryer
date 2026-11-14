@@ -22820,3 +22820,99 @@ async fn a_bound_download_imports_despite_a_typo_in_its_folder_name() {
     );
     assert_eq!(result.episode_ids, vec![episode.id]);
 }
+
+fn health_client(id: &str, name: &str, client_type: &str) -> DownloadClientConfig {
+    let now = chrono::Utc::now();
+    DownloadClientConfig {
+        id: id.into(),
+        name: name.into(),
+        client_type: client_type.into(),
+        config_json: "{}".into(),
+        client_priority: 1,
+        is_enabled: true,
+        status: scryer_domain::DownloadClientStatus::Healthy,
+        last_error: None,
+        last_seen_at: None,
+        proxy_config_id: None,
+        created_at: now,
+        updated_at: now,
+    }
+}
+
+// fork P4: an enabled client whose plugin is not installed can never download.
+#[tokio::test]
+async fn health_errors_when_an_enabled_client_has_no_plugin() {
+    let (app, _) = bootstrap();
+    app.services
+        .integrations
+        .download_client_configs
+        .create(health_client("qbit", "qBittorrent", "qbittorrent"))
+        .await
+        .unwrap();
+    let results = app.run_health_checks().await;
+    assert!(
+        results.iter().any(|r| r.source == "DownloadClient"
+            && matches!(r.status, HealthCheckStatus::Error)
+            && r.message.contains("qBittorrent")),
+        "{results:?}"
+    );
+}
+
+#[tokio::test]
+async fn health_does_not_flag_a_native_client_as_missing_a_plugin() {
+    let (app, _) = bootstrap();
+    app.services
+        .integrations
+        .download_client_configs
+        .create(health_client("sab", "SABnzbd", "sabnzbd"))
+        .await
+        .unwrap();
+    let results = app.run_health_checks().await;
+    assert!(
+        !results.iter().any(|r| r.message.contains("plugin")),
+        "{results:?}"
+    );
+}
+
+/// Resolves `qbittorrent` as a primary key and `qbit` as a declared alias, as
+/// the loader's `get_loaded` does; `available_provider_types` lists only the
+/// primary key.
+struct AliasedPluginProvider;
+
+impl DownloadClientPluginProvider for AliasedPluginProvider {
+    fn client_for_config(
+        &self,
+        _config: &scryer_domain::DownloadClientConfig,
+    ) -> Option<Arc<dyn DownloadClient>> {
+        Some(Arc::new(StubDownloadClient::default()))
+    }
+
+    fn available_provider_types(&self) -> Vec<String> {
+        vec!["qbittorrent".to_string()]
+    }
+
+    fn plugin_name_for_provider(&self, provider_type: &str) -> Option<String> {
+        matches!(provider_type, "qbittorrent" | "qbit").then(|| "qBittorrent".to_string())
+    }
+}
+
+#[tokio::test]
+async fn health_does_not_flag_an_installed_plugin_client_by_key_or_alias() {
+    let (mut app, _) = bootstrap();
+    app.services.integrations.download_client_plugin_provider = crate::RuntimeFeature::enabled(
+        Arc::new(AliasedPluginProvider) as Arc<dyn DownloadClientPluginProvider>,
+    );
+    for (id, client_type) in [("by-key", "qbittorrent"), ("by-alias", "qbit")] {
+        app.services
+            .integrations
+            .download_client_configs
+            .create(health_client(id, id, client_type))
+            .await
+            .unwrap();
+    }
+    let results = app.run_health_checks().await;
+    assert!(
+        !results.iter().any(|r| r.message.contains("plugin")),
+        "{results:?}"
+    );
+}

@@ -6,7 +6,11 @@ fn normalized_download_client_id(value: Option<&str>) -> String {
         .to_string()
 }
 impl AppUseCase {
-    fn normalize_download_client_type(&self, client_type: impl AsRef<str>) -> AppResult<String> {
+    // fork P4: pub(crate) so health reuses the one runnable-type rule.
+    pub(crate) fn normalize_download_client_type(
+        &self,
+        client_type: impl AsRef<str>,
+    ) -> AppResult<String> {
         let normalized = client_type.as_ref().trim().to_lowercase();
         if normalized.is_empty() {
             return Err(AppError::validation_refused(

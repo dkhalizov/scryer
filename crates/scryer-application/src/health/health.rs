@@ -262,6 +262,38 @@ impl AppUseCase {
             }];
         }
 
+        // fork P4: an enabled client whose plugin is not installed (or not
+        // enabled) can never download; the per-client status probe below
+        // swallows that error. `plugin_name_for_provider` resolves aliases the
+        // way the runtime's `get_loaded` does, which `normalize` does not.
+        let missing: Vec<HealthCheckResult> = enabled
+            .iter()
+            .filter(|c| {
+                self.normalize_download_client_type(&c.client_type).is_err()
+                    && !self
+                        .services
+                        .integrations
+                        .download_client_plugin_provider
+                        .available()
+                        .is_some_and(|provider| {
+                            provider
+                                .plugin_name_for_provider(c.client_type.trim())
+                                .is_some()
+                        })
+            })
+            .map(|c| HealthCheckResult {
+                source: "DownloadClient".into(),
+                status: HealthCheckStatus::Error,
+                message: format!(
+                    "Download client '{}' needs the '{}' plugin, which is not installed or not enabled",
+                    c.name, c.client_type
+                ),
+            })
+            .collect();
+        if !missing.is_empty() {
+            return missing;
+        }
+
         let errored: Vec<_> = enabled
             .iter()
             .filter(|c| {
