@@ -6,22 +6,22 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:87"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1001
   behaviour: "A proper (v2) is ranked before the same quality v1"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:101"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1002
   behaviour: "HDTV-720p is ranked before SDTV"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:115"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1003
   behaviour: "The release for the lower episode number is ranked first"
   source: reference
@@ -48,15 +48,15 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:175"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1007
   behaviour: "With preferred size 46 MB/min, the 3000 MB release is ranked first among 500/2000/3000/5000 MB"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:192"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1008
   behaviour: "The 5-day-old release is ranked before the 10-day-old one"
   source: reference
@@ -146,50 +146,50 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:451"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1021
   behaviour: "HDTV-720p German is ranked before SDTV French"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:480"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1022
   behaviour: "Custom format score 10 is ranked before score 0"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:494"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1023
   behaviour: "With PreferAndUpgrade, a proper with score 0 beats a v1 with score 10"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:511"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1024
   behaviour: "With DoNotUpgrade, a proper with score 0 beats a v1 with score 10"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:532"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1025
   behaviour: "With DoNotPrefer, a v1 with score 10 beats a proper with score 0"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:553"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1026
   behaviour: "With DoNotPrefer, a non-REAL with score 10 beats a REAL with score 0"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:576"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1027
   behaviour: "Equal releases are ordered by indexer priority, lowest number first (1, 25, 50)"
   source: reference
@@ -1224,8 +1224,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:130"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_delay]
 - id: SON-DECISION-1175
   behaviour: "A 10-hour-old release passes a 60-minute delay"
   source: reference
@@ -1245,22 +1245,22 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:165"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::son_decision_delay]
 - id: SON-DECISION-1178
   behaviour: "A REAL of the existing file's quality (HDTV-720p) bypasses the delay"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:183"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_delay]
 - id: SON-DECISION-1179
   behaviour: "A WEBDL-720p proper does not bypass the delay over an HDTV-720p file"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:201"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::son_decision_delay]
 - id: SON-DECISION-1180
   behaviour: "A custom format score of 100 above minimum 50 does not bypass the delay when the bypass is disabled"
   source: reference

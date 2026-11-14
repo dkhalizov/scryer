@@ -1,6 +1,7 @@
 //! Parity net: grab-decision harness (notes/11-parity-net-design.md, phase 4).
 //!
-//! Six suites, one test fn each:
+//! Six suites here, one test fn each; the submodules `parity_decision/decision_delay.rs`
+//! and `parity_decision/decision_rank.rs` add their own (see their headers):
 //!
 //! | Suite | Corpus |
 //! |---|---|
@@ -158,16 +159,21 @@
 //!   grabs as queued pseudo-incumbents, but which history rows count (event
 //!   type, 12 h window, completed download handling) is decided by the
 //!   loader, not by a callable gate.
-//! - PrioritizeDownloadDecision and config `preferIndexerFlags`,
-//!   `downloadPropersAndRepacks` (its "preferred over the original" half):
-//!   the search ranking comparator (`scoring::compare_ranked_results`) needs
-//!   `IndexerSearchResult` + `SearchRank`; no seam yet.
+//! - PrioritizeDownloadDecision: the cases the search rank head decides are
+//!   mapped in `parity_decision/decision_rank.rs` (seam
+//!   `compare_release_search_results`). The rest (protocol, coverage, episode
+//!   number, indexer priority, seeders/peers, usenet age) stay unmapped: they
+//!   need `SearchRank`, built only inside the private `evaluate_candidate`
+//!   (see that file's header). Config `preferIndexerFlags` and
+//!   `downloadPropersAndRepacks` (its "preferred over the original" half) stay
+//!   unmapped for the same reason.
 //! - Config `formatItems/format=N`: scoring a release against a translated
 //!   custom format needs the rules engine (Rego) harness.
 //! - Delay cases whose outcome rests on "highest quality in profile" (bypass
-//!   on) or "same-tier revision over the file on disk": Scryer computes those
-//!   facts inside `automatic_candidate_delay_decision` (needs
-//!   `IndexerSearchResult` + `Title`).
+//!   on) or "same-tier revision over the file on disk": mapped in
+//!   `parity_decision/decision_delay.rs` (`son_decision_delay`,
+//!   `rad_decision_delay`) through the `automatic_candidate_delay_decision`
+//!   seam; the reference suites here still skip them.
 //! - Spec applicability guards with no Scryer counterpart: Repack / Proper /
 //!   AnimeVersionUpgrade cases where the reference spec does not evaluate
 //!   (not a repack, DoNotPrefer, not a same-quality newer revision, a search
@@ -182,7 +188,9 @@
 //! pieces used here, and `QualityProfileCriteria::quality_cutoff_met` is `pub`.
 //! Queue cases select queued submissions with the loader's own scope filter,
 //! `submission_scope_intersects` (and `ScopeMembership`), widened to `pub` in
-//! `acquisition/workflow/search.rs` for that re-export.
+//! `acquisition/workflow/search.rs` for that re-export. `decision_rank` also
+//! uses `compare_release_search_results` (search rank head); `decision_delay` uses
+//! `automatic_candidate_delay_decision`.
 
 use std::cmp::Reverse;
 
@@ -204,6 +212,11 @@ use scryer_application::{
 use scryer_domain::MediaFacet;
 use scryer_parity::{Catalogue, Source, Suite, corpus, parity_dir};
 use serde_json::{Value, json};
+
+#[path = "parity_decision/decision_delay.rs"]
+mod decision_delay;
+#[path = "parity_decision/decision_rank.rs"]
+mod decision_rank;
 
 const NOW: &str = "2026-01-15T12:00:00Z";
 

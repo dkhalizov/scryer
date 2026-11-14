@@ -28,7 +28,8 @@ pub(crate) enum TitleMatchProfile {
 /// resolution, the persisted search projection and the UI all key on one
 /// normalizer. Kept as a local alias because most of this crate reads better
 /// calling it a lookup key.
-pub(crate) fn canonical_lookup_key(title: &str) -> String {
+// fork: parity net seam (was pub(crate); tests/parity_parse/parse_title.rs)
+pub fn canonical_lookup_key(title: &str) -> String {
     scryer_domain::title_spelling::title_lookup_form(title)
 }
 

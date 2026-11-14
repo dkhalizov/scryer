@@ -59,9 +59,11 @@ impl LibraryTitleWalk {
     }
 }
 
+// fork: parity net seam (was pub(crate); tests/parity_parse/parse_path.rs)
 #[derive(Clone, Debug, Default)]
-pub(crate) struct LibraryQueryEvidence {
-    pub(crate) queries: Vec<String>,
+pub struct LibraryQueryEvidence {
+    // fork: parity net seam (was pub(crate); tests/parity_parse/parse_path.rs)
+    pub queries: Vec<String>,
     pub(crate) year: Option<u32>,
     /// Year derived from the containing folder alone, independent of the
     /// `year` selection order above. Scans use it to retry a metadata lookup
@@ -84,7 +86,8 @@ pub struct LibraryFilenameParseInput<'a> {
     pub(crate) display_name: Option<&'a str>,
     pub(crate) library_root: Option<&'a Path>,
     pub(crate) title: Option<&'a Title>,
-    pub(crate) facet: Option<&'a MediaFacet>,
+    // fork: parity net seam (was pub(crate); tests/parity_parse/parse_path.rs)
+    pub facet: Option<&'a MediaFacet>,
     pub(crate) collections: &'a [Collection],
     pub(crate) series_movie_links: &'a [SeriesMovieLink],
     pub(crate) episodes: &'a [Episode],
@@ -145,7 +148,8 @@ pub(crate) enum LibraryFilenameTarget {
 // fork: parity net seam (was pub(crate); parity/fuzz scan_path)
 #[derive(Clone, Debug)]
 pub struct LibraryFilenameParse {
-    pub(crate) query_evidence: LibraryQueryEvidence,
+    // fork: parity net seam (was pub(crate); tests/parity_parse/parse_path.rs)
+    pub query_evidence: LibraryQueryEvidence,
     // fork: parity net seam (was pub(crate); parity/fuzz scan_path)
     pub parsed_release: crate::ParsedReleaseMetadata,
     // fork: parity net seam (was pub(crate); parity/fuzz scan_path)

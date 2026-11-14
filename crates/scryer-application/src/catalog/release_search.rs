@@ -1480,7 +1480,8 @@ fn auto_mode_enabled_for_structured_collapse(config: &IndexerConfig) -> bool {
 /// The listing steps (indexer priority, seeders, age, coverage) are deliberately
 /// absent: a merge sees results from several indexers arriving at different
 /// times, and nothing here may depend on when a batch landed.
-pub(crate) fn compare_release_search_results(
+#[doc(hidden)] // fork: parity net seam (was pub(crate); tests/parity_decision/decision_rank.rs)
+pub fn compare_release_search_results(
     left: &IndexerSearchResult,
     right: &IndexerSearchResult,
 ) -> std::cmp::Ordering {

@@ -2051,7 +2051,8 @@ pub(crate) fn auto_candidate_delay_decision(
     clippy::too_many_arguments,
     reason = "the search lane must reuse the exact delay inputs used by automatic evaluation"
 )]
-pub(crate) fn automatic_candidate_delay_decision(
+// fork: parity net seam (was pub(crate); tests/parity_decision/decision_delay.rs)
+pub fn automatic_candidate_delay_decision(
     candidate: &IndexerSearchResult,
     title: &Title,
     admission: &crate::admission::AdmissionSubject,

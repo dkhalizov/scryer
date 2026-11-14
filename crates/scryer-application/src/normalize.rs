@@ -2,7 +2,8 @@
 ///
 /// Accepts any of: "tt1234567", "1234567", "tt1234567abc", IMDb URLs.
 /// Returns `None` for empty strings or strings with no digits.
-pub(crate) fn normalize_imdb_id(raw: &str) -> Option<String> {
+// fork: parity net seam (was pub(crate); tests/parity_parse/parse_title.rs)
+pub fn normalize_imdb_id(raw: &str) -> Option<String> {
     let value = raw.trim();
     if value.is_empty() {
         return None;

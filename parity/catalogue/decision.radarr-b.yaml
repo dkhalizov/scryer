@@ -8,24 +8,24 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:94"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_put_propers_before_non_propers|0|ecd43c61b12d
 - id: RAD-DECISION-1001
   behaviour: "A proper (v2) sorts before the same quality v1"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:108"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_put_higher_quality_before_lower|0|41a0f5c94d35
 - id: RAD-DECISION-1002
   behaviour: "HDTV-720p sorts before SDTV"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:122"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_age_then_largest_rounded_to_200mb|0|f964676a3a15
 - id: RAD-DECISION-1003
   behaviour: "Among HDTV-720p releases with no preferred size, the young 3000 MB one sorts first"
@@ -40,32 +40,32 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:154"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_largest_to_if_zero_runtime|0|6fdd73bc3fac
 - id: RAD-DECISION-1005
   behaviour: "With runtime 0 the preferred size is ignored and the larger release sorts first"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:171"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_closest_to_preferred_size_if_both_under|0|766c4251d776
 - id: RAD-DECISION-1006
   behaviour: "With preferred size 390 MB/min x 150 min, a 15000 MB release sorts before a 100 MB one"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:188"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_closest_to_preferred_size_if_preferred_is_in_between|0|b98fbaac8c47
 - id: RAD-DECISION-1007
   behaviour: "With preferred size 46 MB/min x 150 min (6900 MB), the 7000 MB release sorts first"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:205"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_order_by_youngest|0|2408b20bfbc1
 - id: RAD-DECISION-1008
   behaviour: "A 5-day-old release sorts before a 10-day-old one"
@@ -136,56 +136,56 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:410"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_prefer_better_custom_format2|0|31c4182e89ad
 - id: RAD-DECISION-1017
   behaviour: "A release matching My Format 2 (score 2) sorts before one matching My Format 1 (score 1)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:429"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_prefer_2_custom_formats|0|82964332eeff
 - id: RAD-DECISION-1018
   behaviour: "A release matching both formats (score 3) sorts before one matching My Format 1 (score 1)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:450"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_prefer_proper_over_score_when_download_propers_is_prefer_and_upgrade|0|e4b8f67c782f
 - id: RAD-DECISION-1019
   behaviour: "With PreferAndUpgrade, a proper with score 0 sorts before a v1 with score 10"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:469"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_prefer_proper_over_score_when_download_propers_is_do_not_upgrade|0|b7127d7188c9
 - id: RAD-DECISION-1020
   behaviour: "With DoNotUpgrade, a proper with score 0 still sorts before a v1 with score 10"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:490"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_prefer_score_over_proper_when_download_propers_is_do_not_prefer|0|43949019abe5
 - id: RAD-DECISION-1021
   behaviour: "With DoNotPrefer, a v1 with score 10 sorts before a proper with score 0"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:511"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_prefer_score_over_real_when_download_propers_is_do_not_prefer|0|6829f20bde80
 - id: RAD-DECISION-1022
   behaviour: "With DoNotPrefer, a non-REAL with score 10 sorts before a REAL with score 0"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:534"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|sort_download_decisions_based_on_indexer_priority|0|90734f48714f
 - id: RAD-DECISION-1023
   behaviour: "Equal releases sort by indexer priority, lowest number first (1, 25, 50)"

@@ -648,8 +648,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:118"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_delay]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs|should_be_true_when_release_is_older_than_delay|0|baba7206c49e
 - id: RAD-DECISION-0082
   behaviour: "Accepted when the release (10 h old) is older than the 60-minute delay"
@@ -672,24 +672,24 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:152"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_delay]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs|should_be_true_when_release_is_a_real_for_existing_movie|0|5acef6a0b6af
 - id: RAD-DECISION-0085
   behaviour: "Accepted inside the delay when the release is a REAL of the existing file's quality"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:170"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_decision::rad_decision_delay]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs|should_be_false_when_release_is_proper_for_existing_movie_of_different_quality|0|a61dcdb7f712
 - id: RAD-DECISION-0086
   behaviour: "Rejected inside the delay when the proper (HDTV-720p v2) is for a different quality than the file (SDTV)"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:188"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_decision::rad_decision_delay]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs|should_be_false_when_custom_format_score_is_above_minimum_but_bypass_disabled|0|d69e2698c9f9
 - id: RAD-DECISION-0087
   behaviour: "Rejected inside the delay with format score 100 over minimum 50 when the score bypass is off"

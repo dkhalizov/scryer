@@ -5,6 +5,9 @@
 //! - `rad_parse`: `parity/corpus/reference/radarr/parse/*.json` (RAD-PARSE-0001..)
 //! - `son_parse_captured`: `parity/corpus/captured/sonarr/data/cases/parse.json` (SON-PARSE-6001..)
 //! - `rad_parse_captured`: `parity/corpus/captured/radarr/data/cases/parse.json` (RAD-PARSE-6001..)
+//! - `parse_title.rs`: son_clean_title, rad_clean_title, son_series_name, rad_movie_title_clean, rad_normalize_imdb_id (see that header)
+//! - `parse_path::son_parse_path`, `parse_path::rad_parse_path`: path parsing, see `parity_parse/parse_path.rs`
+//! - `parse_lang::son_iso_languages`, `parse_lang::rad_iso_languages`: IsoLanguages.Find, see `parity_parse/parse_lang.rs`
 //!
 //! The reference calls ParseTitle / ParseMovieTitle with no target, so every
 //! case runs Scryer's untargeted production path:
@@ -96,20 +99,18 @@
 //! series id (Sonarr). Every other captured key is compared.
 //!
 //! Unmapped (tests: []), with reasons:
-//! - Parser.ParsePath / Parser.ParseMoviePath (Sonarr 48, Radarr 11): path
-//!   parsing for import is scryer-application `library/filename_parser.rs`
-//!   (`parse_library_filename`, pub(crate)), not this crate's API.
+//! - Parser.ParsePath / Parser.ParseMoviePath (Sonarr 48, Radarr 11) are mapped
+//!   in `parity_parse/parse_path.rs` (suites `son_parse_path`, `rad_parse_path`).
 //! - Parser.CleanSeriesTitle, Parser.ParseSeriesName (`series_name_clean`),
 //!   Parser.CleanMovieTitle, ParseMovieTitle `movie_title_clean` (Sonarr 76,
-//!   Radarr 59): title cleaning for matching is scryer-application
-//!   `library/title_matching.rs` `canonical_lookup_key` (pub(crate)).
-//! - IsoLanguages.Find, LanguageParser.ParseSubtitleLanguage,
-//!   ParseSubtitleLanguageInformation (Sonarr 46, Radarr 79): subtitle sidecar
-//!   names are parsed in scryer-application `subtitles/`; this crate's code
-//!   table (`enrichment.rs` `normalize_language_token`) is private.
-//! - Parser.NormalizeImdbId (Radarr 6): scryer-application `normalize.rs`
-//!   `normalize_imdb_id` (pub(crate)). ParsingService.Map (Radarr 4):
-//!   matching a parse to a library movie, application level.
+//!   Radarr 59): mapped in `parity_parse/parse_title.rs`.
+//! - IsoLanguages.Find (Sonarr 13, Radarr 43) is mapped in
+//!   `parity_parse/parse_lang.rs`.
+//! - LanguageParser.ParseSubtitleLanguage, ParseSubtitleLanguageInformation
+//!   (Sonarr 33, Radarr 36): subtitle sidecar names are parsed in
+//!   scryer-application `subtitles/` (later stage).
+//! - Parser.NormalizeImdbId (Radarr 6): mapped in `parity_parse/parse_title.rs`.
+//!   ParsingService.Map (Radarr 4): matching a parse to a library movie, application level.
 //! - Absent concepts: SceneChecker (Sonarr 13, Radarr 12), Parser.ToUrlSlug
 //!   (Radarr 79), RomanNumeral (Radarr 40), Parser.NormalizeEpisodeTitle
 //!   (Sonarr 6), ValidateParsedEpisodeInfo (Sonarr 3), IsPossibleSpecialEpisode
@@ -130,6 +131,13 @@ use scryer_release_parser::{
     TitleSegmentKind, TokenRole,
 };
 use serde_json::{Map, Value, json};
+
+#[path = "parity_parse/parse_lang.rs"]
+mod parse_lang;
+#[path = "parity_parse/parse_path.rs"]
+mod parse_path;
+#[path = "parity_parse/parse_title.rs"]
+mod parse_title;
 
 #[derive(Clone, Copy, PartialEq)]
 enum App {

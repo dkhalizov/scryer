@@ -389,6 +389,15 @@ pub mod parity_seams {
         LibraryFilenameParse, LibraryFilenameParseInput, LibraryFilenameParseMode,
         parse_library_filename,
     };
+    // fork: parity net seam (tests/parity_parse/parse_path.rs)
+    pub use crate::library::filename_parser::LibraryQueryEvidence;
+    // fork: parity net seam (tests/parity_parse/parse_title.rs)
+    pub use crate::library::title_matching::canonical_lookup_key;
+    pub use crate::normalize::normalize_imdb_id;
+    // fork: parity net seam (tests/parity_decision/decision_rank.rs)
+    pub use crate::catalog::release_search::compare_release_search_results;
+    // fork: parity net seam (tests/parity_decision/decision_delay.rs)
+    pub use crate::acquisition::release_search::automatic_candidate_delay_decision;
 }
 pub use acquisition::seed_goals::{
     ReleaseSeedMinimums, ResolvedSeedGoals, SeedGoalRequest, SeedGoalResolutionSource,
