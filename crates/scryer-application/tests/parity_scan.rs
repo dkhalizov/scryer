@@ -41,24 +41,34 @@
 //! walk is one listing; the file count in the same case is compared).
 //!
 //! Unmapped (tests: []), with reasons:
-//! - DiskScanService.Scan without `files_on_disk` (SON-SCAN-0001, 0002, 0004,
-//!   0005): root folder missing/empty warnings, CreateFolder and
-//!   MediaFileTableCleanupService.Clean calls. Scryer's equivalent runs inside
-//!   the AppUseCase scan pipeline (library/scan/pipeline.rs) with repositories;
-//!   no in-memory seam, and the assertions are mock interactions.
-//! - DiskScanService.GetVideoFiles call shape (SON-SCAN-0138..0140): assert the
-//!   recursion flag passed to IDiskProvider.GetFiles. The walker has no call
-//!   seam; recursion itself is exercised by the Scan cases.
-//! - MediaFileTableCleanupService.Clean (5): database row cleanup through
-//!   repositories; no in-memory seam in this crate.
+//! - DiskScanService.Scan without `files_on_disk`: SON-SCAN-0001, 0002, 0005
+//!   mapped in crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs
+//!   (son_scan_root_guard) through the root-state and title-folder guards.
+//!   SON-SCAN-0004 stays unmapped: its only assertion (no folder created) is
+//!   observable only through the AppUseCase title scan (reason there).
+//! - DiskScanService.GetVideoFiles call shape (SON-SCAN-0138..0140): mapped in
+//!   the same file (son_scan_video_files); recursion is observable through
+//!   FileSystemLibraryScanner::scan_directory vs scan_directory_children.
+//! - MediaFileTableCleanupService.Clean: SON-SCAN-0022, 0023, 0024, 0026 mapped
+//!   in the same file (son_scan_clean). SON-SCAN-0025 stays unmapped: a dangling
+//!   episode link cannot exist in Scryer (file_episode_map ON DELETE CASCADE).
 //! - MediaInfoFormatter FormatAudioCodec / FormatVideoCodec /
-//!   FormatVideoDynamicRange / FormatVideoDynamicRangeType (78): codec and HDR
-//!   naming lives in crate scryer-mediainfo, crate-private
-//!   (codec.rs:24 normalize_codec_name, codec.rs:1812 detect_hdr_format) and
-//!   behind this crate's optional `runtime-media-analysis` feature. Belongs in
-//!   a scryer-mediainfo harness.
-//! - UpdateMediaInfoService (11): AppUseCase plus media analyzer and
-//!   repositories. VideoFileInfoReader (20): reads real media sample files.
+//!   FormatVideoDynamicRange / FormatVideoDynamicRangeType (78): mapped in
+//!   parity_scan/scan_mediainfo.rs (rename tokens via title_rename_tokens).
+//!   Correction of the earlier claim: scryer-mediainfo's normalize_codec_name
+//!   maps container codec ids to ffprobe names; detect_hdr_format is a
+//!   #[cfg(test)] wrapper returning the probe's video_hdr_format string;
+//!   neither is a display label.
+//! - UpdateMediaInfoService (11): SON-SCAN-0027..0029 mapped in
+//!   crates/scryer-infrastructure-library/tests/parity_scan/scan_library.rs
+//!   (son_scan_media_info_queue). SON-SCAN-0030, 0031, 0034..0039 stay
+//!   unmapped: AppUseCase plus media analyzer and repositories.
+//!   VideoFileInfoReader (20): crates/scryer-mediainfo/tests/parity_scan/scan_reader.rs
+//!   (0040-0053 mapped there; 0054-0059 unmapped, reason there).
+//!
+//! Submodule suites (parity_scan/scan_mediainfo.rs): son_scan_format_audio_codec,
+//! son_scan_format_video_codec, son_scan_format_dynamic_range,
+//! son_scan_format_dynamic_range_type.
 //!
 //! Config suites (son_scan_config, rad_scan_config, baz_scan_config): nothing
 //! mapped, so no test function (a suite with no entries is vacuous). Reasons
@@ -208,3 +218,6 @@ fn son_scan() {
     }
     suite.finish();
 }
+
+#[path = "parity_scan/scan_mediainfo.rs"]
+mod scan_mediainfo;
