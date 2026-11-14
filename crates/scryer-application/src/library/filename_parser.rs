@@ -3644,6 +3644,7 @@ mod tests {
         let facet = Some(&MediaFacet::Series);
         let pilot = scan_written_file(dir.path(), "Show/Season 01/01 Pilot (1080p HD).mkv", facet);
         assert_eq!(season_and_episodes(&pilot), Some((Some(1), vec![1])));
+        assert_eq!(pilot.parsed_release.raw_title, "01 Pilot (1080p HD)");
 
         let bare_e = scan_written_file(
             dir.path(),
@@ -3658,6 +3659,14 @@ mod tests {
             facet,
         );
         assert_eq!(season_and_episodes(&named), Some((Some(1), vec![1])));
+
+        // An explicit SxxEyy after a leading `E60` title keeps its own identity.
+        let explicit =
+            scan_written_file(dir.path(), "Show/Season 1/E60 - S01E05 - Title.mkv", facet);
+        assert_eq!(season_and_episodes(&explicit), Some((Some(1), vec![5])));
+        let explicit =
+            scan_written_file(dir.path(), "Show/Season 2/E01 - S02E03 - Title.mkv", facet);
+        assert_eq!(season_and_episodes(&explicit), Some((Some(2), vec![3])));
     }
 
     #[test]
