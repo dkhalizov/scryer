@@ -7,7 +7,10 @@
 //! - `rad_parse_captured`: `parity/corpus/captured/radarr/data/cases/parse.json` (RAD-PARSE-6001..)
 //! - `parse_title.rs`: son_clean_title, rad_clean_title, son_series_name, rad_movie_title_clean, rad_normalize_imdb_id (see that header)
 //! - `parse_path::son_parse_path`, `parse_path::rad_parse_path`: path parsing, see `parity_parse/parse_path.rs`
+//! - `parse_sublang::{son,rad}_subtitle_language`, `parse_sublang::{son,rad}_subtitle_info`: LanguageParser.ParseSubtitleLanguage / ParseSubtitleLanguageInformation, see `parity_parse/parse_sublang.rs`
+//! - `parse_absent::*` (son_scene_title, rad_url_slug, rad_roman_to_int, son_normalize_episode_title, son_possible_special, rad_map_search_criteria, son_title_without_year, son_quality_from_extension): see `parity_parse/parse_absent.rs`
 //! - `parse_lang::son_iso_languages`, `parse_lang::rad_iso_languages`: IsoLanguages.Find, see `parity_parse/parse_lang.rs`
+//! - `parse_quality_detect::son_quality_detection_source`, `parse_quality_detect::rad_quality_detection_source`: QualityParser.ParseQuality detection sources (SON-PARSE-1045..1067, RAD-PARSE-0783..0804), see `parity_parse/parse_quality_detect.rs`
 //!
 //! The reference calls ParseTitle / ParseMovieTitle with no target, so every
 //! case runs Scryer's untargeted production path:
@@ -107,18 +110,17 @@
 //! - IsoLanguages.Find (Sonarr 13, Radarr 43) is mapped in
 //!   `parity_parse/parse_lang.rs`.
 //! - LanguageParser.ParseSubtitleLanguage, ParseSubtitleLanguageInformation
-//!   (Sonarr 33, Radarr 36): subtitle sidecar names are parsed in
-//!   scryer-application `subtitles/` (later stage).
+//!   (Sonarr 33, Radarr 36) are mapped in `parity_parse/parse_sublang.rs`.
 //! - Parser.NormalizeImdbId (Radarr 6): mapped in `parity_parse/parse_title.rs`.
-//!   ParsingService.Map (Radarr 4): matching a parse to a library movie, application level.
-//! - Absent concepts: SceneChecker (Sonarr 13, Radarr 12), Parser.ToUrlSlug
-//!   (Radarr 79), RomanNumeral (Radarr 40), Parser.NormalizeEpisodeTitle
-//!   (Sonarr 6), ValidateParsedEpisodeInfo (Sonarr 3), IsPossibleSpecialEpisode
-//!   (Sonarr 7), quality detection sources `source_detection_source` /
-//!   `resolution_detection_source` (Sonarr 25, Radarr 22), and
-//!   `series_title_info.title_equals_title_without_year` (Sonarr 1: Scryer has
-//!   one title, comparing it with itself would be vacuous).
-//! - `name_template` + `now_offset_days` (Sonarr 8): the date is
+//! - Mapped in `parity_parse/parse_absent.rs`: SceneChecker Sonarr 13, Parser.ToUrlSlug 79,
+//!   RomanNumeral.ToInt 20, NormalizeEpisodeTitle 6, ParseTitle IsPossibleSpecialEpisode 5,
+//!   ParsingService.Map 4, `title_equals_title_without_year` 1, ParserFixture
+//!   quality detection sources (SON-PARSE-0673/0674) 2.
+//! - Still unmapped, reasons in that header: Radarr SceneChecker 12,
+//!   RomanNumeral.ToRomanNumeral 20, IsPossibleSpecialEpisode on a hand-built
+//!   parse 2, ValidateParsedEpisodeInfo 3. The QualityParserFixture cases
+//!   (Sonarr 23 / Radarr 22) are mapped in `parity_parse/parse_quality_detect.rs`.
+//! - `name_template` + `now_offset_days` (Sonarr 8, listed in parse_absent.rs): the date is
 //!   DateTime.Now + 2 days. The parser has no clock input and the harness may
 //!   not read the wall clock.
 
@@ -132,10 +134,16 @@ use scryer_release_parser::{
 };
 use serde_json::{Map, Value, json};
 
+#[path = "parity_parse/parse_absent.rs"]
+mod parse_absent;
 #[path = "parity_parse/parse_lang.rs"]
 mod parse_lang;
 #[path = "parity_parse/parse_path.rs"]
 mod parse_path;
+#[path = "parity_parse/parse_quality_detect.rs"]
+mod parse_quality_detect;
+#[path = "parity_parse/parse_sublang.rs"]
+mod parse_sublang;
 #[path = "parity_parse/parse_title.rs"]
 mod parse_title;
 

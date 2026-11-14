@@ -2591,40 +2591,40 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:35"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_true|baf1177a991c|0
 - id: SON-PARSE-0325
   behaviour: "Parser.ParseTitle of \"Title.the.Series.S02.Special-Inside.Chesters.Mill.720p.HDTV.x264-BAJSKORV\" gives is_possible_special_episode true"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_true|81934f243563|0
 - id: SON-PARSE-0326
   behaviour: "Parser.ParseTitle of \"Title.the.Series.S05.Special.HDTV.x264-2HD\" gives is_possible_special_episode true"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:37"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_true_if_e00_special|e83753d45443|0
 - id: SON-PARSE-0327
   behaviour: "Parser.ParseTitle of \"Title.the.Series.S11E00.A.Christmas.Carol.Special.720p.HDTV-FieldOfView\" gives is_possible_special_episode true"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:43"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_false_for_Special_in_title|d70fb5597928|0
 - id: SON-PARSE-0328
   behaviour: "Parser.ParseTitle of \"Big.Special.Show.S05.HDTV.x264-2HD\" gives is_possible_special_episode false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:49"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs|should_return_iso_language_for_English|482cb5b32aed|0
 - id: SON-PARSE-0329
   behaviour: "IsoLanguages.Find of \"en\" gives language \"English\""
@@ -2735,96 +2735,96 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:12"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|00adccec4ab8|0
 - id: SON-PARSE-0343
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.en.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:19"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|04483e556a1b|0
 - id: SON-PARSE-0344
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.EN.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:20"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|c838d8b8f945|0
 - id: SON-PARSE-0345
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.eng.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:21"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|193323320fd0|0
 - id: SON-PARSE-0346
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.ENG.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:22"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|897138626642|0
 - id: SON-PARSE-0347
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.English.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:23"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|aeab912455bc|0
 - id: SON-PARSE-0348
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.english.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:24"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|61281f0a3543|0
 - id: SON-PARSE-0349
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.en.cc.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:25"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|c678a079e2af|0
 - id: SON-PARSE-0350
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.en.sdh.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:26"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|bc7030a35160|0
 - id: SON-PARSE-0351
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.en.forced.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:27"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|faa6436d77a4|0
 - id: SON-PARSE-0352
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.en.sdh.forced.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:28"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_subtitle_language_english|c838d8b8f945|1
 - id: SON-PARSE-0353
   behaviour: "LanguageParser.ParseSubtitleLanguage of \"Series Title - S01E01 - Pilot.eng.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:29"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_language]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_unknown|70b764d73500|0
 - id: SON-PARSE-0354
   behaviour: "LanguageParser.ParseLanguages of \"Spanish Killroy was Here S02E02 Flodden 720p AMZN WEB-DL DDP5 1 H 264-NTb\" gives languages_include [\"Unknown\"]"
@@ -3911,168 +3911,168 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:465"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|b23a30479f60|0
 - id: SON-PARSE-0490
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].eng.default.testtitle.forced.ass\" gives subtitle_info {\"language_tags\": [\"default\", \"forced\"], \"title\": \"testtitle\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:466"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|5ac11f1fe4aa|0
 - id: SON-PARSE-0491
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].default.eng.testtitle.forced.ass\" gives subtitle_info {\"language_tags\": [\"default\", \"forced\"], \"title\": \"testtitle\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:467"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|46193969b48a|0
 - id: SON-PARSE-0492
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].testtitle.forced.eng.ass\" gives subtitle_info {\"language_tags\": [\"forced\"], \"title\": \"testtitle\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:468"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|6cef0be4c8b5|0
 - id: SON-PARSE-0493
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].eng.forced.testtitle.ass\" gives subtitle_info {\"language_tags\": [\"forced\"], \"title\": \"testtitle\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:469"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|c205b2a3045d|0
 - id: SON-PARSE-0494
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].forced.eng.testtitle.ass\" gives subtitle_info {\"language_tags\": [\"forced\"], \"title\": \"testtitle\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:470"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|f636cbba8065|0
 - id: SON-PARSE-0495
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].testtitle.default.fra.forced.ass\" gives subtitle_info {\"language_tags\": [\"default\", \"forced\"], \"title\": \"testtitle\", \"language\": \"French\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:471"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|012ed937e3f9|0
 - id: SON-PARSE-0496
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].fra.default.testtitle.forced.ass\" gives subtitle_info {\"language_tags\": [\"default\", \"forced\"], \"title\": \"testtitle\", \"language\": \"French\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:472"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|f6367d8f2e7f|0
 - id: SON-PARSE-0497
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].default.fra.testtitle.forced.ass\" gives subtitle_info {\"language_tags\": [\"default\", \"forced\"], \"title\": \"testtitle\", \"language\": \"French\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:473"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|c86dda13225f|0
 - id: SON-PARSE-0498
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].testtitle.forced.fra.ass\" gives subtitle_info {\"language_tags\": [\"forced\"], \"title\": \"testtitle\", \"language\": \"French\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:474"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|8279d1e5d1ac|0
 - id: SON-PARSE-0499
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].fra.forced.testtitle.ass\" gives subtitle_info {\"language_tags\": [\"forced\"], \"title\": \"testtitle\", \"language\": \"French\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:475"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|6e6c5f52013a|0
 - id: SON-PARSE-0500
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].forced.fra.testtitle.ass\" gives subtitle_info {\"language_tags\": [\"forced\"], \"title\": \"testtitle\", \"language\": \"French\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:476"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|74d53c17411d|0
 - id: SON-PARSE-0501
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].ru-something-else.srt\" gives subtitle_info {\"language_tags\": [], \"title\": \"something-else\", \"language\": \"Russian\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:477"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|362596b6ddf5|0
 - id: SON-PARSE-0502
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].Full Subtitles.eng.ass\" gives subtitle_info {\"language_tags\": [], \"title\": \"Full Subtitles\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:478"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|8c3bc273302f|0
 - id: SON-PARSE-0503
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].mytitle - 1.en.ass\" gives subtitle_info {\"language_tags\": [], \"title\": \"mytitle\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:479"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|f03a6ed34989|0
 - id: SON-PARSE-0504
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].mytitle 1.en.ass\" gives subtitle_info {\"language_tags\": [], \"title\": \"mytitle 1\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:480"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|6b73892e0983|0
 - id: SON-PARSE-0505
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].mytitle.en.ass\" gives subtitle_info {\"language_tags\": [], \"title\": \"mytitle\", \"language\": \"English\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:481"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_not_parse_false_title|cfd1825ff3b7|0
 - id: SON-PARSE-0506
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].default.forced.ass\" gives subtitle_info {\"language\": \"Unknown\", \"language_tags\": [], \"raw_title\": null}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:491"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_not_parse_false_title|80c49d3ceb3b|0
 - id: SON-PARSE-0507
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].default.ass\" gives subtitle_info {\"language\": \"Unknown\", \"language_tags\": [], \"raw_title\": null}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:492"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_not_parse_false_title|5c9a43b23b42|0
 - id: SON-PARSE-0508
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].ass\" gives subtitle_info {\"language\": \"Unknown\", \"language_tags\": [], \"raw_title\": null}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:493"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_not_parse_false_title|2b0c11a3b8da|0
 - id: SON-PARSE-0509
   behaviour: "LanguageParser.ParseSubtitleLanguageInformation of \"Name (2020) - S01E20 - [AAC 2.0].testtitle.ass\" gives subtitle_info {\"language\": \"Unknown\", \"language_tags\": [], \"raw_title\": null}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:494"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs|should_parse_mini_series_episode|59b095a4708e|0
 - id: SON-PARSE-0510
   behaviour: "Parser.ParseTitle of \"The.Big.Series.Leader.Part.2.DSR.XviD-SYS\" gives title \"The Big Series Leader\", season 1, episodes [2], absolute_episodes [], full_season false"
@@ -4695,48 +4695,48 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:10"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|8fe76bdbce39|0
 - id: SON-PARSE-0588
   behaviour: "Parser.NormalizeEpisodeTitle of \"A.B,C;\" gives normalized_episode_title \"a b c\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:11"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|48f1cf036ad5|0
 - id: SON-PARSE-0589
   behaviour: "Parser.NormalizeEpisodeTitle of \"Episode  Title\" gives normalized_episode_title \"episode title\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:12"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|1a2366e8e99f|0
 - id: SON-PARSE-0590
   behaviour: "Parser.NormalizeEpisodeTitle of \"French Title (1)\" gives normalized_episode_title \"french title\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:13"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|f2084637bcc1|0
 - id: SON-PARSE-0591
   behaviour: "Parser.NormalizeEpisodeTitle of \"Series.Title.S01.Special.Episode.Title.720p.HDTV.x264-Sonarr\" gives normalized_episode_title \"episode title\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:14"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|aa8898b55f3c|0
 - id: SON-PARSE-0592
   behaviour: "Parser.NormalizeEpisodeTitle of \"Series.Title.S01E00.Episode.Title.720p.HDTV.x264-Sonarr\" gives normalized_episode_title \"episode title\""
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:15"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_normalize_series_title|e17594e6d406|0
 - id: SON-PARSE-0593
   behaviour: "Parser.CleanSeriesTitle of \"Series\" gives clean_title \"series\""
@@ -5383,16 +5383,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:81"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_from_extension]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_quality_from_extension|2be4bfbe04b8|0
 - id: SON-PARSE-0674
   behaviour: "Parser.ParseTitle of \"Show - S01E01 - Title.avi\" gives quality {\"is_unknown\": false, \"source_detection_source\": \"Extension\", \"resolution_detection_source\": \"Extension\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:82"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_from_extension]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_releasetitle|f0ed99030c98|0
 - id: SON-PARSE-0675
   behaviour: "Parser.ParseTitle of \"Series.S01E02.Chained.Title.mkv\" gives release_title \"Series.S01E02.Chained.Title\""
@@ -8359,184 +8359,184 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:429"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|c3bdcd4678f2|0
 - id: SON-PARSE-1046
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S10E09.Episode.Title.1080i.UPSCALE.HDTV.DD5.1.MPEG2-zebra\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:430"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|85a73e13cad9|0
 - id: SON-PARSE-1047
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.Bluray720p\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:431"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|26081e9444c5|0
 - id: SON-PARSE-1048
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.Bluray1080p\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:432"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|1c622e1cf1a5|0
 - id: SON-PARSE-1049
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.Bluray2160p\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:433"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|20612daaf32a|0
 - id: SON-PARSE-1050
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.848x480.dvd\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:434"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|f49defe5016d|0
 - id: SON-PARSE-1051
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.848x480.Bluray\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:435"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|0461647d3f48|0
 - id: SON-PARSE-1052
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.1280x720.Bluray\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:436"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|a662fda33bc2|0
 - id: SON-PARSE-1053
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.1920x1080.Bluray\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:437"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name|29f437992177|0
 - id: SON-PARSE-1054
   behaviour: "QualityParser.ParseQuality of \"[CR] Series Title - 004 [480p][48CE2D0F]\" gives quality {\"source_detection_source\": \"Unknown\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:446"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name|eff64e7418c0|0
 - id: SON-PARSE-1055
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.848x480\" gives quality {\"source_detection_source\": \"Unknown\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:447"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name|ce6efc07b509|0
 - id: SON-PARSE-1056
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.1280x720\" gives quality {\"source_detection_source\": \"Unknown\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:448"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name|aa1e77865feb|0
 - id: SON-PARSE-1057
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.1920x1080\" gives quality {\"source_detection_source\": \"Unknown\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:449"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_source_from_name|63f567269042|0
 - id: SON-PARSE-1058
   behaviour: "QualityParser.ParseQuality of \"Series.Title.2011.S02E01.WS.PDTV.x264-REPACK-TLA\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Unknown\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:458"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_source_from_name|5dec436a4390|0
 - id: SON-PARSE-1059
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.Bluray\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Unknown\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:459"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_source_from_name|0f0c5275c7ea|0
 - id: SON-PARSE-1060
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.HD.TV\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Unknown\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:460"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_source_from_name|aee6a660333f|0
 - id: SON-PARSE-1061
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E01.SD.TV\" gives quality {\"source_detection_source\": \"Name\", \"resolution_detection_source\": \"Unknown\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:461"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|bb68cde400a8|0
 - id: SON-PARSE-1062
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E02.Chained.Heat.mkv\" gives quality {\"source_detection_source\": \"Extension\", \"resolution_detection_source\": \"Extension\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:470"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|efcd243a0fdf|0
 - id: SON-PARSE-1063
   behaviour: "QualityParser.ParseQuality of \"Series - S01E01 - Title.avi\" gives quality {\"source_detection_source\": \"Extension\", \"resolution_detection_source\": \"Extension\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:471"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|2ee072973e19|0
 - id: SON-PARSE-1064
   behaviour: "QualityParser.ParseQuality of \"Series.Title.9x18.sunshine_days.avi\" gives quality {\"source_detection_source\": \"Extension\", \"resolution_detection_source\": \"Extension\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:472"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|2b7384ea7965|0
 - id: SON-PARSE-1065
   behaviour: "QualityParser.ParseQuality of \"[CR] Series Title - 004 [48CE2D0F].avi\" gives quality {\"source_detection_source\": \"Extension\", \"resolution_detection_source\": \"Extension\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:473"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|8bd1550079c0|0
 - id: SON-PARSE-1066
   behaviour: "QualityParser.ParseQuality of \"Series.Title.S01E02.Chained.Heat.1080p.mkv\" gives quality {\"source_detection_source\": \"Extension\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:482"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|8242563c73a4|0
 - id: SON-PARSE-1067
   behaviour: "QualityParser.ParseQuality of \"Series - S01E01 - Title.720p.avi\" gives quality {\"source_detection_source\": \"Extension\", \"resolution_detection_source\": \"Name\"}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:483"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_be_able_to_parse_repack|7497f88b6c82|0
 - id: SON-PARSE-1068
   behaviour: "QualityParser.ParseQuality of \"Series Title S04E87 REPACK 720p HDTV x264 aAF\" gives quality {\"revision\": {\"version\": 2, \"is_repack\": true}}"
@@ -9511,104 +9511,104 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:10"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_true_for_scene_names|17cb41858ae8|0
 - id: SON-PARSE-1190
   behaviour: "SceneChecker.IsSceneTitle of \"Series.Title.S07E02.720p.WEB-DL.DD5.1.H.264-pcsyndicate\" gives is_scene_title true"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:11"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_true_for_scene_names|7c58d69b6cbb|0
 - id: SON-PARSE-1191
   behaviour: "SceneChecker.IsSceneTitle of \"Series.Title.2009.S05E06.Baby.Shower.720p.WEB-DL.DD5.1.H.264-iT00NZ\" gives is_scene_title true"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:12"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_true_for_scene_names|292c5ae2530b|0
 - id: SON-PARSE-1192
   behaviour: "SceneChecker.IsSceneTitle of \"Series.Title.S04E17.720p.HDTV.X264-DIMENSION\" gives is_scene_title true"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:13"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_true_for_scene_names|e83af04b8f96|0
 - id: SON-PARSE-1193
   behaviour: "SceneChecker.IsSceneTitle of \"Series.Title.S04.720p.HDTV.X264-DIMENSION\" gives is_scene_title true"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:14"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|1492c1a50a3b|0
 - id: SON-PARSE-1194
   behaviour: "SceneChecker.IsSceneTitle of \"S08E05 - Virtual In-Stanity [WEBDL-720p]\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:20"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|01f46c01ed76|0
 - id: SON-PARSE-1195
   behaviour: "SceneChecker.IsSceneTitle of \"S08E05 - Virtual In-Stanity.With.Dots [WEBDL-720p]\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:21"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|71fc2b221578|0
 - id: SON-PARSE-1196
   behaviour: "SceneChecker.IsSceneTitle of \"Something\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:22"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|760e9a29da32|0
 - id: SON-PARSE-1197
   behaviour: "SceneChecker.IsSceneTitle of \"86de66b7ef385e2fa56a3e41b98481ea1658bfab\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:23"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|40c0eee9936b|0
 - id: SON-PARSE-1198
   behaviour: "SceneChecker.IsSceneTitle of \"Series.Title.S04E17.720p.HDTV.X264\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:24"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|e234f968df42|0
 - id: SON-PARSE-1199
   behaviour: "SceneChecker.IsSceneTitle of \"S04E17.720p.HDTV.X264-DIMENSION\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:25"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|6989313651ac|0
 - id: SON-PARSE-1200
   behaviour: "SceneChecker.IsSceneTitle of \"Series.Title.S04E17-DIMENSION\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:26"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_false_for_non_scene_names|2b65acb7100d|0
 - id: SON-PARSE-1201
   behaviour: "SceneChecker.IsSceneTitle of \"Series.Title.720p.HDTV.X264-DIMENSION\" gives is_scene_title false"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs:27"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_scene_title]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|56f2ae369484|0
 - id: SON-PARSE-1202
   behaviour: "Parser.ParseTitle of \"30.Series.Season.04.HDTV.XviD-DIMENSION\" gives season 4, title \"30 Series\", episodes [], absolute_episodes [], full_season true"
@@ -10023,8 +10023,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs:20"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::son_title_without_year]
 # key: src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs|should_have_year_when_title_has_a_year|eb3de1e0204e|0
 - id: SON-PARSE-1254
   behaviour: "Parser.ParseTitle of \"Series.Title.2004.S01E01.pilot.720p.hdtv\" gives series_title_info {\"year\": 2004}"

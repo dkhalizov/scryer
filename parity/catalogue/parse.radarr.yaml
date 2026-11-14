@@ -1390,80 +1390,80 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:35"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0175
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|0b71e920aa6a0535|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.EN.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0176
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|24450f1dfad0fa37|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.eng.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:37"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0177
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|bce576b6fefa1039|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.ENG.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:38"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0178
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|78e7726933c6ff30|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.English.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:39"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0179
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|d050914827a95f20|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.english.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:40"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0180
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|a5f4aa2dbfba75e5|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.en.cc.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:41"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0181
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|da567a8afffb93d0|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.en.sdh.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:42"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0182
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|a66fc0c8cc5dab8e|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.en.forced.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:43"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0183
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|4b219028f77c7f4d|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title - 2022.en.sdh.forced.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:44"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0184
   # key: "LanguageParserFixture.cs|should_parse_language_french|6ecec5e923386069|0"
   behaviour: "ParseMovieTitle of \"Movie.Title.1994.French.1080p.XviD-LOL\" gives languages_include [\"French\"]"
@@ -2606,40 +2606,40 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:534"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0327
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language|55eed98435800255|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title.eng.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:535"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0328
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language|94064f2901021f3a|0"
   behaviour: "ParseSubtitleLanguage of \"Movie.Title.eng.forced.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:536"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0329
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language|2a5100c87e0bd444|0"
   behaviour: "ParseSubtitleLanguage of \"Movie-Title-eng-forced.sub\" gives subtitle_language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:537"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0330
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_unknown|5b215fed6febc1c3|0"
   behaviour: "ParseSubtitleLanguage of \"Movie Title.sub\" gives subtitle_language \"Unknown\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:544"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0331
   # key: "LanguageParserFixture.cs|should_add_original_language_to_german_release_with_dl_tag|a58527346beee1ce|0"
   behaviour: "ParseMovieTitle of \"The.Movie.Name.2016.German.DTS.DL.720p.BluRay.x264-RlsGrp\" gives languages_include [\"German\", \"Original\"], languages_count 2"
@@ -2718,168 +2718,168 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:591"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0341
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|a95cb5a0c18d8c47|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].eng.default.testtitle.forced.ass\" gives subtitle_info.language_tags [\"default\", \"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:592"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0342
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|951a1e0469e7e0b4|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].default.eng.testtitle.forced.ass\" gives subtitle_info.language_tags [\"default\", \"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:593"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0343
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|3c87b7eec45fd5f2|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].testtitle.forced.eng.ass\" gives subtitle_info.language_tags [\"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:594"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0344
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|7650c6e5db14fffa|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].eng.forced.testtitle.ass\" gives subtitle_info.language_tags [\"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:595"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0345
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|52148aa680dbac94|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].forced.eng.testtitle.ass\" gives subtitle_info.language_tags [\"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:596"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0346
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|6570a1a619ac0dae|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].testtitle.default.fra.forced.ass\" gives subtitle_info.language_tags [\"default\", \"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"French\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:597"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0347
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|de64252f88cd2c53|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].fra.default.testtitle.forced.ass\" gives subtitle_info.language_tags [\"default\", \"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"French\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:598"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0348
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|91b17d3a20c4d170|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].default.fra.testtitle.forced.ass\" gives subtitle_info.language_tags [\"default\", \"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"French\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:599"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0349
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|919e7d38fdf5c8b8|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].testtitle.forced.fra.ass\" gives subtitle_info.language_tags [\"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"French\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:600"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0350
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|5228c013445d3263|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].fra.forced.testtitle.ass\" gives subtitle_info.language_tags [\"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"French\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:601"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0351
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|6f956f6b11c5806a|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].forced.fra.testtitle.ass\" gives subtitle_info.language_tags [\"forced\"], subtitle_info.title \"testtitle\", subtitle_info.language \"French\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:602"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0352
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|af45aaeb507fb5a2|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].ru-something-else.srt\" gives subtitle_info.language_tags [], subtitle_info.title \"something-else\", subtitle_info.language \"Russian\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:603"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0353
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|5d3987c4df8a65e5|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].Full Subtitles.eng.ass\" gives subtitle_info.language_tags [], subtitle_info.title \"Full Subtitles\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:604"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0354
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|cf06a7cf1978a6e4|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].mytitle - 1.en.ass\" gives subtitle_info.language_tags [], subtitle_info.title \"mytitle\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:605"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0355
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|262fdc0d84a9ea18|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].mytitle 1.en.ass\" gives subtitle_info.language_tags [], subtitle_info.title \"mytitle 1\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:606"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0356
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|a5503937768cd85a|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].mytitle.en.ass\" gives subtitle_info.language_tags [], subtitle_info.title \"mytitle\", subtitle_info.language \"English\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:607"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0357
   # key: "LanguageParserFixture.cs|should_not_parse_false_title|2c42af13d3aaecdf|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].default.forced.ass\" gives subtitle_info.language \"Unknown\", subtitle_info.language_tags [], subtitle_info.raw_title null"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:617"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0358
   # key: "LanguageParserFixture.cs|should_not_parse_false_title|05ac0227306beb45|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].default.ass\" gives subtitle_info.language \"Unknown\", subtitle_info.language_tags [], subtitle_info.raw_title null"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:618"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0359
   # key: "LanguageParserFixture.cs|should_not_parse_false_title|6ccbed048ed3b834|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].ass\" gives subtitle_info.language \"Unknown\", subtitle_info.language_tags [], subtitle_info.raw_title null"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:619"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0360
   # key: "LanguageParserFixture.cs|should_not_parse_false_title|6e3cc7e6e99c58a9|0"
   behaviour: "ParseSubtitleLanguageInformation of \"Name (2020) - [AAC 2.0].testtitle.ass\" gives subtitle_info.language \"Unknown\", subtitle_info.language_tags [], subtitle_info.raw_title null"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:620"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0361
   # key: "NormalizeTitleFixture.cs|should_normalize_series_title|cfba70d757f738b5|0"
   behaviour: "CleanMovieTitle of \"Conan\" gives clean_title \"conan\""
@@ -4158,32 +4158,32 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:149"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0521
   # key: "ParsingServiceTests/MapFixture.cs|should_match_translation_title|25d18da1b449e821|0"
   behaviour: "Map of parsed movie titles \"Translated Title\" gives maps_to_search_criteria_movie true"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:155"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0522
   # key: "ParsingServiceTests/MapFixture.cs|should_match_roman_title|160f196b6447af7a|0"
   behaviour: "Map of parsed movie titles \"Fack Ju Göthe II\" gives maps_to_search_criteria_movie true"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:161"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0523
   # key: "ParsingServiceTests/MapFixture.cs|should_match_umlauts|fd67c69fdcfd6b0d|0"
   behaviour: "Map of parsed movie titles \"Fack Ju Goethe 2\" and \"Fack Ju Goethe 2: Same same\" gives maps_to_search_criteria_movie true"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:167"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0524
   # key: "QualityParserFixture.cs|should_parse_ts|7051782b1551f4f9|0"
   behaviour: "ParseQuality of \"Movie.Title.3.2017.720p.TSRip.x264.AAC-Ozlem\" gives quality.source \"TELESYNC\", quality.resolution 720, quality.revision.version 1"
@@ -6262,176 +6262,176 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:443"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0784
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|74867a549163af1b|0"
   behaviour: "ParseQuality of \"Movie.Title.S10E09.Eddie.Murphy.The.Honeydrippers.1080i.UPSCALE.HDTV.DD5.1.MPEG2-zebra\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:444"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0785
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|4c3cc04b92518d37|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.Bluray720p\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:445"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0786
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|5ff15c20f943cd3b|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.Bluray1080p\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:446"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0787
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|0b83f629976332b4|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.Bluray2160p\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:447"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0788
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|ae4df39156d12c29|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.848x480.dvd\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:448"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0789
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|01afba0ae032d673|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.848x480.Bluray\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:449"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0790
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|de52b9fe42b771f9|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.1280x720.Bluray\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:450"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0791
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|cbaeee17c6949310|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.1920x1080.Bluray\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:451"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0792
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name|a99499309c154d83|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.848x480\" gives quality.source_detection_source \"Unknown\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:460"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0793
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name|261b35014143213a|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.1280x720\" gives quality.source_detection_source \"Unknown\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:461"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0794
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name|5558322ea8e5820c|0"
   behaviour: "ParseQuality of \"Movie.Title.2018.1920x1080\" gives quality.source_detection_source \"Unknown\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:462"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0795
   # key: "QualityParserFixture.cs|should_parse_source_from_name|319d902939ec5b2b|0"
   behaviour: "ParseQuality of \"Movie.Title.2011.S02E01.WS.PDTV.x264-REPACK-TLA\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Unknown\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:471"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0796
   # key: "QualityParserFixture.cs|should_parse_source_from_name|4e507328f244f333|0"
   behaviour: "ParseQuality of \"Movie.Title.S01E01.Bluray\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Unknown\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:472"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0797
   # key: "QualityParserFixture.cs|should_parse_source_from_name|daed41b98cbd4ee6|0"
   behaviour: "ParseQuality of \"Movie.Title.S01E01.HD.TV\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Unknown\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:473"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0798
   # key: "QualityParserFixture.cs|should_parse_source_from_name|db6614f847eca280|0"
   behaviour: "ParseQuality of \"Movie.Title.S01E01.SD.TV\" gives quality.source_detection_source \"Name\", quality.resolution_detection_source \"Unknown\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:474"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0799
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|f9a3c5baccd2495e|0"
   behaviour: "ParseQuality of \"Movie.Title.S01E02.Chained.Heat.mkv\" gives quality.source_detection_source \"Extension\", quality.resolution_detection_source \"Extension\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:483"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0800
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|d709aa413ff6ef35|0"
   behaviour: "ParseQuality of \"Movie Name - S01E01 - Title.avi\" gives quality.source_detection_source \"Extension\", quality.resolution_detection_source \"Extension\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:484"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0801
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|749f0c0c6d4b78c6|0"
   behaviour: "ParseQuality of \"Movie.Title..9x18.sunshine_days.avi\" gives quality.source_detection_source \"Extension\", quality.resolution_detection_source \"Extension\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:485"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0802
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|9d462ca8be532d53|0"
   behaviour: "ParseQuality of \"[CR] Movie Title - 004 [48CE2D0F].avi\" gives quality.source_detection_source \"Extension\", quality.resolution_detection_source \"Extension\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:486"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0803
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|49bc0fc03983714b|0"
   behaviour: "ParseQuality of \"Movie.Name.S01E02.Chained.Heat.1080p.mkv\" gives quality.source_detection_source \"Extension\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:495"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0804
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name_and_source_from_extension|7bd7d0b9cb0db57e|0"
   behaviour: "ParseQuality of \"Movie Name - S01E01 - Title.720p.avi\" gives quality.source_detection_source \"Extension\", quality.resolution_detection_source \"Name\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:496"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0805
   # key: "QualityParserFixture.cs|should_be_able_to_parse_repack|2e95f20ddc3e909a|0"
   behaviour: "ParseQuality of \"Movie Title 2018 REPACK 720p HDTV x264 aAF\" gives quality.revision.is_repack true, quality.revision.version 2"
@@ -7878,160 +7878,160 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0986
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|d0e57814eeddb7d3|0"
   behaviour: "ToInt of \"II\" gives number 2"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0987
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|651335d2c54831cc|0"
   behaviour: "ToInt of \"III\" gives number 3"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0988
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|d50dc14765329f68|0"
   behaviour: "ToInt of \"IV\" gives number 4"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0989
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|185e25e81896bea2|0"
   behaviour: "ToInt of \"V\" gives number 5"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0990
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|243fa7b820c91179|0"
   behaviour: "ToInt of \"VI\" gives number 6"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0991
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|279ddc6a3e0532de|0"
   behaviour: "ToInt of \"VII\" gives number 7"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0992
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|f31678131a7d9e6e|0"
   behaviour: "ToInt of \"VIII\" gives number 8"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0993
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|ef3bc539315d5ece|0"
   behaviour: "ToInt of \"IX\" gives number 9"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0994
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|a9d75d8158270fd8|0"
   behaviour: "ToInt of \"X\" gives number 10"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0995
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|64c38a5083693a6e|0"
   behaviour: "ToInt of \"XI\" gives number 11"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0996
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|120135e0934331c4|0"
   behaviour: "ToInt of \"XII\" gives number 12"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0997
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|a82868ed3f66dd7c|0"
   behaviour: "ToInt of \"XIII\" gives number 13"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0998
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|ad37d5a97b7c355b|0"
   behaviour: "ToInt of \"XIV\" gives number 14"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-0999
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|da7fa28e79d2d96b|0"
   behaviour: "ToInt of \"XV\" gives number 15"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-1000
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|1755774b8fec2f8d|0"
   behaviour: "ToInt of \"XVI\" gives number 16"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-1001
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|758d8a7ddaaf2a0b|0"
   behaviour: "ToInt of \"XVII\" gives number 17"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-1002
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|b5bac1cff86d1db6|0"
   behaviour: "ToInt of \"XVIII\" gives number 18"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-1003
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|28ceb4dbc7c3e04a|0"
   behaviour: "ToInt of \"XIX\" gives number 19"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-1004
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_roman_numeral_to_arabic_numeral|03bc0ed5975c0de1|0"
   behaviour: "ToInt of \"XX\" gives number 20"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/RomanNumeralTests/RomanNumeralConversionFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_roman_to_int]
 - id: RAD-PARSE-1005
   # key: "SceneCheckerFixture.cs|should_return_true_for_scene_names|b087d261c501f264|0"
   behaviour: "IsSceneTitle of \"Some.Movie.2..2013.German.DTS.DL.720p.BluRay.x264-Pate\" gives is_scene_title true"
@@ -8134,600 +8134,600 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:12"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1018
   # key: "SlugParserFixture.cs|should_replace_accents|8b8a3b4b3a139b21|0"
   behaviour: "ToUrlSlug of \"têst\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:13"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1019
   # key: "SlugParserFixture.cs|should_replace_accents|f6f473fc3be40741|0"
   behaviour: "ToUrlSlug of \"tëst\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:14"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1020
   # key: "SlugParserFixture.cs|should_replace_accents|8bb920270f9d2d51|0"
   behaviour: "ToUrlSlug of \"tËst\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:15"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1021
   # key: "SlugParserFixture.cs|should_replace_accents|53539630543eda24|0"
   behaviour: "ToUrlSlug of \"áccent\" gives slug \"accent\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:16"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1022
   # key: "SlugParserFixture.cs|should_replace_accents|d4ec0e8678a34e9a|0"
   behaviour: "ToUrlSlug of \"àccent\" gives slug \"accent\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:17"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1023
   # key: "SlugParserFixture.cs|should_replace_accents|b6c8c26006130dc5|0"
   behaviour: "ToUrlSlug of \"âccent\" gives slug \"accent\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:18"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1024
   # key: "SlugParserFixture.cs|should_replace_accents|a6750c1431669765|0"
   behaviour: "ToUrlSlug of \"Äccent\" gives slug \"accent\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:19"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1025
   # key: "SlugParserFixture.cs|should_replace_accents|ec8bce4daf834df0|0"
   behaviour: "ToUrlSlug of \"åccent\" gives slug \"accent\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:20"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1026
   # key: "SlugParserFixture.cs|should_replace_accents|32bdadba5f36ddca|0"
   behaviour: "ToUrlSlug of \"acceñt\" gives slug \"accent\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:21"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1027
   # key: "SlugParserFixture.cs|should_replace_accents|b429f0dafc6b4273|0"
   behaviour: "ToUrlSlug of \"ßtest\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:22"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1028
   # key: "SlugParserFixture.cs|should_replace_accents|ef5c110e6a72d9e6|0"
   behaviour: "ToUrlSlug of \"œtest\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:23"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1029
   # key: "SlugParserFixture.cs|should_replace_accents|fc70d47d4c5f2b35|0"
   behaviour: "ToUrlSlug of \"Œtest\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:24"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1030
   # key: "SlugParserFixture.cs|should_replace_accents|aeae54ec6e5789cb|0"
   behaviour: "ToUrlSlug of \"Øtest\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:25"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1031
   # key: "SlugParserFixture.cs|should_replace_special_characters|59d6f12cae382895|0"
   behaviour: "ToUrlSlug of \"Test'Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:31"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1032
   # key: "SlugParserFixture.cs|should_replace_special_characters|ae57d249d66a908d|0"
   behaviour: "ToUrlSlug of \"Test$Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:32"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1033
   # key: "SlugParserFixture.cs|should_replace_special_characters|932d8603caa6bcf6|0"
   behaviour: "ToUrlSlug of \"Test(Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:33"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1034
   # key: "SlugParserFixture.cs|should_replace_special_characters|08f334f32b987356|0"
   behaviour: "ToUrlSlug of \"Test)Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:34"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1035
   # key: "SlugParserFixture.cs|should_replace_special_characters|0b47ff85275f8cfe|0"
   behaviour: "ToUrlSlug of \"Test*Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:35"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1036
   # key: "SlugParserFixture.cs|should_replace_special_characters|82390814546f8290|0"
   behaviour: "ToUrlSlug of \"Test?Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:36"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1037
   # key: "SlugParserFixture.cs|should_replace_special_characters|e91722ed4a1ae75b|0"
   behaviour: "ToUrlSlug of \"Test/Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:37"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1038
   # key: "SlugParserFixture.cs|should_replace_special_characters|ea71f6b533e655bb|0"
   behaviour: "ToUrlSlug of \"Test=Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:38"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1039
   # key: "SlugParserFixture.cs|should_replace_special_characters|13486d146234efed|0"
   behaviour: "ToUrlSlug of \"Test\\Result\" gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:39"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1040
   # key: "SlugParserFixture.cs|should_lowercase_capitals|4401a3b4c351faee|0"
   behaviour: "ToUrlSlug of \"ThIS IS A MiXeD CaSe SensItIvE ValUe\" gives slug \"this-is-a-mixed-case-sensitive-value\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:45"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1041
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores|9d9d7e32ebf076be|0"
   behaviour: "ToUrlSlug of \"test----\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:51"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1042
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores|e4e43d1c8781fedf|0"
   behaviour: "ToUrlSlug of \"test____\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:52"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1043
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores|325815f876f9309e|0"
   behaviour: "ToUrlSlug of \"test-_--_\" gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:53"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1044
   # key: "SlugParserFixture.cs|should_replace_spaces_with_dash|2425b86a6fc239cb|0"
   behaviour: "ToUrlSlug of \"test result\" gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:59"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1045
   # key: "SlugParserFixture.cs|should_replace_spaces_with_dash|10554806058f5eb5|0"
   behaviour: "ToUrlSlug of \"test     result\" gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:60"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1046
   # key: "SlugParserFixture.cs|should_replace_double_occurence|10554806058f5eb5|0"
   behaviour: "ToUrlSlug of \"test     result\" gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:66"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1047
   # key: "SlugParserFixture.cs|should_replace_double_occurence|12ec3496dabd2a87|0"
   behaviour: "ToUrlSlug of \"test-----result\" gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:67"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1048
   # key: "SlugParserFixture.cs|should_replace_double_occurence|81981982532cbc7b|0"
   behaviour: "ToUrlSlug of \"test_____result\" gives slug \"test_result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:68"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1049
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|ec7f243b9f7af67d|0"
   behaviour: "ToUrlSlug of \"Test'Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:74"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1050
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|02b4952c2735a3fd|0"
   behaviour: "ToUrlSlug of \"Test$Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:75"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1051
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|6858807826725bbe|0"
   behaviour: "ToUrlSlug of \"Test(Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:76"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1052
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|ec36f805e8b4be05|0"
   behaviour: "ToUrlSlug of \"Test)Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:77"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1053
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|6854526abc6096c2|0"
   behaviour: "ToUrlSlug of \"Test*Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:78"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1054
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|069fe2ff431745b3|0"
   behaviour: "ToUrlSlug of \"Test?Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:79"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1055
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|7f5c4de44f015b9d|0"
   behaviour: "ToUrlSlug of \"Test/Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:80"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1056
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|d6d7b8a578f0ddad|0"
   behaviour: "ToUrlSlug of \"Test=Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:81"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1057
   # key: "SlugParserFixture.cs|should_replace_special_characters_with_dash_when_enabled|8a2d11f3cb493def|0"
   behaviour: "ToUrlSlug of \"Test\\Result\" (args {\"invalid_dash_replacement\": true}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:82"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1058
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|18f98323da24ba52|0"
   behaviour: "ToUrlSlug of \"Test'Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:88"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1059
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|1c63c8e8913b7a81|0"
   behaviour: "ToUrlSlug of \"Test$Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:89"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1060
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|32cb2346f423f803|0"
   behaviour: "ToUrlSlug of \"Test(Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:90"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1061
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|29e3e4631775c83c|0"
   behaviour: "ToUrlSlug of \"Test)Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:91"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1062
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|3af75e5ad1afe9a0|0"
   behaviour: "ToUrlSlug of \"Test*Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:92"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1063
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|f40fccba4bd15e21|0"
   behaviour: "ToUrlSlug of \"Test?Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:93"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1064
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|cfc545aa20bb0692|0"
   behaviour: "ToUrlSlug of \"Test/Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:94"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1065
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|a22a1c95032ec1ff|0"
   behaviour: "ToUrlSlug of \"Test=Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:95"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1066
   # key: "SlugParserFixture.cs|should__not_replace_special_characters_with_dash_when_disabled|610b7b8b849d1e72|0"
   behaviour: "ToUrlSlug of \"Test\\Result\" (args {\"invalid_dash_replacement\": false}) gives slug \"testresult\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:96"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1067
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|7c79ffad5068bd51|0"
   behaviour: "ToUrlSlug of \"test----\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"-_\"}) gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:102"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1068
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|dca5b6cf60402106|0"
   behaviour: "ToUrlSlug of \"test____\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"-_\"}) gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:103"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1069
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|8430c2988459268a|0"
   behaviour: "ToUrlSlug of \"test-_-_\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"-_\"}) gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:104"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1070
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|113967fe643e7de3|0"
   behaviour: "ToUrlSlug of \"test----\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"-\"}) gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:105"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1071
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|848110623112c8b7|0"
   behaviour: "ToUrlSlug of \"test____\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"-\"}) gives slug \"test____\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:106"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1072
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|06a26ed0181ad107|0"
   behaviour: "ToUrlSlug of \"test-_-_\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"-\"}) gives slug \"test-_-_\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:107"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1073
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|637ca0cac05797a2|0"
   behaviour: "ToUrlSlug of \"test----\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"_\"}) gives slug \"test----\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:108"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1074
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|e98e5adfc99f5120|0"
   behaviour: "ToUrlSlug of \"test____\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"_\"}) gives slug \"test\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:109"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1075
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|3d080e75807c8b13|0"
   behaviour: "ToUrlSlug of \"test-_-_\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"_\"}) gives slug \"test-_-\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:110"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1076
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|f5d96df0575179b4|0"
   behaviour: "ToUrlSlug of \"test----\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"\"}) gives slug \"test----\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:111"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1077
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|80f7b7c27fea3dcf|0"
   behaviour: "ToUrlSlug of \"test____\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"\"}) gives slug \"test____\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:112"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1078
   # key: "SlugParserFixture.cs|should_trim_trailing_dashes_and_underscores_based_on_list|e9400e00028d0d71|0"
   behaviour: "ToUrlSlug of \"test-_-_\" (args {\"invalid_dash_replacement\": false, \"deduplicate_chars\": \"\", \"trim_end_chars\": \"\"}) gives slug \"test-_-_\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:113"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1079
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|c9d560354996d658|0"
   behaviour: "ToUrlSlug of \"test----result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"-_\"}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:119"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1080
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|b48a3230fe071aa2|0"
   behaviour: "ToUrlSlug of \"test____result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"-_\"}) gives slug \"test_result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:120"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1081
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|4694d7115a396445|0"
   behaviour: "ToUrlSlug of \"test_-_-result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"-_\"}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:121"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1082
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|9067001ff36f9824|0"
   behaviour: "ToUrlSlug of \"test-_-_result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"-_\"}) gives slug \"test_result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:122"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1083
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|2a9931faf51e92e0|0"
   behaviour: "ToUrlSlug of \"test----result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"-\"}) gives slug \"test-result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:123"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: green
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1084
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|ec6bf1460acef884|0"
   behaviour: "ToUrlSlug of \"test____result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"-\"}) gives slug \"test____result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:124"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1085
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|bd0b660eee3d4eaf|0"
   behaviour: "ToUrlSlug of \"test-_-_result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"-\"}) gives slug \"test-_-_result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:125"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1086
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|91a22e6588fa30f5|0"
   behaviour: "ToUrlSlug of \"test----result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"_\"}) gives slug \"test----result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:126"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1087
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|47e528be84bcba28|0"
   behaviour: "ToUrlSlug of \"test____result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"_\"}) gives slug \"test_result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:127"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1088
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|9c47ba9d43e18e9e|0"
   behaviour: "ToUrlSlug of \"test-_-_result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"_\"}) gives slug \"test-_-_result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:128"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1089
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|8c44673db6685362|0"
   behaviour: "ToUrlSlug of \"test----result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"\"}) gives slug \"test----result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:129"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1090
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|594afe8ccb8ed3d3|0"
   behaviour: "ToUrlSlug of \"test____result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"\"}) gives slug \"test____result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:130"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1091
   # key: "SlugParserFixture.cs|should_replace_duplicate_characters_based_on_list|878d67222122e05f|0"
   behaviour: "ToUrlSlug of \"test-_-_result\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": \"\", \"deduplicate_chars\": \"\"}) gives slug \"test-_-_result\""
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:131"
   in_scope: true
-  status: unmapped
-  tests: []
+  status: red
+  tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1092
   # key: "SlugParserFixture.cs|should_handle_null_trim_parameters|ed75da4b18a68b17|0"
   behaviour: "ToUrlSlug of \"test\" (args {\"invalid_dash_replacement\": false, \"trim_end_chars\": null, \"deduplicate_chars\": \"-_\"}) gives slug \"test\""
