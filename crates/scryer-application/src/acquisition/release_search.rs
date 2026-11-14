@@ -273,7 +273,8 @@ pub enum ReleaseAutoDecisionCode {
 }
 
 impl ReleaseAutoDecisionCode {
-    fn with_movie_availability(self, blocked: bool) -> Self {
+    // fork: parity net seam (tests/parity_decision/priv_decision.rs)
+    pub fn with_movie_availability(self, blocked: bool) -> Self {
         if blocked && !self.is_identity_refusal() && self != Self::MinimumSeeders {
             Self::MovieAvailabilityBlocked
         } else {

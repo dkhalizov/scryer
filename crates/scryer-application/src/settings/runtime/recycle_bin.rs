@@ -311,7 +311,9 @@ impl AppUseCase {
     /// `configured_roots` are the roots the source file may come from.
     /// `library_roots` are further roots a custom bin must also stay outside,
     /// or why they could not be read, which refuses a custom bin outright.
-    fn recycle_bin_config_from_values(
+    // fork: parity net seam (tests/parity_import/priv_import.rs)
+    #[doc(hidden)]
+    pub fn recycle_bin_config_from_values(
         enabled: bool,
         custom_path: Option<&str>,
         retention_days: u32,

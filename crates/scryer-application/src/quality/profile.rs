@@ -1386,7 +1386,8 @@ impl CoverageSizeBasis {
 pub const SIZE_PACK_MEMBER_BASIS_CODE: &str = "size_pack_member_basis";
 
 /// Size is an eligibility check and a search tie-breaker, never intrinsic points.
-pub(crate) fn apply_size_requirement(
+// fork: parity net seam (tests/parity_quality/priv_quality.rs)
+pub fn apply_size_requirement(
     decision: &mut QualityProfileDecision,
     profile: &QualityProfile,
     release: &ParsedReleaseMetadata,

@@ -1473,7 +1473,8 @@ fn title_imdb_ids(
 }
 
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
-struct SubtitleEpisodeContext {
+// fork: parity net seam (tests/parity_subtitles/priv_subtitles.rs)
+pub struct SubtitleEpisodeContext {
     season: Option<i32>,
     episode: Option<i32>,
     absolute_episode: Option<i32>,
@@ -2101,7 +2102,8 @@ fn normalize_external_id_source(source: &str) -> Option<String> {
     }
 }
 
-fn build_subtitle_query(
+// fork: parity net seam (tests/parity_subtitles/priv_subtitles.rs)
+pub fn build_subtitle_query(
     title: &Title,
     media_file: &crate::TitleMediaFile,
     episode_context: &SubtitleEpisodeContext,

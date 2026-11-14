@@ -104,7 +104,8 @@ impl MovieAvailabilitySettings {
     }
 
     /// The gate policy for a movie with this threshold of its own, if any.
-    pub(crate) fn policy<'a>(
+    // fork: parity net seam (tests/parity_decision/priv_decision.rs)
+    pub fn policy<'a>(
         &'a self,
         minimum_availability: Option<&'a str>,
     ) -> crate::acquisition::targets::MovieAvailabilityPolicy<'a> {

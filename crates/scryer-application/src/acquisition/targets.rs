@@ -189,7 +189,8 @@ pub(crate) fn movie_is_available_for_acquisition(
 }
 
 #[derive(Clone, Copy)]
-pub(crate) struct MovieAvailabilityPolicy<'a> {
+// fork: parity net seam (tests/parity_decision/priv_decision.rs)
+pub struct MovieAvailabilityPolicy<'a> {
     pub minimum_availability: Option<&'a str>,
     /// The instance default, read when the title has no threshold of its own.
     pub default_minimum_availability: &'a str,
@@ -197,7 +198,8 @@ pub(crate) struct MovieAvailabilityPolicy<'a> {
     pub delay_days: i32,
 }
 
-pub(crate) fn movie_availability_decision(
+// fork: parity net seam (tests/parity_decision/priv_decision.rs)
+pub fn movie_availability_decision(
     release_dates: Option<&MovieReleaseDates>,
     legacy_metadata_fetched: bool,
     legacy_theatrical_date: Option<&str>,

@@ -4,9 +4,10 @@ use crate::file_source_signature::{
 };
 
 #[derive(Clone, Debug)]
-pub(crate) struct FileSourceSnapshot {
-    pub(crate) size_bytes: i64,
-    pub(crate) signature: Option<FileSourceSignature>,
+// fork: parity net seam (tests/parity_scan/priv_scan.rs)
+pub struct FileSourceSnapshot {
+    pub size_bytes: i64,
+    pub signature: Option<FileSourceSignature>,
 }
 
 #[cfg(test)]
@@ -88,7 +89,8 @@ pub(crate) fn file_source_snapshot_from_library_file(
     })
 }
 
-pub(super) fn title_media_file_matches_snapshot(
+// fork: parity net seam (tests/parity_scan/priv_scan.rs)
+pub fn title_media_file_matches_snapshot(
     media_file: &TitleMediaFile,
     snapshot: &FileSourceSnapshot,
 ) -> bool {

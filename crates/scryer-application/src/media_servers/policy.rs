@@ -382,7 +382,8 @@ pub(super) fn normalize_path_mappings(
     Ok(normalized)
 }
 
-pub(super) fn normalize_default_library_grants(
+// fork: parity net seam (tests/parity_requests/priv_requests_config.rs)
+pub fn normalize_default_library_grants(
     values: Vec<MediaServerDefaultLibraryGrant>,
 ) -> Vec<MediaServerDefaultLibraryGrant> {
     let mut normalized = Vec::new();

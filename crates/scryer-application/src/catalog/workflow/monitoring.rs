@@ -1317,7 +1317,8 @@ impl AppUseCase {
 }
 /// Extract the monitor type from title tags (e.g. "scryer:monitor-type:none").
 /// Defaults to "allEpisodes" when no tag is present for backward compatibility.
-fn extract_monitor_type(tags: &[String]) -> String {
+// fork: parity net seam (tests/parity_scan/priv_scan.rs)
+pub fn extract_monitor_type(tags: &[String]) -> String {
     // Tags are lowercased by normalize_tag(), so values like "futureEpisodes"
     // become "futureepisodes". We return the lowercased value.
     for tag in tags {

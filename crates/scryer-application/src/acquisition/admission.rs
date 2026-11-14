@@ -353,7 +353,8 @@ impl<'a> CandidateFacts<'a> {
 }
 
 /// A stable rank within one scope, never a comparison between unrelated candidates.
-pub(crate) fn revision_preference(
+// fork: parity net seam (tests/parity_decision/priv_decision.rs)
+pub fn revision_preference(
     candidate: CandidateFacts<'_>,
     subject: &AdmissionSubject,
 ) -> i32 {

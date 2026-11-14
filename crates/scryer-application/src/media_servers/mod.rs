@@ -103,7 +103,8 @@ mod emby;
 mod jellyfin;
 mod playback;
 mod plex;
-mod policy;
+// fork: parity net seam
+pub(crate) mod policy;
 mod refresh;
 
 pub(crate) use refresh::map_media_server_path;

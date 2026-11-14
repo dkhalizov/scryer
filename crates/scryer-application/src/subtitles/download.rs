@@ -29,7 +29,8 @@ impl std::fmt::Debug for SubtitleDownloadSelection {
 }
 
 /// Normalize a language code and ensure it's safe for use in filenames.
-fn normalize_language(lang: &str) -> AppResult<String> {
+// fork: parity net seam (tests/parity_subtitles/priv_subtitles.rs)
+pub fn normalize_language(lang: &str) -> AppResult<String> {
     let normalized = normalize_subtitle_language_code(lang).ok_or_else(|| {
         AppError::validation_refused(
             crate::error_reasons::subtitles::SUBTITLE_LANGUAGE_CODE_INVALID,

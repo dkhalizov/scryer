@@ -456,6 +456,20 @@ pub mod parity_seams {
     pub use crate::import::workflow::{episode_import_dest_path, preserved_import_filename};
     // fork: parity net seam (crates/scryer-infrastructure-acquisition/tests/parity_indexers/indexers.rs)
     pub use crate::indexer_clients::caps::merge_source;
+    // fork: parity net seam (tests/parity_requests/priv_requests_config.rs)
+    pub use crate::authorization::build_user_authorization;
+    pub use crate::media_servers::policy::normalize_default_library_grants;
+    // fork: parity net seam (tests/parity_decision/priv_decision.rs)
+    pub use crate::acquisition::admission::revision_preference;
+    pub use crate::acquisition::targets::movie_availability_decision;
+    // fork: parity net seam (tests/parity_quality/priv_quality.rs)
+    pub use crate::quality::profile::{CoverageSizeBasis, apply_size_requirement};
+    // fork: parity net seam (tests/parity_scan/priv_scan.rs)
+    pub use crate::library::workflow::scan_title_files::{FileSourceSnapshot, title_media_file_matches_snapshot};
+    pub use crate::catalog::workflow::extract_monitor_type;
+    // fork: parity net seam (tests/parity_subtitles/priv_subtitles.rs)
+    pub use crate::subtitles::download::normalize_language as subtitle_download_language;
+    pub use crate::subtitles::orchestration::{SubtitleEpisodeContext, build_subtitle_query};
 }
 pub use acquisition::seed_goals::{
     ReleaseSeedMinimums, ResolvedSeedGoals, SeedGoalRequest, SeedGoalResolutionSource,

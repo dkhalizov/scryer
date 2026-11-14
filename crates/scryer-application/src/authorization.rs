@@ -8,7 +8,8 @@ use scryer_domain::{
 use crate::{AppError, AppResult, AppUseCase};
 
 /// A user's authorization from its stored app mask and library grants.
-fn build_user_authorization(
+// fork: parity net seam (tests/parity_requests/priv_requests_config.rs)
+pub fn build_user_authorization(
     actor: &User,
     app: AppPermissionMask,
     grants: Vec<scryer_domain::LibraryGrant>,
