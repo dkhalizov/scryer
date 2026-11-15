@@ -1351,7 +1351,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:22"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W82: D75(1) anime"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|dcb0dca72c06|0
 - id: SON-PARSE-0170
@@ -1471,7 +1472,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W82: D75(1) anime"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|6eb45b4e5fa8|0
 - id: SON-PARSE-0185
@@ -6405,7 +6407,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:50"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|bbc010eba1b6|0
 - id: SON-PARSE-0798
@@ -6493,7 +6496,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|d25c605728eb|0
 - id: SON-PARSE-0809
@@ -6501,7 +6505,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:62"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|0f8df4ee3548|0
 - id: SON-PARSE-0810
@@ -6509,7 +6514,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:63"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|ff0cf9e25f3e|0
 - id: SON-PARSE-0811
@@ -6877,7 +6883,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:139"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|421bae6f416a|0
 - id: SON-PARSE-0857
@@ -6893,7 +6900,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:141"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|d0ab736e0361|0
 - id: SON-PARSE-0859
@@ -6997,7 +7005,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:154"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W82: D75(1) anime"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|f821205a0f7b|0
 - id: SON-PARSE-0872
@@ -7869,7 +7878,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:308"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray720p_quality|81b6b3131580|0
 - id: SON-PARSE-0981
@@ -8571,7 +8581,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:483"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_be_able_to_parse_repack|7497f88b6c82|0
 - id: SON-PARSE-1068
@@ -8643,7 +8654,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:11"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W80: D75(3) space-separated release groups stay title text (safer)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|d6e69db9e5a6|0
 - id: SON-PARSE-1077
@@ -8651,7 +8663,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W80: D75(3) space-separated release groups stay title text (safer)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|840451fe6836|0
 - id: SON-PARSE-1078
@@ -8803,7 +8816,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:31"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W80: D75(3) space-separated release groups stay title text (safer)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|cb31282fda78|0
 - id: SON-PARSE-1097
@@ -8883,7 +8897,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W82: D75(1) anime"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|0bc2e5c26b80|0
 - id: SON-PARSE-1107
@@ -9539,7 +9554,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:162"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W82: D75(1) anime"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SceneCheckerFixture.cs|should_return_true_for_scene_names|ec08bcdaebbd|0
 - id: SON-PARSE-1189

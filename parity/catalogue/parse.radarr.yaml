@@ -4277,7 +4277,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0532
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|f271aa0fff558657|0"
@@ -4357,7 +4358,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:64"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0542
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|5a170cb99883874d|0"
@@ -4365,7 +4367,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:65"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0543
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|310ab14b5d7f8a88|0"
@@ -4373,7 +4376,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:66"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0544
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|3534e1598f813c8b|0"
@@ -4549,7 +4553,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:103"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0566
   # key: "QualityParserFixture.cs|should_parse_webdl480p_quality|a2a8810e8d7f0f9b|0"
@@ -4557,7 +4562,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:104"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0567
   # key: "QualityParserFixture.cs|should_parse_webrip480p_quality|67123a713c811978|0"
@@ -5301,7 +5307,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:257"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0660
   # key: "QualityParserFixture.cs|should_parse_bluray720p_quality|9c096c841c9dfe3c|0"
@@ -6466,7 +6473,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:496"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W83: D75(3) W12 quality comes from media info, not the extension or name"
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0805
   # key: "QualityParserFixture.cs|should_be_able_to_parse_repack|2e95f20ddc3e909a|0"
@@ -6530,7 +6538,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:11"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W80: D75(3) space-separated release groups stay title text (safer)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0813
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|895fb83cf12f0f99|0"
@@ -6538,7 +6547,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W80: D75(3) space-separated release groups stay title text (safer)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0814
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|151bb905f795ac62|0"
@@ -6890,7 +6900,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:56"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W80: D75(3) space-separated release groups stay title text (safer)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0858
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|8a1165dc286bb522|0"
@@ -7322,7 +7333,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:115"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W80: D75(3) space-separated release groups stay title text (safer)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0912
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|30b4d94dc0435bea|0"
@@ -7746,7 +7758,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:196"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D87 W82: D75(1) anime"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0965
   # key: "RomanNumeralTests/RomanNumeralConversionFixture.cs|should_convert_arabic_numeral_to_roman_numeral|bccf9b3b994ab8be|0"

@@ -25,7 +25,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|single_episode|3|[60, 100, false]
 - id: SON-DECISION-0004
@@ -49,7 +50,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:101"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_expected_result_for_first_episode_of_season|0|[30, 250, true]
 - id: SON-DECISION-0007
@@ -65,7 +67,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:114"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_expected_result_for_first_episode_of_season|2|[60, 250, true]
 - id: SON-DECISION-0009
@@ -81,7 +84,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:116"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_expected_result_for_last_episode_of_season|0|[30, 250, true]
 - id: SON-DECISION-0011
@@ -97,7 +101,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:129"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_expected_result_for_last_episode_of_season|2|[60, 250, true]
 - id: SON-DECISION-0013
@@ -113,7 +118,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:131"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|multi_episode|0|[30, 100, false]
 - id: SON-DECISION-0015
@@ -137,7 +143,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:145"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|multi_episode|3|[60, 200, false]
 - id: SON-DECISION-0018
@@ -161,7 +168,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:148"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|multiset_episode|0|[30, 300, false]
 - id: SON-DECISION-0021
@@ -185,7 +193,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:161"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|multiset_episode|3|[60, 600, false]
 - id: SON-DECISION-0024
@@ -209,7 +218,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:164"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_if_size_is_zero|-|-
 - id: SON-DECISION-0027
@@ -225,7 +235,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:188"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_if_unlimited_60_minute|-|-
 - id: SON-DECISION-0029
@@ -233,7 +244,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:200"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W76: D75(2) fixture uses custom SDTV size definitions; our config uses Sonarr's defaults, which Scryer applies"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_treat_daily_series_as_single_episode|-|-
 - id: SON-DECISION-0030
@@ -249,7 +261,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:226"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W77: D75(2) Raw-HD; no captured profile allows it; Scryer's HDTV-1080P/Raw-HD key gets 125 MiB/min"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_for_special|-|-
 - id: SON-DECISION-0032
