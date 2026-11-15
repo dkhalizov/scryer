@@ -307,41 +307,51 @@ fn cross_indexer_release_dedup_prefers_profile_protocol_before_indexer_priority(
     assert_eq!(deduped[0].source, "Preferred Torrent");
 }
 
-// fork (P32)
+// fork (P32): priority first, then seeders, whichever copy arrives first.
 #[test]
-fn cross_indexer_release_dedup_breaks_a_priority_tie_by_seeders() {
-    let mut results = vec![
-        make_search_result(
-            "Fewer Seeders",
-            "Signal.Run.S01E12.720p.WEB-DL.x264-NTb",
-            "https://example.test/few",
-            DownloadSourceKind::TorrentFile,
-        ),
-        make_search_result(
-            "More Seeders",
-            "Signal.Run.S01E12.720p.WEB-DL.x264-NTb",
-            "https://example.test/many",
-            DownloadSourceKind::TorrentFile,
-        ),
+fn cross_indexer_release_dedup_ranks_by_priority_then_seeders() {
+    // (first copy, second copy, kept): each copy is (source, priority, seeders).
+    let cases = [
+        (("Few", 25, 3), ("Many", 25, 40), "Many"),
+        (("Many", 25, 40), ("Few", 25, 3), "Many"),
+        (("Low Prio", 10, 3), ("High Seeds", 25, 40), "Low Prio"),
+        (("High Seeds", 25, 40), ("Low Prio", 10, 3), "Low Prio"),
     ];
-    results[0]
-        .extra
-        .insert("seeders".to_string(), serde_json::json!(3));
-    results[1]
-        .extra
-        .insert("seeders".to_string(), serde_json::json!(40));
 
-    let deduped = dedupe_cross_indexer_release_results(
-        results,
-        &HashMap::from([
-            ("Fewer Seeders".to_string(), 25),
-            ("More Seeders".to_string(), 25),
-        ]),
-        "torrent",
-    );
+    for ((first, first_prio, first_seeders), (second, second_prio, second_seeders), kept) in cases {
+        let mut results = vec![
+            make_search_result(
+                first,
+                "Signal.Run.S01E12.720p.WEB-DL.x264-NTb",
+                "https://example.test/first",
+                DownloadSourceKind::TorrentFile,
+            ),
+            make_search_result(
+                second,
+                "Signal.Run.S01E12.720p.WEB-DL.x264-NTb",
+                "https://example.test/second",
+                DownloadSourceKind::TorrentFile,
+            ),
+        ];
+        results[0]
+            .extra
+            .insert("seeders".to_string(), serde_json::json!(first_seeders));
+        results[1]
+            .extra
+            .insert("seeders".to_string(), serde_json::json!(second_seeders));
 
-    assert_eq!(deduped.len(), 1);
-    assert_eq!(deduped[0].source, "More Seeders");
+        let deduped = dedupe_cross_indexer_release_results(
+            results,
+            &HashMap::from([
+                (first.to_string(), first_prio),
+                (second.to_string(), second_prio),
+            ]),
+            "torrent",
+        );
+
+        assert_eq!(deduped.len(), 1, "{first} then {second}");
+        assert_eq!(deduped[0].source, kept, "{first} then {second}");
+    }
 }
 
 #[test]

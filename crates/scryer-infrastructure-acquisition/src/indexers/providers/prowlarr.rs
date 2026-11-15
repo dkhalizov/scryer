@@ -2278,6 +2278,26 @@ mod tests {
         );
         assert_eq!(routing.get("anime"), Some(&vec!["5070".to_string()]));
         assert_eq!(routing.len(), 3);
+
+        // Every id in both standard ranges: exactly Prowlarr's default sync lists.
+        let all = (2000..=2090)
+            .chain(5000..=5090)
+            .map(|id| cat(id, "any", vec![]))
+            .collect::<Vec<_>>();
+        let routing = collect_routing_categories(&all);
+        let ids = |list: &[i64]| list.iter().map(i64::to_string).collect::<Vec<_>>();
+        assert_eq!(
+            routing.get("movie"),
+            Some(&ids(&[
+                2000, 2010, 2020, 2030, 2040, 2045, 2050, 2060, 2070, 2080, 2090
+            ]))
+        );
+        assert_eq!(
+            routing.get("series"),
+            Some(&ids(&[5000, 5010, 5020, 5030, 5040, 5045, 5050, 5090]))
+        );
+        assert_eq!(routing.get("anime"), Some(&ids(&[5070])));
+        assert_eq!(routing.len(), 3);
     }
 
     fn seed_field(name: &str, value: serde_json::Value) -> ProwlarrIndexerField {
