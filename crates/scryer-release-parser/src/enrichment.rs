@@ -46,11 +46,9 @@ const DUB_ONLY_MARKERS: &[&str] = &["DUB", "DUBS", "DUBBED"];
 const HARDCODED_SUBTITLE_MARKERS: &[&str] = &["HC", "HARDCODED", "HARDSUBBED", "HARDSUB"];
 
 pub(crate) fn parse_revision_token(token: &str) -> Option<(i32, bool)> {
-    if token == "RERIP" {
-        return Some((1, true));
-    }
     let (suffix, repack) = token
         .strip_prefix("REPACK")
+        .or_else(|| token.strip_prefix("RERIP")) // fork (P30a): RERIP<n>, as the arrs' `rerip\d?`
         .map(|suffix| (suffix, true))
         .or_else(|| token.strip_prefix("PROPER").map(|suffix| (suffix, false)))?;
     let revision = if suffix.is_empty() {
@@ -1721,10 +1719,20 @@ mod scoped_metadata_tests {
             ("REPACK-2", 1),
             ("REPACK2147483648", 0),
             ("REPACKED", 0),
+            // fork (P30a): the arrs read `rerip\d?`; RERIPPED is no revision,
+            // and REAL still folds into a RERIP (D39, W-REAL)
+            ("RERIP2", 2),
+            ("RERIPPED", 0),
+            ("PROPER.REAL.RERIP", 2),
         ] {
             let (tokens, candidate) = scoped_candidate(token, &[]);
             let metadata = enrich_candidate(&tokens, &candidate, "");
             assert_eq!(metadata.revision, expected, "{token}");
         }
+        let (tokens, candidate) = scoped_candidate("RERIP2", &[]);
+        assert!(
+            enrich_candidate(&tokens, &candidate, "").is_repack,
+            "RERIP2"
+        );
     }
 }

@@ -23,7 +23,7 @@ null. Language codes are ISO 639-3 (`eng`, `jpn`, `fra`).
 | `is_dual_audio`, `is_atmos`, `is_dolby_vision`, `has_hdr_fallback`, `detected_hdr`, `is_hdr10plus`, `is_hlg`, `is_10bit` | bool | Name-derived video and audio flags |
 | `is_remux`, `is_bd_disk` | bool | Full remux; Blu-ray disc |
 | `is_proper_upload`, `is_repack` | bool | Tags |
-| `revision` | int | 0 original, 1 PROPER/REPACK/RERIP, 2 REPACK2, ... |
+| `revision` | int | 0 original, 1 PROPER/REPACK/RERIP, 2 REPACK2/RERIP2, ... |
 | `is_ai_enhanced`, `is_hardcoded_subs`, `is_uncensored`, `is_dubs_only`, `is_obfuscated`, `is_retagged` | bool | Name markers |
 | `is_password_protected` | bool? | Indexer flag; null when unknown |
 | `has_release_group` | bool | A non-empty group was parsed |

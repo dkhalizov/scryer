@@ -6514,7 +6514,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:510"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0811
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|af18c9da2f78092c|0"
