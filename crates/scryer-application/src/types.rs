@@ -2582,11 +2582,11 @@ pub fn extract_magnet_info_hash(value: &str) -> Option<String> {
                 }
                 // fork (P21): a base32 btih is the same 20-byte hash; return hex
                 // like Sonarr's MagnetLink.Parse(url).InfoHash.ToHex().
-                "btih" if hash.len() == 32 && !hash.contains('=') => {
-                    crate::security::totp::base32_decode(hash)
-                        .ok()
-                        .map(|bytes| crate::helpers::to_hex(&bytes))
-                }
+                "btih" if hash.len() == 32 => crate::security::totp::base32_decode(hash)
+                    .ok()
+                    // the TOTP decoder drops '='; a padded value is not 20 bytes
+                    .filter(|bytes| bytes.len() == 20)
+                    .map(|bytes| crate::helpers::to_hex(&bytes)),
                 "btmh"
                     if hash.len() == 68
                         && hash[..4].eq_ignore_ascii_case("1220")
@@ -2735,6 +2735,10 @@ mod canonical_download_source_tests {
         );
         assert!(!is_valid_magnet_uri(
             "magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z61R"
+        ));
+        // fork (P21 review): padding is not a 20-byte hash.
+        assert!(!is_valid_magnet_uri(
+            "magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z6=="
         ));
     }
 

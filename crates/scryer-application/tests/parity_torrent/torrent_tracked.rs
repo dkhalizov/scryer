@@ -47,7 +47,7 @@
 //!   from the submission). `TrackedDownload.indexer` (:104) is filled from the
 //!   submission's `source_provider_name` in `resolve_title` (fork P21, unit test
 //!   `resolve_title_takes_the_indexer_from_the_submission`) and is read only by
-//!   the seeding event (tracked_commands.rs:4139). The IDs stay unmapped until
+//!   the seeding event (tracked_commands.rs:4174). The IDs stay unmapped until
 //!   there is a public fake for `&AppUseCase`.
 //! - RAD-TORRENT-0011 (state from latest history): `reconstruct_state` (:1755)
 //!   reads the durable tracked-state marker through `&AppUseCase`.
