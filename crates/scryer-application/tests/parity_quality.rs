@@ -69,7 +69,7 @@
 //!   custom-formats step 3): the profile's scores go into
 //!   `translate_arr_custom_formats` (shared `parity_common/arr_profile_scores.rs`).
 //!   Scryer's side is the format's `score_entry` value in the translated rule
-//!   set; None when the format is disabled or the import refused. A green row
+//!   set; None when the format is disabled (a refused import records the harness error). A green row
 //!   proves the skill path, not that an instance holds the rule set.
 //! - Captured files (6001..): Scryer parses the scene name the arr stored
 //!   (the file name when there is none) and derives the resolution from the
@@ -759,18 +759,22 @@ fn config(suite_name: &str, app: &str, prefix: &str, source: ArrSourceApplicatio
                 let item = by_id(profile["formatItems"].as_array().unwrap(), "format", format_id, "format item");
                 let expected = item["score"].as_f64();
                 let name = by_id(&formats, "id", format_id, "custom format")["name"].as_str().unwrap();
-                let actual = scored
+                let t = match scored
                     .entry(profile_id)
                     .or_insert_with(|| arr_profile_scores::translate_with_profile(source, &formats, profile))
-                    .as_ref()
-                    .ok()
-                    .and_then(|t| arr_profile_scores::rule_score(t, name));
+                {
+                    Ok(t) => t,
+                    Err(e) => {
+                        suite.record(id, false, format!("harness: {e}"));
+                        continue;
+                    }
+                };
                 record(
                     &mut suite,
                     id,
                     expected,
-                    actual,
-                    "rule from migration skill step 3 (profile formatItems -> translate_arr_custom_formats); None = format disabled or refused",
+                    arr_profile_scores::rule_score(t, name),
+                    "rule from migration skill step 3 (profile formatItems -> translate_arr_custom_formats); None = format disabled",
                 );
             }
             // Profile definitions and quality definitions: unmapped (header).
