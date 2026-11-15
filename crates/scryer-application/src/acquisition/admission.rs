@@ -83,8 +83,9 @@ pub struct Incumbent {
     pub file_id: String,
     pub file_path: String,
     /// The release group that produced this file. A REPACK is a group
-    /// re-releasing its own encode, so the comparison needs the incumbent's
-    /// group and not just its score.
+    /// re-releasing its own encode, so the grab lanes refuse one from another
+    /// or an unknown group (P30b, `RepackGroupMismatch`); revisions of
+    /// different exact qualities compare only within one group.
     pub release_group: Option<String>,
     /// The incumbent's canonical landed score — its bar.
     pub score: i32,
@@ -285,6 +286,9 @@ pub struct CandidateFacts<'a> {
     pub pipeline: DecisionPipeline,
     /// fork (P18b): the exact quality; see [`Facts::quality_key`].
     pub quality_key: Option<&'a str>,
+    /// fork (P30b): a REPACK/RERIP rather than a PROPER. Only the grab lanes'
+    /// repack group check reads it ([`crate::acquisition::release_search::cutoff_refusal`]).
+    pub is_repack: bool,
 }
 
 impl<'a> CandidateFacts<'a> {
@@ -299,11 +303,20 @@ impl<'a> CandidateFacts<'a> {
             ignore_proper_repack: false,
             pipeline: DecisionPipeline::default_order(),
             quality_key: None,
+            is_repack: false,
         }
     }
 
+    /// fork (P30b): mark a REPACK; see [`CandidateFacts::is_repack`].
+    // fork: parity net seam (tests/parity_decision.rs)
+    pub fn with_repack(mut self, is_repack: bool) -> Self {
+        self.is_repack = is_repack;
+        self
+    }
+
     /// fork (P18b): attach the exact quality; see [`Facts::quality_key`].
-    pub(crate) fn with_quality_key(mut self, quality_key: Option<&'a str>) -> Self {
+    // fork: parity net seam (tests/parity_decision.rs)
+    pub fn with_quality_key(mut self, quality_key: Option<&'a str>) -> Self {
         self.quality_key = quality_key;
         self
     }
@@ -1250,9 +1263,11 @@ pub fn evaluate_admission(
         // tier is an arr group (D48), where the arrs do the same; only the
         // cutoff escape needs the exact quality (fork P18b, `quality_key`).
         //
-        // A higher revision wins only within one release group; a lower one
-        // of the same tier loses whatever the groups (P18), as Sonarr's
-        // import `UpgradeSpecification` and grab `BetterRevision` refuse it.
+        // A higher revision wins within one release group, or across groups
+        // when both are one known exact quality (P30b, D82: the arrs'
+        // `Revision.CompareTo` reads no group); a lower one of the same tier
+        // loses whatever the groups (P18), as Sonarr's import
+        // `UpgradeSpecification` and grab `BetterRevision` refuse it.
         match ladder_against_incumbent(candidate, incumbent) {
             LadderOutcome::Won(gate) => {
                 if !gate.step().admits_despite_upgrade_guard() && !policy.allow_upgrades {

@@ -962,7 +962,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:210"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1134
   behaviour: "A release is accepted when no episode has a file"
@@ -1046,7 +1046,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:227"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1146
   behaviour: "With the HDTV-720p cutoff met, Bluray-1080p is not an upgrade"
@@ -1095,7 +1095,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:339"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1153
   behaviour: "With upgrades off and cutoff Raw-HD, Bluray-1080p does not replace WEBDL-1080p"
@@ -1123,14 +1123,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1157
   behaviour: "WEBDL-720p v1 to WEBDL-720p v2 gives None"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1158
   behaviour: "SDTV v1 to SDTV v1 gives CustomFormatScore"

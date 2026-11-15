@@ -795,8 +795,9 @@ fn a_proper_admits_over_the_same_tier_even_when_it_scores_lower() {
     );
 }
 
-/// Upward, an unrelated PROPER is still decided by score (the group gate, d3);
-/// downward, a lower revision is refused at any score (P18).
+/// Upward, an unrelated PROPER is still decided by score (the group gate, d3)
+/// when the two are not one known exact quality (P30b, D82); downward, a lower
+/// revision is refused at any score (P18).
 #[test]
 fn cross_group_and_unknown_group_propers_use_score_only_upward() {
     for group in [None, Some(""), Some("  "), Some("other")] {
@@ -815,6 +816,35 @@ fn cross_group_and_unknown_group_propers_use_score_only_upward() {
                 assert_eq!(
                     verdict.is_admitted(),
                     admitted,
+                    "group={group:?}, candidate revision={candidate_revision}, score={score}: {verdict:?}"
+                );
+            }
+        }
+    }
+}
+
+/// fork (P30b): of one known exact quality, revisions compare whatever the
+/// groups, as the arrs' `Revision.CompareTo`: a cross-group or group-less
+/// PROPER wins at any score, a lower revision loses at any score (D79, D82).
+#[test]
+fn cross_group_revisions_of_one_exact_quality_compare_both_ways() {
+    for group in [None, Some(""), Some("  "), Some("other")] {
+        for (candidate_revision, incumbent_revision) in [(1, 0), (0, 1)] {
+            let (mut file, primary) = revised("file-1", incumbent_revision, 900);
+            file.release_group = group.map(str::to_string);
+            file.quality_key = Some("WEBDL-1080P".into());
+            let subject = AdmissionSubject::new(episodes(&["ep-01"]), [(file, primary)]);
+            for score in [400, 1_200] {
+                let verdict = evaluate_admission(
+                    &subject,
+                    CandidateFacts::new(Some(0), candidate_revision, score)
+                        .with_revision_policy(Some("group"), false)
+                        .with_quality_key(Some("WEBDL-1080P")),
+                    &auto(200),
+                );
+                assert_eq!(
+                    verdict.is_admitted(),
+                    candidate_revision > incumbent_revision,
                     "group={group:?}, candidate revision={candidate_revision}, score={score}: {verdict:?}"
                 );
             }
@@ -1797,17 +1827,25 @@ fn fewer_optional_languages_are_refused_before_the_score() {
     ));
 }
 
+/// fork (P30b): of one exact quality, any group's PROPER is a revision.
 #[test]
 fn a_proper_still_beats_more_optional_languages() {
-    let (mut held, primary) = spoken("dual", Some(0), 100, AudioLanguageRank::for_test(0, 1));
-    held.revision = 0;
-    held.release_group = Some("group".into());
-    let subject = title_scope((held, primary));
-    let proper = CandidateFacts::new(Some(0), 1, 100)
-        .with_revision_policy(Some("group"), false)
-        .with_language(AudioLanguageRank::for_test(0, 0))
-        .with_pipeline(language_ahead_of_tier());
-    assert!(evaluate_admission(&subject, proper, &grab_policy()).is_admitted());
+    for group in [Some("group"), Some("other"), None] {
+        let (mut held, primary) = spoken("dual", Some(0), 100, AudioLanguageRank::for_test(0, 1));
+        held.revision = 0;
+        held.release_group = Some("group".into());
+        held.quality_key = Some("WEBDL-1080P".into());
+        let subject = title_scope((held, primary));
+        let proper = CandidateFacts::new(Some(0), 1, 100)
+            .with_revision_policy(group, false)
+            .with_quality_key(Some("WEBDL-1080P"))
+            .with_language(AudioLanguageRank::for_test(0, 0))
+            .with_pipeline(language_ahead_of_tier());
+        assert!(
+            evaluate_admission(&subject, proper, &grab_policy()).is_admitted(),
+            "{group:?}"
+        );
+    }
 }
 
 #[test]

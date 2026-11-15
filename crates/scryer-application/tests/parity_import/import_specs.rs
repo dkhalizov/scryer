@@ -35,8 +35,9 @@
 //! | MatchesFolder episodes_for_file_info, episodes_for_folder_info ids | target ids, expected set |
 //! | FreeSpace SkipFreeSpaceCheckWhenImporting = true (RAD-IMPORT-0216) | no Scryer setting; `disk_space_verdict_for_measurement(Some(0), 0)` (import/checks.rs:97, a disk reporting 0 bytes free, size 0 = LocalMovie.Size default) is compared with `accepted`; its 500 MiB reserve rejects, so red (D29) |
 //!
-//! With no group on either side the pair is unrelated (decision_pipeline.rs
-//! `Facts::is_related_to`), so a higher revision is never preferred, but a
+//! With no group on either side and no exact quality (import sets no
+//! `quality_key`; decision_pipeline.rs `Facts::revision_cmp`, P30b) the pair
+//! is unrelated, so a higher revision is never preferred, but a
 //! lower one of the same tier is refused unless the candidate ignores
 //! revisions (P18): SON-IMPORT-0226 / RAD-IMPORT-0249 refuse the v1, and
 //! RAD-IMPORT-0250/0251 (`set_ignore_proper_repack`) admit it.

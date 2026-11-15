@@ -1545,6 +1545,7 @@ impl AppUseCase {
             candidate_score,
         )
         .with_quality_key(facts.quality_key.as_deref())
+        .with_repack(facts.is_repack) // fork (P30b)
         .with_language(facts.language)
         .with_release_title(&pr.release_title)
         .with_profile_policy(

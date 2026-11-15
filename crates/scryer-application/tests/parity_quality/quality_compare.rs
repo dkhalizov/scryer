@@ -30,9 +30,10 @@
 //!   revision and group come from `parse_release_metadata` (the D39 fold). The
 //!   harness does not use `version - 1 + real` here. Version 1 with real 1 is
 //!   a bare `REAL.` token, which Scryer parses as revision 0 (see Reds). Both
-//!   sides share the group GRP because Scryer's revision step compares related
-//!   releases only (same group; same convention as decision_delay's
-//!   PROPER_GROUP). The failure detail carries both parsed revisions.
+//!   sides share the group GRP because Scryer's revision step compares
+//!   releases of one group only, unless both are one known exact quality
+//!   (P30b; this suite sets no quality key; same convention as
+//!   decision_delay's PROPER_GROUP). The failure detail carries both parsed revisions.
 //!
 //! # Reflexive greens (assert only that the ladder is reflexive)
 //! - Index compare SON 0029/0031, RAD 0037/0039 (rgo=false, sides differ only

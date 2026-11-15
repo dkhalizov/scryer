@@ -4,12 +4,21 @@ use crate::admission::{
 };
 
 fn occupied(groups: &[Option<&str>], revision: i32) -> AdmissionSubject {
+    occupied_as(groups, revision, None)
+}
+
+/// `occupied`, every file of the exact quality `quality_key` (P18b).
+fn occupied_as(
+    groups: &[Option<&str>],
+    revision: i32,
+    quality_key: Option<&str>,
+) -> AdmissionSubject {
     AdmissionSubject::new(
         AdmissionScope::Episodes(vec!["ep-1".into(), "ep-2".into()]),
         groups.iter().enumerate().map(|(index, group)| {
             (
                 Incumbent {
-                    quality_key: None,
+                    quality_key: quality_key.map(str::to_owned),
                     tier_index: Some(0),
                     revision,
                     file_id: format!("file-{index}"),
@@ -36,25 +45,39 @@ fn policy() -> AdmissionPolicy {
     }
 }
 
+/// fork (P30b): revisions compare across release groups as the arrs'
+/// `Revision.CompareTo`, but only when both sides are one known exact quality
+/// (D79, D82); otherwise the group gate stands. Ignore mode drops both.
 #[test]
-fn revision_related_groups_and_ignore_control_the_exception() {
-    let subject = occupied(&[Some(" Group ")], 2);
-    for (group, ignore, admitted) in [
-        (Some("group"), false, true),
-        (Some("OTHER"), false, false),
-        (None, false, false),
-        (Some(""), false, false),
-        (Some("group"), true, false),
+fn revision_groups_gate_the_exception_only_without_one_exact_quality() {
+    for (held_key, key, admitted) in [
+        (None, None, false),
+        (Some("WEBDL-1080P"), Some("WEBDL-1080P"), true),
+        (Some("WEBDL-1080P"), Some("WEBRIP-1080P"), false),
+        (Some("WEBDL-1080P"), None, false),
+        (Some("1080P"), Some("1080P"), false),
     ] {
-        let candidate = CandidateFacts::new(Some(0), 3, 100).with_revision_policy(group, ignore);
-        assert_eq!(
-            evaluate_admission(&subject, candidate, &policy()).is_admitted(),
-            admitted
-        );
-        assert_eq!(
-            revision_preference(candidate, &subject),
-            if ignore { 0 } else { 3 }
-        );
+        let subject = occupied_as(&[Some(" Group ")], 2, held_key);
+        for (group, ignore, admitted) in [
+            (Some("group"), false, true),
+            (Some("OTHER"), false, admitted),
+            (None, false, admitted),
+            (Some(""), false, admitted),
+            (Some("group"), true, false),
+        ] {
+            let candidate = CandidateFacts::new(Some(0), 3, 100)
+                .with_revision_policy(group, ignore)
+                .with_quality_key(key);
+            assert_eq!(
+                evaluate_admission(&subject, candidate, &policy()).is_admitted(),
+                admitted,
+                "held={held_key:?}, candidate={key:?}, group={group:?}, ignore={ignore}"
+            );
+            assert_eq!(
+                revision_preference(candidate, &subject),
+                if ignore { 0 } else { 3 }
+            );
+        }
     }
 }
 

@@ -164,6 +164,8 @@ pub(crate) struct ParkedReleaseFacts {
     /// fork (P18b): the exact quality; see [`crate::admission::Incumbent::quality_key`].
     pub quality_key: Option<String>,
     pub revision: i32,
+    /// fork (P30b): a REPACK; see [`crate::admission::CandidateFacts::is_repack`].
+    pub is_repack: bool,
     /// Search-only size preference, rederived alongside the numeric score.
     pub size_fit_penalty: i32,
     /// Whether the *current* profile still allows it. A profile edit while a
@@ -222,6 +224,7 @@ pub(crate) fn score_parked_release_title(
         quality_key.as_deref(),
     );
     let release_group = parsed.release_group.clone();
+    let is_repack = parsed.is_repack; // fork (P30b)
     let scored = crate::canonical_scoring::score_release(
         &crate::canonical_scoring::ReleaseEvidence::announced(parsed, size_bytes)
             .with_listing(listing),
@@ -239,6 +242,7 @@ pub(crate) fn score_parked_release_title(
         tier_index,
         quality_key,
         revision: scored.revision,
+        is_repack,
         size_fit_penalty: scored.announced_decision.size_fit_penalty,
         allowed: scored.announced_decision.allowed,
         block_codes: scored.announced_decision.block_codes.clone(),
@@ -1097,6 +1101,7 @@ impl AppUseCase {
         let candidate =
             crate::admission::CandidateFacts::new(facts.tier_index, facts.revision, facts.score)
                 .with_quality_key(facts.quality_key.as_deref())
+                .with_repack(facts.is_repack) // fork (P30b)
                 .with_language(facts.language)
                 .with_release_title(release_title)
                 .with_profile_policy(facts.release_group.as_deref(), &upgrade.profile.criteria);

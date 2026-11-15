@@ -95,9 +95,13 @@
 //!   wins). Resolution bonus points are not added to ladder scores.
 //! - Release group `""` or null -> `None`, except in the Proper family: the
 //!   reference ProperSpecification never reads a group and its fixtures name
-//!   none, while Scryer only counts a revision between same-group releases, so
-//!   a group-less release and file both get the group `PARITY` (else Scryer's
-//!   group gate, not the spec's old-file check, decided every case).
+//!   none, while Scryer counts a revision across groups only between one known
+//!   exact quality (P30b), so a group-less release and file both get the group
+//!   `PARITY` (else Scryer's group gate, not the spec's old-file check, decided
+//!   the cross-source cases; harmless for the rest).
+//! - Exact quality: a file's and the candidate's `quality_key` is the
+//!   product's tier key of its quality (`key`), as the grab lanes fill it
+//!   (P18b). A REPACK (`Side::is_repack`) is passed with `with_repack`.
 //! - Protocol usenet -> `DownloadSourceKind::NzbUrl`; torrent -> `TorrentFile`;
 //!   `ReleaseInfo` (not a `TorrentInfo`) -> no source kind.
 //! - Indexer id 0 -> no indexer id. Minimum seeders -> the threshold of the
@@ -337,6 +341,7 @@ fn rad_decision_captured() {
                 revision: (version - 1) as i32,
                 group: None,
                 score: given["custom_format_score"].as_i64().unwrap_or(0) as i32,
+                is_repack: false,
             };
             let quality_met = crit.quality_cutoff_met(key(&file.q).as_deref());
             // Scryer's cutoff-unmet list (catalog/workflow/titles.rs:612) skips
@@ -724,6 +729,10 @@ struct Side {
     revision: i32,
     group: Option<String>,
     score: i32,
+    /// A REPACK: Sonarr release `repack`, Radarr parsed quality
+    /// `revision.is_repack` (only RepackSpecificationFixture sets either). The
+    /// nested `{quality: {quality, revision}}` form is not read.
+    is_repack: bool,
 }
 
 /// `revision` as a number (`2`) or an object (`{"version": 2, "real": 1}`).
@@ -768,6 +777,8 @@ fn side(v: &Value, group: Option<String>, score: i32) -> Result<Side, String> {
         revision: (version - 1) as i32,
         group,
         score,
+        is_repack: v["repack"].as_bool() == Some(true)
+            || v["revision"]["is_repack"].as_bool() == Some(true),
     })
 }
 
@@ -828,7 +839,7 @@ fn incumbent(
     added_days_ago: i64,
 ) -> Incumbent {
     Incumbent {
-        quality_key: None,
+        quality_key: key(&s.q), // the product's file key (P18b)
         tier_index: tier_index(profile, s),
         revision: s.revision,
         file_id: id.to_string(),
@@ -885,7 +896,10 @@ fn grab_refusal(
 ) -> Option<Refusal> {
     let crit = &profile.criteria;
     let now = now();
+    let cand_key = key(&cand.q);
     let candidate = CandidateFacts::new(tier_index(profile, cand), cand.revision, cand.score)
+        .with_quality_key(cand_key.as_deref())
+        .with_repack(cand.is_repack)
         .with_profile_policy(cand.group.as_deref(), crit);
     let (admission_scope, cutoff_scope) = match members {
         None => (AdmissionScope::Title, CutoffScope::Title),
@@ -1456,9 +1470,10 @@ fn anime_version(g: &Value) -> Outcome {
 }
 
 /// The reference ProperSpecification reads no release group and its fixtures
-/// carry none; Scryer counts a revision only between same-group releases
-/// (`decision_pipeline.rs` `Facts::is_related_to`). A group-less side gets this
-/// shared group so the old-file age check, not the group gate, decides.
+/// carry none; Scryer counts a revision across groups only between one known
+/// exact quality (`decision_pipeline.rs` `Facts::revision_cmp`, P30b). A
+/// group-less side gets this shared group so the old-file age check, not the
+/// group gate, decides; harmless when both are one exact quality.
 const PROPER_GROUP: &str = "PARITY";
 
 fn proper_group(v: &Value) -> Option<String> {
@@ -1698,6 +1713,7 @@ fn release_at(profile: &QualityProfile, tier_from_end: usize, score: i32, group:
         revision: 0,
         group: group.map(str::to_string),
         score,
+        is_repack: false,
     })
 }
 
@@ -1745,6 +1761,7 @@ fn check_cutoff(app: &str, id: i64) -> Result<(), String> {
             revision: 0,
             group: None,
             score,
+            is_repack: false,
         };
         let subject = AdmissionSubject::new(
             AdmissionScope::Title,

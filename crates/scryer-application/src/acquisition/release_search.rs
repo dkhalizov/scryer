@@ -1874,8 +1874,10 @@ fn candidate_revision(candidate: &IndexerSearchResult) -> i32 {
         .map_or(0, crate::acquisition::scoring::revision_rank)
 }
 
-/// Honor-mode exception for a later revision of a matching known group in the
-/// same tier. Empty scopes, unrelated groups and Ignore mode use ordinary rules.
+/// Honor-mode exception for a later revision in the same tier, of a matching
+/// known group or of one known exact quality (P30b,
+/// [`crate::decision_pipeline::Facts::revision_cmp`]). Empty scopes, unrelated
+/// releases and Ignore mode use ordinary rules.
 /// A pack can qualify against one member, but admission still checks each member
 /// and candidate-wide ranking requires every incumbent to be related.
 pub(crate) fn candidate_is_revision_upgrade(
@@ -1989,6 +1991,11 @@ fn candidate_is_language_upgrade(
 /// its cutoff — Sonarr's `ProperSpecification` never consults the cutoff. It is
 /// a *different* refusal with its own reason code. RSS/pending only — that
 /// specification accepts unconditionally when a search produced the candidate.
+///
+/// fork (P30b): Sonarr's grab-only `RepackSpecification` comes before it: a
+/// REPACK that is a revision upgrade over a file of another or an unknown
+/// group is refused (`RepackGroupMismatch`), in every lane. Import has no such
+/// rule.
 pub fn cutoff_refusal(
     candidate: crate::admission::CandidateFacts,
     subject: &crate::admission::AdmissionSubject,
@@ -2004,6 +2011,15 @@ pub fn cutoff_refusal(
     // for every below-cutoff scope — exactly the scopes that see the most
     // PROPERs.
     if candidate_is_revision_upgrade(candidate, subject) {
+        // fork (P30b)
+        if candidate.is_repack
+            && subject.incumbents().iter().any(|incumbent| {
+                revision_upgrade_over(candidate, incumbent)
+                    && !candidate.facts().same_group(&incumbent.facts())
+            })
+        {
+            return Some(ReleaseAutoDecisionCode::RepackGroupMismatch);
+        }
         let proper_for_old_file = is_rss_lane
             && subject.incumbents().iter().any(|incumbent| {
                 revision_upgrade_over(candidate, incumbent)
@@ -2538,6 +2554,12 @@ fn evaluate_auto_candidate_recording(
         candidate_score,
     )
     .with_quality_key(quality_key.as_deref())
+    .with_repack(
+        candidate
+            .parsed_release_metadata
+            .as_ref()
+            .is_some_and(|parsed| parsed.is_repack),
+    ) // fork (P30b)
     .with_language(candidate_language(candidate))
     .with_release_title(&candidate.title)
     .with_profile_policy(
@@ -7630,11 +7652,16 @@ mod tests {
         }
 
         fn holding(revision: i32, days_ago: i64) -> AdmissionSubject {
+            holding_as(revision, days_ago, None)
+        }
+
+        /// `holding`, the file of the exact quality `quality_key` (P18b).
+        fn holding_as(revision: i32, days_ago: i64, quality_key: Option<&str>) -> AdmissionSubject {
             AdmissionSubject::new(
                 AdmissionScope::Title,
                 [(
                     Incumbent {
-                        quality_key: None,
+                        quality_key: quality_key.map(str::to_string),
                         tier_index: Some(1),
                         revision,
                         file_id: "file-1".to_string(),
@@ -8026,6 +8053,117 @@ mod tests {
                 ),
                 None
             );
+        }
+
+        /// fork (P30b): Sonarr's `RepackSpecification`, grab only: a REPACK
+        /// that is a revision upgrade over a file of another or an unknown
+        /// group is refused, at or below the cutoff. A PROPER is not, and a
+        /// REPACK of another exact quality is no revision of the file at all.
+        #[test]
+        fn a_repack_of_another_or_unknown_group_is_refused() {
+            for (group, key, is_repack, expected) in [
+                (
+                    Some("OTHER"),
+                    "WEBDL-1080P",
+                    true,
+                    Some(ReleaseAutoDecisionCode::RepackGroupMismatch),
+                ),
+                (
+                    None,
+                    "WEBDL-1080P",
+                    true,
+                    Some(ReleaseAutoDecisionCode::RepackGroupMismatch),
+                ),
+                (
+                    Some(" "),
+                    "WEBDL-1080P",
+                    true,
+                    Some(ReleaseAutoDecisionCode::RepackGroupMismatch),
+                ),
+                (Some("grp"), "WEBDL-1080P", true, None),
+                (Some("OTHER"), "WEBDL-1080P", false, None),
+                (Some("OTHER"), "WEBRIP-1080P", true, None),
+            ] {
+                let candidate = CandidateFacts::new(Some(1), 1, 100)
+                    .with_revision_policy(group, false)
+                    .with_quality_key(Some(key))
+                    .with_repack(is_repack);
+                for at_cutoff in [false, true] {
+                    let expected = if key == "WEBRIP-1080P" && at_cutoff {
+                        Some(ReleaseAutoDecisionCode::CutoffReached)
+                    } else {
+                        expected
+                    };
+                    assert_eq!(
+                        cutoff_refusal(
+                            candidate,
+                            &holding_as(0, 1, Some("WEBDL-1080P")),
+                            at_cutoff,
+                            false,
+                            &now(),
+                        ),
+                        expected,
+                        "group={group:?}, key={key}, repack={is_repack}, at_cutoff={at_cutoff}"
+                    );
+                }
+            }
+        }
+
+        /// fork (P30b): the production grab path. A cross-group REPACK of the
+        /// file's exact quality is refused as Sonarr's `RepackSpecification`
+        /// does; a cross-group PROPER is a revision upgrade, as the arrs'
+        /// `Revision.CompareTo` reads it (D79, D82).
+        #[test]
+        fn a_cross_group_repack_is_refused_and_a_proper_is_not() {
+            let title = make_title();
+            let subject = title_subject(&title);
+            let mut profile = QualityProfile::default();
+            profile.criteria.quality_tiers = vec!["2160P".into(), "1080P".into()];
+            profile.criteria.cutoff_tier = Some("2160P".into());
+            let thresholds = AcquisitionThresholds::default();
+            let db_blocklist =
+                crate::app_usecase_discovery::TitleReleaseBlocklistSignatures::default();
+            let no_minimum_seeders = HashMap::new();
+            let no_unmonitored = HashSet::new();
+            let now = Utc::now();
+            let admission = holding_as(0, 1, Some("WEBDL-1080P"));
+            for (release, expected) in [
+                (
+                    "Nightfall.2022.1080p.WEB-DL.REPACK.H.264-OTHER",
+                    ReleaseAutoDecisionCode::RepackGroupMismatch,
+                ),
+                (
+                    "Nightfall.2022.1080p.WEB-DL.PROPER.H.264-OTHER",
+                    ReleaseAutoDecisionCode::Eligible,
+                ),
+            ] {
+                let mut candidate = make_candidate(release, None);
+                candidate.quality_profile_decision = Some(allowed_quality_decision(900));
+                let context = AutoCandidateEvaluationContext {
+                    title: &title,
+                    subject: &subject,
+                    admission: &admission,
+                    profile: &profile,
+                    thresholds: &thresholds,
+                    incumbent_at_cutoff: false,
+                    is_rss_lane: false,
+                    user_invoked: false,
+                    oldest_overlapping_pending_published_at: None,
+                    now: &now,
+                    dl_snapshot: None,
+                    db_blocklist: &db_blocklist,
+                    existing_files: &[],
+                    delay_profiles: &[],
+                    failed_routes: None,
+                    minimum_seeders: &no_minimum_seeders,
+                    unmonitored_episode_ids: &no_unmonitored,
+                };
+                assert_eq!(
+                    evaluate_auto_candidate(&candidate, &context),
+                    expected,
+                    "{release}"
+                );
+            }
         }
 
         /// A better *tier* is not a revision upgrade, so it stays refused at

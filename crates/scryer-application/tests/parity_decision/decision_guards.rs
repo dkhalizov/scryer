@@ -75,15 +75,14 @@
 //!
 //! # Known reds
 //!
-//! - SON 0050: Scryer gates a revision upgrade on the release group for every
-//!   series; Sonarr only for anime and repacks.
 //! - SON 1214, RAD 1152: SDTV and DVD share Scryer's 480P tier, so DVD v2 reads
 //!   as a PROPER of a 30-day-old SDTV file (`ProperForOldFile`).
 //! - SON 1192, RAD 0051: a grab 13 h old still claims the scope (no age bound).
 //! - SON 1193, 1194, RAD 0052: SDTV and DVD collapse into Scryer's 480P tier,
 //!   so DVD v2 is no quality upgrade over the SDTV grab and
-//!   `QueuedEqualOrBetter` refuses. The group-less claim (glue above) also
-//!   keeps it from counting as a related revision; with a shared group Scryer
+//!   `QueuedEqualOrBetter` refuses. The group-less claim (glue above; a
+//!   queued release carries no exact quality, P30b) also keeps it from
+//!   counting as a related revision; with a shared group Scryer
 //!   would admit it as a revision upgrade, still not for the reference's
 //!   reason (a better quality).
 //! - SON 1201-1203, RAD 0056-0058: no setting for completed download handling off.

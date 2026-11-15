@@ -48,7 +48,7 @@ settings need **Manage catalog settings**.
 | `release_age_unknown` | indexer gave no publish time and an age gate applies | indexer; health check `ReleaseAgeUnknown` |
 | `protocol_disabled` | delay profile disables this protocol | delay profile enableUsenet/enableTorrent |
 | `download_client_unavailable` | no usable client for the protocol | download clients |
-| `repack_group_mismatch` | repack is from a different group than the file | expected |
+| `repack_group_mismatch` | repack is from a different or unknown group than the file | expected |
 | `minimum_seeders` | too few seeders for the seeding profile | seeding profile |
 | `movie_availability_blocked` | movie has not reached its availability setting | media settings |
 | `pack_below_missing_threshold` | pack does not cover enough missing episodes | expected |

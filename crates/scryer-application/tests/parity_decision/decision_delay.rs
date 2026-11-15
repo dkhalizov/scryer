@@ -44,8 +44,9 @@
 //!   (Sonarr scope `Episodes`, Radarr scope `Title`).
 //! - A group-less release or file gets the group `PARITY` (`super::PROPER_GROUP`):
 //!   the reference revision check (IsRevisionUpgrade) never reads a group,
-//!   Scryer's revision bypass needs the same group on both sides (else the group
-//!   gate, not the revision, would decide). The Sonarr file's `scene_name`
+//!   Scryer's revision bypass needs the same group on both sides unless both
+//!   are one known exact quality (P30b), else the group gate, not the
+//!   revision, would decide. The Sonarr file's `scene_name`
 //!   (`...x264-Sonarr`, group `Sonarr`) is deliberately not used for the group:
 //!   keeping it would turn 1177 red and 1179 green, both for a group reason.
 //! - UserInvokedSearch -> `user_invoked`; OldestPendingRelease -> None

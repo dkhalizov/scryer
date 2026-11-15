@@ -54,8 +54,9 @@ decision_gates! {
     /// Positions in the profile's own tier ordering.
     QualityTier,
     /// PROPER/REPACK ranks between releases of the same tier from the same
-    /// release group; a lower revision of the same tier loses whatever the
-    /// groups (P18).
+    /// release group, or of one known exact quality whatever the groups
+    /// (P30b); a lower revision of the same tier loses whatever the groups
+    /// (P18).
     Revision,
     /// The position of the first preferred audio language each carries.
     PreferredLanguage,
@@ -443,49 +444,56 @@ pub(crate) struct Facts<'a> {
     /// fork (P18b): the exact quality, the tier key
     /// [`crate::quality_profile::quality_tier_label`] builds (`HDTV-1080P`).
     /// A bare resolution (`1080P`) or `None` means the source is unknown.
-    /// Read only by the revision escape (Sonarr's `IsRevisionUpgrade`), never
-    /// by [`Facts::revision_cmp`].
+    /// Read by the revision escape (Sonarr's `IsRevisionUpgrade`), and by
+    /// [`Facts::revision_cmp`] only to compare across groups (P30b).
     pub quality_key: Option<&'a str>,
 }
 
 impl Facts<'_> {
-    /// Same tier, same release group, and revisions honoured.
-    pub(crate) fn is_related_to(&self, held: &Facts<'_>) -> bool {
-        !self.ignores_revision
-            && self.side.tier_sort_key == held.side.tier_sort_key
-            && self
-                .release_group
-                .map(str::trim)
-                .filter(|g| !g.is_empty())
-                .zip(held.release_group.map(str::trim).filter(|g| !g.is_empty()))
-                .is_some_and(|(left, right)| left.eq_ignore_ascii_case(right))
+    /// The same known release group; an unknown or blank group matches none.
+    pub(crate) fn same_group(&self, held: &Facts<'_>) -> bool {
+        self.release_group
+            .map(str::trim)
+            .filter(|g| !g.is_empty())
+            .zip(held.release_group.map(str::trim).filter(|g| !g.is_empty()))
+            .is_some_and(|(left, right)| left.eq_ignore_ascii_case(right))
     }
 
-    /// fork (P18b): both exact qualities are known and differ. A bare
-    /// resolution (`1080P`) or `None` is an unknown source.
-    pub(crate) fn exact_quality_differs(&self, held: &Facts<'_>) -> bool {
+    /// fork (P18b): both exact qualities, if known. A bare resolution
+    /// (`1080P`) or `None` is an unknown source.
+    fn known_exact_qualities<'k>(&'k self, held: &'k Facts<'_>) -> Option<(&'k str, &'k str)> {
         fn known(key: Option<&str>) -> Option<&str> {
             key.filter(|key| key.contains('-'))
         }
-        known(self.quality_key)
-            .zip(known(held.quality_key))
+        known(self.quality_key).zip(known(held.quality_key))
+    }
+
+    /// fork (P18b): both exact qualities are known and differ.
+    pub(crate) fn exact_quality_differs(&self, held: &Facts<'_>) -> bool {
+        self.known_exact_qualities(held)
             .is_some_and(|(candidate, held)| candidate != held)
     }
 
-    /// The revisions of two related releases. For unrelated ones (unknown or
-    /// different group) only a lower revision of the same tier counts, as
-    /// `Less`: the arrs refuse it whatever the groups. Otherwise `Equal`.
-    /// A tier is an arr group (D48), so sources inside it still compare.
+    /// The revisions of two releases of one tier, the arrs'
+    /// `Revision.CompareTo`, which reads no release group. fork (P30b, D82):
+    /// across groups only when both are one known exact quality; otherwise
+    /// only the same group compares both ways, and another or an unknown
+    /// group counts only a lower revision, as `Less`: the arrs refuse it
+    /// whatever the groups (P18). A tier is an arr group (D48), so sources
+    /// inside it still compare. `Equal` across tiers or when revisions are
+    /// ignored.
     pub(crate) fn revision_cmp(&self, held: &Facts<'_>) -> Ordering {
-        if self.is_related_to(held) {
-            self.revision.cmp(&held.revision)
-        } else if !self.ignores_revision // fork (P18)
-            && self.side.tier_sort_key == held.side.tier_sort_key
-            && self.revision < held.revision
-        {
-            Ordering::Less
+        if self.ignores_revision || self.side.tier_sort_key != held.side.tier_sort_key {
+            return Ordering::Equal;
+        }
+        let ordering = self.revision.cmp(&held.revision);
+        let one_exact_quality = self
+            .known_exact_qualities(held)
+            .is_some_and(|(candidate, held)| candidate == held);
+        if self.same_group(held) || one_exact_quality {
+            ordering
         } else {
-            Ordering::Equal
+            ordering.min(Ordering::Equal) // fork (P18)
         }
     }
 }
