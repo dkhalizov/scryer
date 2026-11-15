@@ -51,8 +51,8 @@
 //! (`import/workflow/movie.rs` ~33, `series.rs` ~2934), and is not covered here.
 //!
 //! Ignored input: Radarr `facet` (always movie). Ignored expect keys: none (an
-//! unknown key panics). `Path::file_stem` cuts extension-less corpus names at
-//! the last `.`; that is production behaviour and is not corrected here.
+//! unknown key panics). Production cuts only a video extension (fork P35 H),
+//! so an extension-less corpus name keeps its dotted tail.
 //!
 //! Unmapped (tests: []), with reasons: none.
 

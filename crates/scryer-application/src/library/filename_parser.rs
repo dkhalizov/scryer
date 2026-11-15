@@ -702,8 +702,14 @@ fn build_library_query_evidence(
 }
 
 fn filename_parse_raw_name(path: &Path, display_name: Option<&str>) -> String {
-    let raw_name = path
-        .file_stem()
+    // fork (P35 H): cut only a media extension (Sonarr RemoveFileExtension);
+    // a folder `DTF St. Louis` or `Show.Name.2019` keeps its dotted tail.
+    let name = if scryer_domain::is_video_file(path) {
+        path.file_stem()
+    } else {
+        path.file_name()
+    };
+    let raw_name = name
         .and_then(|stem| stem.to_str())
         .or(display_name)
         .unwrap_or_default()
@@ -1777,6 +1783,28 @@ mod tests {
             filename_parse_raw_name(Path::new("/library/Movie.2024-restored-cut.mkv"), None),
             "Movie.2024-restored-cut"
         );
+    }
+
+    // fork (P35 H): only a video extension is cut (Sonarr RemoveFileExtension);
+    // a dotted folder or extensionless name keeps its tail.
+    #[test]
+    fn raw_name_keeps_a_dotted_extensionless_name() {
+        for (path, expected) in [
+            (
+                "/C/Test/Series/Season 1/02.04.24 - S01E01 - The Rabbit Hole",
+                "02.04.24 - S01E01 - The Rabbit Hole",
+            ),
+            ("/library/DTF St. Louis (2026)", "DTF St. Louis (2026)"),
+            ("/library/Show.Name.2019", "Show.Name.2019"),
+            ("/library/Show.Name.2019.mkv", "Show.Name.2019"),
+            ("/library/Show.Name.2019.ISO", "Show.Name.2019"),
+        ] {
+            assert_eq!(
+                filename_parse_raw_name(Path::new(path), None),
+                expected,
+                "{path}"
+            );
+        }
     }
 
     fn title(name: &str, facet: MediaFacet) -> Title {
