@@ -1259,6 +1259,15 @@ fn season_folder_episode_title(folder: &str, stem: &str) -> Option<String> {
         title.push_str(&format!("-{last:02}"));
     }
     if let Some(rest) = caps.get(3) {
+        // fork (P34a): `E60 - S01E05 - Title` names its own identity; the
+        // leading number is title text, so leave the stem alone.
+        static OWN_IDENTITY: OnceLock<Regex> = OnceLock::new();
+        if OWN_IDENTITY
+            .get_or_init(|| Regex::new(r"(?i)\bS\d{1,4}E\d{1,4}").expect("valid identity regex"))
+            .is_match(rest.as_str())
+        {
+            return None;
+        }
         title.push(' ');
         title.push_str(rest.as_str());
     }

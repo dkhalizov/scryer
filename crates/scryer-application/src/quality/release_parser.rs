@@ -290,6 +290,10 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
     };
     let title = if let Some(bracket_styled_title) = bracket_styled_title {
         bracket_styled_title
+    } else if title_tokens.is_empty() && leading_identity(&scan_tokens[title_start.min(scan_tokens.len())..]) {
+        // fork (P34a): `S02E03-04-05.720p` has no title; its first token is
+        // identity, not a context title the parse would then link as alias.
+        String::new()
     } else if title_tokens.is_empty() {
         scan_tokens
             .get(title_start)
@@ -339,10 +343,67 @@ fn numeric_title_word(token: &str, later: &[String], tokens: &[String]) -> bool 
         })
 }
 
+/// fork (P34a): a name that opens with a strict `SxxEyy`/`NxNN` identity or a
+/// y-m-d date. Strict, so `Se7en`, `Sense8` and `S1m0ne` keep their titles.
+fn leading_identity(tokens: &[String]) -> bool {
+    let Some(first) = tokens.first() else {
+        return false;
+    };
+    strict_identity_prefix(first)
+        || looks_like_daily_token(first)
+        || looks_like_daily_token_sequence(&tokens[..tokens.len().min(3)])
+}
+
+fn strict_identity_prefix(token: &str) -> bool {
+    let bytes = token.as_bytes();
+    let digit_run = |from: usize| bytes[from.min(bytes.len())..].iter().take_while(|b| b.is_ascii_digit()).count();
+    let after = if bytes.first().is_some_and(|b| b.eq_ignore_ascii_case(&b'S')) {
+        let season = digit_run(1);
+        if !(1..=4).contains(&season) || !bytes.get(1 + season).is_some_and(|b| b.eq_ignore_ascii_case(&b'E')) {
+            return false;
+        }
+        let episode = digit_run(2 + season);
+        if episode == 0 {
+            return false;
+        }
+        2 + season + episode
+    } else {
+        let season = digit_run(0);
+        if !(1..=4).contains(&season) || !bytes.get(season).is_some_and(|b| b.eq_ignore_ascii_case(&b'X')) {
+            return false;
+        }
+        let episode = digit_run(season + 1);
+        if episode == 0 {
+            return false;
+        }
+        season + 1 + episode
+    };
+    match bytes.get(after) {
+        None => true,
+        Some(b) if !b.is_ascii_alphanumeric() => true,
+        // `E01b` split letter, or a chained `E05`/`x05`.
+        Some(b) => {
+            matches!(b.to_ascii_lowercase(), b'a'..=b'd') && bytes.get(after + 1).is_none_or(|n| !n.is_ascii_alphanumeric())
+                || matches!(b.to_ascii_lowercase(), b'e' | b'x') && bytes.get(after + 1).is_some_and(u8::is_ascii_digit)
+        }
+    }
+}
+
 fn guess_context_facet(raw: &str, tokens: &[String]) -> ContextFacetHint {
     if tokens
         .iter()
         .any(|token| looks_like_standard_episode_token(token))
+        // fork (P34b3): `Series.S02.2010.1080p` is a season pack, not a
+        // movie; `Title S2 - 05` (anime) stays out.
+        || tokens.iter().enumerate().any(|(index, token)| {
+            looks_like_season_pack_marker(&normalize_alphanumeric_upper(token), tokens)
+                && !tokens
+                    .get(index + 1)
+                    .is_some_and(|next| !next.is_empty() && next.chars().all(|ch| ch.is_ascii_digit()) && parse_context_year(next).is_none())
+        })
+        // fork (P34b1): Spanish `TEMPORADA 2`.
+        || temporada_marker(tokens)
+        || tokens.iter().any(|token| bare_episode_token(&normalize_alphanumeric_upper(token), tokens))
         || tokens.iter().any(|token| looks_like_daily_token(token))
         || looks_like_daily_token_sequence(tokens)
         || looks_like_season_pack_release(tokens)
@@ -413,6 +474,57 @@ fn looks_like_release_metadata_token(token: &str, tokens: &[String]) -> bool {
         || looks_like_season_pack_marker(&normalized, tokens)
         || spelled_season_marker(&normalized, tokens)
         || looks_like_release_provenance_normalized(&normalized)
+        // fork (P34b1): `S42 E01`, `TEMPORADA 2`, `COMPLETE SERIES`.
+        || season_before_episode(&normalized, tokens)
+        || bare_episode_token(&normalized, tokens)
+        || (normalized == "TEMPORADA" && temporada_marker(tokens))
+        || complete_before_season(&normalized, tokens)
+}
+
+/// The tokens after the first token equal to `normalized`.
+fn tokens_after<'a>(normalized: &str, tokens: &'a [String]) -> Option<&'a [String]> {
+    let index = tokens
+        .iter()
+        .position(|candidate| normalize_alphanumeric_upper(candidate) == normalized)?;
+    Some(&tokens[index + 1..])
+}
+
+fn season_before_episode(normalized: &str, tokens: &[String]) -> bool {
+    normalized.strip_prefix('S').is_some_and(|digits| {
+        (1..=4).contains(&digits.len()) && digits.chars().all(|ch| ch.is_ascii_digit())
+    }) && tokens_after(normalized, tokens)
+        .and_then(<[String]>::first)
+        .is_some_and(|next| {
+            let next = normalize_alphanumeric_upper(next);
+            next.strip_prefix("EP")
+                .or_else(|| next.strip_prefix('E'))
+                .is_some_and(|n| !n.is_empty() && n.chars().all(|ch| ch.is_ascii_digit()))
+        })
+}
+
+/// fork (P34b2): a bare `E05` is an episode, unless the name carries an
+/// `SxxEyy` of its own (`E60 - S01E05 - Title`: `E60` is the title).
+fn bare_episode_token(normalized: &str, tokens: &[String]) -> bool {
+    normalized.strip_prefix('E').is_some_and(|n| {
+        (1..=3).contains(&n.len()) && n.chars().all(|ch| ch.is_ascii_digit())
+    }) && !tokens.iter().any(|token| strict_identity_prefix(token) && !token.to_ascii_uppercase().starts_with('E'))
+}
+
+fn temporada_marker(tokens: &[String]) -> bool {
+    tokens.windows(2).any(|pair| {
+        normalize_alphanumeric_upper(&pair[0]) == "TEMPORADA"
+            && looks_like_small_season_number(&normalize_alphanumeric_upper(&pair[1]))
+    })
+}
+
+fn complete_before_season(normalized: &str, tokens: &[String]) -> bool {
+    normalized == "COMPLETE"
+        && tokens_after(normalized, tokens)
+            .and_then(<[String]>::first)
+            .is_some_and(|next| {
+                let next = normalize_alphanumeric_upper(next);
+                matches!(next.as_str(), "SERIES" | "SEASON") || looks_like_bare_season_token(&next)
+            })
 }
 
 fn looks_like_release_provenance_normalized(normalized: &str) -> bool {
@@ -710,4 +822,66 @@ mod tests {
             assert_eq!(title(raw), &raw[..4], "{raw}");
         }
     }
+
+    // fork (P34a): a name that opens with its identity has no title, and the
+    // numbers are read as the standard identity, never as absolutes.
+    #[test]
+    fn untargeted_parse_reads_leading_identity() {
+        let identity = |raw: &str| {
+            let parsed = crate::parse_release_metadata(raw);
+            let episode = parsed.episode.clone().unwrap_or_else(|| panic!("{raw}: no episode"));
+            assert!(episode.absolute_episode_numbers.is_empty(), "{raw}: absolute");
+            (parsed.normalized_title, episode.season, episode.episode_numbers)
+        };
+        for (raw, season, episodes) in [
+            ("S03E01.S03E02.720p.HDTV.X264-DIMENSION", 3, vec![1, 2]),
+            ("S02E03-04-05.720p.BluRay-FUTV", 2, vec![3, 4, 5]),
+            ("S01E01-E03 - Episode Title.HDTV-720p", 1, vec![1, 2, 3]),
+            ("S02E10 6-50 to SLC [SDTV]", 2, vec![10]),
+            ("6x13 - The Series Show 100th Episode Special", 6, vec![13]),
+            ("S06E04,Marco.Polo.1080p.WEB-DL.DD5.1.H.264", 6, vec![4]),
+            ("S06E19.Grill.Interrupted.1080p.WEB-DL.DD5.1.H.264", 6, vec![19]),
+        ] {
+            let (title, got_season, got_episodes) = identity(raw);
+            assert_eq!(title, "", "{raw}");
+            assert_eq!(got_season, Some(season), "{raw}");
+            assert_eq!(got_episodes, episodes, "{raw}");
+        }
+        let daily = crate::parse_release_metadata("2018-11-14.1080.all.mp4");
+        let episode = daily.episode.expect("daily");
+        assert_eq!(episode.air_date.map(|d| d.to_string()).as_deref(), Some("2018-11-14"));
+        assert!(episode.absolute_episode_numbers.is_empty());
+        for (raw, title) in [
+            ("Se7en.1995.1080p.BluRay.x264-GRP", "SE7EN"),
+            ("Sense8.S01E01.1080p.WEB-DL", "SENSE8"),
+            ("1234 S03E14", "1234"),
+        ] {
+            assert_eq!(crate::parse_release_metadata(raw).normalized_title.to_ascii_uppercase(), title, "{raw}");
+        }
+        assert_eq!(identity("S02E04E05.720p.HDTV").2, vec![4, 5]);
+        assert_eq!(identity("2x04x05.720p.HDTV").2, vec![4, 5]);
+    }
+
+    // fork (P34b): season and episode markers end the untargeted title and
+    // make the name a series; movies are untouched.
+    #[test]
+    fn untargeted_boundary_and_facet_read_series_markers() {
+        let parsed = |raw: &str| crate::parse_release_metadata(raw);
+        for (raw, title) in [
+            ("Series Title S42 E01 720p HDTV", "SERIES TITLE"),
+            ("Series Title Temporada 2 Cap 1901 720p", "SERIES TITLE"),
+            ("Series Title Complete Series 720p BluRay", "SERIES TITLE"),
+            ("Series Title E05 720p HDTV", "SERIES TITLE"),
+            ("Series.Title.S02.2010.1080p.BluRay.x264-GRP", "SERIES TITLE"),
+        ] {
+            let p = parsed(raw);
+            assert_eq!(p.normalized_title.to_ascii_uppercase(), title, "{raw}");
+            assert!(p.episode.is_some(), "{raw}: no series identity");
+        }
+        for raw in ["Movie.2024.1080p.BluRay.x264-GRP", "Dune.Part.Two.2024.1080p.WEB-DL"] {
+            assert!(parsed(raw).episode.is_none(), "{raw}");
+        }
+        assert_eq!(parsed("Agents.of.S.H.I.E.L.D.S01E01.720p").normalized_title.to_ascii_uppercase(), "AGENTS OF S H I E L D");
+    }
 }
+

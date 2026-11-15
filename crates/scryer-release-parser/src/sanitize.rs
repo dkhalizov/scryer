@@ -36,6 +36,9 @@ pub(crate) fn sanitize_input(raw: &str) -> SanitizedInput {
         None => cleaned,
     };
     let punctuation_normalized = cleaned.replace('&', " and ").replace(':', " ");
+    // fork (P34a): `S06E04,Marco.Polo` – a comma right after an `SxxEyy` run
+    // separates it from the title (the lexer does not split on `,`).
+    let punctuation_normalized = space_comma_after_episode_identity(&punctuation_normalized);
 
     SanitizedInput {
         value: punctuation_normalized,
@@ -264,4 +267,49 @@ pub fn is_hashed_release_name(raw: &str) -> bool {
             && all(&b[..6], u8::is_ascii_digit)
             && b[6] == b'_'
             && all(&b[7..], u8::is_ascii_digit))
+}
+
+/// fork (P34a): turn a `,` that directly follows an `S\d+E\d+` run into a
+/// space; `1,000 Ways` is untouched.
+fn space_comma_after_episode_identity(value: &str) -> String {
+    let bytes = value.as_bytes();
+    let mut out = value.to_string().into_bytes();
+    for (index, &byte) in bytes.iter().enumerate() {
+        if byte != b',' {
+            continue;
+        }
+        // Walk back over `E\d+` then `S\d+`.
+        let mut cursor = index;
+        let digits = |cursor: &mut usize| {
+            let end = *cursor;
+            while *cursor > 0 && bytes[*cursor - 1].is_ascii_digit() {
+                *cursor -= 1;
+            }
+            end - *cursor
+        };
+        if digits(&mut cursor) == 0 || cursor == 0 || !bytes[cursor - 1].eq_ignore_ascii_case(&b'E') {
+            continue;
+        }
+        cursor -= 1;
+        if digits(&mut cursor) == 0 || cursor == 0 || !bytes[cursor - 1].eq_ignore_ascii_case(&b'S') {
+            continue;
+        }
+        if cursor >= 2 && bytes[cursor - 2].is_ascii_alphanumeric() {
+            continue;
+        }
+        out[index] = b' ';
+    }
+    String::from_utf8(out).unwrap_or_else(|_| value.to_string())
+}
+
+
+#[cfg(test)]
+mod comma_tests {
+    // fork (P34a)
+    #[test]
+    fn comma_after_episode_identity_is_a_separator() {
+        assert_eq!(super::space_comma_after_episode_identity("S06E04,Marco.Polo"), "S06E04 Marco.Polo");
+        assert_eq!(super::space_comma_after_episode_identity("1,000 Ways"), "1,000 Ways");
+        assert_eq!(super::space_comma_after_episode_identity("Bones,S01E01"), "Bones,S01E01");
+    }
 }
