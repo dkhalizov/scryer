@@ -2089,7 +2089,7 @@ fn check_quality_definition(app: &str, name: &str) -> Result<(), String> {
         .ok_or_else(|| format!("no quality definition '{name}'"))?;
     let min = definition["minSize"].as_f64().ok_or("no minSize")?;
     let max = definition["maxSize"].as_f64();
-    let mut release = parsed(&Side { q: quality(name)?, name: name.to_string(), revision: 0, group: None, score: 0 });
+    let mut release = parsed(&Side { q: quality(name)?, name: name.to_string(), revision: 0, group: None, score: 0, is_repack: false });
     release.episode = Some(ParsedEpisodeMetadata { season: Some(1), ..ParsedEpisodeMetadata::default() });
     let codes = |bytes: i64, basis: CoverageSizeBasis| {
         let profile = builtin_1080p_profile();
