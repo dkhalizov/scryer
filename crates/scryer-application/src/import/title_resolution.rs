@@ -225,7 +225,7 @@ impl MonitoredTitleMatcher {
             .await?;
         Ok(
             crate::acquisition_release_search::TitleIdentityAmbiguity::from_shared_keys(
-                crate::acquisition_release_search::share_apostrophe_free_keys(title, shared),
+                crate::acquisition_release_search::share_spelling_variant_keys(title, shared),
             ),
         )
     }
@@ -616,7 +616,7 @@ impl MonitoredTitleMatcher {
             .zip(shared)
             .map(|(title, shared)| {
                 crate::acquisition_release_search::TitleIdentityAmbiguity::from_shared_keys(
-                    crate::acquisition_release_search::share_apostrophe_free_keys(title, shared),
+                    crate::acquisition_release_search::share_spelling_variant_keys(title, shared),
                 )
             })
             .collect())

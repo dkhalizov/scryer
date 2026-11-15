@@ -12,7 +12,7 @@ pub mod title_naming;
 pub mod title_normalization;
 pub use lists::*;
 mod season_numbering;
-pub use season_numbering::season_ordinal_from_title;
+pub use season_numbering::{roman_numeral, roman_value, season_ordinal_from_title};
 mod title_sort;
 pub mod title_spelling;
 pub use title_sort::{

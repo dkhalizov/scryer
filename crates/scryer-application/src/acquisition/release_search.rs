@@ -518,8 +518,9 @@ pub fn release_strategy_kind_for_label(label: &str, is_rss_request: bool) -> Rel
 pub(crate) fn canonical_title_lookup_keys(title: &Title) -> Vec<String> {
     let mut keys = crate::ports::title_lookup_forms(title);
     // Release names usually drop an apostrophe the catalog keeps, so each name
-    // also answers to its apostrophe-free spelling.
-    for (_, key) in apostrophe_free_lookup_keys(title) {
+    // also answers to its apostrophe-free spelling (and, fork P35 E2/F, to its
+    // Roman/number sequel spelling and its umlaut-expanded spelling).
+    for (_, key) in spelling_variant_lookup_keys(title) {
         if !keys.contains(&key) {
             keys.push(key);
         }
@@ -527,37 +528,85 @@ pub(crate) fn canonical_title_lookup_keys(title: &Title) -> Vec<String> {
     keys
 }
 
-/// Add to `shared` the apostrophe-free spelling of every name whose lookup
-/// form another title claims. The store keeps only the apostrophe spelling, so
-/// without this the apostrophe-free key would pass as a name unique to the
-/// title.
-pub(crate) fn share_apostrophe_free_keys(title: &Title, mut shared: Vec<String>) -> Vec<String> {
-    for (form, elided) in apostrophe_free_lookup_keys(title) {
-        if shared.contains(&form) && !shared.contains(&elided) {
-            shared.push(elided);
+/// Add to `shared` the variant spelling of every name whose lookup form
+/// another title claims. The store keeps only the catalog spelling, so
+/// without this the variant key would pass as a name unique to the title.
+pub(crate) fn share_spelling_variant_keys(title: &Title, mut shared: Vec<String>) -> Vec<String> {
+    for (form, variant) in spelling_variant_lookup_keys(title) {
+        if shared.contains(&form) && !shared.contains(&variant) {
+            shared.push(variant);
         }
     }
     shared
 }
 
-/// Each of the title's names that has an apostrophe-free spelling, as
-/// `(lookup form, apostrophe-free form)`.
-fn apostrophe_free_lookup_keys(title: &Title) -> Vec<(String, String)> {
+/// Each of the title's names that has a variant spelling, as
+/// `(lookup form, variant form)`: apostrophe-free, the sequel number swapped
+/// between Roman and Arabic (fork P35 E2), umlauts expanded (fork P35 F).
+/// ponytail: the RSS index does not know these keys; add them there if RSS
+/// grabs of such sequels go missing.
+fn spelling_variant_lookup_keys(title: &Title) -> Vec<(String, String)> {
+    use scryer_domain::title_spelling::{title_lookup_form, title_lookup_form_without_apostrophes};
     let title = title.with_custom_search_aliases();
-    std::iter::once(title.name.as_str())
-        .chain(title.aliases.iter().map(String::as_str))
-        .chain(title.tagged_aliases.iter().map(|alias| alias.name.as_str()))
-        .filter_map(|name| {
-            scryer_domain::title_spelling::title_lookup_form_without_apostrophes(name).map(
-                |elided| {
-                    (
-                        scryer_domain::title_spelling::title_lookup_form(name),
-                        elided,
-                    )
-                },
-            )
+    let title_language = title.metadata_language.as_deref().or(title.language.as_deref());
+    std::iter::once((title.name.as_str(), title_language))
+        .chain(title.aliases.iter().map(|alias| (alias.as_str(), title_language)))
+        .chain(
+            title
+                .tagged_aliases
+                .iter()
+                .map(|alias| (alias.name.as_str(), Some(alias.language.as_str()))),
+        )
+        .flat_map(|(name, language)| {
+            let form = title_lookup_form(name);
+            // A German name already has the guarded phonebook profile.
+            let german = language.is_some_and(|language| {
+                matches!(
+                    language.split(['-', '_']).next().unwrap_or("").to_ascii_lowercase().as_str(),
+                    "de" | "deu" | "ger"
+                )
+            });
+            let umlauts = (!german && name.contains(['ä', 'ö', 'ü', 'ß', 'Ä', 'Ö', 'Ü'])).then(|| {
+                title_lookup_form(
+                    &name
+                        .replace('ä', "ae")
+                        .replace('ö', "oe")
+                        .replace('ü', "ue")
+                        .replace('ß', "ss")
+                        .replace('Ä', "Ae")
+                        .replace('Ö', "Oe")
+                        .replace('Ü', "Ue"),
+                )
+            });
+            [
+                title_lookup_form_without_apostrophes(name),
+                sequel_number_counterpart(&form),
+                umlauts,
+            ]
+            .into_iter()
+            .flatten()
+            .filter(|variant| *variant != form)
+            .map(|variant| (form.clone(), variant))
+            .collect::<Vec<_>>()
         })
         .collect()
+}
+
+/// `rocky ii` <-> `rocky 2`: the last word swapped between a Roman numeral
+/// II..XX and its number. A lone V or X (`Malcolm X`) is left alone.
+fn sequel_number_counterpart(form: &str) -> Option<String> {
+    let (head, last) = form.rsplit_once(' ')?;
+    let (value, swapped) = match last.parse::<i32>() {
+        Ok(value) => (value, scryer_domain::roman_numeral(value)?.to_ascii_lowercase()),
+        Err(_) => {
+            let value = scryer_domain::roman_value(last)?;
+            (value, value.to_string())
+        }
+    };
+    if !(2..=20).contains(&value) || value == 5 || value == 10 {
+        return None;
+    }
+    Some(format!("{head} {swapped}"))
 }
 
 /// Present a title's anime numbering bridge cour names as tagged aliases.
@@ -648,6 +697,15 @@ fn canonical_title_evidence_for_episode(
                 .push(crate::release_parser::ContextAlias {
                     name: stripped_key.to_string(),
                 });
+        }
+    }
+    // fork (P35 E2, F): the parser keeps a variant spelling (`Rocky 2` for
+    // `Rocky II`) as title only when the context names it.
+    for (_, variant) in spelling_variant_lookup_keys(title) {
+        if !parse_context.aliases.iter().any(|alias| alias.name == variant) {
+            parse_context
+                .aliases
+                .push(crate::release_parser::ContextAlias { name: variant });
         }
     }
 
@@ -5161,6 +5219,29 @@ mod tests {
             keys.iter()
                 .any(|key| key == "nightfall heavy chorus dark lantern")
         );
+    }
+
+    // fork (P35 E2, F): a sequel number matches in Roman or Arabic, and an
+    // umlaut matches its expanded spelling.
+    #[test]
+    fn sequel_numbers_and_umlauts_match_their_variant_spellings() {
+        let matches = |name: &str, year: i32, release: &str| {
+            let mut title = make_title();
+            title.name = name.to_string();
+            title.aliases.clear();
+            title.tagged_aliases.clear();
+            title.facet = MediaFacet::Movie;
+            title.year = Some(year);
+            candidate_matches_title_subject(
+                &make_candidate(release, None),
+                &canonical_title_evidence(&title),
+            )
+        };
+        assert!(matches("Rocky II", 1979, "Rocky.2.1979.1080p.BluRay.x264-GRP"));
+        assert!(matches("Fack Ju Göthe 2", 2015, "Fack.Ju.Göthe.II.2015.1080p.BluRay.x264-GRP"));
+        assert!(matches("Fack Ju Göthe 2", 2015, "Fack.Ju.Goethe.2.2015.1080p.BluRay.x264-GRP"));
+        assert!(!matches("Rocky II", 1979, "Rocky.III.1979.1080p.BluRay.x264-GRP"));
+        assert!(!matches("Malcolm X", 1992, "Malcolm.10.1992.1080p.BluRay.x264-GRP"));
     }
 
     #[test]

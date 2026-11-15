@@ -142,13 +142,20 @@ fn word_position(words: &[&str], word: &str) -> Option<i32> {
         .and_then(|position| i32::try_from(position + 1).ok())
 }
 
-fn roman_value(numeral: &str) -> Option<i32> {
-    // fork (P35 E1): up to XX, as Radarr's RomanNumeral reads.
-    const NUMERALS: [&str; 20] = [
-        "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV",
-        "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
-    ];
+// fork (P35 E1): up to XX, as Radarr's RomanNumeral reads.
+const NUMERALS: [&str; 20] = [
+    "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV",
+    "XVI", "XVII", "XVIII", "XIX", "XX",
+];
+
+/// The value of a Roman numeral I..XX, any case.
+pub fn roman_value(numeral: &str) -> Option<i32> {
     word_position(&NUMERALS, numeral)
+}
+
+/// The Roman numeral for 1..=20, upper case.
+pub fn roman_numeral(value: i32) -> Option<&'static str> {
+    NUMERALS.get(usize::try_from(value).ok()?.checked_sub(1)?).copied()
 }
 
 /// `一`–`九`, `十`, `十一`–`十九`, `二十`–`九十九`.
