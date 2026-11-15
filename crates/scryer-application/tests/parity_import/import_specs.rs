@@ -21,8 +21,8 @@
 //!
 //! | Reference | Scryer |
 //! |---|---|
-//! | profile qualities (Sonarr `qualities`, Radarr allowed `profile_items`) | `criteria.quality_tiers` = distinct tiers, highest resolution first |
-//! | quality name | tier: Unknown/CAM/TELECINE/DVDSCR none; SDTV, DVD, DVD-R, REGIONAL, WEBDL-480p, Bluray-480p 480P; Bluray-576p 576P; HDTV/WEBDL/Bluray-720p 720P; HDTV-1080p, Raw-HD, WEBDL/Bluray-1080p, BR-DISK 1080P; HDTV/WEBDL/Bluray-2160p 2160P |
+//! | profile qualities (Sonarr `qualities`, Radarr allowed `profile_items`) | `criteria.quality_tiers` = distinct tier keys, highest resolution first, then later in the reference list first (the arr lists count up from worst) |
+//! | quality name | tier key `quality_tier_label(<RES>P, source)`, sources as `parity_decision.rs` (D54): SDTV, HDTV-* and Raw-HD (1080p) HDTV; DVD, DVD-R, REGIONAL DVD (480p); WEBDL-* WEB-DL; Bluray-* BluRay; BR-DISK BRDISK (1080p); Unknown/CAM/TELECINE/DVDSCR none. REGIONAL's place among the 480p sources is approximate; no mapped case compares two 480p sources |
 //! | revision version v (Radarr `{version, real}`) | revision v - 1 (`real` > 0 has no field: recorded red) |
 //! | DownloadPropersAndRepacks PreferAndUpgrade (default) / DoNotPrefer | `set_ignore_proper_repack(false / true)` |
 //! | custom format score | candidate: `local_episode_custom_format_score` (absent = 0, as the reference's unset `CustomFormatScore`), Radarr `file_custom_format_score`; incumbent: sum of profile `format_items` over `existing_file_custom_formats`, Radarr `existing_file.custom_format_score` |
@@ -89,7 +89,7 @@ use std::collections::HashSet;
 
 use scryer_application::parity_seams::{
     AdmissionPolicy, AdmissionScope, AdmissionSubject, CandidateFacts, Incumbent,
-    evaluate_admission, quality_tier_index, resolved_episode_ids_are_within_expected,
+    evaluate_admission, quality_tier_index, quality_tier_label, resolved_episode_ids_are_within_expected,
 };
 use scryer_application::{
     AudioLanguageRank, ImportVerdict, QualityProfile, builtin_1080p_profile, disk_space_verdict_for_measurement,
@@ -113,37 +113,52 @@ const RAD_IDS: &[&str] = &[
 ];
 const CREATED_AT: &str = "2026-01-15T12:00:00Z";
 
-/// Quality name -> Scryer tier label. An unknown name is a harness bug.
-fn tier(name: &str) -> Option<&'static str> {
-    match name {
-        "Unknown" | "CAM" | "TELECINE" | "DVDSCR" => None,
-        "SDTV" | "DVD" | "DVD-R" | "REGIONAL" | "WEBDL-480p" | "Bluray-480p" => Some("480P"),
-        "Bluray-576p" => Some("576P"),
-        "HDTV-720p" | "WEBDL-720p" | "Bluray-720p" => Some("720P"),
-        "HDTV-1080p" | "Raw-HD" | "WEBDL-1080p" | "Bluray-1080p" | "BR-DISK" => Some("1080P"),
-        "HDTV-2160p" | "WEBDL-2160p" | "Bluray-2160p" => Some("2160P"),
+/// Quality name -> the product's tier key (`BLURAY-720P`, header). An unknown
+/// name is a harness bug.
+fn tier(name: &str) -> Option<String> {
+    let (res, src) = match name {
+        "Unknown" | "CAM" | "TELECINE" | "DVDSCR" => return None,
+        "SDTV" => ("480P", "HDTV"),
+        "DVD" | "DVD-R" | "REGIONAL" => ("480P", "DVD"),
+        "WEBDL-480p" => ("480P", "WEB-DL"),
+        "Bluray-480p" => ("480P", "BluRay"),
+        "Bluray-576p" => ("576P", "BluRay"),
+        "HDTV-720p" => ("720P", "HDTV"),
+        "WEBDL-720p" => ("720P", "WEB-DL"),
+        "Bluray-720p" => ("720P", "BluRay"),
+        "HDTV-1080p" | "Raw-HD" => ("1080P", "HDTV"),
+        "WEBDL-1080p" => ("1080P", "WEB-DL"),
+        "Bluray-1080p" => ("1080P", "BluRay"),
+        "BR-DISK" => ("1080P", "BRDISK"),
+        "HDTV-2160p" => ("2160P", "HDTV"),
+        "WEBDL-2160p" => ("2160P", "WEB-DL"),
+        "Bluray-2160p" => ("2160P", "BluRay"),
         other => panic!("unknown quality {other}"),
-    }
+    };
+    quality_tier_label(Some(res), Some(src))
 }
 
-/// Profile with the distinct tiers of `names`, highest resolution first.
+/// Profile with the distinct tier keys of `names` (worst first, as the arrs
+/// list them), ordered highest resolution first, then best source first.
 fn profile(names: &[&str], ignore_revisions: bool) -> QualityProfile {
-    let mut tiers: Vec<&str> = Vec::new();
+    let mut tiers: Vec<String> = Vec::new();
     for t in names.iter().filter_map(|n| tier(n)) {
         if !tiers.contains(&t) {
             tiers.push(t);
         }
     }
-    tiers.sort_by_key(|t| std::cmp::Reverse(t.trim_end_matches('P').parse::<u32>().unwrap()));
+    let lines = |t: &str| -> u32 { t.rsplit('-').next().unwrap().trim_end_matches('P').parse().unwrap() };
+    let mut ranked: Vec<(usize, String)> = tiers.into_iter().enumerate().collect();
+    ranked.sort_by_key(|(i, t)| std::cmp::Reverse((lines(t), *i)));
     let mut p = builtin_1080p_profile();
-    p.criteria.quality_tiers = tiers.iter().map(|t| t.to_string()).collect();
+    p.criteria.quality_tiers = ranked.into_iter().map(|(_, t)| t).collect();
     p.criteria.set_ignore_proper_repack(ignore_revisions);
     p
 }
 
 fn incumbent(p: &QualityProfile, n: usize, quality: &str, revision: i64, score: i32, covers: Vec<String>) -> Incumbent {
     Incumbent {
-        tier_index: quality_tier_index(&p.criteria, tier(quality)),
+        tier_index: quality_tier_index(&p.criteria, tier(quality).as_deref()),
         revision: revision as i32 - 1,
         file_id: format!("file{n}"),
         file_path: format!("/parity/file{n}.mkv"),
@@ -163,7 +178,7 @@ fn accepted(
     revision: i64,
     score: i32,
 ) -> bool {
-    let candidate = CandidateFacts::new(quality_tier_index(&p.criteria, tier(quality)), revision as i32 - 1, score)
+    let candidate = CandidateFacts::new(quality_tier_index(&p.criteria, tier(quality).as_deref()), revision as i32 - 1, score)
         .with_profile_policy(None, &p.criteria);
     let subject = AdmissionSubject::new(scope, incumbents.into_iter().map(|i| (i, true)));
     evaluate_admission(&subject, candidate, &AdmissionPolicy::not_a_downgrade())

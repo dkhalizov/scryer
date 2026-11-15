@@ -1568,21 +1568,21 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:181"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import_specs]
 - id: SON-IMPORT-0224
   behaviour: "HDTV-720p does not replace a Bluray-720p file shared by two episodes"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:198"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import_specs]
 - id: SON-IMPORT-0225
   behaviour: "A two-episode import is rejected when it is not an upgrade for one of the episodes' files"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/UpgradeSpecificationFixture.cs:215"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import_specs]
 - id: SON-IMPORT-0226
   behaviour: "With propers preferred, a v1 file does not replace a v2 file of the same quality"

@@ -1813,7 +1813,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/UpgradeSpecificationFixture.cs:61"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::rad_import_specs]
 - id: RAD-IMPORT-0249
   behaviour: "With propers preferred, HDTV-720p v1 does not replace an existing HDTV-720p v2 file"
