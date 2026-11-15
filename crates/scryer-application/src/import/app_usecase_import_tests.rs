@@ -2385,6 +2385,7 @@ fn series_movie_subject(
             .map(|file| {
                 (
                     crate::admission::Incumbent {
+                        quality_key: None,
                         tier_index: Some(0),
                         revision: 0,
                         file_id: file.id.clone(),
@@ -3372,6 +3373,7 @@ fn test_admission_subject(
         incumbents.iter().map(|incumbent| {
             (
                 crate::admission::Incumbent {
+                    quality_key: None,
                     tier_index: Some(0),
                     revision: 0,
                     file_id: incumbent.media_file.id.clone(),

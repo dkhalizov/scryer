@@ -161,6 +161,8 @@ pub(crate) struct ParkedReleaseFacts {
     /// Lanes that require eligibility read `allowed` before comparing scores.
     pub score: i32,
     pub tier_index: Option<usize>,
+    /// fork (P18b): the exact quality; see [`crate::admission::Incumbent::quality_key`].
+    pub quality_key: Option<String>,
     pub revision: i32,
     /// Search-only size preference, rederived alongside the numeric score.
     pub size_fit_penalty: i32,
@@ -214,9 +216,10 @@ pub(crate) fn score_parked_release_title(
         catalog_episodes,
         context.default_runtime_minutes(),
     );
+    let quality_key = crate::quality_profile::release_tier_label(&parsed); // fork (P11, P18b)
     let tier_index = crate::quality_profile::quality_tier_index(
         &context.profile().criteria,
-        crate::quality_profile::release_tier_label(&parsed).as_deref(), // fork (P11)
+        quality_key.as_deref(),
     );
     let release_group = parsed.release_group.clone();
     let scored = crate::canonical_scoring::score_release(
@@ -234,6 +237,7 @@ pub(crate) fn score_parked_release_title(
         // eligibility separately from the score.
         score: scored.total,
         tier_index,
+        quality_key,
         revision: scored.revision,
         size_fit_penalty: scored.announced_decision.size_fit_penalty,
         allowed: scored.announced_decision.allowed,
@@ -519,6 +523,7 @@ impl AppUseCase {
                 self.incumbent_bar_for_episodes(file, context, incumbent_basis, &scoring_episodes);
             (
                 Incumbent {
+                    quality_key: bar.quality_key.clone(),
                     tier_index: bar.tier_index,
                     revision: bar.revision,
                     file_id: file.id.clone(),
@@ -833,6 +838,7 @@ impl AppUseCase {
                     context,
                 );
                 Some(crate::admission::QueuedRelease {
+                    quality_key: facts.quality_key.clone(),
                     missing_history: false,
                     history_cutoff_reached: false,
                     release_group: facts.release_group.clone(),
@@ -935,6 +941,7 @@ impl AppUseCase {
                         .cutoff_score
                         .is_none_or(|cutoff| facts.score >= cutoff);
                 crate::admission::QueuedRelease {
+                    quality_key: facts.quality_key.clone(),
                     missing_history: state.status == crate::AcquisitionScopeStatus::Wanted,
                     history_cutoff_reached,
                     release_group: facts.release_group.clone(),
@@ -1091,6 +1098,7 @@ impl AppUseCase {
             .with_queued(queued);
         let candidate =
             crate::admission::CandidateFacts::new(facts.tier_index, facts.revision, facts.score)
+                .with_quality_key(facts.quality_key.as_deref())
                 .with_language(facts.language)
                 .with_release_title(release_title)
                 .with_profile_policy(facts.release_group.as_deref(), &upgrade.profile.criteria);
@@ -1200,6 +1208,7 @@ impl AppUseCase {
         IncumbentFacts {
             score: scored.total,
             tier_index,
+            quality_key: scored.parsed_quality, // fork (P18b)
             revision: scored.revision,
             language: scored.language,
         }
@@ -1211,12 +1220,14 @@ impl AppUseCase {
 /// A struct rather than a tuple because it is exactly the incumbent half of
 /// [`crate::admission::CandidateFacts`], and a three-element tuple of
 /// `(i32, Option<usize>, i32)` is two swappable `i32`s waiting to happen.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 pub(crate) struct IncumbentFacts {
     /// The file's canonical landed score — its bar.
     pub score: i32,
     /// Position in the profile's quality ordering; lower is better.
     pub tier_index: Option<usize>,
+    /// fork (P18b): the exact quality; see [`crate::admission::Incumbent::quality_key`].
+    pub quality_key: Option<String>,
     /// PROPER/REPACK rank of the release the row remembers.
     pub revision: i32,
     /// Standing against the title's audio language preferences.

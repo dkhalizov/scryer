@@ -37,7 +37,8 @@
 //!
 //! With no group on either side the pair is unrelated (decision_pipeline.rs
 //! `Facts::is_related_to`), so a higher revision is never preferred, but a
-//! lower one of the same tier is refused unless the candidate ignores
+//! lower one of the same tier and exact quality (both sides carry `tier()`
+//! as their quality key, P18b) is refused unless the candidate ignores
 //! revisions (P18): SON-IMPORT-0226 / RAD-IMPORT-0249 refuse the v1, and
 //! RAD-IMPORT-0250/0251 (`set_ignore_proper_repack`) admit it.
 //!
@@ -158,6 +159,7 @@ fn profile(names: &[&str], ignore_revisions: bool) -> QualityProfile {
 
 fn incumbent(p: &QualityProfile, n: usize, quality: &str, revision: i64, score: i32, covers: Vec<String>) -> Incumbent {
     Incumbent {
+        quality_key: tier(quality), // fork (P18b)
         tier_index: quality_tier_index(&p.criteria, tier(quality).as_deref()),
         revision: revision as i32 - 1,
         file_id: format!("file{n}"),
@@ -178,7 +180,9 @@ fn accepted(
     revision: i64,
     score: i32,
 ) -> bool {
-    let candidate = CandidateFacts::new(quality_tier_index(&p.criteria, tier(quality).as_deref()), revision as i32 - 1, score)
+    let key = tier(quality);
+    let candidate = CandidateFacts::new(quality_tier_index(&p.criteria, key.as_deref()), revision as i32 - 1, score)
+        .with_quality_key(key.as_deref()) // fork (P18b)
         .with_profile_policy(None, &p.criteria);
     let subject = AdmissionSubject::new(scope, incumbents.into_iter().map(|i| (i, true)));
     evaluate_admission(&subject, candidate, &AdmissionPolicy::not_a_downgrade())

@@ -55,7 +55,7 @@ decision_gates! {
     QualityTier,
     /// PROPER/REPACK ranks between releases of the same tier from the same
     /// release group; a lower revision of the same tier loses whatever the
-    /// groups (P18).
+    /// groups (P18). Two known, different sources never compare (P18b).
     Revision,
     /// The position of the first preferred audio language each carries.
     PreferredLanguage,
@@ -440,6 +440,10 @@ pub(crate) struct Facts<'a> {
     pub revision: i32,
     /// Only the candidate's matters: whether revisions are compared at all.
     pub ignores_revision: bool,
+    /// fork (P18b): the exact quality, the tier key
+    /// [`crate::quality_profile::quality_tier_label`] builds (`HDTV-1080P`).
+    /// A bare resolution (`1080P`) or `None` means the source is unknown.
+    pub quality_key: Option<&'a str>,
 }
 
 impl Facts<'_> {
@@ -458,8 +462,19 @@ impl Facts<'_> {
     /// The revisions of two related releases. For unrelated ones (unknown or
     /// different group) only a lower revision of the same tier counts, as
     /// `Less`: the arrs refuse it whatever the groups. Otherwise `Equal`.
+    /// Two known, different exact qualities (P18b, [`Facts::quality_key`])
+    /// are not revisions of each other: `Equal`, the score decides.
     pub(crate) fn revision_cmp(&self, held: &Facts<'_>) -> Ordering {
-        if self.is_related_to(held) {
+        // fork (P18b): an unknown source (`None` or a bare resolution) keeps P18
+        fn known(key: Option<&str>) -> Option<&str> {
+            key.filter(|key| key.contains('-'))
+        }
+        if known(self.quality_key)
+            .zip(known(held.quality_key))
+            .is_some_and(|(candidate, held)| candidate != held)
+        {
+            Ordering::Equal
+        } else if self.is_related_to(held) {
             self.revision.cmp(&held.revision)
         } else if !self.ignores_revision // fork (P18)
             && self.side.tier_sort_key == held.side.tier_sort_key
@@ -608,6 +623,7 @@ mod tests {
             release_group: Some("GRP"),
             revision,
             ignores_revision: false,
+            quality_key: None,
         }
     }
 

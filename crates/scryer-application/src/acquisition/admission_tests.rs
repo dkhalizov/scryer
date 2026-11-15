@@ -22,6 +22,7 @@ fn language_ahead_of_tier() -> DecisionPipeline {
 fn incumbent(id: &str, score: i32, covers: &[&str]) -> (Incumbent, bool) {
     (
         Incumbent {
+            quality_key: None,
             // Existing cases all sit in one tier, so score remains the decider.
             tier_index: Some(0),
             // …and at revision 0, so the score still decides. Revision cases
@@ -871,6 +872,46 @@ fn an_unknown_group_v1_does_not_replace_a_v2_at_import() {
     );
 }
 
+/// fork (P18b): inside a bare tier the arrs compare the exact quality first,
+/// so a Bluray-1080p v0 over an HDTV-1080p PROPER is decided on score, not
+/// refused as a lower revision. An unknown source on either side, or the same
+/// exact quality, keeps P18's refusal.
+#[test]
+fn a_lower_revision_of_another_known_source_is_decided_on_score() {
+    for group in ["A", "B"] {
+        for (held_key, candidate_key, admitted) in [
+            (Some("HDTV-1080P"), Some("BLURAY-1080P"), true),
+            (None, Some("BLURAY-1080P"), false),
+            (Some("1080P"), Some("BLURAY-1080P"), false),
+            (Some("HDTV-1080P"), None, false),
+            (Some("BLURAY-1080P"), Some("BLURAY-1080P"), false),
+        ] {
+            let (mut file, primary) = revised("file-1", 1, 100);
+            file.release_group = Some("A".into());
+            file.quality_key = held_key.map(str::to_string);
+            let subject = AdmissionSubject::new(episodes(&["ep-01"]), [(file, primary)]);
+            let verdict = evaluate_admission(
+                &subject,
+                CandidateFacts::new(Some(0), 0, 900)
+                    .with_revision_policy(Some(group), false)
+                    .with_quality_key(candidate_key),
+                &auto(1),
+            );
+            assert_eq!(
+                verdict.is_admitted(),
+                admitted,
+                "group={group}, held={held_key:?}, candidate={candidate_key:?}: {verdict:?}"
+            );
+            if !admitted {
+                assert!(matches!(
+                    verdict.rejection().map(|r| &r.reason),
+                    Some(AdmissionRejectionReason::LowerRevision { .. })
+                ));
+            }
+        }
+    }
+}
+
 /// Tier still wins. A PROPER of a *worse* quality is still a downgrade — the
 /// ladder is tier, then revision, then score, and no step reaches past the one
 /// above it (I3).
@@ -1060,6 +1101,7 @@ fn a_manual_pack_grab_still_cannot_fetch_an_unaired_season() {
 
 fn queued(title: &str, tier_index: Option<usize>, revision: i32, score: i32) -> QueuedRelease {
     QueuedRelease {
+        quality_key: None,
         missing_history: false,
         history_cutoff_reached: false,
         release_group: Some("group".into()),

@@ -95,6 +95,8 @@ pub struct Incumbent {
     /// Episode ids this file covers. Empty for title and link scopes.
     pub covers: Vec<String>,
     pub created_at: String,
+    /// fork (P18b): the exact quality; see [`Facts::quality_key`].
+    pub quality_key: Option<String>,
 }
 
 /// A release for this scope that is already in the download client's queue.
@@ -132,6 +134,8 @@ pub struct QueuedRelease {
     /// is already in flight" from "an equal one". `None` when the queued
     /// title is unknown.
     pub release_key: Option<u64>,
+    /// fork (P18b): the exact quality; see [`Incumbent::quality_key`].
+    pub quality_key: Option<String>,
 }
 
 /// The identity a release name carries for the "already grabbed" refusal:
@@ -281,6 +285,8 @@ pub struct CandidateFacts<'a> {
     /// default order unless the caller attaches the profile's own with
     /// [`CandidateFacts::with_pipeline`].
     pub pipeline: DecisionPipeline,
+    /// fork (P18b): the exact quality; see [`Facts::quality_key`].
+    pub quality_key: Option<&'a str>,
 }
 
 impl<'a> CandidateFacts<'a> {
@@ -294,7 +300,15 @@ impl<'a> CandidateFacts<'a> {
             release_group: None,
             ignore_proper_repack: false,
             pipeline: DecisionPipeline::default_order(),
+            quality_key: None,
         }
+    }
+
+    /// fork (P18b): attach the exact quality; see [`Facts::quality_key`].
+    // fork: parity net seam (tests/parity_import/import_specs.rs)
+    pub fn with_quality_key(mut self, quality_key: Option<&'a str>) -> Self {
+        self.quality_key = quality_key;
+        self
     }
 
     pub(crate) fn with_pipeline(mut self, pipeline: DecisionPipeline) -> Self {
@@ -337,6 +351,7 @@ impl<'a> CandidateFacts<'a> {
             release_group: self.release_group,
             revision: self.revision,
             ignores_revision: self.ignores_revision(),
+            quality_key: self.quality_key,
         }
     }
 
@@ -401,6 +416,7 @@ impl Incumbent {
             release_group: self.release_group.as_deref(),
             revision: self.revision,
             ignores_revision: false,
+            quality_key: self.quality_key.as_deref(),
         }
     }
 }
@@ -417,6 +433,7 @@ impl QueuedRelease {
             release_group: self.release_group.as_deref(),
             revision: self.revision,
             ignores_revision: false,
+            quality_key: self.quality_key.as_deref(),
         }
     }
 }
@@ -1230,9 +1247,10 @@ pub fn evaluate_admission(
         // threshold would refuse exactly the fix the release exists to
         // deliver.
         //
-        // Tiers are coarser than Sonarr's exact `Quality`, so "same tier" for a
-        // revision is "same resolution": a WEB-DL PROPER counts as a revision of
-        // a Bluray release of the same resolution from the same group.
+        // Tiers are coarser than Sonarr's exact `Quality`; fork (P18b): a
+        // revision also needs the same exact quality when both sources are
+        // known, so a WEB-DL PROPER is not a revision of a Bluray release in a
+        // bare tier. An unknown source on either side compares by tier.
         //
         // A higher revision wins only within one release group; a lower one
         // of the same tier loses whatever the groups (P18), as Sonarr's

@@ -81,6 +81,7 @@ const INDEX_LABELS: [&str; 3] = ["1080p", "720p", "480p"];
 
 fn held(tier_index: Option<usize>, revision: i32, group: Option<String>) -> Incumbent {
     Incumbent {
+        quality_key: None,
         tier_index,
         revision,
         file_id: String::new(),

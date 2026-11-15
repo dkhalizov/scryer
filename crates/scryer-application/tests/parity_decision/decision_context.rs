@@ -591,6 +591,7 @@ fn already_imported(g: &Value, radarr: bool) -> Result<Value, String> {
         let id = format!("f{file_id}");
         let path = format!("/parity/{id}.mkv");
         let inc = Incumbent {
+            quality_key: None,
             tier_index: None,
             revision: 0,
             file_id: id.clone(),

@@ -1285,6 +1285,7 @@ fn whatever_grab_admits_import_admits() {
                         AdmissionScope::Title,
                         [(
                             Incumbent {
+                                quality_key: None,
                                 tier_index: incumbent_tier,
                                 revision: 0,
                                 file_id: "file-1".into(),

@@ -111,6 +111,7 @@ mod tests {
             scores.iter().enumerate().map(|(i, score)| {
                 (
                     Incumbent {
+                        quality_key: None,
                         tier_index: None,
                         revision: 0,
                         file_id: format!("file-{i}"),

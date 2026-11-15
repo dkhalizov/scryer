@@ -828,6 +828,7 @@ fn incumbent(
     added_days_ago: i64,
 ) -> Incumbent {
     Incumbent {
+        quality_key: None,
         tier_index: tier_index(profile, s),
         revision: s.revision,
         file_id: id.to_string(),
@@ -1321,6 +1322,7 @@ fn queue(app: &str, g: &Value) -> Outcome {
             }
             let held = side(item, None, cf_score(p, item))?;
             queued.push(QueuedRelease {
+                quality_key: None,
                 missing_history: false,
                 history_cutoff_reached: false,
                 release_group: held.group.clone(),
@@ -1578,6 +1580,7 @@ fn same_episodes(g: &Value) -> Result<Value, String> {
                 .collect();
             (
                 Incumbent {
+                    quality_key: None,
                     tier_index: None,
                     revision: 0,
                     file_id: format!("f{file_id}"),

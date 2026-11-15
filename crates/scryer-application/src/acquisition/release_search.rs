@@ -2082,18 +2082,16 @@ pub fn automatic_candidate_delay_decision(
         .as_ref()
         .map(|decision| decision.preference_score)
         .unwrap_or(0);
+    let quality_key = candidate
+        .parsed_release_metadata
+        .as_ref()
+        .and_then(crate::quality_profile::release_tier_label); // fork (P11, P18b)
     let candidate_facts = crate::admission::CandidateFacts::new(
-        crate::quality_profile::quality_tier_index(
-            &profile.criteria,
-            candidate
-                .parsed_release_metadata
-                .as_ref()
-                .and_then(crate::quality_profile::release_tier_label) // fork (P11)
-                .as_deref(),
-        ),
+        crate::quality_profile::quality_tier_index(&profile.criteria, quality_key.as_deref()),
         candidate_revision(candidate),
         candidate_score,
     )
+    .with_quality_key(quality_key.as_deref())
     .with_language(candidate_language(candidate))
     .with_release_title(&candidate.title)
     .with_profile_policy(
@@ -2524,18 +2522,19 @@ fn evaluate_auto_candidate_recording(
         .unwrap_or(0);
     // Built before the cutoff gate because that gate needs the candidate's tier
     // and revision, not just the scope's state.
+    let quality_key = candidate
+        .parsed_release_metadata
+        .as_ref()
+        .and_then(crate::quality_profile::release_tier_label); // fork (P11, P18b)
     let candidate_facts = crate::admission::CandidateFacts::new(
         crate::quality_profile::quality_tier_index(
             &context.profile.criteria,
-            candidate
-                .parsed_release_metadata
-                .as_ref()
-                .and_then(crate::quality_profile::release_tier_label) // fork (P11)
-                .as_deref(),
+            quality_key.as_deref(),
         ),
         candidate_revision(candidate),
         candidate_score,
     )
+    .with_quality_key(quality_key.as_deref())
     .with_language(candidate_language(candidate))
     .with_release_title(&candidate.title)
     .with_profile_policy(
@@ -5105,6 +5104,7 @@ mod tests {
             crate::admission::AdmissionScope::Title,
             [(
                 crate::admission::Incumbent {
+                    quality_key: None,
                     // Tier-neutral on purpose: these cases are about the score
                     // comparison, so the incumbent sits in the same (unlisted)
                     // tier as the candidate and the tier gate is a no-op.
@@ -7316,6 +7316,7 @@ mod tests {
             crate::admission::AdmissionScope::Episodes(vec!["episode-1".to_string()]),
             [(
                 crate::admission::Incumbent {
+                    quality_key: None,
                     tier_index: Some(1),
                     revision: 0,
                     file_id: existing[0].id.clone(),
@@ -7567,6 +7568,7 @@ mod tests {
                 AdmissionScope::Title,
                 [(
                     Incumbent {
+                        quality_key: None,
                         tier_index: None,
                         revision: 0,
                         file_id: "file-1".to_string(),
@@ -7629,6 +7631,7 @@ mod tests {
                 AdmissionScope::Title,
                 [(
                     Incumbent {
+                        quality_key: None,
                         tier_index: Some(1),
                         revision,
                         file_id: "file-1".to_string(),
@@ -8171,6 +8174,7 @@ mod tests {
             let member = |id: &str, score: i32, days_ago: i64, covers: &str| {
                 (
                     Incumbent {
+                        quality_key: None,
                         tier_index: Some(1),
                         revision: 0,
                         file_id: id.to_string(),
@@ -8362,6 +8366,7 @@ mod tests {
         let member = |id: &str| {
             (
                 crate::admission::Incumbent {
+                    quality_key: None,
                     tier_index,
                     revision: 0,
                     file_id: format!("file-{id}"),
@@ -8444,6 +8449,7 @@ mod tests {
                 crate::admission::AdmissionScope::Episodes(vec!["episode-1".to_string()]),
                 [(
                     crate::admission::Incumbent {
+                        quality_key: None,
                         tier_index: Some(1),
                         revision: 0,
                         file_id: file.id.clone(),

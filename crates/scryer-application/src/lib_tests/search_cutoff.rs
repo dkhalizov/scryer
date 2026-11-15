@@ -2159,6 +2159,7 @@ async fn a_queued_releases_announced_size_affects_fit_without_creating_score_upg
     );
     let subject =
         AdmissionSubject::new(AdmissionScope::Title, []).with_queued(vec![QueuedRelease {
+            quality_key: None,
             missing_history: false,
             history_cutoff_reached: false,
             release_group: Some("group".into()),
@@ -2278,6 +2279,7 @@ async fn a_queued_release_the_profile_now_vetoes_still_holds_its_scope() {
 
     let subject =
         AdmissionSubject::new(AdmissionScope::Title, []).with_queued(vec![QueuedRelease {
+            quality_key: None,
             missing_history: false,
             history_cutoff_reached: false,
             release_group: Some("group".into()),
