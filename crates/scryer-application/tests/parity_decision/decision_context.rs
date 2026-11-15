@@ -76,7 +76,12 @@
 //! as in C#) the file gets that grab's `source_title`, else none (a Scryer file
 //! knows its grab title only if imported from that grab), and that grab's
 //! `download_id` as `release_hash` (P31: Scryer stores the imported torrent's
-//! info hash, taken from the download id). Candidate title =
+//! info hash, taken from the download id). The corpus download ids are non-hex
+//! placeholders ("<GUID-A>", "ID-A") that the product's
+//! `normalize_torrent_info_hash` would drop to `None`, so the harness stores
+//! them raw: the hash-match IDs pin only the guard's comparison, not the write
+//! side (lib test `a_torrent_import_and_its_upgrade_record_the_info_hash` does).
+//! Candidate title =
 //! `release.title` or "Title1" (NBuilder default); `release.protocol` ->
 //! `source_kind`; `info_hash` -> `extra["info_hash"]`.
 //! `enable_completed_download_handling == false` -> red (no Scryer setting).
@@ -106,9 +111,10 @@
 //! (no multi-season rule, red by reason), 0040 and rad 0012 (no completed
 //! download handling switch).
 //!
-//! Vacuity warning: the AlreadyImported greens show only that the name guard does
-//! not fire on a release named "Title1"; no fixture names a release by the grabbed
-//! title, so they cannot catch a guard that never fires. The MonitoredEpisode
+//! Vacuity warning: the AlreadyImported name-only greens show only that the name
+//! guard does not fire on a release named "Title1"; no fixture names a release by
+//! the grabbed title. The hash-match IDs (son 0047, 0048, rad 0019, 0020) are
+//! refusals, so they do catch a hash guard that never fires. The MonitoredEpisode
 //! greens are the all-monitored or refused `EpisodeSet` shapes only.
 //!
 //! # Unmapped (tests: []), with reasons
@@ -584,6 +590,8 @@ fn already_imported(g: &Value, radarr: bool) -> Result<Value, String> {
     });
     let grabbed_release_title = imported_grab.and_then(|gr| gr["source_title"].as_str()).map(str::to_string);
     // P31: an imported torrent's download id is its info hash; Scryer stores it as release_hash.
+    // Stored raw: the corpus ids are non-hex placeholders that normalize_torrent_info_hash
+    // would drop, so these IDs pin the guard's comparison only (see module doc).
     let release_hash = imported_grab.and_then(|gr| gr["download_id"].as_str()).map(str::to_string);
 
     let episode = (!radarr).then(|| "e1".to_string());

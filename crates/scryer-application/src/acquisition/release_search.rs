@@ -8772,6 +8772,10 @@ mod tests {
         #[test]
         fn a_missing_or_different_info_hash_or_out_of_scope_file_is_not_a_match() {
             let other = "0000000000000000000000000000000000000000";
+            // The scope holds another file, so the guard reaches the hash check
+            // and must skip the hashed file outside the subject's incumbents.
+            let mut incumbent = hashed_file(None);
+            incumbent.id = "media-file-2".to_string();
             let cases = [
                 ("candidate has no hash", hashed_file(Some(HASH)), None, true),
                 ("different hash", hashed_file(Some(HASH)), Some(other), true),
@@ -8779,14 +8783,7 @@ mod tests {
                 ("out of scope", hashed_file(Some(HASH)), Some(HASH), false),
             ];
             for (what, file, hash, in_scope) in cases {
-                let subject = if in_scope {
-                    subject_holding(&file)
-                } else {
-                    crate::admission::AdmissionSubject::new(
-                        crate::admission::AdmissionScope::Episodes(vec!["episode-1".to_string()]),
-                        [],
-                    )
-                };
+                let subject = subject_holding(if in_scope { &file } else { &incumbent });
                 assert!(
                     !candidate_matches_existing_media_file(
                         &hashed_candidate(hash),
