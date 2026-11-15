@@ -4289,6 +4289,19 @@ fn parse_identity_at(
                     "family:range_pack_multi_season_bounded",
                 ));
             }
+            // fork (P34f): `S05.Special` is a special of season 5, not a pack.
+            if let Some(season) = season_before_special(tokens, index + 1) {
+                return Some((
+                    ReleaseIdentity::SpecialIdentity {
+                        special_kind: ParsedSpecialKind::Special,
+                        season_hint: Some(season),
+                        episode_hint: None,
+                    },
+                    index + 1,
+                    30,
+                    "family:season_special",
+                ));
+            }
             parse_season_pack_at(tokens, index).map(
                 |SeasonPackParse {
                      seasons,
@@ -4524,7 +4537,8 @@ fn parse_identity_at(
                 (
                     ReleaseIdentity::SpecialIdentity {
                         special_kind,
-                        season_hint: None,
+                        // fork (P34f): `S05.Special` names its season.
+                        season_hint: season_before_special(tokens, index),
                         episode_hint,
                     },
                     index,
@@ -4535,6 +4549,15 @@ fn parse_identity_at(
         }
         ParseFamily::Unknown => None,
     }
+}
+
+/// fork (P34f): the season of a bare `Sxx` token directly before a `SPECIAL`
+/// at `index`.
+fn season_before_special(tokens: &[Token], index: usize) -> Option<u32> {
+    if tokens.get(index)?.normalized != "SPECIAL" {
+        return None;
+    }
+    parse_season_token(tokens.get(index.checked_sub(1)?)?.normalized.as_str())
 }
 
 fn parse_numbered_special_at(
@@ -6162,7 +6185,8 @@ fn project_episode(
             is_season_extra: false,
             is_split_episode: episode_numbers.len() > 1,
             is_mini_series: detect_mini_series_tokens(tokens),
-            special_kind: None,
+            // fork (P34f): `S11E00` alone is a special.
+            special_kind: (episode_numbers.as_slice() == [0]).then_some(ParsedSpecialKind::Special),
             release_type: if episode_numbers.len() > 1 {
                 ParsedEpisodeReleaseType::MultiEpisode
             } else {
@@ -6293,11 +6317,11 @@ fn project_episode(
         }),
         ReleaseIdentity::SpecialIdentity {
             special_kind,
+            season_hint,
             episode_hint,
-            ..
         } => Some(ParsedEpisodeMetadata {
-            season: None,
-            season_numbers: Vec::new(),
+            season: *season_hint,
+            season_numbers: season_hint.iter().copied().collect(),
             episode_numbers: Vec::new(),
             absolute_episode: None,
             absolute_episode_numbers: Vec::new(),
@@ -8207,6 +8231,10 @@ fn parse_complete_standard_episode_range_at(
 }
 
 fn parse_season_pack_at(tokens: &[Token], index: usize) -> Option<SeasonPackParse> {
+    // fork (P34f): `S05.Special` is a special of season 5, not its pack.
+    if season_before_special(tokens, index + 1).is_some() {
+        return None;
+    }
     // `Temporada 2 [Cap.201]` names one chapter of the season.
     if (0..tokens.len()).any(|chapter| parse_chapter_episode_at(tokens, chapter).is_some()) {
         return None;
@@ -8505,7 +8533,14 @@ fn parse_part_markers_after(tokens: &[Token], index: usize) -> Option<PartMarker
             cursor += 1;
             continue;
         }
-        let Some((part, part_consumed)) = parse_part_marker_at(tokens, cursor) else {
+        // fork (P34d): `S07.Vol.1` and `S06.P1` are parts only directly after
+        // the season token, so a later `Vol n` is never a season part.
+        let marker = parse_part_marker_at(tokens, cursor).or_else(|| {
+            (cursor == index)
+                .then(|| parse_leading_volume_marker_at(tokens, cursor))
+                .flatten()
+        });
+        let Some((part, part_consumed)) = marker else {
             if parts.is_empty() {
                 cursor += 1;
                 continue;
@@ -8535,6 +8570,21 @@ fn parse_part_marker_at(tokens: &[Token], index: usize) -> Option<(u32, Vec<usiz
         return Some((value, vec![index]));
     }
     None
+}
+
+fn parse_leading_volume_marker_at(tokens: &[Token], index: usize) -> Option<(u32, Vec<usize>)> {
+    let token = tokens.get(index)?.normalized.as_str();
+    if matches!(token, "VOL" | "VOLUME") {
+        let value = parse_numeric_token(tokens.get(index + 1)?.normalized.as_str())?;
+        return Some((value, vec![index, index + 1]));
+    }
+    token
+        .strip_prefix("VOLUME")
+        .or_else(|| token.strip_prefix("VOL"))
+        .or_else(|| token.strip_prefix('P'))
+        .filter(|digits| (1..=2).contains(&digits.len()))
+        .and_then(parse_numeric_token)
+        .map(|value| (value, vec![index]))
 }
 
 fn part_sequence_is_full_season(parts: &[u32]) -> bool {

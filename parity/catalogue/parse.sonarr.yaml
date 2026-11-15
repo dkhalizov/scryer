@@ -2598,7 +2598,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:35"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_true|baf1177a991c|0
 - id: SON-PARSE-0325
@@ -2606,7 +2606,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:36"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_true|81934f243563|0
 - id: SON-PARSE-0326
@@ -2614,7 +2614,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:37"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_true_if_e00_special|e83753d45443|0
 - id: SON-PARSE-0327
@@ -2622,7 +2622,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs:43"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_possible_special]
 # key: src/NzbDrone.Core.Test/ParserTests/IsPossibleSpecialEpisodeFixture.cs|IsPossibleSpecialEpisode_should_be_false_for_Special_in_title|d70fb5597928|0
 - id: SON-PARSE-0328
@@ -9984,7 +9984,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:81"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_partial_season_release|0ea5b8f76005|0
 - id: SON-PARSE-1242
@@ -9992,7 +9992,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:82"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_multi_season_release|2eedb2ebe7c7|0
 - id: SON-PARSE-1243

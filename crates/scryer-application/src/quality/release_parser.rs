@@ -678,7 +678,8 @@ fn bare_season_followed_by_release_metadata(token: &str, tokens: &[String]) -> b
     tokens.iter().enumerate().any(|(index, candidate)| {
         normalize_alphanumeric_upper(candidate) == target
             && (tokens.get(index + 1).is_some_and(|next| {
-                matches!(normalize_alphanumeric_upper(next).as_str(), "BD" | "JPBD")
+                // fork (P34f): `S02.Special` is a season special.
+                matches!(normalize_alphanumeric_upper(next).as_str(), "BD" | "JPBD" | "SPECIAL")
             }) || tokens
                 .iter()
                 .skip(index + 1)
@@ -882,6 +883,21 @@ mod tests {
             assert!(parsed(raw).episode.is_none(), "{raw}");
         }
         assert_eq!(parsed("Agents.of.S.H.I.E.L.D.S01E01.720p").normalized_title.to_ascii_uppercase(), "AGENTS OF S H I E L D");
+    }
+
+    // fork (P34d, P34f): `S05.Special` is a season special, never a pack;
+    // `S07.Vol.1` is part 1 of season 7; a title's own `Special` is title.
+    #[test]
+    fn season_specials_and_volumes_are_not_full_packs() {
+        let ep = |raw: &str| crate::parse_release_metadata(raw).episode.expect(raw);
+        let special = ep("Show.S05.Special.HDTV.x264-2HD");
+        assert_eq!((special.season, special.full_season), (Some(5), false));
+        assert!(special.special_kind.is_some());
+        assert!(ep("Show.S11E00.A.Christmas.Carol.Special.720p.HDTV-GRP").special_kind.is_some());
+        let volume = ep("Show.S07.Vol.1.1080p.NF.WEBRip.DD5.1.x264-NTb");
+        assert_eq!((volume.season, volume.full_season, volume.is_partial_season), (Some(7), false, true));
+        let guard = ep("Big.Special.Show.S05.720p.HDTV.x264-GRP");
+        assert!(guard.special_kind.is_none() && guard.full_season);
     }
 }
 
