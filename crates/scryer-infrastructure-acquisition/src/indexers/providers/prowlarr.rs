@@ -1747,7 +1747,7 @@ fn provider_type_for_protocol(protocol: &str) -> Option<&'static str> {
 fn collect_routing_categories(categories: &[ProwlarrCategory]) -> HashMap<String, Vec<String>> {
     let mut routing = HashMap::<RoutingScope, BTreeSet<String>>::new();
     for category in categories {
-        collect_routing_category(category, None, &mut routing);
+        collect_routing_category(category, &mut routing);
     }
 
     routing
@@ -1758,11 +1758,9 @@ fn collect_routing_categories(categories: &[ProwlarrCategory]) -> HashMap<String
 
 fn collect_routing_category(
     category: &ProwlarrCategory,
-    inherited_scope: Option<RoutingScope>,
     routing: &mut HashMap<RoutingScope, BTreeSet<String>>,
 ) {
-    let scope = classify_scope(category).or(inherited_scope);
-    if let Some(scope) = scope {
+    if let Some(scope) = classify_scope(category) {
         routing
             .entry(scope)
             .or_default()
@@ -1770,22 +1768,24 @@ fn collect_routing_category(
     }
 
     for sub_category in &category.sub_categories {
-        collect_routing_category(sub_category, scope, routing);
+        collect_routing_category(sub_category, routing);
     }
 }
 
+// fork (P32): only the category ids Prowlarr syncs to Radarr and Sonarr by
+// default (RadarrSettings.cs:28, SonarrSettings.cs:27-28). A queried parent
+// expands to all its subcategories on Prowlarr's side, and every custom
+// 100000+ id copies a tracker category that is also mapped to a standard one,
+// so no name matching or inheritance is needed.
 fn classify_scope(category: &ProwlarrCategory) -> Option<RoutingScope> {
-    let name = category.name.trim().to_ascii_lowercase();
-    if name.contains("anime") {
-        return Some(RoutingScope::Anime);
+    match category.id {
+        2000 | 2010 | 2020 | 2030 | 2040 | 2045 | 2050 | 2060 | 2070 | 2080 | 2090 => {
+            Some(RoutingScope::Movie)
+        }
+        5000 | 5010 | 5020 | 5030 | 5040 | 5045 | 5050 | 5090 => Some(RoutingScope::Series),
+        5070 => Some(RoutingScope::Anime),
+        _ => None,
     }
-    if (2000..3000).contains(&category.id) || name.contains("movie") {
-        return Some(RoutingScope::Movie);
-    }
-    if (5000..6000).contains(&category.id) || name == "tv" || name.contains("series") {
-        return Some(RoutingScope::Series);
-    }
-    None
 }
 
 fn api_url(base_url: &str, path: &str) -> String {
@@ -2248,6 +2248,38 @@ mod tests {
         assert_eq!(routing.get("anime"), Some(&vec!["5070".to_string()]));
     }
 
+    // fork (P32)
+    #[test]
+    fn routing_scopes_keep_only_prowlarr_default_sync_categories() {
+        let cat = |id: i64, name: &str, sub_categories: Vec<ProwlarrCategory>| ProwlarrCategory {
+            id,
+            name: name.to_string(),
+            sub_categories,
+        };
+        let routing = collect_routing_categories(&[
+            cat(2000, "Movies", vec![cat(100020, "Movies-DE", vec![])]),
+            cat(
+                5000,
+                "TV",
+                vec![
+                    cat(5030, "TV/SD", vec![]),
+                    cat(5060, "TV/Sport", vec![]),
+                    cat(5070, "TV/Anime", vec![]),
+                    cat(5080, "TV/Documentary", vec![]),
+                ],
+            ),
+            cat(8000, "Other", vec![cat(8010, "Movies Other", vec![])]),
+        ]);
+
+        assert_eq!(routing.get("movie"), Some(&vec!["2000".to_string()]));
+        assert_eq!(
+            routing.get("series"),
+            Some(&vec!["5000".to_string(), "5030".to_string()])
+        );
+        assert_eq!(routing.get("anime"), Some(&vec!["5070".to_string()]));
+        assert_eq!(routing.len(), 3);
+    }
+
     fn seed_field(name: &str, value: serde_json::Value) -> ProwlarrIndexerField {
         ProwlarrIndexerField {
             name: name.to_string(),
@@ -2622,7 +2654,7 @@ mod tests {
         assert!(child.enable_auto_search);
         assert_eq!(child.routing_scopes.len(), 1);
         assert_eq!(child.routing_scopes[0].scope_id, "movie");
-        assert_eq!(child.routing_scopes[0].categories, vec!["100020", "2000"]);
+        assert_eq!(child.routing_scopes[0].categories, vec!["2000"]);
         assert_eq!(metadata.indexer_id, 7);
         assert_eq!(metadata.app_profile_id, 12);
         assert_eq!(metadata.download_client_id, 3);

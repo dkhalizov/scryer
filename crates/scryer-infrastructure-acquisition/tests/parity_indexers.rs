@@ -12,8 +12,9 @@
 //! Scryer code under test:
 //! - `ProwlarrManagementClient::plan_sync` (prowlarr.rs:1463, children built by
 //!   build_managed_child_plan :1582: flags :1592-1602 and :1672, routing scopes
-//!   collect_routing_categories :1747 / classify_scope :1777, seed and seeder
-//!   metadata :1643-1665), run against a loopback wiremock serving the
+//!   collect_routing_categories :1747 / classify_scope :1780, which keep only
+//!   Prowlarr's default app sync category ids, seed and seeder metadata
+//!   :1643-1665), run against a loopback wiremock serving the
 //!   captured Prowlarr `system-status.json`, `indexer.json` and
 //!   `appprofile.json` unchanged. A child plan's routing scopes are the
 //!   categories Scryer searches that indexer with per scope (the sync seeds
