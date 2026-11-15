@@ -14008,6 +14008,17 @@
         "episode.release_type": "Explicit episodic/pack syntax checked against the projection contract",
         "quality": "Unambiguous technical token outside reviewed identity spans",
         "release_group": "Reviewed unambiguous group position, replaced with a sentinel"
+      },
+      "accepted_failure": {
+        "reason": "fork (P33c): 540p reads as 480p, the arrs' R540p resolution class (Sonarr/Radarr QualityParser).",
+        "tradeoff": "Profile tiers and the arr quality names have no 540p; the arr class keeps tier keys and imports in step with the arrs. Anime is otherwise ignored (D74).",
+        "mismatches": [
+          {
+            "field": "quality",
+            "actual": "480p",
+            "missing_field": false
+          }
+        ]
       }
     },
     {

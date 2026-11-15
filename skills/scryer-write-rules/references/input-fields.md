@@ -11,8 +11,8 @@ null. Language codes are ISO 639-3 (`eng`, `jpn`, `fra`).
 |---|---|---|
 | `raw_title` | string | Unparsed release name |
 | `protocol` | string? | `usenet`, `torrent`, `http` |
-| `quality` | string? | Tier: `2160P`, `1080P`, `720P`, ... |
-| `source` | string? | `WEB-DL`, `WEBRip`, `BLURAY`, `HDTV`, ... |
+| `quality` | string? | Tier: `2160P`, `1080P`, `720P`, ... May be the arrs' default for a name with a source but no resolution (`HDTV` alone reads `480P`). `1440p` reads `1080P`, `960p` `720P`, `360p`/`540p` `480P` |
+| `source` | string? | `WEB-DL`, `WEBRip`, `BLURAY`, `HDTV`, ... A name with a resolution but no source reads `HDTV`, as in the arrs. A service WEBRip (`AMZN.WEBRip`) stays `WEBRip` |
 | `video_codec` | string? | `H.265`, `H.264`, `AV1`, ... |
 | `audio` | string? | Primary audio codec (`DDP`, `AAC`, `TrueHD`) |
 | `audio_codecs` | string[] | All detected audio codecs |

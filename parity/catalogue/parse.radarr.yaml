@@ -4285,7 +4285,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:55"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0533
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|ae310c82b7e243ae|0"
@@ -4293,7 +4293,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:56"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0534
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|b9540eb064d659f4|0"
@@ -4301,7 +4301,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:57"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0535
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|2f2c4191fad9a91b|0"
@@ -4309,7 +4309,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:58"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0536
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|3754d3feb490d70e|0"
@@ -4317,7 +4317,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:59"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0537
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|2ea29f59c5e4ec65|0"
@@ -4325,7 +4325,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:60"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0538
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|09aaa1d265d67aaf|0"
@@ -4333,7 +4333,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:61"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0539
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|4a42fc0bca1e7276|0"
@@ -4341,7 +4341,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:62"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0540
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|6504b65831b0b94c|0"
@@ -4349,7 +4349,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:63"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0541
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|9af358a6ed6180d1|0"
@@ -4381,7 +4381,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:67"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0545
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|5176ce3fcfa7c934|0"
@@ -4389,7 +4389,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:68"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0546
   # key: "QualityParserFixture.cs|should_parse_sdtv_quality|e34f23632d948092|0"
@@ -4421,7 +4421,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0550
   # key: "QualityParserFixture.cs|should_parse_dvd_quality|70da2522e53aa10e|0"
@@ -4565,7 +4565,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:110"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0568
   # key: "QualityParserFixture.cs|should_parse_bluray480p_quality|64a124fc678e4927|0"
@@ -4589,7 +4589,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:118"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0571
   # key: "QualityParserFixture.cs|should_parse_bluray480p_quality|5a28821f9d9c5773|0"
@@ -4597,7 +4597,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:119"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0572
   # key: "QualityParserFixture.cs|should_parse_bluray480p_quality|45f9d5850e872549|0"
@@ -4613,7 +4613,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:121"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0574
   # key: "QualityParserFixture.cs|should_parse_hdtv720p_quality|90bac19850826f4c|0"
@@ -4621,7 +4621,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:127"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0575
   # key: "QualityParserFixture.cs|should_parse_hdtv720p_quality|6e7958038a139001|0"
@@ -4653,7 +4653,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:131"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0579
   # key: "QualityParserFixture.cs|should_parse_hdtv720p_quality|d573e5ea117ee6a4|0"
@@ -4685,7 +4685,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:135"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0583
   # key: "QualityParserFixture.cs|should_parse_hdtv720p_quality|dbb2c299ef092cf6|0"
@@ -4749,7 +4749,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:153"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0591
   # key: "QualityParserFixture.cs|should_parse_webdl720p_quality|92e94a48a0556051|0"
@@ -4797,7 +4797,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:164"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0597
   # key: "QualityParserFixture.cs|should_parse_webdl720p_quality|f5b46be366eac580|0"
@@ -4829,7 +4829,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:168"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0601
   # key: "QualityParserFixture.cs|should_parse_webdl720p_quality|b1515e4133966f7c|0"
@@ -4861,7 +4861,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:172"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0605
   # key: "QualityParserFixture.cs|should_parse_webdl720p_quality|440a46e56bf2f8b0|0"
@@ -4877,7 +4877,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:174"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0607
   # key: "QualityParserFixture.cs|should_parse_webdl720p_quality|481cb078ec833def|0"
@@ -4885,7 +4885,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:175"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0608
   # key: "QualityParserFixture.cs|should_parse_webdl720p_quality|1d5f01d657784f3e|0"
@@ -4901,7 +4901,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:182"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0610
   # key: "QualityParserFixture.cs|should_parse_webrip720p_quality|6ad0f15f53b16f08|0"
@@ -5149,7 +5149,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:223"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0641
   # key: "QualityParserFixture.cs|should_parse_webrip1080p_quality|463650a9509085ac|0"
@@ -5165,7 +5165,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:225"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0643
   # key: "QualityParserFixture.cs|should_parse_webdl2160p_quality|4971aa57ff2bc437|0"
@@ -5253,7 +5253,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:246"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0654
   # key: "QualityParserFixture.cs|should_parse_webrip2160p_quality|60f93eb790a5c0cd|0"
@@ -5261,7 +5261,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:247"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0655
   # key: "QualityParserFixture.cs|should_parse_webrip2160p_quality|4a0cd580b1b9393c|0"
@@ -5269,7 +5269,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:248"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0656
   # key: "QualityParserFixture.cs|should_parse_webrip2160p_quality|ae7587e490451254|0"
@@ -5277,7 +5277,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:249"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0657
   # key: "QualityParserFixture.cs|should_parse_bluray720p_quality|ebc37a73bbc6f60c|0"
@@ -5285,7 +5285,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:255"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0658
   # key: "QualityParserFixture.cs|should_parse_bluray720p_quality|61571495948a5ecd|0"
@@ -5349,7 +5349,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:263"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0666
   # key: "QualityParserFixture.cs|should_parse_bluray720p_quality|43da44bc4c88375f|0"
@@ -5413,7 +5413,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:271"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0674
   # key: "QualityParserFixture.cs|should_parse_bluray720p_quality|be87da98144f3869|0"
@@ -5429,7 +5429,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:273"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0676
   # key: "QualityParserFixture.cs|should_parse_bluray1080p_quality|9ff47488d2a37556|0"
@@ -5501,7 +5501,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:287"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0685
   # key: "QualityParserFixture.cs|should_parse_bluray1080p_quality|8b216f72deff5c25|0"
@@ -5557,7 +5557,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:294"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0692
   # key: "QualityParserFixture.cs|should_parse_bluray1080p_quality|4da4d004da0427e9|0"
@@ -5565,7 +5565,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:295"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0693
   # key: "QualityParserFixture.cs|should_parse_bluray1080p_quality|9f31de51906cb64a|0"
@@ -5573,7 +5573,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:296"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0694
   # key: "QualityParserFixture.cs|should_parse_bluray1080p_quality|13849aab9c97e906|0"
@@ -5701,7 +5701,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:317"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0710
   # key: "QualityParserFixture.cs|should_parse_bluray2160p_quality|1ea048ad977b75a1|0"
@@ -5829,7 +5829,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:348"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0726
   # key: "QualityParserFixture.cs|should_parse_remux1080p_quality|3a1ce5651337fb44|0"
@@ -5837,7 +5837,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:349"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0727
   # key: "QualityParserFixture.cs|should_parse_remux1080p_quality|10127de94f41279b|0"
@@ -5901,7 +5901,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:362"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0735
   # key: "QualityParserFixture.cs|should_parse_remux2160p_quality|a701f2f038e091ea|0"
@@ -5909,7 +5909,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:363"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0736
   # key: "QualityParserFixture.cs|should_parse_remux2160p_quality|f5fb52c66d9f59a0|0"
@@ -5917,7 +5917,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:364"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0737
   # key: "QualityParserFixture.cs|should_parse_remux2160p_quality|fb86f2f6e2f6cfc7|0"
@@ -5925,7 +5925,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:365"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0738
   # key: "QualityParserFixture.cs|should_parse_remux2160p_quality|fae0fc4b0d27f0f3|0"
@@ -6165,7 +6165,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:410"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0768
   # key: "QualityParserFixture.cs|quality_parse|0ccab1becefd426f|0"
@@ -6173,7 +6173,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:411"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0769
   # key: "QualityParserFixture.cs|should_parse_quality_from_other_source|1b9a0cc9cd1a2970|0"
@@ -6181,7 +6181,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0770
   # key: "QualityParserFixture.cs|should_parse_quality_from_other_source|1eae965122bdd0ba|0"
@@ -6205,7 +6205,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0773
   # key: "QualityParserFixture.cs|should_parse_quality_from_other_source|e5a7dc58343f789d|0"
@@ -6213,7 +6213,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0774
   # key: "QualityParserFixture.cs|should_parse_quality_from_other_source|575cf433969aedd2|0"
@@ -6221,7 +6221,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0775
   # key: "QualityParserFixture.cs|should_parse_quality_from_other_source|e960fd5a5fa2fadd|0"
@@ -6277,7 +6277,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:33"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0782
   # key: "QualityParserFixture.cs|should_parse_quality_from_other_source|696c49ca85e47f72|0"
@@ -6285,7 +6285,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:34"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0783
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|1047fd16ad9fbacb|0"
@@ -6333,7 +6333,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:448"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0789
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|01afba0ae032d673|0"
@@ -6341,7 +6341,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:449"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0790
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|de52b9fe42b771f9|0"
@@ -6349,7 +6349,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:450"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0791
   # key: "QualityParserFixture.cs|should_parse_full_quality_from_name|cbaeee17c6949310|0"
@@ -6357,7 +6357,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:451"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0792
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name|a99499309c154d83|0"
@@ -6365,7 +6365,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:460"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0793
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name|261b35014143213a|0"
@@ -6373,7 +6373,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:461"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0794
   # key: "QualityParserFixture.cs|should_parse_resolution_from_name|5558322ea8e5820c|0"
@@ -6381,7 +6381,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:462"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0795
   # key: "QualityParserFixture.cs|should_parse_source_from_name|319d902939ec5b2b|0"
@@ -6389,7 +6389,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:471"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0796
   # key: "QualityParserFixture.cs|should_parse_source_from_name|4e507328f244f333|0"
@@ -6405,7 +6405,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:473"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0798
   # key: "QualityParserFixture.cs|should_parse_source_from_name|db6614f847eca280|0"
@@ -6413,7 +6413,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:474"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_quality_detection_source]
 - id: RAD-PARSE-0799
   # key: "QualityParserFixture.cs|should_parse_quality_from_extension|f9a3c5baccd2495e|0"

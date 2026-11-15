@@ -519,6 +519,24 @@ fn hdr_blocks_when_not_allowed() {
     assert!(d.block_codes.contains(&"hdr_not_allowed".to_string()));
 }
 
+// fork (P33d): a name with a resolution and no source reads as the arrs
+// read it (HDTV), and a bare tier still admits it (D48).
+#[test]
+fn a_sourceless_resolution_ranks_as_hdtv_under_its_bare_tier() {
+    let release = parse_release_metadata("Show.S01E01.1080p.x265-GRP");
+    assert_eq!(
+        crate::quality_profile::release_tier_label(&release).as_deref(),
+        Some("HDTV-1080P")
+    );
+    let profile = QualityProfile::parse(
+        r#"{"id":"t","name":"T","criteria":{"quality_tiers":["2160P","1080P"],"allow_unknown_quality":false,"allow_upgrades":true}}"#,
+    )
+    .unwrap();
+    let d = evaluate_profile_requirements(&profile, &release, false, Some("series"));
+    assert_eq!(d.tier_index, Some(1));
+    assert!(d.block_codes.is_empty(), "{:?}", d.block_codes);
+}
+
 // ── score_with_pack: remux / atmos / dual audio ──────────────────
 
 // fork (P29, D76a): every captured Sonarr profile disallows Remux; a series
@@ -2626,8 +2644,9 @@ fn hevc_below_4k_penalty_ignores_4k_efficient_and_unlabelled_resolution() {
             toggle,
         );
         assert!(efficient.is_empty(), "{toggle:?}");
+        // fork (P33d): a source alone now takes the arr default resolution.
         let (unlabelled, _) = hevc_below_4k_deltas(
-            "Quiet.Meridian.2024.WEB-DL.x265-FICTGRP",
+            "Quiet.Meridian.2024.x265-FICTGRP",
             ScoringPersona::Balanced,
             toggle,
         );

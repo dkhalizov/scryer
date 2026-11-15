@@ -4,6 +4,7 @@
 //! annotations with capped structural ambiguity, and a beam-scored parser that
 //! requires target context from the caller.
 
+mod arr_quality; // fork (P33)
 mod context;
 mod enrichment;
 mod group_tails; // fork (P26)

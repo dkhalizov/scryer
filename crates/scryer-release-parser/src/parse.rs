@@ -256,10 +256,18 @@ pub(crate) fn analyze_inputs(inputs: AnalysisInputs<'_>) -> ReleaseParseAnalysis
         }
         let technical_recovery =
             recover_independent_technical_metadata(&lexed.tokens, &technical_candidate);
+        let source_seen =
+            technical_recovery.source.is_some() || technical_recovery.source_conflicts; // fork (P33)
         apply_independent_technical_metadata(&mut best_candidate.projected, technical_recovery);
         if best_candidate.projected.quality.is_none() {
             best_candidate.projected.quality = uhd_fallback_quality(&lexed.tokens);
         }
+        crate::arr_quality::apply(
+            &lexed.tokens,
+            &technical_candidate,
+            source_seen,
+            &mut best_candidate.projected,
+        ); // fork (P33)
         // Resolve stereo claims once more against the same conservative title
         // union used for independent recovery, including conflicting evidence.
         let mut stereo_candidate = technical_candidate.clone();
@@ -451,6 +459,10 @@ fn recover_independent_technical_metadata(
         // telesync, whatever the group span covers.
         if !technical_recovery_token(candidate, index, token, last_protected_title)
             || (index + 1 == tokens.len() && is_media_extension(token))
+            // fork (P33b): a final `-BD` is a group; the arrs read `BD(?!$)`.
+            || (index + 1 == tokens.len()
+                && token.normalized == "BD"
+                && token.separator_before == SeparatorKind::Hyphen)
         {
             continue;
         }
@@ -9464,6 +9476,11 @@ fn uhd_fallback_quality(tokens: &[Token]) -> Option<String> {
             _ => false,
         });
     found.then(|| "2160p".to_string())
+}
+
+/// fork (P33): any source the beam or recovery could read from one token.
+pub(crate) fn token_source(token: &str) -> Option<&'static str> {
+    normalize_source_token(token).or_else(|| detect_compound_metadata(token).source)
 }
 
 fn detect_compound_quality(token: &str) -> Option<String> {

@@ -2458,7 +2458,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:42"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|b3cbbdcb93c7|0
 - id: SON-PARSE-0308
@@ -6165,7 +6165,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|parsing_our_own_quality_enum_name|263ce833ffd5|0
 - id: SON-PARSE-0768
@@ -6173,7 +6173,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:15"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|parsing_our_own_quality_enum_name|f84e6e9d75aa|0
 - id: SON-PARSE-0769
@@ -6293,7 +6293,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:34"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_other_source|55e8444a4433|0
 - id: SON-PARSE-0784
@@ -6301,7 +6301,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:35"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_other_source|8a0f49a7687e|0
 - id: SON-PARSE-0785
@@ -6317,7 +6317,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:37"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_other_source|8c9298d89151|0
 - id: SON-PARSE-0787
@@ -6325,7 +6325,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:38"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_other_source|6bff9be615a2|0
 - id: SON-PARSE-0788
@@ -6333,7 +6333,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_other_source|706e66fb5e78|0
 - id: SON-PARSE-0789
@@ -6389,7 +6389,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:46"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_other_source|42fc7c132d95|0
 - id: SON-PARSE-0796
@@ -6397,7 +6397,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:47"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|ae78c453eb61|0
 - id: SON-PARSE-0797
@@ -6413,7 +6413,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:51"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|c484f507ce7a|0
 - id: SON-PARSE-0799
@@ -6421,7 +6421,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:52"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|4493817eca30|0
 - id: SON-PARSE-0800
@@ -6429,7 +6429,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:53"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|76459d61529b|0
 - id: SON-PARSE-0801
@@ -6437,7 +6437,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|e308f274f895|0
 - id: SON-PARSE-0802
@@ -6445,7 +6445,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:55"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|4143b9422a4d|0
 - id: SON-PARSE-0803
@@ -6453,7 +6453,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:56"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|bd7b86a2ff96|0
 - id: SON-PARSE-0804
@@ -6461,7 +6461,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:57"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|457b3e7cf5a6|0
 - id: SON-PARSE-0805
@@ -6469,7 +6469,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:58"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|780a01cb3e7d|0
 - id: SON-PARSE-0806
@@ -6477,7 +6477,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:59"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|e3e6928edac8|0
 - id: SON-PARSE-0807
@@ -6485,7 +6485,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:60"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|6d11ce5e56ab|0
 - id: SON-PARSE-0808
@@ -6517,7 +6517,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:64"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|6934e246c6b6|0
 - id: SON-PARSE-0812
@@ -6525,7 +6525,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:65"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|30477207dabb|0
 - id: SON-PARSE-0813
@@ -6533,7 +6533,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:66"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|29df15fc26b9|0
 - id: SON-PARSE-0814
@@ -6541,7 +6541,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:67"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|582f69e5fa32|0
 - id: SON-PARSE-0815
@@ -6549,7 +6549,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:68"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|f1917a776619|0
 - id: SON-PARSE-0816
@@ -6565,7 +6565,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:70"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_sdtv_quality|e3e67e8bd77e|0
 - id: SON-PARSE-0818
@@ -6589,7 +6589,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:78"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_dvd_quality|e43ab0596484|0
 - id: SON-PARSE-0821
@@ -6597,7 +6597,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:79"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_dvd_quality|9088e9aef9bd|0
 - id: SON-PARSE-0822
@@ -6605,7 +6605,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:80"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_dvd_quality|9f0470b9f130|0
 - id: SON-PARSE-0823
@@ -6613,7 +6613,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:81"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_dvd_quality|6d621cebb1cc|0
 - id: SON-PARSE-0824
@@ -6621,7 +6621,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:82"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_dvd_quality|65a72a704f5d|0
 - id: SON-PARSE-0825
@@ -6629,7 +6629,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:83"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_dvd_quality|562deb00c838|0
 - id: SON-PARSE-0826
@@ -6637,7 +6637,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:84"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl480p_quality|ee0f8a30900d|0
 - id: SON-PARSE-0827
@@ -6677,7 +6677,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:94"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl480p_quality|ebc3a9ebddb1|0
 - id: SON-PARSE-0832
@@ -6685,7 +6685,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:95"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl480p_quality|a1071b4b2417|0
 - id: SON-PARSE-0833
@@ -6701,7 +6701,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:97"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|71382840c1e4|0
 - id: SON-PARSE-0835
@@ -6709,7 +6709,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:103"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|a8d84b661667|0
 - id: SON-PARSE-0836
@@ -6717,7 +6717,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:104"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|22a20ab00c3d|0
 - id: SON-PARSE-0837
@@ -6725,7 +6725,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:105"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|8c10526c851a|0
 - id: SON-PARSE-0838
@@ -6733,7 +6733,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:106"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|560313e501fb|0
 - id: SON-PARSE-0839
@@ -6741,7 +6741,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:107"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|77a25583d4b0|0
 - id: SON-PARSE-0840
@@ -6749,7 +6749,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:108"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|318fdbf251d9|0
 - id: SON-PARSE-0841
@@ -6773,7 +6773,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:111"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|34e36c567075|0
 - id: SON-PARSE-0844
@@ -6781,7 +6781,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:112"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray480p_quality|c378ce318ce4|0
 - id: SON-PARSE-0845
@@ -6789,7 +6789,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:113"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip480p_quality|f895fd8a30b2|0
 - id: SON-PARSE-0846
@@ -6813,7 +6813,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:121"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray576p_quality|b1c2f4a32b7b|0
 - id: SON-PARSE-0849
@@ -6829,7 +6829,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:133"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|486fb1e46831|0
 - id: SON-PARSE-0851
@@ -6853,7 +6853,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:136"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|e7e52127bac5|0
 - id: SON-PARSE-0854
@@ -6869,7 +6869,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:138"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|941075fe4b61|0
 - id: SON-PARSE-0856
@@ -6917,7 +6917,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:144"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|114c97d48d70|0
 - id: SON-PARSE-0862
@@ -6925,7 +6925,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:145"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|1cc56450f7f9|0
 - id: SON-PARSE-0863
@@ -6933,7 +6933,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:146"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|275e216e3bd6|0
 - id: SON-PARSE-0864
@@ -6941,7 +6941,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:147"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|1943fb17609b|0
 - id: SON-PARSE-0865
@@ -6949,7 +6949,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:148"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|a60d557bc807|0
 - id: SON-PARSE-0866
@@ -6957,7 +6957,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:149"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|e94b42760715|0
 - id: SON-PARSE-0867
@@ -6973,7 +6973,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:151"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|53efc28b5b6d|0
 - id: SON-PARSE-0869
@@ -6989,7 +6989,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:153"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv720p_quality|3bfe1afd6c9e|0
 - id: SON-PARSE-0871
@@ -7005,7 +7005,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:160"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|265981ac69b0|0
 - id: SON-PARSE-0873
@@ -7045,7 +7045,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:165"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|e69adbe60b1b|0
 - id: SON-PARSE-0878
@@ -7053,7 +7053,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:166"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|535bc0e8c99f|0
 - id: SON-PARSE-0879
@@ -7061,7 +7061,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:167"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|fd8b66323068|0
 - id: SON-PARSE-0880
@@ -7069,7 +7069,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:168"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|fb97b1408c21|0
 - id: SON-PARSE-0881
@@ -7077,7 +7077,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:169"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|860acf39711f|0
 - id: SON-PARSE-0882
@@ -7085,7 +7085,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:170"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|9d667cf43784|0
 - id: SON-PARSE-0883
@@ -7093,7 +7093,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:171"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|18506b2b962c|0
 - id: SON-PARSE-0884
@@ -7101,7 +7101,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:172"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv1080p_quality|043082767d05|0
 - id: SON-PARSE-0885
@@ -7133,7 +7133,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:181"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv2160p_quality|c5ebaab2c132|0
 - id: SON-PARSE-0889
@@ -7141,7 +7141,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:182"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv2160p_quality|f69326d66f1f|0
 - id: SON-PARSE-0890
@@ -7149,7 +7149,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:183"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_hdtv2160p_quality|b6d8a9b0f62f|0
 - id: SON-PARSE-0891
@@ -7157,7 +7157,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:184"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|b160be958702|0
 - id: SON-PARSE-0892
@@ -7205,7 +7205,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:195"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|4a096203f38d|0
 - id: SON-PARSE-0898
@@ -7237,7 +7237,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:199"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|749c4ae26ae1|0
 - id: SON-PARSE-0902
@@ -7269,7 +7269,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:203"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|ffac0f8f4e37|0
 - id: SON-PARSE-0906
@@ -7277,7 +7277,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:204"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|5934d1ee1c66|0
 - id: SON-PARSE-0907
@@ -7285,7 +7285,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:205"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|ac9ed0f5b938|0
 - id: SON-PARSE-0908
@@ -7325,7 +7325,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:210"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|8e9f86858954|0
 - id: SON-PARSE-0913
@@ -7333,7 +7333,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:211"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|4f848a407abf|0
 - id: SON-PARSE-0914
@@ -7349,7 +7349,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:213"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|bc01aafc0120|0
 - id: SON-PARSE-0916
@@ -7357,7 +7357,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:214"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|3271a81498e7|0
 - id: SON-PARSE-0917
@@ -7373,7 +7373,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:216"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl720p_quality|1fbca8bfd036|0
 - id: SON-PARSE-0919
@@ -7381,7 +7381,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:217"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip720p_quality|0df399843213|0
 - id: SON-PARSE-0920
@@ -7397,7 +7397,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:224"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip720p_quality|35064257f9d1|0
 - id: SON-PARSE-0922
@@ -7405,7 +7405,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:225"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip720p_quality|0fcdce860a9a|0
 - id: SON-PARSE-0923
@@ -7413,7 +7413,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:226"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl1080p_quality|b47f14923325|0
 - id: SON-PARSE-0924
@@ -7541,7 +7541,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:247"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl1080p_quality|3f050db8ad7b|0
 - id: SON-PARSE-0940
@@ -7549,7 +7549,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:248"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl1080p_quality|4fccbd98a53a|0
 - id: SON-PARSE-0941
@@ -7557,7 +7557,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:249"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl1080p_quality|4c2c16a23dfa|0
 - id: SON-PARSE-0942
@@ -7653,7 +7653,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:261"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl1080p_quality|8f5ce7e5bcd9|0
 - id: SON-PARSE-0954
@@ -7661,7 +7661,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:262"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl1080p_quality|7f9b0f062fef|0
 - id: SON-PARSE-0955
@@ -7685,7 +7685,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:270"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip1080p_quality|b1f49c3f7eb1|0
 - id: SON-PARSE-0958
@@ -7693,7 +7693,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:271"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip1080p_quality|ab20df446003|0
 - id: SON-PARSE-0959
@@ -7709,7 +7709,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:273"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip1080p_quality|ba25c2324be2|0
 - id: SON-PARSE-0961
@@ -7725,7 +7725,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:275"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webdl2160p_quality|20b24bfbfc1a|0
 - id: SON-PARSE-0963
@@ -7805,7 +7805,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:295"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip2160p_quality|b0cada18b029|0
 - id: SON-PARSE-0973
@@ -7813,7 +7813,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:296"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip2160p_quality|2149ef349edb|0
 - id: SON-PARSE-0974
@@ -7821,7 +7821,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:297"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip2160p_quality|6baf8be71a37|0
 - id: SON-PARSE-0975
@@ -7829,7 +7829,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:298"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip2160p_quality|130b869d4bf4|0
 - id: SON-PARSE-0976
@@ -7837,7 +7837,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:299"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_webrip2160p_quality|d733590b82b2|0
 - id: SON-PARSE-0977
@@ -7845,7 +7845,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:300"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray720p_quality|251004362a43|0
 - id: SON-PARSE-0978
@@ -7853,7 +7853,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:306"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray720p_quality|34f96dff4ee4|0
 - id: SON-PARSE-0979
@@ -7917,7 +7917,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:314"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray720p_quality|bed58d8c1cc4|0
 - id: SON-PARSE-0987
@@ -7965,7 +7965,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:320"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray720p_quality|a5e2ef0e3a70|0
 - id: SON-PARSE-0993
@@ -7973,7 +7973,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:321"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray720p_quality|0f7a0ea75c38|0
 - id: SON-PARSE-0994
@@ -7981,7 +7981,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:322"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_quality|4452323d17f7|0
 - id: SON-PARSE-0995
@@ -8053,7 +8053,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:336"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_quality|c6615ba61d29|0
 - id: SON-PARSE-1004
@@ -8070,7 +8070,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:338"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_quality|b6a1cbcdbbc4|0
 - id: SON-PARSE-1006
@@ -8094,7 +8094,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:341"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_remux_quality|c3b36c8c14fd|0
 - id: SON-PARSE-1009
@@ -8102,7 +8102,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:347"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_remux_quality|58ce43c8f483|0
 - id: SON-PARSE-1010
@@ -8126,7 +8126,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:350"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_remux_quality|6ea3739dea2b|0
 - id: SON-PARSE-1013
@@ -8134,7 +8134,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:351"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_remux_quality|d6a0f220291b|0
 - id: SON-PARSE-1014
@@ -8158,7 +8158,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:354"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_remux_quality|9e95b234167e|0
 - id: SON-PARSE-1017
@@ -8262,7 +8262,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:377"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray2160p_remux_quality|3af2fdf68e7d|0
 - id: SON-PARSE-1030
@@ -8374,7 +8374,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:401"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|quality_parse|34d7de1fa51e|0
 - id: SON-PARSE-1044
@@ -8382,7 +8382,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:402"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_full_quality_from_name|177dde604738|0
 - id: SON-PARSE-1045
@@ -8494,7 +8494,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:458"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_source_from_name|5dec436a4390|0
 - id: SON-PARSE-1059
@@ -8510,7 +8510,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:460"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_source_from_name|aee6a660333f|0
 - id: SON-PARSE-1061
@@ -8518,7 +8518,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:461"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_quality_detection_source]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_quality_from_extension|bb68cde400a8|0
 - id: SON-PARSE-1062

@@ -1582,8 +1582,9 @@ fn colon_separated_prefix_preserves_spaced_title_form() {
     );
 }
 
+// fork (P33a): the arrs keep a service WEBRip as WEBRip.
 #[test]
-fn service_tagged_webrip_normalizes_to_webdl() {
+fn service_tagged_webrip_stays_webrip() {
     let analysis = analyze_release_for_target(
         "AWL.NXG.2026.04.21.NF.iNT.720p.WEBRip.H.264-HEEL",
         &context(ContextFacetHint::Series, "AWL NXG"),
@@ -1592,7 +1593,7 @@ fn service_tagged_webrip_normalizes_to_webdl() {
 
     assert_eq!(
         source_label(candidate.projected.source.as_ref()),
-        Some("WEB-DL")
+        Some("WEBRip")
     );
 }
 
@@ -5950,12 +5951,13 @@ fn four_k_and_uhd_names_read_as_2160p_unless_a_resolution_is_explicit() {
             Some("1080p"),
         ),
         // fork (P22 review): 4K needs an arr partner one separator away; a
-        // UHD never overrides an explicit resolution.
-        ("Emberfall.s05e13.4K.WEB.DL", None),
-        ("Emberfall.2011.Bluray.4k.HDR.AC3", None),
-        ("Emberfall.s05e13.(4K).WEB.DL", None),
-        ("Emberfall.s05e13.4K - HEVC.WEB.DL", None),
-        ("Emberfall.s05e13.4K.H_265.WEB.DL", None),
+        // UHD never overrides an explicit resolution. fork (P33d): these
+        // then take the arrs' source default (WEB-DL 480p, BluRay 720p).
+        ("Emberfall.s05e13.4K.WEB.DL", Some("480p")),
+        ("Emberfall.2011.Bluray.4k.HDR.AC3", Some("720p")),
+        ("Emberfall.s05e13.(4K).WEB.DL", Some("480p")),
+        ("Emberfall.s05e13.4K - HEVC.WEB.DL", Some("480p")),
+        ("Emberfall.s05e13.4K.H_265.WEB.DL", Some("480p")),
         ("Emberfall.s05e13.4K.H.265.WEB.DL", Some("2160p")),
         ("Emberfall.S01E01.720p.UHD.WEB-DL", Some("720p")),
         ("Emberfall.S01E01.720p.UHD.WEB-DL.1080p", Some("720p")),

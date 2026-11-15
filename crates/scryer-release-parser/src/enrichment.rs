@@ -653,7 +653,7 @@ fn is_prefix_metadata_token(token: &str) -> bool {
 
 /// fork (P24): the arr `[-_. ]`: exactly one separator character between
 /// token `i` and the next one.
-fn joined(tokens: &[Token], i: usize) -> bool {
+pub(crate) fn joined(tokens: &[Token], i: usize) -> bool {
     tokens.get(i + 1).is_some_and(|next| {
         next.span.start.checked_sub(tokens[i].span.end) == Some(1)
             && matches!(
@@ -666,7 +666,7 @@ fn joined(tokens: &[Token], i: usize) -> bool {
     })
 }
 
-fn tok(tokens: &[Token], i: usize) -> &str {
+pub(crate) fn tok(tokens: &[Token], i: usize) -> &str {
     tokens.get(i).map_or("", |token| token.normalized.as_str())
 }
 
@@ -1557,16 +1557,9 @@ pub(crate) fn normalize_source_for_service(
     source: Option<&str>,
     service: Option<&str>,
 ) -> Option<String> {
-    let source = source?;
-    let service = service?.to_ascii_uppercase();
-    if source.eq_ignore_ascii_case("WEBRip")
-        && matches!(
-            service.as_str(),
-            "AMZN" | "AMAZON" | "CR" | "CRUNCHYROLL" | "DSNP" | "DISNEY+" | "NF" | "NETFLIX"
-        )
-    {
-        return Some("WEB-DL".to_string());
-    }
+    // fork (P33a): the arrs keep a service WEBRip as WEBRip; the call sites
+    // and `normalized_source` stay as the source-override seam (D85).
+    let _ = (source, service);
     None
 }
 

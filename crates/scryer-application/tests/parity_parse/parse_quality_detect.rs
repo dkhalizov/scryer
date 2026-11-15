@@ -9,10 +9,10 @@
 //! corpus file, `input.fn` and the presence of a detection key before `wants`.
 //!
 //! Translation (reference -> Scryer, read from `View.p` of the name):
-//! | source_detection_source = Name       | `p.source.is_some()` |
-//! | source_detection_source = Unknown    | `p.source.is_none()` |
-//! | resolution_detection_source = Name   | `p.quality.is_some()` (a resolution string) |
-//! | resolution_detection_source = Unknown| `p.quality.is_none()` |
+//! | source_detection_source = Name       | `p.source.is_some()` and no `quality_default:source` hint |
+//! | source_detection_source = Unknown    | otherwise (absent, or an arr default) |
+//! | resolution_detection_source = Name   | `p.quality.is_some()` and no `quality_default:resolution` hint |
+//! | resolution_detection_source = Unknown| otherwise (absent, or an arr default) |
 //! | either = Extension                   | never produced: Scryer has no extension->quality
 //! |   table (reference .avi->SDTV, .mkv->HDTV-720p / WEBDL-720p), so red (D29) |
 //! Expected is the case's two detection keys as written; actual is built only
@@ -65,9 +65,11 @@ fn run(suite_name: &str, file: &str) {
             continue;
         };
         let read = |present: bool| if present { "Name" } else { "Unknown" };
+        // fork (P33d): a value the arrs default is not read from the name.
+        let defaulted = |h: &str| view.p.parse_hints.iter().any(|x| x == h);
         let full = json!({
-            "source_detection_source": read(view.p.source.is_some()),
-            "resolution_detection_source": read(view.p.quality.is_some()),
+            "source_detection_source": read(view.p.source.is_some() && !defaulted("quality_default:source")),
+            "resolution_detection_source": read(view.p.quality.is_some() && !defaulted("quality_default:resolution")),
         });
         let actual: serde_json::Map<String, Value> =
             q.keys().map(|k| (k.clone(), full[k].clone())).collect();

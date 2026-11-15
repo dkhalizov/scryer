@@ -1843,7 +1843,8 @@ mod tests {
         let result = score_with_pack(&profile, &release, false, &w);
         assert!(result.allowed);
 
-        let release = parse_release_metadata("Some.Movie.WEB-DL.H.265.DDP2.0");
+        // fork (P33d): a source alone now takes the arr default resolution.
+        let release = parse_release_metadata("Some.Movie.H.265.DDP2.0");
         let result = score_with_pack(&profile, &release, false, &w);
         assert!(!result.allowed);
         assert!(
@@ -1963,8 +1964,9 @@ mod tests {
             &crate::scoring_weights::ScoringPersona::Audiophile,
             &crate::scoring_weights::ScoringOverrides::default(),
         );
-        let with_remux = parse_release_metadata("Movie.2021.1080p.WEB-DL.H.265.Remux.DDP2.0");
-        let without_remux = parse_release_metadata("Movie.2021.1080p.WEB-DL.H.265.DDP2.0");
+        // fork (P33d): a remux needs a Bluray (or no) source, as in the arrs.
+        let with_remux = parse_release_metadata("Movie.2021.1080p.BluRay.H.265.Remux.DDP2.0");
+        let without_remux = parse_release_metadata("Movie.2021.1080p.BluRay.H.265.DDP2.0");
 
         assert!(
             score_with_pack(&profile, &with_remux, false, &w).allowed
