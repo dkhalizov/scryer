@@ -78,10 +78,8 @@
 //! - RAD-DECISION-5044 (auto-tagging): no condition-based tagging of library titles
 //!   (request rules add tags at request time behind the request service).
 //!
-//! Known reds: the 25 format scores; the propers entries (Scryer's revision step is
-//! 0 without a related file, so a higher-scored original outranks the proper);
-//! and the constant reds above (`maximumSize`, `allowHardcodedSubs`,
-//! `preferIndexerFlags`, `releaseprofile.json`, `tag.json`).
+//! Known reds: the 25 format scores and the constant reds above (`maximumSize`,
+//! `allowHardcodedSubs`, `preferIndexerFlags`, `releaseprofile.json`, `tag.json`).
 
 use std::cmp::Ordering;
 use std::collections::HashMap;

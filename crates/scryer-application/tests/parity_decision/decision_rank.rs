@@ -27,6 +27,8 @@
 //!   the decision (root `cf_score`), then `apply_min_score_gate`.
 //! - `config.download_propers_and_repacks` -> root `propers()`
 //!   (DoNotPrefer -> `ignore_proper_repack`, DoNotUpgrade -> red).
+//! - Revision preference -> production `revision_preference` over an empty
+//!   title subject, as `release_search.rs` sets it (no file on disk).
 //! - `quality_definition.preferred_size` non-null -> red: no per-quality
 //!   preferred size setting (Scryer's size fit uses its own bitrate).
 //! - `protocol` -> `source_kind`; `size_mb` -> `size_bytes`; `age_days` ->
@@ -77,7 +79,10 @@
 
 use std::cmp::Ordering;
 
-use scryer_application::parity_seams::{apply_min_score_gate, compare_release_search_results};
+use scryer_application::parity_seams::{
+    AdmissionScope, AdmissionSubject, CandidateFacts, Incumbent, apply_min_score_gate,
+    compare_release_search_results, revision_preference,
+};
 use scryer_application::{IndexerSearchResult, ScoringSource};
 use scryer_parity::{Suite, corpus};
 use serde_json::{Value, json};
@@ -157,6 +162,12 @@ fn rank_case(g: &Value, key: &str, order: bool) -> Result<Value, String> {
             );
         }
         apply_min_score_gate(&profile, &mut decision);
+        // As release_search.rs sets it: production `revision_preference` over
+        // the title subject (empty here: no file on disk).
+        let facts = CandidateFacts::new(decision.tier_index, side.revision, decision.preference_score)
+            .with_profile_policy(side.group.as_deref(), &profile.criteria);
+        decision.revision_preference =
+            revision_preference(facts, &AdmissionSubject::new(AdmissionScope::Title, Vec::<(Incumbent, bool)>::new()));
         let size_mb = cand["size_mb"].as_i64().unwrap_or(0);
         let age = cand["age_days"].as_i64().unwrap_or(0);
         ranked.push((

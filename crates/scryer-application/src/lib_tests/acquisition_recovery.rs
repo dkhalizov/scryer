@@ -18744,26 +18744,28 @@ async fn assert_upgrade_waits_for_the_client_queue_then_grabs(
     );
 }
 
+/// The revision ranks whatever the queue holds, like the arrs' rank (P19): a
+/// PROPER from a group unrelated to the queued pack still goes first.
 #[tokio::test]
-async fn expired_pending_ranking_prefers_revision_of_queued_group() {
+async fn expired_pending_ranking_prefers_a_revision_whatever_the_queued_group() {
     let queued_pack = "Recent.Failed.Season.Pack.S07.1080p.WEB-DL-GroupA".to_string();
     let (app, title, _) = season_pack_downloading_fixture(vec![queued_pack]).await;
     let wanted = season_scope_states(&app, &title, "7").await.remove(0);
-    let mut unrelated = pending_movie_release(
+    let mut original = pending_movie_release(
         &wanted.id,
         &title,
-        "Recent.Failed.Season.Pack.S07.PROPER.1080p.WEB-DL-GroupB",
+        "Recent.Failed.Season.Pack.S07.1080p.WEB-DL-GroupC",
         PendingReleaseStatus::Waiting,
     );
-    unrelated.id = "a-unrelated-group".into();
-    unrelated.release_size_bytes = None;
-    let mut revision = unrelated.clone();
-    revision.id = "b-queued-group-revision".into();
-    revision.release_title = "Recent.Failed.Season.Pack.S07.PROPER.1080p.WEB-DL-GroupA".into();
-    let mut releases = vec![unrelated, revision];
+    original.id = "a-original".into();
+    original.release_size_bytes = None;
+    let mut revision = original.clone();
+    revision.id = "b-unrelated-group-revision".into();
+    revision.release_title = "Recent.Failed.Season.Pack.S07.PROPER.1080p.WEB-DL-GroupB".into();
+    let mut releases = vec![original, revision];
     app.order_expired_releases_by_rank(&wanted, &mut releases, Utc::now())
         .await;
-    assert_eq!(releases[0].id, "b-queued-group-revision");
+    assert_eq!(releases[0].id, "b-unrelated-group-revision");
 }
 
 /// Parked releases are tried in the same order a search would rank them, so a

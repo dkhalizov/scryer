@@ -352,26 +352,21 @@ impl<'a> CandidateFacts<'a> {
     }
 }
 
-/// A stable rank within one scope, never a comparison between unrelated candidates.
+/// The candidate's revision as a search rank key, 0 when its profile ignores
+/// revisions. Scope-independent, like the arrs'
+/// `DownloadDecisionComparer.CompareQuality`: a PROPER outranks the
+/// same-tier original whatever is on disk or queued. Admission still gates
+/// every grab, so a refused release never wins on rank alone.
 // fork: parity net seam (tests/parity_decision/priv_decision.rs)
 pub fn revision_preference(
     candidate: CandidateFacts<'_>,
-    subject: &AdmissionSubject,
+    _subject: &AdmissionSubject, // fork (P19): the scope no longer matters
 ) -> i32 {
-    let mut improves = false;
-    let facts = candidate.facts();
-    let occupied = subject
-        .incumbents
-        .iter()
-        .map(Incumbent::facts)
-        .chain(subject.queued.iter().map(QueuedRelease::facts));
-    for held in occupied {
-        if !facts.is_related_to(&held) || candidate.revision < held.revision {
-            return 0;
-        }
-        improves |= candidate.revision > held.revision;
+    if candidate.ignores_revision() {
+        0
+    } else {
+        candidate.revision
     }
-    if improves { candidate.revision } else { 0 }
 }
 
 /// The quality tier as an ascending sort key: best tier first, unlisted

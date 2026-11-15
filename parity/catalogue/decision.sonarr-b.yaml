@@ -13,7 +13,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:101"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1002
   behaviour: "HDTV-720p is ranked before SDTV"
@@ -169,7 +169,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:511"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1024
   behaviour: "With DoNotUpgrade, a proper with score 0 beats a v1 with score 10"

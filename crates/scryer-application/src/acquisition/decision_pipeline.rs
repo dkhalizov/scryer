@@ -430,9 +430,8 @@ pub(crate) struct SideFacts {
 ///
 /// Kept apart from [`RankFacts`] because the revision is not a property of one
 /// side: a comparison reads both releases' raw revisions and release groups
-/// and decides whether they are related at all, while a search rank can only
-/// carry a revision preference derived from everything the scope already
-/// holds. One struct for both would carry fields that mean nothing in one of
+/// and decides whether they are related at all, while a search rank carries
+/// only the candidate's own revision preference. One struct for both would carry fields that mean nothing in one of
 /// the two modes. Everything else a step reads is shared, in [`SideFacts`].
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct Facts<'a> {
@@ -528,7 +527,7 @@ pub(crate) fn wins_cutoff_escape(
 #[derive(Debug, Clone, Copy)]
 pub(crate) struct RankFacts {
     pub side: SideFacts,
-    /// The context-derived revision preference, negated; see
+    /// The candidate's revision preference, negated; see
     /// [`crate::admission::revision_preference`].
     pub negated_revision: i32,
 }

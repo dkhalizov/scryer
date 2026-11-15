@@ -52,7 +52,7 @@ fn revision_related_groups_and_ignore_control_the_exception() {
         );
         assert_eq!(
             revision_preference(candidate, &subject),
-            if admitted { 3 } else { 0 }
+            if ignore { 0 } else { 3 }
         );
     }
 }
@@ -110,7 +110,7 @@ fn revision_ignore_removes_both_priority_and_downgrade_protection() {
 }
 
 #[test]
-fn revision_pack_rank_requires_every_incumbent_to_be_related() {
+fn revision_pack_admission_requires_every_incumbent_to_be_related() {
     let candidate =
         CandidateFacts::new(Some(0), 3, 1000).with_revision_policy(Some("group"), false);
     for groups in [
@@ -118,7 +118,7 @@ fn revision_pack_rank_requires_every_incumbent_to_be_related() {
         vec![Some("group"), None],
     ] {
         let subject = occupied(&groups, 2);
-        assert_eq!(revision_preference(candidate, &subject), 0);
+        assert_eq!(revision_preference(candidate, &subject), 3);
         assert!(evaluate_admission(&subject, candidate, &policy()).is_admitted());
     }
     assert_eq!(
@@ -127,9 +127,9 @@ fn revision_pack_rank_requires_every_incumbent_to_be_related() {
     );
     assert_eq!(
         revision_preference(candidate, &occupied(&[Some("group")], 4)),
-        0
+        3
     );
-    assert_eq!(revision_preference(candidate, &occupied(&[], 0)), 0);
+    assert_eq!(revision_preference(candidate, &occupied(&[], 0)), 3);
     assert!(
         !evaluate_admission(
             &occupied(&[Some("group")], 2),
@@ -172,14 +172,32 @@ fn revision_queue_comparison_uses_the_profile_policy() {
 }
 
 #[test]
-fn revision_mixed_pack_can_fill_missing_members_without_ranking_priority() {
+fn revision_mixed_pack_can_fill_missing_members() {
     let subject = occupied(&[Some("other")], 3).per_member();
     let candidate = CandidateFacts::new(Some(0), 1, 100).with_revision_policy(Some("group"), false);
     assert!(evaluate_admission(&subject, candidate, &policy()).is_admitted());
-    assert_eq!(revision_preference(candidate, &subject), 0);
+    assert_eq!(revision_preference(candidate, &subject), 1);
     assert!(
         evaluate_admission(&subject, candidate, &policy())
             .superseded()
             .is_empty()
     );
+}
+
+/// The arrs' `DownloadDecisionComparer.CompareQuality` ranks revision before
+/// the format score whatever is on disk, unless revisions are ignored (P19).
+#[test]
+fn revision_rank_ignores_the_scope_like_the_arrs() {
+    for (subject, tier) in [
+        (occupied(&[], 0), Some(0)),
+        (occupied(&[None], 0), Some(0)),
+        (occupied(&[Some("other")], 2), Some(0)),
+        (occupied(&[None], 0), Some(1)),
+    ] {
+        for (ignore, expected) in [(false, 1), (true, 0)] {
+            let candidate =
+                CandidateFacts::new(tier, 1, 100).with_revision_policy(Some("group"), ignore);
+            assert_eq!(revision_preference(candidate, &subject), expected);
+        }
+    }
 }

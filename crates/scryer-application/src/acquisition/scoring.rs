@@ -48,8 +48,8 @@ pub(crate) fn revision_rank(parsed: &crate::ParsedReleaseMetadata) -> i32 {
 
 /// Shared rank head: eligibility, then the profile's decision pipeline, then
 /// score, then size fit. Each gate is read as an ascending sort key in pipeline
-/// order (see [`crate::decision_pipeline::rank_key`]); missing scopes and a
-/// pipeline without a revision gate have no revision preference.
+/// order (see [`crate::decision_pipeline::rank_key`]); a pipeline without a
+/// revision gate has no revision preference.
 ///
 /// Split out because two places order search results: the rank comparator used
 /// while scoring, and `compare_release_search_results`, which the interactive
@@ -69,7 +69,8 @@ pub(crate) struct RankHead {
     /// better, `usize::MAX` for a quality the profile does not list) and its
     /// standing against the title's preferred and optional audio languages.
     pub side: crate::decision_pipeline::SideFacts,
-    /// Negated revision preference, granted only by related-incumbent context.
+    /// Negated revision preference: the candidate's revision, whatever the scope
+    /// holds (P19).
     pub negated_revision: i32,
     /// The canonical score, negated so that higher wins.
     pub negated_score: i32,
@@ -96,7 +97,7 @@ impl RankHead {
     /// Read the head straight off a scored result.
     ///
     /// Everything it needs already travels on the result: the profile decision
-    /// carries eligibility, tier, score and the context-derived revision key.
+    /// carries eligibility, tier, score and the revision key.
     /// An unscored result sorts as allowed,
     /// untiered and zero rather than being dropped — ordering must never fail a
     /// search.

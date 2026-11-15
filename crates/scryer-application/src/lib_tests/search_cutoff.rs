@@ -1,11 +1,11 @@
 use super::*;
 
 #[tokio::test]
-async fn related_revision_survives_the_search_result_cap() {
+async fn revision_survives_the_search_result_cap() {
     for (incumbent_group, ignore, quality, preferred) in [
         (Some("GRP"), false, "1080p", true),
-        (Some("UNRELATED"), false, "1080p", false),
-        (None, false, "1080p", false),
+        (Some("UNRELATED"), false, "1080p", true),
+        (None, false, "1080p", true),
         (Some("GRP"), true, "1080p", false),
         (Some("GRP"), false, "720p", false),
     ] {
