@@ -1126,13 +1126,16 @@ impl MediaFileRepository for MediaFileStore {
                         // without a grab behind it (an adopted or manual
                         // re-import of the same file) keeps the existing
                         // snapshot, which still matches the row's grab facts.
+                        // fork (P31): the torrent info hash follows the same rule.
                         SqlRuntime::execute(
                             SqlExec::Tx(tx),
                             "UPDATE media_files
-                                SET release_listing_json = COALESCE({}, release_listing_json)
+                                SET release_listing_json = COALESCE({}, release_listing_json),
+                                    release_hash = COALESCE({}, release_hash)
                               WHERE id = {}",
                             &[
                                 SqlArg::OptText(input.release_listing_json.clone()),
+                                SqlArg::OptText(input.release_hash.clone()),
                                 SqlArg::Text(existing.media_file_id.clone()),
                             ],
                         )
@@ -1284,7 +1287,7 @@ impl MediaFileRepository for MediaFileStore {
         let sql = format!(
             "SELECT mf.id, mf.file_path, mf.original_file_path, mf.scene_name,
                     mf.grabbed_release_title, fem.episode_id, {} AS series_movie_link_ids_json,
-                    mf.quality_id, mf.source_type, mf.created_at
+                    mf.quality_id, mf.source_type, mf.release_hash, mf.created_at
              FROM media_files mf
              LEFT JOIN file_episode_map fem ON fem.file_id = mf.id
              WHERE mf.title_id = {{}} AND {}
@@ -1315,6 +1318,7 @@ impl MediaFileRepository for MediaFileStore {
                 ),
                 quality_label: row.opt_text("quality_id")?,
                 source_type: row.opt_text("source_type")?, // fork (P11)
+                release_hash: row.opt_text("release_hash")?, // fork (P31)
                 created_at: timestamp_text(row, "created_at")?,
             })
         })
@@ -4251,6 +4255,7 @@ mod tests {
                     role,
                     quality_label: Some("1080p".into()),
                     source_type: Some("Remux".into()), // fork (P11): the compact read carries it
+                    release_hash: Some("5b4ba671c3729e34718de86e3372be2ecb527b15".into()), // fork (P31)
                     scoring_log: Some("large unused scoring payload".repeat(4096)),
                     ..Default::default()
                 })
@@ -6809,6 +6814,7 @@ mod tests {
             original_file_path: Some("/downloads/Synthetic.Show.mkv".to_string()),
             size_bytes: 1_000,
             release_listing_json: Some(r#"{"votes":{"up":1}}"#.to_string()),
+            release_hash: Some("aaaa".to_string()), // fork (P31)
             ..Default::default()
         };
         let created = media_files
@@ -6829,6 +6835,19 @@ mod tests {
                 .expect("listing snapshot should load")
             }
         };
+        // fork (P31): the info hash follows the same rule as the snapshot.
+        let stored_hash = |id: String| {
+            let pool = services.pool().clone();
+            async move {
+                sqlx::query_scalar::<_, Option<String>>(
+                    "SELECT release_hash FROM media_files WHERE id = ?",
+                )
+                .bind(id)
+                .fetch_one(&pool)
+                .await
+                .expect("release hash should load")
+            }
+        };
         assert_eq!(
             stored(created.media_file_id.clone()).await.as_deref(),
             Some(r#"{"votes":{"up":1}}"#)
@@ -6838,6 +6857,7 @@ mod tests {
             .claim_import_destination(
                 &InsertMediaFileInput {
                     release_listing_json: Some(r#"{"votes":{"up":7}}"#.to_string()),
+                    release_hash: Some("bbbb".to_string()), // fork (P31)
                     ..first.clone()
                 },
                 &MediaFileAssociations::default(),
@@ -6850,11 +6870,17 @@ mod tests {
             stored(created.media_file_id.clone()).await.as_deref(),
             Some(r#"{"votes":{"up":7}}"#)
         );
+        assert_eq!(
+            stored_hash(created.media_file_id.clone()).await.as_deref(),
+            Some("bbbb"),
+            "a reuse that carries a hash overwrites the stored one"
+        );
 
         media_files
             .claim_import_destination(
                 &InsertMediaFileInput {
                     release_listing_json: None,
+                    release_hash: None, // fork (P31)
                     ..first
                 },
                 &MediaFileAssociations::default(),
@@ -6862,9 +6888,14 @@ mod tests {
             .await
             .expect("same import target should reuse the row");
         assert_eq!(
-            stored(created.media_file_id).await.as_deref(),
+            stored(created.media_file_id.clone()).await.as_deref(),
             Some(r#"{"votes":{"up":7}}"#),
             "a reuse without a grab keeps the existing snapshot"
+        );
+        assert_eq!(
+            stored_hash(created.media_file_id).await.as_deref(),
+            Some("bbbb"),
+            "a reuse without a hash keeps the stored one"
         );
 
         let _ = std::fs::remove_file(db);

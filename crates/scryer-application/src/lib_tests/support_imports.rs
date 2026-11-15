@@ -486,6 +486,9 @@ impl MediaFileRepository for MockMediaFileRepo {
             if input.release_listing_json.is_some() {
                 existing.release_listing_json = input.release_listing_json.clone();
             }
+            if input.release_hash.is_some() {
+                existing.release_hash = input.release_hash.clone(); // fork (P31): as the SQL reuse
+            }
             return Ok(crate::ClaimedMediaFile {
                 media_file_id: existing.id.clone(),
                 disposition: crate::MediaFileCatalogDisposition::Reused,

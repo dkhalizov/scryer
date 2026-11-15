@@ -16005,6 +16005,49 @@ async fn automatic_movie_import_and_upgrade_each_send_one_import_completed() {
     }
 }
 
+/// fork (P31): a completed torrent's info hash lands on the imported row (fresh
+/// import and upgrade alike), so the already-imported guard can recognise the
+/// same torrent under another name. A usenet item id is not a hash.
+#[tokio::test]
+async fn a_torrent_import_and_its_upgrade_record_the_info_hash() {
+    const HASH: &str = "5b4ba671c3729e34718de86e3372be2ecb527b15";
+    for (with_incumbent, torrent) in [(false, false), (false, true), (true, true)] {
+        let release_title = "Hashed Import Movie.2026.1080p.WEB-DL-GRP";
+        let mut fixture = disposition_fixture("Hashed Import Movie", release_title).await;
+        if torrent {
+            fixture.completed.download_id = Some(HASH.to_ascii_uppercase());
+        }
+        if with_incumbent {
+            seed_primary_movie_file(&fixture, "hashed.import.720p.mp4", "720p").await;
+        }
+        let _probe = probe_agrees_with_the_name(1920, 1080);
+
+        let result = crate::import_workflow::import_completed_download(
+            &fixture.app,
+            &fixture.user,
+            &fixture.completed,
+        )
+        .await
+        .expect("the import runs to a decision");
+        assert_eq!(
+            result.decision,
+            scryer_domain::ImportDecision::Imported,
+            "with_incumbent={with_incumbent}: {result:?}"
+        );
+
+        let hashes: Vec<_> = primary_movie_files(&fixture)
+            .await
+            .into_iter()
+            .filter_map(|file| file.release_hash)
+            .collect();
+        let expected: &[&str] = if torrent { &[HASH] } else { &[] };
+        assert_eq!(
+            hashes, expected,
+            "with_incumbent={with_incumbent} torrent={torrent}"
+        );
+    }
+}
+
 fn sized_video(dir: &std::path::Path, name: &str, bytes: u64) -> PathBuf {
     let path = dir.join(name);
     std::fs::File::create(&path)

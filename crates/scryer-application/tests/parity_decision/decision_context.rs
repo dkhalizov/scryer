@@ -74,7 +74,9 @@
 //! History -> `grabbed_release_title`: the first "Grabbed" row; when a
 //! "DownloadFolderImported" row has the same `download_id` (null equals null,
 //! as in C#) the file gets that grab's `source_title`, else none (a Scryer file
-//! knows its grab title only if imported from that grab). Candidate title =
+//! knows its grab title only if imported from that grab), and that grab's
+//! `download_id` as `release_hash` (P31: Scryer stores the imported torrent's
+//! info hash, taken from the download id). Candidate title =
 //! `release.title` or "Title1" (NBuilder default); `release.protocol` ->
 //! `source_kind`; `info_hash` -> `extra["info_hash"]`.
 //! `enable_completed_download_handling == false` -> red (no Scryer setting).
@@ -94,8 +96,7 @@
 //! red by reason, nothing computed); AlreadyImported `episodes[].season/number`,
 //! `release.quality/revision`, `parsed_quality`, `history[].quality/revision`
 //! (Scryer's guard is quality-blind), `movie.id`, `release.protocol` (no effect
-//! on the guard), `info_hash` (carried on the candidate only; stored files have
-//! no hash).
+//! on the guard).
 //!
 //! # Known reds
 //!
@@ -103,8 +104,7 @@
 //! grab, Sonarr's FullSeasonSpecification only to full-season releases), 0113
 //! (Scryer exempts Collection from the unmonitored gate), 0114 and 0115
 //! (no multi-season rule, red by reason), 0040 and rad 0012 (no completed
-//! download handling switch), 0047, 0048, rad 0019, 0020 (the guard matches
-//! release names only, stored files carry no info hash).
+//! download handling switch).
 //!
 //! Vacuity warning: the AlreadyImported greens show only that the name guard does
 //! not fire on a release named "Title1"; no fixture names a release by the grabbed
@@ -577,14 +577,14 @@ fn already_imported(g: &Value, radarr: bool) -> Result<Value, String> {
     // import row carries the same download id (null == null).
     let history = g["history"].as_array().cloned().unwrap_or_default();
     let grab = history.iter().find(|h| h["event"].as_str() == Some("Grabbed"));
-    let grabbed_release_title = grab
-        .filter(|gr| {
-            history
-                .iter()
-                .any(|h| h["event"].as_str() == Some("DownloadFolderImported") && h["download_id"] == gr["download_id"])
-        })
-        .and_then(|gr| gr["source_title"].as_str())
-        .map(str::to_string);
+    let imported_grab = grab.filter(|gr| {
+        history
+            .iter()
+            .any(|h| h["event"].as_str() == Some("DownloadFolderImported") && h["download_id"] == gr["download_id"])
+    });
+    let grabbed_release_title = imported_grab.and_then(|gr| gr["source_title"].as_str()).map(str::to_string);
+    // P31: an imported torrent's download id is its info hash; Scryer stores it as release_hash.
+    let release_hash = imported_grab.and_then(|gr| gr["download_id"].as_str()).map(str::to_string);
 
     let episode = (!radarr).then(|| "e1".to_string());
     let (scope, incumbents, files) = if file_id > 0 {
@@ -612,6 +612,7 @@ fn already_imported(g: &Value, radarr: bool) -> Result<Value, String> {
             series_movie_link_ids: vec![],
             quality_label: None,
             source_type: None,
+            release_hash,
             created_at: super::now().to_rfc3339(),
         };
         let scope = if radarr { AdmissionScope::Title } else { AdmissionScope::Episodes(vec!["e1".into()]) };

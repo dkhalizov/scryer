@@ -940,6 +940,8 @@ pub struct MediaFileCutoffSummary {
     pub series_movie_link_ids: Vec<String>,
     pub quality_label: Option<String>,
     pub source_type: Option<String>, // fork (P11)
+    // fork (P31): the torrent info hash it was imported from
+    pub release_hash: Option<String>,
     pub created_at: String,
 }
 
@@ -955,6 +957,7 @@ impl From<&TitleMediaFile> for MediaFileCutoffSummary {
             series_movie_link_ids: file.series_movie_link_ids.clone(),
             quality_label: file.quality_label.clone(),
             source_type: file.source_type.clone(), // fork (P11)
+            release_hash: file.release_hash.clone(), // fork (P31)
             created_at: file.created_at.clone(),
         }
     }

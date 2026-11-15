@@ -378,7 +378,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:163"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_rejected_if_release_title_matches_grabbed_event_source_title|-|-
 - id: SON-DECISION-0048
@@ -386,7 +386,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:179"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs|should_be_true_when_no_existing_file|-|-
 - id: SON-DECISION-0049

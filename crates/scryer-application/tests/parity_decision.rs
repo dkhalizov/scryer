@@ -937,6 +937,7 @@ fn grab_refusal(
             series_movie_link_ids: Vec::new(),
             quality_label: h.side.q.tier.map(str::to_string),
             source_type: source_name(&h.side.q),
+            release_hash: None,
             created_at: created_at(h.added_days_ago),
         })
         .collect();

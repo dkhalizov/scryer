@@ -299,6 +299,12 @@ pub(crate) async fn import_file_with_record_progress(
     Ok(CoordinatedImportFileResult {
         result,
         ownership: ownership.clone(),
+        // fork (P31): the torrent info hash the file came from, by the chain the
+        // mark-imported request uses (completed_download/result_state.rs).
+        release_hash: completed.and_then(|c| {
+            crate::normalize_torrent_info_hash(c.download_id.as_deref())
+                .or_else(|| crate::normalize_torrent_info_hash(Some(&c.download_client_item_id)))
+        }),
         _finalization_permit: finalization_permit,
         destination_permit: Arc::new(destination_permit),
     })
@@ -375,6 +381,7 @@ impl AppUseCase {
 pub(crate) struct CoordinatedImportFileResult {
     result: scryer_domain::ImportFileResult,
     ownership: ImportDestinationOwnership,
+    release_hash: Option<String>, // fork (P31)
     _finalization_permit: tokio::sync::OwnedSemaphorePermit,
     destination_permit: ImportDestinationPermit,
 }
@@ -402,7 +409,17 @@ impl CoordinatedImportFileResult {
             .services
             .library
             .media_files
-            .claim_import_destination(input, &associations)
+            .claim_import_destination(
+                // fork (P31): every completed-download writer passes here.
+                &crate::InsertMediaFileInput {
+                    release_hash: input
+                        .release_hash
+                        .clone()
+                        .or_else(|| self.release_hash.clone()),
+                    ..input.clone()
+                },
+                &associations,
+            )
             .await?;
         self.persist_content_hashes(app, &claimed.media_file_id)
             .await;

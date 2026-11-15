@@ -153,7 +153,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:152"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_rejected_if_release_title_matches_grabbed_event_source_title|0|f30ed79298e9
 - id: RAD-DECISION-0020
@@ -161,7 +161,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs:168"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/BlockedIndexerSpecificationFixture.cs|should_return_true_if_no_blocked_indexer|0|38984fd72c32
 - id: RAD-DECISION-0021

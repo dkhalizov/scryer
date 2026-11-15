@@ -1691,6 +1691,7 @@ pub trait ReleaseIdentityFile {
     fn file_id(&self) -> &str;
     fn release_names(&self) -> [Option<&str>; 2];
     fn release_paths(&self) -> [Option<&str>; 2];
+    fn release_hash(&self) -> Option<&str>; // fork (P31)
 }
 
 impl ReleaseIdentityFile for TitleMediaFile {
@@ -1705,6 +1706,9 @@ impl ReleaseIdentityFile for TitleMediaFile {
     }
     fn release_paths(&self) -> [Option<&str>; 2] {
         [self.original_file_path.as_deref(), Some(&self.file_path)]
+    }
+    fn release_hash(&self) -> Option<&str> {
+        self.release_hash.as_deref() // fork (P31)
     }
 }
 
@@ -1721,10 +1725,15 @@ impl ReleaseIdentityFile for crate::MediaFileCutoffSummary {
     fn release_paths(&self) -> [Option<&str>; 2] {
         [self.original_file_path.as_deref(), Some(&self.file_path)]
     }
+    fn release_hash(&self) -> Option<&str> {
+        self.release_hash.as_deref() // fork (P31)
+    }
 }
 
 /// Has this exact release already landed in the scope? The anti-loop guard: a
-/// re-grab of a file Scryer already holds is never an upgrade.
+/// re-grab of a file Scryer already holds is never an upgrade. A release is the
+/// same by name, or (fork, P31) by the torrent info hash the file was imported
+/// from.
 ///
 /// Scoped by the **subject's incumbent file ids** rather than by a scalar
 /// `episode_id`. `SubmissionScope::episode_id()` is `Some` only for a single
@@ -1752,10 +1761,21 @@ pub fn candidate_matches_existing_media_file<F: ReleaseIdentityFile>(
         return false;
     }
 
+    let info_hash = candidate
+        .info_hash()
+        .map(str::trim)
+        .filter(|h| !h.is_empty()); // fork (P31)
     existing_files
         .iter()
         .filter(|file| in_scope.contains(file.file_id()))
-        .any(|file| release_identities(file).any(|identity| identity == release_title))
+        .any(|file| {
+            release_identities(file).any(|identity| identity == release_title)
+                // fork (P31): the same torrent under another name (arr AlreadyImportedSameHash).
+                // Usenet candidates carry no info hash, so no protocol check is needed.
+                || info_hash
+                    .zip(file.release_hash())
+                    .is_some_and(|(a, b)| a.eq_ignore_ascii_case(b.trim()))
+        })
 }
 
 pub(crate) fn annotate_auto_decision(
@@ -8706,6 +8726,76 @@ mod tests {
                 std::slice::from_ref(&file),
                 &empty_subject,
             ));
+        }
+
+        // fork (P31): the arrs' AlreadyImportedSameHash.
+        const HASH: &str = "5b4ba671c3729e34718de86e3372be2ecb527b15";
+
+        fn hashed_file(hash: Option<&str>) -> TitleMediaFile {
+            let mut file = make_media_file("Something.Else", Some("episode-1"));
+            file.grabbed_release_title = None;
+            file.scene_name = None;
+            file.original_file_path = None;
+            file.release_hash = hash.map(str::to_string);
+            file
+        }
+
+        fn hashed_candidate(hash: Option<&str>) -> IndexerSearchResult {
+            let mut candidate = make_candidate("Nightfall.S01E01.1080p.WEB-DL-OTHER", None);
+            if let Some(hash) = hash {
+                candidate
+                    .extra
+                    .insert("info_hash".to_string(), serde_json::json!(hash));
+            }
+            candidate
+        }
+
+        /// A cross-seed of a torrent already imported comes back under another
+        /// name; the info hash is what recognises it.
+        #[test]
+        fn the_same_torrent_under_another_name_is_recognised_by_its_info_hash() {
+            let file = hashed_file(Some(HASH));
+            let subject = subject_holding(&file);
+            let candidate = hashed_candidate(Some(&HASH.to_ascii_uppercase()));
+            assert!(candidate_matches_existing_media_file(
+                &candidate,
+                std::slice::from_ref(&file),
+                &subject,
+            ));
+            assert!(candidate_matches_existing_media_file(
+                &candidate,
+                &[crate::MediaFileCutoffSummary::from(&file)],
+                &subject,
+            ));
+        }
+
+        #[test]
+        fn a_missing_or_different_info_hash_or_out_of_scope_file_is_not_a_match() {
+            let other = "0000000000000000000000000000000000000000";
+            let cases = [
+                ("candidate has no hash", hashed_file(Some(HASH)), None, true),
+                ("different hash", hashed_file(Some(HASH)), Some(other), true),
+                ("file has no hash", hashed_file(None), Some(HASH), true),
+                ("out of scope", hashed_file(Some(HASH)), Some(HASH), false),
+            ];
+            for (what, file, hash, in_scope) in cases {
+                let subject = if in_scope {
+                    subject_holding(&file)
+                } else {
+                    crate::admission::AdmissionSubject::new(
+                        crate::admission::AdmissionScope::Episodes(vec!["episode-1".to_string()]),
+                        [],
+                    )
+                };
+                assert!(
+                    !candidate_matches_existing_media_file(
+                        &hashed_candidate(hash),
+                        std::slice::from_ref(&file),
+                        &subject,
+                    ),
+                    "{what}"
+                );
+            }
         }
     }
 }
