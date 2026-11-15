@@ -5958,10 +5958,7 @@ fn four_k_and_uhd_names_read_as_2160p_unless_a_resolution_is_explicit() {
         ("Emberfall.s05e13.4K.H_265.WEB.DL", None),
         ("Emberfall.s05e13.4K.H.265.WEB.DL", Some("2160p")),
         ("Emberfall.S01E01.720p.UHD.WEB-DL", Some("720p")),
-        // fork (P26): the trailing 1080p is no longer hidden as a release
-        // group, so the two explicit resolutions conflict and quality stays
-        // unknown (Sonarr takes the first, 720p).
-        ("Emberfall.S01E01.720p.UHD.WEB-DL.1080p", None),
+        ("Emberfall.S01E01.720p.UHD.WEB-DL.1080p", Some("720p")),
     ] {
         let parsed = crate::best_parse_for_target(raw, &target);
         assert_eq!(parsed.quality.as_deref(), quality, "{raw}");
@@ -6200,6 +6197,50 @@ fn release_group_suffix_does_not_continue_across_a_dot() {
         .as_deref(),
         Some("E.N.D")
     );
+}
+
+// fork (P26 review): a final `.ts`/`.m2ts` is the file extension whatever
+// the group's shape, never telesync next to HDTV.
+#[test]
+fn final_ts_extension_is_never_telesync() {
+    let series = ContextFacetHint::Series;
+    let mut wrong = Vec::new();
+    for (raw, group) in [
+        ("Series.Title.S02E05.1080i.HDTV.DD2.0.MPEG2-NTb.ts", "NTb"),
+        (
+            "Series.Title.S02E05.1080i.HDTV.DD2.0.MPEG2-NTb-RP.ts",
+            "NTb",
+        ),
+        (
+            "Series.Title.S02E05.1080i.HDTV.DD2.0.MPEG2-E.N.D.ts",
+            "E.N.D",
+        ),
+        (
+            "Series.Title.S02E05.1080i.HDTV.DD2.0.MPEG2-VARYG.ts",
+            "VARYG",
+        ),
+        (
+            "Series.Title.S02E05.1080i.HDTV.DD2.0.MPEG2-NTb-RP.m2ts",
+            "NTb",
+        ),
+    ] {
+        let parsed = crate::best_parse_for_target(raw, &context(series, "Series Title"));
+        let got = (
+            parsed.release_group.clone(),
+            parsed.quality.clone(),
+            parsed.source,
+        );
+        if got
+            != (
+                Some(group.to_string()),
+                Some("1080i".to_string()),
+                Some(ReleaseSource::Hdtv),
+            )
+        {
+            wrong.push(format!("{raw}: {got:?}"));
+        }
+    }
+    assert!(wrong.is_empty(), "{wrong:#?}");
 }
 
 #[test]

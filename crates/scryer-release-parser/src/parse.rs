@@ -439,6 +439,7 @@ fn recover_independent_technical_metadata(
     candidate: &ReleaseParseCandidate,
 ) -> IndependentTechnicalMetadata {
     let mut qualities = Vec::new();
+    let mut resolutions = Vec::new();
     let mut sources = Vec::new();
     let mut codecs = Vec::new();
     let mut is_10bit = false;
@@ -446,11 +447,20 @@ fn recover_independent_technical_metadata(
     let last_protected_title = protected_title_end(candidate);
 
     for (index, token) in tokens.iter().enumerate() {
-        if !technical_recovery_token(candidate, index, token, last_protected_title) {
+        // fork (P26 review): a final `.ts` is the file extension, never
+        // telesync, whatever the group span covers.
+        if !technical_recovery_token(candidate, index, token, last_protected_title)
+            || (index + 1 == tokens.len() && is_media_extension(token))
+        {
             continue;
         }
         let normalized = token.normalized.as_str();
         let compound = detect_compound_metadata(normalized);
+        if let Some(resolution) =
+            parse_resolution_quality_token(normalized).filter(|_| token.bracket_depth == 0)
+        {
+            push_distinct(&mut resolutions, resolution);
+        }
         let bd_resolution = normalized
             .strip_prefix("BD")
             .and_then(parse_resolution_quality_token);
@@ -524,6 +534,12 @@ fn recover_independent_technical_metadata(
                 }));
     }
 
+    // fork (P26 review): unbracketed plain resolutions alone (`720p…1080p`)
+    // take the first, as the arrs' resolution regex does; any other mix,
+    // bracketed tags included, conflicts.
+    if qualities.len() > 1 && qualities.len() == resolutions.len() {
+        qualities.truncate(1);
+    }
     IndependentTechnicalMetadata {
         quality_conflicts: qualities.len() > 1,
         quality: (qualities.len() == 1).then(|| qualities.remove(0)),
@@ -3350,13 +3366,7 @@ fn is_resolution_token(normalized: &str) -> bool {
 /// goes only with a tail, so `.GRP.mkv` never becomes a terminal group.
 fn repost_tail_end(tokens: &[Token]) -> usize {
     let mut end = tokens.len();
-    if tokens.last().is_some_and(|token| {
-        token.separator_before == SeparatorKind::Dot
-            && matches!(
-                token.normalized.as_str(),
-                "MKV" | "MP4" | "AVI" | "M4V" | "WEBM"
-            )
-    }) {
+    if tokens.last().is_some_and(is_media_extension) {
         end -= 1;
     }
     let mut start = end;
@@ -3375,6 +3385,15 @@ fn repost_tail_end(tokens: &[Token]) -> usize {
     } else {
         tokens.len()
     }
+}
+
+/// fork (P26): a dot-joined media file extension (arr RemoveFileExtension).
+fn is_media_extension(token: &Token) -> bool {
+    token.separator_before == SeparatorKind::Dot
+        && matches!(
+            token.normalized.as_str(),
+            "MKV" | "MP4" | "AVI" | "M4V" | "WEBM" | "TS" | "M2TS"
+        )
 }
 
 /// fork (P26): a lone `-NZBgeek` right after the technical tail is the group
@@ -3598,18 +3617,8 @@ fn infer_release_group_from_token_suffix(
             let mut range = release_group_suffix_range(state, tokens, index, facet_hint);
             // fork (P26): the arrs never continue a suffix group across a dot
             // (`-MeM.GP` is MeM); dotted list names come from the arr lists.
-            // ponytail: a final `.ts`/`.m2ts` stays in the group so its span
-            // keeps the extension from reading as telesync; cut it once the
-            // quality scan skips extensions.
-            let extension_tail = range.end_token == tokens.len()
-                && range.end_token - range.start_token == 2
-                && matches!(
-                    tokens[range.end_token - 1].normalized.as_str(),
-                    "TS" | "M2TS"
-                );
             if let Some(dot) = (range.start_token + 1..range.end_token)
                 .find(|index| tokens[*index].separator_before == SeparatorKind::Dot)
-                .filter(|_| !extension_tail)
             {
                 range.end_token = dot;
             }

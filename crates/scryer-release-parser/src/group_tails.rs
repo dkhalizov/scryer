@@ -114,7 +114,7 @@ const RADARR_EXACT: &[&str] = &[
     "126811",
 ];
 
-const MEDIA_EXTENSIONS: &[&str] = &[".mkv", ".mp4", ".avi", ".m4v", ".webm"];
+const MEDIA_EXTENSIONS: &[&str] = &[".mkv", ".mp4", ".avi", ".m4v", ".webm", ".ts", ".m2ts"];
 
 /// The group an arr list names in `raw`. Radarr checks its exact list first
 /// (`radarr`), Sonarr its exception list first; each returns the last match.
