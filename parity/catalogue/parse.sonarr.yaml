@@ -1689,7 +1689,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W-IDLESS: D89 identity-less names parse by design; yearless movie and title-only names are matched by title context (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|dc0c3b05dc9f|0
 - id: SON-PARSE-0212
@@ -4673,7 +4674,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:78"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|737e1e7011a3|0
 - id: SON-PARSE-0584
@@ -4681,7 +4683,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:79"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|7243328151dd|0
 - id: SON-PARSE-0585
@@ -5436,7 +5439,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:97"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_multiple_series_titles|0c6fe43f8c25|0
 - id: SON-PARSE-0677
@@ -5444,7 +5448,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_multiple_series_titles|834ff130850e|0
 - id: SON-PARSE-0678
@@ -5452,7 +5457,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:99"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_multiple_series_titles|17715251958f|0
 - id: SON-PARSE-0679
@@ -9889,7 +9895,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:38"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W-ANIME: D77 (1) anime fansub layout (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|f8eb749bfc51|0
 - id: SON-PARSE-1231
@@ -10249,7 +10256,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|d7e790bca790|0
 - id: SON-PARSE-1276
@@ -10345,7 +10353,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|249a38f1af8e|0
 - id: SON-PARSE-1288
@@ -10585,7 +10594,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:71"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|d13d35056211|0
 - id: SON-PARSE-1318
@@ -10601,7 +10611,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:73"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|1bc13eb6070a|0
 - id: SON-PARSE-1320
@@ -11297,7 +11308,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:167"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|16ff11758e2c|0
 - id: SON-PARSE-1407
@@ -11305,7 +11317,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:168"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|cd4d574f163f|0
 - id: SON-PARSE-1408

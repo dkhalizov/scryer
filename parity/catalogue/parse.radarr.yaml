@@ -150,7 +150,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W-IDLESS: D89 identity-less names parse by design; yearless movie and title-only names are matched by title context (P35 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0020
   # key: "CrapParserFixture.cs|should_not_parse_crap|664d4c2abfae2897|0"
@@ -254,7 +255,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W-IDLESS: D89 identity-less names parse by design; yearless movie and title-only names are matched by title context (P35 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0033
   # key: "EditionParserFixture.cs|should_parse_edition|3627aa6a6a42db30|0"
@@ -3323,7 +3325,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:43"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0413
   # key: "ParserFixture.cs|should_parse_movie_title|53a22b4890a383ee|0"
@@ -3611,7 +3614,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:105"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W2: D77 (2) edition words before the year (P35 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0449
   # key: "ParserFixture.cs|should_parse_german_movie|b606ad985fecb44d|0"
@@ -3819,7 +3823,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:162"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0475
   # key: "ParserFixture.cs|should_parse_movie_alternative_titles|36408c50be392f22|0"
@@ -3827,7 +3832,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:169"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0476
   # key: "ParserFixture.cs|should_parse_movie_alternative_titles|3a4a866625791f4b|0"
@@ -3867,7 +3873,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:198"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D77 W4: D77 (4) rendering only, lookup keys equal (P35 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0481
   # key: "ParserFixture.cs|should_parse_movie_alternative_titles|9d91e5ca7831dd71|0"
@@ -4203,8 +4210,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:161"
   in_scope: true
-  status: waived
-  decision: "D69 (M8) W19: Roman numerals kept apart from digits by design"
+  status: green
   tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0523
   # key: "ParsingServiceTests/MapFixture.cs|should_match_umlauts|fd67c69fdcfd6b0d|0"
@@ -4212,8 +4218,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/MapFixture.cs:167"
   in_scope: true
-  status: waived
-  decision: "D69 (M8) W18: umlaut fold only matters for German titles"
+  status: green
   tests: [scryer-application::parity_parse::rad_map_search_criteria]
 - id: RAD-PARSE-0524
   # key: "QualityParserFixture.cs|should_parse_ts|7051782b1551f4f9|0"
