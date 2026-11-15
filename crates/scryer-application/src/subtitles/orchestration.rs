@@ -2186,7 +2186,14 @@ pub fn build_subtitle_query(
             .and_then(release_audio_codec)
             .or_else(|| media_file.audio_codec_parsed.clone())
             .or(analysis_labels.audio_codec),
+        // fork (P33 review): a resolution the parser defaulted is no claim.
         resolution: preferred_release
+            .filter(|release| {
+                !release
+                    .parse_hints
+                    .iter()
+                    .any(|hint| hint == scryer_release_parser::DEFAULT_RESOLUTION_HINT)
+            })
             .and_then(|release| release.quality.clone())
             .or_else(|| media_file.resolution.clone())
             .or(analysis_labels.quality),

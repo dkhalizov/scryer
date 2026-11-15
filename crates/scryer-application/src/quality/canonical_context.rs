@@ -151,7 +151,6 @@ impl ResolvedScoringContext {
 /// agree with the search lane or the whole design is undone.
 pub(crate) struct ParkedReleaseFacts {
     pub scoring_log: Vec<crate::quality_profile::ScoringEntry>,
-    pub coverage: crate::acquisition_coverage::ReleaseCoverage,
     pub release_group: Option<String>,
     /// The D4 runtime basis for what the release covers: total runtime, one
     /// member's, and how many members.
@@ -233,7 +232,6 @@ pub(crate) fn score_parked_release_title(
 
     ParkedReleaseFacts {
         scoring_log: scored.announced_decision.scoring_log.clone(),
-        coverage,
         release_group,
         size_basis,
         // Like the incumbent bar, retain every numeric contribution and carry
