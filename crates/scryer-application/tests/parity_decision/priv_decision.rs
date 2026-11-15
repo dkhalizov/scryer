@@ -6,7 +6,8 @@
 //! Suites (nextest names `priv_decision::<fn>`):
 //!
 //! - `rad_decision_config_formats`: RAD-DECISION-5008..5032 (`qualityprofile.json`
-//!   `formatItems/format=N`): the score a format gets in the profiles in use.
+//!   `formatItems/format=N`): the score a format's rule gets when the profile in
+//!   use goes through migration skill step 3.
 //! - `son_decision_config_settings`: SON-DECISION-5013 (`mediamanagement.json`
 //!   `downloadPropersAndRepacks`), 5016 (`indexerconfig.json` `maximumSize`),
 //!   5017 (`releaseprofile.json`).
@@ -21,9 +22,10 @@
 //!
 //! # Scryer functions under test
 //!
-//! - formats: `translate_arr_custom_formats` (Scryer's arr import in review mode,
-//!   the same call as `parity_quality` `son_quality_config`), run once on the
-//!   whole `customformat.json` with an empty score map.
+//! - formats: `translate_arr_custom_formats` as migration skill step 3 runs it
+//!   (shared `parity_common/arr_profile_scores.rs`, the same call as
+//!   `parity_quality` `son_quality_config`): the whole `customformat.json`,
+//!   scored from the first in-use profile's `formatItems`.
 //! - propers: the root `grab_refusal` (cutoff gate + `evaluate_admission`) for the
 //!   "grabbed as an upgrade" half; `compare_release_search_results` with the
 //!   `revision_preference` production sets (`release_search.rs`, "decision.revision_preference")
@@ -38,7 +40,7 @@
 //!
 //! | Reference | Scryer |
 //! |---|---|
-//! | profile `formatItems[]` {format, score} | no Scryer field: the arr import reads only a profile's id, name and language (`external_import.rs:574`); a rule carries one score. Actual = `ArrTranslatedFormat.suggested_scores` of the format named by `customformat.json` `id` == N (what the export itself offers) |
+//! | profile `formatItems[]` {format, score} | the score map migration skill step 3 passes to `translate_arr_custom_formats` (the external import keeps no `formatItems`). Actual = the `score_entry` value of the Translated rule for the format named by `customformat.json` `id` == N; None when disabled |
 //! | profiles in use | keys of `movie-summary.json` / `series-summary.json` key `qualityProfileId` |
 //! | expected score | the `formatItems` score of the in-use profiles (missing entry = 0), compared as f64; profiles that disagree -> red (one score per rule) |
 //! | `downloadPropersAndRepacks` | root `propers()` -> `ignore_proper_repack` through `captured_spec` (DoNotUpgrade -> no field, red). PreferAndUpgrade -> {preferred, upgrades}; DoNotUpgrade -> {preferred, not upgrades}; DoNotPrefer -> neither |
@@ -80,14 +82,13 @@
 //! - RAD-DECISION-5044 (auto-tagging): no condition-based tagging of library titles
 //!   (request rules add tags at request time behind the request service).
 //!
-//! Known reds: the 25 format scores and the constant reds above (`maximumSize`,
-//! `preferIndexerFlags`, `releaseprofile.json`, `tag.json`).
+//! Known reds: the constant reds above (`maximumSize`, `preferIndexerFlags`,
+//! `releaseprofile.json`, `tag.json`).
 
 use std::cmp::Ordering;
-use std::collections::HashMap;
 
 use chrono::Duration;
-use scryer_application::arr_custom_format::{ArrSourceApplication, translate_arr_custom_formats};
+use scryer_application::arr_custom_format::ArrSourceApplication;
 use scryer_application::parity_seams::{
     AdmissionScope, AdmissionSubject, CandidateFacts, Incumbent, ReleaseAutoDecisionCode,
     apply_min_score_gate, compare_release_search_results, movie_availability_decision,
@@ -108,7 +109,6 @@ const TERMS: &str = "no Scryer field for release-profile required/ignored terms;
 const TAGS: &str = "delay-profile tags exist (resolve_delay_profile, covered by the delay-profile config entries); no Scryer field for indexer/download-client tags: Scryer restricts indexers per library scope (indexer.routing:<scope> -> IndexerRoutingPlan, indexer_search_eligibility, contracts.rs)";
 const HARD_SUBS_WHITELIST: &str = "no whitelistedHardcodedSubs setting: Scryer refuses every hardcoded-sub movie release (fixed, P20)";
 const INDEXER_FLAGS: &str = "no Scryer setting to prefer indexer flags in the rank (SearchRank has no flag step, acquisition/scoring.rs); flags change the order only through user rules / imported IndexerFlagSpecification (rules/arr_custom_format/specifications.rs:336)";
-const NO_FORMAT_ITEMS: &str = "Scryer's arr import reads no profile formatItems (external_import.rs:574 keeps id, name, language); its only score source is the format export";
 /// A format score above Scryer's bundled fileless proper bonus (+30/+50).
 const BIGGER_FORMAT: i32 = 100;
 
@@ -140,8 +140,10 @@ fn rad_decision_config_formats() {
     let formats: Vec<Value> = corpus(&format!("corpus/captured/{app}/config/customformat.json"));
     let profiles: Vec<Value> = corpus(&format!("corpus/captured/{app}/config/qualityprofile.json"));
     let in_use = profiles_in_use(app);
-    let paste = Value::from(formats.clone()).to_string();
-    let translation = translate_arr_custom_formats(app_source(app), &paste, &HashMap::new());
+    let translation = in_use
+        .first()
+        .and_then(|pid| profiles.iter().find(|p| p["id"].as_i64() == Some(*pid)))
+        .map(|p| super::arr_profile_scores::translate_with_profile(app_source(app), &formats, p));
     for (area, entry) in &catalogue.entries {
         if area != "decision" || entry.source != Source::Config || !entry.id.starts_with("RAD-DECISION-5") {
             continue;
@@ -175,22 +177,26 @@ fn rad_decision_config_formats() {
             continue;
         }
         let translation = match &translation {
-            Ok(t) => t,
-            Err(e) => {
-                suite.record(id, false, format!("harness: translation refused: {e:?}"));
+            Some(Ok(t)) => t,
+            Some(Err(e)) => {
+                suite.record(id, false, format!("harness: {e}"));
+                continue;
+            }
+            None => {
+                suite.record(id, false, "harness: in-use profile not in qualityprofile.json");
                 continue;
             }
         };
         let name = formats.iter().find(|f| f["id"].as_i64() == Some(n)).and_then(|f| f["name"].as_str());
-        let Some(format) = name.and_then(|name| translation.formats.iter().find(|f| f.name == name)) else {
+        let Some(name) = name.filter(|name| translation.formats.iter().any(|f| f.name == *name)) else {
             suite.record(id, false, format!("format {n} not in the translation (refused or renamed)"));
             continue;
         };
-        let actual = format.suggested_scores.first().map(|(_, s)| *s);
+        let actual = super::arr_profile_scores::rule_score(translation, name);
         let pass = actual == Some(expected);
         let detail = match actual {
             _ if pass => String::new(),
-            None => format!("{NO_FORMAT_ITEMS}; expected {expected}, actual None"),
+            None => format!("format disabled or no score_entry; expected {expected}, actual None"),
             Some(a) => format!("expected {expected}, actual {a}"),
         };
         suite.record(id, pass, detail);

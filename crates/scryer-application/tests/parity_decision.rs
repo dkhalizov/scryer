@@ -188,8 +188,9 @@
 //!   (see that file's header). Config `downloadPropersAndRepacks` is mapped
 //!   in `priv_decision` (the head carries the revision step); `preferIndexerFlags`
 //!   is red by reason there (no flag step in the rank).
-//! - Config `formatItems/format=N`: mapped red in `priv_decision` (Scryer's import
-//!   derives no score), the same comparison as `parity_quality` `son_quality_config`.
+//! - Config `formatItems/format=N`: mapped in `priv_decision` through migration
+//!   skill step 3 (shared `parity_common/arr_profile_scores.rs`), the same
+//!   comparison as `parity_quality` `son_quality_config`.
 //! - Delay cases whose outcome rests on "highest quality in profile" (bypass
 //!   on) or "same-tier revision over the file on disk": mapped in
 //!   `parity_decision/decision_delay.rs` (`son_decision_delay`,
@@ -256,6 +257,8 @@ mod decision_context;
 mod decision_guards;
 #[path = "parity_decision/priv_decision.rs"]
 mod priv_decision;
+#[path = "parity_common/arr_profile_scores.rs"]
+mod arr_profile_scores;
 
 const NOW: &str = "2026-01-15T12:00:00Z";
 

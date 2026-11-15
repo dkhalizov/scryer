@@ -63,12 +63,14 @@
 //!   `build_rule_input` sets them (user_rule_input.rs:141,183); a format with
 //!   another spec type fails (none in the captured config). "Renaming includes it: on" fails: Scryer's renamer has no
 //!   custom-format token (all captured formats are off).
-//! - Config custom-format scores (SON 5008-5031): Scryer's side is the score
-//!   its import derives for the format from the captured export
-//!   (`suggested_scores`, from a `score` / `trash_scores` key). Scryer's arr
-//!   import never reads a profile's `formatItems` (external_import.rs:574
-//!   keeps id, name, language) and Scryer rules carry one score per rule, not
-//!   per profile, so these are red.
+//! - Config custom-format scores (SON 5008-5031): the arr keeps scores on the
+//!   profile's `formatItems`, not in the format export, and Scryer reaches them
+//!   through the migration skill (`skills/scryer-migrate-from-arr`,
+//!   custom-formats step 3): the profile's scores go into
+//!   `translate_arr_custom_formats` (shared `parity_common/arr_profile_scores.rs`).
+//!   Scryer's side is the format's `score_entry` value in the translated rule
+//!   set; None when the format is disabled or the import refused. A green row
+//!   proves the skill path, not that an instance holds the rule set.
 //! - Captured files (6001..): Scryer parses the scene name the arr stored
 //!   (the file name when there is none) and derives the resolution from the
 //!   stored media dimensions, the same inputs Scryer's import and scan use.
@@ -148,6 +150,8 @@
 //! `parity_quality/priv_quality.rs` uses `apply_size_requirement` and
 //! `CoverageSizeBasis` (parity_seams).
 
+#[path = "parity_common/arr_profile_scores.rs"]
+mod arr_profile_scores;
 #[path = "parity_quality/priv_quality.rs"]
 mod priv_quality;
 #[path = "parity_quality/quality_catalogue.rs"]
@@ -685,6 +689,7 @@ fn config(suite_name: &str, app: &str, prefix: &str, source: ArrSourceApplicatio
     let profiles: Vec<Value> = corpus(&format!("corpus/captured/{app}/config/qualityprofile.json"));
     let verdicts: Vec<Value> = corpus(&format!("corpus/captured/{app}/data/parse.json"));
     let (translation, matched) = import_and_match(source, &formats, &verdicts);
+    let mut scored: HashMap<i64, Result<ArrCustomFormatTranslation, String>> = HashMap::new();
     for (_, entry) in &catalogue.entries {
         let id = entry.id.as_str();
         if !id.starts_with(prefix) || !suite.wants(id) {
@@ -742,8 +747,8 @@ fn config(suite_name: &str, app: &str, prefix: &str, source: ArrSourceApplicatio
                 let detail = format!("{} of {} titles disagree, e.g. {:?}", wrong.len(), matched.len(), &wrong[..wrong.len().min(3)]);
                 suite.record(id, wrong.is_empty(), if wrong.is_empty() { String::new() } else { detail });
             }
-            // Custom-format score in a profile: the score Scryer derives for
-            // the format from the captured arr data.
+            // Custom-format score in a profile: the score Scryer's rule gets
+            // when the profile's scores go through migration skill step 3.
             ("qualityprofile.json", [profile_ref, "formatItems", format_ref]) => {
                 let (Some(profile_id), Some(format_id)) =
                     (fragment_number(profile_ref, "id"), fragment_number(format_ref, "format"))
@@ -754,17 +759,18 @@ fn config(suite_name: &str, app: &str, prefix: &str, source: ArrSourceApplicatio
                 let item = by_id(profile["formatItems"].as_array().unwrap(), "format", format_id, "format item");
                 let expected = item["score"].as_f64();
                 let name = by_id(&formats, "id", format_id, "custom format")["name"].as_str().unwrap();
-                let actual = translation
-                    .formats
-                    .iter()
-                    .find(|f| f.name == name)
-                    .and_then(|f| f.suggested_scores.first().map(|(_, s)| *s));
+                let actual = scored
+                    .entry(profile_id)
+                    .or_insert_with(|| arr_profile_scores::translate_with_profile(source, &formats, profile))
+                    .as_ref()
+                    .ok()
+                    .and_then(|t| arr_profile_scores::rule_score(t, name));
                 record(
                     &mut suite,
                     id,
                     expected,
                     actual,
-                    "Scryer's arr import reads no profile formatItems (external_import.rs:574 keeps id, name, language); its only score source is the format export",
+                    "rule from migration skill step 3 (profile formatItems -> translate_arr_custom_formats); None = format disabled or refused",
                 );
             }
             // Profile definitions and quality definitions: unmapped (header).
