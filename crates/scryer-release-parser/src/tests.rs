@@ -6445,3 +6445,97 @@ fn leading_yymmdd_is_not_title() {
         NaiveDate::from_ymd_opt(2022, 12, 8)
     );
 }
+
+// fork (P35 A1): AKA and slash parts are observed titles; a slash before the
+// episode makes the last part the primary (Sonarr reads the original title).
+#[test]
+fn title_components_are_observed_segments() {
+    let segments = |raw: &str, facet: ContextFacetHint, title: &str| {
+        let analysis = analyze_release_for_target(raw, &context(facet, title));
+        analysis
+            .best_candidate()
+            .expect(raw)
+            .title_segments
+            .iter()
+            .filter(|s| {
+                matches!(
+                    s.kind,
+                    crate::TitleSegmentKind::ObservedPrimary
+                        | crate::TitleSegmentKind::ObservedAlternate
+                )
+            })
+            .map(|s| {
+                (
+                    s.kind == crate::TitleSegmentKind::ObservedPrimary,
+                    s.raw.clone(),
+                )
+            })
+            .collect::<Vec<_>>()
+    };
+    let movie = ContextFacetHint::Movie;
+    assert_eq!(
+        segments(
+            "Skjegg.AKA.Rox.Beard.1965.CD1.DVDRip.XviD-KG.avi",
+            movie,
+            "Skjegg AKA Rox Beard"
+        ),
+        [
+            (true, "Skjegg AKA Rox Beard".into()),
+            (false, "Skjegg".into()),
+            (false, "Rox Beard".into())
+        ]
+    );
+    assert_eq!(
+        segments(
+            "Sydney A.K.A. Hard Eight 1996 1080p AMZN WEB-DL H.264.mkv",
+            movie,
+            "Sydney A K A Hard Eight"
+        ),
+        [
+            (true, "Sydney AKA Hard Eight".into()),
+            (false, "Sydney".into()),
+            (false, "Hard Eight".into())
+        ]
+    );
+    assert_eq!(
+        segments("AKA.2002.DVDRip.x264-HANDJOB.mkv", movie, "AKA"),
+        [(true, "AKA".into())]
+    );
+    assert_eq!(
+        segments(
+            "Гранд Тур / The Grand Tour / S5E1-3 (3) [2022-2024, WEB-DL 1080p]",
+            ContextFacetHint::Series,
+            "Гранд Тур The Grand Tour"
+        ),
+        [(false, "Гранд Тур".into()), (true, "The Grand Tour".into())]
+    );
+}
+
+// fork (P35 A2): `T1 (S2E1) / T2 (S2E1)` (Sonarr's repeated-identity form):
+// T2 is the primary title, T1 an alternate.
+#[test]
+fn repeated_identity_title_is_primary() {
+    let raw = "Босх: Спадок (S2E1) / Series: Legacy (S2E1) (2023) WEB-DL 1080p Ukr/Eng | sub Eng";
+    let analysis =
+        analyze_release_for_target(raw, &context(ContextFacetHint::Series, "Босх Спадок"));
+    let titles = analysis
+        .best_candidate()
+        .expect(raw)
+        .title_segments
+        .iter()
+        .filter(|s| s.kind != crate::TitleSegmentKind::ContextMatchedAlias)
+        .map(|s| {
+            (
+                s.kind == crate::TitleSegmentKind::ObservedPrimary,
+                s.normalized.clone(),
+            )
+        })
+        .collect::<Vec<_>>();
+    assert_eq!(
+        titles,
+        [
+            (false, "БОСХ СПАДОК".into()),
+            (true, "SERIES LEGACY".into())
+        ]
+    );
+}

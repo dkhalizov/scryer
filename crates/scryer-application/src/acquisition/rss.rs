@@ -5854,6 +5854,20 @@ mod tests {
         assert_eq!(result.map(|m| m.title_id).as_deref(), Some("cookxfamily"));
     }
 
+    // fork (P35 A1): a multi-script `Local / Original / SxEy` pack matches the
+    // original title, as Sonarr reads the last slash component.
+    #[tokio::test]
+    async fn multi_script_slash_release_matches() {
+        let titles = vec![make_series_title("grandtour", "The Grand Tour", None)];
+        let bank = build_title_context_bank(&titles);
+        let result = match_release(
+            "Гранд Тур / The Grand Tour / S5E1-3 (3) / Скандинавский Флик, Евробум, Работа с песком [2022-2024, Авто-шоу, WEB-DL 1080p]",
+            &bank,
+        )
+        .await;
+        assert_eq!(result.map(|m| m.title_id).as_deref(), Some("grandtour"));
+    }
+
     #[tokio::test]
     async fn unknown_unbracketed_prefix_does_not_count_as_a_release_group() {
         let titles = vec![make_series_title("cookxfamily", "Cook x Family", None)];

@@ -4997,12 +4997,45 @@ fn build_candidate(
             .accepted_alias_hits
             .retain(|hit| !hit.token_range.indices().contains(&stamp));
     }
-    let title_segments = title_segments_for_state(
+    // fork (P35 A1): `Local / Original / S01E01` (Sonarr's slash form).
+    let slash_identity = state
+        .identity_token_mask
+        .ones()
+        .next()
+        .and_then(|index| tokens.get(index))
+        .is_some_and(|token| token.separator_before == SeparatorKind::Slash);
+    let mut title_segments = title_segments_for_state(
         tokens,
         state.title_token_indices.as_slice(),
         state.accepted_alias_hits.as_slice(),
         alias_oracle,
+        slash_identity,
     );
+    // fork (P35 A2): `T1 (S2E1) / T2 (S2E1)`: T2, after the identity, is the
+    // primary (Sonarr's repeated-identity form); a narrower alias primary stays.
+    if let Some(second) = repeated_identity_title(tokens, &state.identity_token_mask)
+        && let (Some(first), Some(last)) = (
+            state.title_token_indices.first(),
+            state.title_token_indices.last(),
+        )
+        && title_segments.first().is_some_and(|primary| {
+            primary.kind == TitleSegmentKind::ObservedPrimary
+                && (primary.token_start, primary.token_end) == (*first, last + 1)
+        })
+    {
+        for segment in &mut title_segments {
+            if segment.kind == TitleSegmentKind::ObservedPrimary {
+                segment.kind = TitleSegmentKind::ObservedAlternate;
+            }
+        }
+        title_segments.push(TitleSegment {
+            kind: TitleSegmentKind::ObservedPrimary,
+            token_start: second[0],
+            token_end: second[second.len() - 1] + 1,
+            raw: render_title_indices(tokens, &second),
+            normalized: normalized_title_from_indices(tokens, &second),
+        });
+    }
     let context_title_matches = context_title_matches_for_state(
         tokens,
         state.title_token_indices.as_slice(),
@@ -5515,16 +5548,140 @@ fn title_segments_for_state(
     title_indices: &[usize],
     accepted_alias_hits: &[AliasHit],
     alias_oracle: &AliasOracle,
+    slash_identity: bool,
 ) -> Vec<TitleSegment> {
     if title_indices.is_empty() {
         return Vec::new();
     }
+    let mut segments =
+        title_segments_before_components(tokens, title_indices, accepted_alias_hits, alias_oracle);
+    // fork (P35 A1): each AKA or slash part is an observed title too. With a
+    // slash before the episode the last part is the primary, unless a context
+    // alias narrower than the zone already is.
+    let parts = title_components(tokens, title_indices);
+    if parts.is_empty() {
+        return segments;
+    }
+    let zone = (title_indices[0], title_indices[title_indices.len() - 1] + 1);
+    let part_segments = parts.iter().map(|part| TitleSegment {
+        kind: TitleSegmentKind::ObservedAlternate,
+        token_start: part[0],
+        token_end: part[part.len() - 1] + 1,
+        raw: render_title_indices(tokens, part),
+        normalized: normalized_title_from_indices(tokens, part),
+    });
+    if slash_identity
+        && segments
+            .first()
+            .is_some_and(|primary| (primary.token_start, primary.token_end) == zone)
+    {
+        let mut parts = part_segments.collect::<Vec<_>>();
+        if let Some(last) = parts.last_mut() {
+            last.kind = TitleSegmentKind::ObservedPrimary;
+        }
+        segments.retain(|segment| {
+            segment.kind == TitleSegmentKind::ContextMatchedAlias
+                || (segment.token_start, segment.token_end) != zone
+        });
+        parts.extend(segments);
+        return parts;
+    }
+    for segment in part_segments {
+        if !segments.iter().any(|existing| {
+            existing
+                .normalized
+                .eq_ignore_ascii_case(&segment.normalized)
+        }) {
+            segments.push(segment);
+        }
+    }
+    segments
+}
+
+/// fork (P35 A2): the title between a bracketed identity and the same
+/// identity bracketed again after a slash (`T1 (S2E1) / T2 (S2E1)`).
+fn repeated_identity_title(tokens: &[Token], identity_mask: &FixedBitSet) -> Option<Vec<usize>> {
+    let first = identity_mask.ones().next()?;
+    let identity = tokens.get(first)?;
+    let group = identity.group_id.filter(|_| identity.bracket_depth > 0)?;
+    let start = first
+        + tokens[first..]
+            .iter()
+            .take_while(|token| token.group_id == Some(group))
+            .count();
+    if tokens.get(start)?.separator_before != SeparatorKind::Slash {
+        return None;
+    }
+    let end = start
+        + tokens[start..]
+            .iter()
+            .take_while(|token| token.bracket_depth == 0)
+            .count();
+    (end > start && tokens.get(end)?.normalized == identity.normalized)
+        .then(|| (start..end).collect())
+}
+
+/// fork (P35 A1): the non-empty parts of a title split at `AKA` (or `A K A`)
+/// and before a slash; empty when there is fewer than two.
+fn title_components<'a>(tokens: &[Token], indices: &'a [usize]) -> Vec<&'a [usize]> {
+    let mut parts = Vec::new();
+    let (mut start, mut i) = (0, 0);
+    while i < indices.len() {
+        let aka = if is_aka_sequence(tokens, indices, i) {
+            3
+        } else {
+            usize::from(tokens[indices[i]].normalized == "AKA")
+        };
+        if aka > 0 {
+            parts.push(&indices[start..i]);
+            i += aka;
+            start = i;
+            continue;
+        }
+        if i > start && tokens[indices[i]].separator_before == SeparatorKind::Slash {
+            parts.push(&indices[start..i]);
+            start = i;
+        }
+        i += 1;
+    }
+    parts.push(&indices[start..]);
+    parts.retain(|part| !part.is_empty());
+    if parts.len() < 2 {
+        parts.clear();
+    }
+    parts
+}
+
+/// Title tokens as written, with an `A K A` run shown as `AKA` (fork P35 A1).
+fn render_title_indices(tokens: &[Token], indices: &[usize]) -> String {
+    let mut words = Vec::new();
+    let mut i = 0;
+    while i < indices.len() {
+        if is_aka_sequence(tokens, indices, i) {
+            words.push("AKA".to_string());
+            i += 3;
+            continue;
+        }
+        if let Some(token) = tokens.get(indices[i]) {
+            words.push(token.raw.clone());
+        }
+        i += 1;
+    }
+    words.join(" ")
+}
+
+fn title_segments_before_components(
+    tokens: &[Token],
+    title_indices: &[usize],
+    accepted_alias_hits: &[AliasHit],
+    alias_oracle: &AliasOracle,
+) -> Vec<TitleSegment> {
     let default_normalized = normalized_title_from_indices(tokens, title_indices);
     let default_segment = TitleSegment {
         kind: TitleSegmentKind::ObservedPrimary,
         token_start: *title_indices.first().unwrap_or(&0),
         token_end: title_indices.last().copied().unwrap_or(0) + 1,
-        raw: render_token_indices(tokens, title_indices),
+        raw: render_title_indices(tokens, title_indices),
         normalized: default_normalized,
     };
     let contextual_hits =
@@ -5538,7 +5695,7 @@ fn title_segments_for_state(
                 kind: TitleSegmentKind::ContextMatchedAlias,
                 token_start: hit.token_range.start_token,
                 token_end: hit.token_range.end_token,
-                raw: render_token_indices(
+                raw: render_title_indices(
                     tokens,
                     &(hit.token_range.start_token..hit.token_range.end_token).collect::<Vec<_>>(),
                 ),

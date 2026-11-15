@@ -29,7 +29,7 @@
 //! | result is null (`should_parse: false`) | `disposition == Unparseable` (`should_parse` = not unparseable) |
 //! | any other key of ParseTitle / ParseMovieTitle / a captured case | needs a parse: an unparseable result fails the case (except a case whose only key is `no_error`) |
 //! | `title` (SeriesTitle, PrimaryMovieTitle) | raw text of the best candidate's first `ObservedPrimary` title segment; none = `""` where the reference uses `""`. Sonarr only: SeriesTitle keeps the year as written (`Series 2009`, `Series (2009)`) where Scryer splits it into `year`, so when Scryer has year Y and the expected title ends in ` Y` or ` (Y)`, Scryer's title gets that suffix before comparing |
-//! | `movie_titles`, `series_title_info.all_titles` | raw text of every `ObservedPrimary`/`ObservedAlternate` segment, in order |
+//! | `movie_titles`, `series_title_info.all_titles` | raw text of every `ObservedPrimary`/`ObservedAlternate` segment, in order. `all_titles` only (fork P35 A3, D80): a primary whose token range covers every alternate is dropped, since Sonarr AllTitles lists only the parts where Radarr MovieTitles keeps the whole title too |
 //! | `series_title_info.title`, `.title_without_year` | the same title; `.title` gets the Sonarr year suffix as for `title` |
 //! | `series_title_info.year`, `year` | `year`, absent = 0 |
 //! | `season` | `episode.season`, absent = 0 (no fallback to `season_numbers`) |
@@ -366,6 +366,27 @@ impl View {
             .collect()
     }
 
+    /// Sonarr AllTitles: the titles without a primary that spans all the
+    /// alternates (fork P35 A3, D80).
+    fn all_titles(&self) -> Vec<String> {
+        let Some(candidate) = self.analysis.best_candidate() else { return Vec::new() };
+        let observed: Vec<_> = candidate
+            .title_segments
+            .iter()
+            .filter(|s| matches!(s.kind, TitleSegmentKind::ObservedPrimary | TitleSegmentKind::ObservedAlternate))
+            .collect();
+        let alternates: Vec<_> = observed.iter().filter(|s| s.kind == TitleSegmentKind::ObservedAlternate).collect();
+        observed
+            .iter()
+            .filter(|s| {
+                s.kind != TitleSegmentKind::ObservedPrimary
+                    || alternates.is_empty()
+                    || !alternates.iter().all(|a| s.token_start <= a.token_start && a.token_end <= s.token_end)
+            })
+            .map(|s| s.raw.clone())
+            .collect()
+    }
+
     fn title(&self) -> Value {
         self.titles(true).into_iter().next().map_or(Value::Null, Value::String)
     }
@@ -476,7 +497,7 @@ impl View {
                         "year" => json!(p.year.unwrap_or(0)),
                         "title" => self.title_with_year(app, e),
                         "title_without_year" => self.title(),
-                        "all_titles" => json!(self.titles(false)),
+                        "all_titles" => json!(self.all_titles()),
                         other => panic!("series_title_info.{other} not mapped"),
                     };
                     out.eq(&full, modes.get(&full).map(String::as_str), e, a);

@@ -3795,7 +3795,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:141"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0472
   # key: "ParserFixture.cs|should_parse_movie_alternative_titles|f47e83135ae75971|0"
@@ -3803,7 +3803,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:148"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0473
   # key: "ParserFixture.cs|should_parse_movie_alternative_titles|c68b51d831a5d346|0"
@@ -3811,7 +3811,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:155"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0474
   # key: "ParserFixture.cs|should_parse_movie_alternative_titles|77eaa0c7c6d87a4c|0"
@@ -3859,7 +3859,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:191"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0480
   # key: "ParserFixture.cs|should_parse_movie_alternative_titles|7387995f2718b26a|0"
@@ -3883,7 +3883,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:212"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0483
   # key: "ParserFixture.cs|should_parse_movie_folder_name|24f15e3db3bc4e99|0"

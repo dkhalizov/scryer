@@ -800,7 +800,8 @@ pub(crate) fn find_spelling_match(
 
 /// Recover the complete observed title before any library target is supplied.
 /// The widest observed segment prevents a synthesized short context from
-/// projecting a small prefix out of a longer release name.
+/// projecting a small prefix out of a longer release name; each observed
+/// AKA or slash part is an anchor of its own (fork P35 A1).
 pub(crate) fn neutral_spelling_anchors(raw: &str) -> (Vec<String>, crate::ParsedReleaseMetadata) {
     let (forms, parsed) = neutral_spelling_forms(raw);
     (forms.into_iter().map(|(key, _)| key).collect(), parsed)
@@ -846,12 +847,37 @@ pub(crate) fn neutral_spelling_forms(
             anchors.push((key, segment.raw.clone()));
         }
     }
+    // fork (P35 A1): every observed title anchors, so the original-language
+    // part of a `Local / Original / S01E01` pack is looked up too.
+    for segment in candidate.title_segments.iter().filter(|segment| {
+        matches!(
+            segment.kind,
+            scryer_release_parser::TitleSegmentKind::ObservedPrimary
+                | scryer_release_parser::TitleSegmentKind::ObservedAlternate
+        )
+    }) {
+        let key = canonical_lookup_key(&segment.raw);
+        if !key.is_empty() && !anchors.iter().any(|(existing, _)| *existing == key) {
+            anchors.push((key, segment.raw.clone()));
+        }
+    }
     (anchors, candidate.projected.clone())
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    // fork (P35 A1): each slash or AKA part of a release title is an anchor.
+    #[test]
+    fn every_observed_title_part_anchors() {
+        let (anchors, _) =
+            neutral_spelling_anchors("Енола Голмс / Enola Holmes (2020) UHD WEB-DL 2160p");
+        assert!(
+            anchors.iter().any(|anchor| anchor == "enola holmes"),
+            "{anchors:?}"
+        );
+    }
 
     fn entry(text: &str, language: &str) -> IndexedName {
         let key = canonical_lookup_key(text);
