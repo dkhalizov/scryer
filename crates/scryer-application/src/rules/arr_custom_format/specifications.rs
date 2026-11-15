@@ -245,7 +245,7 @@ pub(super) fn compile_leaf(spec: &Specification, format: &ImportedFormat) -> Opt
                 }
             } else {
                 let mapped: Option<&[&str]> = match value as i64 {
-                    1 => Some(&["HDTV"]),
+                    1 | 2 => Some(&["HDTV"]), // fork (P33 review): 2 is Raw-HD
                     3 => Some(&["WEB-DL"]),
                     4 => Some(&["WEBRIP"]),
                     5 => Some(&["DVD"]),
@@ -266,15 +266,19 @@ pub(super) fn compile_leaf(spec: &Specification, format: &ImportedFormat) -> Opt
                         Term::Bool(value == 7.0),
                     ));
                 }
-                // Scryer folds RAWHD into HDTV; the original token distinguishes the
-                // explicit raw-TV form when testing ordinary Television source.
-                if value == 1.0 {
+                // fork (P33 review): the parse reads Raw-HD as HDTV, so the raw
+                // title splits Television (1) from TelevisionRaw (2) as the
+                // parser does: a RawHD name or a case-sensitive MPEG2 capture.
+                if value == 1.0 || value == 2.0 {
                     body.push(
                         call(
                             "regex.match",
-                            vec![text("(?i)\\bRAW[ ._-]?HD\\b"), release("raw_title")],
+                            vec![
+                                text("\\b(?i:RAW[ ._-]?HD)\\b|\\bMPEG[-_. ]?2\\b"),
+                                release("raw_title"),
+                            ],
                         )
-                        .negated(true),
+                        .negated(value == 1.0),
                     );
                 }
                 Compiled::ok(body)

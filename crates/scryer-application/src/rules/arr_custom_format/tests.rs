@@ -450,9 +450,71 @@ fn source_ids_are_app_specific_and_retain_remux_distinctions() {
             .contains("is_remux == true")
     );
     assert_eq!(
-        first_severity(&sonarr("SourceSpecification", json!({ "value": 2 }))),
+        first_severity(&sonarr("SourceSpecification", json!({ "value": 8 }))),
         ERROR
     );
+    // fork (P33 review): TelevisionRaw is Raw-HD now that the parse has it.
+    assert_eq!(
+        first_severity(&sonarr("SourceSpecification", json!({ "value": 2 }))),
+        None
+    );
+}
+
+/// fork (P33 review): Sonarr's Television (1) is no Raw-HD, TelevisionRaw (2)
+/// is only Raw-HD: a `RawHD` name or a case-sensitive MPEG2 HDTV capture.
+#[test]
+fn sonarr_television_and_television_raw_split_on_raw_hd() {
+    let matches = |value: i64, name: &str| {
+        let paste = json!({ "id": "f", "name": "Source", "specifications": [
+            { "implementation": "SourceSpecification", "required": true, "fields": { "value": value } }
+        ] })
+        .to_string();
+        let id =
+            translate_arr_custom_formats(ArrSourceApplication::Sonarr, &paste, &HashMap::new())
+                .expect("paste is readable")
+                .formats[0]
+                .id
+                .clone();
+        let result = translate_arr_custom_formats(
+            ArrSourceApplication::Sonarr,
+            &paste,
+            &HashMap::from([(id, 10)]),
+        )
+        .expect("paste is readable");
+        assert_eq!(result.formats[0].diagnostics, [], "source {value}");
+        let id = "arr_source_truth".to_string();
+        let policy = scryer_rules::UserPolicy {
+            rego_source: scryer_rules::rewrite_package_declaration(&result.rego_source, &id),
+            id,
+            name: "Arr source truth".to_string(),
+            origin: scryer_rules::PolicyOrigin::User,
+            applied_facets: vec![],
+        };
+        let engine = scryer_rules::UserRulesEngine::build_with_baseline_rules(
+            &[policy],
+            &std::collections::HashSet::new(),
+        )
+        .unwrap_or_else(|error| panic!("{error}\n{}", result.rego_source));
+        let result = engine
+            .evaluator()
+            .evaluate(&rule_input_for(name), "series")
+            .unwrap();
+        assert!(result.errors.is_empty(), "{:?}", result.errors);
+        !result.entries.is_empty()
+    };
+    for (name, raw_hd) in [
+        ("Series.Title.S02E11.1080i.HDTV.DD5.1.MPEG2-TrollHD", true),
+        (
+            "Series Title S01E18 Title 720p HDTV DD5.1 MPEG2-TrollHD",
+            true,
+        ),
+        ("Series Title - S03E01 - Episode Title Raw-HD.ts", true),
+        ("Series.Title.S02E11.720p.HDTV.x264-GRP", false),
+        ("Series.Title.S02E11.1080i.HDTV.DD5.1.mpeg2-GRP", false),
+    ] {
+        assert_eq!(matches(1, name), !raw_hd, "Television: {name}");
+        assert_eq!(matches(2, name), raw_hd, "TelevisionRaw: {name}");
+    }
 }
 
 #[test]
@@ -640,6 +702,10 @@ impl TitleRule {
 }
 
 fn synthetic_input() -> scryer_rules::UserRuleInput {
+    rule_input_for("Synthetic.Title.2024.1080p.WEB-DL")
+}
+
+fn rule_input_for(name: &str) -> scryer_rules::UserRuleInput {
     use crate::quality_profile::QualityProfileDecision;
     use crate::rules::user_rule_input::{ReleaseRuntimeInfo, RuleContextInfo, build_rule_input};
     let profile = crate::QualityProfile::parse(
@@ -660,7 +726,7 @@ fn synthetic_input() -> scryer_rules::UserRuleInput {
         decided_by: None,
     };
     build_rule_input(
-        &crate::parse_release_metadata("Synthetic.Title.2024.1080p.WEB-DL"),
+        &crate::parse_release_metadata(name),
         &profile,
         &decision,
         ReleaseRuntimeInfo {

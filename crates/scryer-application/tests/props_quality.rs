@@ -426,7 +426,8 @@ proptest! {
         c in any::<prop::sample::Index>(),
         v in any::<u8>(),
         source in prop::option::of(prop_oneof![
-            prop::sample::select(SOURCES).prop_map(String::from),
+            // fork (P33e, D78): Raw-HD has no bare fallback; see below.
+            prop::sample::select(SOURCES).prop_filter("Raw-HD", |s| *s != "Raw-HD").prop_map(String::from),
             prop::sample::select(vec!["WEB-DL", "BluRay", "BRDISK", "Remux", "DVD"]).prop_map(String::from),
             "[ -~]{0,12}",
         ]),
@@ -444,5 +445,25 @@ proptest! {
             criteria.quality_cutoff_met(key.as_deref()),
             criteria.quality_cutoff_met(Some(&bare))
         );
+    }
+
+    /// fork (P33e, D78): a Raw-HD key never resolves to a bare tier; only an
+    /// explicit `RAWHD-<res>` tier ranks it.
+    #[test]
+    fn raw_hd_never_falls_back_to_a_bare_tier(
+        lines in canonical_tiers(),
+        i in any::<prop::sample::Index>(),
+        v in any::<u8>(),
+        source in prop::sample::select(vec!["Raw-HD", "RawHD", "rawhd", " RAW-HD "]),
+    ) {
+        let tiers = tier_names(&lines);
+        let criteria = criteria_with(tiers.clone(), &tiers[0]);
+        let key = quality_tier_label(Some(&spelling(*i.get(&lines), v)), Some(source));
+        prop_assert_eq!(quality_tier_index(&criteria, key.as_deref()), None, "key {:?}", key);
+        let raw_hd = key.clone().expect("a resolution gives a key");
+        let mut explicit = tiers;
+        explicit.insert(0, raw_hd.clone());
+        let criteria = criteria_with(explicit, &raw_hd);
+        prop_assert_eq!(quality_tier_index(&criteria, key.as_deref()), Some(0));
     }
 }

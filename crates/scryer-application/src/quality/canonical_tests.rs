@@ -2778,3 +2778,88 @@ fn a_size_floor_on_both_passes_keeps_the_file_score_veto() {
     };
     assert_eq!(codes, &["score_at_or_below_block_threshold".to_string()]);
 }
+
+// ── fork (P33 review): what the parser defaulted or class-rounded ────────────
+
+/// The truth-check action an automatic import into an occupied scope takes.
+fn occupied_import_action(
+    name: &str,
+    tiers: &str,
+    category: &str,
+    (width, height): (i32, i32),
+) -> (ScoredRelease, crate::post_download_gate::TruthVerdictAction) {
+    let profile = profile(&format!(
+        r#"{{"id":"t","name":"T","criteria":{{"quality_tiers":{tiers},"allow_upgrades":true}}}}"#
+    ));
+    let tags: Vec<String> = Vec::new();
+    let context = ScoringContext {
+        category,
+        ..ctx(&profile, &tags)
+    };
+    let mut facts = analyzed(1.5, Some("h264"));
+    facts.analysis.video_width = Some(width);
+    facts.analysis.video_height = Some(height);
+    let evidence =
+        ReleaseEvidence::announced(parse_release_metadata(name), None).with_analysis(facts);
+    let scored = score_release(&evidence, &context);
+    let action = crate::post_download_gate::resolve_truth_verdict_action_for_origin(
+        &scored.truth_verdict,
+        &profile.criteria,
+        true,
+        crate::import_decide::ImportOrigin::Automatic,
+    );
+    (scored, action)
+}
+
+/// A defaulted resolution is no claim (the arrs' detection source Unknown):
+/// a file landing below it is scored at what it is, never held as a lie.
+#[test]
+fn a_defaulted_resolution_is_not_contradicted_by_the_file() {
+    for (name, category) in [
+        ("Movie.1990.BluRay.x264-GRP", "movie"),
+        ("Show.S01E01.[HDTV]", "series"),
+    ] {
+        let parsed = parse_release_metadata(name);
+        assert_eq!(parsed.quality.as_deref(), Some("720p"), "{name}");
+        let (scored, action) =
+            occupied_import_action(name, r#"["1080P","720P","480P"]"#, category, (720, 480));
+        assert!(
+            matches!(
+                action,
+                crate::post_download_gate::TruthVerdictAction::Import
+            ),
+            "{name}: {:?} -> {action:?}",
+            scored.truth_verdict
+        );
+    }
+}
+
+/// A `1440p` name reads 1080p (the arr class), and a 2560-wide file is 1080p
+/// to a profile that lists no 1440p tier, as the arrs' media info has it.
+#[test]
+fn a_1440p_file_is_1080p_unless_the_profile_lists_1440p() {
+    let name = "Series.Title.S01E08.1440p.BKPL.WEB-DL.H.264-LiGHT";
+    let (scored, action) =
+        occupied_import_action(name, r#"["2160P","1080P","720P"]"#, "series", (2560, 1440));
+    assert!(
+        matches!(
+            action,
+            crate::post_download_gate::TruthVerdictAction::Import
+        ),
+        "{:?} -> {action:?}",
+        scored.truth_verdict
+    );
+    assert_eq!(scored.parsed_quality.as_deref(), Some("WEBDL-1080P"));
+    // A profile that ranks 1440p keeps the measured label.
+    let (scored, _) =
+        occupied_import_action(name, r#"["2160P","1440P","1080P"]"#, "series", (2560, 1440));
+    assert_eq!(scored.parsed_quality.as_deref(), Some("WEBDL-1440P"));
+    // So does a name of another class (D12): a 2160p claim landing at 1440p.
+    let (scored, _) = occupied_import_action(
+        "Series.Title.S01E08.2160p.WEB-DL.H.264-LiGHT",
+        r#"["2160P","1080P"]"#,
+        "series",
+        (2560, 1440),
+    );
+    assert_eq!(scored.parsed_quality.as_deref(), Some("WEBDL-1440P"));
+}

@@ -537,8 +537,9 @@ fn a_sourceless_resolution_ranks_as_hdtv_under_its_bare_tier() {
     assert!(d.block_codes.is_empty(), "{:?}", d.block_codes);
 }
 
-// fork (P33e): Raw-HD ranks only under an explicit RAWHD-1080P tier; a bare
-// 1080P (which an MPEG2 1080i capture never matched before) does not admit it.
+// fork (P33e): Raw-HD ranks only under an explicit RAWHD-1080P tier. A bare
+// tier never admits it: a 720p MPEG2 capture, once HDTV-720P under a bare
+// 720P (as in the builtin default), is now refused on purpose (D78).
 #[test]
 fn raw_hd_key_never_falls_back_to_a_bare_tier() {
     let release = parse_release_metadata("Show.S01E01.1080i.HDTV.DD5.1.MPEG2-TrollHD");
@@ -562,6 +563,13 @@ fn raw_hd_key_never_falls_back_to_a_bare_tier() {
     assert_eq!(
         evaluate_profile_requirements(&explicit, &release, false, None).tier_index,
         Some(0)
+    );
+    let capture_720 =
+        parse_release_metadata("Series Title S01E18 Title 720p HDTV DD5.1 MPEG2-TrollHD");
+    let bare_720 = profile(r#"["1080P","720P"]"#);
+    assert_eq!(
+        evaluate_profile_requirements(&bare_720, &capture_720, false, None).tier_index,
+        None
     );
 }
 

@@ -15,6 +15,7 @@ mod sanitize;
 mod stereoscopy;
 mod trash_guides;
 
+pub use arr_quality::DEFAULT_RESOLUTION_HINT; // fork (P33 review)
 pub use context::{
     ContextAlias, ContextEpisode, ContextFacetHint, ContextTitle, ReleaseParseContext,
 };

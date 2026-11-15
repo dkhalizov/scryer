@@ -596,11 +596,27 @@ fn score_single_release_with_rules(
         // not measure must never be scored as though it measured badly.
         None => (0, TruthVerdict::Consistent),
         Some(analyzed) => {
-            let analyzed_parsed = crate::post_download_gate::rescore_parsed_from_analysis(
+            let mut analyzed_parsed = crate::post_download_gate::rescore_parsed_from_analysis(
                 &evidence.parsed,
                 Some(&analyzed.analysis),
             )
             .0;
+            // fork (P33 review): a 2560-wide file is 1080p to the arrs' media
+            // info, as a 1440p name is to the parser. So a 1080-class name
+            // landing at 1440p is no contradiction; any other name keeps the
+            // measured label (D12), and so does a profile with a 1440P tier.
+            if analyzed_parsed.quality.as_deref() == Some("1440p")
+                && normalize_quality_tier(evidence.parsed.quality.as_deref()).as_deref()
+                    == Some("1080P")
+                && !ctx
+                    .profile
+                    .criteria
+                    .quality_tiers
+                    .iter()
+                    .any(|tier| tier.to_ascii_uppercase().ends_with("1440P"))
+            {
+                analyzed_parsed.quality = Some("1080p".into());
+            }
             let mut analyzed_pass = run_term_pipeline(
                 &analyzed_parsed,
                 (!is_disc && !is_stream_pointer).then_some(analyzed.actual_size_bytes),
@@ -639,7 +655,16 @@ fn score_single_release_with_rules(
             // scores did. A modest resolution-score change can be cancelled by
             // other contributions, so compare qualities directly. Admission
             // still refuses the downgrade on tier; this preserves its reason.
-            let announced_quality = normalize_quality_tier(evidence.parsed.quality.as_deref());
+            // fork (P33 review): a defaulted resolution is no claim (the arrs'
+            // detection source Unknown), so the file is compared as unknown.
+            let announced_quality = normalize_quality_tier(evidence.parsed.quality.as_deref())
+                .filter(|_| {
+                    !evidence
+                        .parsed
+                        .parse_hints
+                        .iter()
+                        .any(|hint| hint == scryer_release_parser::DEFAULT_RESOLUTION_HINT)
+                });
             let landed_quality = normalize_quality_tier(analyzed_quality.as_deref());
             if announced_quality != landed_quality {
                 let code = format!(

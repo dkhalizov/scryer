@@ -12,7 +12,7 @@ use crate::parse::{protected_title_end, technical_recovery_token, token_source};
 /// The arrs leave the source detection source `Unknown` (a default).
 pub(crate) const DEFAULT_SOURCE_HINT: &str = "quality_default:source";
 /// The arrs leave the resolution detection source `Unknown` (a default).
-pub(crate) const DEFAULT_RESOLUTION_HINT: &str = "quality_default:resolution";
+pub const DEFAULT_RESOLUTION_HINT: &str = "quality_default:resolution";
 
 /// Which HDTV spelling gave the source; the arrs' resolution default differs.
 #[derive(Clone, Copy, PartialEq)]
