@@ -2715,3 +2715,31 @@ fn no_preferences_leave_the_language_rank_neutral() {
         crate::AudioLanguageRank::default()
     );
 }
+
+/// fork (P23): Sonarr's size floor is grab policy. A file found under it only
+/// after download (no announced size) is still imported.
+#[test]
+fn a_size_floor_found_only_after_download_does_not_fail_the_import() {
+    let profile = series_profile();
+    let tags: Vec<String> = Vec::new();
+    let context = episode_ctx(&profile, &tags, CoverageSizeBasis::single(Some(45)));
+    let evidence = ReleaseEvidence::announced(
+        parse_release_metadata("Quiet.Meridian.S01E01.1080p.WEB-DL.H.264-GroupTag"),
+        None,
+    )
+    // 0.1 GiB over 45 minutes is 2.3 MiB per minute, under the 1080p minimum of 4.
+    .with_analysis(analyzed(0.1, Some("h264")));
+    let scored = score_release(&evidence, &context);
+    assert!(
+        scored
+            .analyzed_decision
+            .as_ref()
+            .is_some_and(|decision| decision
+                .block_codes
+                .iter()
+                .any(|code| code == "size_below_quality_minimum")),
+        "the analyzed pass sees the floor: {:?}",
+        scored.analyzed_decision
+    );
+    assert_eq!(scored.truth_verdict, TruthVerdict::Consistent);
+}

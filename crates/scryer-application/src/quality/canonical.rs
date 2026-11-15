@@ -954,7 +954,13 @@ fn append_rule_scores(
 /// The upgrade guard is an admission concern, never evidence against the file.
 /// Canonical scoring uses `has_existing_file = false`; exclude it defensively.
 /// Final score gates are classified separately by their explicit entry kind.
-const POLICY_ONLY_BLOCK_CODES: &[&str] = &["upgrade_blocked_by_profile"];
+const POLICY_ONLY_BLOCK_CODES: &[&str] = &[
+    "upgrade_blocked_by_profile",
+    // fork (P23): Sonarr's size table is grab policy; import never fails on size.
+    "size_below_quality_minimum",
+    "size_above_quality_maximum",
+    "size_runtime_unknown",
+];
 
 /// Did the announcement *state* the fact this veto keys on?
 ///
@@ -965,6 +971,7 @@ const POLICY_ONLY_BLOCK_CODES: &[&str] = &["upgrade_blocked_by_profile"];
 /// | code | assertable | why |
 /// |---|---|---|
 /// | `quality_*` | always | the resolution is the one claim every release name makes, and it is the claim the grab decision was taken on. A file whose measured height lands outside the profile's tiers is not what was fetched. |
+/// | `size_below/above_quality_*`, `size_runtime_unknown` | never reached | fork (P23): grab policy only (`POLICY_ONLY_BLOCK_CODES`), never an import failure. |
 /// | `size_implausib*` | always | a newly introduced upper or lower size veto means the measured payload no longer satisfies the release's claimed quality within the conservative runtime-aware bounds. Ordinary size classifications contribute no points and cannot reach this path. |
 /// | `video_codec_*` | iff the parse carried a codec | `H.265` in the name against an H.264 stream is a lie; a codec-silent name is not a claim. |
 /// | `audio_codec_*` | iff the parse carried an audio codec | same rule. Note the gate only fires at all when `normalized_audio_codecs` is non-empty, which for a silent name means the probe populated it. |

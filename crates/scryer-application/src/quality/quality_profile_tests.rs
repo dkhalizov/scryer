@@ -1527,9 +1527,12 @@ fn an_honestly_sized_pack_is_scored_on_its_total_runtime() {
 
 /// **The bridge shape.** An indexer lists a season pack under one episode's byte
 /// count. Against the pack's total runtime that is a twentieth of what it should
-/// be — the reading that used to refuse the release outright. Read against one
-/// member it is an ordinary episode, so the release survives, and the
+/// be. Read against one member it is an ordinary episode, and the
 /// interpretation can never pay: the size term is capped at zero.
+///
+/// fork (P23): ranking keeps the member reading, but the grab gate holds a
+/// series pack to Sonarr's minimum on its total runtime, as Sonarr does, so
+/// the 24- and 26-episode packs (2.4 and 2.2 MiB/min) are refused.
 #[test]
 fn a_pack_carrying_one_members_size_is_read_as_that_member() {
     let weights = balanced_scoring_config();
@@ -1542,19 +1545,30 @@ fn a_pack_carrying_one_members_size_is_read_as_that_member() {
             &weights,
         );
 
+        if episodes == 12 {
+            assert!(
+                decision.allowed,
+                "{episodes}-episode pack was refused: {:?}",
+                decision.block_codes
+            );
+        } else {
+            assert_eq!(
+                decision.block_codes,
+                ["size_below_quality_minimum"],
+                "{episodes}-episode pack"
+            );
+        }
+        let member_basis = decision
+            .scoring_log
+            .iter()
+            .find(|entry| entry.code == SIZE_PACK_MEMBER_BASIS_CODE);
         assert!(
-            decision.allowed,
-            "{episodes}-episode pack was refused: {:?}",
-            decision.block_codes
-        );
-        assert_eq!(
-            decision.scoring_log.last().map(|entry| entry.code.as_str()),
-            Some(SIZE_PACK_MEMBER_BASIS_CODE),
+            member_basis.is_some(),
             "{episodes}-episode pack: {:?}",
             decision.scoring_log
         );
         assert_eq!(
-            decision.scoring_log.last().map(|entry| entry.delta),
+            member_basis.map(|entry| entry.delta),
             Some(0),
             "the diagnostic must carry no weight of its own"
         );
@@ -1572,7 +1586,8 @@ fn a_pack_carrying_one_members_size_is_read_as_that_member() {
 }
 
 /// A single episode has nothing to reinterpret: one member, one reading, and the
-/// tiny penalty stands.
+/// tiny penalty stands. fork (P23): at 2.3 MiB/min it is also under Sonarr's
+/// 1080p minimum, refused after the band.
 #[test]
 fn a_single_episode_is_never_reinterpreted_as_a_member() {
     let weights = balanced_scoring_config();
@@ -1583,13 +1598,15 @@ fn a_single_episode_is_never_reinterpreted_as_a_member() {
         &weights,
     );
 
-    assert!(decision.allowed);
-    assert_eq!(decision.scoring_log.len(), 1, "{:?}", decision.scoring_log);
+    assert_eq!(decision.block_codes, ["size_below_quality_minimum"]);
+    assert_eq!(decision.scoring_log.len(), 2, "{:?}", decision.scoring_log);
     assert_eq!(decision.scoring_log[0].code, "size_tiny_for_quality");
 }
 
 /// An uncertain pack size is a ranking concern, not an intrinsic penalty.
-/// Without a trustworthy payload interpretation, do not apply the lower veto.
+/// Without a trustworthy payload interpretation, do not apply the plausibility
+/// veto. fork (P23): Sonarr's minimum still holds the pack to its total runtime
+/// (0.56 MiB/min), refused after the band.
 #[test]
 fn an_ambiguous_tiny_pack_does_not_affect_intrinsic_score() {
     let weights = balanced_scoring_config();
@@ -1600,8 +1617,8 @@ fn an_ambiguous_tiny_pack_does_not_affect_intrinsic_score() {
         &weights,
     );
 
-    assert!(decision.allowed, "{:?}", decision.block_codes);
-    assert_eq!(decision.scoring_log.len(), 1, "{:?}", decision.scoring_log);
+    assert_eq!(decision.block_codes, ["size_below_quality_minimum"]);
+    assert_eq!(decision.scoring_log.len(), 2, "{:?}", decision.scoring_log);
     assert_eq!(decision.scoring_log[0].code, "size_tiny_for_quality");
     assert_eq!(decision.scoring_log[0].delta, 0);
 }
@@ -1712,6 +1729,148 @@ fn the_upper_veto_still_blocks_an_impossible_pack() {
     // The band is still logged first: a veto is a verdict on top of the honest
     // number, never instead of it.
     assert_eq!(decision.scoring_log[0].code, "size_excessive_for_quality");
+}
+
+// ── fork (P23): Sonarr's default per-quality size limits, series only ─────
+
+const MIB: i64 = 1024 * 1024;
+
+/// Sonarr's `Megabytes()`: MiB per minute, rounded to the byte.
+fn mib_per_minute(value: f64, minutes: i64) -> i64 {
+    (value * MIB as f64).round() as i64 * minutes
+}
+
+fn has_block(decision: &QualityProfileDecision, code: &str) -> bool {
+    decision.block_codes.iter().any(|c| c == code)
+}
+
+fn episode_size(release_title: &str, bytes: i64, category: &str) -> QualityProfileDecision {
+    let release = parse_release_metadata(release_title);
+    let mut decision = QualityProfileDecision::new();
+    score_size_with_pack_basis(
+        &mut decision,
+        &release,
+        Some(bytes),
+        Some(category),
+        CoverageSizeBasis::single(Some(EPISODE_RUNTIME_MINUTES)),
+        false,
+        &balanced_scoring_config(),
+    );
+    decision
+}
+
+const UHD_WEB_EPISODE: &str = "Quiet.Meridian.S01E01.2160p.WEB-DL.H.265-GroupTag";
+
+#[test]
+fn series_2160p_below_the_sonarr_minimum_is_refused() {
+    let floor = mib_per_minute(35.0, 45);
+    let below = episode_size(UHD_WEB_EPISODE, floor - 1, "series");
+    assert!(
+        has_block(&below, "size_below_quality_minimum"),
+        "{:?}",
+        below.block_codes
+    );
+    let at = episode_size(UHD_WEB_EPISODE, floor, "series");
+    assert!(at.allowed, "{:?}", at.block_codes);
+}
+
+#[test]
+fn a_series_pack_is_held_to_the_minimum_on_its_total_runtime() {
+    let weights = balanced_scoring_config();
+    let title = "Quiet.Meridian.S01.1080p.WEB-DL.H.264-GroupTag";
+    let floor = mib_per_minute(4.0, 45 * 10);
+    let below = score_pack_size(title, floor - 1, season_basis(10), &weights);
+    assert!(
+        has_block(&below, "size_below_quality_minimum"),
+        "{:?}",
+        below.block_codes
+    );
+    let at = score_pack_size(title, floor, season_basis(10), &weights);
+    assert!(at.allowed, "{:?}", at.block_codes);
+}
+
+#[test]
+fn a_series_release_without_a_codec_is_held_to_the_minimum() {
+    let decision = episode_size(
+        "Quiet.Meridian.S01E01.1080p.WEB-DL-GroupTag",
+        100 * MIB,
+        "series",
+    );
+    assert!(
+        has_block(&decision, "size_below_quality_minimum"),
+        "{:?}",
+        decision.block_codes
+    );
+}
+
+#[test]
+fn a_1080p_web_series_release_above_130_mib_per_minute_is_refused() {
+    let title = "Quiet.Meridian.S01E01.1080p.WEB-DL.H.264-GroupTag";
+    let ceiling = mib_per_minute(130.0, 45);
+    let above = episode_size(title, ceiling + 1, "series");
+    assert!(
+        has_block(&above, "size_above_quality_maximum"),
+        "{:?}",
+        above.block_codes
+    );
+    let at = episode_size(title, ceiling, "series");
+    assert!(at.allowed, "{:?}", at.block_codes);
+}
+
+#[test]
+fn hdtv_2160p_maximum_is_inclusive_at_the_byte() {
+    let title = "Quiet.Meridian.S01E01.2160p.HDTV.H.265-GroupTag";
+    let ceiling = mib_per_minute(199.9, 45);
+    let at = episode_size(title, ceiling, "series");
+    assert!(at.allowed, "{:?}", at.block_codes);
+    let above = episode_size(title, ceiling + 1, "series");
+    assert!(
+        has_block(&above, "size_above_quality_maximum"),
+        "{:?}",
+        above.block_codes
+    );
+}
+
+#[test]
+fn a_sourceless_2160p_series_release_gets_the_hdtv_maximum() {
+    let decision = episode_size(
+        "Quiet.Meridian.S01E01.2160p.H.265-GroupTag",
+        mib_per_minute(199.9, 45) + 1,
+        "series",
+    );
+    assert!(
+        has_block(&decision, "size_above_quality_maximum"),
+        "{:?}",
+        decision.block_codes
+    );
+}
+
+#[test]
+fn the_sonarr_size_table_leaves_movies_anime_specials_and_unknown_sizes_alone() {
+    let under = mib_per_minute(35.0, 45) - 1;
+    for category in ["movie", "anime"] {
+        let decision = episode_size(UHD_WEB_EPISODE, under, category);
+        assert!(decision.allowed, "{category}: {:?}", decision.block_codes);
+    }
+    let special = episode_size(
+        "Quiet.Meridian.S00E01.2160p.WEB-DL.H.265-GroupTag",
+        under,
+        "series",
+    );
+    assert!(special.allowed, "{:?}", special.block_codes);
+
+    let release = parse_release_metadata(UHD_WEB_EPISODE);
+    let mut unknown = QualityProfileDecision::new();
+    score_size_with_pack_basis(
+        &mut unknown,
+        &release,
+        None,
+        Some("series"),
+        CoverageSizeBasis::single(Some(EPISODE_RUNTIME_MINUTES)),
+        false,
+        &balanced_scoring_config(),
+    );
+    assert!(unknown.allowed, "{:?}", unknown.block_codes);
 }
 
 #[test]

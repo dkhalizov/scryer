@@ -126,6 +126,7 @@
 //! | MinimumAge | `DelayDecisionReason::MinimumAge` |
 //! | Delay | `DelayDecisionReason::{PendingDelay, ReleaseAgeUnknown}` |
 //! | TorrentSeeding | `meets_minimum_seeders` |
+//! | AcceptableSize | `size_*` block codes of `apply_size_requirement` (series) on the `coverage_size_basis` runtime (P23) |
 //! | UpgradeAllowed | `AdmissionRejectionReason::UpgradesDisabled` |
 //! | Proper | `ReleaseAutoDecisionCode::ProperForOldFile` |
 //! | SameEpisodes | `AdmissionRejectionReason::BroaderIncumbentSpan` |
@@ -150,7 +151,9 @@
 //! the reason (that list needs repositories, not callable here).
 //!
 //! Ignored keys (no bearing on the Scryer call): `series.runtime` outside size
-//! cases, `position_in_season`, `season_episodes`, `languages` on releases,
+//! cases, `position_in_season`, `season_episodes` outside size cases, the
+//! fixture's `quality_definition` (Scryer uses Sonarr's default table; a
+//! mismatch names it), `languages` on releases,
 //! files and queue items (Scryer's language rank needs title preferences;
 //! neutral rank used), `pending_releases` (always empty), `series_id` /
 //! `movie.id` beyond queue matching, NBuilder id notes, `scene_name`,
@@ -220,6 +223,9 @@ use std::cmp::Reverse;
 
 use chrono::{DateTime, Duration, Utc};
 use scryer_application::parity_seams::{
+    CoverageSizeBasis, ReleaseCoverage, apply_size_requirement, coverage_size_basis,
+};
+use scryer_application::parity_seams::{
     AdmissionPolicy, AdmissionRejectionReason, AdmissionScope, AdmissionSubject, CandidateFacts,
     CutoffScope, DelayDecisionReason, DelayPolicyContext, Incumbent, QueuedRelease,
     ReleaseAutoDecisionCode, ScopeMembership, analyzed_cutoff_quality_for_scope,
@@ -233,7 +239,8 @@ use scryer_application::{
     QualityProfileDecision, ReleaseSource, ScoringSource, SubmissionScope, builtin_1080p_profile,
     parse_release_metadata, resolve_delay_profile,
 };
-use scryer_domain::MediaFacet;
+use scryer_application::ParsedEpisodeMetadata;
+use scryer_domain::{Episode, EpisodeType, MediaFacet};
 use scryer_parity::{Catalogue, Source, Suite, corpus, parity_dir};
 use serde_json::{Value, json};
 
@@ -409,10 +416,7 @@ fn reference_case(app: &str, family: &str, g: &Value, expect: &Value) -> Outcome
     } else if has("TorrentSeedingSpecification") {
         Some(torrent_seeding(app, g))
     } else if has("AcceptableSizeSpecification") {
-        Some(Err(
-            "no Scryer field for per-quality size limits (quality definition min/max MB per minute)"
-                .into(),
-        ))
+        Some(acceptable_size(g, expect))
     } else if has("UpgradeAllowedSpecification") {
         Some(upgrade_allowed(g))
     } else if has("UpgradeDiskSpecification") {
@@ -1565,6 +1569,93 @@ fn full_season(g: &Value) -> Outcome {
     ))))
 }
 
+/// AcceptableSize (P23): Sonarr's default size table (`apply_size_requirement`)
+/// on the grab lane's runtime basis (`coverage_size_basis(..).or_runtime(..)`,
+/// as `ResolvedScoringContext::view` builds it). Catalog: the fixture's
+/// `season_episodes` rows (`cat-n`, one day apart from a fixed premiere) plus
+/// one row per release episode (`rel-k`, aired at the premiere + its offset
+/// when given). Runtime 0 or null -> unknown. Accepted = no `size_*` block code.
+fn acceptable_size(g: &Value, expect: &Value) -> Result<Value, String> {
+    let r = &g["release"];
+    let mut release = parsed(&side(r, None, 0)?);
+    if r["special"].as_bool() == Some(true) {
+        release.episode = Some(ParsedEpisodeMetadata {
+            season: Some(0),
+            ..ParsedEpisodeMetadata::default()
+        });
+    }
+    let bytes = r["size_mb"]
+        .as_i64()
+        .map(|mb| mb * 1_048_576)
+        .or_else(|| r["size_bytes"].as_i64());
+    let minutes = |v: &Value| v.as_i64().filter(|m| *m > 0).map(|m| m as i32);
+    let title_runtime = minutes(&g["series"]["runtime"]);
+    let premiere = now() - Duration::days(60);
+    let row = |id: String, season: i64, runtime: Option<i32>, aired: Option<DateTime<Utc>>| Episode {
+        id,
+        title_id: "series".into(),
+        collection_id: None,
+        episode_type: EpisodeType::Standard,
+        episode_number: None,
+        season_number: Some(season.to_string()),
+        episode_label: None,
+        title: None,
+        air_date: aired.map(|at| at.to_rfc3339()),
+        duration_seconds: runtime.map(|m| i64::from(m) * 60),
+        has_multi_audio: false,
+        has_subtitle: false,
+        is_filler: false,
+        is_recap: false,
+        absolute_number: None,
+        contiguous_absolute_number: None,
+        overview: None,
+        tvdb_id: None,
+        tmdb_id: None,
+        image_url: None,
+        monitored: true,
+        created_at: now(),
+    };
+    let season = &g["season_episodes"];
+    let mut catalog: Vec<Episode> = (1..=season["count"].as_i64().unwrap_or(0))
+        .map(|n| {
+            row(
+                format!("cat-{n}"),
+                season["season"].as_i64().unwrap_or(1),
+                minutes(&season["runtime"]),
+                Some(premiere + Duration::days(n - 1)),
+            )
+        })
+        .collect();
+    let mut ids = Vec::new();
+    for (k, e) in g["episodes"].as_array().ok_or("no episodes")?.iter().enumerate() {
+        let id = format!("rel-{k}");
+        let aired = e["air_date_offset_hours_from_season_first_episode"]
+            .as_i64()
+            .map(|hours| premiere + Duration::hours(hours));
+        catalog.push(row(id.clone(), e["season"].as_i64().unwrap_or(1), minutes(&e["runtime"]), aired));
+        ids.push(id);
+    }
+    let coverage = match ids.len() {
+        1 => ReleaseCoverage::SingleEpisode(ids.remove(0)),
+        _ => ReleaseCoverage::EpisodeSet(ids),
+    };
+    let basis = coverage_size_basis(&coverage, &ParsedReleaseMetadata::default(), &catalog, title_runtime)
+        .or_runtime(title_runtime);
+    let profile = builtin_1080p_profile();
+    let mut decision = evaluate_profile_requirements(&profile, &release, false, Some("series"));
+    apply_size_requirement(&mut decision, &profile, &release, bytes, Some("series"), basis);
+    let size_codes: Vec<_> = decision.block_codes.iter().filter(|c| c.starts_with("size_")).collect();
+    let actual = accepted(size_codes.is_empty());
+    if &actual == expect {
+        return Ok(actual);
+    }
+    let d = &g["quality_definition"];
+    Err(format!(
+        "expected {expect}, got {actual} ({size_codes:?}, runtime basis {:?} min); fixture {} {}-{} MiB/min, Scryer uses Sonarr's default table",
+        basis.total_runtime_minutes, d["quality"], d["min_size"], d["max_size"],
+    ))
+}
+
 fn same_episodes(g: &Value) -> Result<Value, String> {
     let release_episodes = g["release_episodes"].as_array().cloned().unwrap_or_default();
     let members: Vec<String> = release_episodes
@@ -1667,9 +1758,9 @@ fn config_check(reference: &str) -> Option<Result<(), String>> {
                 _ => None,
             }
         }
-        "qualitydefinition.json" => Some(Err(
-            "no Scryer field for per-quality size limits or a preferred size".into(),
-        )),
+        "qualitydefinition.json" => {
+            Some(check_quality_definition(app, fragment.strip_prefix("quality=")?))
+        }
         "delayprofile.json" => {
             let id: i64 = fragment.strip_prefix("id=")?.parse().ok()?;
             Some(check_delay_profile(app, id))
@@ -1979,6 +2070,52 @@ fn check_delay_profile(app: &str, id: i64) -> Result<(), String> {
             &format!("{protocol}: custom-format-score bypass {bypassed}"),
             &mut failures,
         );
+    }
+    verdict(failures)
+}
+
+/// Config `qualitydefinition.json#quality=<name>` (P23): Scryer's built-in
+/// series table holds the captured minimum and maximum (MiB per minute, rounded
+/// to the byte as Sonarr's `Megabytes()`), for one episode of 60 minutes and a
+/// 3-episode pack of 180. The release has no codec, so the plausibility gates
+/// stay out of the result. preferredSize is not checked (W10, D69). Sonarr
+/// only: the Radarr definitions live in `quality.radarr-config.yaml`.
+fn check_quality_definition(app: &str, name: &str) -> Result<(), String> {
+    let definitions: Vec<Value> = corpus(&format!("corpus/captured/{app}/config/qualitydefinition.json"));
+    let definition = definitions
+        .iter()
+        .find(|d| d["quality"]["name"].as_str() == Some(name))
+        .ok_or_else(|| format!("no quality definition '{name}'"))?;
+    let min = definition["minSize"].as_f64().ok_or("no minSize")?;
+    let max = definition["maxSize"].as_f64();
+    let release = parsed(&Side { q: quality(name)?, name: name.to_string(), revision: 0, group: None, score: 0 });
+    let codes = |bytes: i64, basis: CoverageSizeBasis| {
+        let profile = builtin_1080p_profile();
+        let mut decision = evaluate_profile_requirements(&profile, &release, false, Some("series"));
+        apply_size_requirement(&mut decision, &profile, &release, Some(bytes), Some("series"), basis);
+        decision.block_codes.into_iter().filter(|c| c.starts_with("size_")).collect::<Vec<_>>()
+    };
+    let mut failures = Vec::new();
+    for basis in [CoverageSizeBasis::single(Some(60)), CoverageSizeBasis::aggregate(Some(180), Some(60), 3)] {
+        let runtime = i64::from(basis.total_runtime_minutes.unwrap_or(0));
+        let bytes = |mib: f64| (mib * 1_048_576.0).round() as i64 * runtime;
+        let mut probe = |bytes: i64, want: Option<&str>, what: &str| {
+            let got = codes(bytes, basis);
+            let ok = match want {
+                Some(code) => got.iter().any(|c| c == code),
+                None => got.is_empty(),
+            };
+            expect_that(ok, &format!("{runtime} min, {what}: {got:?}"), &mut failures);
+        };
+        probe(bytes(min) - 1, Some("size_below_quality_minimum"), "minimum - 1 byte");
+        probe(bytes(min), None, "minimum");
+        match max {
+            Some(max) => {
+                probe(bytes(max), None, "maximum");
+                probe(bytes(max) + 1, Some("size_above_quality_maximum"), "maximum + 1 byte");
+            }
+            None => probe(bytes(400.0), None, "400 MiB/min with no maximum"),
+        }
     }
     verdict(failures)
 }

@@ -35,7 +35,9 @@ fn plausible_delivery_bitrates_remain_eligible_for_every_codec_and_persona() {
                 ("4320P", 320.0),
             ] {
                 for runtime in [1, 20, 90, 240] {
-                    for category in ["movie", "series", "anime"] {
+                    // fork (P23): the plausibility gate ignores the category;
+                    // series also get Sonarr's size table, which caps these.
+                    for category in ["movie"] {
                         let mut release = crate::parse_release_metadata("Example.S01E01.WEB-DL");
                         release.quality = Some(quality.into());
                         release.video_codec = Some(codec);
@@ -61,7 +63,7 @@ fn plausible_delivery_bitrates_remain_eligible_for_every_codec_and_persona() {
             }
         }
     }
-    assert_eq!(cases, 2880);
+    assert_eq!(cases, 960);
 }
 
 #[test]
@@ -112,19 +114,23 @@ fn codec_model_covers_every_parser_codec_without_inverting_efficiency() {
 #[test]
 fn short_compact_and_audio_heavy_releases_are_not_mistaken_for_impossible_files() {
     let profile = builtin_4k_profile();
-    for (title, mib, runtime) in [
-        ("Example.S01E01.1080p.WEB-DL.AV1.AAC", 2.0, 1),
-        ("Example.2024.2160p.WEB-DL.AV1.AAC", 300.0, 90),
+    // fork (P23): the plausibility rows run as movies (series also get Sonarr's
+    // size table); the remux row stays a series, inside that table.
+    for (title, mib, runtime, category) in [
+        ("Example.S01E01.1080p.WEB-DL.AV1.AAC", 2.0, 1, "movie"),
+        ("Example.2024.2160p.WEB-DL.AV1.AAC", 300.0, 90, "movie"),
         (
             "Example.S01E01.720p.BluRay.AV1.TrueHD.Atmos.7.1.Dual.Audio",
             5120.0,
             24,
+            "movie",
         ),
-        ("Example.S01E01.1080p.WEB-DL.AV1.FLAC", 6144.0, 24),
+        ("Example.S01E01.1080p.WEB-DL.AV1.FLAC", 6144.0, 24, "movie"),
         (
             "Example.S01E01.1080p.BluRay.Remux.H.264.DTS-HD.MA",
             28672.0,
             45,
+            "series",
         ),
     ] {
         let release = crate::parse_release_metadata(title);
@@ -134,7 +140,7 @@ fn short_compact_and_audio_heavy_releases_are_not_mistaken_for_impossible_files(
             &profile,
             &release,
             Some((mib * 1_048_576.0) as i64),
-            Some("series"),
+            Some(category),
             CoverageSizeBasis::single(Some(runtime)),
         );
         assert!(decision.allowed, "{title}: {:?}", decision.block_codes);

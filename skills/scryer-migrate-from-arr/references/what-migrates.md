@@ -36,7 +36,7 @@ Tell the operator this table before any change. Fill the counts in from
 | Import list exclusions (Radarr) | No API to import them. |
 | Auto-tagging rules | No equivalent. |
 | History and blocklist | Not imported. Arr keeps its own. |
-| Quality definitions (size limits per quality) | Scryer scores sizes itself. Use a rule (`scryer-write-rules`) for hard size limits. |
+| Quality definitions (size limits per quality) | Series use Sonarr's default per-quality minimum and maximum (MiB per minute), built in, at grab only. Custom values do not migrate. Movies keep Scryer's own plausibility bounds. Use a rule (`scryer-write-rules`) for any other size limit. |
 | Arr naming tokens | Not translated by the import. This skill rewrites them by hand. |
 
 ## Running the import after setup

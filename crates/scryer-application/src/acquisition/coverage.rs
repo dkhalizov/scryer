@@ -1,8 +1,10 @@
 use super::*;
 use crate::quality_profile::CoverageSizeBasis;
 
+// fork: parity net seam (tests/parity_decision.rs)
 #[derive(Clone, Debug, PartialEq, Eq)]
-pub(crate) enum ReleaseCoverage {
+#[doc(hidden)]
+pub enum ReleaseCoverage {
     SingleEpisode(String),
     EpisodeSet(Vec<String>),
     Collection(String),
@@ -521,7 +523,9 @@ pub(crate) fn coverage_runtime_minutes(
 /// A member runtime is the coverage's own average rather than any single
 /// episode's: uneven durations inside a pack are exactly the case where picking
 /// one member would be arbitrary.
-pub(crate) fn coverage_size_basis(
+// fork: parity net seam (tests/parity_decision.rs)
+#[doc(hidden)]
+pub fn coverage_size_basis(
     coverage: &ReleaseCoverage,
     parsed: &ParsedReleaseMetadata,
     episodes: &[Episode],

@@ -138,7 +138,8 @@ fn resolution_weight_model_covers_normal_preferences_without_replacing_tier_orde
 #[test]
 fn plausible_sizes_tie_and_only_outliers_pay_a_ranking_cost() {
     let raw = "Quiet.Meridian.S01E01.1080p.NF.WEB-DL.DDP5.1.x264-NTb";
-    let decisions: Vec<_> = [2.2, 3.2, 5.5, 12.0]
+    // fork (P23): the outlier stays under Sonarr's 130 MiB/min WEB-1080p maximum.
+    let decisions: Vec<_> = [2.2, 3.2, 5.5, 7.5]
         .into_iter()
         .map(|gib| score(raw, gib, Some(60), ScoringPersona::Balanced))
         .collect();
@@ -209,21 +210,29 @@ fn extreme_size_limits_use_runtime_codec_and_source() {
 fn uncertain_runtime_size_and_pack_reports_do_not_create_false_lower_rejections() {
     let profile = builtin_4k_profile();
     let release = crate::parse_release_metadata("Quiet.Meridian.S01.1080p.WEB-DL.H.264");
-    for basis in [
-        CoverageSizeBasis::single(None),
-        CoverageSizeBasis::aggregate(Some(540), Some(45), 12),
-    ] {
-        let mut d = evaluate_profile_requirements(&profile, &release, false, Some("series"));
+    let decide = |basis: CoverageSizeBasis, category: &str| {
+        let mut d = evaluate_profile_requirements(&profile, &release, false, Some(category));
         apply_size_requirement(
             &mut d,
             &profile,
             &release,
             Some(100 * 1024 * 1024),
-            Some("series"),
+            Some(category),
             basis,
         );
-        assert!(d.allowed);
+        d
+    };
+    let pack = CoverageSizeBasis::aggregate(Some(540), Some(45), 12);
+    // The plausibility gates never refuse an uncertain size.
+    for basis in [CoverageSizeBasis::single(None), pack] {
+        assert!(decide(basis, "movie").allowed);
     }
+    // fork (P23): a series is held to Sonarr's minimum on the pack's total runtime.
+    assert_eq!(
+        decide(pack, "series").block_codes,
+        ["size_below_quality_minimum"]
+    );
+    assert!(decide(CoverageSizeBasis::single(None), "series").allowed);
     let unknown = score(
         "Quiet.Meridian.S01E01.1080p.WEB-DL.H.264",
         0.1,

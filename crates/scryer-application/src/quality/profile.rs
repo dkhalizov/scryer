@@ -1481,6 +1481,7 @@ pub fn apply_size_requirement(
     };
 
     apply_implausible_size_limits(decision, release, bytes, size_basis);
+    apply_series_size_table(decision, release, bytes, size_basis, category); // fork (P23)
 
     let known_runtime = size_basis
         .total_runtime_minutes
@@ -1583,6 +1584,61 @@ pub(crate) fn minimum_plausible_bitrate_mbps(release: &ParsedReleaseMetadata) ->
         _ => return None,
     };
     Some(lower_h264_mbps * factor)
+}
+
+/// fork (P23): Sonarr's per-quality size limits (`AcceptableSizeSpecification`),
+/// series only and grab-only (the codes are in `POLICY_ONLY_BLOCK_CODES`). The
+/// codec is ignored and a pack is judged on its total runtime, as in Sonarr.
+// ponytail: fixed to Sonarr's default table (D72); a seeded setting if we ever
+// need custom sizes. Anime is skipped (D74): add it when an anime title exists.
+fn apply_series_size_table(
+    decision: &mut QualityProfileDecision,
+    release: &ParsedReleaseMetadata,
+    bytes: i64,
+    basis: CoverageSizeBasis,
+    category: MediaSizeCategory,
+) {
+    let special = release
+        .episode
+        .as_ref()
+        .is_some_and(|episode| episode.season == Some(0));
+    if category != MediaSizeCategory::Series || release.is_bd_disk || special {
+        return;
+    }
+    let Some(runtime) = basis.total_runtime_minutes.filter(|minutes| *minutes > 0) else {
+        return;
+    };
+    let Some((min, max)) = sonarr_default_size_limits(release) else {
+        return;
+    };
+    // Sonarr's `Megabytes()`: MiB rounded to the byte, then times the runtime.
+    let limit = |mib: f64| (mib * 1_048_576.0).round() as i64 * i64::from(runtime);
+    if bytes < limit(min) {
+        decision.reject_requirement("size_below_quality_minimum");
+    } else if max.is_some_and(|max| bytes > limit(max)) {
+        decision.reject_requirement("size_above_quality_maximum");
+    }
+}
+
+/// Sonarr's default quality-definition table, MiB per minute (`Quality.cs`).
+fn sonarr_default_size_limits(release: &ParsedReleaseMetadata) -> Option<(f64, Option<f64>)> {
+    let hdtv = matches!(release.source, None | Some(ReleaseSource::Hdtv));
+    let bluray = release.source == Some(ReleaseSource::BluRay);
+    Some(
+        match normalize_quality_tier(release.quality.as_deref()).as_deref()? {
+            "2160P" if hdtv && !release.is_remux => (35.0, Some(199.9)),
+            "2160P" => (35.0, None),
+            "1080P" if release.is_remux => (35.0, None),
+            "1080P" if bluray => (4.0, Some(155.0)),
+            "1080P" if hdtv => (4.0, Some(125.0)),
+            "1080P" => (4.0, Some(130.0)),
+            "720P" if bluray => (4.0, Some(130.0)),
+            "720P" if hdtv => (3.0, Some(125.0)),
+            "720P" => (3.0, Some(130.0)),
+            "480P" | "576P" => (2.0, Some(100.0)),
+            _ => return None,
+        },
+    )
 }
 
 #[cfg(test)]

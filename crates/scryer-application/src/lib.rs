@@ -466,6 +466,8 @@ pub mod parity_seams {
     pub use crate::acquisition::targets::movie_availability_decision;
     // fork: parity net seam (tests/parity_quality/priv_quality.rs)
     pub use crate::quality::profile::{CoverageSizeBasis, apply_size_requirement};
+    // fork: parity net seam (tests/parity_decision.rs, AcceptableSize, P23)
+    pub use crate::acquisition::coverage::{ReleaseCoverage, coverage_size_basis};
     // fork: parity net seam (tests/parity_scan/priv_scan.rs)
     pub use crate::library::workflow::scan_title_files::{FileSourceSnapshot, title_media_file_matches_snapshot};
     pub use crate::catalog::workflow::extract_monitor_type;
