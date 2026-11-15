@@ -1808,6 +1808,142 @@ async fn a_pack_subject_covers_monitored_members_and_refuses_an_unaired_season()
     );
 }
 
+/// fork (P34g): Sonarr refuses a full season while a member is TBA.
+#[tokio::test]
+async fn fork_p34g_a_full_season_with_a_tba_member_is_refused() {
+    use crate::admission::{AdmissionPolicy, CandidateFacts, evaluate_admission};
+
+    let (app, user) = bootstrap();
+    let title = app
+        .add_title(
+            &user,
+            NewTitle {
+                name: "Pack Gate TBA".into(),
+                facet: MediaFacet::Series,
+                monitored: true,
+                tags: vec![],
+                external_ids: vec![],
+                min_availability: None,
+                ..Default::default()
+            },
+        )
+        .await
+        .expect("create title");
+    let collection = app
+        .create_collection(
+            &user,
+            title.id.clone(),
+            "season".into(),
+            "1".into(),
+            Some("Season One".into()),
+            None,
+            Some("1".into()),
+            Some("3".into()),
+        )
+        .await
+        .expect("create collection");
+
+    let mut episode_ids = Vec::new();
+    // Two aired members, plus one with no air date yet (TBA).
+    for (number, air_date) in [
+        ("1", Some((Utc::now() - chrono::Duration::days(30)).to_rfc3339())),
+        ("2", Some((Utc::now() - chrono::Duration::days(23)).to_rfc3339())),
+        ("3", None),
+    ] {
+        let episode = app
+            .create_episode(
+                &user,
+                title.id.clone(),
+                Some(collection.id.clone()),
+                "standard".into(),
+                Some(number.to_string()),
+                Some("1".into()),
+                None,
+                Some(format!("Episode {number}")),
+                air_date,
+                Some(1_320),
+                false,
+                false,
+            )
+            .await
+            .expect("create episode");
+        episode_ids.push(episode.id);
+    }
+
+    let profile = test_quality_profile("pack-gate-tba");
+    let scope = crate::SubmissionScope::Collection {
+        collection_id: collection.id.clone(),
+    };
+    let scoring_context = app
+        .resolve_canonical_scoring_context(&title, &profile)
+        .await;
+    let policy = AdmissionPolicy::not_a_downgrade();
+    let candidate = CandidateFacts::new(Some(0), 0, 900);
+
+    let subject = app
+        .admission_subject_for_scope(
+            &title,
+            &scope,
+            &scoring_context,
+            None,
+            crate::quality::canonical_context::SubjectIntent::Grab,
+        )
+        .await;
+    let verdict = evaluate_admission(&subject, candidate, &policy);
+    assert!(
+        matches!(
+            verdict.rejection().map(|rejection| &rejection.reason),
+            Some(crate::admission::AdmissionRejectionReason::SeasonIncomplete)
+        ),
+        "a season with an unaired monitored member cannot be packed: {verdict:?}"
+    );
+
+    // Unmonitor the unaired member: it is no longer part of the scope, so it
+    // neither blocks the pack nor counts as a member it must fill.
+    app.set_episode_monitored(&user, &episode_ids[2], false)
+        .await
+        .expect("unmonitor the unaired episode");
+    let subject = app
+        .admission_subject_for_scope(
+            &title,
+            &scope,
+            &scoring_context,
+            None,
+            crate::quality::canonical_context::SubjectIntent::Grab,
+        )
+        .await;
+    assert!(
+        evaluate_admission(&subject, candidate, &policy).is_admitted(),
+        "an unmonitored episode is not part of the scope"
+    );
+
+    // …and with every member unmonitored there is nothing a pack could fill, so
+    // the pack is refused rather than fetched for a season nobody wants.
+    for episode_id in &episode_ids[..2] {
+        app.set_episode_monitored(&user, episode_id, false)
+            .await
+            .expect("unmonitor the aired episodes");
+    }
+    let subject = app
+        .admission_subject_for_scope(
+            &title,
+            &scope,
+            &scoring_context,
+            None,
+            crate::quality::canonical_context::SubjectIntent::Grab,
+        )
+        .await;
+    assert!(
+        subject.is_unoccupied(),
+        "an entirely unmonitored season resolves to an empty subject"
+    );
+    let verdict = evaluate_admission(&subject, candidate, &policy);
+    assert!(
+        !verdict.is_admitted(),
+        "an empty pack scope must not admit a whole season: {verdict:?}"
+    );
+}
+
 /// **MA4.** The Wanted page's `currentScore` is the bar the gate compares
 /// against (D10), which means the same file has to be measured against the same
 /// runtime on both paths.

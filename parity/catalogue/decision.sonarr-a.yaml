@@ -763,7 +763,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/FullSeasonSpecificationFixture.cs:75"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MaximumSizeSpecificationFixture.cs|should_return_true_when_maximum_size_is_set_to_zero|-|-
 - id: SON-DECISION-0094

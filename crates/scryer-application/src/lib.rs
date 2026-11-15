@@ -369,7 +369,7 @@ pub mod parity_seams {
     };
     pub use crate::acquisition::decision_helpers::{CutoffScope, analyzed_cutoff_quality_for_scope};
     pub use crate::acquisition::delay_profile::{DelayDecisionReason, DelayPolicyContext};
-    pub use crate::acquisition::policy::episode_is_unaired;
+    pub use crate::acquisition::policy::{episode_blocks_full_season, episode_is_unaired};
     pub use crate::acquisition::release_search::{
         ReleaseAutoDecisionCode, cutoff_refusal, incumbent_at_cutoff,
     };

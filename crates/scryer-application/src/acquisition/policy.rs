@@ -123,6 +123,14 @@ pub fn episode_is_unaired(air_date: Option<&str>, now: &DateTime<Utc>) -> bool {
     air > *now + Duration::hours(SEASON_PACK_AIRED_GRACE_HOURS)
 }
 
+/// fork (P34g, D90): whether an episode keeps a **full-season** pack out.
+/// Sonarr refuses a full season while any episode has no air date (TBA) or
+/// is unaired; [`episode_is_unaired`] alone treats a missing date as aired,
+/// which still holds for the batch (multi-episode) shape.
+pub fn episode_blocks_full_season(air_date: Option<&str>, now: &DateTime<Utc>) -> bool {
+    air_date.is_none_or(|value| value.trim().is_empty()) || episode_is_unaired(air_date, now)
+}
+
 /// `true` when the catalog gave us a day but not a time.
 fn air_date_is_date_only(air_date: Option<&str>) -> bool {
     air_date.is_some_and(|value| {
@@ -206,6 +214,13 @@ mod unaired_tests {
     /// metadata, which is most anime.
     #[test]
     fn an_episode_without_an_air_date_is_not_unaired() {
+        // fork (P34g): but it keeps a full season out.
+        assert!(episode_blocks_full_season(None, &now()));
+        assert!(episode_blocks_full_season(Some(" "), &now()));
+        assert!(!episode_blocks_full_season(
+            Some(&(now() - Duration::days(3)).to_rfc3339()),
+            &now()
+        ));
         assert!(!episode_is_unaired(None, &now()));
         assert!(!episode_is_unaired(Some(""), &now()));
         assert!(!episode_is_unaired(Some("not-a-date"), &now()));

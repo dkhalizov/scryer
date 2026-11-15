@@ -230,7 +230,8 @@ use scryer_application::parity_seams::{
     AdmissionPolicy, AdmissionRejectionReason, AdmissionScope, AdmissionSubject, CandidateFacts,
     CutoffScope, DelayDecisionReason, DelayPolicyContext, Incumbent, QueuedRelease,
     ReleaseAutoDecisionCode, ScopeMembership, analyzed_cutoff_quality_for_scope,
-    apply_min_score_gate, cutoff_refusal, episode_is_unaired, evaluate_admission,
+    apply_min_score_gate, cutoff_refusal, episode_blocks_full_season, episode_is_unaired,
+    evaluate_admission,
     evaluate_profile_requirements, incumbent_at_cutoff, meets_minimum_seeders,
     quality_tier_label, submission_scope_intersects,
 };
@@ -1553,7 +1554,7 @@ fn full_season(g: &Value) -> Outcome {
             let air = e["air_date_offset_hours"]
                 .as_i64()
                 .map(|h| (now + Duration::hours(h)).to_rfc3339());
-            episode_is_unaired(air.as_deref(), &now)
+            episode_blocks_full_season(air.as_deref(), &now)
         })
         .count();
     let subject = AdmissionSubject::new(AdmissionScope::Episodes(members), Vec::new())

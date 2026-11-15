@@ -289,9 +289,13 @@ pub(crate) enum SubjectIntent {
 /// One clock reading for the whole scope, so two members cannot be judged
 /// against different "now"s. An id the catalog does not know is kept as a
 /// monitored, aired member — dropping it would silently shrink the scope.
+///
+/// fork (P34g): `tba_blocks` counts a member with no air date as unaired, as
+/// Sonarr does for a full season only (the Collection arm).
 fn monitored_pack_members(
     episode_ids: &[String],
     catalog: &[scryer_domain::Episode],
+    tba_blocks: bool,
 ) -> (Vec<String>, usize) {
     let now = chrono::Utc::now();
     let mut members = Vec::with_capacity(episode_ids.len());
@@ -304,7 +308,12 @@ fn monitored_pack_members(
         if !episode.monitored {
             continue;
         }
-        if crate::acquisition_policy::episode_is_unaired(episode.air_date.as_deref(), &now) {
+        let air_date = episode.air_date.as_deref();
+        if if tba_blocks {
+            crate::acquisition_policy::episode_blocks_full_season(air_date, &now)
+        } else {
+            crate::acquisition_policy::episode_is_unaired(air_date, &now)
+        } {
             unaired += 1;
         }
         members.push(episode.id.clone());
@@ -562,7 +571,7 @@ impl AppUseCase {
                 let is_pack_grab = intent == SubjectIntent::Grab
                     && matches!(scope, SubmissionScope::EpisodeSet { .. });
                 let (episode_ids, unaired_members) = if is_pack_grab {
-                    monitored_pack_members(&episode_ids, &episodes)
+                    monitored_pack_members(&episode_ids, &episodes, false)
                 } else {
                     (episode_ids, 0)
                 };
@@ -635,7 +644,7 @@ impl AppUseCase {
                 let all_member_ids: Vec<String> =
                     members.iter().map(|episode| episode.id.clone()).collect();
                 let (episode_ids, unaired_members) =
-                    monitored_pack_members(&all_member_ids, &members);
+                    monitored_pack_members(&all_member_ids, &members, true);
 
                 if episode_ids.is_empty() {
                     // Nothing resolved, or nothing monitored. A plain empty
