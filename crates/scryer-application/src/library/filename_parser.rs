@@ -1153,7 +1153,8 @@ fn parse_release_fallback(
     }
     // fork (P16): a hashed name carries nothing (Sonarr ValidateBeforeParsing,
     // Parser.cs:1277); the parent fallback below fills it from the folder.
-    if is_hashed_release_stem(raw_name) {
+    // fork (P35): the list lives in the parser, shared with release names.
+    if scryer_release_parser::is_hashed_release_name(raw_name) {
         parsed = crate::ParsedReleaseMetadata::empty(raw_name, parsed.parser_version);
     }
 
@@ -1218,18 +1219,6 @@ fn parse_release_fallback(
 
     fill_missing_release_metadata(&mut parsed, &parent_release, input.facet);
     parsed
-}
-
-/// fork (P16): Sonarr `RejectHashedReleasesRegexes` (Parser.cs:471-512).
-fn is_hashed_release_stem(stem: &str) -> bool {
-    static RE: OnceLock<Regex> = OnceLock::new();
-    RE.get_or_init(|| {
-        Regex::new(
-            r"^(?:[0-9a-zA-Z]{24}|[A-Z]{11}\d{3}$|[a-z]{12}\d{3}$|Backup_\d{5,}S\d{2}-\d{2}$|123$|(?i:abc)$|(?i:abc[-_. ]xyz)|(?i:b00bs)$|\d{6}_\d{2}$)",
-        )
-        .expect("valid hashed release regex")
-    })
-    .is_match(stem)
 }
 
 /// fork (P16): Sonarr `SeasonFolderRegex` + `SimpleEpisodeNumberRegex`

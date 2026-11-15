@@ -6340,3 +6340,70 @@ fn release_group_is_never_a_site_tag() {
         );
     }
 }
+
+// fork (P35 G): hashed, password/yEnc and random-token names are not releases
+// (Sonarr ValidateBeforeParsing + RejectHashedReleasesRegexes).
+#[test]
+fn hashed_and_garbage_names_are_unparseable() {
+    let target = context(ContextFacetHint::Unknown, "");
+    for raw in [
+        "76El6LcgLzqb426WoVFg1vVVVGx4uCYopQkfjmLe",
+        "185d86a343e39f3341e35c4dad3f9959",
+        "Vh1FvU3bJXw6zs8EEUX4bMo5vbbMdHghxHirc.mkv",
+        "ah63jka93jf0jh26ahjas961.mkv",
+        "abc.xyz.af6021c37f7852",
+        "theseriestitle1618finale",
+        "password - \"bdc435cb-93c4-4902-97ea-ca00568c3887.337\" yEnc",
+        "Vrq6e1Aba3U amCjuEgV5R2QvdsLEGYF3YQAQkw8",
+        "_unpack e096aeb3c2c0483a96f5b32fc6d10ff5.mkv",
+        "AHFMZXGHEWD660",
+        "Backup_72023S02-12",
+        "170424_26",
+        "!!! ---",
+    ] {
+        let analysis = analyze_release_for_target(raw, &target);
+        assert_eq!(analysis.disposition, ParseDisposition::Unparseable, "{raw}");
+    }
+    for raw in [
+        "The.Grand.Tour.S01E01.1080p.WebRip.x264.Crazy4ad",
+        "F1.The.Movie.2025.Hybrid.2160p.UHD.Blu-ray.Remux.DV.HDR10plus.HEVC.TrueHD.Atmos.7.1-CiNEPHiLES",
+        "[Commie] Series Title - 32 [0BA19D5B]",
+        "cgajsofuejsa501.foo",
+    ] {
+        let analysis = analyze_release_for_target(raw, &target);
+        assert_ne!(analysis.disposition, ParseDisposition::Unparseable, "{raw}");
+    }
+    assert!(crate::is_hashed_release_name(
+        "Vh1FvU3bJXw6zs8EEUX4bMo5vbbMdHghxHirc.MKV"
+    ));
+    assert!(!crate::is_hashed_release_name("cgajsofuejsa501.foo"));
+    assert!(crate::is_hashed_release_name("cgajsofuejsa501.mkv"));
+}
+
+// fork (P35 D): a reversed scene name (`p027`, `10E10S` before another
+// segment) is read forwards, keeping only a media extension (Sonarr
+// ReversedTitleRegex).
+#[test]
+fn reversed_title_is_read_forwards() {
+    let target = context(ContextFacetHint::Series, "Some Hashed Release");
+    let parsed = crate::best_parse_for_target(
+        "yrucreM-462.H.0.2CAA.LD-BEW.p027.10E10S.esaeleR.dehsaH.emoS",
+        &target,
+    );
+    assert_eq!(parsed.normalized_title, "SOME HASHED RELEASE");
+    assert_eq!(parsed.quality.as_deref(), Some("720p"));
+    assert_eq!(parsed.release_group.as_deref(), Some("Mercury"));
+    let parsed = crate::best_parse_for_target(
+        "50E50S.denorD.mkv",
+        &context(ContextFacetHint::Series, "Droned"),
+    );
+    assert_eq!(parsed.normalized_title, "DRONED");
+    assert_eq!(parsed.episode.expect("episode").episode_numbers, vec![5]);
+    for raw in ["Show.S01E10.720p", "Show.10E10S"] {
+        let analysis = analyze_release_for_target(raw, &context(ContextFacetHint::Series, "Show"));
+        assert!(
+            !analysis.parse_hints.iter().any(|h| h == "reversed_title"),
+            "{raw}"
+        );
+    }
+}

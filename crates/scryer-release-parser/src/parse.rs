@@ -119,6 +119,15 @@ pub(crate) fn analyze_inputs(inputs: AnalysisInputs<'_>) -> ReleaseParseAnalysis
         disposition = ParseDisposition::Unparseable;
         ambiguity_margin = 0;
     }
+    // fork (P35 G): hashed or random-token names carry no release.
+    if crate::sanitize::is_hashed_release_name(inputs.raw_input)
+        || best_candidate_index
+            .and_then(|index| candidates.get(index))
+            .is_some_and(|candidate| is_random_token_name(candidate, &lexed.tokens, &annotations))
+    {
+        disposition = ParseDisposition::Unparseable;
+        ambiguity_margin = 0;
+    }
     if matches!(disposition, ParseDisposition::Parsed)
         && best_candidate_index
             .and_then(|index| candidates.get(index))
@@ -425,6 +434,52 @@ fn spaced_bare_range_end_at(
                 after.normalized.as_str(),
                 "MKV" | "MP4" | "AVI" | "M4V" | "WEBM"
             ))
+}
+
+/// fork (P35 G): a candidate with no identity or metadata whose title holds a
+/// random token (8+ chars mixing letters and digits, 2+ letter/digit switches),
+/// such as `_unpack e096aeb3c2c0.mkv` or `qrdSD3rYzWb7cPdVIGSn4E7`. Hash tokens
+/// (`[0BA19D5B]`) are not title text.
+fn is_random_token_name(
+    candidate: &ReleaseParseCandidate,
+    tokens: &[Token],
+    annotations: &[TokenAnnotations],
+) -> bool {
+    let m = &candidate.metadata;
+    if !matches!(
+        candidate.identity,
+        ReleaseIdentity::MovieIdentity | ReleaseIdentity::Unknown
+    ) || m.year.is_some()
+        || m.quality.is_some()
+        || m.source.is_some()
+        || m.video_codec.is_some()
+        || candidate.release_group.is_some()
+    {
+        return false;
+    }
+    candidate
+        .zones
+        .title_zones
+        .iter()
+        .flat_map(|zone| zone.indices())
+        .filter(|&i| {
+            annotations
+                .get(i)
+                .is_none_or(|a| a.primary_role != TokenRole::ChecksumOrHash)
+        })
+        .filter_map(|i| tokens.get(i))
+        .any(|token| {
+            let chars: Vec<char> = token.raw.chars().collect();
+            let switches = chars
+                .windows(2)
+                .filter(|w| w[0].is_ascii_digit() != w[1].is_ascii_digit())
+                .count();
+            chars.len() >= 8
+                && chars.iter().all(char::is_ascii_alphanumeric)
+                && chars.iter().any(char::is_ascii_alphabetic)
+                && chars.iter().any(char::is_ascii_digit)
+                && switches >= 2
+        })
 }
 
 fn unknown_target_has_episodic_identity(candidate: &ReleaseParseCandidate) -> bool {

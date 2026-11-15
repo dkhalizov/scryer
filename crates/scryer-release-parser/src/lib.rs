@@ -37,6 +37,7 @@ pub use stereoscopy::{
 pub use trash_guides::TRASH_GUIDES_SOURCE_REVISION;
 
 use parse::{AnalysisInputs, analyze_inputs};
+pub use sanitize::is_hashed_release_name; // fork (P35)
 use sanitize::sanitize_input;
 
 const PARSER_VERSION: &str = "2026.10.26-unified-revisions";

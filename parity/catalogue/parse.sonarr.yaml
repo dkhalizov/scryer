@@ -1593,7 +1593,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:13"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|842c40331343|0
 - id: SON-PARSE-0200
@@ -1601,7 +1601,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|8bdfb161641e|0
 - id: SON-PARSE-0201
@@ -1609,7 +1609,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:15"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|4e018a4cf517|0
 - id: SON-PARSE-0202
@@ -1617,7 +1617,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:16"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|59842a6d5f1e|0
 - id: SON-PARSE-0203
@@ -1625,7 +1625,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:17"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|1e6c728af2ad|0
 - id: SON-PARSE-0204
@@ -1633,7 +1633,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:18"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|6b1d23ef1019|0
 - id: SON-PARSE-0205
@@ -1641,7 +1641,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:19"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|36653dfe5a60|0
 - id: SON-PARSE-0206
@@ -1649,7 +1649,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:20"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|6e3213c46b58|0
 - id: SON-PARSE-0207
@@ -1657,7 +1657,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|7da5be4b5166|0
 - id: SON-PARSE-0208
@@ -1665,7 +1665,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|61118b161b4d|0
 - id: SON-PARSE-0209
@@ -1673,7 +1673,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:23"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|588dcf4f5a79|0
 - id: SON-PARSE-0210
@@ -1681,7 +1681,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|231dad46dd08|0
 - id: SON-PARSE-0211
@@ -1697,7 +1697,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|76694b58daee|0
 - id: SON-PARSE-0213
@@ -1705,7 +1705,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:27"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|11a807eff580|0
 - id: SON-PARSE-0214
@@ -1713,7 +1713,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|3d061a0b4f9a|0
 - id: SON-PARSE-0215
@@ -1721,7 +1721,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|3b6252e7f9c8|0
 - id: SON-PARSE-0216
@@ -1729,7 +1729,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:30"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|a4d844bd525e|0
 - id: SON-PARSE-0217
@@ -1737,7 +1737,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:31"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|9fa14445135a|0
 - id: SON-PARSE-0218
@@ -1745,7 +1745,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|44227007fc2d|0
 - id: SON-PARSE-0219
@@ -1753,7 +1753,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:33"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|f0f23353b804|0
 - id: SON-PARSE-0220
@@ -1761,7 +1761,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:34"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|894053f7092c|0
 - id: SON-PARSE-0221
@@ -1769,7 +1769,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:35"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_parse_unknown_formats_without_error|1f87d9638275|0
 - id: SON-PARSE-0222
@@ -1793,7 +1793,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:49"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_random|5bcdcebb4bf1|0
 - id: SON-PARSE-0225
@@ -1817,7 +1817,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:101"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_invalid_release_name|faf62097cee9|0
 - id: SON-PARSE-0228
@@ -2442,8 +2442,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:28"
   in_scope: true
-  status: waived
-  decision: "D69 (M8) W5: reversed-title scene obfuscation, rare and old"
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|3c9785c67947|0
 - id: SON-PARSE-0306
@@ -2451,8 +2450,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:35"
   in_scope: true
-  status: waived
-  decision: "D69 (M8) W5: reversed-title scene obfuscation, rare and old"
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|01b190e12d4b|0
 - id: SON-PARSE-0307

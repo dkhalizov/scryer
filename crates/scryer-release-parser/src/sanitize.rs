@@ -18,6 +18,15 @@ pub(crate) fn sanitize_input(raw: &str) -> SanitizedInput {
         .chars()
         .filter_map(|ch| sanitize_char(ch, &mut hints))
         .collect::<String>();
+    // fork (P35 D): a reversed scene name is read forwards (arr order: before
+    // the site tag).
+    let cleaned = match reversed_title(&cleaned) {
+        Some(forwards) => {
+            hints.push("reversed_title".to_string());
+            forwards
+        }
+        None => cleaned,
+    };
     // fork (P17): drop a leading site tag, like the arrs' WebsitePrefixRegex.
     let cleaned = match website_prefix_len(&cleaned) {
         Some(len) => {
@@ -157,4 +166,102 @@ fn is_bidi_control(ch: char) -> bool {
             | '\u{2068}'
             | '\u{2069}'
     )
+}
+
+/// fork (P35 D): `name` read forwards when it is a reversed scene name: a
+/// segment other than the last is `p027`, `p0801` or a reversed episode
+/// marker (`10E10S`), as Sonarr's case-sensitive ReversedTitleRegex
+/// `(?:^|[-._ ])(p027|p0801|\d{2,3}E\d{2}S)[-._ ]`. A media extension stays
+/// at the end.
+fn reversed_title(name: &str) -> Option<String> {
+    let marker = |seg: &str| {
+        let b = seg.as_bytes();
+        let n = b.len();
+        seg == "p027"
+            || seg == "p0801"
+            || ((6..=7).contains(&n)
+                && b[..n - 4].iter().all(u8::is_ascii_digit)
+                && b[n - 4] == b'E'
+                && b[n - 3..n - 1].iter().all(u8::is_ascii_digit)
+                && b[n - 1] == b'S')
+    };
+    let segments: Vec<&str> = name.split(['-', '.', '_', ' ']).collect();
+    if !segments[..segments.len() - 1].iter().any(|seg| marker(seg)) {
+        return None;
+    }
+    let stem = strip_media_extension(name);
+    Some(
+        stem.chars()
+            .rev()
+            .chain(name[stem.len()..].chars())
+            .collect(),
+    )
+}
+
+/// fork (P35): extensions the arrs' RemoveFileExtension strips (media files
+/// plus `.par2`/`.nzb`); any other dotted tail is part of the name.
+const MEDIA_EXTENSIONS: &[&str] = &[
+    "mkv", "mp4", "avi", "ts", "m2ts", "wmv", "mov", "m4v", "mpg", "mpeg", "webm", "par2", "nzb",
+];
+
+/// `name` without one trailing media extension (`.mkv`, `.par2`, ...).
+pub(crate) fn strip_media_extension(name: &str) -> &str {
+    match name.rsplit_once('.') {
+        Some((stem, ext)) if MEDIA_EXTENSIONS.iter().any(|e| ext.eq_ignore_ascii_case(e)) => stem,
+        _ => name,
+    }
+}
+
+/// fork (P35): a name the arrs refuse before parsing (Sonarr
+/// ValidateBeforeParsing + RejectHashedReleasesRegexes, Parser.cs:471-512,
+/// a superset of Radarr's): password/yEnc posts, names with no letter or
+/// digit, and hash-shaped stems.
+#[must_use]
+pub fn is_hashed_release_name(raw: &str) -> bool {
+    let lower = raw.to_lowercase();
+    if (lower.contains("password") && lower.contains("yenc"))
+        || !raw.chars().any(char::is_alphanumeric)
+    {
+        return true;
+    }
+    let s = strip_media_extension(raw);
+    let b = s.as_bytes();
+    let all = |r: &[u8], f: fn(&u8) -> bool| r.iter().all(f);
+    let shaped = |letters: usize, upper: bool| {
+        b.len() == letters + 3
+            && all(
+                &b[..letters],
+                if upper {
+                    u8::is_ascii_uppercase
+                } else {
+                    u8::is_ascii_lowercase
+                },
+            )
+            && all(&b[letters..], u8::is_ascii_digit)
+    };
+    let backup = s.strip_prefix("Backup_").is_some_and(|r| {
+        let digits = r.bytes().take_while(u8::is_ascii_digit).count();
+        let t = r[digits..].as_bytes();
+        digits >= 5
+            && t.len() == 6
+            && t[0] == b'S'
+            && all(&t[1..3], u8::is_ascii_digit)
+            && t[3] == b'-'
+            && all(&t[4..], u8::is_ascii_digit)
+    });
+    b.iter().take_while(|c| c.is_ascii_alphanumeric()).count() >= 24
+        || shaped(11, true)
+        || shaped(12, false)
+        || backup
+        || s == "123"
+        || s.eq_ignore_ascii_case("abc")
+        || s.eq_ignore_ascii_case("b00bs")
+        || (b.len() >= 7
+            && b[..3].eq_ignore_ascii_case(b"abc")
+            && matches!(b[3], b'-' | b'_' | b'.' | b' ')
+            && b[4..7].eq_ignore_ascii_case(b"xyz"))
+        || (b.len() == 9
+            && all(&b[..6], u8::is_ascii_digit)
+            && b[6] == b'_'
+            && all(&b[7..], u8::is_ascii_digit))
 }

@@ -54,7 +54,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:13"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0008
   # key: "CrapParserFixture.cs|should_not_parse_crap|b52cc31f0553ef1a|0"
@@ -62,7 +62,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0009
   # key: "CrapParserFixture.cs|should_not_parse_crap|d17647be5612c803|0"
@@ -70,7 +70,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:15"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0010
   # key: "CrapParserFixture.cs|should_not_parse_crap|1f9fba9cf647bc75|0"
@@ -78,7 +78,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:16"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0011
   # key: "CrapParserFixture.cs|should_not_parse_crap|627d4a4edab5fa31|0"
@@ -86,7 +86,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:17"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0012
   # key: "CrapParserFixture.cs|should_not_parse_crap|0c65baa1c083c1ab|0"
@@ -94,7 +94,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:18"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0013
   # key: "CrapParserFixture.cs|should_not_parse_crap|94f517d0559e4963|0"
@@ -102,7 +102,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:19"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0014
   # key: "CrapParserFixture.cs|should_not_parse_crap|571001176481030b|0"
@@ -110,7 +110,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:20"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0015
   # key: "CrapParserFixture.cs|should_not_parse_crap|aeae1aed288b9011|0"
@@ -118,7 +118,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0016
   # key: "CrapParserFixture.cs|should_not_parse_crap|1d9eceacbc7b8793|0"
@@ -126,7 +126,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0017
   # key: "CrapParserFixture.cs|should_not_parse_crap|0976effdbf9c0b64|0"
@@ -134,7 +134,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:23"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0018
   # key: "CrapParserFixture.cs|should_not_parse_crap|b15c36fbf3caa02b|0"
@@ -142,7 +142,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0019
   # key: "CrapParserFixture.cs|should_not_parse_crap|d2499b12452a654c|0"
@@ -158,7 +158,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0021
   # key: "CrapParserFixture.cs|should_not_parse_crap|0297c62380c5c748|0"
@@ -166,7 +166,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:27"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0022
   # key: "CrapParserFixture.cs|should_not_parse_crap|318d406e1e0fd22a|0"
@@ -174,7 +174,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0023
   # key: "CrapParserFixture.cs|should_not_parse_crap|1fb8e1a27bfe67bf|0"
@@ -182,7 +182,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0024
   # key: "CrapParserFixture.cs|should_not_parse_crap|10c12d625c02a018|0"
@@ -190,7 +190,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:30"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0025
   # key: "CrapParserFixture.cs|should_not_parse_crap|02c5ccf9293db6de|0"
@@ -198,7 +198,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:31"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0026
   # key: "CrapParserFixture.cs|should_not_parse_crap|a6af7130c8fdf75a|0"
@@ -206,7 +206,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0027
   # key: "CrapParserFixture.cs|should_not_parse_crap|53ee35bcf955209d|0"
@@ -214,7 +214,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:33"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0028
   # key: "CrapParserFixture.cs|should_not_parse_md5|960b0061affc3ba4|0"
@@ -222,7 +222,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:40"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0029
   # key: "CrapParserFixture.cs|should_not_parse_random|0|0"
@@ -246,7 +246,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:92"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0032
   # key: "CrapParserFixture.cs|should_not_parse_invalid_release_name|24006db7c1603f37|0"
