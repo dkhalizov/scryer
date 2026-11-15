@@ -227,19 +227,23 @@ fn uncertain_runtime_size_and_pack_reports_do_not_create_false_lower_rejections(
     for basis in [CoverageSizeBasis::single(None), pack] {
         assert!(decide(basis, "movie").allowed);
     }
-    // fork (P23): a series is held to Sonarr's minimum on the pack's total runtime.
+    // fork (P23): a series is held to Sonarr's minimum on the pack's total
+    // runtime, and refused when no runtime is known (P23b).
     assert_eq!(
         decide(pack, "series").block_codes,
         ["size_below_quality_minimum"]
     );
-    assert!(decide(CoverageSizeBasis::single(None), "series").allowed);
+    assert_eq!(
+        decide(CoverageSizeBasis::single(None), "series").block_codes,
+        ["size_runtime_unknown"]
+    );
     let unknown = score(
         "Quiet.Meridian.S01E01.1080p.WEB-DL.H.264",
         0.1,
         None,
         ScoringPersona::Balanced,
     );
-    assert!(unknown.allowed);
+    assert_eq!(unknown.block_codes, ["size_runtime_unknown"]);
     assert_eq!(unknown.size_fit_penalty, 0);
 }
 

@@ -1605,10 +1605,13 @@ fn apply_series_size_table(
     if category != MediaSizeCategory::Series || release.is_bd_disk || special {
         return;
     }
-    let Some(runtime) = basis.total_runtime_minutes.filter(|minutes| *minutes > 0) else {
+    // A quality without limits is accepted before the runtime is read, as in Sonarr.
+    let Some((min, max)) = sonarr_default_size_limits(release) else {
         return;
     };
-    let Some((min, max)) = sonarr_default_size_limits(release) else {
+    let Some(runtime) = basis.total_runtime_minutes.filter(|minutes| *minutes > 0) else {
+        // fork (P23b): Sonarr refuses a release it cannot measure.
+        decision.reject_requirement("size_runtime_unknown");
         return;
     };
     // Sonarr's `Megabytes()`: MiB rounded to the byte, then times the runtime.

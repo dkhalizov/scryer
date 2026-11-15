@@ -1873,6 +1873,38 @@ fn the_sonarr_size_table_leaves_movies_anime_specials_and_unknown_sizes_alone() 
     assert!(unknown.allowed, "{:?}", unknown.block_codes);
 }
 
+// fork (P23b): no runtime anywhere (series, episodes, premiere grace) refuses
+// a series release, as Sonarr does; movies and specials are left alone.
+#[test]
+fn a_series_release_with_unknown_runtime_is_refused() {
+    let unknown = |title: &str, category: &str| {
+        let release = parse_release_metadata(title);
+        let mut decision = QualityProfileDecision::new();
+        score_size_with_pack_basis(
+            &mut decision,
+            &release,
+            Some(gib(1.0)),
+            Some(category),
+            CoverageSizeBasis::single(None),
+            false,
+            &balanced_scoring_config(),
+        );
+        decision
+    };
+    let series = unknown(
+        "Quiet.Meridian.S01E01.1080p.WEB-DL.H.264-GroupTag",
+        "series",
+    );
+    assert_eq!(series.block_codes, ["size_runtime_unknown"]);
+    let movie = unknown("Quiet.Meridian.2024.1080p.WEB-DL.H.264-GroupTag", "movie");
+    assert!(movie.allowed, "{:?}", movie.block_codes);
+    let special = unknown(
+        "Quiet.Meridian.S00E01.1080p.WEB-DL.H.264-GroupTag",
+        "series",
+    );
+    assert!(special.allowed, "{:?}", special.block_codes);
+}
+
 #[test]
 fn size_implausible_blocks_wildly_oversized() {
     // 300 GB claiming to be a 720p anime episode — ratio ~400×, clearly mislabeled

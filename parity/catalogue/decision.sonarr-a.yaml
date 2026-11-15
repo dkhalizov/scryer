@@ -265,7 +265,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:248"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_false_if_series_runtime_is_zero_and_single_episode_aired_more_than_24_hours_after_first_aired_episode|-|-
 - id: SON-DECISION-0034
@@ -273,7 +273,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:261"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_if_series_runtime_is_zero_and_single_episode_aired_less_than_24_hours_after_first_aired_episode|-|-
 - id: SON-DECISION-0035
@@ -289,7 +289,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:293"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_false_if_series_runtime_is_zero_and_multi_episode_aired_more_than_24_hours_after_first_aired_episode|-|-
 - id: SON-DECISION-0037
@@ -297,7 +297,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:308"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_if_series_runtime_is_zero_and_multi_episode_aired_less_than_24_hours_after_first_aired_episode|-|-
 - id: SON-DECISION-0038

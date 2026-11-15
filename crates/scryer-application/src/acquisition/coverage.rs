@@ -523,6 +523,10 @@ pub(crate) fn coverage_runtime_minutes(
 /// A member runtime is the coverage's own average rather than any single
 /// episode's: uneven durations inside a pack are exactly the case where picking
 /// one member would be arbitrary.
+///
+/// fork (P23b): with no default runtime (the title has none) the grab lanes
+/// read unknown episodes as Sonarr does, so here the basis can differ from
+/// [`episode_span_size_basis`], which keeps the 45-minute fill for import.
 // fork: parity net seam (tests/parity_decision.rs)
 #[doc(hidden)]
 pub fn coverage_size_basis(
@@ -531,6 +535,25 @@ pub fn coverage_size_basis(
     episodes: &[Episode],
     default_runtime_minutes: Option<i32>,
 ) -> CoverageSizeBasis {
+    // fork (P23b): Sonarr AcceptableSizeSpecification.cs:45-79. No series
+    // runtime: 45 minutes per unknown episode only for a premiere-day release,
+    // otherwise an unknown episode counts 0 and a total of 0 has no basis.
+    if default_runtime_minutes.is_none() {
+        let assumed = if aired_with_the_premiere(coverage, episodes) {
+            UNKNOWN_EPISODE_RUNTIME_MINUTES
+        } else {
+            0
+        };
+        let basis = coverage_size_basis(coverage, parsed, episodes, Some(assumed));
+        return if basis
+            .total_runtime_minutes
+            .is_some_and(|minutes| minutes > 0)
+        {
+            basis
+        } else {
+            CoverageSizeBasis::single(None)
+        };
+    }
     match coverage {
         ReleaseCoverage::SingleEpisode(episode_id) => {
             CoverageSizeBasis::single(episode_span_runtime_minutes(
@@ -593,12 +616,62 @@ pub fn coverage_size_basis(
     }
 }
 
+/// fork (P23b): every covered episode aired within 24 hours of the first
+/// season's premiere (Sonarr's grace for a new series without a runtime).
+// ponytail: Sonarr takes the season's first episode and, without its air date,
+// the release's publish date; here a missing premiere date grants the grace.
+// A date-only air date reads as midnight UTC.
+fn aired_with_the_premiere(coverage: &ReleaseCoverage, episodes: &[Episode]) -> bool {
+    let covered: Vec<&Episode> = match coverage {
+        ReleaseCoverage::SingleEpisode(id) => episodes
+            .iter()
+            .filter(|episode| &episode.id == id)
+            .collect(),
+        ReleaseCoverage::EpisodeSet(ids) => episodes
+            .iter()
+            .filter(|episode| ids.contains(&episode.id))
+            .collect(),
+        ReleaseCoverage::Collection(collection_id) => episodes
+            .iter()
+            .filter(|episode| episode.collection_id.as_deref() == Some(collection_id))
+            .collect(),
+        ReleaseCoverage::Title | ReleaseCoverage::Unknown => return false,
+    };
+    let season = |episode: &Episode| {
+        episode
+            .season_number
+            .as_deref()
+            .and_then(|season| season.trim().parse::<u32>().ok())
+    };
+    let aired = |episode: &Episode| {
+        crate::acquisition_policy::parse_schedule_baseline_date(episode.air_date.as_deref())
+    };
+    let Some(first_season) = episodes.iter().filter_map(season).filter(|s| *s > 0).min() else {
+        return false;
+    };
+    if covered.iter().filter_map(|episode| season(episode)).min() != Some(first_season) {
+        return false;
+    }
+    let Some(premiere) = episodes
+        .iter()
+        .filter(|episode| season(episode) == Some(first_season))
+        .filter_map(aired)
+        .min()
+    else {
+        return true;
+    };
+    let grace_end = premiere + chrono::Duration::hours(24);
+    covered
+        .iter()
+        .all(|episode| aired(episode).is_none_or(|at| at < grace_end))
+}
+
 /// [`episode_span_runtime_minutes`] as a size basis: the same total, plus the
 /// member count and average the scorer needs to recognise a pack-shaped size.
 ///
 /// The import lane and a re-derived incumbent bar go through this, and the grab
 /// lane through [`coverage_size_basis`], so the same file gets the same basis
-/// wherever it is judged.
+/// wherever it is judged (except without a title runtime, fork P23b).
 pub(crate) fn episode_span_size_basis(
     episodes: &[Episode],
     episode_ids: &[String],
@@ -1461,6 +1534,94 @@ mod tests {
             unknown.member_runtime_minutes,
             Some(UNKNOWN_EPISODE_RUNTIME_MINUTES)
         );
+    }
+
+    // ── fork (P23b): no series runtime, as Sonarr ─────────────────────────
+
+    const PREMIERE: &str = "2026-01-05T20:00:00Z";
+
+    fn unknown_runtime(id: &str, season: &str, number: &str, aired: Option<&str>) -> Episode {
+        let mut episode = episode(id, season, number, None);
+        episode.duration_seconds = None;
+        episode.air_date = aired.map(str::to_string);
+        episode
+    }
+
+    /// A first season aired on the premiere day, plus a second season, none
+    /// with a runtime.
+    fn catalog_without_runtimes() -> Vec<Episode> {
+        vec![
+            unknown_runtime("s1e1", "1", "1", Some(PREMIERE)),
+            unknown_runtime("s1e2", "1", "2", Some("2026-01-05T21:00:00Z")),
+            unknown_runtime("s1e3", "1", "3", Some("2026-01-12T20:00:00Z")),
+            unknown_runtime("s2e1", "2", "1", None),
+            unknown_runtime("s2e2", "2", "2", None),
+        ]
+    }
+
+    fn basis_without_series_runtime(
+        coverage: ReleaseCoverage,
+        episodes: &[Episode],
+    ) -> CoverageSizeBasis {
+        coverage_size_basis(&coverage, &ParsedReleaseMetadata::default(), episodes, None)
+    }
+
+    #[test]
+    fn a_premiere_aired_within_a_day_is_read_at_45_minutes() {
+        let basis = basis_without_series_runtime(
+            ReleaseCoverage::SingleEpisode("s1e2".into()),
+            &catalog_without_runtimes(),
+        );
+        assert_eq!(basis.total_runtime_minutes, Some(45));
+    }
+
+    #[test]
+    fn an_episode_set_with_no_runtime_anywhere_has_no_size_basis() {
+        let basis = basis_without_series_runtime(
+            ReleaseCoverage::EpisodeSet(vec!["s2e1".into(), "s2e2".into()]),
+            &catalog_without_runtimes(),
+        );
+        assert_eq!(basis, CoverageSizeBasis::single(None));
+    }
+
+    #[test]
+    fn without_a_series_runtime_only_known_episode_runtimes_count() {
+        let mut episodes = catalog_without_runtimes();
+        episodes[3].duration_seconds = Some(30 * 60);
+        let basis = basis_without_series_runtime(
+            ReleaseCoverage::EpisodeSet(vec!["s2e1".into(), "s2e2".into()]),
+            &episodes,
+        );
+        assert_eq!(basis.total_runtime_minutes, Some(30));
+    }
+
+    #[test]
+    fn a_release_outside_the_first_season_without_runtime_has_no_size_basis() {
+        let basis = basis_without_series_runtime(
+            ReleaseCoverage::SingleEpisode("s2e1".into()),
+            &catalog_without_runtimes(),
+        );
+        assert_eq!(basis, CoverageSizeBasis::single(None));
+    }
+
+    #[test]
+    fn a_first_season_episode_a_week_after_the_premiere_has_no_size_basis() {
+        let basis = basis_without_series_runtime(
+            ReleaseCoverage::SingleEpisode("s1e3".into()),
+            &catalog_without_runtimes(),
+        );
+        assert_eq!(basis, CoverageSizeBasis::single(None));
+    }
+
+    #[test]
+    fn a_series_runtime_still_fills_missing_episodes() {
+        let basis = coverage_size_basis(
+            &ReleaseCoverage::EpisodeSet(vec!["s2e1".into(), "s2e2".into()]),
+            &ParsedReleaseMetadata::default(),
+            &catalog_without_runtimes(),
+            Some(50),
+        );
+        assert_eq!(basis.total_runtime_minutes, Some(100));
     }
 
     /// A scope with no episodes has no basis of its own; the caller's fallback
