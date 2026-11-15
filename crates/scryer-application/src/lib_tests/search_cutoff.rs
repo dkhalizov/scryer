@@ -2159,7 +2159,6 @@ async fn a_queued_releases_announced_size_affects_fit_without_creating_score_upg
     );
     let subject =
         AdmissionSubject::new(AdmissionScope::Title, []).with_queued(vec![QueuedRelease {
-            quality_key: None,
             missing_history: false,
             history_cutoff_reached: false,
             release_group: Some("group".into()),
@@ -2279,7 +2278,6 @@ async fn a_queued_release_the_profile_now_vetoes_still_holds_its_scope() {
 
     let subject =
         AdmissionSubject::new(AdmissionScope::Title, []).with_queued(vec![QueuedRelease {
-            quality_key: None,
             missing_history: false,
             history_cutoff_reached: false,
             release_group: Some("group".into()),
@@ -3156,6 +3154,108 @@ async fn the_upgrade_context_takes_its_same_tier_delta_from_the_profile() {
         assert_eq!(
             context.thresholds.same_tier_min_delta, expected,
             "profile delta {profile_delta:?}"
+        );
+    }
+}
+
+/// fork (P18b review): the exact quality reaches the revision escape through
+/// the production builders. The incumbent's key (stored source + parse, via
+/// the subject builder) equals the announced candidate's key for the same
+/// release, so a PROPER of that source escapes; another source in the same
+/// bare tier has a different key and does not.
+#[tokio::test]
+async fn the_incumbent_and_candidate_quality_keys_agree_for_the_revision_escape() {
+    use crate::acquisition_release_search::candidate_is_revision_upgrade;
+    use crate::admission::CandidateFacts;
+
+    let media_files = Arc::new(MockMediaFileRepo::default());
+    let (app, user) = bootstrap();
+    let app = app.with_test_overrides(|services| services.with_media_files(media_files.clone()));
+    let title = app
+        .add_title(
+            &user,
+            NewTitle {
+                name: "Wired Key".into(),
+                facet: MediaFacet::Movie,
+                runtime_minutes: Some(120),
+                monitored: true,
+                tags: vec![],
+                external_ids: vec![],
+                min_availability: None,
+                ..Default::default()
+            },
+        )
+        .await
+        .expect("create title");
+    let held = "Wired.Key.2024.1080p.WEB-DL.H.264-GRP";
+    media_files
+        .insert_media_file(&InsertMediaFileInput {
+            title_id: title.id.clone(),
+            file_path: "/library/Wired Key (2024)/abc123.mkv".to_string(),
+            size_bytes: 7_000_000_000,
+            quality_label: Some("1080p".to_string()),
+            scene_name: Some(held.to_string()),
+            source_type: crate::release_parser::parsed_release_source_type(
+                &crate::release_parser::parse_release_metadata(held),
+            ),
+            ..Default::default()
+        })
+        .await
+        .expect("insert media file");
+
+    let profile = test_quality_profile("wired-key");
+    let context = app
+        .resolve_canonical_scoring_context(&title, &profile)
+        .await;
+    let subject = app
+        .admission_subject_for_scope(
+            &title,
+            &crate::SubmissionScope::Title,
+            &context,
+            None,
+            crate::quality::canonical_context::SubjectIntent::Grab,
+        )
+        .await;
+    let incumbent = subject.incumbents().first().expect("the file is held");
+    let parked = |release: &str| {
+        crate::quality::canonical_context::score_parked_release_title(
+            &title,
+            release,
+            None,
+            None,
+            &[],
+            &[],
+            &context,
+        )
+    };
+    assert_eq!(incumbent.quality_key.as_deref(), Some("WEBDL-1080P"));
+    assert_eq!(parked(held).quality_key, incumbent.quality_key);
+
+    for (release, key, escapes) in [
+        (
+            "Wired.Key.2024.1080p.WEB-DL.PROPER.H.264-GRP",
+            "WEBDL-1080P",
+            true,
+        ),
+        (
+            "Wired.Key.2024.1080p.WEBRip.PROPER.x264-GRP",
+            "WEBRIP-1080P",
+            false,
+        ),
+    ] {
+        let facts = parked(release);
+        assert_eq!(facts.quality_key.as_deref(), Some(key), "{release}");
+        assert_eq!(
+            facts.tier_index, incumbent.tier_index,
+            "one bare tier: {release}"
+        );
+        let candidate = CandidateFacts::new(facts.tier_index, facts.revision, facts.score)
+            .with_quality_key(facts.quality_key.as_deref())
+            .with_profile_policy(facts.release_group.as_deref(), &profile.criteria);
+        assert_eq!(
+            candidate_is_revision_upgrade(candidate, &subject),
+            escapes,
+            "{release}"
         );
     }
 }

@@ -51,8 +51,6 @@ pub(crate) struct PostDownloadAcquisitionDecision {
     /// Where the imported file's quality sits in the profile's ordering.
     /// Admission compares this before it looks at the score.
     pub tier_index: Option<usize>,
-    /// fork (P18b): the exact quality; see [`crate::admission::Incumbent::quality_key`].
-    pub quality_key: Option<String>,
     /// PROPER/REPACK rank of the release, compared between tier and score (D9).
     /// From the same scoring pass as `score`, so the import side cannot read a
     /// different revision than the grab side did for the same release.
@@ -2249,7 +2247,6 @@ pub(crate) fn compute_post_download_acquisition_decision(
         parsed: rescored,
         score,
         tier_index,
-        quality_key: scored.parsed_quality,
         revision: scored.revision,
         language: scored.language,
         truth_verdict: scored.truth_verdict,

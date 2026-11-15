@@ -1888,12 +1888,15 @@ pub(crate) fn candidate_is_revision_upgrade(
         .any(|incumbent| revision_upgrade_over(candidate, incumbent))
 }
 
-/// Sonarr's `IsRevisionUpgrade` against one file: same tier, later revision.
+/// Sonarr's `IsRevisionUpgrade` against one file: same tier, later revision,
+/// and the same exact quality when both sources are known (P18b).
 fn revision_upgrade_over(
     candidate: crate::admission::CandidateFacts,
     incumbent: &crate::admission::Incumbent,
 ) -> bool {
-    candidate.facts().revision_cmp(&incumbent.facts()).is_gt()
+    let (candidate, held) = (candidate.facts(), incumbent.facts());
+    !candidate.exact_quality_differs(&held) // fork (P18b)
+        && candidate.revision_cmp(&held).is_gt()
 }
 
 /// Has this scope reached its cutoff — **both** halves of it?
@@ -8096,6 +8099,53 @@ mod tests {
                 ),
                 Some(ReleaseAutoDecisionCode::CutoffReached)
             );
+        }
+
+        /// fork (P18b review): Sonarr's `IsRevisionUpgrade` (the cutoff escape
+        /// and `ProperSpecification`) compares the exact quality, so a WEBRip
+        /// PROPER is no revision upgrade over a WEB-DL in one bare tier and
+        /// stays at cutoff. The same source escapes; an unknown source on
+        /// either side compares by tier.
+        #[test]
+        fn the_revision_escape_needs_the_same_exact_quality() {
+            for (held, candidate, escapes) in [
+                (Some("WEBDL-1080P"), Some("WEBRIP-1080P"), false),
+                (Some("WEBDL-1080P"), Some("WEBDL-1080P"), true),
+                (None, Some("WEBRIP-1080P"), true),
+                (Some("WEBDL-1080P"), Some("1080P"), true),
+            ] {
+                let subject = AdmissionSubject::new(
+                    AdmissionScope::Title,
+                    [(
+                        Incumbent {
+                            quality_key: held.map(str::to_string),
+                            tier_index: Some(1),
+                            revision: 0,
+                            file_id: "file-1".to_string(),
+                            file_path: "/data/Movies/Nightfall (2022)/Nightfall.mkv".to_string(),
+                            release_group: Some("GRP".into()),
+                            score: 900,
+                            language: Default::default(),
+                            covers: Vec::new(),
+                            created_at: (now() - chrono::Duration::days(1)).to_rfc3339(),
+                        },
+                        true,
+                    )],
+                );
+                let proper = CandidateFacts::new(Some(1), 1, 100)
+                    .with_revision_policy(Some("GRP"), false)
+                    .with_quality_key(candidate);
+                assert_eq!(
+                    candidate_is_revision_upgrade(proper, &subject),
+                    escapes,
+                    "held={held:?}, candidate={candidate:?}"
+                );
+                assert_eq!(
+                    cutoff_refusal(proper, &subject, true, true, &now()),
+                    (!escapes).then_some(ReleaseAutoDecisionCode::CutoffReached),
+                    "held={held:?}, candidate={candidate:?}"
+                );
+            }
         }
 
         /// The window boundary, read the way Sonarr reads it: **midnight** minus

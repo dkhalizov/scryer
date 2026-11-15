@@ -219,8 +219,7 @@ impl PreferenceStep for QualityTierStep {
 
 /// PROPER/REPACK ranks, only between releases of the same tier from the same
 /// release group; a lower revision of the same tier loses whatever the groups
-/// (P18, [`Facts::revision_cmp`]); two known, different sources never compare
-/// (P18b). Its sort key is the candidate's revision
+/// (P18, [`Facts::revision_cmp`]). Its sort key is the candidate's revision
 /// whatever the scope holds (P19, see
 /// [`crate::admission::revision_preference`]).
 struct RevisionStep;

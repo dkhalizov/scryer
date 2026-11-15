@@ -872,44 +872,64 @@ fn an_unknown_group_v1_does_not_replace_a_v2_at_import() {
     );
 }
 
-/// fork (P18b): inside a bare tier the arrs compare the exact quality first,
-/// so a Bluray-1080p v0 over an HDTV-1080p PROPER is decided on score, not
-/// refused as a lower revision. An unknown source on either side, or the same
-/// exact quality, keeps P18's refusal.
+/// fork (P18b review): a bare tier is an arr group (D48), and inside a group
+/// both arrs compare revisions across sources (`QualityModelComparer` without
+/// group order, then `UpgradableSpecification`/import `UpgradeSpecification`).
+/// So a lower revision is refused whatever the exact qualities, even when it
+/// scores higher: a WEBRip v0 never replaces a WEB-DL REPACK.
 #[test]
-fn a_lower_revision_of_another_known_source_is_decided_on_score() {
+fn a_lower_revision_inside_a_bare_tier_is_refused_whatever_the_source() {
     for group in ["A", "B"] {
-        for (held_key, candidate_key, admitted) in [
-            (Some("HDTV-1080P"), Some("BLURAY-1080P"), true),
-            (None, Some("BLURAY-1080P"), false),
-            (Some("1080P"), Some("BLURAY-1080P"), false),
-            (Some("HDTV-1080P"), None, false),
-            (Some("BLURAY-1080P"), Some("BLURAY-1080P"), false),
+        for (held_key, candidate_key) in [
+            (Some("WEBDL-2160P"), Some("WEBRIP-2160P")),
+            (Some("HDTV-1080P"), Some("BLURAY-1080P")),
+            (None, Some("BLURAY-1080P")),
+            (Some("1080P"), Some("BLURAY-1080P")),
+            (Some("HDTV-1080P"), None),
+            (Some("BLURAY-1080P"), Some("BLURAY-1080P")),
         ] {
-            let (mut file, primary) = revised("file-1", 1, 100);
+            let (mut file, primary) = revised("file-1", 1, 80);
             file.release_group = Some("A".into());
             file.quality_key = held_key.map(str::to_string);
             let subject = AdmissionSubject::new(episodes(&["ep-01"]), [(file, primary)]);
             let verdict = evaluate_admission(
                 &subject,
-                CandidateFacts::new(Some(0), 0, 900)
+                CandidateFacts::new(Some(0), 0, 175)
                     .with_revision_policy(Some(group), false)
                     .with_quality_key(candidate_key),
-                &auto(1),
+                &AdmissionPolicy::not_a_downgrade(),
             );
-            assert_eq!(
-                verdict.is_admitted(),
-                admitted,
-                "group={group}, held={held_key:?}, candidate={candidate_key:?}: {verdict:?}"
-            );
-            if !admitted {
-                assert!(matches!(
+            assert!(
+                matches!(
                     verdict.rejection().map(|r| &r.reason),
                     Some(AdmissionRejectionReason::LowerRevision { .. })
-                ));
-            }
+                ),
+                "group={group}, held={held_key:?}, candidate={candidate_key:?}: {verdict:?}"
+            );
         }
     }
+}
+
+/// fork (P18b review): the upward half. A same-group PROPER of another source
+/// in the bare tier wins on revision as the arrs' `IsUpgradable` does, so a
+/// no-upgrade profile does not block it.
+#[test]
+fn a_higher_revision_of_another_source_in_a_bare_tier_wins_on_revision() {
+    let (mut file, primary) = revised("file-1", 0, 900);
+    file.release_group = Some("A".into());
+    file.quality_key = Some("WEBDL-1080P".into());
+    let subject = AdmissionSubject::new(episodes(&["ep-01"]), [(file, primary)]);
+    let verdict = evaluate_admission(
+        &subject,
+        CandidateFacts::new(Some(0), 1, 400)
+            .with_revision_policy(Some("A"), false)
+            .with_quality_key(Some("WEBRIP-1080P")),
+        &AdmissionPolicy {
+            allow_upgrades: false,
+            ..auto(200)
+        },
+    );
+    assert!(verdict.is_admitted(), "{verdict:?}");
 }
 
 /// Tier still wins. A PROPER of a *worse* quality is still a downgrade — the
@@ -1101,7 +1121,6 @@ fn a_manual_pack_grab_still_cannot_fetch_an_unaired_season() {
 
 fn queued(title: &str, tier_index: Option<usize>, revision: i32, score: i32) -> QueuedRelease {
     QueuedRelease {
-        quality_key: None,
         missing_history: false,
         history_cutoff_reached: false,
         release_group: Some("group".into()),

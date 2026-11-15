@@ -263,7 +263,6 @@ fn history_case(radarr: bool, g: &Value) -> Result<Value, String> {
             return Err("translation cannot express a missing-download claim".into());
         }
         queued.push(QueuedRelease {
-            quality_key: None,
             missing_history: false,
             history_cutoff_reached: false,
             release_group: None,

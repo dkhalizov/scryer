@@ -322,7 +322,6 @@ pub(crate) async fn decide_import(
 
     let candidate =
         crate::admission::CandidateFacts::new(scored.tier_index, scored.revision, scored.score)
-            .with_quality_key(scored.quality_key.as_deref())
             .with_language(scored.language)
             .with_profile_policy(
                 scored.parsed.release_group.as_deref(),

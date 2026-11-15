@@ -134,8 +134,6 @@ pub struct QueuedRelease {
     /// is already in flight" from "an equal one". `None` when the queued
     /// title is unknown.
     pub release_key: Option<u64>,
-    /// fork (P18b): the exact quality; see [`Incumbent::quality_key`].
-    pub quality_key: Option<String>,
 }
 
 /// The identity a release name carries for the "already grabbed" refusal:
@@ -305,8 +303,7 @@ impl<'a> CandidateFacts<'a> {
     }
 
     /// fork (P18b): attach the exact quality; see [`Facts::quality_key`].
-    // fork: parity net seam (tests/parity_import/import_specs.rs)
-    pub fn with_quality_key(mut self, quality_key: Option<&'a str>) -> Self {
+    pub(crate) fn with_quality_key(mut self, quality_key: Option<&'a str>) -> Self {
         self.quality_key = quality_key;
         self
     }
@@ -433,7 +430,7 @@ impl QueuedRelease {
             release_group: self.release_group.as_deref(),
             revision: self.revision,
             ignores_revision: false,
-            quality_key: self.quality_key.as_deref(),
+            quality_key: None,
         }
     }
 }
@@ -1247,10 +1244,11 @@ pub fn evaluate_admission(
         // threshold would refuse exactly the fix the release exists to
         // deliver.
         //
-        // Tiers are coarser than Sonarr's exact `Quality`; fork (P18b): a
-        // revision also needs the same exact quality when both sources are
-        // known, so a WEB-DL PROPER is not a revision of a Bluray release in a
-        // bare tier. An unknown source on either side compares by tier.
+        // Tiers are coarser than Sonarr's exact `Quality`, so "same tier" for a
+        // revision is "same resolution": a WEB-DL PROPER counts as a revision of
+        // a Bluray release of the same resolution from the same group. A bare
+        // tier is an arr group (D48), where the arrs do the same; only the
+        // cutoff escape needs the exact quality (fork P18b, `quality_key`).
         //
         // A higher revision wins only within one release group; a lower one
         // of the same tier loses whatever the groups (P18), as Sonarr's

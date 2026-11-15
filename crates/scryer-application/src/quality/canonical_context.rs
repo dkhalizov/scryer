@@ -838,7 +838,6 @@ impl AppUseCase {
                     context,
                 );
                 Some(crate::admission::QueuedRelease {
-                    quality_key: facts.quality_key.clone(),
                     missing_history: false,
                     history_cutoff_reached: false,
                     release_group: facts.release_group.clone(),
@@ -941,7 +940,6 @@ impl AppUseCase {
                         .cutoff_score
                         .is_none_or(|cutoff| facts.score >= cutoff);
                 crate::admission::QueuedRelease {
-                    quality_key: facts.quality_key.clone(),
                     missing_history: state.status == crate::AcquisitionScopeStatus::Wanted,
                     history_cutoff_reached,
                     release_group: facts.release_group.clone(),

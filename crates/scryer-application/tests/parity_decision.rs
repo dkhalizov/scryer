@@ -1322,7 +1322,6 @@ fn queue(app: &str, g: &Value) -> Outcome {
             }
             let held = side(item, None, cf_score(p, item))?;
             queued.push(QueuedRelease {
-                quality_key: None,
                 missing_history: false,
                 history_cutoff_reached: false,
                 release_group: held.group.clone(),
