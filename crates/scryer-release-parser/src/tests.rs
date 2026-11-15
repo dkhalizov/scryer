@@ -4257,12 +4257,57 @@ fn explicit_cam_variants_still_parse_as_cam_sources() {
         "Movie.Title.2024.HDCAM.x264-GRP",
         "Movie.Title.2024.HQCAM.x264-GRP",
         "Movie.Title.2024.1080p.CAM.x264-GRP",
+        "Movie.Title.2024.NEWCAM.1080p.x264-GRP",
+        "Movie.Title.2024.NEWCAMRip.720p.x264-GRP",
+        "Movie.Title.2024.HDCAMRip.1080p.x264-GRP",
     ] {
         let analysis = analyze_release_for_target(raw, &target);
         let candidate = analysis.best_candidate().expect("best candidate");
         assert_eq!(
             source_label(candidate.projected.source.as_ref()),
             Some("CAM"),
+            "{raw}"
+        );
+    }
+}
+
+// fork (P25): Radarr QualityParser.cs:28-31 theatrical spellings.
+#[test]
+fn theatrical_source_spellings_parse() {
+    let mut target = context(ContextFacetHint::Movie, "Movie Title");
+    target.known_years.push(2024);
+    for (token, label) in [
+        ("TSRip", "TELESYNC"),
+        ("HDTS", "TELESYNC"),
+        ("HDTSRip", "TELESYNC"),
+        ("PDVD", "TELESYNC"),
+        ("HD-TS", "TELESYNC"),
+        ("HDTC", "TELECINE"),
+        ("HD-TC", "TELECINE"),
+        ("SCREENER", "DVDSCR"),
+        ("SCR", "DVDSCR"),
+        ("DVDSCREENER", "DVDSCR"),
+    ] {
+        let raw = format!("Movie.Title.2024.{token}.1080p.x264-GRP");
+        let analysis = analyze_release_for_target(&raw, &target);
+        let candidate = analysis.best_candidate().expect("best candidate");
+        assert_eq!(
+            source_label(candidate.projected.source.as_ref()),
+            Some(label),
+            "{raw}"
+        );
+    }
+    for (raw, title, label) in [
+        ("Scream.2022.1080p.WEB-DL.x264-GRP", "Scream", "WEB-DL"),
+        ("Tsunami.2024.1080p.BluRay.x264-GRP", "Tsunami", "BluRay"),
+        ("Newcamp.2024.1080p.WEB-DL.x264-GRP", "Newcamp", "WEB-DL"),
+    ] {
+        let target = context(ContextFacetHint::Movie, title);
+        let analysis = analyze_release_for_target(raw, &target);
+        let candidate = analysis.best_candidate().expect("best candidate");
+        assert_eq!(
+            source_label(candidate.projected.source.as_ref()),
+            Some(label),
             "{raw}"
         );
     }

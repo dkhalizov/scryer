@@ -9138,17 +9138,22 @@ fn detect_compound_metadata(token: &str) -> CompoundMetadata {
         || token.starts_with("CAMRIP")
         || token.starts_with("HDCAM")
         || token.starts_with("HQCAM")
+        || matches!(token, "NEWCAM" | "NEWCAMRIP")
+    // fork (P25)
     {
         // Bare "CAM" must match exactly: it is a substring of ordinary title
         // words ("BECAME", "CAMERA", "CAMP") that flow through metadata
         // consumption after an episode identity. The longer forms are
-        // unambiguous and may be fused with other metadata.
+        // unambiguous and may be fused with other metadata; NEWCAM forms are
+        // exact too ("NEWCAMP").
         metadata.source = Some("CAM");
-    } else if token.contains("TELESYNC") || token == "TS" {
+    } else if token.contains("TELESYNC")
+        || matches!(token, "TS" | "TSRIP" | "HDTS" | "HDTSRIP" | "PDVD")
+    {
         metadata.source = Some("TELESYNC");
-    } else if token.contains("TELECINE") || token == "TC" {
+    } else if token.contains("TELECINE") || matches!(token, "TC" | "HDTC") {
         metadata.source = Some("TELECINE");
-    } else if token.contains("DVDSCR") {
+    } else if token.contains("DVDSCR") || matches!(token, "SCR" | "SCREENER") {
         metadata.source = Some("DVDSCR");
     } else if token.contains("WORKPRINT") {
         metadata.source = Some("WORKPRINT");
@@ -9310,10 +9315,11 @@ fn normalize_source_token(token: &str) -> Option<&'static str> {
         | "BD3D" => Some("BluRay"),
         "DVD" | "DVDRIP" => Some("DVD"),
         "HDTV" => Some("HDTV"),
-        "CAM" | "HQCAM" => Some("CAM"),
-        "TELESYNC" | "TS" => Some("TELESYNC"),
-        "TELECINE" | "TC" => Some("TELECINE"),
-        "DVDSCR" => Some("DVDSCR"),
+        // fork (P25): Radarr QualityParser.cs:28-31 theatrical spellings.
+        "CAM" | "HQCAM" | "CAMRIP" | "HDCAM" | "HDCAMRIP" | "NEWCAM" | "NEWCAMRIP" => Some("CAM"),
+        "TELESYNC" | "TELESYNCH" | "TS" | "TSRIP" | "HDTS" | "HDTSRIP" | "PDVD" => Some("TELESYNC"),
+        "TELECINE" | "TC" | "HDTC" => Some("TELECINE"),
+        "DVDSCR" | "DVDSCREENER" | "SCREENER" | "SCR" => Some("DVDSCR"),
         "WORKPRINT" => Some("WORKPRINT"),
         _ => None,
     }

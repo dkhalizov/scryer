@@ -442,6 +442,33 @@ fn low_quality_theatrical_sources_block_by_default() {
     );
 }
 
+// fork (P25): Radarr profile 7 shape (bare tiers); a theatrical spelling the
+// parser did not know left the source empty and the bare tier admitted it.
+#[test]
+fn theatrical_spellings_refused_on_bare_tiers() {
+    let profile = QualityProfile::parse(
+        r#"{"id":"t","name":"T","criteria":{"quality_tiers":["2160p","1080p"],"allow_unknown_quality":false,"allow_upgrades":true}}"#,
+    )
+    .unwrap();
+    let w = balanced_scoring_config();
+    for raw in [
+        "Movie.Name.2024.NEWCAM.1080p.x264-GRP",
+        "Movie.Name.2024.HDTS.2160p.x264-GRP",
+        "Movie.Name.2024.TSRip.1080p.x264-GRP",
+    ] {
+        let d = score_with_pack(&profile, &parse_release_metadata(raw), false, &w);
+        assert!(!d.allowed, "{raw}");
+        assert!(
+            d.block_codes
+                .contains(&"source_low_quality_theatrical".to_string()),
+            "{raw}: {:?}",
+            d.block_codes
+        );
+    }
+    let control = parse_release_metadata("Movie.Name.2024.1080p.WEB-DL.x264-GRP");
+    assert!(score_with_pack(&profile, &control, false, &w).allowed);
+}
+
 // ── score_with_pack: DV/HDR ─────────────────────────────────────
 
 #[test]
