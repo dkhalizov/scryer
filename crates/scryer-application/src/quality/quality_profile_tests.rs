@@ -537,6 +537,34 @@ fn a_sourceless_resolution_ranks_as_hdtv_under_its_bare_tier() {
     assert!(d.block_codes.is_empty(), "{:?}", d.block_codes);
 }
 
+// fork (P33e): Raw-HD ranks only under an explicit RAWHD-1080P tier; a bare
+// 1080P (which an MPEG2 1080i capture never matched before) does not admit it.
+#[test]
+fn raw_hd_key_never_falls_back_to_a_bare_tier() {
+    let release = parse_release_metadata("Show.S01E01.1080i.HDTV.DD5.1.MPEG2-TrollHD");
+    assert_eq!(
+        crate::quality_profile::release_tier_label(&release).as_deref(),
+        Some("RAWHD-1080P")
+    );
+    let profile = |tiers: &str| {
+        QualityProfile::parse(&format!(
+            r#"{{"id":"t","name":"T","criteria":{{"quality_tiers":{tiers},"allow_unknown_quality":false,"allow_upgrades":true}}}}"#
+        ))
+        .unwrap()
+    };
+    let bare = evaluate_profile_requirements(&profile(r#"["1080P"]"#), &release, false, None);
+    assert_eq!(bare.tier_index, None);
+    assert!(
+        bare.block_codes
+            .contains(&"quality_not_in_profile_tiers".to_string())
+    );
+    let explicit = profile(r#"["RAWHD-1080P","1080P"]"#);
+    assert_eq!(
+        evaluate_profile_requirements(&explicit, &release, false, None).tier_index,
+        Some(0)
+    );
+}
+
 // ── score_with_pack: remux / atmos / dual audio ──────────────────
 
 // fork (P29, D76a): every captured Sonarr profile disallows Remux; a series

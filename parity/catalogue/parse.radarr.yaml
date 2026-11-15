@@ -6133,7 +6133,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:401"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0764
   # key: "QualityParserFixture.cs|should_parse_raw_quality|a2d35a1f73c9d412|0"
@@ -6141,7 +6141,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:402"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0765
   # key: "QualityParserFixture.cs|quality_parse|a17caebd0f32059b|0"

@@ -5165,6 +5165,7 @@ fn build_candidate(
         revision: 0,
         is_remux,
         is_bd_disk: false,
+        is_raw_hd: false,
         is_ai_enhanced: false,
         is_hardcoded_subs: false,
         is_uncensored: false,

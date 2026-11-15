@@ -6235,7 +6235,8 @@ fn final_ts_extension_is_never_telesync() {
         if got
             != (
                 Some(group.to_string()),
-                Some("1080i".to_string()),
+                // fork (P33e): an HDTV MPEG2 capture is Raw-HD, read as 1080p.
+                Some("1080p".to_string()),
                 Some(ReleaseSource::Hdtv),
             )
         {

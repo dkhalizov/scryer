@@ -1,8 +1,8 @@
 //! fork (P33): the arrs' quality vocabulary and defaults (Sonarr/Radarr
 //! `QualityParser.ParseQualityName`) as one post-pass over the in-scope
 //! technical tokens. The beam is never edited: this only fills or overrides
-//! `quality`, `source` and `is_remux`, and marks each value the arrs would
-//! not have read from the name with a `quality_default:*` hint.
+//! `quality`, `source`, `is_remux` and `is_raw_hd`, and marks each value the
+//! arrs would not have read from the name with a `quality_default:*` hint.
 
 use crate::enrichment::{joined, tok};
 use crate::lex::{SeparatorKind, Token};
@@ -56,6 +56,26 @@ pub(crate) fn apply(
                 && tok(tokens, i + 1) == b
         })
     };
+
+    // P33e: Raw-HD first, as in ParseQualityName. MPEG2Regex is
+    // case-sensitive (raw text); Radarr skips it for a disc.
+    let raw_hd = (0..tokens.len()).any(|i| {
+        tok(tokens, i) == "RAWHD"
+            || (tok(tokens, i) == "RAW" && joined(tokens, i) && tok(tokens, i + 1) == "HD")
+    });
+    let mpeg2 = (0..tokens.len()).any(|i| {
+        tokens[i].raw == "MPEG2"
+            || (tokens[i].raw == "MPEG"
+                && tokens.get(i + 1).is_some_and(|n| n.raw == "2")
+                && (joined(tokens, i) || tokens[i + 1].span.start == tokens[i].span.end))
+    });
+    if !p.is_bd_disk && (raw_hd || (mpeg2 && p.source == Some(Hdtv))) {
+        p.is_raw_hd = true;
+        p.source = Some(Hdtv);
+        p.quality = Some("1080p".into());
+        p.is_remux = false;
+        return;
+    }
 
     // P33c: the arr resolution tokens; a single class sets the quality, two
     // keep Scryer's conflict reading.
@@ -1146,6 +1166,32 @@ mod tests {
                 false,
             )],
         );
+    }
+
+    // P33e
+
+    #[test]
+    fn mpeg2_hdtv_and_raw_hd_read_as_raw_hd() {
+        for raw in [
+            "Series.Title.S02E11.1080i.HDTV.DD5.1.MPEG2-TrollHD",
+            "Series Title S01E18 Title 720p HDTV DD5.1 MPEG2-TrollHD",
+            "Series.Title.2011-08-04.1080i.HDTV.MPEG-2-CtrlHD",
+            "Series Title - S03E01 - Episode Title Raw-HD.ts",
+        ] {
+            let p = series(raw);
+            assert_eq!(
+                (p.is_raw_hd, p.source, p.quality.as_deref()),
+                (true, Some(Hdtv), Some("1080p")),
+                "{raw}"
+            );
+        }
+        // MPEG2Regex is case-sensitive; MPEG2 without HDTV is no broadcast.
+        for raw in [
+            "Series.Title.S02E11.1080i.HDTV.DD5.1.mpeg2-GRP",
+            "Series.Title.S02E11.1080p.BluRay.MPEG2-GRP",
+        ] {
+            assert!(!series(raw).is_raw_hd, "{raw}");
+        }
     }
 
     // P33f

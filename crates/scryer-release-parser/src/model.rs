@@ -815,6 +815,9 @@ pub struct ParsedReleaseMetadata {
     pub revision: i32,
     pub is_remux: bool,
     pub is_bd_disk: bool,
+    /// fork (P33e): Raw-HD, the arrs' `RawHD`/`Raw-HD` or an HDTV MPEG2
+    /// broadcast capture; read as HDTV 1080p with its own tier key.
+    pub is_raw_hd: bool,
     pub is_ai_enhanced: bool,
     pub is_hardcoded_subs: bool,
     pub is_uncensored: bool,
@@ -874,6 +877,7 @@ impl ParsedReleaseMetadata {
             revision: 0,
             is_remux: false,
             is_bd_disk: false,
+            is_raw_hd: false,
             is_ai_enhanced: false,
             is_hardcoded_subs: false,
             is_uncensored: false,

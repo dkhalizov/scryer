@@ -993,10 +993,11 @@ pub fn quality_tier_index(
 
 /// fork (P11): a key's place in `tiers`: the exact key, else its bare
 /// resolution, which stands for every source not listed there (ledger D48).
+/// fork (P33e): a `RAWHD-` key has no bare fallback; only its own tier lists it.
 pub(crate) fn tier_position(tiers: &[String], quality: &str) -> Option<usize> {
     let key = normalize_quality_tier(Some(quality))?;
     let find = |key: &str| tiers.iter().position(|tier| tier == key);
-    find(&key).or_else(|| find(key.rsplit_once('-')?.1))
+    find(&key).or_else(|| find(key.rsplit_once('-').filter(|(src, _)| *src != "RAWHD")?.1))
 }
 
 pub fn resolve_profile_id_for_title(

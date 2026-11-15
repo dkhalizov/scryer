@@ -23,6 +23,9 @@ pub(crate) fn parsed_release_source_type(parsed: &ParsedReleaseMetadata) -> Opti
     if parsed.is_remux {
         return Some("Remux".to_string());
     }
+    if parsed.is_raw_hd {
+        return Some("RawHD".to_string()); // fork (P33e): tier key RAWHD-1080P
+    }
 
     parsed.source.as_ref().map(ToString::to_string)
 }

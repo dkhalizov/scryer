@@ -52,8 +52,8 @@
 //! terms, comparing only what the case asserts. Scryer side: family from
 //! `source` (`BrDisk` counts as `bluray`), resolution = leading digits of
 //! `quality` (absent = 0), modifier = `remux` if `is_remux`, else `brdisk` if
-//! `is_bd_disk` or source `BrDisk`, else `none` (Scryer has no Raw-HD, so
-//! `rawhd` never matches). Reference side:
+//! `is_bd_disk` or source `BrDisk`, else `rawhd` if `is_raw_hd` (fork P33e),
+//! else `none`. Reference side:
 //!
 //! | Sonarr source | family, modifier | Radarr source | family |
 //! |---|---|---|---|
@@ -598,6 +598,8 @@ fn quality(app: App, q: &Map<String, Value>, p: &ParsedReleaseMetadata) -> (Valu
                     "remux"
                 } else if p.is_bd_disk || p.source == Some(ReleaseSource::BrDisk) {
                     "brdisk"
+                } else if p.is_raw_hd {
+                    "rawhd" // fork (P33e)
                 } else {
                     "none"
                 }),
