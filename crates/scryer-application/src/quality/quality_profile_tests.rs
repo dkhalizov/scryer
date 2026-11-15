@@ -1814,8 +1814,8 @@ fn size_scoring_treats_hevc_and_h265_identically() {
 
 #[test]
 fn size_scoring_treats_avc_and_h264_identically() {
-    let avc = parse_release_metadata("Movie.2024.1080p.BluRay.AVC.DTS-HD");
-    let h264 = parse_release_metadata("Movie.2024.1080p.BluRay.H.264.DTS-HD");
+    let avc = parse_release_metadata("Movie.2024.1080p.WEB-DL.AVC.DTS-HD");
+    let h264 = parse_release_metadata("Movie.2024.1080p.WEB-DL.H.264.DTS-HD");
     let w = balanced_scoring_config();
     let size_12gb = 12 * 1024 * 1024 * 1024_i64;
 

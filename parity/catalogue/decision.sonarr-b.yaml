@@ -414,98 +414,103 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1059
   behaviour: "A VOB container is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:47"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1060
   behaviour: "An ISO container is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1061
   behaviour: "An M2TS container is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1062
   behaviour: "A lower-case vob container is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:68"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1063
   behaviour: "Disc-format title \"Series Title S02 Disc 1 1080i Blu-ray DTS-HD MA 2.0 AVC-TrollHD\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:75"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1064
   behaviour: "Disc-format title \"Series Title S03 Disc 1 1080p Blu-ray LPCM 2.0 AVC-TrollHD\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:76"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1065
   behaviour: "Disc-format title \"SERIES TITLE S02 1080P FULL BLURAY AVC DTS-HD MA 5 1\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1066
   behaviour: "Disc-format title \"Series.Title.S06.2016.DISC.3.BluRay.1080p.AVC.Atmos.TrueHD7.1-MTeam\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:78"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1067
   behaviour: "Disc-format title \"Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:79"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1068
   behaviour: "Disc-format title \"Series Title S05 Disc 1 BluRay 1080p AVC Atmos TrueHD 7 1-MTeam\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:80"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1069
   behaviour: "Disc-format title \"Someone.the.Entertainer.Presents.S01.NTSC.3xDVD9.MPEG-2.DD2.0\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:81"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1070
   behaviour: "Disc-format title \"Series.Title.S00.The.Christmas.Special.2011.PAL.DVD5.DD2.0\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:82"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1071
   behaviour: "Disc-format title \"Series.of.Desire.2000.S1_D01.NTSC.DVD5\" is rejected"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:83"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1072
   behaviour: "DVD rip title \"Series Title EP50 USLT NTSC DVDRemux DD2.0\" is accepted"

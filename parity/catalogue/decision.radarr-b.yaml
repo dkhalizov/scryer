@@ -372,7 +372,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_vob|0|faee768ca748
 - id: RAD-DECISION-1046
@@ -380,7 +381,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:47"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_iso|0|19798a148d5f
 - id: RAD-DECISION-1047
@@ -388,7 +390,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_m2ts|0|e62728dc276d
 - id: RAD-DECISION-1048
@@ -396,7 +399,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_compare_case_insensitive|0|a383c5882554
 - id: RAD-DECISION-1049
@@ -404,7 +408,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:68"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W78: D75(2) container reported by the indexer (only BroadcastheNet/PassThePopcorn set it); all our indexers are Torznab; P24 covers the risk by title"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|0|c230d8d5454e
 - id: RAD-DECISION-1050
@@ -412,7 +417,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:75"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|1|74d5bf7947d9
 - id: RAD-DECISION-1051
@@ -420,7 +425,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:76"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|2|b569ffb942d5
 - id: RAD-DECISION-1052
@@ -428,7 +433,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|3|07e10fb1d419
 - id: RAD-DECISION-1053
@@ -436,7 +441,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:78"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|4|d585806be50f
 - id: RAD-DECISION-1054
@@ -444,7 +449,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:79"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|5|d585806be50f
 - id: RAD-DECISION-1055
@@ -452,7 +457,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:80"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|6|00b5f5a48673
 - id: RAD-DECISION-1056
@@ -460,7 +465,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:81"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|7|e08c54035281
 - id: RAD-DECISION-1057
@@ -468,7 +473,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:82"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_false_if_matches_disc_format|8|85271526699c
 - id: RAD-DECISION-1058
@@ -476,7 +481,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs:83"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_true_if_dvdrip|0|544a435f10b7
 - id: RAD-DECISION-1059

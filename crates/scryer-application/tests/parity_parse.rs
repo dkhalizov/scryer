@@ -567,9 +567,23 @@ fn quality(app: App, q: &Map<String, Value>, p: &ParsedReleaseMetadata) -> (Valu
             "quality.{k} not mapped"
         );
     }
+    // fork (P24b): Radarr has one fixed resolution per disc quality (BR-DISK
+    // 1080p, DVD-R 480p as remux); Scryer keeps the real resolution, a
+    // rendering difference only (D75(4)).
+    let radarr_disc = (matches!(app, App::Radarr)
+        && (p.is_bd_disk || p.source == Some(ReleaseSource::BrDisk)))
+    .then_some(p.source == Some(ReleaseSource::Dvd));
     let a: Map<String, Value> = e
         .keys()
         .map(|k| {
+            let v = match (k.as_str(), radarr_disc) {
+                ("resolution", Some(dvd)) => json!(if dvd { 480 } else { 1080 }),
+                ("modifier", Some(dvd)) => json!(if dvd { "remux" } else { "brdisk" }),
+                _ => Value::Null,
+            };
+            if !v.is_null() {
+                return (k.clone(), v);
+            }
             let v = match k.as_str() {
                 "source" => match p.source {
                     None => Value::Null,

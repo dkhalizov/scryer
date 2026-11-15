@@ -323,12 +323,13 @@ fn stereo_compounds_do_not_cross_brackets_or_protected_aliases() {
 }
 
 #[test]
-fn stereo_mvc_and_terminal_extension_do_not_imply_disc_or_remux() {
+fn stereo_mvc_bluray_is_a_disc_but_terminal_extension_is_not() {
     let parsed = parse("Known Title [1080p BluRay 3D AVC MVC]");
     let stereo = parsed.stereoscopy.unwrap();
     assert_eq!(stereo.encoding, Some(StereoEncoding::Mvc));
     assert_eq!(stereo.layout, None);
-    assert!(!parsed.is_bd_disk);
+    // fork (P24): BluRay + AVC/MVC is a disc (Radarr BRDISKRegex, BR-DISK CF).
+    assert!(parsed.is_bd_disk);
     assert!(!parsed.is_remux);
     assert!(
         parse("Known Title.2020.1080p.mk3d")

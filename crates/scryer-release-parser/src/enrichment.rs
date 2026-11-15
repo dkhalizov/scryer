@@ -1,4 +1,4 @@
-use crate::lex::Token;
+use crate::lex::{SeparatorKind, Token};
 use crate::model::{
     AudioCodec, ExternalIdSource, MetadataEnrichment, ParsedExternalId, ParsedReleaseMetadata,
     ReleaseParseCandidate, ReleaseSource, VideoCodec,
@@ -428,6 +428,29 @@ pub(crate) fn enrich_candidate(
             .push("normalize:service_webrip_to_webdl".to_string());
     }
 
+    // fork (P24): HD DVD is the Bluray family (arr SourceRegex); disc images
+    // (RawDiskSpecification + Radarr BRDISKRegex) are flagged as discs.
+    let src = candidate.projected.source;
+    let hd_dvd = is_hd_dvd(tokens) && matches!(src, None | Some(ReleaseSource::Dvd));
+    if hd_dvd {
+        enrichment
+            .normalized_source
+            .get_or_insert_with(|| "BluRay".into());
+    }
+    let effective = if hd_dvd {
+        Some(ReleaseSource::BluRay)
+    } else {
+        src
+    };
+    if let Some(family) = disc_image(tokens, effective) {
+        enrichment.is_bd_disk = true;
+        if effective.is_none() {
+            enrichment
+                .normalized_source
+                .get_or_insert_with(|| family.as_str().into());
+        }
+    }
+
     enrichment
 }
 
@@ -628,6 +651,171 @@ fn is_prefix_metadata_token(token: &str) -> bool {
         token,
         "BDISO" | "BDMV" | "BD25" | "BD50" | "BD66" | "BD100" | "BRDISK"
     )
+}
+
+/// fork (P24): the arr `[-_. ]`: exactly one separator character between
+/// token `i` and the next one.
+fn joined(tokens: &[Token], i: usize) -> bool {
+    tokens.get(i + 1).is_some_and(|next| {
+        next.span.start.checked_sub(tokens[i].span.end) == Some(1)
+            && matches!(
+                next.separator_before,
+                SeparatorKind::Dot
+                    | SeparatorKind::Underscore
+                    | SeparatorKind::Space
+                    | SeparatorKind::Hyphen
+            )
+    })
+}
+
+fn tok(tokens: &[Token], i: usize) -> &str {
+    tokens.get(i).map_or("", |token| token.normalized.as_str())
+}
+
+/// `Blu[-_. ]?ray` starting at `i`: the index of its last token.
+fn bluray_word(tokens: &[Token], i: usize) -> Option<usize> {
+    match tok(tokens, i) {
+        "BLURAY" => Some(i),
+        "BLU" if joined(tokens, i) && tok(tokens, i + 1) == "RAY" => Some(i + 1),
+        _ => None,
+    }
+}
+
+fn hd_dvd_at(tokens: &[Token], i: usize) -> bool {
+    matches!(tok(tokens, i), "HDDVD" | "HDDVDRIP")
+        || (tok(tokens, i) == "HD"
+            && joined(tokens, i)
+            && matches!(tok(tokens, i + 1), "DVD" | "DVDRIP"))
+}
+
+fn is_hd_dvd(tokens: &[Token]) -> bool {
+    (0..tokens.len()).any(|i| hd_dvd_at(tokens, i))
+}
+
+/// `\d?x?M?DVD` with an optional `R`, `5` or `9` tail (RawDisk); `rest`
+/// is what follows `DVD`.
+fn dvd_disc_stem(token: &str) -> Option<&str> {
+    let t = token
+        .strip_prefix(|c: char| c.is_ascii_digit())
+        .unwrap_or(token);
+    let t = t.strip_prefix('X').unwrap_or(t);
+    let t = t.strip_prefix('M').unwrap_or(t);
+    t.strip_prefix("DVD")
+}
+
+fn disc_codec_at(tokens: &[Token], i: usize) -> bool {
+    match tok(tokens, i) {
+        "AVC" | "HEVC" | "VC1" | "MVC" | "MPEG2" | "BDMV" | "ISO" => true,
+        "VC" => joined(tokens, i) && tok(tokens, i + 1) == "1",
+        "MPEG" => joined(tokens, i) && tok(tokens, i + 1) == "2",
+        _ => false,
+    }
+}
+
+/// fork (P24): the disc family of a disc-image release name, or `None`.
+/// Unguarded shapes follow RawDiskSpecification (both arrs) and our fused
+/// tokens; guarded shapes follow Radarr `BRDISKRegex` and only apply to a
+/// Bluray-family or unknown source.
+fn disc_image(tokens: &[Token], src: Option<ReleaseSource>) -> Option<ReleaseSource> {
+    let n = tokens.len();
+    let all_digits =
+        |i: usize| !tok(tokens, i).is_empty() && tok(tokens, i).bytes().all(|c| c.is_ascii_digit());
+    let disc_size = |t: &str| matches!(t, "25" | "50" | "66" | "100" | "ISO");
+    for i in 0..n {
+        let t = tok(tokens, i);
+        if matches!(t, "BDMV" | "BRDISK")
+            || ["BD", "UHD"]
+                .iter()
+                .any(|prefix| t.strip_prefix(prefix).is_some_and(disc_size))
+        {
+            return Some(ReleaseSource::BrDisk);
+        }
+        if t == "COMPLETE"
+            && joined(tokens, i)
+            && (bluray_word(tokens, i + 1).is_some()
+                || (tok(tokens, i + 1) == "UHD"
+                    && joined(tokens, i + 1)
+                    && bluray_word(tokens, i + 2).is_some()))
+        {
+            return Some(ReleaseSource::BrDisk);
+        }
+        if matches!(t, "DISC" | "DISK")
+            && joined(tokens, i)
+            && all_digits(i + 1)
+            && joined(tokens, i + 1)
+        {
+            let mut next = i + 2;
+            if matches!(
+                tok(tokens, next),
+                "480P" | "480I" | "720P" | "720I" | "1080P" | "1080I" | "2160P" | "2160I"
+            ) && joined(tokens, next)
+            {
+                next += 1;
+            }
+            if bluray_word(tokens, next).is_some() {
+                return Some(ReleaseSource::BrDisk);
+            }
+        }
+        if t == "FULL" && joined(tokens, i) && bluray_word(tokens, i + 1).is_some() {
+            return Some(ReleaseSource::BrDisk);
+        }
+        match dvd_disc_stem(t) {
+            Some("R" | "5" | "9") => return Some(ReleaseSource::Dvd),
+            Some("")
+                if joined(tokens, i)
+                    && tokens[i + 1].separator_before == SeparatorKind::Hyphen
+                    && matches!(tok(tokens, i + 1), "R" | "5" | "9") =>
+            {
+                return Some(ReleaseSource::Dvd);
+            }
+            _ => {}
+        }
+    }
+
+    if !matches!(
+        src,
+        None | Some(ReleaseSource::BluRay) | Some(ReleaseSource::BrDisk)
+    ) {
+        return None;
+    }
+    let german = (0..n).find(|&i| tok(tokens, i).starts_with("GERMAN"));
+    let excluded = (0..n).any(|i| {
+        let t = tok(tokens, i);
+        (t == "DVD" && !(i > 0 && tok(tokens, i - 1) == "HD" && joined(tokens, i - 1)))
+            || matches!(
+                t,
+                "BDRIP" | "720P" | "MKV" | "XVID" | "WMV" | "D3G" | "REMUX" | "BDREMUX"
+            )
+            || matches!(t, "X264" | "H264" | "X265" | "H265")
+            || (matches!(t, "X" | "H")
+                && joined(tokens, i)
+                && matches!(tok(tokens, i + 1), "264" | "265"))
+    }) || ((0..n).any(|i| tok(tokens, i) == "1080P")
+        && (0..n).any(|i| tok(tokens, i).contains("HEVC")))
+        || german.is_some_and(|g| {
+            (g + 1..n).any(|i| {
+                let t = tok(tokens, i);
+                t.ends_with("DL") || t.ends_with("ML")
+            }) || ((0..g).any(|i| all_digits(i) && tok(tokens, i).len() == 4)
+                && (g + 1..n).any(|i| disc_codec_at(tokens, i)))
+        });
+    if excluded {
+        return None;
+    }
+    let bluray_family = |i: usize| {
+        bluray_word(tokens, i).is_some() || tok(tokens, i) == "BD" || hd_dvd_at(tokens, i)
+    };
+    let shape_a = (0..n).any(bluray_family) && (0..n).any(|i| disc_codec_at(tokens, i));
+    let shape_b = (0..n).any(|i| matches!(tok(tokens, i), "COMPLETE" | "DISC" | "DISK"))
+        && (0..n).any(|i| bluray_word(tokens, i).is_some() || hd_dvd_at(tokens, i));
+    let shape_c = (0..n).any(|i| {
+        let t = tok(tokens, i);
+        (matches!(t, "BD" | "UHD") && joined(tokens, i) && disc_size(tok(tokens, i + 1)))
+            || (t == "3D" && joined(tokens, i) && tok(tokens, i + 1) == "BD")
+            || t == "3DBD"
+            || (t == "BR" && joined(tokens, i) && tok(tokens, i + 1) == "DISK")
+    });
+    (shape_a || shape_b || shape_c).then_some(ReleaseSource::BrDisk)
 }
 
 fn is_gap_metadata_token(token: &str) -> bool {

@@ -7940,7 +7940,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:317"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray720p_quality|242e0ed9dc53|0
 - id: SON-PARSE-0990
@@ -8060,7 +8060,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:337"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D85 W79: D75(3) HD-DVD VC1 is a disc by our BR-DISK custom format; Sonarr parser expects no modifier, our Sonarr refuses it"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs|should_parse_bluray1080p_quality|d85b500f53e8|0
 - id: SON-PARSE-1005
