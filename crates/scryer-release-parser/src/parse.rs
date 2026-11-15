@@ -4989,6 +4989,14 @@ fn build_candidate(
     context_index: &ContextIndex,
     alias_oracle: &AliasOracle,
 ) -> ReleaseParseCandidate {
+    // fork (P35 C): a leading yymmdd air stamp before an `ep`/`#` episode is
+    // not title (Sonarr's Japanese variety-show pattern, Parser.cs:340-342).
+    if let Some(stamp) = leading_air_stamp_title_token(&state, tokens) {
+        state.title_token_indices.remove(0);
+        state
+            .accepted_alias_hits
+            .retain(|hit| !hit.token_range.indices().contains(&stamp));
+    }
     let title_segments = title_segments_for_state(
         tokens,
         state.title_token_indices.as_slice(),
@@ -5475,6 +5483,31 @@ fn apply_context(
             .reasons
             .push(reason("context:absolute_mapping_hit", 10, None));
     }
+}
+
+/// fork (P35 C): the first title token when it is a `yymmdd` stamp (month
+/// 01-12, day 01-31) that is followed by more title text other than a
+/// two-digit group, and the episode was read from an `ep`/`#` marker.
+fn leading_air_stamp_title_token(state: &ParseState, tokens: &[Token]) -> Option<usize> {
+    let (&first, rest) = state.title_token_indices.split_first()?;
+    let b = tokens.get(first)?.raw.as_bytes();
+    let pair = |i: usize| (b[i] - b'0') * 10 + (b[i + 1] - b'0');
+    let next = tokens.get(*rest.first()?)?.raw.as_bytes();
+    let marker = state.identity_token_mask.ones().any(|i| {
+        tokens.get(i).is_some_and(|t| {
+            t.raw.starts_with('#') || t.raw.get(..2).is_some_and(|p| p.eq_ignore_ascii_case("ep"))
+        })
+    });
+    (matches!(
+        state.identity,
+        ReleaseIdentity::StandardEpisodeIdentity { .. }
+    ) && marker
+        && b.len() == 6
+        && b.iter().all(u8::is_ascii_digit)
+        && (1..=12).contains(&pair(2))
+        && (1..=31).contains(&pair(4))
+        && !(next.len() == 2 && next.iter().all(u8::is_ascii_digit)))
+    .then_some(first)
 }
 
 fn title_segments_for_state(

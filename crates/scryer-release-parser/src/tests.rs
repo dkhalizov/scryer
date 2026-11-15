@@ -6407,3 +6407,41 @@ fn reversed_title_is_read_forwards() {
         );
     }
 }
+
+// fork (P35 C): a leading yymmdd air stamp before an `ep` episode is not
+// title (Sonarr's Japanese variety-show pattern); a daily name keeps its date.
+#[test]
+fn leading_yymmdd_is_not_title() {
+    for (raw, title) in [
+        (
+            "221208 ABC123 Series Title Season 39 ep11.mp4",
+            "ABC123 Series Title",
+        ),
+        (
+            "221208 ABC123 Series Title ep34[1080p60 H264].mp4",
+            "ABC123 Series Title",
+        ),
+        ("221206 Series Title! ep08(Tanaka Miku).ts", "Series Title!"),
+    ] {
+        // The real series, and the untargeted guess that keeps the stamp.
+        for target in [title.to_string(), format!("{} {title}", &raw[..6])] {
+            let analysis =
+                analyze_release_for_target(raw, &context(ContextFacetHint::Series, &target));
+            let candidate = analysis.best_candidate().expect(raw);
+            let primary = candidate
+                .title_segments
+                .iter()
+                .find(|s| s.kind == crate::TitleSegmentKind::ObservedPrimary)
+                .expect(raw);
+            assert_eq!(primary.raw, title, "{raw} / {target}");
+        }
+    }
+    let parsed = crate::best_parse_for_target(
+        "Show.2022.12.08.720p",
+        &context(ContextFacetHint::Series, "Show"),
+    );
+    assert_eq!(
+        parsed.episode.and_then(|e| e.air_date),
+        NaiveDate::from_ymd_opt(2022, 12, 8)
+    );
+}
