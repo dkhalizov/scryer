@@ -307,6 +307,43 @@ fn cross_indexer_release_dedup_prefers_profile_protocol_before_indexer_priority(
     assert_eq!(deduped[0].source, "Preferred Torrent");
 }
 
+// fork (P32)
+#[test]
+fn cross_indexer_release_dedup_breaks_a_priority_tie_by_seeders() {
+    let mut results = vec![
+        make_search_result(
+            "Fewer Seeders",
+            "Signal.Run.S01E12.720p.WEB-DL.x264-NTb",
+            "https://example.test/few",
+            DownloadSourceKind::TorrentFile,
+        ),
+        make_search_result(
+            "More Seeders",
+            "Signal.Run.S01E12.720p.WEB-DL.x264-NTb",
+            "https://example.test/many",
+            DownloadSourceKind::TorrentFile,
+        ),
+    ];
+    results[0]
+        .extra
+        .insert("seeders".to_string(), serde_json::json!(3));
+    results[1]
+        .extra
+        .insert("seeders".to_string(), serde_json::json!(40));
+
+    let deduped = dedupe_cross_indexer_release_results(
+        results,
+        &HashMap::from([
+            ("Fewer Seeders".to_string(), 25),
+            ("More Seeders".to_string(), 25),
+        ]),
+        "torrent",
+    );
+
+    assert_eq!(deduped.len(), 1);
+    assert_eq!(deduped[0].source, "More Seeders");
+}
+
 #[test]
 fn release_blocklist_matches_the_release_name_case_and_whitespace_insensitively() {
     // Grab paths keep the indexer's casing and failure paths lowercase, so the

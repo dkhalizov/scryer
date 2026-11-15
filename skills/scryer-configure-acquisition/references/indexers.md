@@ -86,7 +86,7 @@ for MOVIE, SERIES or ANIME.
 | `priority` | lower wins a tie |
 
 When two indexers return the same release, the source preference decides
-first, then the remaining grab quota, then `priority`.
+first, then the remaining grab quota, then `priority`, then more seeders.
 
 A Prowlarr sync seeds a new managed indexer's routing with Prowlarr's
 priority and Prowlarr's default app sync categories; existing entries are

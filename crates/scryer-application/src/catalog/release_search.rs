@@ -1561,7 +1561,14 @@ pub(crate) fn dedupe_cross_indexer_release_results(
             } else if grab_quota_preference(existing) != grab_quota_preference(result) {
                 source_is_preferred_for_grab(result, existing)
             } else {
-                new_prio < existing_prio
+                // fork (P32): a priority tie keeps the copy with more seeders.
+                (
+                    new_prio,
+                    crate::acquisition::scoring::listing_negated_seeders(result),
+                ) < (
+                    existing_prio,
+                    crate::acquisition::scoring::listing_negated_seeders(existing),
+                )
             };
 
             if new_wins {
