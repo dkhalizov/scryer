@@ -1039,7 +1039,13 @@ fn classify_truth(
         .filter(|entry| entry.kind == crate::quality_profile::ScoringEntryKind::FinalScoreRejection)
         .map(|entry| entry.code.clone())
         .collect::<Vec<_>>();
-    if !score_rejections.is_empty() && announced.allowed {
+    // fork (P23 review): a grab-only size code on the announced pass does not
+    // hide a score veto the file raised.
+    let announced_allowed = announced
+        .block_codes
+        .iter()
+        .all(|code| POLICY_ONLY_BLOCK_CODES.contains(&code.as_str()));
+    if !score_rejections.is_empty() && announced_allowed {
         return (
             0,
             TruthVerdict::Vetoed {

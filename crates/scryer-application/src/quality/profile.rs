@@ -1598,14 +1598,17 @@ fn apply_series_size_table(
     basis: CoverageSizeBasis,
     category: MediaSizeCategory,
 ) {
-    let special = release
-        .episode
-        .as_ref()
-        .is_some_and(|episode| episode.season == Some(0));
-    if category != MediaSizeCategory::Series || release.is_bd_disk || special {
+    // fork (P23 review): no episode (a linked movie) is not something the table
+    // measures; Sonarr skips series movies as specials.
+    let Some(episode) = release.episode.as_ref() else {
+        return;
+    };
+    if category != MediaSizeCategory::Series || release.is_bd_disk || episode.season == Some(0) {
         return;
     }
-    // A quality without limits is accepted before the runtime is read, as in Sonarr.
+    // Scryer deviation: a tier outside the table skips the size check before the
+    // runtime is read (Sonarr refuses an unknown runtime first; every Sonarr
+    // quality has limits).
     let Some((min, max)) = sonarr_default_size_limits(release) else {
         return;
     };

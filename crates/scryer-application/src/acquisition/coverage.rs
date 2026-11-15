@@ -581,9 +581,18 @@ pub fn coverage_size_basis(
             {
                 // Half a season, as the estimate has always read it. The member
                 // runtime is the title default because a partial season names no
-                // episodes to average over.
-                let member_runtime =
-                    default_runtime_minutes.unwrap_or(UNKNOWN_EPISODE_RUNTIME_MINUTES);
+                // episodes to average over. fork (P23 review): without one, the
+                // mean of the season's known durations (Sonarr sums the season).
+                let known = season_episodes
+                    .iter()
+                    .filter_map(|episode| episode.duration_seconds)
+                    .map(|seconds| (seconds / 60) as i32)
+                    .collect::<Vec<_>>();
+                let member_runtime = match default_runtime_minutes {
+                    Some(minutes) if minutes > 0 => minutes,
+                    _ if !known.is_empty() => known.iter().sum::<i32>() / known.len() as i32,
+                    fallback => fallback.unwrap_or(UNKNOWN_EPISODE_RUNTIME_MINUTES),
+                };
                 let effective_count = (count.max(2) / 2).max(1);
                 return CoverageSizeBasis::aggregate(
                     Some(member_runtime * effective_count),
@@ -1622,6 +1631,52 @@ mod tests {
             Some(50),
         );
         assert_eq!(basis.total_runtime_minutes, Some(100));
+    }
+
+    /// fork (P23 review): a partial season names no episodes, so without a
+    /// series runtime its member is the season's known episode durations.
+    #[test]
+    fn a_partial_season_without_a_series_runtime_reads_known_durations() {
+        let mut episodes = (1..=10)
+            .map(|number| episode(&format!("s2e{number}"), "2", &number.to_string(), None))
+            .collect::<Vec<_>>();
+        for episode in &mut episodes {
+            episode.duration_seconds = Some(45 * 60);
+        }
+        // Season 1 premiered years ago: no premiere-day grace for season 2.
+        episodes.push(unknown_runtime(
+            "s1e1",
+            "1",
+            "1",
+            Some("2020-01-05T20:00:00Z"),
+        ));
+        let parsed = parsed_with_episode(ParsedEpisodeMetadata {
+            season: Some(2),
+            release_type: ParsedEpisodeReleaseType::SeasonPack,
+            full_season: true,
+            is_partial_season: true,
+            season_part: Some(1),
+            ..Default::default()
+        });
+        let basis = coverage_size_basis(
+            &ReleaseCoverage::Collection("season-2".to_string()),
+            &parsed,
+            &episodes,
+            None,
+        );
+        assert_eq!(basis.total_runtime_minutes, Some(5 * 45));
+        assert_eq!(basis.member_runtime_minutes, Some(45));
+
+        for episode in episodes.iter_mut().filter(|episode| episode.id != "s1e1") {
+            episode.duration_seconds = None;
+        }
+        let unknown = coverage_size_basis(
+            &ReleaseCoverage::Collection("season-2".to_string()),
+            &parsed,
+            &episodes,
+            None,
+        );
+        assert_eq!(unknown, CoverageSizeBasis::single(None));
     }
 
     /// A scope with no episodes has no basis of its own; the caller's fallback

@@ -1023,6 +1023,39 @@ async fn a_season_pack_search_subject_carries_the_episode_runtime() {
         .expect("season subject resolves");
 
     assert_eq!(subject.runtime_minutes, Some(45));
+
+    // fork (P23 review): the wanted walk's pack subject reads the same runtime.
+    let now = chrono::Utc::now().to_rfc3339();
+    let wanted = AcquisitionScopeState {
+        id: Id::new().0,
+        title_id: title.id.clone(),
+        title_name: Some(title.name.clone()),
+        title_slug: None,
+        title_facet: None,
+        library_id: None,
+        library_name: None,
+        library_slug: None,
+        episode_id: None,
+        collection_id: Some(collection.id.clone()),
+        series_movie_link_id: None,
+        season_number: Some("1".into()),
+        episode_number: Some("1".into()),
+        media_type: "episode".to_string(),
+        last_search_at: None,
+        status: AcquisitionScopeStatus::Wanted,
+        grabbed_release: None,
+        landed_bar: None,
+        latest_release_decision: None,
+        mismatch_recovery_eligible: false,
+        created_at: now.clone(),
+        updated_at: now,
+    };
+    let pack = app
+        .resolve_release_search_subject_for_season_pack(&title, &wanted, None, 1, None)
+        .await
+        .expect("season pack subject resolves");
+
+    assert_eq!(pack.for_convergence().runtime_minutes, Some(45));
 }
 
 #[tokio::test]

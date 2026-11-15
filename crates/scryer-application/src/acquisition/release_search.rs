@@ -3671,7 +3671,6 @@ impl AppUseCase {
         item: &AcquisitionScopeState,
         episode: Option<&Episode>,
         season_num: u32,
-        runtime_minutes: Option<i32>,
         reads: Option<&crate::acquisition::title_reads::TitleCatalogReads>,
     ) -> AppResult<PendingReleaseSearchSubject> {
         self.season_pack_search_subject(
@@ -3679,7 +3678,6 @@ impl AppUseCase {
             episode.and_then(|episode| episode.collection_id.as_deref()),
             collection_download_submission_scope_for_wanted_item(item, episode),
             season_num,
-            runtime_minutes,
             reads,
         )
         .await
@@ -3703,9 +3701,6 @@ impl AppUseCase {
             .await?;
         let collection_id =
             crate::acquisition::coverage::collection_id_for_season(&collections, season_num);
-        // fork (P23a0): one episode's runtime; the size basis multiplies by
-        // the season's episodes itself.
-        let runtime_minutes = title.runtime_minutes;
         let submission_scope = collection_id
             .clone()
             .map(|collection_id| SubmissionScope::Collection { collection_id })
@@ -3716,7 +3711,6 @@ impl AppUseCase {
             collection_id.as_deref(),
             submission_scope,
             season_num,
-            runtime_minutes,
             None,
         )
         .await?
@@ -3730,7 +3724,6 @@ impl AppUseCase {
         collection_id: Option<&str>,
         submission_scope: SubmissionScope,
         season_num: u32,
-        runtime_minutes: Option<i32>,
         reads: Option<&crate::acquisition::title_reads::TitleCatalogReads>,
     ) -> AppResult<PendingReleaseSearchSubject> {
         let imdb_id = imdb_id_from_title(title);
@@ -3776,7 +3769,9 @@ impl AppUseCase {
                 search_facet: title.facet.clone(),
                 id_search_facet: None,
                 newznab_categories: Vec::new(),
-                runtime_minutes,
+                // fork (P23a0): one episode's runtime, for both season lanes;
+                // the size basis multiplies by the season's episodes itself.
+                runtime_minutes: title.runtime_minutes,
                 season: Some(season_num),
                 episode: None,
                 numbering_context: crate::IndexerSearchNumberingContext::default(),

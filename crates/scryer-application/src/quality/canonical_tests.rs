@@ -2743,3 +2743,38 @@ fn a_size_floor_found_only_after_download_does_not_fail_the_import() {
     );
     assert_eq!(scored.truth_verdict, TruthVerdict::Consistent);
 }
+
+/// fork (P23 review): the size floor on both passes is grab policy, so it must
+/// not hide a score veto only the file raised.
+#[test]
+fn a_size_floor_on_both_passes_keeps_the_file_score_veto() {
+    let engine = rule_engine_with_builtin_baseline(vec![scryer_rules::UserPolicy {
+        id: "file_floor".to_string(),
+        name: "file_floor".to_string(),
+        rego_source: scryer_rules::rewrite_package_declaration(
+            r#"score_entry["file_floor"] := -10000 if { input.file != null }"#,
+            "file_floor",
+        ),
+        origin: scryer_rules::PolicyOrigin::User,
+        applied_facets: vec![],
+    }]);
+    let profile = series_profile();
+    let tags: Vec<String> = Vec::new();
+    let mut context = episode_ctx(&profile, &tags, CoverageSizeBasis::single(Some(45)));
+    context.rules = Some(&engine);
+    // 0.1 GiB over 45 minutes is under the 1080p minimum on both passes.
+    let evidence = ReleaseEvidence::announced(
+        parse_release_metadata("Quiet.Meridian.S01E01.1080p.WEB-DL.H.264-GroupTag"),
+        Some((0.1 * GIB as f64) as i64),
+    )
+    .with_analysis(analyzed(0.1, Some("h264")));
+    let scored = score_release(&evidence, &context);
+    assert_eq!(
+        scored.announced_decision.block_codes,
+        ["size_below_quality_minimum"]
+    );
+    let TruthVerdict::Vetoed { codes } = &scored.truth_verdict else {
+        panic!("expected Vetoed, got {:?}", scored.truth_verdict);
+    };
+    assert_eq!(codes, &["score_at_or_below_block_threshold".to_string()]);
+}

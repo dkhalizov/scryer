@@ -4430,17 +4430,12 @@ async fn process_single_target(
                     "skipping season-pack search after recent failed season-pack attempt"
                 );
             } else {
-                // fork (P23a0): one episode's runtime; the size basis
-                // multiplies by the season's episodes itself.
-                let pack_runtime = title.runtime_minutes;
-
                 let pack_subject = app
                     .resolve_release_search_subject_for_season_pack(
                         &search_title,
                         item,
                         episode.as_ref(),
                         season_num,
-                        pack_runtime,
                         Some(&context.reads),
                     )
                     .await?;

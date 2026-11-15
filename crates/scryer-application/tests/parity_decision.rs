@@ -1578,12 +1578,9 @@ fn full_season(g: &Value) -> Outcome {
 fn acceptable_size(g: &Value, expect: &Value) -> Result<Value, String> {
     let r = &g["release"];
     let mut release = parsed(&side(r, None, 0)?);
-    if r["special"].as_bool() == Some(true) {
-        release.episode = Some(ParsedEpisodeMetadata {
-            season: Some(0),
-            ..ParsedEpisodeMetadata::default()
-        });
-    }
+    // Sonarr's subject is an episode release (P23 review: no episode = no table).
+    let season = if r["special"].as_bool() == Some(true) { 0 } else { 1 };
+    release.episode = Some(ParsedEpisodeMetadata { season: Some(season), ..ParsedEpisodeMetadata::default() });
     let bytes = r["size_mb"]
         .as_i64()
         .map(|mb| mb * 1_048_576)
@@ -2088,7 +2085,8 @@ fn check_quality_definition(app: &str, name: &str) -> Result<(), String> {
         .ok_or_else(|| format!("no quality definition '{name}'"))?;
     let min = definition["minSize"].as_f64().ok_or("no minSize")?;
     let max = definition["maxSize"].as_f64();
-    let release = parsed(&Side { q: quality(name)?, name: name.to_string(), revision: 0, group: None, score: 0 });
+    let mut release = parsed(&Side { q: quality(name)?, name: name.to_string(), revision: 0, group: None, score: 0 });
+    release.episode = Some(ParsedEpisodeMetadata { season: Some(1), ..ParsedEpisodeMetadata::default() });
     let codes = |bytes: i64, basis: CoverageSizeBasis| {
         let profile = builtin_1080p_profile();
         let mut decision = evaluate_profile_requirements(&profile, &release, false, Some("series"));

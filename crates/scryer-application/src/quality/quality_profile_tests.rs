@@ -1905,6 +1905,123 @@ fn a_series_release_with_unknown_runtime_is_refused() {
     assert!(special.allowed, "{:?}", special.block_codes);
 }
 
+/// fork (P23 review): a linked movie under a series title parses with no
+/// episode. Sonarr's table never measures it, so the series runtime cannot
+/// refuse it (8 GiB over 45 minutes is 182 MiB/min, over Bluray-1080p's 155).
+#[test]
+fn a_series_movie_release_is_not_measured_on_the_series_runtime() {
+    let release = "Quiet.Meridian.The.Movie.2020.1080p.BluRay.x264-GroupTag";
+    assert!(parse_release_metadata(release).episode.is_none());
+    let decision = episode_size(release, gib(8.0), "series");
+    assert!(decision.allowed, "{:?}", decision.block_codes);
+}
+
+/// fork (P23 review): every row of Sonarr's default table, at the byte.
+#[test]
+fn every_sonarr_size_row_holds_at_the_byte() {
+    for (title, min, max) in [
+        (
+            "Quiet.Meridian.S01E01.2160p.HDTV.x265-GroupTag",
+            35.0,
+            Some(199.9),
+        ),
+        (
+            "Quiet.Meridian.S01E01.2160p.WEB-DL.x265-GroupTag",
+            35.0,
+            None,
+        ),
+        (
+            "Quiet.Meridian.S01E01.2160p.BluRay.REMUX.HEVC-GroupTag",
+            35.0,
+            None,
+        ),
+        (
+            "Quiet.Meridian.S01E01.1080p.BluRay.REMUX.AVC-GroupTag",
+            35.0,
+            None,
+        ),
+        (
+            "Quiet.Meridian.S01E01.1080p.BluRay.x264-GroupTag",
+            4.0,
+            Some(155.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.1080p.HDTV.x264-GroupTag",
+            4.0,
+            Some(125.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.1080p.x264-GroupTag",
+            4.0,
+            Some(125.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.1080p.WEB-DL.x264-GroupTag",
+            4.0,
+            Some(130.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.1080p.WEBRip.x264-GroupTag",
+            4.0,
+            Some(130.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.720p.BluRay.x264-GroupTag",
+            4.0,
+            Some(130.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.720p.HDTV.x264-GroupTag",
+            3.0,
+            Some(125.0),
+        ),
+        ("Quiet.Meridian.S01E01.720p.x264-GroupTag", 3.0, Some(125.0)),
+        (
+            "Quiet.Meridian.S01E01.720p.WEB-DL.x264-GroupTag",
+            3.0,
+            Some(130.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.480p.WEB-DL.x264-GroupTag",
+            2.0,
+            Some(100.0),
+        ),
+        (
+            "Quiet.Meridian.S01E01.576p.BluRay.x264-GroupTag",
+            2.0,
+            Some(100.0),
+        ),
+    ] {
+        let floor = mib_per_minute(min, 45);
+        let below = episode_size(title, floor - 1, "series");
+        assert!(
+            has_block(&below, "size_below_quality_minimum"),
+            "{title} at min-1: {:?}",
+            below.block_codes
+        );
+        let at = episode_size(title, floor, "series");
+        assert!(
+            !has_block(&at, "size_below_quality_minimum"),
+            "{title} at min: {:?}",
+            at.block_codes
+        );
+        let ceiling = mib_per_minute(max.unwrap_or(1000.0), 45);
+        let at = episode_size(title, ceiling, "series");
+        assert!(
+            !has_block(&at, "size_above_quality_maximum"),
+            "{title} at max: {:?}",
+            at.block_codes
+        );
+        let above = episode_size(title, ceiling + 1, "series");
+        assert_eq!(
+            has_block(&above, "size_above_quality_maximum"),
+            max.is_some(),
+            "{title} at max+1: {:?}",
+            above.block_codes
+        );
+    }
+}
+
 #[test]
 fn size_implausible_blocks_wildly_oversized() {
     // 300 GB claiming to be a 720p anime episode — ratio ~400×, clearly mislabeled
