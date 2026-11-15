@@ -145,6 +145,7 @@ fn upsert_indexer_routing_entry(
     entries: &mut Vec<IndexerRoutingSettingsEntry>,
     indexer_id: &str,
     categories: Vec<String>,
+    seed_priority: Option<i32>,
 ) {
     // Capabilities seed new routes; existing categories (including an empty
     // selection), enabled state and priority belong to the operator.
@@ -156,7 +157,8 @@ fn upsert_indexer_routing_entry(
         indexer_id: indexer_id.to_string(),
         enabled: true,
         categories,
-        priority: next_indexer_routing_priority(entries),
+        // fork (P32): a provider priority (Prowlarr's) seeds a new entry.
+        priority: seed_priority.unwrap_or_else(|| next_indexer_routing_priority(entries)),
     });
 }
 fn parse_indexer_config_json(
@@ -1779,6 +1781,7 @@ impl AppUseCase {
                     &mut routing_by_scope,
                     &updated.id,
                     &desired.routing_by_scope,
+                    managed_child_routing_priority(desired.managed_metadata_json.as_deref()),
                 );
                 result.updated_ids.push(updated.id);
             } else {
@@ -1825,6 +1828,7 @@ impl AppUseCase {
                     &mut routing_by_scope,
                     &created.id,
                     &desired.routing_by_scope,
+                    managed_child_routing_priority(desired.managed_metadata_json.as_deref()),
                 );
                 result.created_ids.push(created.id);
             }

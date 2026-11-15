@@ -5700,7 +5700,9 @@ mod tests {
                     is_enabled: true,
                     enable_interactive_search: true,
                     enable_auto_search: false,
-                    managed_metadata_json: Some("{\"source\":\"keep\"}".to_string()),
+                    managed_metadata_json: Some(
+                        "{\"source\":\"keep\",\"priority\":50}".to_string(),
+                    ),
                     caps_snapshot_json: None,
                     routing_scopes: vec![
                         crate::ManagedIndexerRoutingScope {
@@ -5721,7 +5723,7 @@ mod tests {
                     is_enabled: true,
                     enable_interactive_search: false,
                     enable_auto_search: true,
-                    managed_metadata_json: Some("{\"source\":\"new\"}".to_string()),
+                    managed_metadata_json: Some("{\"source\":\"new\",\"priority\":25}".to_string()),
                     caps_snapshot_json: None,
                     routing_scopes: vec![crate::ManagedIndexerRoutingScope {
                         scope_id: "anime".to_string(),
@@ -5845,7 +5847,10 @@ mod tests {
             .await
             .unwrap();
         assert!(series.iter().any(|entry| {
-            entry.indexer_id == "managed-keep" && entry.enabled && entry.categories == vec!["5000"]
+            entry.indexer_id == "managed-keep"
+                && entry.enabled
+                && entry.categories == vec!["5000"]
+                && entry.priority == 50
         }));
 
         let anime = app
@@ -5862,6 +5867,7 @@ mod tests {
             entry.indexer_id == result.created_ids[0]
                 && entry.enabled
                 && entry.categories == vec!["5070"]
+                && entry.priority == 25
         }));
     }
 

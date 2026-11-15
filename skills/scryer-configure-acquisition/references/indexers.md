@@ -88,6 +88,9 @@ for MOVIE, SERIES or ANIME.
 When two indexers return the same release, the source preference decides
 first, then the remaining grab quota, then `priority`.
 
+A Prowlarr sync seeds a new managed indexer's routing with Prowlarr's
+priority; existing entries are left alone.
+
 **`updateIndexerRouting` replaces the whole scope.** An entry left out is
 removed from the scope; an empty list clears it. Changing routing also
 resets what Scryer has learned about searching the affected indexers.

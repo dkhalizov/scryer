@@ -27,10 +27,22 @@ fn normalize_managed_child_routing_scopes(
     }
     Ok(routing_by_scope)
 }
+/// fork (P32): the provider's priority for a managed child (Prowlarr's
+/// 1..50, top-level `priority` in the child's managed metadata). None when it
+/// is missing or not a positive i32; the sync then seeds an ordinal.
+pub(crate) fn managed_child_routing_priority(metadata: Option<&str>) -> Option<i32> {
+    serde_json::from_str::<serde_json::Value>(metadata?)
+        .ok()?
+        .get("priority")?
+        .as_i64()
+        .and_then(|priority| i32::try_from(priority).ok())
+        .filter(|priority| *priority > 0)
+}
 fn apply_managed_child_routing(
     routing_by_scope: &mut HashMap<String, Vec<IndexerRoutingSettingsEntry>>,
     indexer_id: &str,
     desired_scopes: &HashMap<String, Vec<String>>,
+    seed_priority: Option<i32>,
 ) {
     for scope_id in MANAGED_INDEXER_SCOPE_IDS {
         let Some(categories) = desired_scopes.get(*scope_id).cloned() else {
@@ -43,8 +55,24 @@ fn apply_managed_child_routing(
             routing_by_scope.entry((*scope_id).to_string()).or_default(),
             indexer_id,
             categories,
+            seed_priority,
         );
     }
+}
+// fork (P32): parity seam. The routing a sync seeds for one new child.
+pub fn seed_managed_child_routing(
+    child: &ManagedIndexerChildPlan,
+) -> HashMap<String, Vec<IndexerRoutingSettingsEntry>> {
+    let mut routing = HashMap::new();
+    if let Ok(scopes) = normalize_managed_child_routing_scopes(child.routing_scopes.clone()) {
+        apply_managed_child_routing(
+            &mut routing,
+            &child.child_key,
+            &scopes,
+            managed_child_routing_priority(child.managed_metadata_json.as_deref()),
+        );
+    }
+    routing
 }
 fn remove_indexer_routing_entries(
     routing_by_scope: &mut HashMap<String, Vec<IndexerRoutingSettingsEntry>>,
@@ -404,7 +432,12 @@ mod routing_tests {
             vec![routing_entry(false, &["2000"], 7)],
         )]);
 
-        apply_managed_child_routing(&mut routing_by_scope, "managed-child", &HashMap::new());
+        apply_managed_child_routing(
+            &mut routing_by_scope,
+            "managed-child",
+            &HashMap::new(),
+            None,
+        );
 
         let tombstone = &routing_by_scope["movie"][0];
         assert!(!tombstone.enabled);
@@ -415,7 +448,12 @@ mod routing_tests {
             "movie".to_string(),
             vec!["2010".to_string(), "2020".to_string()],
         )]);
-        apply_managed_child_routing(&mut routing_by_scope, "managed-child", &desired_scopes);
+        apply_managed_child_routing(
+            &mut routing_by_scope,
+            "managed-child",
+            &desired_scopes,
+            None,
+        );
 
         let restored = &routing_by_scope["movie"][0];
         assert!(!restored.enabled);
@@ -436,7 +474,7 @@ mod routing_tests {
                 ("anime".to_string(), vec!["5070".to_string()]),
             ]);
             for _ in 0..2 {
-                apply_managed_child_routing(&mut routing, "managed-child", &desired);
+                apply_managed_child_routing(&mut routing, "managed-child", &desired, None);
                 assert_eq!(routing["movie"], vec![local.clone()]);
                 assert_eq!(routing["anime"], vec![routing_entry(true, &["5070"], 1)]);
             }
@@ -448,8 +486,69 @@ mod routing_tests {
         let mut routing_by_scope =
             HashMap::from([("movie".to_string(), vec![routing_entry(true, &["2000"], 7)])]);
 
-        apply_managed_child_routing(&mut routing_by_scope, "managed-child", &HashMap::new());
+        apply_managed_child_routing(
+            &mut routing_by_scope,
+            "managed-child",
+            &HashMap::new(),
+            None,
+        );
 
         assert!(routing_by_scope["movie"].is_empty());
+    }
+
+    // fork (P32)
+    #[test]
+    fn managed_child_routing_priority_reads_the_provider_priority() {
+        assert_eq!(
+            managed_child_routing_priority(Some(r#"{"priority":25}"#)),
+            Some(25)
+        );
+        for metadata in [
+            Some(r#"{"source":"x"}"#),
+            Some(r#"{"priority":0}"#),
+            Some(r#"{"priority":-1}"#),
+            Some(r#"{"priority":4294967296}"#),
+            Some("not json"),
+            None,
+        ] {
+            assert_eq!(
+                managed_child_routing_priority(metadata),
+                None,
+                "{metadata:?}"
+            );
+        }
+    }
+
+    // fork (P32)
+    #[test]
+    fn managed_routing_seeds_new_entries_with_the_provider_priority() {
+        let mut routing = HashMap::from([(
+            "series".to_string(),
+            vec![IndexerRoutingSettingsEntry {
+                indexer_id: "operator-child".to_string(),
+                ..routing_entry(true, &["5000"], 7)
+            }],
+        )]);
+        let desired = HashMap::from([
+            ("movie".to_string(), vec!["2000".to_string()]),
+            ("series".to_string(), vec!["5000".to_string()]),
+        ]);
+        apply_managed_child_routing(&mut routing, "managed-child", &desired, Some(25));
+        apply_managed_child_routing(&mut routing, "other-child", &desired, Some(25));
+        apply_managed_child_routing(&mut routing, "ordinal-child", &desired, None);
+        apply_managed_child_routing(&mut routing, "operator-child", &desired, Some(25));
+
+        let priority = |scope: &str, id: &str| {
+            routing[scope]
+                .iter()
+                .find(|entry| entry.indexer_id == id)
+                .map(|entry| entry.priority)
+        };
+        for scope in ["movie", "series"] {
+            assert_eq!(priority(scope, "managed-child"), Some(25), "{scope}");
+            assert_eq!(priority(scope, "other-child"), Some(25), "{scope}");
+            assert_eq!(priority(scope, "ordinal-child"), Some(26), "{scope}");
+        }
+        assert_eq!(priority("series", "operator-child"), Some(7));
     }
 }

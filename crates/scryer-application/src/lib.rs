@@ -458,6 +458,8 @@ pub mod parity_seams {
     pub use crate::import::workflow::{episode_import_dest_path, preserved_import_filename};
     // fork: parity net seam (crates/scryer-infrastructure-acquisition/tests/parity_indexers/indexers.rs)
     pub use crate::indexer_clients::caps::merge_source;
+    // fork (P32): parity net seam (tests/parity_indexers.rs)
+    pub use crate::integration::workflow::seed_managed_child_routing;
     // fork: parity net seam (tests/parity_requests/priv_requests_config.rs)
     pub use crate::authorization::build_user_authorization;
     pub use crate::media_servers::policy::normalize_default_library_grants;

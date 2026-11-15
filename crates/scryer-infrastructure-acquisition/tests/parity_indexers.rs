@@ -18,10 +18,10 @@
 //!   `appprofile.json` unchanged. A child plan's routing scopes are the
 //!   categories Scryer searches that indexer with per scope (the sync seeds
 //!   them as routing entries, scryer-application
-//!   integration/workflow/managed_indexers.rs:30).
+//!   integration/workflow/managed_indexers.rs:41, seed_managed_child_routing :63).
 //! - `SeedGoalResolver::resolve_minimum_seeders` (scryer-application
 //!   acquisition/seed_goals.rs:233) on each child stored as the sync stores it
-//!   (managed_indexers.rs:358-372), for the seeder floor a grab must clear.
+//!   (managed_indexers.rs:386-400), for the seeder floor a grab must clear.
 //! - `parse_rss_target_interval(None)` / `parse_rss_sync_tick(None)`
 //!   (acquisition/rss.rs:189 / :160): the shipped RSS cadence and worker tick,
 //!   with no environment override.
@@ -36,7 +36,7 @@
 //! | `enableRss`, `enableAutomaticSearch` | child `enable_auto_search` (one flag for RSS and automatic search, prowlarr.rs:1672) |
 //! | `enableInteractiveSearch` | child `enable_interactive_search` |
 //! | `enable` (Prowlarr) | child `is_enabled` |
-//! | `priority` | none derived from it, compared as null, so these cases fail. Scryer does have a per-scope indexer routing priority (`IndexerRoutingSettingsEntry.priority`, scryer-application settings/runtime/routing.rs:17), but the sync seeds it as an ordinal, max + 1 in sync order, and after that it belongs to the operator (integration/workflow/indexers.rs:136-160, next_indexer_routing_priority / upsert_indexer_routing_entry); it is never taken from Prowlarr's priority. Prowlarr's priority reaches Scryer only in the child's managed metadata (prowlarr.rs:1636), which nothing reads for search or decisions (types.rs:2860 keeps only enable_automatic_search of it) |
+//! | `priority` | the routing priority (`IndexerRoutingSettingsEntry.priority`, settings/runtime/routing.rs) the sync seeds for the child as a new entry (seed_managed_child_routing, integration/workflow/managed_indexers.rs): Prowlarr's priority from the child's managed metadata (prowlarr.rs:1636), else an ordinal (upsert_indexer_routing_entry, integration/workflow/indexers.rs). Existing entries stay operator-owned, so a later Prowlarr change is not followed |
 //! | Radarr `categories` / offered to Radarr | child routing scope `movie` |
 //! | Sonarr `categories` / offered to Sonarr | child routing scope `series` |
 //! | Sonarr `animeCategories` / anime categories | child routing scope `anime` |
@@ -97,6 +97,7 @@ use std::sync::Arc;
 
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
+use scryer_application::parity_seams::seed_managed_child_routing;
 use scryer_application::{
     AppError, AppResult, IndexerConfigRepository, IndexerConfigUpdate, IndexerManagementClient,
     ManagedIndexerChildPlan, NullIndexerErrorRepository, NullSettingsRepository,
@@ -199,7 +200,7 @@ fn child_id(child_key: &str) -> String {
     format!("{PARENT_ID}-child-{child_key}")
 }
 
-/// A synced child as the sync stores it (managed_indexers.rs:358-372).
+/// A synced child as the sync stores it (managed_indexers.rs:386-400).
 fn child_config(child: &ManagedIndexerChildPlan) -> IndexerConfig {
     let mut config = indexer(&child_id(&child.child_key), &child.name, &child.provider_type);
     config.is_enabled = child.is_enabled;
@@ -338,6 +339,18 @@ fn scope(child: &ManagedIndexerChildPlan, scope_id: &str) -> Option<Vec<i64>> {
     Some(out)
 }
 
+/// The routing priority the sync seeds for this child as a new entry in the
+/// first of these scopes it has (seed_managed_child_routing); null when none.
+fn seeded_priority(child: &ManagedIndexerChildPlan, scopes: &[&str]) -> Value {
+    let routing = seed_managed_child_routing(child);
+    scopes
+        .iter()
+        .filter_map(|s| routing.get(*s)?.iter().find(|e| e.indexer_id == child.child_key))
+        .map(|e| json!(e.priority))
+        .next()
+        .unwrap_or(Value::Null)
+}
+
 /// The scopes standing for one app (translation table).
 fn app_scopes(app: &str) -> &'static [&'static str] {
     if app == "sonarr" { &["series", "anime"] } else { &["movie"] }
@@ -442,7 +455,7 @@ fn prowlarr_indexer_check(s: &Synced, loc: &str) -> Option<(Value, Value)> {
     let child = s.by_key(id);
     let mut expected = json!({ "protocol": ix["protocol"], "priority": ix["priority"], "enabled": ix["enable"] });
     let mut actual = match child {
-        Some(c) => json!({ "protocol": protocol(&c.provider_type), "priority": Value::Null, "enabled": c.is_enabled }),
+        Some(c) => json!({ "protocol": protocol(&c.provider_type), "priority": seeded_priority(c, &["movie", "series", "anime"]), "enabled": c.is_enabled }),
         None => json!({ "protocol": Value::Null, "priority": Value::Null, "enabled": Value::Null }),
     };
     for app in list(&captured("prowlarr", "applications")) {
@@ -512,7 +525,7 @@ async fn app_indexer_check(s: &Synced, app: &str, loc: &str) -> Option<(Value, V
     };
     let mut actual = json!({
         "protocol": protocol(&c.provider_type),
-        "priority": Value::Null,
+        "priority": seeded_priority(c, app_scopes(app)),
         "rss": c.enable_auto_search,
         "automatic_search": c.enable_auto_search,
         "interactive_search": c.enable_interactive_search,
