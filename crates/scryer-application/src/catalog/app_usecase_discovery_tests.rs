@@ -687,9 +687,10 @@ fn the_merge_comparator_orders_tier_before_score() {
     );
 }
 
-/// Missing scopes have no automatic revision preference (issue #323).
+/// The revision key ranks before score (P19: set for every candidate,
+/// whatever the scope holds).
 #[test]
-fn missing_scope_merge_orders_score_before_revision() {
+fn a_revision_key_ranks_before_score() {
     let mut merged = [
         scored_search_result("Portmere.2024.1080p.WEB-DL-GRP", Some(1), 900, true),
         scored_search_result(
@@ -701,7 +702,7 @@ fn missing_scope_merge_orders_score_before_revision() {
     ];
     merged.sort_by(compare_release_search_results);
     assert_eq!(merged[0].title, "Portmere.2024.1080p.WEB-DL-GRP");
-    // Admission assigns this stable key only for a related installed release.
+    // The evaluation pass sets this key from the candidate's own revision.
     merged[1]
         .quality_profile_decision
         .as_mut()

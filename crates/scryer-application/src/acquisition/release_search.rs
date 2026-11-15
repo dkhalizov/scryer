@@ -3201,8 +3201,21 @@ impl AppUseCase {
             tracing::warn!(title_id = title.id, %error, "automatic admission could not read acquisition pauses");
         }
         for candidate in &mut results {
+            // fork (P19 review): the revision key no longer depends on the scope,
+            // so set it before the paused/manual-override exits too.
             if let Some(decision) = candidate.quality_profile_decision.as_mut() {
-                decision.revision_preference = 0;
+                let parsed = candidate.parsed_release_metadata.as_ref();
+                let facts = crate::admission::CandidateFacts::new(
+                    decision.tier_index,
+                    parsed.map_or(0, crate::acquisition::scoring::revision_rank),
+                    decision.preference_score,
+                )
+                .with_profile_policy(
+                    parsed.and_then(|parsed| parsed.release_group.as_deref()),
+                    &evaluation_context.profile.criteria,
+                );
+                decision.revision_preference =
+                    crate::admission::revision_preference(facts, &admission);
             }
             if paused_scopes.is_err() {
                 annotate_auto_decision(
@@ -3289,20 +3302,6 @@ impl AppUseCase {
                     now,
                 );
                 continue;
-            }
-            if let Some(decision) = candidate.quality_profile_decision.as_mut() {
-                let parsed = candidate.parsed_release_metadata.as_ref();
-                let facts = crate::admission::CandidateFacts::new(
-                    decision.tier_index,
-                    parsed.map_or(0, crate::acquisition::scoring::revision_rank),
-                    decision.preference_score,
-                )
-                .with_profile_policy(
-                    parsed.and_then(|parsed| parsed.release_group.as_deref()),
-                    &evaluation_context.profile.criteria,
-                );
-                decision.revision_preference =
-                    crate::admission::revision_preference(facts, candidate_context.admission);
             }
             let (auto_code, decided_by) =
                 evaluate_auto_candidate_with_step(candidate, &candidate_context);
@@ -5527,6 +5526,16 @@ mod tests {
             ),
             ReleaseAutoDecisionCode::HardcodedSubs
         );
+        // Radarr's HardcodeSubsSpecification ignores UserInvokedSearch.
+        assert_eq!(
+            decision_for_invoked(
+                &title,
+                &subject,
+                &movie_candidate(&subject, "Quillon.2028.HC.1080p.WEB-DL-SYNTH"),
+                true
+            ),
+            ReleaseAutoDecisionCode::HardcodedSubs
+        );
         assert_eq!(
             decision_for(
                 &title,
@@ -6405,6 +6414,15 @@ mod tests {
         subject: &ResolvedReleaseSearchSubject,
         candidate: &IndexerSearchResult,
     ) -> ReleaseAutoDecisionCode {
+        decision_for_invoked(title, subject, candidate, false)
+    }
+
+    fn decision_for_invoked(
+        title: &Title,
+        subject: &ResolvedReleaseSearchSubject,
+        candidate: &IndexerSearchResult,
+        user_invoked: bool,
+    ) -> ReleaseAutoDecisionCode {
         let profile = QualityProfile::default();
         let thresholds = AcquisitionThresholds::default();
         let now = Utc::now();
@@ -6418,7 +6436,7 @@ mod tests {
             thresholds: &thresholds,
             incumbent_at_cutoff: false,
             is_rss_lane: false,
-            user_invoked: false,
+            user_invoked,
             oldest_overlapping_pending_published_at: None,
             now: &now,
             dl_snapshot: None,

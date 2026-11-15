@@ -159,8 +159,7 @@
 //!   time; the import check is mapped in `parity_import`), BlockedIndexer,
 //!   DownloadDecisionMaker, SingleEpisodeAgeDownloadDecision and Pending stay
 //!   unmapped, reasons in that file. Private config catalogue: `maximumSize`,
-//!   `releaseprofile`, `tag.json`, `allowHardcodedSubs` and `preferIndexerFlags` are
-//!   red by reason, `retention` and `autotagging` stay unmapped, see
+//!   `releaseprofile`, `tag.json` and `preferIndexerFlags` are red by reason, `retention` and `autotagging` stay unmapped, see
 //!   `parity_decision/priv_decision.rs`.
 //! - Movie, Search.Series, SingleEpisodeSearchMatch, AlreadyImported, MultiSeason
 //!   (red) and the MonitoredEpisode multi-episode / pack cases are mapped in

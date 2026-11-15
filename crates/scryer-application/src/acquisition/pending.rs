@@ -308,8 +308,12 @@ impl AppUseCase {
             .await
             .unwrap_or_default();
 
-        let reads = crate::acquisition::title_reads::TitleCatalogReads::new(&title.id);
-        let dl_snapshot = super::acquisition_workflow::DownloadClientSnapshot::fetch(self).await;
+        // fork (P19 review): the rank no longer depends on the scope (P19), so
+        // no admission subject, queue read or client snapshot is built here.
+        let no_scope = crate::admission::AdmissionSubject::new(
+            crate::admission::AdmissionScope::Title,
+            Vec::<(crate::admission::Incumbent, bool)>::new(),
+        );
         let mut keys: std::collections::HashMap<String, crate::acquisition::scoring::RankHeadKey> =
             std::collections::HashMap::with_capacity(releases.len());
         for release in releases.iter() {
@@ -322,35 +326,6 @@ impl AppUseCase {
                 &catalog_collections,
                 &context,
             );
-            let scope = facts
-                .coverage
-                .submission_scope_or(&wanted.submission_scope());
-            let admission = self
-                .admission_subject_for_scope_with_reads(
-                    &title,
-                    &scope,
-                    &context,
-                    facts.size_basis.total_runtime_minutes,
-                    crate::quality::canonical_context::SubjectIntent::Grab,
-                    &reads,
-                )
-                .await;
-            let Ok(queued) = self
-                .pending_queued_releases(
-                    &title,
-                    &scope,
-                    &context,
-                    &reads,
-                    &dl_snapshot,
-                    &catalog_episodes,
-                    &catalog_collections,
-                    true,
-                )
-                .await
-            else {
-                return;
-            };
-            let admission = admission.with_queued(queued);
             let candidate = crate::admission::CandidateFacts::new(
                 facts.tier_index,
                 facts.revision,
@@ -358,7 +333,7 @@ impl AppUseCase {
             )
             .with_profile_policy(facts.release_group.as_deref(), &profile.criteria)
             .with_language(facts.language);
-            let revision_preference = crate::admission::revision_preference(candidate, &admission);
+            let revision_preference = crate::admission::revision_preference(candidate, &no_scope);
             let rank = crate::acquisition::scoring::RankHead {
                 blocked: !facts.allowed,
                 side: candidate.facts().side,

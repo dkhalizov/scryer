@@ -127,7 +127,7 @@ async fn revision_survives_the_search_result_cap() {
         );
         assert!(
             scored.last().unwrap().title.contains("PROPER"),
-            "the revision must lose provisional ranking before incumbent context"
+            "provisional ranking has no revision key until the evaluation pass"
         );
         let subject = app
             .resolve_release_search_subject_for_title(&title)

@@ -360,7 +360,8 @@ pub struct QualityProfileDecision {
     /// Codec/source/runtime-aware size distance used only to break search ties.
     /// Zero means plausible or unknown; this never contributes to the score.
     pub size_fit_penalty: i32,
-    /// Context-derived revision preference; zero without related incumbents.
+    /// The candidate's revision as a rank key, 0 when the profile ignores
+    /// revisions (P19); set by the evaluation pass.
     pub revision_preference: i32,
     /// Standing against the title's preferred and optional audio languages.
     ///

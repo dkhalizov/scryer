@@ -2022,8 +2022,8 @@ impl AppUseCase {
             )
             .then_with(|| left.indexer_id.cmp(&right.indexer_id))
         });
-        // Admission supplies related-incumbent revision preference. Do not
-        // discard candidates before that context has been applied.
+        // The evaluation pass sets the revision key. Do not discard
+        // candidates before it has run.
 
         timer.outcome("ok");
         Ok(ScoredReleaseBatch {
