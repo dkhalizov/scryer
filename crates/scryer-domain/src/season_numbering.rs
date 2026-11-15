@@ -49,7 +49,7 @@ pub fn season_ordinal_from_title(title: &str) -> Option<i32> {
             .expect("valid pattern")
     });
     static SEASON_ROMAN: LazyLock<Regex> = LazyLock::new(|| {
-        Regex::new(r"\b(?i:season)\s+(I|II|III|IV|V|VI|VII|VIII|IX|X)\b").expect("valid pattern")
+        Regex::new(r"\b(?i:season)\s+(X{1,2}(?:IX|IV|V?I{0,3})|IX|IV|V?I{1,3}|V)\b").expect("valid pattern")
     });
     static NUMBERED_ORDINAL_SEASON: LazyLock<Regex> = LazyLock::new(|| {
         Regex::new(r"(?i)\b(\d{1,3})(?:st|nd|rd|th)\s+season\b").expect("valid pattern")
@@ -143,7 +143,11 @@ fn word_position(words: &[&str], word: &str) -> Option<i32> {
 }
 
 fn roman_value(numeral: &str) -> Option<i32> {
-    const NUMERALS: [&str; 10] = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+    // fork (P35 E1): up to XX, as Radarr's RomanNumeral reads.
+    const NUMERALS: [&str; 20] = [
+        "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV",
+        "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
+    ];
     word_position(&NUMERALS, numeral)
 }
 
@@ -310,6 +314,10 @@ mod tests {
             ("Lantern Verge Season Two", Some(2)),
             ("Lantern Verge Season III", Some(3)),
             ("Lantern Verge Season X", Some(10)),
+            // fork (P35 E1): Radarr's RomanNumeral reads up to XX.
+            ("Lantern Verge Season XIV", Some(14)),
+            ("Lantern Verge Season XX", Some(20)),
+            ("Lantern Verge Season XXI", None),
             // Ordinal words and numbers before `Season`.
             ("Lantern Verge 3rd Season", Some(3)),
             ("Lantern Verge 2nd Season: Ember Circuit", Some(2)),
