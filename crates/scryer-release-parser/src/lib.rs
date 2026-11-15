@@ -6,6 +6,7 @@
 
 mod context;
 mod enrichment;
+mod group_tails; // fork (P26)
 mod lex;
 mod model;
 mod parse;

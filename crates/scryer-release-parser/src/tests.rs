@@ -3331,7 +3331,7 @@ fn short_service_alias_can_remain_a_title_word() {
 }
 
 #[test]
-fn release_group_preserves_dotted_and_hyphenated_suffixes() {
+fn release_group_reads_yts_like_radarr() {
     let mut target = context(ContextFacetHint::Movie, "The Moment");
     target.known_years.push(2026);
 
@@ -3339,7 +3339,9 @@ fn release_group_preserves_dotted_and_hyphenated_suffixes() {
         analyze_release_for_target("the.moment.2026.1080p.bluray.x264.aac5.1-yts.bz", &target);
     let candidate = analysis.best_candidate().expect("best candidate");
 
-    assert_eq!(candidate.projected.release_group.as_deref(), Some("yts.bz"));
+    // fork (P26): Radarr's exact list reads `YTS` (only .MX/.LT/.AG extend it),
+    // and a suffix group no longer continues across a dot.
+    assert_eq!(candidate.projected.release_group.as_deref(), Some("yts"));
 }
 
 #[test]
@@ -3466,7 +3468,8 @@ fn release_group_skips_embedded_suffix_inside_large_metadata_bracket() {
     );
     let candidate = analysis.best_candidate().expect("best candidate");
 
-    assert_eq!(candidate.projected.release_group, None);
+    // fork (P26): DarQ is on the arrs' exact list, which reads it anywhere.
+    assert_eq!(candidate.projected.release_group.as_deref(), Some("DarQ"));
 }
 
 #[test]
@@ -5954,9 +5957,342 @@ fn four_k_and_uhd_names_read_as_2160p_unless_a_resolution_is_explicit() {
         ("Emberfall.s05e13.4K - HEVC.WEB.DL", None),
         ("Emberfall.s05e13.4K.H_265.WEB.DL", None),
         ("Emberfall.s05e13.4K.H.265.WEB.DL", Some("2160p")),
-        ("Emberfall.S01E01.720p.UHD.WEB-DL.1080p", Some("720p")),
+        ("Emberfall.S01E01.720p.UHD.WEB-DL", Some("720p")),
+        // fork (P26): the trailing 1080p is no longer hidden as a release
+        // group, so the two explicit resolutions conflict and quality stays
+        // unknown (Sonarr takes the first, 720p).
+        ("Emberfall.S01E01.720p.UHD.WEB-DL.1080p", None),
     ] {
         let parsed = crate::best_parse_for_target(raw, &target);
         assert_eq!(parsed.quality.as_deref(), quality, "{raw}");
+    }
+}
+
+// fork (P26): release-group tails, read as the arrs read them.
+fn p26_group(raw: &str, facet: ContextFacetHint, title: &str) -> Option<String> {
+    crate::best_parse_for_target(raw, &context(facet, title)).release_group
+}
+
+#[test]
+fn release_group_drops_repost_tails() {
+    for facet in [ContextFacetHint::Series, ContextFacetHint::Movie] {
+        for (raw, title, expected) in [
+            (
+                "The.Series.S09E13.720p.HEVC.x265-MeGusta-Pre",
+                "The Series",
+                Some("MeGusta"),
+            ),
+            (
+                "Series.Title.S02E04.720p.WEB-DL.AAC2.0.H.264-EVL-RP",
+                "Series Title",
+                Some("EVL"),
+            ),
+            (
+                "Series.Title.S02E04.720p.WEB-DL.AAC2.0.H.264-EVL-RP-RP",
+                "Series Title",
+                Some("EVL"),
+            ),
+            (
+                "Series.Title.S04E04.720p.BluRay.x264-xHD-1",
+                "Series Title",
+                Some("xHD"),
+            ),
+            (
+                "series.title.s40e11.kevin.hart_sia.720p.hdtv.x264-w4f-sample.mkv",
+                "Series Title",
+                Some("w4f"),
+            ),
+            (
+                "The.Series.Title.S08E08.1080p.BluRay.x264-ROVERS-4P",
+                "The Series Title",
+                Some("ROVERS"),
+            ),
+            (
+                "Some.Movie.2019.1080p.BDRip.X264.AC3-EVO-Obfuscation",
+                "Some Movie",
+                Some("EVO"),
+            ),
+            // A lone indexer tag is the group (Sonarr ParsePath fixture).
+            (
+                "The.Show.Title.S02E23.720p.HDTV.x264-NZBgeek",
+                "The Show Title",
+                Some("NZBgeek"),
+            ),
+            (
+                "Series.Title.S04E04.720p.BluRay.x264-xHD-NZBgeek",
+                "Series Title",
+                Some("xHD"),
+            ),
+            // No tail dropped: the extension never exposes a terminal group.
+            (
+                "Series.Title.S02E04.720p.WEB.H264.GRP.mkv",
+                "Series Title",
+                None,
+            ),
+        ] {
+            assert_eq!(
+                p26_group(raw, facet, title).as_deref(),
+                expected,
+                "{facet:?} {raw}"
+            );
+        }
+    }
+}
+
+#[test]
+fn release_group_reads_the_arr_lists() {
+    use ContextFacetHint::{Movie, Series};
+    for (raw, facets, expected) in [
+        (
+            "Show Name (2021) Season 1 S01 (1080p BluRay x265 HEVC 10bit AAC 5.1 Tigole) [QxR]",
+            &[Series][..],
+            Some("Tigole"),
+        ),
+        (
+            "Movie Title (2016) (1080p AMZN WEB-DL x265 HEVC 10bit EAC3 5 1 RZeroX) QxR",
+            &[Movie][..],
+            Some("QxR"),
+        ),
+        (
+            "The Show S08E09 The Series.1080p.AMZN.WEB-DL.x265.10bit.EAC3.6.0-Qman[UTR]",
+            &[Series, Movie][..],
+            Some("UTR"),
+        ),
+        (
+            "Movie Name (2019) (1080p BluRay x265 HEVC 10bit AAC 7.1 Q22 Joy)",
+            &[Series, Movie][..],
+            Some("Joy"),
+        ),
+        (
+            "Show.Name.S01E01.1080p.WEB-DL.H264.Fight-BB.mkv",
+            &[Series][..],
+            Some("Fight-BB"),
+        ),
+        (
+            "Series Title S02E05 2160p AMZN WEB-DL DV HDR10 PLUS DDP5 1 Atmos H265 MKV-BEN THE MEN-xpost",
+            &[Series, Movie][..],
+            Some("BEN THE MEN"),
+        ),
+        (
+            "Movie Title 2024 2160p WEB-DL DoVi HDR10+ H265 DDP 5.1 Atmos-126811",
+            &[Movie][..],
+            Some("126811"),
+        ),
+        (
+            "Movie Title (2018) [BluRay] [1080p] [YIFY] [YTS.LT]",
+            &[Movie][..],
+            Some("YTS.LT"),
+        ),
+        (
+            "Ode To Joy (2009) (2160p BluRay x265 10bit HDR Joy)",
+            &[Movie][..],
+            Some("Joy"),
+        ),
+        (
+            "Movie Title(2023) 1080p SkySHO WEB-DL ESP DD+ 5.1 H.264-EML HDTeam",
+            &[Movie][..],
+            Some("EML HDTeam"),
+        ),
+        // A season token keeps the Sonarr order even for a Movie facet.
+        (
+            "Series US (2010) S04 (1080p BDRip x265 10bit DTS-HD MA 5 1 - WEM)[TAoE]",
+            &[Movie][..],
+            None,
+        ),
+    ] {
+        for facet in facets {
+            assert_eq!(
+                p26_group(raw, *facet, "Movie Name").as_deref(),
+                expected,
+                "{facet:?} {raw}"
+            );
+        }
+    }
+}
+
+#[test]
+fn release_group_never_takes_a_resolution() {
+    for (raw, title) in [
+        ("Series.Title.S01E05.WEBDL-1080p.mkv", "Series Title"),
+        ("7s-Series-s02e01-720p.mkv", "Series"),
+        (
+            "Series.Title.S01E05.The-Aniversary.WEBDL-1080p.mkv",
+            "Series Title",
+        ),
+        (
+            "Series.Title.S01E05.The-Aniversary.HDTV-1080p.mkv",
+            "Series Title",
+        ),
+        ("Knock 2017 DUB, Sub BDRip 1080p", "Knock"),
+    ] {
+        for facet in [ContextFacetHint::Series, ContextFacetHint::Movie] {
+            assert_eq!(p26_group(raw, facet, title), None, "{facet:?} {raw}");
+        }
+    }
+}
+
+#[test]
+fn release_group_skips_metadata_hyphens() {
+    for (raw, title) in [
+        ("SomeShow.S20E13.1080p.BluRay.DTS-MA.5.1.x264", "SomeShow"),
+        ("SomeShow.S20E13.1080p.Blu-Ray.DTS-ES.5.1.x264", "SomeShow"),
+        (
+            "Some.Really.Bad.Movie.Title.[2021].1080p.WEB-HDRip.Dual.Audio.x264.AAC.DD.2.0.By.Full4Movies.mkv-xpost",
+            "Some Really Bad Movie Title",
+        ),
+        (
+            "Some.Really.Bad.Movie.Title.[2021].1080p.WEB-HDRip.Dual.Audio.[Hindi.[Clean]. .English].x264.AAC.DD.2.0.By.Full4Movies.mkv-xpost",
+            "Some Really Bad Movie Title",
+        ),
+        ("Knock 2017 DUB, Sub Blu-Ray Remux 1080p", "Knock"),
+        // b3: a Latin-script suffix group is ASCII.
+        (
+            "Reizen Waes - S01E08 - Transistrië, Zuid-Ossetië en Abchazië SDTV.avi",
+            "Reizen Waes",
+        ),
+    ] {
+        for facet in [ContextFacetHint::Series, ContextFacetHint::Movie] {
+            assert_eq!(p26_group(raw, facet, title), None, "{facet:?} {raw}");
+        }
+    }
+}
+
+#[test]
+fn release_group_reads_opus_as_a_group_not_as_audio() {
+    let series = ContextFacetHint::Series;
+    assert_eq!(
+        p26_group(
+            "The.Grand.Tour.2016.S04E02.1080p.WEB.h264-OPUS",
+            series,
+            "The Grand Tour"
+        )
+        .as_deref(),
+        Some("OPUS")
+    );
+    assert_eq!(
+        p26_group(
+            "The.Grand.Tour.S04E02.1080p.WEB x265 Opus",
+            series,
+            "The Grand Tour"
+        ),
+        None
+    );
+}
+
+#[test]
+fn release_group_suffix_does_not_continue_across_a_dot() {
+    let series = ContextFacetHint::Series;
+    assert_eq!(
+        p26_group(
+            "Inverso.The.Peripheral.S01E01.Pilot.HDR.2160p.WEB.h265-MeM.GP",
+            series,
+            "Inverso The Peripheral"
+        )
+        .as_deref(),
+        Some("MeM")
+    );
+    assert_eq!(
+        p26_group(
+            "Series.Title.S01E02.1080p.BluRay.Remux.AVC.FLAC.2.0-E.N.D",
+            series,
+            "Series Title"
+        )
+        .as_deref(),
+        Some("E.N.D")
+    );
+}
+
+#[test]
+fn release_group_reads_a_codec_joined_group_inside_a_bracket() {
+    assert_eq!(
+        p26_group(
+            "Stargate SG-1 (1997) - S01E01-02 - Children of the Gods (Showtime) (1080p.BD.DD5.1.x265-TheSickle[TAoE])",
+            ContextFacetHint::Series,
+            "Stargate SG-1"
+        )
+        .as_deref(),
+        Some("TheSickle")
+    );
+    assert_eq!(
+        p26_group(
+            "Series.Title.S01E01.1080p.BluRay [x265 HEVC-10bit]",
+            ContextFacetHint::Series,
+            "Series Title"
+        ),
+        None
+    );
+}
+
+#[test]
+fn release_group_reads_a_trailing_bracket_word() {
+    use ContextFacetHint::{Anime, Movie, Series};
+    for (raw, facet, title, expected) in [
+        (
+            "The Series Title 10x11 - Wild Devs Cant Be Broken [rl].avi",
+            Series,
+            "The Series Title",
+            Some("rl"),
+        ),
+        (
+            "Series.Title.S01E01.1080p.WEB-DL.x264-GRP[TGx]",
+            Series,
+            "Series Title",
+            Some("GRP"),
+        ),
+        (
+            "Movie.Title.2020.1080p.WEB-DL.x264-GRP[TGx]",
+            Movie,
+            "Movie Title",
+            Some("GRP"),
+        ),
+        (
+            "Series Title - S01E01 - Pilot [6AFFEF6B]",
+            Series,
+            "Series Title",
+            None,
+        ),
+        (
+            "Series Title - S01E01 - Pilot [1080p]",
+            Series,
+            "Series Title",
+            None,
+        ),
+        (
+            "Titlea Titleb Complete All Seasons OVAs and Movies [BD] [1080p] [AV1]",
+            Anime,
+            "Titlea Titleb",
+            None,
+        ),
+    ] {
+        assert_eq!(
+            p26_group(raw, facet, title).as_deref(),
+            expected,
+            "{facet:?} {raw}"
+        );
+    }
+}
+
+#[test]
+fn release_group_is_never_a_site_tag() {
+    for facet in [ContextFacetHint::Series, ContextFacetHint::Movie] {
+        assert_eq!(
+            p26_group(
+                "Series 2009 S01E14 English HDTV XviD LOL[www.academy.org]",
+                facet,
+                "Series"
+            ),
+            None,
+            "{facet:?}"
+        );
+        assert_eq!(
+            p26_group(
+                "Series 2009 S01E14 English HDTV XviD-LOL[www.abb.com]",
+                facet,
+                "Series"
+            )
+            .as_deref(),
+            Some("LOL"),
+            "{facet:?}"
+        );
     }
 }

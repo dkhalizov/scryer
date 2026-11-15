@@ -2498,7 +2498,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse_path]
 # key: src/NzbDrone.Core.Test/ParserTests/HashedReleaseFixture.cs|should_properly_parse_hashed_releases|359c7fa61fa8|0
 - id: SON-PARSE-0313
@@ -8747,7 +8747,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|cac53f148fa1|0
 - id: SON-PARSE-1090
@@ -8755,7 +8755,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|042776ac3177|0
 - id: SON-PARSE-1091
@@ -8779,7 +8779,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|d6b03a6169e2|0
 - id: SON-PARSE-1094
@@ -8787,7 +8787,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|d2e2c053d8f4|0
 - id: SON-PARSE-1095
@@ -8811,7 +8811,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|3d081571f101|0
 - id: SON-PARSE-1098
@@ -8819,7 +8819,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:33"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|c8dc09dfc871|0
 - id: SON-PARSE-1099
@@ -8851,7 +8851,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:37"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|f292bc413af5|0
 - id: SON-PARSE-1103
@@ -8859,7 +8859,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:38"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|f73bbe2f6f06|0
 - id: SON-PARSE-1104
@@ -8867,7 +8867,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_release_group|5bace19ad1fb|0
 - id: SON-PARSE-1105
@@ -8931,7 +8931,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:47"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|57fad6193573|0
 - id: SON-PARSE-1113
@@ -8947,7 +8947,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:56"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|689283f92518|0
 - id: SON-PARSE-1115
@@ -8955,7 +8955,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:57"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|faa00d2a7b68|0
 - id: SON-PARSE-1116
@@ -8963,7 +8963,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:58"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|abf530611bed|0
 - id: SON-PARSE-1117
@@ -8971,7 +8971,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:59"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|183a5b86f977|0
 - id: SON-PARSE-1118
@@ -8979,7 +8979,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:60"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|7bfe66078f9b|0
 - id: SON-PARSE-1119
@@ -8987,7 +8987,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:61"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|7a0b6ed19871|0
 - id: SON-PARSE-1120
@@ -8995,7 +8995,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:62"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|41be681e9681|0
 - id: SON-PARSE-1121
@@ -9003,7 +9003,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:63"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|3b6a1af30deb|0
 - id: SON-PARSE-1122
@@ -9011,7 +9011,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:64"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|cdb808bddd16|0
 - id: SON-PARSE-1123
@@ -9019,7 +9019,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:65"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|3090deb906e3|0
 - id: SON-PARSE-1124
@@ -9027,7 +9027,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:66"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|13ae102da080|0
 - id: SON-PARSE-1125
@@ -9059,7 +9059,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:70"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|79a2422164c6|0
 - id: SON-PARSE-1129
@@ -9067,7 +9067,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:71"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|972feadeceae|0
 - id: SON-PARSE-1130
@@ -9083,7 +9083,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:73"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|dd09e307b60a|0
 - id: SON-PARSE-1132
@@ -9107,7 +9107,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:76"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|71ff3194215a|0
 - id: SON-PARSE-1135
@@ -9115,7 +9115,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|4ca29de76ff5|0
 - id: SON-PARSE-1136
@@ -9123,7 +9123,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:78"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|af28cd1a6064|0
 - id: SON-PARSE-1137
@@ -9131,7 +9131,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:79"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|3c64db641785|0
 - id: SON-PARSE-1138
@@ -9139,7 +9139,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:80"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|555fb414f95d|0
 - id: SON-PARSE-1139
@@ -9147,7 +9147,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:81"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|32c8c40fbcdf|0
 - id: SON-PARSE-1140
@@ -9155,7 +9155,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:82"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|985434122d94|0
 - id: SON-PARSE-1141
@@ -9163,7 +9163,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:83"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|b9c3dbf2b314|0
 - id: SON-PARSE-1142
@@ -9171,7 +9171,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:84"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|2e6a8c60e2c3|0
 - id: SON-PARSE-1143
@@ -9179,7 +9179,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:85"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|f7dc0f4369ae|0
 - id: SON-PARSE-1144
@@ -9195,7 +9195,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:87"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|be020f730350|0
 - id: SON-PARSE-1146
@@ -9219,7 +9219,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:90"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|9c8f040e9927|0
 - id: SON-PARSE-1149
@@ -9235,7 +9235,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:92"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|64ed63277caf|0
 - id: SON-PARSE-1151
@@ -9243,7 +9243,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:93"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_parse_exception_release_group|41d59f51d618|0
 - id: SON-PARSE-1152
@@ -9291,7 +9291,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:118"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_not_include_repost_in_release_group|d92d20c3b975|0
 - id: SON-PARSE-1158
@@ -9299,7 +9299,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:119"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_not_include_repost_in_release_group|f7755af07ecd|0
 - id: SON-PARSE-1159
@@ -9331,7 +9331,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:123"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_not_include_repost_in_release_group|1244fd26828e|0
 - id: SON-PARSE-1163
@@ -9339,7 +9339,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:124"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_not_include_repost_in_release_group|3c1271c614e8|0
 - id: SON-PARSE-1164
@@ -9347,7 +9347,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:125"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_not_include_repost_in_release_group|ac1a175b551c|0
 - id: SON-PARSE-1165
@@ -9467,7 +9467,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:140"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs|should_not_include_repost_in_release_group|9658fbd7678a|0
 - id: SON-PARSE-1180
@@ -12027,7 +12027,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:35"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_group|44557928f9df|0
 - id: SON-PARSE-1500
@@ -12035,7 +12035,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:36"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_group|4960043e9fa2|0
 - id: SON-PARSE-1501
@@ -12067,7 +12067,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:40"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_group|52e2a144db0e|0
 - id: SON-PARSE-1505
@@ -12075,7 +12075,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:41"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_group|ffc8a321c04b|0
 - id: SON-PARSE-1506
@@ -12107,7 +12107,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:45"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_group|2223fba44fbd|0
 - id: SON-PARSE-1510
@@ -12115,7 +12115,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:46"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_group|613e23a2b019|0
 - id: SON-PARSE-1511

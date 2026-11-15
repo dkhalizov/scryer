@@ -6634,7 +6634,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0826
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|74e93e3c9ca035c9|0"
@@ -6642,7 +6642,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0827
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|02f12d5e191f1a6f|0"
@@ -6666,7 +6666,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0830
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|0152a214edb0c3be|0"
@@ -6674,7 +6674,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0831
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|aad1e422f28c0e39|0"
@@ -6770,7 +6770,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:41"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0843
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|b60f8b6cf1c29f6e|0"
@@ -6778,7 +6778,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:42"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0844
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|86c2947e245abda5|0"
@@ -6826,7 +6826,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:48"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0850
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|301bdb8fbafc9037|0"
@@ -6850,7 +6850,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:51"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0853
   # key: "ReleaseGroupParserFixture.cs|should_parse_release_group|ccceffd588377a72|0"
@@ -6906,7 +6906,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:58"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0860
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|cd26c1db0cded160|0"
@@ -6914,7 +6914,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:64"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0861
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|dc0a4e8de3a6e285|0"
@@ -6930,7 +6930,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:66"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0863
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|5906c1f9bfd6b5ef|0"
@@ -6954,7 +6954,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:69"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0866
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|7410b20fd91d9b4e|0"
@@ -6962,7 +6962,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:70"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0867
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|6cd8235a395424ab|0"
@@ -6970,7 +6970,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:71"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0868
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|f15275f496bea1d4|0"
@@ -6986,7 +6986,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:73"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0870
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|6badcdf4000822e5|0"
@@ -6994,7 +6994,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:74"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0871
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|d519fc70e9005419|0"
@@ -7002,7 +7002,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:75"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0872
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|467da6bc8d315f3b|0"
@@ -7010,7 +7010,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:76"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0873
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|93cbfa8be8d5a21e|0"
@@ -7018,7 +7018,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0874
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|0d98f5bcb718cfda|0"
@@ -7026,7 +7026,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:78"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0875
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|e7010ab40832d96d|0"
@@ -7034,7 +7034,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:79"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0876
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|fb2fd9c393903fce|0"
@@ -7042,7 +7042,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:80"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0877
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|e75091ef72e9c509|0"
@@ -7050,7 +7050,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:81"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0878
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|fe102800721507e5|0"
@@ -7058,7 +7058,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:82"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0879
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|392583fe900e8ca5|0"
@@ -7066,7 +7066,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:83"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0880
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|127a993feef69b96|0"
@@ -7074,7 +7074,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:84"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0881
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|a8bacbe3985bf76d|0"
@@ -7082,7 +7082,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:85"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0882
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|b0037375e43d28d1|0"
@@ -7098,7 +7098,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:87"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0884
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|d3e5b8da35aab1f8|0"
@@ -7106,7 +7106,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:88"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0885
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|21b0aab3677134ab|0"
@@ -7114,7 +7114,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:89"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0886
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|b9e17fad504ae4fa|0"
@@ -7130,7 +7130,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:91"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0888
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|31018f7fc497d698|0"
@@ -7178,7 +7178,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:97"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0894
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|93a2fcec20d16d00|0"
@@ -7186,7 +7186,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:98"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0895
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|95394825bfb3443f|0"
@@ -7194,7 +7194,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:99"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0896
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|92a26b307a1f1d20|0"
@@ -7202,7 +7202,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:100"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0897
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|48b56b12328a0930|0"
@@ -7210,7 +7210,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:101"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0898
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|ea8a65bb4dcf9346|0"
@@ -7218,7 +7218,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:102"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0899
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|21d18241cc446e1b|0"
@@ -7226,7 +7226,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:103"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0900
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|12ed4709801014f2|0"
@@ -7234,7 +7234,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:104"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0901
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|921d6da717134bf5|0"
@@ -7242,7 +7242,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:105"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0902
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|bdebcde7998c0c23|0"
@@ -7250,7 +7250,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:106"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0903
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|4975f8eae979a2e4|0"
@@ -7258,7 +7258,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:107"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0904
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|786665f8cbe12d0b|0"
@@ -7266,7 +7266,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:108"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0905
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|8670ba2543f48704|0"
@@ -7274,7 +7274,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:109"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0906
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|5c569a42d87b5c0e|0"
@@ -7282,7 +7282,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:110"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0907
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|ab775c3b0d09d79d|0"
@@ -7290,7 +7290,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:111"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0908
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|965a787cbc59934e|0"
@@ -7298,7 +7298,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:112"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0909
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|b0e49cc1283b1501|0"
@@ -7346,7 +7346,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:118"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0915
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|628e072700e0ea8b|0"
@@ -7362,7 +7362,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:120"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0917
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|58548f03f43044cd|0"
@@ -7370,7 +7370,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:121"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0918
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|ec0754f69f37e676|0"
@@ -7378,7 +7378,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:122"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0919
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|39037de86569900c|0"
@@ -7386,7 +7386,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:123"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0920
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|9c4e56b09e541936|0"
@@ -7394,7 +7394,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:124"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0921
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|d18e8fd6c5047315|0"
@@ -7410,7 +7410,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:126"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0923
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|3454f49d5085d3d8|0"
@@ -7418,7 +7418,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:127"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0924
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|fca9579c707f4b45|0"
@@ -7426,7 +7426,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:128"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0925
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|75d86927041679a7|0"
@@ -7434,7 +7434,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:129"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0926
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|31d610885cd1aac0|0"
@@ -7442,7 +7442,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:130"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0927
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|017e9a499e417a05|0"
@@ -7450,7 +7450,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:131"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0928
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|8caa0eac8040979e|0"
@@ -7458,7 +7458,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:132"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0929
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|eb2f40619fe9e109|0"
@@ -7466,7 +7466,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:133"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0930
   # key: "ReleaseGroupParserFixture.cs|should_parse_exception_release_group|cd405799f0cb456c|0"
@@ -7474,7 +7474,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:134"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0931
   # key: "ReleaseGroupParserFixture.cs|should_not_include_extension_in_release_group|40d2c6766821c125|0"
@@ -7514,7 +7514,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:155"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0936
   # key: "ReleaseGroupParserFixture.cs|should_not_include_bad_suffix_in_release_group|4a7b60bb36d2eec0|0"
@@ -7522,7 +7522,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:156"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0937
   # key: "ReleaseGroupParserFixture.cs|should_not_include_bad_suffix_in_release_group|a87c42f3c9358efb|0"
@@ -7530,7 +7530,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:157"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0938
   # key: "ReleaseGroupParserFixture.cs|should_not_include_bad_suffix_in_release_group|e0be24e45f304067|0"
@@ -7546,7 +7546,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:159"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0940
   # key: "ReleaseGroupParserFixture.cs|should_not_include_bad_suffix_in_release_group|8bf8f232ae9d8560|0"
@@ -7554,7 +7554,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:160"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0941
   # key: "ReleaseGroupParserFixture.cs|should_not_include_bad_suffix_in_release_group|10cfd29b9cad4791|0"
@@ -7674,7 +7674,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ReleaseGroupParserFixture.cs:175"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0956
   # key: "ReleaseGroupParserFixture.cs|should_not_include_bad_suffix_in_release_group|a734e845ad80f10b|0"
@@ -8966,7 +8966,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:33"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-1113
   # key: "UrlFixture.cs|should_not_parse_url_in_group|64f6e292976ef9f5|0"
@@ -8974,7 +8974,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:34"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-1114
   # key: "UrlFixture.cs|should_not_parse_url_in_group|44d623167e28c99b|0"
@@ -8998,7 +8998,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:37"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-1117
   # key: "UrlFixture.cs|should_not_parse_url_in_group|af7040737dc9b6aa|0"
@@ -9006,5 +9006,5 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs:38"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]

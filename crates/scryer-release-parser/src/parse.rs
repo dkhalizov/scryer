@@ -3260,7 +3260,6 @@ fn release_group_part_is_valid_in_script(
             | "DTSMA"
             | "DTSX"
             | "TRUEHD"
-            | "OPUS"
             | "VORBIS"
             | "MP3"
             | "PCM"
@@ -3314,7 +3313,8 @@ fn release_group_part_is_valid_in_script(
 }
 
 /// Tags that reposters and obfuscators append after the real release group
-/// (`-LEGi0N-AsRequested`). They name the repost, never the group.
+/// (`-LEGi0N-AsRequested`). They name the repost, never the group (fork
+/// (P26): except a lone `-NZBgeek`, see `lone_indexer_group`).
 fn is_repost_tag(normalized: &str) -> bool {
     normalized.starts_with("RAKUV")
         || matches!(
@@ -3337,6 +3337,57 @@ fn is_repost_tag(normalized: &str) -> bool {
         )
 }
 
+/// fork (P26): `720p`, `1080i`: three or four digits and a scan letter.
+fn is_resolution_token(normalized: &str) -> bool {
+    normalized.strip_suffix(['P', 'I']).is_some_and(|digits| {
+        (3..=4).contains(&digits.len()) && digits.bytes().all(|b| b.is_ascii_digit())
+    })
+}
+
+/// fork (P26): where the group text ends once repost and sample tails are cut
+/// (arr CleanReleaseGroupRegex: `-GRP-RP`, `-GRP-sample.mkv`). A tail is cut
+/// only after a group, so `x264-NZBgeek` keeps its lone tag; the extension
+/// goes only with a tail, so `.GRP.mkv` never becomes a terminal group.
+fn repost_tail_end(tokens: &[Token]) -> usize {
+    let mut end = tokens.len();
+    if tokens.last().is_some_and(|token| {
+        token.separator_before == SeparatorKind::Dot
+            && matches!(
+                token.normalized.as_str(),
+                "MKV" | "MP4" | "AVI" | "M4V" | "WEBM"
+            )
+    }) {
+        end -= 1;
+    }
+    let mut start = end;
+    while start > 0
+        && tokens[start - 1].separator_before == SeparatorKind::Hyphen
+        && (is_repost_tag(&tokens[start - 1].normalized)
+            || matches!(
+                tokens[start - 1].normalized.as_str(),
+                "RP" | "1" | "PRE" | "SAMPLE" | "OBFUSCATION" | "4P"
+            ))
+    {
+        start -= 1;
+    }
+    if start < end && start > 0 && release_group_part_is_valid(&tokens[start - 1], false) {
+        start
+    } else {
+        tokens.len()
+    }
+}
+
+/// fork (P26): a lone `-NZBgeek` right after the technical tail is the group
+/// (Sonarr/Radarr ParsePath fixtures); after a group it is a repost tail.
+fn lone_indexer_group(tokens: &[Token]) -> Option<String> {
+    let index = tokens.len().checked_sub(1)?;
+    let token = &tokens[index];
+    (token.normalized == "NZBGEEK"
+        && token.separator_before == SeparatorKind::Hyphen
+        && numeric_release_group_suffix_has_technical_prefix(tokens, index))
+    .then(|| token.raw.clone())
+}
+
 fn is_compound_metadata_suffix(tokens: &[Token], index: usize) -> bool {
     let Some(token) = tokens.get(index) else {
         return false;
@@ -3351,8 +3402,11 @@ fn is_compound_metadata_suffix(tokens: &[Token], index: usize) -> bool {
         && (matches!(
             (previous.normalized.as_str(), token.normalized.as_str()),
             ("WEB", "DL") | ("WEB", "RIP") | ("E", "AC") | ("DUAL", "AUDIO") | ("HD", "MA")
+            // fork (P26)
+            | ("WEB", "HDRIP") | ("BLU", "RAY")
         ) || (previous.normalized == "DTS"
-            && (token.normalized == "X" || token.normalized.starts_with("HD"))))
+            && (matches!(token.normalized.as_str(), "X" | "MA" | "ES")
+                || token.normalized.starts_with("HD"))))
 }
 
 /// The token span of a leading bracketed release-group tag — `[Lumen-scribe]`
@@ -3487,9 +3541,34 @@ fn infer_release_group_for_candidate(
     facet_hint: ContextFacetHint,
 ) -> Option<String> {
     let title_zones = contiguous_token_ranges(state.title_token_indices.as_slice());
+    // fork (P26): arr lists (Radarr's order only for a movie with no season
+    // token), then the suffix rules on the name without repost tails, then a
+    // trailing `[word]` (not for anime, whose bracket tags are not groups).
+    let radarr_order = facet_hint == ContextFacetHint::Movie
+        && !tokens
+            .iter()
+            .any(|token| parse_season_token(&token.normalized).is_some());
+    let trimmed = &tokens[..repost_tail_end(tokens)];
     infer_leading_release_group(tokens, raw_input)
-        .or_else(|| infer_release_group_from_token_suffix(state, tokens, facet_hint))
-        .or_else(|| infer_state_release_group(state, tokens, title_zones.as_slice()))
+        .or_else(|| {
+            crate::group_tails::arr_listed_group(raw_input, radarr_order).map(str::to_string)
+        })
+        .or_else(|| lone_indexer_group(tokens))
+        .or_else(|| infer_release_group_from_token_suffix(state, trimmed, facet_hint))
+        .or_else(|| infer_state_release_group(state, trimmed, title_zones.as_slice()))
+        .or_else(|| {
+            let word = crate::group_tails::trailing_bracket_word(raw_input)?;
+            tokens
+                .iter()
+                .rev()
+                .find(|token| token.raw == word)
+                .filter(|token| {
+                    facet_hint != ContextFacetHint::Anime
+                        && release_group_part_is_valid(token, false)
+                        && !is_resolution_token(&token.normalized)
+                })
+                .map(|_| word.to_string())
+        })
 }
 
 fn infer_release_group_from_token_suffix(
@@ -3516,7 +3595,25 @@ fn infer_release_group_from_token_suffix(
                 end_token: index + 1,
             }
         } else {
-            release_group_suffix_range(state, tokens, index, facet_hint)
+            let mut range = release_group_suffix_range(state, tokens, index, facet_hint);
+            // fork (P26): the arrs never continue a suffix group across a dot
+            // (`-MeM.GP` is MeM); dotted list names come from the arr lists.
+            // ponytail: a final `.ts`/`.m2ts` stays in the group so its span
+            // keeps the extension from reading as telesync; cut it once the
+            // quality scan skips extensions.
+            let extension_tail = range.end_token == tokens.len()
+                && range.end_token - range.start_token == 2
+                && matches!(
+                    tokens[range.end_token - 1].normalized.as_str(),
+                    "TS" | "M2TS"
+                );
+            if let Some(dot) = (range.start_token + 1..range.end_token)
+                .find(|index| tokens[*index].separator_before == SeparatorKind::Dot)
+                .filter(|_| !extension_tail)
+            {
+                range.end_token = dot;
+            }
+            range
         };
         if !release_group_suffix_range_allowed(state, tokens, range, title_zones.as_slice()) {
             continue;
@@ -3569,7 +3666,15 @@ fn release_group_suffix_range_allowed(
     {
         return false;
     }
-    if range_is_embedded_in_larger_group(tokens, range) {
+    // fork (P26): never followed by a resolution (Sonarr's lookahead; a
+    // leading group is exempt); a codec-joined group may end a bracket.
+    if range.start_token > 0 && crate::group_tails::followed_by_resolution(tokens, range.end_token)
+    {
+        return false;
+    }
+    if range_is_embedded_in_larger_group(tokens, range)
+        && !range_is_codec_joined_bracket_tail(tokens, range)
+    {
         return false;
     }
     if range_is_metadata_marker(tokens, range) {
@@ -3587,8 +3692,18 @@ fn infer_state_release_group(
     title_zones: &[TokenRange],
 ) -> Option<String> {
     let release_group = state.release_group.as_deref()?;
+    // fork (P26): a `www.` site tag is never a group.
+    if release_group
+        .get(..4)
+        .is_some_and(|prefix| prefix.eq_ignore_ascii_case("www."))
+    {
+        return None;
+    }
     let range = find_phrase_span(tokens, release_group)?;
-    if range_follows_episode_title_separator(state, tokens, range) {
+    if range_follows_episode_title_separator(state, tokens, range)
+        || (range.start_token > 0
+            && crate::group_tails::followed_by_resolution(tokens, range.end_token))
+    {
         return None;
     }
     if (range.start_token..range.end_token).any(|index| state.identity_token_mask.contains(index)) {
@@ -3600,7 +3715,14 @@ fn infer_state_release_group(
     {
         return None;
     }
-    if range_is_metadata_marker(tokens, range) || range_is_embedded_in_larger_group(tokens, range) {
+    // fork (P26): a tag nested inside another bracket (`[Hindi.[Clean]]`) is
+    // never the group.
+    if range_is_metadata_marker(tokens, range)
+        || range_is_embedded_in_larger_group(tokens, range)
+        || tokens[range.start_token..range.end_token]
+            .iter()
+            .any(|token| token.bracket_depth > 1)
+    {
         return None;
     }
     Some(release_group.to_string())
@@ -3650,6 +3772,34 @@ fn range_is_embedded_in_larger_group(tokens: &[Token], range: TokenRange) -> boo
     group_start != range.start_token || group_end != range.end_token
 }
 
+/// fork (P26): `(…x265-TheSickle[TAoE])`: a group hyphen-joined to a video
+/// codec that ends its bracket group is still the group; a bit depth is not.
+fn range_is_codec_joined_bracket_tail(tokens: &[Token], range: TokenRange) -> bool {
+    let (Some(first), Some(previous)) = (
+        tokens.get(range.start_token),
+        range
+            .start_token
+            .checked_sub(1)
+            .and_then(|index| tokens.get(index)),
+    ) else {
+        return false;
+    };
+    let last = &tokens[range.end_token - 1];
+    let bit_depth = last.normalized.strip_suffix("BIT").is_some_and(|digits| {
+        (1..=2).contains(&digits.len()) && digits.bytes().all(|b| b.is_ascii_digit())
+    });
+    first.separator_before == SeparatorKind::Hyphen
+        && previous.group_id == first.group_id
+        && (VideoCodec::parse(previous.normalized.as_str()).is_some()
+            || detect_compound_metadata(previous.normalized.as_str())
+                .video_codec
+                .is_some())
+        && tokens.get(range.end_token).is_none_or(|next| {
+            next.group_id != first.group_id || next.bracket_depth > first.bracket_depth
+        })
+        && !bit_depth
+}
+
 fn range_follows_episode_title_separator(
     state: &ParseState,
     tokens: &[Token],
@@ -3678,6 +3828,11 @@ fn range_is_metadata_marker(tokens: &[Token], range: TokenRange) -> bool {
                     || (range_len == 1 && numeric_release_group_suffix(token)))
                 || is_explicit_language_metadata_token(normalized)
                 || is_release_flag_metadata_token(normalized)
+                // fork (P26): a resolution is never a group, and a projected
+                // (Latin-script) group is ASCII. Projection only: the beam
+                // still reads these tokens as before.
+                || is_resolution_token(normalized)
+                || !token.raw.is_ascii()
                 || (range_len == 1 && normalize_standalone_streaming_service(normalized).is_some())
                 || parse_special_kind(normalized).is_some()
         })
@@ -3783,6 +3938,10 @@ fn infer_terminal_release_group(
         token.separator_before,
         SeparatorKind::Dot | SeparatorKind::Space | SeparatorKind::Underscore
     ) || !release_group_part_is_valid(token, false)
+        // fork (P26): `-OPUS` is a group, a dotted `Opus` the audio.
+        || detect_compound_metadata(token.normalized.as_str())
+            .audio_codec
+            .is_some()
         || !terminal_release_group_context(tokens, index)
     {
         return None;
