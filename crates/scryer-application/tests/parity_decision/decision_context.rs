@@ -514,14 +514,21 @@ fn single_episode_search(g: &Value, anime: bool) -> Result<Value, String> {
 fn movie_spec(g: &Value) -> Result<Value, String> {
     let release_id = g["movie"]["id"].as_i64().unwrap_or(1);
     let search_id = g["search"]["movie_id"].as_i64().unwrap_or(1);
-    let mut p = series_params(search_id, format!("{}.2018.1080p.WEB-DL.x264-GRP", dotted(release_id)));
+    let code = movie_code(search_id, &format!("{}.2018.1080p.WEB-DL.x264-GRP", dotted(release_id)));
+    Ok(super::accepted(concern_outcome(code, &[C::TitleMismatch], "MovieSpecification")?))
+}
+
+/// A standalone 2018 movie subject (title `name(series_id)`) evaluating
+/// `release_title`. Also used by `priv_decision` (allowHardcodedSubs).
+pub(super) fn movie_code(series_id: i64, release_title: &str) -> C {
+    let mut p = series_params(series_id, release_title.to_string());
     p.facet = MediaFacet::Movie;
     p.year = Some(2018);
     p.scope = SubmissionScope::Title;
     p.kind = ReleaseSearchSubjectKind::Title;
     p.season = None;
     p.episode = None;
-    Ok(super::accepted(concern_outcome(evaluate(&p), &[C::TitleMismatch], "MovieSpecification")?))
+    evaluate(&p)
 }
 
 fn full_season_span(g: &Value) -> Result<Value, String> {

@@ -53,6 +53,7 @@ settings need **Manage catalog settings**.
 | `movie_availability_blocked` | movie has not reached its availability setting | media settings |
 | `pack_below_missing_threshold` | pack does not cover enough missing episodes | expected |
 | `subtitles_only` | subtitles, no video | expected |
+| `hardcoded_subs` | movie release has burned-in subtitles (HC, HARDSUB, KORSUB...) | expected; movies only |
 
 Stored rows can also show `manual_override`, `initial` and `upgrade`, which
 record how a grab was decided rather than a refusal.

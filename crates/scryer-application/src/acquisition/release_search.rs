@@ -270,6 +270,10 @@ pub enum ReleaseAutoDecisionCode {
     /// three or more episodes. Packs belong to season searches, where the
     /// missing-episode threshold decides whether one is worth taking.
     PackForSingleEpisode,
+    /// fork (P20): a standalone movie was offered a release with burned-in
+    /// subtitles. Radarr's HardcodeSubsSpecification with our config
+    /// (allowHardcodedSubs off, empty whitelist). Sonarr has no such spec.
+    HardcodedSubs,
 }
 
 impl ReleaseAutoDecisionCode {
@@ -320,6 +324,7 @@ impl ReleaseAutoDecisionCode {
             "episodic_release_for_movie" => Some(Self::EpisodicReleaseForMovie),
             "title_year_mismatch" => Some(Self::TitleYearMismatch),
             "pack_for_single_episode" => Some(Self::PackForSingleEpisode),
+            "hardcoded_subs" => Some(Self::HardcodedSubs),
             _ => None,
         }
     }
@@ -360,6 +365,7 @@ impl ReleaseAutoDecisionCode {
             Self::EpisodicReleaseForMovie => "episodic_release_for_movie",
             Self::TitleYearMismatch => "title_year_mismatch",
             Self::PackForSingleEpisode => "pack_for_single_episode",
+            Self::HardcodedSubs => "hardcoded_subs",
         }
     }
 
@@ -427,6 +433,7 @@ impl ReleaseAutoDecisionCode {
             Self::PackForSingleEpisode => {
                 "an automatic single-episode search does not take a season or multi-episode pack"
             }
+            Self::HardcodedSubs => "movie release has hardcoded (burned-in) subtitles",
         }
     }
 
@@ -2487,6 +2494,18 @@ fn evaluate_auto_candidate_recording(
             .is_some_and(|opens_at| *context.now < opens_at)
     {
         return ReleaseAutoDecisionCode::EpisodeAvailabilityBlocked;
+    }
+
+    // fork (P20): Radarr refuses hardcoded subs unless allowed; our Radarr has
+    // allowHardcodedSubs off and no whitelist. Movies only (Sonarr has no spec).
+    // ponytail: fixed; seed acquisition.allow_hardcoded_subs if HC is ever wanted.
+    if subject_is_standalone_movie(context.subject)
+        && candidate
+            .parsed_release_metadata
+            .as_ref()
+            .is_some_and(|parsed| parsed.is_hardcoded_subs)
+    {
+        return ReleaseAutoDecisionCode::HardcodedSubs;
     }
 
     let is_allowed = candidate
@@ -5495,6 +5514,48 @@ mod tests {
         ));
         candidate.quality_profile_decision = Some(allowed_quality_decision(2400));
         candidate
+    }
+
+    #[test]
+    fn a_movie_refuses_hardcoded_subs_and_a_series_does_not() {
+        let (title, subject) = quillon_movie(2028);
+        assert_eq!(
+            decision_for(
+                &title,
+                &subject,
+                &movie_candidate(&subject, "Quillon.2028.HC.1080p.WEB-DL-SYNTH")
+            ),
+            ReleaseAutoDecisionCode::HardcodedSubs
+        );
+        assert_eq!(
+            decision_for(
+                &title,
+                &subject,
+                &movie_candidate(&subject, "Quillon.2028.1080p.WEB-DL-SYNTH")
+            ),
+            ReleaseAutoDecisionCode::Eligible
+        );
+
+        let mut series = make_title();
+        series.name = "Quiet Meridian".to_string();
+        series.facet = MediaFacet::Series;
+        series.tagged_aliases = Vec::new();
+        let series_subject = numbering_scoped_subject(&series, Some(1), Some(1));
+        let mut hc = make_candidate("Quiet.Meridian.S01E01.1080p.HC.WEB-DL-GroupTag.mkv", None);
+        assert!(
+            hc.parsed_release_metadata
+                .as_ref()
+                .is_some_and(|parsed| parsed.is_hardcoded_subs)
+        );
+        hc.quality_profile_decision = Some(allowed_quality_decision(2400));
+        assert_eq!(
+            decision_for(&series, &series_subject, &hc),
+            ReleaseAutoDecisionCode::Eligible
+        );
+
+        let code = ReleaseAutoDecisionCode::HardcodedSubs;
+        assert_eq!(ReleaseAutoDecisionCode::parse(code.as_str()), Some(code));
+        assert!(code.summary().contains("hardcoded"));
     }
 
     #[test]

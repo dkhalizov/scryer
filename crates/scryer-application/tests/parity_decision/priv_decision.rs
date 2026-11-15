@@ -31,6 +31,8 @@
 //! - minimum availability: `MovieAvailabilitySettings::policy`,
 //!   `movie_availability_decision`, `ReleaseAutoDecisionCode::with_movie_availability`
 //!   (composed as the call site in `release_search.rs` does).
+//! - hardcoded subs: `evaluate_auto_candidate_with_step` on a standalone movie
+//!   (`decision_context::movie_code`).
 //!
 //! # Translation table (reference term -> Scryer term)
 //!
@@ -42,7 +44,7 @@
 //! | `downloadPropersAndRepacks` | root `propers()` -> `ignore_proper_repack` through `captured_spec` (DoNotUpgrade -> no field, red). PreferAndUpgrade -> {preferred, upgrades}; DoNotUpgrade -> {preferred, not upgrades}; DoNotPrefer -> neither |
 //! | "preferred over the original" | `compare_release_search_results` (rank head: revision step, then score), same tier and group, empty title-scope subject (no file on disk). The reference compares quality and revision before the custom-format score (`DownloadDecisionComparer` `CompareQuality` before `CompareCustomFormatScore`, both apps), so the original matches a format worth 100 more than the proper (a rule score contribution, as the root's custom-format glue logs it). 100 exceeds Scryer's only fileless proper preference, the bundled default TRaSH `trash-guides-features` +30/+50 for `is_proper_upload` / `is_repack`, so leaving that rule out of the harness cannot change the order. Both scores start at the profile's min format score (when positive) so the min-score gate refuses neither |
 //! | "grabbed as an upgrade" | root `grab_refusal` of a same-tier same-group revision over the held original, title scope, score 0 |
-//! | `allowHardcodedSubs` / `whitelistedHardcodedSubs` | no setting (red by reason). Scryer parses `is_hardcoded_subs` and only lowers its score through the bundled default TRaSH `trash-guides-unwanted` rule (-200..-400 by scoring persona); whether that refuses a release depends on the min format score and needs the rules engine with the bundled pack, more than a seam |
+//! | `allowHardcodedSubs` / `whitelistedHardcodedSubs` | `evaluate_auto_candidate_with_step` on a standalone movie: an `HC` release -> `HardcodedSubs` (fixed refusal, P20, D72), its plain twin is not refused. Expected refused = !allowHardcodedSubs. No Scryer setting: allowed=true reds through the call; a non-empty whitelist is red by reason |
 //! | `preferIndexerFlags` | no setting (red by reason): `SearchRank` has no flag step (`acquisition/scoring.rs`); flags change the order only through user rules / imported `IndexerFlagSpecification` (`rules/arr_custom_format/specifications.rs:336`) |
 //! | movie `minimumAvailability` announced / tba | `announced` (Radarr `Movie.cs`: both are MinValue) |
 //! | inCinemas | `in_cinemas` |
@@ -79,7 +81,7 @@
 //!   (request rules add tags at request time behind the request service).
 //!
 //! Known reds: the 25 format scores and the constant reds above (`maximumSize`,
-//! `allowHardcodedSubs`, `preferIndexerFlags`, `releaseprofile.json`, `tag.json`).
+//! `preferIndexerFlags`, `releaseprofile.json`, `tag.json`).
 
 use std::cmp::Ordering;
 use std::collections::HashMap;
@@ -104,7 +106,7 @@ use super::{Held, PROPER_GROUP, Side};
 const MAX_SIZE: &str = "no Scryer field for an absolute maximum release size (Settings > Indexers > Maximum Size); Scryer caps size only per quality and runtime (size_implausible_for_quality, quality/profile.rs) or through user rules / imported custom formats (SizeSpecification -> size_bytes range, rules/arr_custom_format/specifications.rs:444)";
 const TERMS: &str = "no Scryer field for release-profile required/ignored terms; Scryer filters titles only through user rules / imported custom formats (ReleaseTitleSpecification -> regex on raw_title, rules/arr_custom_format/translate.rs:595)";
 const TAGS: &str = "delay-profile tags exist (resolve_delay_profile, covered by the delay-profile config entries); no Scryer field for indexer/download-client tags: Scryer restricts indexers per library scope (indexer.routing:<scope> -> IndexerRoutingPlan, indexer_search_eligibility, contracts.rs)";
-const HARD_SUBS: &str = "no allowHardcodedSubs / whitelistedHardcodedSubs setting; Scryer parses is_hardcoded_subs and only lowers its score through the bundled default TRaSH unwanted rule (trash-guides-unwanted, -200..-400 by scoring persona, rules/builtin_trash.json), so an HC release is refused only when that drops it below min_score_to_grab";
+const HARD_SUBS_WHITELIST: &str = "no whitelistedHardcodedSubs setting: Scryer refuses every hardcoded-sub movie release (fixed, P20)";
 const INDEXER_FLAGS: &str = "no Scryer setting to prefer indexer flags in the rank (SearchRank has no flag step, acquisition/scoring.rs); flags change the order only through user rules / imported IndexerFlagSpecification (rules/arr_custom_format/specifications.rs:336)";
 const NO_FORMAT_ITEMS: &str = "Scryer's arr import reads no profile formatItems (external_import.rs:574 keeps id, name, language); its only score source is the format export";
 /// A format score above Scryer's bundled fileless proper bonus (+30/+50).
@@ -249,7 +251,7 @@ fn settings_suite(name: &str, app: &str, prefix: &str) {
             Kind::MaxSize => Err(MAX_SIZE.into()),
             Kind::Terms => Err(TERMS.into()),
             Kind::Tags => Err(TAGS.into()),
-            Kind::HardSubs => Err(HARD_SUBS.into()),
+            Kind::HardSubs => hard_subs_case(app),
             Kind::IndexerFlags => Err(INDEXER_FLAGS.into()),
             Kind::Availability => availability_case(app),
         };
@@ -311,6 +313,25 @@ fn search_result(profile: &QualityProfile, side: &Side) -> IndexerSearchResult {
         release_listing_json: None,
         http: None,
     }
+}
+
+/// Radarr `HardcodeSubsSpecification`: an HC release is refused unless allowed;
+/// its plain twin never is.
+fn hard_subs_case(app: &str) -> Case {
+    let cfg: Value = corpus(&format!("corpus/captured/{app}/config/indexerconfig.json"));
+    if cfg["whitelistedHardcodedSubs"].as_str().is_some_and(|w| !w.trim().is_empty()) {
+        return Err(HARD_SUBS_WHITELIST.into());
+    }
+    let allowed = cfg["allowHardcodedSubs"].as_bool().unwrap_or(false);
+    let refused =
+        |t: &str| super::decision_context::movie_code(1, t) == ReleaseAutoDecisionCode::HardcodedSubs;
+    Ok((
+        json!({ "hc_refused": !allowed, "plain_refused": false }),
+        json!({
+            "hc_refused": refused("Amber.Circuit.2018.HC.1080p.WEB-DL.x264-GRP"),
+            "plain_refused": refused("Amber.Circuit.2018.1080p.WEB-DL.x264-GRP"),
+        }),
+    ))
 }
 
 fn propers_case(app: &str) -> Case {
