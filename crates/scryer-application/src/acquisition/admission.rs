@@ -225,7 +225,9 @@ impl AdmissionPolicy {
     /// This is how Sonarr splits it: `UpgradableSpecification` (grab) rejects on
     /// `newFormatScore <= currentFormatScore` and applies `UpgradeAllowed`,
     /// `CutoffFormatScore` and `MinUpgradeFormatScore`; the import spec rejects
-    /// only `newFormatScore < currentFormatScore` and applies none of them.
+    /// only `newFormatScore < currentFormatScore` and applies none of them,
+    /// even at a higher revision (fork P30: the check that needs is in
+    /// `import::decide::evaluate_import_admission`).
     // fork: parity net seam (tests/parity_import/import_specs.rs)
     pub fn not_a_downgrade() -> Self {
         Self {
@@ -916,7 +918,7 @@ fn format_cutoff_reached(
     })
 }
 
-fn not_an_upgrade(
+pub(crate) fn not_an_upgrade(
     incumbent: &Incumbent,
     candidate: CandidateFacts,
     policy: &AdmissionPolicy,

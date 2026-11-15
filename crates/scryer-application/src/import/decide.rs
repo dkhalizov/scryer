@@ -392,6 +392,24 @@ pub(crate) fn evaluate_import_admission(
             } => (ranked_superseded, previous_best_score),
         };
 
+    // fork (P30, D79 Q2): Sonarr's import `NotCustomFormatUpgrade`. A file of
+    // the held tier that scores below it is refused even when it won on the
+    // revision, unless an operator asked for it.
+    if !operator_intent
+        && let Some(incumbent) = subject.incumbents().iter().find(|incumbent| {
+            incumbent.tier_index == candidate.tier_index
+                && candidate.revision > incumbent.revision
+                && candidate.score < incumbent.score
+        })
+    {
+        let rejection = crate::admission::not_an_upgrade(incumbent, candidate, &policy);
+        return Err(Box::new(ImportAdmissionRefusal {
+            rejection: admission_rejection_to_import(scope_label, &rejection),
+            disposition: disposition_for(&rejection.reason),
+            better_library_copy: better_library_copy(&rejection),
+        }));
+    }
+
     let superseded = resolve_superseded_rows(rows, &ranked_superseded);
 
     // Admission says the scope is occupied and the row list disagrees. One

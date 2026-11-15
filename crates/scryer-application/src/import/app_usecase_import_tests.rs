@@ -2206,6 +2206,37 @@ fn decide_import_skips_when_the_existing_episode_file_scores_higher() {
     );
 }
 
+/// fork (P30, D79 Q2): Sonarr's import `NotCustomFormatUpgrade`: a file of
+/// the held quality that scores below it is refused even at a higher
+/// revision. A tie still lands, and an operator's import is not second-guessed.
+#[test]
+fn a_higher_revision_scoring_below_the_file_is_refused_unless_asked() {
+    let mut incumbents = vec![scoped_media_file(
+        "file-1",
+        "/data/TV/Quiet Orbit/Season 01/Quiet Orbit - S01E01 - 1080p.mkv",
+        820,
+        &["ep-1"],
+    )];
+    incumbents[0].media_file.release_group = Some("GRP".into());
+    let proper = |score| {
+        crate::admission::CandidateFacts::new(Some(0), 1, score)
+            .with_revision_policy(Some("GRP"), false)
+    };
+
+    let (rejection, disposition) =
+        episode_import_admission(&incumbents, &["ep-1"], proper(700), false).unwrap_err();
+    assert_eq!(
+        rejection.skip_reason,
+        Some(ImportSkipReason::AlreadyImported)
+    );
+    assert_eq!(
+        disposition,
+        crate::import_decide::RejectionDisposition::Skip
+    );
+    assert!(episode_import_admission(&incumbents, &["ep-1"], proper(820), false).is_ok());
+    assert!(episode_import_admission(&incumbents, &["ep-1"], proper(700), true).is_ok());
+}
+
 #[test]
 fn manual_replacement_bypasses_equal_or_lower_score_comparison() {
     let incumbents = vec![scoped_media_file(
