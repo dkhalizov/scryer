@@ -3703,17 +3703,9 @@ impl AppUseCase {
             .await?;
         let collection_id =
             crate::acquisition::coverage::collection_id_for_season(&collections, season_num);
-        let season_episode_count = match collection_id.as_deref() {
-            Some(collection_id) => self
-                .services
-                .catalog
-                .shows
-                .list_episodes_for_collection(collection_id)
-                .await?
-                .len(),
-            None => 0,
-        };
-        let runtime_minutes = season_pack_runtime_minutes(title, season_episode_count);
+        // fork (P23a0): one episode's runtime; the size basis multiplies by
+        // the season's episodes itself.
+        let runtime_minutes = title.runtime_minutes;
         let submission_scope = collection_id
             .clone()
             .map(|collection_id| SubmissionScope::Collection { collection_id })
@@ -4129,25 +4121,6 @@ fn whole_season_number(season: &str) -> AppResult<u32> {
             "invalid season value",
         )
     })
-}
-
-/// Expected runtime of a whole-season pack, the basis its size is scored on:
-/// the title's episode length times the season's episode count. A season with
-/// no known episodes falls back to the title's own runtime.
-pub(crate) fn season_pack_runtime_minutes(
-    title: &Title,
-    season_episode_count: usize,
-) -> Option<i32> {
-    if season_episode_count == 0 {
-        return title.runtime_minutes;
-    }
-    let episode_count = i32::try_from(season_episode_count).unwrap_or(i32::MAX);
-    Some(
-        title
-            .runtime_minutes
-            .unwrap_or(24)
-            .saturating_mul(episode_count),
-    )
 }
 
 /// A search subject whose title-match evidence is not finished.

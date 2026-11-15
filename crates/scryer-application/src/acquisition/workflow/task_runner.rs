@@ -4430,23 +4430,9 @@ async fn process_single_target(
                     "skipping season-pack search after recent failed season-pack attempt"
                 );
             } else {
-                // Load season episodes for runtime scoring and upgrade checking.
-                let season_episodes = if let Some(ref coll_id) = effective_collection_id {
-                    context
-                        .reads
-                        .episodes_for_collection(app, coll_id)
-                        .await
-                        .unwrap_or_default()
-                } else {
-                    Arc::default()
-                };
-
-                // Calculate total season runtime for accurate size scoring.
-                // A 10-episode × 24-min season should expect ~10× a single episode's size.
-                let pack_runtime = crate::acquisition::release_search::season_pack_runtime_minutes(
-                    title,
-                    season_episodes.len(),
-                );
+                // fork (P23a0): one episode's runtime; the size basis
+                // multiplies by the season's episodes itself.
+                let pack_runtime = title.runtime_minutes;
 
                 let pack_subject = app
                     .resolve_release_search_subject_for_season_pack(

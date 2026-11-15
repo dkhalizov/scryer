@@ -967,6 +967,64 @@ async fn series_with_second_season(app: &AppUseCase, user: &User) -> (Title, Str
     (title, collection.id)
 }
 
+// fork (P23a0): the size basis multiplies by the season's episodes itself, so
+// the subject must carry one episode's runtime, not the whole season's.
+#[tokio::test]
+async fn a_season_pack_search_subject_carries_the_episode_runtime() {
+    let (app, user) = bootstrap();
+    let title = app
+        .add_title(
+            &user,
+            NewTitle {
+                name: "Glass Harbor".into(),
+                facet: MediaFacet::Series,
+                monitored: true,
+                runtime_minutes: Some(45),
+                ..Default::default()
+            },
+        )
+        .await
+        .expect("create series title");
+    let collection = app
+        .create_collection(
+            &user,
+            title.id.clone(),
+            "season".into(),
+            "1".into(),
+            Some("Season 1".into()),
+            None,
+            Some("1".into()),
+            Some("10".into()),
+        )
+        .await
+        .expect("create season collection");
+    for number in 1..=10 {
+        app.create_episode(
+            &user,
+            title.id.clone(),
+            Some(collection.id.clone()),
+            "standard".into(),
+            Some(number.to_string()),
+            Some("1".into()),
+            Some(format!("S01E{number:02}")),
+            None,
+            None,
+            None,
+            false,
+            false,
+        )
+        .await
+        .expect("create season episode");
+    }
+
+    let subject = app
+        .resolve_release_search_subject_for_season(&title, "1")
+        .await
+        .expect("season subject resolves");
+
+    assert_eq!(subject.runtime_minutes, Some(45));
+}
+
 #[tokio::test]
 async fn a_season_only_title_search_asks_indexers_for_the_season_and_no_episode() {
     // No download client is configured here, so an announced source kind
