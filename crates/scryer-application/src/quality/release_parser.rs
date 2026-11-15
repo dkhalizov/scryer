@@ -248,13 +248,21 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
         let title_start = usize::from(raw.trim_start().starts_with('[') && tokens.len() > 1);
         (&tokens, title_start)
     } else {
-        (&stripped_tokens, 0)
+        // fork (P35 B): `(1995) Movie Name` names its year first (Radarr).
+        let leading_year = stripped.trim_start().starts_with('(')
+            && stripped_tokens.len() > 1
+            && parse_context_year(&stripped_tokens[0]).is_some()
+            && !looks_like_release_metadata_token(&stripped_tokens[1], &stripped_tokens);
+        (&stripped_tokens, usize::from(leading_year))
     };
     let title_boundary = scan_tokens
         .iter()
         .enumerate()
         .skip(title_start)
-        .find(|(_, token)| looks_like_release_metadata_token(token, scan_tokens))
+        .find(|(index, token)| {
+            looks_like_release_metadata_token(token, scan_tokens)
+                && !numeric_title_word(token, &scan_tokens[index + 1..], scan_tokens)
+        })
         .map(|(index, _)| index)
         .unwrap_or(scan_tokens.len());
     let title_tokens = scan_tokens
@@ -300,6 +308,7 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
         known_years: tokens
             .iter()
             .filter_map(|token| parse_context_year(token))
+            .chain(bracketed_old_year(raw))
             .collect(),
         imdb_ids: tokens
             .iter()
@@ -307,6 +316,27 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
             .collect(),
         episodes: Vec::new(),
     }
+}
+
+/// fork (P35 B): a number that only looks like an absolute episode is title
+/// text when an episode, season or year marker follows (`30 Series S01E01`,
+/// `(500) Days Of Movie (2009)`); a year is title text only when another year
+/// follows it directly (`Klasse von 1999.1990`). Sonarr/Radarr read numeric
+/// titles the same way.
+fn numeric_title_word(token: &str, later: &[String], tokens: &[String]) -> bool {
+    let normalized = normalize_alphanumeric_upper(token);
+    let year = |t: &String| parse_context_year(&normalize_alphanumeric_upper(t)).is_some();
+    if parse_context_year(&normalized).is_some() {
+        return later.first().is_some_and(year);
+    }
+    looks_like_absolute_episode_token(&normalized)
+        && later.iter().any(|t| {
+            let next = normalize_alphanumeric_upper(t);
+            looks_like_standard_episode_token(&next)
+                || looks_like_season_pack_marker(&next, tokens)
+                || spelled_season_marker(&next, tokens)
+                || year(t)
+        })
 }
 
 fn guess_context_facet(raw: &str, tokens: &[String]) -> ContextFacetHint {
@@ -319,23 +349,35 @@ fn guess_context_facet(raw: &str, tokens: &[String]) -> ContextFacetHint {
     {
         return ContextFacetHint::Series;
     }
+    let has_year = tokens
+        .iter()
+        .any(|token| parse_context_year(token).is_some())
+        || bracketed_old_year(raw).is_some();
     if raw.contains('[')
         && tokens
             .iter()
             .any(|token| looks_like_absolute_episode_token(token))
-        && !tokens
-            .iter()
-            .any(|token| parse_context_year(token).is_some())
+        && !has_year
     {
         return ContextFacetHint::Anime;
     }
-    if tokens
-        .iter()
-        .any(|token| parse_context_year(token).is_some())
-    {
+    if has_year {
         return ContextFacetHint::Movie;
     }
     ContextFacetHint::Unknown
+}
+
+/// fork (P35 B): a `(1897)` or `[1897]` year, which Radarr reads; a bare
+/// 18xx number stays title text (`1883.S01E01`), as in the parser.
+fn bracketed_old_year(raw: &str) -> Option<i32> {
+    raw.as_bytes().windows(6).find_map(|w| {
+        let digits = &w[1..5];
+        (matches!((w[0], w[5]), (b'(', b')') | (b'[', b']'))
+            && digits.starts_with(b"18")
+            && digits.iter().all(u8::is_ascii_digit))
+        .then(|| std::str::from_utf8(digits).ok()?.parse().ok())
+        .flatten()
+    })
 }
 
 fn parse_context_year(token: &str) -> Option<i32> {
@@ -622,4 +664,50 @@ fn looks_like_absolute_episode_token(token: &str) -> bool {
         .unwrap_or_else(|| {
             (2..=4).contains(&normalized.len()) && normalized.chars().all(|ch| ch.is_ascii_digit())
         })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn title(raw: &str) -> String {
+        let analysis = neutral_release_analysis(raw);
+        let candidate = analysis.best_candidate().expect(raw);
+        candidate
+            .title_segments
+            .iter()
+            .find(|s| s.kind == scryer_release_parser::TitleSegmentKind::ObservedPrimary)
+            .map(|s| s.raw.clone())
+            .unwrap_or_default()
+    }
+
+    // fork (P35 B): a number before an episode, season or year marker is a
+    // title word (`30 Series S01E01`, `24-7 Series`); a year never is.
+    #[test]
+    fn numeric_title_words_before_identity() {
+        for (raw, expected) in [
+            ("30 Series - S01E01 - Pilot.avi", "30 Series"),
+            ("666 Series Title - S01E01", "666 Series Title"),
+            (
+                "10.Lines.You.Know.About.Code.S02E04.Prohibition.HDTV.XviD-AFG",
+                "10 Lines You Know About Code",
+            ),
+            ("30.Series.Season.04.HDTV.XviD-DIMENSION", "30 Series"),
+            ("Warehouse.13.S01E01", "Warehouse 13"),
+            ("Series 104 - S01E07 The Developers [SDTV]", "Series 104"),
+            ("Series.Title.2010.S01E01", "Series Title"),
+            (
+                "Movie.Klasse.von.1999.1990.German.720p.HDTV.x264-NORETAiL",
+                "Movie Klasse von 1999",
+            ),
+            ("(1995) Movie Name", "Movie Name"),
+        ] {
+            assert_eq!(title(raw), expected, "{raw}");
+        }
+        let parsed = crate::parse_release_metadata("Movie Name (1897) [DVD].mp4");
+        assert_eq!(parsed.year, Some(1897));
+        for raw in ["1883.S01E01.1080p.WEB-DL", "1899.S01E01"] {
+            assert_eq!(title(raw), &raw[..4], "{raw}");
+        }
+    }
 }

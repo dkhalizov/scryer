@@ -1244,7 +1244,7 @@ fn classify_token(
     let normalized = token.normalized.as_str();
     let compound = detect_compound_metadata(normalized);
 
-    if parse_year(normalized).is_some() {
+    if parse_token_year(token).is_some() {
         roles.push(RoleCandidate {
             role: TokenRole::Year,
             confidence: 95,
@@ -4657,7 +4657,7 @@ fn consume_unit_metadata(
         let compound = detect_compound_metadata(token.normalized.as_str());
 
         if state.metadata.year.is_none()
-            && let Some(year) = parse_year(token.normalized.as_str())
+            && let Some(year) = parse_token_year(token)
         {
             state.metadata.year = Some(year);
             state.metadata.year_span = Some(TokenRange {
@@ -9217,7 +9217,7 @@ fn is_parenthesized_title_year(tokens: &[Token], index: usize) -> bool {
     if token.separator_before != SeparatorKind::OpenParen {
         return false;
     }
-    if parse_year(token.normalized.as_str()).is_none() {
+    if parse_token_year(token).is_none() {
         return false;
     }
     let Some(group_id) = token.group_id else {
@@ -9471,6 +9471,15 @@ fn parse_imdb_id(token: &str) -> Option<String> {
 fn parse_year(token: &str) -> Option<i32> {
     let year = token.parse::<i32>().ok()?;
     (1900..=2099).contains(&year).then_some(year)
+}
+
+/// fork (P35 B2): a bracketed `(1897)` is a year too, as Radarr reads 18xx
+/// years; a bare `1883` or `1899` stays title text.
+fn parse_token_year(token: &Token) -> Option<i32> {
+    parse_year(&token.normalized).or_else(|| {
+        let year = token.normalized.parse::<i32>().ok()?;
+        ((1800..=1899).contains(&year) && token.bracket_depth > 0).then_some(year)
+    })
 }
 
 fn parse_numeric_token(token: &str) -> Option<u32> {
