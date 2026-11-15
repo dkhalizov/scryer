@@ -92,7 +92,7 @@
 //! No-file and no-history greens (SON 1092, 1093, 0049, 1189, 1190; RAD 1079,
 //! 1080, 0048, 0049) decide by "nothing to compare"; they are non-vacuous
 //! only through the guard-active siblings on the same `grab_refusal` path
-//! (root SON 1096-1098, RAD 1083-1085, SON 0053-0055, and the refused history
+//! (root SON 1096-1098, RAD 1083-1085, and the refused history
 //! cases here). SON 1191 and RAD 0050 are decided by the DownloadFailed ->
 //! Wanted translation (no claim), which matches the failure handler's reopen
 //! (`post_download_gate.rs` `reset_scopes_for_retry`); `missing_download_id`

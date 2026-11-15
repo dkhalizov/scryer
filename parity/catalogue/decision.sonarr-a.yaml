@@ -426,7 +426,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs:93"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D86 anime (D75(1)): AnimeVersionUpgrade is anime-only; the harness ignores series_type; red under P30b"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs|should_should_be_false_when_release_doesnt_have_a_release_group|-|-
 - id: SON-DECISION-0054
@@ -434,7 +435,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs:100"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D86 anime (D75(1)): AnimeVersionUpgrade is anime-only; the harness ignores series_type; red under P30b"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs|should_be_false_when_release_group_does_not_match|-|-
 - id: SON-DECISION-0055
@@ -442,7 +444,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs:107"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D86 anime (D75(1)): AnimeVersionUpgrade is anime-only; the harness ignores series_type; red under P30b"
   tests: [scryer-application::parity_decision::son_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AnimeVersionUpgradeSpecificationFixture.cs|should_return_true_when_repacks_are_not_preferred|-|-
 - id: SON-DECISION-0056
