@@ -191,7 +191,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs:469"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-infrastructure-acquisition::parity_torrent::son_torrent_magnet_hash]
 # key: src/NzbDrone.Core.Test/Download/DownloadClientTests/QBittorrentTests/QBittorrentFixture.cs|Download_should_refuse_magnet_if_no_trackers_provided_and_dht_is_disabled|-
 - id: SON-TORRENT-0025

@@ -33,9 +33,10 @@
 //! would only matter when the magnet yields no hash at all.
 //!
 //! Echo note: `extract_magnet_info_hash` copies a 40-hex btih (lower-cased)
-//! and a 32-char base32 btih as-is. For a hex magnet the reference does the
-//! same (hex in, hex out), so a green there is a real match, not an echo of the
-//! test. The only case today (base32) is red because Scryer never decodes it.
+//! and decodes a 32-char base32 btih to hex (fork P21). For a hex magnet the
+//! reference does the same (hex in, hex out), so a green there is a real match,
+//! not an echo of the test. The only case today is base32, so it exercises the
+//! decode.
 //! `torrent_file_hash` equals the expected value but is never read here.
 //!
 //! Ignored input keys: `settings` (host, port, category: transport),

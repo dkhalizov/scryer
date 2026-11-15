@@ -693,7 +693,8 @@ fn base32_encode_no_pad(bytes: &[u8]) -> String {
     output
 }
 
-fn base32_decode(value: &str) -> AppResult<Vec<u8>> {
+// fork (P21): also decodes base32 btih magnet hashes.
+pub(crate) fn base32_decode(value: &str) -> AppResult<Vec<u8>> {
     let mut output = Vec::new();
     let mut buffer = 0_u32;
     let mut bits_left = 0_u8;

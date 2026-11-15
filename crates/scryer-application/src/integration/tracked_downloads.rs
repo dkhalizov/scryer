@@ -1787,6 +1787,7 @@ impl TrackedDownloadService {
             td.title_id = Some(sub.title_id.clone());
             td.facet = Some(sub.facet.clone());
             td.source_title = sub.source_title.clone();
+            td.indexer = sub.source_provider_name.clone(); // fork (P21)
             td.match_type = TitleMatchType::Submission;
             if can_clear_stale_unmatched_state {
                 td.status = TrackedDownloadStatus::Ok;
@@ -5806,6 +5807,59 @@ mod tests {
             assert_eq!(tracked.title_id.as_deref(), Some(expected_title));
             assert_eq!(tracked.match_type, TitleMatchType::Submission);
         }
+    }
+
+    #[tokio::test]
+    async fn resolve_title_takes_the_indexer_from_the_submission() {
+        let item_id = "0123456789abcdef";
+        let download_id = DownloadId::new();
+        let submission = crate::DownloadSubmission {
+            download_id,
+            title_id: "title-1".to_string(),
+            purpose: crate::DownloadSubmissionPurpose::Standard,
+            facet: "series".to_string(),
+            download_client_id: Some("client-1".to_string()),
+            download_client_type: "qbittorrent".to_string(),
+            download_client_item_id: item_id.to_string(),
+            source_hint: None,
+            source_provider_id: None,
+            source_provider_name: Some("Fixture Indexer (Prowlarr)".to_string()),
+            source_kind: None,
+            source_title: Some("Synthetic.Show.S01E01".to_string()),
+            info_hash: None,
+            release_size_bytes: None,
+            request_signature: None,
+            scope: crate::SubmissionScope::Title,
+            release_listing_json: None,
+        };
+        let download_submissions = Arc::new(TestDownloadSubmissionRepo {
+            submission: Some(submission.clone()),
+            download_id_submissions: Arc::new(Mutex::new(vec![(
+                submission,
+                crate::DownloadSubmissionIdentity {
+                    download_id: Some(download_id.to_wire()),
+                },
+            )])),
+            ..Default::default()
+        });
+        let app = build_app(download_submissions, Arc::new(TestImportRepo::default()))
+            .with_test_overrides(|services| {
+                services.with_download_registry(Arc::new(WireTokenDownloadRegistry))
+            });
+        let mut tracker = TrackedDownloadService::new();
+        let mut item = build_client_item();
+        item.client_type = "qbittorrent".to_string();
+        item.download_client_item_id = item_id.to_string();
+        item.download_id = Some(download_id.to_wire());
+        item.title_name = "Synthetic.Show.S01E01".to_string();
+
+        tracker.track(&app, item).await.expect("item is tracked");
+
+        let tracked = tracker.get_by_download_id(download_id).expect("tracked");
+        assert_eq!(
+            tracked.indexer.as_deref(),
+            Some("Fixture Indexer (Prowlarr)")
+        );
     }
 
     #[tokio::test]

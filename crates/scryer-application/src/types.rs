@@ -2577,14 +2577,15 @@ pub fn extract_magnet_info_hash(value: &str) -> Option<String> {
             }
             let (kind, hash) = remainder.split_once(':')?;
             match kind.to_ascii_lowercase().as_str() {
-                "btih"
-                    if (hash.len() == 40 && hash.bytes().all(|b| b.is_ascii_hexdigit()))
-                        || (hash.len() == 32
-                            && hash
-                                .bytes()
-                                .all(|b| matches!(b, b'A'..=b'Z' | b'a'..=b'z' | b'2'..=b'7'))) =>
-                {
+                "btih" if hash.len() == 40 && hash.bytes().all(|b| b.is_ascii_hexdigit()) => {
                     Some(hash.to_ascii_lowercase())
+                }
+                // fork (P21): a base32 btih is the same 20-byte hash; return hex
+                // like Sonarr's MagnetLink.Parse(url).InfoHash.ToHex().
+                "btih" if hash.len() == 32 && !hash.contains('=') => {
+                    crate::security::totp::base32_decode(hash)
+                        .ok()
+                        .map(|bytes| crate::helpers::to_hex(&bytes))
                 }
                 "btmh"
                     if hash.len() == 68
@@ -2719,6 +2720,22 @@ mod canonical_download_source_tests {
         assert!(is_valid_magnet_uri(&multihash));
         assert_eq!(extract_magnet_info_hash(&multihash), Some("ab".repeat(32)));
         assert!(!is_valid_magnet_uri("magnet:?xt=urn:btih:not-a-hash"));
+    }
+
+    #[test]
+    fn base32_btih_magnet_reads_as_hex_info_hash() {
+        let hex = Some("cbc2f069fe8bb2f544eae707d75bcd3de9dcf951".to_string());
+        assert_eq!(
+            extract_magnet_info_hash("magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z6KR&tr=udp"),
+            hex
+        );
+        assert_eq!(
+            extract_magnet_info_hash("magnet:?xt=urn:btih:zpbpa2p6rozpkrhk44d5ow6nhxu5z6kr"),
+            hex
+        );
+        assert!(!is_valid_magnet_uri(
+            "magnet:?xt=urn:btih:ZPBPA2P6ROZPKRHK44D5OW6NHXU5Z61R"
+        ));
     }
 
     #[test]

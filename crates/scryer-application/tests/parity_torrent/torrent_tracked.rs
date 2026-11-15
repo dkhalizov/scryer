@@ -44,10 +44,11 @@
 //!   `&AppUseCase`/repositories; no public fakes. Note for 0110 and RAD-0008
 //!   (indexer from the grab): Scryer exposes the grab's indexer as
 //!   `DownloadQueueItem.source_provider` (integration/workflow/queue_queries.rs:526,
-//!   from the submission). `TrackedDownload.indexer` (:104) is never filled from a
-//!   submission (only merged at :291) and is read only by the seeding event
-//!   (tracked_commands.rs:4139). A future mapping should compare source_provider;
-//!   the verdict is open.
+//!   from the submission). `TrackedDownload.indexer` (:104) is filled from the
+//!   submission's `source_provider_name` in `resolve_title` (fork P21, unit test
+//!   `resolve_title_takes_the_indexer_from_the_submission`) and is read only by
+//!   the seeding event (tracked_commands.rs:4139). The IDs stay unmapped until
+//!   there is a public fake for `&AppUseCase`.
 //! - RAD-TORRENT-0011 (state from latest history): `reconstruct_state` (:1755)
 //!   reads the durable tracked-state marker through `&AppUseCase`.
 //! - SON-TORRENT-0112, 0113: concept absent (a tracked download binds a title_id,
