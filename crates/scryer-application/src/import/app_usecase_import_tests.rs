@@ -2209,6 +2209,10 @@ fn decide_import_skips_when_the_existing_episode_file_scores_higher() {
 /// fork (P30, D79 Q2): Sonarr's import `NotCustomFormatUpgrade`: a file of
 /// the held quality that scores below it is refused even at a higher
 /// revision. A tie still lands, and an operator's import is not second-guessed.
+/// fork (P30 review): the grab lanes admit that PROPER on the revision, so the
+/// refusal is held, not settled as already imported. A settled download frees
+/// its claim and the next search grabs the same PROPER again; the arrs leave
+/// it import-blocked in their queue.
 #[test]
 fn a_higher_revision_scoring_below_the_file_is_refused_unless_asked() {
     let mut incumbents = vec![scoped_media_file(
@@ -2223,18 +2227,144 @@ fn a_higher_revision_scoring_below_the_file_is_refused_unless_asked() {
             .with_revision_policy(Some("GRP"), false)
     };
 
-    let (rejection, disposition) =
-        episode_import_admission(&incumbents, &["ep-1"], proper(700), false).unwrap_err();
-    assert_eq!(
-        rejection.skip_reason,
-        Some(ImportSkipReason::AlreadyImported)
-    );
-    assert_eq!(
-        disposition,
-        crate::import_decide::RejectionDisposition::Skip
-    );
+    assert_held_not_settled(import_refusal(
+        &test_admission_subject(&incumbents, &["ep-1"]),
+        &incumbents,
+        proper(700),
+    ));
     assert!(episode_import_admission(&incumbents, &["ep-1"], proper(820), false).is_ok());
     assert!(episode_import_admission(&incumbents, &["ep-1"], proper(700), true).is_ok());
+}
+
+/// fork (P30 review): the P30 refusal is for a win on the revision only. A
+/// PROPER that wins on the preferred language lands below the file's score,
+/// as the same release without PROPER does: across groups in the default
+/// order (import keeps the group rule, so the revision ties), and in the
+/// group in a language-first order.
+#[test]
+fn a_proper_winning_on_the_preferred_language_lands_below_the_files_score() {
+    let mut incumbents = vec![scoped_media_file(
+        "file-1",
+        "/data/TV/Quiet Orbit/Season 01/Quiet Orbit - S01E01 - 1080p.mkv",
+        500,
+        &["ep-1"],
+    )];
+    incumbents[0].media_file.release_group = Some("GRPA".into());
+    let english_file = test_admission_subject_with(
+        &incumbents,
+        &["ep-1"],
+        Some("WEBDL-1080P"),
+        crate::AudioLanguageRank::for_test(1, 0),
+    );
+    let german_proper = |group| {
+        crate::admission::CandidateFacts::new(Some(0), 1, 450)
+            .with_revision_policy(Some(group), false)
+            .with_quality_key(Some("WEBDL-1080P"))
+            .with_language(crate::AudioLanguageRank::for_test(0, 0))
+    };
+    let admitted = |candidate| {
+        crate::import_decide::evaluate_import_admission(
+            &english_file,
+            candidate,
+            false,
+            &crate::import_decide::IncumbentRows::Episodes(&incumbents),
+            "this episode",
+        )
+        .is_ok()
+    };
+
+    assert!(admitted(german_proper("GRPB")));
+    assert!(admitted(
+        german_proper("GRPA").with_pipeline(
+            crate::DecisionPipeline::try_from_gates([
+                crate::DecisionGate::PreferredLanguage,
+                crate::DecisionGate::QualityTier,
+                crate::DecisionGate::Revision,
+                crate::DecisionGate::OptionalLanguages,
+            ])
+            .unwrap()
+        )
+    ));
+}
+
+/// fork (P30 review): a PROPER of another group and the held exact quality
+/// is a revision upgrade to the grab lanes (P30b), not to import, which keeps
+/// the group rule. When import refuses it (a lower score, a worse preferred
+/// language), the refusal is held, or the next search grabs it again. A
+/// PROPER of another source in the tier is no revision to grab either (D82),
+/// so its refusal still settles.
+#[test]
+fn a_foreign_proper_the_grab_lanes_admit_is_held_when_import_refuses_it() {
+    let mut incumbents = vec![scoped_media_file(
+        "file-1",
+        "/data/TV/Quiet Orbit/Season 01/Quiet Orbit - S01E01 - 1080p.mkv",
+        500,
+        &["ep-1"],
+    )];
+    incumbents[0].media_file.release_group = Some("GRPA".into());
+    let german_file = test_admission_subject_with(
+        &incumbents,
+        &["ep-1"],
+        Some("WEBDL-1080P"),
+        crate::AudioLanguageRank::for_test(0, 0),
+    );
+    let proper = |key, score, preferred_rank| {
+        crate::admission::CandidateFacts::new(Some(0), 1, score)
+            .with_revision_policy(Some("GRPB"), false)
+            .with_quality_key(Some(key))
+            .with_language(crate::AudioLanguageRank::for_test(preferred_rank, 0))
+    };
+
+    assert_held_not_settled(import_refusal(
+        &german_file,
+        &incumbents,
+        proper("WEBDL-1080P", 175, 0),
+    ));
+    assert_held_not_settled(import_refusal(
+        &german_file,
+        &incumbents,
+        proper("WEBDL-1080P", 900, 1),
+    ));
+    let other_source = import_refusal(&german_file, &incumbents, proper("BLURAY-1080P", 175, 0));
+    assert_eq!(
+        other_source.disposition,
+        crate::import_decide::RejectionDisposition::Skip
+    );
+    assert_eq!(
+        other_source.rejection.skip_reason,
+        Some(ImportSkipReason::AlreadyImported)
+    );
+    assert!(other_source.better_library_copy.is_some());
+}
+
+fn import_refusal(
+    subject: &crate::admission::AdmissionSubject,
+    incumbents: &[crate::EpisodeScopedMediaFile],
+    candidate: crate::admission::CandidateFacts,
+) -> crate::import_decide::ImportAdmissionRefusal {
+    *crate::import_decide::evaluate_import_admission(
+        subject,
+        candidate,
+        false,
+        &crate::import_decide::IncumbentRows::Episodes(incumbents),
+        "this episode",
+    )
+    .err()
+    .expect("refused")
+}
+
+/// Held for an operator with no library copy named, so the download stays
+/// import-blocked and keeps its claim instead of settling as imported.
+fn assert_held_not_settled(refusal: crate::import_decide::ImportAdmissionRefusal) {
+    assert_eq!(
+        refusal.disposition,
+        crate::import_decide::RejectionDisposition::Hold
+    );
+    assert_eq!(
+        refusal.rejection.skip_reason,
+        Some(ImportSkipReason::PolicyMismatch)
+    );
+    assert!(refusal.better_library_copy.is_none());
 }
 
 #[test]
@@ -3394,6 +3524,15 @@ fn test_admission_subject(
     incumbents: &[crate::EpisodeScopedMediaFile],
     target_episode_ids: &[&str],
 ) -> crate::admission::AdmissionSubject {
+    test_admission_subject_with(incumbents, target_episode_ids, None, Default::default())
+}
+
+fn test_admission_subject_with(
+    incumbents: &[crate::EpisodeScopedMediaFile],
+    target_episode_ids: &[&str],
+    quality_key: Option<&str>,
+    language: crate::AudioLanguageRank,
+) -> crate::admission::AdmissionSubject {
     crate::admission::AdmissionSubject::new(
         crate::admission::AdmissionScope::Episodes(
             target_episode_ids
@@ -3404,14 +3543,14 @@ fn test_admission_subject(
         incumbents.iter().map(|incumbent| {
             (
                 crate::admission::Incumbent {
-                    quality_key: None,
+                    quality_key: quality_key.map(str::to_string),
                     tier_index: Some(0),
                     revision: 0,
                     file_id: incumbent.media_file.id.clone(),
                     file_path: incumbent.media_file.file_path.clone(),
                     release_group: incumbent.media_file.release_group.clone(),
                     score: incumbent.media_file.acquisition_score.unwrap_or(0),
-                    language: Default::default(),
+                    language,
                     covers: incumbent.episode_ids.clone(),
                     created_at: incumbent.media_file.created_at.clone(),
                 },

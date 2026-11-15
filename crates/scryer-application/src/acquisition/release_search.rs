@@ -1876,10 +1876,9 @@ fn candidate_revision(candidate: &IndexerSearchResult) -> i32 {
 
 /// Honor-mode exception for a later revision in the same tier, of a matching
 /// known group or of one known exact quality (P30b,
-/// [`crate::decision_pipeline::Facts::revision_cmp`]). Empty scopes, unrelated
-/// releases and Ignore mode use ordinary rules.
-/// A pack can qualify against one member, but admission still checks each member
-/// and candidate-wide ranking requires every incumbent to be related.
+/// [`crate::decision_pipeline::Facts::revision_cmp`]). Empty scopes, releases
+/// of another group and exact quality, and Ignore mode use ordinary rules.
+/// A pack can qualify against one member, but admission still checks each member.
 pub(crate) fn candidate_is_revision_upgrade(
     candidate: crate::admission::CandidateFacts,
     subject: &crate::admission::AdmissionSubject,

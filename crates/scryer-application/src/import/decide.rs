@@ -327,6 +327,9 @@ pub(crate) async fn decide_import(
                 scored.parsed.release_group.as_deref(),
                 &input.scoring_context.profile().criteria,
             );
+    // fork (P30 review): the grab lanes' exact quality; see `evaluate_import_admission`.
+    let quality_key = crate::quality_profile::release_tier_label(&scored.parsed);
+    let candidate = candidate.with_quality_key(quality_key.as_deref());
 
     match evaluate_import_admission(
         &subject,
@@ -375,15 +378,16 @@ pub(crate) fn evaluate_import_admission(
     } else {
         crate::admission::AdmissionPolicy::not_a_downgrade()
     };
+    // fork (P30 review): import keeps the group rule for revisions (P30b), so
+    // it decides without the exact quality. That only says which refusals the
+    // grab lanes admitted on the revision; see `refusal_over`.
+    let grab_view = candidate;
+    let candidate = candidate.with_quality_key(None);
 
     let (ranked_superseded, previous_best_score) =
         match crate::admission::evaluate_admission(subject, candidate, &policy) {
             crate::admission::AdmissionVerdict::Reject(rejection) => {
-                return Err(Box::new(ImportAdmissionRefusal {
-                    rejection: admission_rejection_to_import(scope_label, &rejection),
-                    disposition: disposition_for(&rejection.reason),
-                    better_library_copy: better_library_copy(&rejection),
-                }));
+                return Err(refusal_over(subject, grab_view, scope_label, &rejection));
             }
             crate::admission::AdmissionVerdict::Admit {
                 ranked_superseded,
@@ -392,22 +396,19 @@ pub(crate) fn evaluate_import_admission(
             } => (ranked_superseded, previous_best_score),
         };
 
-    // fork (P30, D79 Q2): Sonarr's import `NotCustomFormatUpgrade`. A file of
-    // the held tier that scores below it is refused even when it won on the
-    // revision, unless an operator asked for it.
+    // fork (P30, D79 Q2): Sonarr's import `NotCustomFormatUpgrade`. A file
+    // that scores below the held one is refused when it won over it on the
+    // revision, unless an operator asked for it. A win at a language or tier
+    // gate stands, as it does for the same release without PROPER.
     if !operator_intent
         && let Some(incumbent) = subject.incumbents().iter().find(|incumbent| {
-            incumbent.tier_index == candidate.tier_index
-                && candidate.revision > incumbent.revision
+            crate::admission::ladder_against_incumbent(candidate, incumbent)
+                == crate::decision_pipeline::LadderOutcome::Won(crate::DecisionGate::Revision)
                 && candidate.score < incumbent.score
         })
     {
         let rejection = crate::admission::not_an_upgrade(incumbent, candidate, &policy);
-        return Err(Box::new(ImportAdmissionRefusal {
-            rejection: admission_rejection_to_import(scope_label, &rejection),
-            disposition: disposition_for(&rejection.reason),
-            better_library_copy: better_library_copy(&rejection),
-        }));
+        return Err(refusal_over(subject, grab_view, scope_label, &rejection));
     }
 
     let superseded = resolve_superseded_rows(rows, &ranked_superseded);
@@ -430,6 +431,38 @@ pub(crate) fn evaluate_import_admission(
         superseded,
         previous_best_score,
     })
+}
+
+/// An admission refusal as import carries it out.
+///
+/// fork (P30 review): a refusal over a file the grab lanes let this release
+/// beat on the revision (`grab_view` carries the exact quality, P30b) is held,
+/// with no library copy, instead of settling as already imported. A settled
+/// download frees its claim and the next search grabs the same PROPER again;
+/// the arrs leave it import-blocked in their queue, which stops the re-grab.
+fn refusal_over(
+    subject: &crate::admission::AdmissionSubject,
+    grab_view: crate::admission::CandidateFacts,
+    scope_label: &str,
+    rejection: &crate::admission::AdmissionRejection,
+) -> Box<ImportAdmissionRefusal> {
+    let mut refusal = ImportAdmissionRefusal {
+        rejection: admission_rejection_to_import(scope_label, rejection),
+        disposition: disposition_for(&rejection.reason),
+        better_library_copy: better_library_copy(rejection),
+    };
+    let grab_won_on_revision = subject.incumbents().iter().any(|incumbent| {
+        incumbent.file_id == rejection.incumbent_file_id
+            && crate::admission::ladder_against_incumbent(grab_view, incumbent)
+                == crate::decision_pipeline::LadderOutcome::Won(crate::DecisionGate::Revision)
+    });
+    if refusal.disposition == RejectionDisposition::Skip && grab_won_on_revision {
+        refusal.disposition = RejectionDisposition::Hold;
+        refusal.better_library_copy = None;
+        refusal.rejection.recycle_reason = "policy_mismatch";
+        refusal.rejection.skip_reason = Some(ImportSkipReason::PolicyMismatch);
+    }
+    Box::new(refusal)
 }
 
 /// Re-run the scoring pass over the size that actually landed.
