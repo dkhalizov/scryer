@@ -1030,12 +1030,23 @@ pub fn evaluate_profile_requirements(
     profile: &QualityProfile,
     release: &ParsedReleaseMetadata,
     has_existing_file: bool,
-    _category_hint: Option<&str>,
+    category_hint: Option<&str>,
 ) -> QualityProfileDecision {
     let mut decision = QualityProfileDecision::new();
     let criteria = &profile.criteria;
+    // fork (P29, D76a): a series remux is admitted only by an explicit REMUX
+    // tier or prefer_remux; movies keep the bare-tier fallback (D48).
+    let series_remux = release.is_remux
+        && !criteria.prefer_remux
+        && category_hint.is_some_and(|c| c.eq_ignore_ascii_case("series"));
     // fork (P11): the source tier key, not the bare resolution
-    decision.tier_index = quality_tier_index(criteria, release_tier_label(release).as_deref());
+    decision.tier_index = quality_tier_index(criteria, release_tier_label(release).as_deref())
+        .filter(|&i| {
+            !series_remux
+                || criteria.quality_tiers[i]
+                    .to_ascii_uppercase()
+                    .starts_with("REMUX-")
+        });
     decision.decision_pipeline = criteria.decision_pipeline;
     // The lowest admitted resolution is the fallback floor. Each standard
     // resolution step above it earns 100 points, including skipped tiers. Profile

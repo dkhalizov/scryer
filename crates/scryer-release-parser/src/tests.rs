@@ -2041,6 +2041,73 @@ fn remux_is_projected_as_structural_flag_not_edition() {
     assert_ne!(candidate.projected.edition.as_deref(), Some("REMUX"));
 }
 
+// fork (P29): arr RemuxRegex reads a whole BDRemux/UHDRemux word as remux,
+// but not `UHDRemux2160p`.
+#[test]
+fn fused_bdremux_and_uhdremux_are_remux() {
+    for (raw, title, year, quality, remux) in [
+        (
+            "Movie.Name.2008.BDREMUX.1080p.Bluray.AVC.DTS-HR.MA.5.1-LEGi0N",
+            "Movie Name",
+            2008,
+            Some("1080p"),
+            true,
+        ),
+        (
+            "Movie Title 2022 (BDRemux 1080p HEVC FLAC) [Netaro]",
+            "Movie Title",
+            2022,
+            Some("1080p"),
+            true,
+        ),
+        (
+            "Movie.Title.2016.T1.UHDRemux.2160p.HEVC.Dual.AC3.5.1-TrueHD.5.1.Sub",
+            "Movie Title",
+            2016,
+            Some("2160p"),
+            true,
+        ),
+        (
+            "Movie Title (2020) [UHDRemux2160p HDR]",
+            "Movie Title",
+            2020,
+            None,
+            false,
+        ),
+    ] {
+        let mut target = context(ContextFacetHint::Movie, title);
+        target.known_years.push(year);
+        let analysis = analyze_release_for_target(raw, &target);
+        let candidate = analysis.best_candidate().expect("best candidate");
+        assert_eq!(candidate.projected.is_remux, remux, "{raw}");
+        if remux {
+            assert_eq!(
+                source_label(candidate.projected.source.as_ref()),
+                Some("BluRay"),
+                "{raw}"
+            );
+        }
+        if let Some(quality) = quality {
+            assert_eq!(
+                candidate.projected.quality.as_deref(),
+                Some(quality),
+                "{raw}"
+            );
+        }
+    }
+}
+
+#[test]
+fn bdremux_keeps_a_real_edition() {
+    let mut target = context(ContextFacetHint::Movie, "Movie Title");
+    target.known_years.push(2010);
+    let analysis =
+        analyze_release_for_target("Movie.Title.2010.Extended.BDRemux.1080p-GRP", &target);
+    let candidate = analysis.best_candidate().expect("best candidate");
+    assert!(candidate.projected.is_remux);
+    assert_eq!(candidate.projected.edition.as_deref(), Some("Extended"));
+}
+
 #[test]
 fn remux_survives_when_proper_appears_first() {
     let mut target = context(ContextFacetHint::Movie, "13 Bells");

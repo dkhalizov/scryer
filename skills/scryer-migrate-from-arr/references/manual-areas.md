@@ -25,7 +25,7 @@ error.
 
 | Arr | Scryer `criteria` field |
 |---|---|
-| allowed qualities (`items[].allowed`) | `qualityTiers`: resolution tiers in preference order: `4320P 2160P 1440P 1080P 1080I 720P 576P 480P 360P`; a source tier (`REMUX-2160P`, `WEBDL-1080P`) ranks one source of a resolution on its own, and the bare resolution then covers the rest |
+| allowed qualities (`items[].allowed`) | `qualityTiers`: resolution tiers in preference order: `4320P 2160P 1440P 1080P 1080I 720P 576P 480P 360P`; a source tier (`REMUX-2160P`, `WEBDL-1080P`) ranks one source of a resolution on its own, and the bare resolution then covers the rest. For series a remux is admitted only by a `REMUX-<res>P` tier (or `preferRemux`), so map an allowed Sonarr Remux quality to that tier; for movies the bare resolution covers remux |
 | allowed sources inside those qualities | `sourceAllowlist` / `sourceBlocklist`: `WEB-DL WEBRip BluRay BRDISK DVD HDTV CAM TELESYNC TELECINE DVDSCR WORKPRINT` |
 | `cutoff` | `cutoffTier` (a tier from `qualityTiers`) |
 | `upgradeAllowed` | `allowUpgrades` |

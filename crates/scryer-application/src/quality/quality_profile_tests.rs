@@ -521,6 +521,47 @@ fn hdr_blocks_when_not_allowed() {
 
 // ── score_with_pack: remux / atmos / dual audio ──────────────────
 
+// fork (P29, D76a): every captured Sonarr profile disallows Remux; a series
+// remux is admitted only by an explicit REMUX tier (or prefer_remux).
+#[test]
+fn a_series_remux_needs_an_explicit_remux_tier() {
+    let profile = |tiers: &str, prefer: bool| {
+        QualityProfile::parse(&format!(
+            r#"{{"id":"t","name":"T","criteria":{{"quality_tiers":{tiers},"prefer_remux":{prefer},"allow_unknown_quality":false,"allow_upgrades":true}}}}"#
+        ))
+        .unwrap()
+    };
+    let bare = profile(r#"["2160P","1080P"]"#, false);
+    for raw in [
+        "Show.S01E01.2160p.BluRay.REMUX.HEVC-GRP",
+        "Show.S01E01.1080p.BDRemux-GRP",
+    ] {
+        let release = parse_release_metadata(raw);
+        let series = evaluate_profile_requirements(&bare, &release, false, Some("series"));
+        assert_eq!(series.tier_index, None, "{raw}");
+        assert!(
+            series
+                .block_codes
+                .contains(&"quality_not_in_profile_tiers".to_string()),
+            "{raw}: {:?}",
+            series.block_codes
+        );
+    }
+    let release = parse_release_metadata("Show.S01E01.2160p.BluRay.REMUX.HEVC-GRP");
+    let movie = evaluate_profile_requirements(&bare, &release, false, Some("movie"));
+    assert_eq!(movie.tier_index, Some(0));
+    let explicit = profile(r#"["REMUX-2160P","2160P"]"#, false);
+    assert_eq!(
+        evaluate_profile_requirements(&explicit, &release, false, Some("series")).tier_index,
+        Some(0)
+    );
+    let preferred = profile(r#"["2160P","1080P"]"#, true);
+    assert_eq!(
+        evaluate_profile_requirements(&preferred, &release, false, Some("series")).tier_index,
+        Some(0)
+    );
+}
+
 #[test]
 fn balanced_profile_scores_explicit_remux_preference() {
     let profile = QualityProfile::parse(

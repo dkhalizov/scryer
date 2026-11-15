@@ -4918,11 +4918,16 @@ fn build_candidate(
         infer_release_group_for_candidate(&state, tokens, raw_input, context_index.facet_hint);
     let raw_score = finalize_score(&state, tokens, annotations);
     let zones = build_candidate_zones(&state, tokens, release_group.as_deref());
-    let is_remux = state
+    let remux_edition = state
         .metadata
         .edition
         .as_deref()
         .is_some_and(|value| value.eq_ignore_ascii_case("remux"));
+    // fork (P29): a whole BDRemux/UHDRemux word is a remux (arr RemuxRegex).
+    let is_remux = remux_edition
+        || tokens
+            .iter()
+            .any(|token| matches!(token.normalized.as_str(), "BDREMUX" | "UHDREMUX"));
     let projected = ParsedReleaseMetadata {
         raw_title: raw_input.to_string(),
         normalized_tokens: tokens
@@ -4989,7 +4994,7 @@ fn build_candidate(
             .streaming_service
             .as_deref()
             .and_then(StreamingService::parse),
-        edition: (!is_remux)
+        edition: (!remux_edition)
             .then(|| state.metadata.edition.as_deref().map(canonical_edition))
             .flatten(),
         anime_version: anime_version_from_identity(&state.identity).or_else(|| {
@@ -9128,8 +9133,10 @@ fn detect_compound_metadata(token: &str) -> CompoundMetadata {
         metadata.source = Some("WEB-DL");
     } else if contains_any(token, &["BDMV", "BDISO", "BRDISK"]) {
         metadata.source = Some("BRDISK");
-    } else if contains_any(token, &["BLURAY", "BDREMUX", "BDRIO", "BDRIP", "BRRIP"])
-        || matches!(token, "BLU" | "BD" | "JPBD")
+    } else if contains_any(
+        token,
+        &["BLURAY", "BDREMUX", "UHDREMUX", "BDRIO", "BDRIP", "BRRIP"],
+    ) || matches!(token, "BLU" | "BD" | "JPBD")
     {
         metadata.source = Some("BluRay");
     } else if token.contains("HDTV") {
