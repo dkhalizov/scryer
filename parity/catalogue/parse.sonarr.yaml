@@ -1343,7 +1343,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|54a05a743b48|0
 - id: SON-PARSE-0169
@@ -1464,7 +1464,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:38"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|54a05a743b48|1
 - id: SON-PARSE-0184
@@ -3560,7 +3560,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:313"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_ukrainian|b14b2df5ba82|0
 - id: SON-PARSE-0445
@@ -5225,7 +5225,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_series_name|8ed30ea29bcc|0
 - id: SON-PARSE-0651
@@ -9665,7 +9665,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:10"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|0482314b659c|0
 - id: SON-PARSE-1203
@@ -9873,7 +9873,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:36"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|56a7de0b05d3|0
 - id: SON-PARSE-1229
@@ -9881,7 +9881,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:37"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|09e3cefba667|0
 - id: SON-PARSE-1230
@@ -10553,7 +10553,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:67"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|426855f1619e|0
 - id: SON-PARSE-1314
@@ -10561,7 +10561,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:68"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|a701d2d4cc42|0
 - id: SON-PARSE-1315
@@ -10569,7 +10569,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:69"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|fbc4b68c8d3a|0
 - id: SON-PARSE-1316
@@ -10577,7 +10577,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:70"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|6aa156f3d32b|0
 - id: SON-PARSE-1317
@@ -10593,7 +10593,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:72"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|c2de0cbb1b04|0
 - id: SON-PARSE-1319
@@ -11033,7 +11033,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:134"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|920c0fb91f59|0
 - id: SON-PARSE-1374

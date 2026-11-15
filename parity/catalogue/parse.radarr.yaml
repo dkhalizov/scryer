@@ -1579,7 +1579,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:70"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0197
   # key: "LanguageParserFixture.cs|should_parse_language_french_english|fce2f7a2037c611d|0"
@@ -3675,7 +3675,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:115"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0457
   # key: "ParserFixture.cs|should_parse_german_movie|83b75cf2c8c67fe6|0"
@@ -3891,7 +3891,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:231"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0484
   # key: "ParserFixture.cs|should_parse_movie_year|4b0907ae4b61455f|0"
@@ -3923,7 +3923,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:240"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0488
   # key: "ParserFixture.cs|should_parse_movie_year|1cd93d2b87eb2bc0|0"
