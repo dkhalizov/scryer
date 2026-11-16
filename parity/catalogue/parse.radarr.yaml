@@ -2661,7 +2661,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:551"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0332
   # key: "LanguageParserFixture.cs|should_not_add_original_language_to_german_release_when_title_contains_web_dl|896cda0eea0bea64|0"
@@ -2701,7 +2701,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:571"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0337
   # key: "LanguageParserFixture.cs|should_parse_original_title_from_release_name|40071a4bdf5b3d2a|0"
@@ -2709,7 +2709,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:572"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0338
   # key: "LanguageParserFixture.cs|should_parse_original_title_from_release_name|fa0a7c1642efcc7c|0"
@@ -2725,7 +2725,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:581"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0340
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|6a242b67fea1cbc7|0"
