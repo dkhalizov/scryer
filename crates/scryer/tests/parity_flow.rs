@@ -23,7 +23,9 @@ use scryer_infrastructure_acquisition::downloads::{clients::PrioritizedDownloadC
 use scryer_application::testing::AppUseCaseTestExt;
 use scryer_application::{
     AppUseCase, BlocklistRepository, DownloadClientConfigRepository, DownloadQueuePollerOptions, IndexerConfigRepository,
-    LibraryRepository, LibraryRootDraft, MediaFileRepository, SaveQualityProfileSettings,
+    DOWNLOAD_CLIENT_ROUTING_SETTINGS_KEY, LibraryRepository, LibraryRootDraft, MediaFileRepository,
+    RECYCLE_BIN_ENABLED_KEY, SETTINGS_SCOPE_MEDIA, SaveQualityProfileSettings, SeedingProfileRepository,
+    SettingsRepository,
     SubmissionConflictPolicy, import_completed_download, start_download_queue_poller_with_options,
 };
 use scryer_domain::{ExternalId, IndexerConfig, MediaFacet, NewTitle, Title, User};
@@ -61,9 +63,31 @@ impl Flow {
             .batch_ensure_setting_definitions(vec![
                 seed("quality.profiles", "json", "[]"),
                 seed("quality.profile_id", "string", "\"1080p\""),
+                seed(DOWNLOAD_CLIENT_ROUTING_SETTINGS_KEY, "json", "{}"),
+                SettingDefinitionSeed {
+                    scope: SETTINGS_SCOPE_MEDIA.into(),
+                    ..seed(RECYCLE_BIN_ENABLED_KEY, "boolean", "true")
+                },
             ])
             .await
             .expect("seed quality settings");
+        // our captured config: Radarr's download client files grabs under
+        // `radarr`, removes completed and failed downloads, and its media
+        // management has the recycle bin off
+        for (scope, key, id, value) in [
+            (
+                "system",
+                DOWNLOAD_CLIENT_ROUTING_SETTINGS_KEY,
+                Some("movie"),
+                r#"{"flow-qbit":{"enabled":true,"category":"radarr","removeCompleted":true,"removeFailed":true,"priority":1}}"#,
+            ),
+            (SETTINGS_SCOPE_MEDIA, RECYCLE_BIN_ENABLED_KEY, None, "false"),
+        ] {
+            ctx.settings_store
+                .upsert_setting_json(scope, key, id.map(String::from), value.into(), "parity_flow", None)
+                .await
+                .expect("flow setting");
+        }
         let user = ctx.app.find_or_create_default_user().await.expect("user");
         ctx.app
             .save_quality_profile_settings(
@@ -146,6 +170,26 @@ impl Flow {
 
     async fn add_torznab(&self, id: &str, fake: &TorznabFake) {
         let now = chrono::Utc::now();
+        // our Prowlarr-synced indexers carry seed criteria: ratio 1, 7 days
+        SeedingProfileStore::new(self.ctx.db.datastore())
+            .create(scryer_domain::SeedingProfile {
+                id: "prowlarr-seed".into(),
+                name: "prowlarr-seed".into(),
+                ratio: Some(1.0),
+                seed_time_minutes: Some(10_080),
+                season_pack_mode: scryer_domain::SeasonPackSeedMode::Inherit,
+                season_pack_ratio: None,
+                season_pack_seed_time_minutes: None,
+                honor_tracker_minimums: false,
+                goal_met_action: scryer_domain::SeedGoalMetAction::RemoveEntry,
+                never_remove: false,
+                minimum_seeders: None,
+                post_import_tracking: scryer_domain::PostImportTracking::Park,
+                created_at: now,
+                updated_at: now,
+            })
+            .await
+            .expect("seeding profile");
         let url = fake.api_url();
         let config = IndexerConfig {
             last_error_code: None,
@@ -159,7 +203,7 @@ impl Flow {
             enable_auto_search: true,
             proxy_config_id: None,
             download_client_id: None,
-            seeding_profile_id: None,
+            seeding_profile_id: Some("prowlarr-seed".into()),
             managed_parent_config_id: None,
             managed_child_key: None,
             managed_metadata_json: None,
