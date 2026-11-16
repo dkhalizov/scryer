@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:torznab="http://torznab.com/schemas/2015/feed">
+  <channel>
+    <title>Fake Torznab</title>
+    <item>
+      <title>Made.Up.Show.S01E02.1080p.WEB-DL.DDP5.1.H.264-FAKEGRP</title>
+      <guid>{BASE}/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1</guid>
+      <link>{BASE}/dl/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1.torrent</link>
+      <pubDate>Mon, 16 Nov 2026 08:00:00 +0000</pubDate>
+      <size>1932735283</size>
+      <enclosure url="{BASE}/dl/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1.torrent" length="1932735283" type="application/x-bittorrent"/>
+      <torznab:attr name="category" value="5040"/>
+      <torznab:attr name="seeders" value="25"/>
+      <torznab:attr name="peers" value="25"/>
+      <torznab:attr name="infohash" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa1"/>
+      <torznab:attr name="downloadvolumefactor" value="1"/>
+      <torznab:attr name="uploadvolumefactor" value="1"/>
+    </item>
+    <item>
+      <title>Made.Up.Show.S01E02.720p.HDTV.x264-FAKEGRP</title>
+      <guid>{BASE}/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2</guid>
+      <link>{BASE}/dl/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2.torrent</link>
+      <pubDate>Mon, 16 Nov 2026 08:00:00 +0000</pubDate>
+      <size>734003200</size>
+      <enclosure url="{BASE}/dl/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2.torrent" length="734003200" type="application/x-bittorrent"/>
+      <torznab:attr name="category" value="5040"/>
+      <torznab:attr name="seeders" value="4"/>
+      <torznab:attr name="peers" value="4"/>
+      <torznab:attr name="infohash" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa2"/>
+      <torznab:attr name="downloadvolumefactor" value="1"/>
+      <torznab:attr name="uploadvolumefactor" value="1"/>
+    </item>
+    <item>
+      <title>Made.Up.Show.S01.1080p.BluRay.x265-OTHERGRP</title>
+      <guid>{BASE}/details/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa3</guid>
+      <link>{BASE}/dl/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa3.torrent</link>
+      <pubDate>Mon, 16 Nov 2026 08:00:00 +0000</pubDate>
+      <size>21474836480</size>
+      <enclosure url="{BASE}/dl/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa3.torrent" length="21474836480" type="application/x-bittorrent"/>
+      <torznab:attr name="category" value="5040"/>
+      <torznab:attr name="seeders" value="12"/>
+      <torznab:attr name="peers" value="12"/>
+      <torznab:attr name="infohash" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa3"/>
+      <torznab:attr name="downloadvolumefactor" value="1"/>
+      <torznab:attr name="uploadvolumefactor" value="1"/>
+    </item>
+  </channel>
+</rss>
