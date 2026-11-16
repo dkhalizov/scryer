@@ -146,6 +146,21 @@ pub(crate) fn enrich_candidate(
             continue;
         }
 
+        // fork (P36a): Radarr also flags SUBBED and any \w+SUBS? word that is not
+        // SOFT/MULTI/HORRIBLE. No `continue`: SUBBED still sets the subtitle scope below.
+        if token == "SUBBED"
+            || token
+                .strip_suffix("SUBS")
+                .or_else(|| token.strip_suffix("SUB"))
+                .is_some_and(|prefix| {
+                    !prefix.is_empty()
+                        && prefix.chars().all(|c| c.is_ascii_alphanumeric() || c == '_')
+                        && !["SOFT", "MULTI", "HORRIBLE"].iter().any(|w| prefix.ends_with(w))
+                })
+        {
+            enrichment.is_hardcoded_subs = true;
+        }
+
         // The first edition in the name is kept, except that an alternate cut
         // named later replaces an edition that is not one: a theatrical or
         // remastered release that also carries an alternate ending is still
@@ -1739,6 +1754,41 @@ mod scoped_metadata_tests {
         target.title.name = "Known Title".to_string();
         let parsed = crate::best_parse_for_target(raw, &target);
         (parsed.languages_audio, parsed.languages_subtitles)
+    }
+
+    fn parsed_hardcoded(raw: &str, title: &str) -> bool {
+        let mut target = context();
+        target.facet_hint = ContextFacetHint::Movie;
+        target.title.name = title.to_string();
+        crate::best_parse_for_target(raw, &target).is_hardcoded_subs
+    }
+
+    #[test]
+    fn generic_subbed_markers_flag_hardcoded_subs() {
+        // fork (P36a)
+        for (raw, title) in [
+            ("Movie.Title.2017.720p.SUBBED.HDRip.V2.XViD-26k.avi", "Movie Title"),
+            ("(500).Days.Of.Movie.(2009).DTS.1080p.BluRay.x264.NLsubs", "(500) Days Of Movie"),
+            ("Movie Title 2015 Marathi 1080p WebRip x264 AC3 5.1 ESubs [TMB]", "Movie Title"),
+        ] {
+            assert!(parsed_hardcoded(raw, title), "{raw}");
+        }
+        for raw in [
+            "Movie.Title.2017.1080p.BluRay.x264.RoSubbed-playHD",
+            "Movie.Title.2017.1080p.BluRay.x264.[Softsubs]",
+            "Movie.Title.2017.1080p.BluRay.x264.[MultiSubs]",
+            "Movie.Title.2017.1080p.BluRay.x264.ENG.SUBS",
+            "Movie.Title.2017.1080p.BluRay.x264.Sub",
+        ] {
+            assert!(!parsed_hardcoded(raw, "Movie Title"), "{raw}");
+        }
+    }
+
+    #[test]
+    fn subbed_keeps_the_subtitle_language_scope() {
+        // fork (P36a): SUBBED must fall through to the subtitle-scope handling.
+        let (_, subtitles) = parsed_languages("Known.Title.2019.SUBBED.ENG.1080p");
+        assert!(subtitles.iter().any(|l| l == "eng"), "{subtitles:?}");
     }
 
     #[test]
