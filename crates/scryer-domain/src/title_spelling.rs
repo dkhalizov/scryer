@@ -378,7 +378,18 @@ const TRAILING_ARTICLES: &[&str] = &["a", "an", "the"];
 /// display ordering. Reordering is reversible and identity-preserving;
 /// dropping is not.
 pub fn title_lookup_form(value: &str) -> String {
-    let mut tokens = normalize_title_spelling(value)
+    // fork (P43): the arrs read a percent sign after a digit as the word (`3%` -> `3percent`).
+    let mut spelled = String::with_capacity(value.len());
+    let mut previous = ' ';
+    for ch in value.chars() {
+        if ch == '%' && previous.is_ascii_digit() {
+            spelled.push_str("percent");
+        } else {
+            spelled.push(ch);
+        }
+        previous = ch;
+    }
+    let mut tokens = normalize_title_spelling(&spelled)
         .split_whitespace()
         .map(str::to_string)
         .collect::<Vec<_>>();
@@ -658,7 +669,7 @@ pub fn title_collation_data_version() -> &'static str {
 
 /// Bumped whenever the fingerprint must move for a reason its probes cannot
 /// show, so every installed index rebuilds once.
-const TITLE_SPELLING_SEED: &[u8] = b"title-spelling-collation-v3";
+const TITLE_SPELLING_SEED: &[u8] = b"title-spelling-collation-v4";
 
 pub(crate) fn title_spelling_fingerprint(romanization: &[&dyn LanguageRules]) -> String {
     title_spelling_fingerprint_seeded(TITLE_SPELLING_SEED, COLLATION_PROFILES, romanization)
@@ -880,6 +891,14 @@ pub fn compare_title_spelling_for_resolution(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn lookup_form_spells_a_percent_sign_after_a_digit() {
+        // fork (P43)
+        assert_eq!(title_lookup_form("3%"), "3percent");
+        assert_eq!(title_lookup_form("Top & 100% Coding"), "top 100percent coding");
+        assert_eq!(title_lookup_form("Fifty % Off"), "fifty off");
+    }
 
     #[test]
     fn swedish_resolution_keeps_collation_distinct_from_accent_omission() {
