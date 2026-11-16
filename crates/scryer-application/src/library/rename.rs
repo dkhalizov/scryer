@@ -6282,12 +6282,17 @@ fn truncate_token_chars(value: &str, limit: usize) -> String {
 }
 
 pub fn sanitize_filesystem_component(raw: &str) -> String {
-    let mut sanitized = String::with_capacity(raw.len());
-    for ch in raw.chars() {
-        if matches!(ch, '<' | '>' | ':' | '"' | '/' | '\\' | '|' | '?' | '*') || ch <= '\u{1f}' {
-            sanitized.push(' ');
-        } else {
-            sanitized.push(ch);
+    // fork (P15a): arr CleanFileName at our captured settings (Smart colons, replace on; D77).
+    let smart = raw.replace(": ", " - ").replace(':', "-");
+    let mut sanitized = String::with_capacity(smart.len());
+    for ch in smart.chars() {
+        match ch {
+            '\\' | '/' => sanitized.push('+'),
+            '?' => sanitized.push('!'),
+            '*' => sanitized.push('-'),
+            '<' | '>' | '|' | '"' => {}
+            c if c <= '\u{1f}' => sanitized.push(' '),
+            c => sanitized.push(c),
         }
     }
 

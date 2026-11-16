@@ -139,7 +139,7 @@ fn validate_rename_template_rejects_invalid_filters_and_tokens() {
 fn render_rename_template_sanitizes_space_filter_in_literal_braces() {
     let t = tokens(&[("ext", "mkv")]);
     let result = render_rename_template("{{title|space:_}}.{ext}", &t);
-    assert_eq!(result, "{title space _}.mkv");
+    assert_eq!(result, "{titlespace-_}.mkv");
 }
 
 #[test]
@@ -149,7 +149,7 @@ fn render_rename_template_sanitizes_escaped_literal_illegal_chars() {
 
     assert!(!result.contains('|'));
     assert!(!result.contains(':'));
-    assert_eq!(result, "{title space _} {bad literal}.mkv");
+    assert_eq!(result, "{titlespace-_} {bad-literal}.mkv");
 }
 
 #[test]
@@ -750,7 +750,7 @@ fn sanitize_replaces_ascii_control_chars() {
     assert!(!result.contains('\u{0000}'));
     assert!(!result.contains('\u{001f}'));
     assert!(!result.contains(':'));
-    assert_eq!(result, "Bad Name Cut");
+    assert_eq!(result, "Bad Name - Cut");
 }
 
 #[test]
@@ -797,6 +797,24 @@ fn episode_titles_are_trimmed_and_multi_part_titles_collapse() {
     assert_eq!(join(&["Finale (1)", "Finale (2)"]), "Finale");
     assert_eq!(join(&["Episode Title", "Episode Title: Part 2"]), "Episode Title");
     assert_eq!(join(&["Part 1", "Part 2"]), "Part 1 + Part 2");
+}
+
+#[test]
+fn sanitize_writes_arr_smart_colons_and_replacements() {
+    // fork (P15a)
+    for (raw, expected) in [
+        ("CSI: Vegas", "CSI - Vegas"),
+        ("Code:Breaker", "Code-Breaker"),
+        ("24/7 Road", "24+7 Road"),
+        ("Back Slash\\", "Back Slash+"),
+        ("Question Mark?", "Question Mark!"),
+        ("Aster*sk", "Aster-sk"),
+        ("Pipe|", "Pipe"),
+        ("Say \"Hi\"", "Say Hi"),
+        ("2:00 P.M", "2-00 P.M"),
+    ] {
+        assert_eq!(sanitize_filesystem_component(raw), expected);
+    }
 }
 
 #[test]

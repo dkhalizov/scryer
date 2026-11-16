@@ -914,6 +914,17 @@ mod tests {
     }
 
     #[test]
+    fn a_colon_title_matches_its_arr_style_folder_only() {
+        // fork (P15a)
+        let colon = |name: &str| folder_name_matches(name, "Synthetic Show: Reunion", "2011", &[]);
+        assert!(colon("Synthetic Show - Reunion (2011)"));
+        assert!(!colon("Synthetic Show Reunion (2011)"));
+        let question = |name: &str| folder_name_matches(name, "Why Not?", "2011", &[]);
+        assert!(question("Why Not! (2011)"));
+        assert!(!question("Why Not (2011)"));
+    }
+
+    #[test]
     fn a_short_title_does_not_match_a_longer_one() {
         let matches = |name: &str| folder_name_matches(name, "Dusk", "2023", &[]);
         assert!(matches("Dusk (2023)"));

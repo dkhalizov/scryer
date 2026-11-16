@@ -61,7 +61,7 @@ mod tests {
 
     #[test]
     fn title_folder_component_falls_back_when_sanitized_empty() {
-        assert_eq!(sanitized_title_folder_component("///...___---"), "untitled");
+        assert_eq!(sanitized_title_folder_component("<>|...___---"), "untitled");
     }
 
     #[test]
