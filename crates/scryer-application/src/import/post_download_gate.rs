@@ -344,7 +344,8 @@ pub(crate) const SAMPLE_RUNTIME_INDETERMINATE_CODE: &str = "sample_runtime_indet
 pub(crate) const RUNTIME_OUT_OF_BAND_CODE: &str = "runtime_out_of_band";
 
 const MIN_EXPECTED_RUNTIME_FOR_SAMPLE_RATIO_SECONDS: i32 = 5 * 60;
-const MIN_UNKNOWN_RUNTIME_SAMPLE_SECONDS: i32 = 60;
+// fork (P43): the arrs assume a 45 min episode when no runtime is known; a file under 5 min is a sample.
+const MIN_UNKNOWN_RUNTIME_SAMPLE_SECONDS: i32 = 5 * 60;
 const MIN_RATIO_SAMPLE_SECONDS: i32 = 90;
 const SAMPLE_RUNTIME_PERCENT: i32 = 10;
 /// Coarse plausibility band around the expected runtime. Deliberately wide (2x
@@ -443,6 +444,20 @@ fn runtime_sample_rejection(
         }
 
         return None;
+    }
+
+    // fork (P43): Radarr's minimum for a short known runtime (<= 3 min: 15 s, else 90 s).
+    if let Some(expected_seconds) = validation.expected_runtime_seconds {
+        let minimum = if expected_seconds <= 3 * 60 { 15 } else { MIN_RATIO_SAMPLE_SECONDS };
+        if actual_seconds < minimum {
+            return Some(imported_runtime_sample_rejection(
+                SAMPLE_RUNTIME_TOO_SHORT_CODE,
+                format!(
+                    "imported file runtime is too short for automatic import: probed file is {}",
+                    runtime_clock(actual_seconds)
+                ),
+            ));
+        }
     }
 
     if validation.expected_runtime_seconds.is_none()
@@ -3882,13 +3897,19 @@ mod tests {
     #[test]
     fn automatic_import_skips_runtime_band_when_expected_runtime_is_unknown() {
         assert!(runtime_sample_rejection(automatic(None), Some(3600)).is_none());
-        assert!(runtime_sample_rejection(automatic(None), Some(120)).is_none());
+        // fork (P43): the arrs assume a 45 min episode, so 120 s is a sample.
+        assert!(runtime_sample_rejection(automatic(None), Some(120)).is_some());
+        assert!(runtime_sample_rejection(automatic(None), Some(300)).is_none());
     }
 
     #[test]
     fn automatic_import_skips_runtime_band_below_expected_runtime_floor() {
-        // Expected runtimes under the 5-minute floor stay permissive.
-        assert!(runtime_sample_rejection(automatic(Some(240)), Some(30)).is_none());
+        // Expected runtimes under the 5-minute floor skip the ratio and band checks;
+        // fork (P43): only the arrs' absolute minimum applies (<= 3 min: 15 s, else 90 s).
+        assert!(runtime_sample_rejection(automatic(Some(240)), Some(30)).is_some());
+        assert!(runtime_sample_rejection(automatic(Some(240)), Some(120)).is_none());
+        assert!(runtime_sample_rejection(automatic(Some(120)), Some(10)).is_some());
+        assert!(runtime_sample_rejection(automatic(Some(120)), Some(20)).is_none());
     }
 
     #[test]
