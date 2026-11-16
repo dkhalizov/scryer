@@ -40,7 +40,7 @@
   source: config
   ref: "stack chain (qBittorrent, Prowlarr); notes/11-parity-net-design.md § Flow layer"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer::parity_flow::stack_flow]
 - id: STK-FLOW-0007
   behaviour: "A completed download is imported as a hardlink, renamed per our naming (Smart colons, prefixed multi-episode range, episode title required) into the root folder"
@@ -68,7 +68,7 @@
   source: config
   ref: "stack chain (qBittorrent, Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer::parity_flow::stack_flow]
 - id: STK-FLOW-0011
   behaviour: "A failed or stalled download is removed, blocklisted and a new search runs (auto redownload failed on)"
@@ -82,7 +82,7 @@
   source: config
   ref: "stack chain (Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer::parity_flow::stack_flow]
 - id: STK-FLOW-0013
   behaviour: "A fully aired season is grabbed as a season pack; an airing season per episode"
