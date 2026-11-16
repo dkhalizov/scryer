@@ -10,7 +10,7 @@
 use super::*;
 
 use crate::subtitles::orchestration::SubtitleSearchStatus;
-use crate::subtitles::provider::{SubtitleFile, SubtitleQuery};
+use crate::subtitles::provider::{SubtitleFile, SubtitleMediaKind, SubtitleQuery};
 use scryer_domain::{
     ExternalSubtitleSourceKind, LibraryPermissionMask, PluginHostBindingId, SubtitleBlocklistEntry,
     SubtitleDownload, SubtitleProviderConfig,
@@ -332,7 +332,9 @@ impl crate::SubtitleProviderClient for StubSubtitleProviderClient {
             provider_file_id: "stub-file-1".to_string(),
             language,
             release_info: Some("Synthetic.Release.Group".to_string()),
-            score: 90,
+            // fork (P36d): a movie match sits above the movie upgrade cutoff (117) so no
+            // upgrade search follows; episodes keep 90, below the series minimum.
+            score: if query.media_kind == SubtitleMediaKind::Movie { 120 } else { 90 },
             score_percent: 90,
             hearing_impaired: false,
             forced: false,
@@ -694,7 +696,7 @@ async fn seed_fixture(subtitles_enabled: bool, providers: StubProviders) -> Subt
                 provider: Some(STUB_PROVIDER_TYPE.to_string()),
                 provider_file_id: Some("stub-file-1".to_string()),
                 file_path: subtitle_path.to_string_lossy().to_string(),
-                score: Some(90),
+                score: Some(360),
                 hearing_impaired: false,
                 forced: false,
                 ai_translated: false,
@@ -739,7 +741,7 @@ fn download_request(media_file_id: &str) -> DownloadSubtitleForMediaFileRequest 
         language: "eng".to_string(),
         forced: false,
         hearing_impaired: false,
-        score: Some(90),
+        score: Some(360),
         release_info: None,
         uploader: None,
         ai_translated: false,
@@ -1539,7 +1541,7 @@ async fn subtitle_batch_accepts_without_waiting_and_deduplicates_shared_files() 
     let retry = wait_subtitle_batch(&mut events, &retry.id).await;
     let summary: serde_json::Value =
         serde_json::from_str(retry.summary_json.as_deref().unwrap()).unwrap();
-    assert_eq!(summary["items"][0]["status"], "already_satisfied");
+    assert_eq!(summary["items"][0]["status"], "no_match"); // fork (P36d): the 90-score episode row is due for upgrade; the stub offers nothing better
     assert_eq!(summary["downloaded"], 0);
 }
 

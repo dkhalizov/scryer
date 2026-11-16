@@ -103,6 +103,54 @@ pub fn compute_missing_subtitles_from_streams(
         .collect()
 }
 
+/// fork (P36d): Bazarr's upgrade cutoffs (raw scores) and window, fixed to the captured
+/// settings (upgrade_subs on, days_to_upgrade_subs 7; D72).
+pub const SUBTITLE_UPGRADE_CUTOFF_EPISODE: i32 = 357;
+pub const SUBTITLE_UPGRADE_CUTOFF_MOVIE: i32 = 117;
+const SUBTITLE_UPGRADE_WINDOW_DAYS: i64 = 7;
+
+/// fork (P36d): wanted languages whose latest downloaded subtitle scored below `cutoff`
+/// within the last 7 days, so a better one is worth a search. Deduped by row (one HI row can
+/// satisfy a plain and an HI want); the pref copies the row's language, hi and forced.
+pub fn subtitles_due_for_upgrade<'a>(
+    wanted: &[SubtitleLanguagePref],
+    downloads: &'a [SubtitleDownload],
+    cutoff: i32,
+    now: chrono::DateTime<chrono::Utc>,
+) -> Vec<(SubtitleLanguagePref, &'a SubtitleDownload)> {
+    let mut due: Vec<(SubtitleLanguagePref, &SubtitleDownload)> = Vec::new();
+    for want in wanted {
+        let Some(row) = downloads
+            .iter()
+            .filter(|dl| {
+                same_subtitle_language(&dl.language, &want.code)
+                    && subtitle_kind_satisfies(want, dl.hearing_impaired, dl.forced)
+            })
+            .max_by_key(|dl| dl.downloaded_at.as_str())
+        else {
+            continue;
+        };
+        let recent = chrono::DateTime::parse_from_rfc3339(&row.downloaded_at).is_ok_and(|at| {
+            now.signed_duration_since(at) < chrono::Duration::days(SUBTITLE_UPGRADE_WINDOW_DAYS)
+        });
+        if row.source_kind == scryer_domain::ExternalSubtitleSourceKind::Downloaded
+            && row.score.is_some_and(|score| score < cutoff)
+            && recent
+            && !due.iter().any(|(_, seen)| seen.id == row.id)
+        {
+            due.push((
+                SubtitleLanguagePref {
+                    code: row.language.clone(),
+                    hearing_impaired: row.hearing_impaired,
+                    forced: row.forced,
+                },
+                row,
+            ));
+        }
+    }
+    due
+}
+
 // fork (P7): Bazarr's rule. A forced item takes only forced, an HI item only HI,
 // and a plain item (hi=false, forced=false) takes a plain or an HI subtitle.
 pub fn subtitle_kind_satisfies(
@@ -218,6 +266,52 @@ mod tests {
             forced,
             default: false,
         }
+    }
+
+    fn pref_hi(hi: bool) -> SubtitleLanguagePref {
+        SubtitleLanguagePref { code: "eng".into(), hearing_impaired: hi, forced: false }
+    }
+
+    fn at(days: i64) -> chrono::DateTime<chrono::Utc> {
+        chrono::DateTime::parse_from_rfc3339("2026-01-01T00:00:00Z").unwrap().with_timezone(&chrono::Utc)
+            + chrono::Duration::days(days)
+    }
+
+    #[test]
+    fn a_low_score_download_within_seven_days_is_due_for_upgrade() {
+        // fork (P36d)
+        let mut dl = make_download("eng", false, false);
+        dl.score = Some(100);
+        let dls = [dl];
+        let due = subtitles_due_for_upgrade(&[pref_hi(false)], &dls, 117, at(1));
+        assert_eq!(due.len(), 1);
+    }
+
+    #[test]
+    fn equal_or_old_or_scoreless_or_discovered_downloads_are_not_due() {
+        let base = make_download("eng", false, false);
+        let mut equal = base.clone();
+        equal.score = Some(117);
+        let mut scoreless = base.clone();
+        scoreless.score = None;
+        let mut discovered = base.clone();
+        discovered.score = Some(10);
+        discovered.source_kind = scryer_domain::ExternalSubtitleSourceKind::Discovered;
+        let mut low = base.clone();
+        low.score = Some(10);
+        for (dl, days) in [(equal, 1), (scoreless, 1), (discovered, 1), (low, 8)] {
+            assert!(subtitles_due_for_upgrade(&[pref_hi(false)], &[dl], 117, at(days)).is_empty());
+        }
+    }
+
+    #[test]
+    fn one_hi_row_satisfying_plain_and_hi_wants_is_due_once() {
+        let mut dl = make_download("eng", false, true);
+        dl.score = Some(10);
+        let dls = [dl];
+        let due = subtitles_due_for_upgrade(&[pref_hi(false), pref_hi(true)], &dls, 117, at(1));
+        assert_eq!(due.len(), 1);
+        assert!(due[0].0.hearing_impaired);
     }
 
     #[test]

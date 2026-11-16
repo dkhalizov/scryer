@@ -210,8 +210,18 @@ fn baz_subtitles_cfg_wanted() {
                     pref.forced,
                 );
                 dl.score = Some(i32::try_from(probe).unwrap());
-                let searched_again =
-                    !compute_missing_subtitles_from_streams(&[pref], &[dl], &[]).is_empty();
+                // fork (P36d): missing, or due for upgrade an hour after the download.
+                let now = DateTime::parse_from_rfc3339(&dl.downloaded_at).unwrap().with_timezone(&Utc)
+                    + Duration::hours(1);
+                let searched_again = !compute_missing_subtitles_from_streams(&[pref.clone()], &[dl.clone()], &[])
+                    .is_empty()
+                    || !scryer_application::subtitles::wanted::subtitles_due_for_upgrade(
+                        &[pref],
+                        &[dl],
+                        i32::try_from(cutoff).unwrap(),
+                        now,
+                    )
+                    .is_empty();
                 expected.insert((kind, i), upgrade && probe < cutoff);
                 actual.insert((kind, i), searched_again);
             }

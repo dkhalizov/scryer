@@ -2455,7 +2455,23 @@ async fn search_automatic_subtitles_for_file(
     let embedded = embedded_subtitle_streams(mf);
 
     let missing = compute_missing_subtitles_from_streams(wanted_languages, &existing, &embedded);
-    if missing.is_empty() {
+    // fork (P36d): Bazarr-style upgrade of low-scoring downloads, on top of the missing ones.
+    let media_kind = subtitle_media_kind(title);
+    let now = app.runtime.environment.now();
+    let upgrades = super::wanted::subtitles_due_for_upgrade(
+        wanted_languages,
+        &existing,
+        match media_kind {
+            SubtitleMediaKind::Episode => super::wanted::SUBTITLE_UPGRADE_CUTOFF_EPISODE,
+            SubtitleMediaKind::Movie => super::wanted::SUBTITLE_UPGRADE_CUTOFF_MOVIE,
+        },
+        now,
+    )
+    .into_iter()
+    .filter(|(pref, _)| !missing.iter().any(|m| m.code == pref.code))
+    .map(|(pref, old)| (pref, old.clone()))
+    .collect::<Vec<_>>();
+    if missing.is_empty() && upgrades.is_empty() {
         return Ok(outcome);
     }
 
@@ -2469,7 +2485,6 @@ async fn search_automatic_subtitles_for_file(
     // An automatic search skips a language whose last searches found nothing
     // until its delay has passed. A search an operator starts ignores it.
     let automatic = actor.is_none();
-    let now = app.runtime.environment.now();
     let wanted_key = search_backoff::wanted_languages_key(wanted_languages);
     let providers_key = search_backoff::enabled_providers_key(
         providers
@@ -2489,11 +2504,13 @@ async fn search_automatic_subtitles_for_file(
             .iter()
             .find(|row| row.applies_to(mf, pref, &wanted_key, &providers_key))
     };
-    let missing = missing
+    let items = missing
         .into_iter()
-        .filter(|pref| applying_row(pref).is_none_or(|row| !row.holds_search_at(now)))
-        .collect::<Vec<_>>();
-    if missing.is_empty() {
+        .map(|pref| (pref, None))
+        .chain(upgrades.into_iter().map(|(pref, old)| (pref, Some(old))))
+        .filter(|(pref, _)| applying_row(pref).is_none_or(|row| !row.holds_search_at(now)))
+        .collect::<Vec<(SubtitleLanguagePref, Option<SubtitleDownload>)>>();
+    if items.is_empty() {
         return Ok(outcome);
     }
     let mut backoff_upserts = Vec::new();
@@ -2501,15 +2518,14 @@ async fn search_automatic_subtitles_for_file(
 
     let circuit = &mut search.circuit;
     let unusable_files = &mut search.unusable_files;
-    let media_kind = subtitle_media_kind(title);
-    let min_score = subtitle_minimum_raw_score(media_kind, min_score_series, min_score_movie);
+    let base_min_score = subtitle_minimum_raw_score(media_kind, min_score_series, min_score_movie);
 
     let file_path = stored_path_to_path_buf(&mf.file_path);
     let episode_context = media_file_episode_context(app, title, mf).await;
 
     // fork (P7): (language, hi, forced) of each subtitle saved in this loop.
     let mut saved_this_cycle: Vec<(String, bool, bool)> = Vec::new();
-    for lang_pref in &missing {
+    for (lang_pref, old) in &items {
         if app.restore_coordinator().shutdown_workers.is_cancelled() {
             break;
         }
@@ -2517,6 +2533,11 @@ async fn search_automatic_subtitles_for_file(
         if super::wanted::satisfied_by_saved(&saved_this_cycle, lang_pref) {
             continue;
         }
+        // fork (P36d): an upgrade must beat the stored score (Bazarr forced_minimum_score = score + 1).
+        let min_score = old
+            .as_ref()
+            .and_then(|o| o.score)
+            .map_or(base_min_score, |score| base_min_score.max(score + 1));
         outcome.searched += 1;
         let query = build_subtitle_query(
             title,
@@ -2569,7 +2590,11 @@ async fn search_automatic_subtitles_for_file(
                 .await?;
             let unusable =
                 unusable_files.contains(&(r.provider.clone(), r.provider_file_id.clone()));
-            if !blocklisted && !unusable {
+            // fork (P36d): an upgrade keeps the old row's exact hi/forced kind (same path).
+            let same_kind = old
+                .as_ref()
+                .is_none_or(|o| r.hearing_impaired == o.hearing_impaired && r.forced == o.forced);
+            if !blocklisted && !unusable && same_kind {
                 filtered_results.push(r);
             }
         }
@@ -2709,8 +2734,14 @@ async fn search_automatic_subtitles_for_file(
                     backoff_cleared.push(key);
                 }
                 // Record in database
+                let dest_stored = path_to_stored_string(&dest_path);
                 let record = SubtitleDownload {
-                    id: scryer_domain::Id::new().0,
+                    // fork (P36d): in-place overwrite upserts the old row. A different path
+                    // gets a new row and the old file stays (no delete without Human/Policy authority).
+                    id: old
+                        .as_ref()
+                        .filter(|o| o.file_path == dest_stored)
+                        .map_or_else(|| scryer_domain::Id::new().0, |o| o.id.clone()),
                     media_file_id: mf.id.clone(),
                     title_id: title.id.clone(),
                     episode_id: mf.episode_id.clone(),
