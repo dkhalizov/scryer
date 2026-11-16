@@ -53,8 +53,8 @@
 //! - 5007 is red when enableSpecialEpisodes is off: under "advanced" the selection
 //!   replaces the monitor-specials rule (monitoring.rs:1347-1352), so an explicit
 //!   season 0 is monitored (same cause as SER-REQUESTS-0074, waiver candidate).
-//! - 5018 is red when monitorNewItems is "all": under "advanced" a season missing
-//!   from the stored selection is created unmonitored (monitoring.rs:1349-1352).
+//! - 5018 (fork P36c): the harness applies `monitor_selection_with_new_seasons` (known 1..=3)
+//!   before `should_monitor_season`, so a new season 4 is monitored under "advanced".
 //! - 5030 is red when the cron interval differs from the ListSync sweep
 //!   (LIST_SYNC_INTERVAL_SECONDS, 15 minutes). The sweep is a lower bound: a list's
 //!   own interval_seconds can only lengthen it (lists/sync.rs next_sync_at).
@@ -220,6 +220,18 @@ fn scryer_seasons(
     };
     let selection =
         normalize_requested_monitor_selection(Some(monitor_type), raw).map_err(|e| e.to_string())?;
+    // fork (P36c): a refresh adding seasons above the known 1..=3 extends an advanced selection.
+    let selection = if monitor_type == MONITOR_TYPE_ADVANCED {
+        let known = (1..=3).collect();
+        scryer_application::parity_seams::monitor_selection_with_new_seasons(
+            selection.as_ref(),
+            &known,
+            candidates.clone(),
+        )
+        .or(selection)
+    } else {
+        selection
+    };
     Ok(candidates
         .filter(|&n| should_monitor_season(monitor_type, n, specials, selection.as_ref()))
         .collect())

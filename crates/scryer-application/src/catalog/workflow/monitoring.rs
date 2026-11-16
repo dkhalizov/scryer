@@ -1358,6 +1358,26 @@ pub fn should_monitor_season(
 
     monitor_type != "none" && monitor_type != "unmonitored"
 }
+/// fork (P36c): under advanced, a refresh that adds non-zero seasons numbered above
+/// every known season monitors them (Sonarr monitorNewItems=all, fixed per D72).
+/// `None` on first hydration (`known` empty) or when nothing was added.
+// fork: parity net seam (tests/parity_requests/priv_requests_config.rs)
+pub fn monitor_selection_with_new_seasons(
+    selection: Option<&MonitorSelection>,
+    known: &std::collections::BTreeSet<i32>,
+    refreshed: impl IntoIterator<Item = i32>,
+) -> Option<MonitorSelection> {
+    let max_known = *known.iter().next_back()?;
+    let mut extended = selection.cloned().unwrap_or_default();
+    let before = extended.seasons.len();
+    for number in refreshed {
+        if number > 0 && number > max_known && !known.contains(&number) {
+            extended.seasons.push(number);
+        }
+    }
+    (extended.seasons.len() != before).then(|| extended.normalized())
+}
+
 fn should_monitor_episode(
     monitor_type: &str,
     season_number: i32,

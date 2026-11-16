@@ -457,7 +457,7 @@ pub mod parity_seams {
         tracked_media_path_confirmed_missing,
     };
     // fork: parity net seam (tests/parity_requests/requests.rs)
-    pub use crate::catalog::workflow::should_monitor_season;
+    pub use crate::catalog::workflow::{monitor_selection_with_new_seasons, should_monitor_season};
     pub use crate::media_requests::normalize_requested_monitor_selection;
     // fork: parity net seam (tests/parity_naming/naming.rs)
     pub use crate::import::workflow::{episode_import_dest_path, preserved_import_filename};

@@ -310,6 +310,9 @@ impl AppUseCase {
         };
         // Loaded once per hydration pass: advanced monitoring reads the
         // title's stored selection for every season, episode and movie link.
+        // fork (P36c): `selection_loaded` gates the new-season extension below, so a
+        // failed load never overwrites the stored picks.
+        let mut selection_loaded = false;
         let monitor_selection = if monitor_type == MONITOR_TYPE_ADVANCED {
             match self
                 .services
@@ -318,7 +321,10 @@ impl AppUseCase {
                 .get_title_monitor_selection(&title.id)
                 .await
             {
-                Ok(selection) => selection,
+                Ok(selection) => {
+                    selection_loaded = true;
+                    selection
+                }
                 Err(err) => {
                     warn!(
                         title_id = %title.id,
@@ -331,7 +337,6 @@ impl AppUseCase {
         } else {
             None
         };
-        let monitor_selection = monitor_selection.as_ref();
         tracing::debug!(
             title_id = %title.id,
             monitor_type = %monitor_type,
@@ -349,6 +354,36 @@ impl AppUseCase {
             .list_collections_for_title(&title.id)
             .await
             .unwrap_or_default();
+        // fork (P36c): advanced monitoring picks up seasons added by a later refresh.
+        let mut monitor_selection = monitor_selection;
+        if selection_loaded {
+            let known: std::collections::BTreeSet<i32> = existing_collections
+                .iter()
+                .filter(|c| c.collection_type == CollectionType::Season)
+                .filter_map(|c| c.collection_index.parse().ok())
+                .collect();
+            if let Some(extended) = monitor_selection_with_new_seasons(
+                monitor_selection.as_ref(),
+                &known,
+                seasons.iter().map(|s| s.number),
+            ) {
+                match self
+                    .services
+                    .catalog
+                    .titles
+                    .replace_title_monitor_selection(&title.id, Some(extended.clone()))
+                    .await
+                {
+                    Ok(()) => monitor_selection = Some(extended),
+                    Err(err) => warn!(
+                        title_id = %title.id,
+                        error = %err,
+                        "failed to extend advanced monitor selection with new seasons"
+                    ),
+                }
+            }
+        }
+        let monitor_selection = monitor_selection.as_ref();
         let mut existing_collections_by_id: std::collections::HashMap<String, Collection> =
             existing_collections
                 .iter()

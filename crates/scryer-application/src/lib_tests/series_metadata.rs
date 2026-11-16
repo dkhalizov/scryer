@@ -2202,6 +2202,102 @@ async fn advanced_monitoring_only_monitors_selected_seasons_and_their_episodes()
     );
 }
 
+// fork (P36c)
+fn season_and_episode_metadata(numbers: &[i32]) -> (Vec<SeasonMetadata>, Vec<EpisodeMetadata>) {
+    let seasons = numbers
+        .iter()
+        .map(|&number| SeasonMetadata {
+            tvdb_id: 300 + number as i64,
+            tmdb_id: None,
+            number,
+            label: format!("Season {number}"),
+            episode_type: "official".into(),
+        })
+        .collect();
+    let episodes = numbers
+        .iter()
+        .map(|&number| EpisodeMetadata {
+            tvdb_id: 30_000 + number as i64,
+            tmdb_id: None,
+            episode_number: 1,
+            name: format!("S{number}E1"),
+            aired: "2001-01-01".into(),
+            runtime_minutes: 22,
+            is_filler: false,
+            is_recap: false,
+            overview: String::new(),
+            absolute_number: number.to_string(),
+            contiguous_absolute_number: None,
+            season_number: number,
+            image_url: String::new(),
+        })
+        .collect();
+    (seasons, episodes)
+}
+
+async fn season_monitored_flags(app: &AppUseCase, user: &User, title_id: &str) -> Vec<(String, bool, bool)> {
+    let mut collections = app.list_collections(user, title_id).await.expect("list collections");
+    collections.sort_by(|a, b| a.collection_index.cmp(&b.collection_index));
+    let mut flags = Vec::new();
+    for c in collections {
+        let eps = app.list_episodes(user, &c.id).await.expect("list episodes");
+        flags.push((c.collection_index.clone(), c.monitored, eps.iter().all(|e| e.monitored)));
+    }
+    flags
+}
+
+#[tokio::test]
+async fn advanced_monitoring_monitors_a_season_added_by_a_later_refresh() {
+    let (app, user) = bootstrap();
+    let title = advanced_title(
+        &app, &user, "Growing Show", MediaFacet::Series,
+        scryer_domain::MonitorSelection { seasons: vec![2], series_movies: vec![] },
+    )
+    .await;
+    let (seasons, episodes) = season_and_episode_metadata(&[1, 2]);
+    app.create_series_seasons_and_episodes(&title, &seasons, &episodes, &[], &[]).await;
+    let (seasons, episodes) = season_and_episode_metadata(&[1, 2, 3]);
+    app.create_series_seasons_and_episodes(&title, &seasons, &episodes, &[], &[]).await;
+
+    let flags = season_monitored_flags(&app, &user, &title.id).await;
+    assert_eq!(
+        flags,
+        vec![
+            ("1".to_string(), false, false),
+            ("2".to_string(), true, true),
+            ("3".to_string(), true, true),
+        ]
+    );
+    let stored = app.services.catalog.titles.get_title_monitor_selection(&title.id).await.unwrap();
+    assert_eq!(stored.unwrap().seasons, vec![2, 3]);
+}
+
+#[tokio::test]
+async fn advanced_monitoring_leaves_unpicked_seasons_of_the_first_hydration_unmonitored() {
+    let (app, user) = bootstrap();
+    let title = advanced_title(
+        &app, &user, "First Show", MediaFacet::Series,
+        scryer_domain::MonitorSelection { seasons: vec![1], series_movies: vec![] },
+    )
+    .await;
+    let (seasons, episodes) = season_and_episode_metadata(&[1, 2, 3]);
+    app.create_series_seasons_and_episodes(&title, &seasons, &episodes, &[], &[]).await;
+    let flags = season_monitored_flags(&app, &user, &title.id).await;
+    assert_eq!(
+        flags.iter().map(|(n, m, _)| (n.as_str(), *m)).collect::<Vec<_>>(),
+        vec![("1", true), ("2", false), ("3", false)]
+    );
+}
+
+#[test]
+fn new_season_seam_adds_only_seasons_above_every_known_one() {
+    let known: std::collections::BTreeSet<i32> = [1].into();
+    let ext = crate::parity_seams::monitor_selection_with_new_seasons(None, &known, [0, 1, 2]).expect("extended");
+    assert_eq!(ext.seasons, vec![2]);
+    assert!(crate::parity_seams::monitor_selection_with_new_seasons(None, &known, [0, 1]).is_none());
+    assert!(crate::parity_seams::monitor_selection_with_new_seasons(None, &Default::default(), [1, 2]).is_none());
+}
+
 #[tokio::test]
 async fn advanced_monitoring_monitors_only_the_selected_series_movies() {
     let (app, user) = bootstrap();
