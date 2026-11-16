@@ -236,12 +236,28 @@ impl ReleaseEvidence {
                 ..
             } => source_title
                 .clone()
-                .or_else(|| observed_release_name.clone())
+                .or_else(|| observed_release_name.as_deref().map(strip_client_extension))
                 .or_else(|| source_video_stem(source_video)),
             Self::DownloaderObservation { release_name } => release_name
-                .clone()
+                .as_deref()
+                .map(strip_client_extension)
                 .or_else(|| source_video_stem(source_video)),
         }
+    }
+}
+
+/// fork (P43): the arrs' RemoveFileExtension on a client-reported release name:
+/// `.mkv`, `.nzb` and `.par2` do not belong to the scene name.
+fn strip_client_extension(name: &str) -> String {
+    match name.rsplit_once('.') {
+        Some((stem, ext))
+            if !stem.is_empty()
+                && (matches!(ext.to_ascii_lowercase().as_str(), "nzb" | "par2")
+                    || scryer_domain::VIDEO_EXTENSIONS.contains(&ext.to_ascii_lowercase().as_str())) =>
+        {
+            stem.to_string()
+        }
+        _ => name.to_string(),
     }
 }
 
