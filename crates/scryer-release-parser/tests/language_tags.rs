@@ -74,3 +74,34 @@ fn full_language_names_are_read() {
     }
     assert!(audio("Tel.Aviv.On.Fire.2018.1080p.BluRay.x264-GRP").is_empty());
 }
+
+fn original(release: &str) -> bool {
+    let target: ReleaseParseContext = serde_json::from_value(serde_json::json!({
+        "facet_hint": "movie", "title": {"name": "Movie Title"}, "aliases": [],
+        "known_years": [], "imdb_ids": [], "episodes": []
+    }))
+    .expect("context");
+    best_parse_for_target(release, &target).is_original_audio
+}
+
+// fork (P27b): Original marker and the German DL/ML rule.
+#[test]
+fn original_audio_marker() {
+    assert!(original("Movie.Title.2025.Orig.1080P.WEB.H264-Grp"));
+    assert!(original("Movie.Title.2016.German.DTS.DL.720p.BluRay.x264-Grp"));
+    assert_eq!(audio("Movie.Title.2023.German.ML.EAC3.720p.NF.WEB.H264-Grp"), ["deu", "eng"]);
+    for name in [
+        "Movie.Title.2016.German.DTS.720p.WEB-DL.x264-Grp",
+        "Movie.Title.2016.German.DTS.720p.WEB.DL.x264-Grp",
+        "Movie.Title.2016.German.English.DL.720p.BluRay.x264-Grp",
+    ] {
+        assert!(!original(name) || name.contains("English"), "{name}");
+    }
+}
+
+// fork (P27e): '+' lists and multipliers.
+#[test]
+fn plus_separated_language_lists() {
+    assert_eq!(audio("Movie.Title.2010.ENG+RUS.1080p.BluRay.x264-Grp"), ["eng", "rus"]);
+    assert_eq!(audio("Movie.Title.2010.2xUKR+ENG.1080p.BluRay.x264-Grp"), ["ukr", "eng"]);
+}

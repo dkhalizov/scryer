@@ -1619,6 +1619,9 @@ fn is_language_metadata_atom(token: &str) -> bool {
             | "UKR"
             | "UKRAINIAN"
             | "VFF"
+            | "ARABIC" // fork (P27f): arr full names read after SxxEyy or a season
+            | "GREEK"
+            | "MALAYALAM"
             | "VFI" // fork (P27c)
             | "VFQ"
             | "VOSTFR"
@@ -5310,6 +5313,7 @@ fn build_candidate(
         audio_channels: state.metadata.audio_channels.clone(),
         is_dual_audio: false,
         is_multi_audio: false,
+        is_original_audio: false, // fork (P27b)
         is_atmos: false,
         is_dolby_vision: false,
         detected_hdr: false,

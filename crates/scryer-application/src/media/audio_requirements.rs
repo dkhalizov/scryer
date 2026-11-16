@@ -216,6 +216,13 @@ pub fn release_audio_language_hints_for_title(
         }
     }
 
+    // fork (P27b): an `Original` marker (or German DL/ML) means the title's original track ships.
+    if parsed.is_original_audio
+        && let Some(context) = title_language_context
+    {
+        push_language(&mut normalized, &context.inferred_original_audio_language);
+    }
+
     if parsed.is_dual_audio && normalized.is_empty() {
         // A "dual audio" release ships two audio tracks: English plus the
         // title's original-language audio. Use the title's inferred original
@@ -454,6 +461,20 @@ mod tests {
             name: name.map(str::to_string),
             bitrate_kbps: None,
         }
+    }
+
+    #[test]
+    fn original_marker_adds_the_titles_original_language() {
+        // fork (P27b)
+        let ctx = title_audio_language_context(Some("French"), None, Some("movie"), &[]);
+        let parsed = parse_release_metadata("Movie.Title.2025.Orig.1080P.WEB.H264-Grp");
+        assert!(parsed.is_original_audio);
+        let hints = release_audio_language_hints_for_title(&parsed, None, Some(&ctx), false);
+        assert_eq!(hints, ["fra"]);
+        let rutracker = parse_release_metadata("Movie Title (2010) WEB-DL 1080p | Rus + Original");
+        let en = title_audio_language_context(Some("English"), None, Some("movie"), &[]);
+        let hints = release_audio_language_hints_for_title(&rutracker, None, Some(&en), false);
+        assert!(hints.contains(&"eng".to_string()), "{hints:?}");
     }
 
     #[test]

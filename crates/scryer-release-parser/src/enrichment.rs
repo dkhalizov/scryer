@@ -5,7 +5,7 @@ use crate::model::{
 };
 use crate::trash_guides;
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq)]
 enum LanguageScope {
     Auto,
     Audio,
@@ -215,6 +215,37 @@ pub(crate) fn enrich_candidate(
             enrichment.is_multi_audio = true;
         }
 
+        // fork (P27b): an explicit Original marker names the original-language track.
+        if matches!(token, "ORIGINAL" | "ORIG") {
+            enrichment.is_original_audio = true;
+            index += 1;
+            continue;
+        }
+
+        // fork (P27e): `ENG+RUS`, `2xUKR+ENG`: the lexer keeps '+', so split it here.
+        if token.contains('+') {
+            let raw = &scoped_tokens[index].1.raw;
+            let atoms: Option<Vec<&'static str>> = token
+                .split('+')
+                .zip(raw.split('+'))
+                .map(|(atom, raw_atom)| {
+                    let atom = strip_language_multiplier(atom);
+                    parse_language_hint(atom).filter(|_| language_token_case_ok(atom, raw_atom))
+                })
+                .collect();
+            if let Some(atoms) = atoms.filter(|atoms| atoms.len() > 1) {
+                for language in atoms {
+                    if language_context == LanguageScope::Subtitle {
+                        push_unique(&mut enrichment.languages_subtitles, language);
+                    } else {
+                        push_unique(&mut enrichment.languages_audio, language);
+                    }
+                }
+                index += 1;
+                continue;
+            }
+        }
+
         if is_10bit_token(token) {
             enrichment.is_10bit = true;
             index += 1;
@@ -409,6 +440,21 @@ pub(crate) fn enrich_candidate(
     enrichment.is_hardcoded_subs |= trash_guide_signals.hardcoded_subs;
 
     enrichment.languages_audio = dedupe_keep_order(enrichment.languages_audio);
+    // fork (P27b): the German DL/ML rule of both arrs: DL carries the original
+    // track (except `WEB-DL`), ML the original plus English.
+    if enrichment.languages_audio == ["deu"] {
+        for (i, (_, token)) in scoped_tokens.iter().enumerate() {
+            let previous = i.checked_sub(1).map(|p| scoped_tokens[p].1.normalized.as_str());
+            match token.normalized.as_str() {
+                "DL" if previous != Some("WEB") => enrichment.is_original_audio = true,
+                "ML" => {
+                    enrichment.is_original_audio = true;
+                    push_unique(&mut enrichment.languages_audio, "eng");
+                }
+                _ => {}
+            }
+        }
+    }
     enrichment.languages_subtitles = dedupe_keep_order(enrichment.languages_subtitles);
     enrichment.audio_codecs = dedupe_keep_order(enrichment.audio_codecs);
 
@@ -510,6 +556,7 @@ pub(crate) fn project_final_metadata(
     projected.stereoscopy = enrichment.stereoscopy;
     projected.is_dual_audio = enrichment.is_dual_audio;
     projected.is_multi_audio = enrichment.is_multi_audio;
+    projected.is_original_audio = enrichment.is_original_audio; // fork (P27b)
     projected.is_atmos = enrichment.is_atmos;
     projected.is_dolby_vision = enrichment.is_dolby_vision;
     projected.detected_hdr = enrichment.detected_hdr;
@@ -900,6 +947,15 @@ fn dedupe_keep_order(values: Vec<String>) -> Vec<String> {
 /// fork (P27d): arr's CaseSensitiveLanguageRegex. These short codes are ordinary
 /// words when written in lower or mixed case (`En`, `iT`), so only the
 /// all-upper-case spelling names a language.
+/// fork (P27e): `2XUKR` is two Ukrainian tracks.
+fn strip_language_multiplier(atom: &str) -> &str {
+    let rest = atom.trim_start_matches(|c: char| c.is_ascii_digit());
+    if rest.len() == atom.len() {
+        return atom;
+    }
+    rest.strip_prefix('X').unwrap_or(rest)
+}
+
 fn language_token_case_ok(token: &str, raw: &str) -> bool {
     !matches!(token, "EN" | "ES" | "DE" | "CZ" | "SK" | "LT" | "PL" | "BG")
         || !raw.chars().any(char::is_lowercase)

@@ -44,7 +44,7 @@
 //! | `edition` | `edition` (absent = `""` where the reference uses `""`) |
 //! | `hardcoded_subs` | `is_hardcoded_subs`: false = null; true cannot name the tag, so a named tag fails |
 //! | `tmdb_id`, `imdb_id` | `tmdb_id` (number, absent = 0), `imdb_id` |
-//! | `languages` (set), `languages_include` (subset), `languages_count`, `languages_first` | `languages_audio` named by LANGUAGES below; empty = `["Unknown"]`. Scryer has no "Original" language, so a case expecting it fails (`is_multi_audio` is not translated: the reference reports Unknown for MULTi) |
+//! | `languages` (set), `languages_include` (subset), `languages_count`, `languages_first` | `languages_audio` named by LANGUAGES below; empty = `["Unknown"]`. `is_original_audio` reads as "Original" (P27b) (`is_multi_audio` is not translated: the reference reports Unknown for MULTi) |
 //! | `quality.source` / `.name` / `.modifier` / `.resolution` | see quality below |
 //! | `quality.revision` | see revision below |
 //!
@@ -421,6 +421,10 @@ impl View {
             .iter()
             .map(|code| LANGUAGES.iter().find(|(c, _)| c == code).map_or(code.clone(), |(_, n)| n.to_string()))
             .collect();
+        // fork (P27b): the reference's Original language
+        if self.p.is_original_audio {
+            out.push("Original".into());
+        }
         if out.is_empty() {
             out.push("Unknown".into());
         }

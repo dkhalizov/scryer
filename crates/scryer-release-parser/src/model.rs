@@ -801,6 +801,8 @@ pub struct ParsedReleaseMetadata {
     /// A multi-audio marker (`MULTi`, `Multi-Audio`): several audio tracks,
     /// the original language among them. It names no language by itself.
     pub is_multi_audio: bool,
+    /// fork (P27b): an `Original` marker, or German DL/ML: the title's original-language track ships.
+    pub is_original_audio: bool,
     pub is_atmos: bool,
     pub is_dolby_vision: bool,
     pub detected_hdr: bool,
@@ -864,6 +866,7 @@ impl ParsedReleaseMetadata {
             audio_channels: None,
             is_dual_audio: false,
             is_multi_audio: false,
+            is_original_audio: false,
             is_atmos: false,
             is_dolby_vision: false,
             detected_hdr: false,
@@ -1107,6 +1110,8 @@ pub struct MetadataEnrichment {
     /// A multi-audio marker (`MULTi`, `Multi-Audio`): several audio tracks,
     /// the original language among them. It names no language by itself.
     pub is_multi_audio: bool,
+    /// fork (P27b): an `Original` marker, or German DL/ML: the title's original-language track ships.
+    pub is_original_audio: bool,
     pub is_atmos: bool,
     pub is_dolby_vision: bool,
     pub detected_hdr: bool,
