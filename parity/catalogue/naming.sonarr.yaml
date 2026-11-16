@@ -1336,91 +1336,98 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:56"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0192
   behaviour: "A reserved device name in series title 'Com1 Sat' is escaped in the series folder"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:57"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0193
   behaviour: "A reserved device name in series title 'Con Game' is escaped in the season folder"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:66"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0194
   behaviour: "A reserved device name in series title 'Com1 Sat' is escaped in the season folder"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:67"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0195
   behaviour: "A reserved device name in series title 'Con Game' is escaped in the file name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:76"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0196
   behaviour: "A reserved device name in series title 'Com1 Sat' is escaped in the file name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReservedDeviceNameFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0197
   behaviour: "A file name with its extension over 255 characters truncates the episode title with '...'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:100"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36e: D75 (3) expected names exceed the 216-byte budget (reserves a 24-byte suffix; library max 98) and 0198/0199 use the Extend style (P36 plan, P36e dropped)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0198
   behaviour: "Seven episode titles that do not fit become first...last"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:117"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36e: D75 (3) expected names exceed the 216-byte budget (reserves a 24-byte suffix; library max 98) and 0198/0199 use the Extend style (P36 plan, P36e dropped)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0199
   behaviour: "With a long series title only the first episode title fits, followed by '...'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:127"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36e: D75 (3) expected names exceed the 216-byte budget (reserves a 24-byte suffix; library max 98) and 0198/0199 use the Extend style (P36 plan, P36e dropped)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0200
   behaviour: "With a very long series title the single episode title is cut with '...'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:138"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36e: D75 (3) expected names exceed the 216-byte budget (reserves a 24-byte suffix; library max 98) and 0198/0199 use the Extend style (P36 plan, P36e dropped)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0201
   behaviour: "Truncation counts UTF-8 bytes of a non-ASCII series title"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:149"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36e: D75 (3) expected names exceed the 216-byte budget (reserves a 24-byte suffix; library max 98) and 0198/0199 use the Extend style (P36 plan, P36e dropped)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0202
   behaviour: "Truncation counts UTF-8 bytes of a non-ASCII episode title"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:161"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36e: D75 (3) expected names exceed the 216-byte budget (reserves a 24-byte suffix; library max 98) and 0198/0199 use the Extend style (P36 plan, P36e dropped)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0203
   behaviour: "Truncation does not split a multi-byte character in the episode title"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/TruncatedEpisodeTitlesFixture.cs:175"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36e: D75 (3) expected names exceed the 216-byte budget (reserves a 24-byte suffix; library max 98) and 0198/0199 use the Extend style (P36 plan, P36e dropped)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0204
   behaviour: "Season folder format '{Series.Title}.{season:00}' renders 'Venture Bros.' season 1 as 'Venture.Bros.01'"

@@ -4046,7 +4046,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:270"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36a: D75 (2) hardcoded-sub tag text is config-unused, whitelistedHardcodedSubs empty (P36 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0501
   # key: "ParserFixture.cs|should_parse_hardcoded_subs|0dfb20167989dac1|0"
@@ -4054,7 +4055,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:271"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36a: D75 (2) hardcoded-sub tag text is config-unused, whitelistedHardcodedSubs empty (P36 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0502
   # key: "ParserFixture.cs|should_parse_hardcoded_subs|89b6b352ba5c83f5|0"
@@ -4062,7 +4064,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:272"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36a: D75 (2) hardcoded-sub tag text is config-unused, whitelistedHardcodedSubs empty (P36 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0503
   # key: "ParserFixture.cs|should_parse_hardcoded_subs|4d69452774897300|0"
@@ -4070,7 +4073,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:273"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P36a: D75 (2) hardcoded-sub tag text is config-unused, whitelistedHardcodedSubs empty (P36 plan)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0504
   # key: "ParserFixture.cs|should_parse_hardcoded_subs|db65d98f1a26dd85|0"
@@ -4134,7 +4138,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:292"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_normalize_imdb_id]
 - id: RAD-PARSE-0512
   # key: "ParserFixture.cs|should_normalize_imdbid|78140a87e1f6d019|0"
