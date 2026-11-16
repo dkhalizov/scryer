@@ -1924,7 +1924,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|17abfbc08708|0
 - id: SON-PARSE-0240
@@ -4516,7 +4516,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:51"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|42dfc00a4662|0
 - id: SON-PARSE-0557
@@ -4540,7 +4540,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|a5765c3e1c59|0
 - id: SON-PARSE-0560
@@ -4596,7 +4596,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:61"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|703f5d62e56f|0
 - id: SON-PARSE-0567
@@ -4604,7 +4604,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:62"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|4fbb42f4d6a1|0
 - id: SON-PARSE-0568
@@ -4708,7 +4708,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:75"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|6cf9549bee4b|0
 - id: SON-PARSE-0581
@@ -9849,7 +9849,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|bd4373e694a7|0
 - id: SON-PARSE-1218
@@ -11399,7 +11399,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:170"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|86ffea2a9d14|0
 - id: SON-PARSE-1410
