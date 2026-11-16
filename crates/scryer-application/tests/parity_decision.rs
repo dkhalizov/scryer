@@ -121,7 +121,7 @@
 //! | QualityAllowedByProfile | requirement codes `quality_not_in_profile_tiers`, `quality_missing_and_profile_disallows_unknown`, `source_*` |
 //! | CustomFormatAllowedByProfile | `score_below_minimum`, `score_at_or_below_block_threshold` |
 //! | RawDisk | `bd_disk_not_allowed` |
-//! | Language (Radarr) | `required_audio_language_missing` |
+//! | Language (Radarr) | `required_audio_language_missing`; profile `Original` resolves `["original"]` against the movie's original language (P27a) |
 //! | Protocol | `DelayDecisionReason::ProtocolDisabled` |
 //! | MinimumAge | `DelayDecisionReason::MinimumAge` |
 //! | Delay | `DelayDecisionReason::{PendingDelay, ReleaseAgeUnknown}` |
@@ -229,7 +229,8 @@ use scryer_application::parity_seams::{
 use scryer_application::parity_seams::{
     AdmissionPolicy, AdmissionRejectionReason, AdmissionScope, AdmissionSubject, CandidateFacts,
     CutoffScope, DelayDecisionReason, DelayPolicyContext, Incumbent, QueuedRelease,
-    ReleaseAutoDecisionCode, ScopeMembership, analyzed_cutoff_quality_for_scope,
+    ReleaseAutoDecisionCode, ScopeMembership, release_audio_language_hints_for_title,
+    resolve_required_audio_requirements, title_audio_language_context, analyzed_cutoff_quality_for_scope,
     apply_min_score_gate, cutoff_refusal, episode_blocks_full_season, episode_is_unaired,
     evaluate_admission,
     evaluate_profile_requirements, incumbent_at_cutoff, meets_minimum_seeders,
@@ -1061,30 +1062,60 @@ fn raw_disk(g: &Value) -> Result<Value, String> {
     Ok(accepted(!decision.block_codes.iter().any(|c| c == "bd_disk_not_allowed")))
 }
 
-fn language(g: &Value) -> Result<Value, String> {
-    let required = match g["profile"]["language"].as_str() {
+// fork (P27a): one place maps a Radarr profile language to Scryer's required
+// audio languages, so `language()` and `check_language` cannot drift apart.
+fn required_for(profile_language: Option<&str>, original_language: Option<&str>) -> Vec<String> {
+    match profile_language {
         None | Some("Any") => Vec::new(),
-        Some("Original") => {
-            return Err(
-                "no Scryer field for a required 'Original' language (required_audio_languages takes fixed languages)"
-                    .into(),
-            );
-        }
+        Some("Original") => resolve_required_audio_requirements(
+            &["original".to_string()],
+            &title_audio_language_context(original_language, None, Some("movie"), &[]),
+        ),
         Some(name) => vec![name.to_string()],
-    };
+    }
+}
+
+/// Whether the profile gate `required_audio_language_missing` refuses a release
+/// carrying `audio` languages.
+fn refuses_audio(required: Vec<String>, audio: Vec<String>) -> bool {
     let mut profile = builtin_1080p_profile();
     profile.criteria.required_audio_languages = required;
-    let release = ParsedReleaseMetadata {
-        languages_audio: strings(&g["release_languages"]).unwrap_or_default(),
-        ..ParsedReleaseMetadata::default()
-    };
-    let decision = evaluate_profile_requirements(&profile, &release, false, None);
-    Ok(accepted(
-        !decision
-            .block_codes
-            .iter()
-            .any(|c| c == "required_audio_language_missing"),
-    ))
+    let release = ParsedReleaseMetadata { languages_audio: audio, ..ParsedReleaseMetadata::default() };
+    evaluate_profile_requirements(&profile, &release, false, None)
+        .block_codes
+        .iter()
+        .any(|c| c == "required_audio_language_missing")
+}
+
+fn language(g: &Value) -> Result<Value, String> {
+    let required = required_for(
+        g["profile"]["language"].as_str(),
+        g["movie"]["original_language"].as_str(),
+    );
+    let audio = strings(&g["release_languages"]).unwrap_or_default();
+    Ok(accepted(!refuses_audio(required, audio)))
+}
+
+fn check_language(app: &str, id: i64) -> Result<(), String> {
+    let profiles: Vec<Value> = corpus(&format!("corpus/captured/{app}/config/qualityprofile.json"));
+    let p = profiles
+        .iter()
+        .find(|p| p["id"].as_i64() == Some(id))
+        .ok_or_else(|| format!("{app} profile {id} not captured"))?;
+    let name = p["language"]["name"].as_str().ok_or("profile has no language")?;
+    if name != "Original" {
+        return Err(format!("profile language '{name}' is not covered by this check"));
+    }
+    let mut failures = Vec::new();
+    let french = required_for(Some(name), Some("French"));
+    expect_that(refuses_audio(french.clone(), vec!["German".into()]), "a German release is refused for a French movie", &mut failures);
+    expect_that(!refuses_audio(french.clone(), vec!["French".into()]), "a French release is accepted for a French movie", &mut failures);
+    let ctx = title_audio_language_context(Some("French"), None, Some("movie"), &[]);
+    let unlabelled = release_audio_language_hints_for_title(&ParsedReleaseMetadata::default(), None, Some(&ctx), true);
+    expect_that(!refuses_audio(french, unlabelled), "an unlabelled release is accepted", &mut failures);
+    let english = required_for(Some(name), Some("English"));
+    expect_that(refuses_audio(english, vec!["German".into()]), "a German-only release is refused for an English movie", &mut failures);
+    verdict(failures)
 }
 
 fn delay_decision_reason(
@@ -1754,9 +1785,7 @@ fn config_check(reference: &str) -> Option<Result<(), String>> {
                 "cutoff" | "cutoffFormatScore" => Some(check_cutoff(app, id)),
                 "minUpgradeFormatScore" => Some(check_min_upgrade(app, id)),
                 "upgradeAllowed" => Some(check_upgrades_off(app, id)),
-                "language" => Some(Err(
-                    "no Scryer field for a required 'Original' language".into(),
-                )),
+                "language" => Some(check_language(app, id)),
                 _ => None,
             }
         }

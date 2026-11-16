@@ -398,6 +398,11 @@ pub mod parity_seams {
     pub use crate::normalize::normalize_imdb_id;
     // fork: parity net seam (tests/parity_decision/decision_rank.rs)
     pub use crate::catalog::release_search::compare_release_search_results;
+    // fork (P27a): original-language harness (tests/parity_decision.rs)
+    pub use crate::media::audio_requirements::{
+        TitleAudioLanguageContext, release_audio_language_hints_for_title,
+        resolve_required_audio_requirements, title_audio_language_context,
+    };
     // fork: parity net seam (tests/parity_decision/decision_delay.rs)
     pub use crate::acquisition::release_search::automatic_candidate_delay_decision;
     // fork: parity net seam (tests/parity_parse/parse_sublang.rs)

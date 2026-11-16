@@ -4,8 +4,9 @@ const DEFAULT_NON_ANIME_AUDIO_LANGUAGE: &str = "eng";
 const DEFAULT_ANIME_AUDIO_LANGUAGE: &str = "jpn";
 pub(crate) const ORIGINAL_AUDIO_LANGUAGE_REQUIREMENT: &str = "original";
 
+// fork (P27a): pub for the parity seam
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub(crate) struct TitleAudioLanguageContext {
+pub struct TitleAudioLanguageContext {
     pub original_language: Option<String>,
     pub original_country: Option<String>,
     pub inferred_original_audio_language: String,
@@ -52,7 +53,7 @@ pub(crate) fn normalize_required_audio_requirements(
 
 /// Expand configured requirements into concrete per-title language codes.
 /// Multiple requirements retain their existing AND semantics.
-pub(crate) fn resolve_required_audio_requirements(
+pub fn resolve_required_audio_requirements(
     requirements: &[String],
     title_context: &TitleAudioLanguageContext,
 ) -> Vec<String> {
@@ -158,7 +159,7 @@ fn tag_marks_anime(tag: &str) -> bool {
             .is_some_and(|prefix| prefix.eq_ignore_ascii_case("anime-"))
 }
 
-pub(crate) fn title_audio_language_context(
+pub fn title_audio_language_context(
     title_language: Option<&str>,
     title_country: Option<&str>,
     category: Option<&str>,
@@ -197,7 +198,7 @@ fn push_language(normalized: &mut Vec<String>, language: &str) {
     }
 }
 
-pub(crate) fn release_audio_language_hints_for_title(
+pub fn release_audio_language_hints_for_title(
     parsed: &ParsedReleaseMetadata,
     indexer_languages: Option<&[String]>,
     title_language_context: Option<&TitleAudioLanguageContext>,

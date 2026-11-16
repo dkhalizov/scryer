@@ -33,6 +33,12 @@ error.
 | `cutoffFormatScore` | `cutoffScore`, see below |
 | `minUpgradeFormatScore` | `minUpgradeScoreDelta` |
 
+Radarr's profile `language` is not a `criteria` field. It maps to the library
+setting `requiredAudioLanguages` (`audio.required_languages`): `Original` to
+`["original"]` (resolved per title from its original language), a named
+language to its ISO 639-2 code, `Any` to unset. Do not put `original` in
+`criteria.requiredAudioLanguages`: that field ignores it, so there is no gate.
+
 Scryer compares these score fields with its **whole** release score: the
 built-in score plus every rule set. Arr compares them with the custom format
 sum only. Copying the numbers is therefore a starting point, not an
