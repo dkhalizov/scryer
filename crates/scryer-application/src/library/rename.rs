@@ -5874,7 +5874,7 @@ fn select_sorted_episodes<'a>(
     episodes
 }
 
-fn collect_episode_numbers(episodes: &[&Episode]) -> Vec<u32> {
+pub(crate) fn collect_episode_numbers(episodes: &[&Episode]) -> Vec<u32> {
     episodes
         .iter()
         .filter_map(|episode| parse_sort_number(episode.episode_number.as_deref()))
@@ -5888,22 +5888,36 @@ fn collect_absolute_episode_numbers(episodes: &[&Episode]) -> Vec<u32> {
         .collect()
 }
 
-fn join_episode_titles(episodes: &[&Episode]) -> Option<String> {
+pub(crate) fn join_episode_titles(episodes: &[&Episode]) -> Option<String> {
+    // fork (P15b): Sonarr GetEpisodeTitles. Trim trailing ' ', '.', '?' from each title; a
+    // multi-episode file also drops "(1)" / "Part 1" suffixes, unless that empties every title.
+    static MULTI_PART: std::sync::OnceLock<regex::Regex> = std::sync::OnceLock::new();
+    let multi_part = MULTI_PART.get_or_init(|| {
+        regex::Regex::new(r"(?i):?\s?(?:\(\d+\)|(?:Part|Pt\.?)\s?\d+)$").expect("multi-part title regex")
+    });
+    let trimmed: Vec<&str> = episodes
+        .iter()
+        .filter_map(|episode| episode.title.as_deref())
+        .map(|title| title.trim().trim_end_matches([' ', '.', '?']))
+        .collect();
+    let cleaned: Vec<String> = if episodes.len() > 1 {
+        trimmed
+            .iter()
+            .map(|title| multi_part.replace(title, "").trim().to_string())
+            .collect()
+    } else {
+        Vec::new()
+    };
+    let chosen: Vec<&str> = if cleaned.iter().any(|title| !title.is_empty()) {
+        cleaned.iter().map(String::as_str).collect()
+    } else {
+        trimmed
+    };
+
     let mut seen = HashSet::new();
     let mut titles = Vec::new();
-
-    for episode in episodes {
-        let Some(title) = episode
-            .title
-            .as_deref()
-            .map(str::trim)
-            .filter(|value| !value.is_empty())
-        else {
-            continue;
-        };
-
-        let normalized = title.to_ascii_lowercase();
-        if seen.insert(normalized) {
+    for title in chosen.into_iter().filter(|value| !value.is_empty()) {
+        if seen.insert(title.to_ascii_lowercase()) {
             titles.push(title.to_string());
         }
     }
@@ -5915,7 +5929,7 @@ fn join_episode_titles(episodes: &[&Episode]) -> Option<String> {
     }
 }
 
-fn format_number_token(mut numbers: Vec<u32>, width: usize, pad_single: bool) -> Option<String> {
+pub(crate) fn format_number_token(mut numbers: Vec<u32>, width: usize, pad_single: bool) -> Option<String> {
     if numbers.is_empty() {
         return None;
     }

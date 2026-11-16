@@ -780,6 +780,25 @@ fn sanitize_disarms_reserved_device_extension_forms() {
     }
 }
 
+// fork (P15b)
+fn episode_with_title(title: &str) -> Episode {
+    Episode { title: Some(title.to_string()), ..test_series_episode() }
+}
+
+#[test]
+fn episode_titles_are_trimmed_and_multi_part_titles_collapse() {
+    let join = |titles: &[&str]| {
+        let eps: Vec<Episode> = titles.iter().map(|t| episode_with_title(t)).collect();
+        join_episode_titles(&eps.iter().collect::<Vec<_>>()).unwrap()
+    };
+    assert_eq!(join(&["There Are Some Women..."]), "There Are Some Women");
+    assert_eq!(join(&["Me? Jealous?"]), "Me? Jealous");
+    assert_eq!(join(&["Finale (1)"]), "Finale (1)");
+    assert_eq!(join(&["Finale (1)", "Finale (2)"]), "Finale");
+    assert_eq!(join(&["Episode Title", "Episode Title: Part 2"]), "Episode Title");
+    assert_eq!(join(&["Part 1", "Part 2"]), "Part 1 + Part 2");
+}
+
 #[test]
 fn sanitize_replaces_the_dot_after_a_reserved_device_name() {
     // fork (P36-dev)
