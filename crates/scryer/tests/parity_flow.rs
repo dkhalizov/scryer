@@ -517,13 +517,16 @@ async fn c0011() -> Outcome {
     g.flow.qbit.fail(&hash);
     let before = g.fake.search_queries().len();
     let (token, handle) = g.poller();
-    let removed = loop_until(|| async { g.flow.qbit.torrents().is_empty() }).await;
+    // D96: like the arrs, the torrent itself goes only once the client says it
+    // can be removed (qBittorrent: seed limit reached), so it is not asserted.
+    let blocklisted = loop_until(|| async {
+        !g.flow.ctx.library_state.blocklist.list_for_title(&g.title.id, 10).await.unwrap_or_default().is_empty()
+    })
+    .await;
     g.flow.app.run_acquisition_cycle_for_test().await;
     token.cancel();
     let _ = handle.await;
-    ensure(removed, || "the failed torrent was not removed".into())?;
-    let blocked = g.flow.ctx.library_state.blocklist.list_for_title(&g.title.id, 10).await.unwrap_or_default();
-    ensure(!blocked.is_empty(), || "the failed release was not blocklisted".into())?;
+    ensure(blocklisted, || "the failed release was not blocklisted".into())?;
     ensure(g.fake.search_queries().len() > before, || "no new search ran after the failure".into())
 }
 

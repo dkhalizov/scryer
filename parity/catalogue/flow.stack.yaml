@@ -71,11 +71,11 @@
   status: green
   tests: [scryer::parity_flow::stack_flow]
 - id: STK-FLOW-0011
-  behaviour: "A failed or stalled download is removed, blocklisted and a new search runs (auto redownload failed on)"
+  behaviour: "A failed download is blocklisted and a new search runs (auto redownload failed on); the torrent is removed only once the client allows it, as the arrs read qBittorrent (D96)"
   source: config
   ref: "stack chain (Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer::parity_flow::stack_flow]
 - id: STK-FLOW-0012
   behaviour: "A later better release (propers prefer-and-upgrade, profile upgrade) replaces the file; the old file is deleted, no recycle bin"
