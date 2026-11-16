@@ -635,7 +635,9 @@ fn quality(app: App, q: &Map<String, Value>, p: &ParsedReleaseMetadata) -> (Valu
                 }),
                 "version+real" | "version" => json!(version),
                 "real" => {
-                    if p.revision == 0 { json!(0) } else { json!("unknown (REAL folded into revision)") }
+                    // fork (P44): no REAL token in the name, nothing folded
+                    let has_real = p.raw_title.split(|c: char| !c.is_ascii_alphanumeric()).any(|w| w == "REAL");
+                    if p.revision == 0 || !has_real { json!(0) } else { json!("unknown (REAL folded into revision)") }
                 }
                 "is_repack" => json!(p.is_repack),
                 _ => unreachable!(),

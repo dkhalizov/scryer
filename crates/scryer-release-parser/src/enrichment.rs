@@ -114,7 +114,8 @@ pub(crate) fn enrich_candidate(
             while previous > 0 {
                 let (left_index, left) = scoped_tokens[previous - 1];
                 let (right_index, right) = scoped_tokens[previous];
-                if left.normalized != "REAL"
+                // fork (P44): the arrs' RealRegex is case-sensitive
+                if left.raw != "REAL"
                     || left_index + 1 != right_index
                     || left.group_id != right.group_id
                     || left.bracket_depth != right.bracket_depth
@@ -1931,6 +1932,8 @@ mod scoped_metadata_tests {
             ("REPACK17", 17),
             ("REAL.REPACK", 2),
             ("REAL.REAL.PROPER", 3),
+            ("real.PROPER", 1),
+            ("Real.Proper", 1),
             ("PROPER.REPACK", 1),
             ("REPACK3.REPACK2", 3),
             ("repack4", 4),
