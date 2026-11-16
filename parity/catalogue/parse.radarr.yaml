@@ -1253,7 +1253,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:104"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_iso_languages]
 - id: RAD-PARSE-0156
   # key: "IsoLanguagesFixture.cs|should_return_mongolian|e473a7989a3aac2b|0"
@@ -1261,7 +1261,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/IsoLanguagesFixture.cs:105"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_iso_languages]
 - id: RAD-PARSE-0157
   # key: "IsoLanguagesFixture.cs|should_return_mongolian|71c03671070906d5|0"
@@ -1397,7 +1397,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:27"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0174
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_english|d349ab9549083864|0"
@@ -1493,7 +1493,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:52"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0186
   # key: "LanguageParserFixture.cs|should_parse_language_french|ca98ca0dbc26a479|0"
@@ -1509,7 +1509,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0188
   # key: "LanguageParserFixture.cs|should_parse_language_french|7606386790ee5c82|0"
@@ -1517,7 +1517,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:55"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0189
   # key: "LanguageParserFixture.cs|should_parse_language_french|ad886d5af3a8565a|0"
@@ -1525,7 +1525,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:56"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0190
   # key: "LanguageParserFixture.cs|should_parse_language_french|9992ae1ed15c8c16|0"
@@ -1533,7 +1533,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:57"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0191
   # key: "LanguageParserFixture.cs|should_parse_language_french|659a770cd942a218|0"
@@ -2093,7 +2093,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:303"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0261
   # key: "LanguageParserFixture.cs|should_parse_language_korean|5634b69db314e7b6|0"
@@ -2157,7 +2157,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:346"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0269
   # key: "LanguageParserFixture.cs|should_parse_language_arabic|2c66b3522fea7dbb|0"
@@ -2165,7 +2165,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:354"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0270
   # key: "LanguageParserFixture.cs|should_parse_language_ukrainian|c2ebc37b7fcb1a09|0"
@@ -2221,7 +2221,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:381"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0277
   # key: "LanguageParserFixture.cs|should_parse_language_bengali|040595b214b8ea18|0"
@@ -2229,7 +2229,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:388"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0278
   # key: "LanguageParserFixture.cs|should_parse_language_telugu|27d39777ffcd8fa6|0"
@@ -2237,7 +2237,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:395"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0279
   # key: "LanguageParserFixture.cs|should_parse_language_telugu|c720d159ab057318|0"
@@ -2245,7 +2245,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:396"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0280
   # key: "LanguageParserFixture.cs|should_parse_language_telugu|466aa83313c82a2e|0"
@@ -2253,7 +2253,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:397"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0281
   # key: "LanguageParserFixture.cs|should_parse_language_slovak|77f8be35e7c72b63|0"
@@ -2261,7 +2261,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:404"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0282
   # key: "LanguageParserFixture.cs|should_parse_language_slovak|9d183ac97529c3a5|0"
@@ -2269,7 +2269,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:405"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0283
   # key: "LanguageParserFixture.cs|should_parse_language_slovak|4b583e5568cbec62|0"
@@ -2277,7 +2277,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:406"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0284
   # key: "LanguageParserFixture.cs|should_parse_language_slovak|eb61b4fc12ffae6a|0"
@@ -2285,7 +2285,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:407"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0285
   # key: "LanguageParserFixture.cs|should_parse_language_latvian|d9009d9b210d51fb|0"
@@ -2405,7 +2405,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:440"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0300
   # key: "LanguageParserFixture.cs|should_parse_language_catalan|08468bef22693c4b|0"
@@ -2413,7 +2413,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:441"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0301
   # key: "LanguageParserFixture.cs|should_parse_language_catalan|5eba65860ae1b059|0"
@@ -2421,7 +2421,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:442"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0302
   # key: "LanguageParserFixture.cs|should_parse_language_malayalam|caf1940d12f823ba|0"
@@ -2429,7 +2429,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:450"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0303
   # key: "LanguageParserFixture.cs|should_parse_language_malayalam|fc7966afd5f7b964|0"
@@ -2437,7 +2437,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:451"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0304
   # key: "LanguageParserFixture.cs|should_parse_language_malayalam|949a5c99d2b113ec|0"
@@ -2445,7 +2445,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:452"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0305
   # key: "LanguageParserFixture.cs|should_parse_language_kannada|f5f281a139baf06e|0"
@@ -2453,7 +2453,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:459"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0306
   # key: "LanguageParserFixture.cs|should_parse_language_kannada|61bc660b50882e3a|0"
@@ -2461,7 +2461,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:460"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0307
   # key: "LanguageParserFixture.cs|should_parse_language_albanian|cff1bce71b5969ea|0"
@@ -2469,7 +2469,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:467"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0308
   # key: "LanguageParserFixture.cs|should_parse_language_albanian|19fd2bd60c46d58e|0"
@@ -2477,7 +2477,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:468"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0309
   # key: "LanguageParserFixture.cs|should_parse_language_afrikaans|373687f4453135ea|0"
@@ -2485,7 +2485,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:475"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0310
   # key: "LanguageParserFixture.cs|should_parse_language_afrikaans|66a05d3816cc7512|0"
@@ -2493,7 +2493,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:476"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0311
   # key: "LanguageParserFixture.cs|should_parse_language_marathi|a27b9b28c891a840|0"
@@ -2501,7 +2501,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:483"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0312
   # key: "LanguageParserFixture.cs|should_parse_language_marathi|9d9d67b2d551ff3d|0"
@@ -2509,7 +2509,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:484"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0313
   # key: "LanguageParserFixture.cs|should_parse_language_tagalog|162071a8579a5fad|0"
@@ -2517,7 +2517,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:491"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0314
   # key: "LanguageParserFixture.cs|should_parse_language_tagalog|2332db5c3e2ab82c|0"
@@ -2525,7 +2525,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:492"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0315
   # key: "LanguageParserFixture.cs|should_parse_language_urdu|bd7c50d8116d46c7|0"
@@ -2533,7 +2533,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:499"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0316
   # key: "LanguageParserFixture.cs|should_parse_language_urdu|8fd332c55ea5c416|0"
@@ -2541,7 +2541,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:500"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0317
   # key: "LanguageParserFixture.cs|should_parse_language_romansh|ae1d7ee329efbf94|0"
@@ -2549,7 +2549,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:507"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0318
   # key: "LanguageParserFixture.cs|should_parse_language_romansh|2595839ec07113c2|0"
@@ -2557,7 +2557,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:508"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0319
   # key: "LanguageParserFixture.cs|should_parse_language_romansh|dd2d5b292a9aba3b|0"
@@ -2565,7 +2565,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:509"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0320
   # key: "LanguageParserFixture.cs|should_parse_language_mongolian|3cf9196257529b23|0"
@@ -2573,7 +2573,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:516"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0321
   # key: "LanguageParserFixture.cs|should_parse_language_mongolian|41a88f2b4c651e80|0"
@@ -2581,7 +2581,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:517"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0322
   # key: "LanguageParserFixture.cs|should_parse_language_georgian|81454451c4fb1fc2|0"
@@ -2597,7 +2597,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:525"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0324
   # key: "LanguageParserFixture.cs|should_parse_language_georgian|11cd53e9c776fc88|0"
@@ -4026,7 +4026,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:262"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0500
   # key: "ParserFixture.cs|should_parse_hardcoded_subs|23f0df839616615d|0"

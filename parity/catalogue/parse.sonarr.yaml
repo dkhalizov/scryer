@@ -3026,7 +3026,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:69"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_spanish|cc518ca50c0d|0
 - id: SON-PARSE-0375
@@ -3154,7 +3154,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:133"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|c24bf1f6b020|0
 - id: SON-PARSE-0391
@@ -3162,7 +3162,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:134"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|b1b089b2a814|0
 - id: SON-PARSE-0392
@@ -3570,7 +3570,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:305"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_ukrainian|639048d035fa|0
 - id: SON-PARSE-0443
@@ -3602,7 +3602,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:321"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_slovak|b2441fd499d4|0
 - id: SON-PARSE-0447
@@ -3610,7 +3610,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:322"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_thai|2bd6c58da015|0
 - id: SON-PARSE-0448
@@ -5508,7 +5508,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:107"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ParsingServiceTests/GetEpisodesFixture.cs|should_get_daily_episode_episode_when_search_criteria_is_null|45cd44bbe7dc|0
 - id: SON-PARSE-0681
