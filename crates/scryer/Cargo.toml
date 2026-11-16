@@ -101,6 +101,9 @@ metrics-util = { version = "0.20", default-features = false, features = ["debugg
 wiremock = { workspace = true }
 reqwest = { version = "0.13", default-features = false, features = ["json", "rustls-no-provider", "http2", "gzip", "brotli", "deflate"] }
 tempfile = "3"
+# fork (D91 F2): flow-harness fakes (Torznab HTTP fake; list-plugin types for the Plex fake)
+scryer-mock-apis = { path = "../scryer-mock-apis" }
+scryer-plugin-sdk = { path = "../scryer-plugin-sdk" }
 
 [build-dependencies]
 embed-resource = "3.0.11"
