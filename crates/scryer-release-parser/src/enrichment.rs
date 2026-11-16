@@ -268,7 +268,12 @@ pub(crate) fn enrich_candidate(
             continue;
         }
 
-        if let Some(language) = parse_language_hint(token) {
+        if let Some(language) = parse_language_hint(token).filter(|_| {
+            language_token_case_ok(token, &scoped_tokens[index].1.raw)
+                && !(token == "ES"
+                    && index > 0
+                    && scoped_tokens[index - 1].1.normalized == "DTS")
+        }) {
             // The context scan only sees markers *before* a language token
             // ("SUB ENG"), but the dominant anime order is language-first:
             // "[ENG-Sub]", "Eng Subs". A language read under no context whose
@@ -279,6 +284,11 @@ pub(crate) fn enrich_candidate(
             // subtitles the same way ("Ukr Hardsub"). `HC` does not: scene
             // `KOREAN.HC` is Korean audio with burned-in English subtitles.
             let scope = match language_context {
+                // fork (P27c): VF/VFF/VFQ/VFI/TRUEFRENCH name the French dub, so
+                // a MULTI or VOSTFR context before them does not make them subs.
+                _ if matches!(token, "VF" | "VF2" | "VFF" | "VFQ" | "VFI" | "TRUEFRENCH") => {
+                    LanguageScope::Audio
+                }
                 LanguageScope::Auto
                     if next.is_some_and(|value| {
                         LANG_SUBTITLE_MARKERS.contains(&value)
@@ -887,16 +897,25 @@ fn dedupe_keep_order(values: Vec<String>) -> Vec<String> {
     output
 }
 
+/// fork (P27d): arr's CaseSensitiveLanguageRegex. These short codes are ordinary
+/// words when written in lower or mixed case (`En`, `iT`), so only the
+/// all-upper-case spelling names a language.
+fn language_token_case_ok(token: &str, raw: &str) -> bool {
+    !matches!(token, "EN" | "ES" | "DE" | "CZ" | "SK" | "LT" | "PL" | "BG")
+        || !raw.chars().any(char::is_lowercase)
+}
+
 fn normalize_language_token(token: &str) -> Option<&'static str> {
     match token {
         "EN" | "ENG" | "ENGLISH" | "EN-GB" => Some("eng"),
         "JA" | "JP" | "JPN" | "JAP" | "JAPANESE" => Some("jpn"),
-        "FR" | "FRA" | "FRE" | "FRENCH" | "TRUEFRENCH" | "VF" | "VF2" | "VFF" | "VFQ" => {
+        "FR" | "FRA" | "FRE" | "FRENCH" | "TRUEFRENCH" | "VF" | "VF2" | "VFF" | "VFQ" | "VFI" => {
             Some("fra")
         }
         "DE" | "DEU" | "GER" | "GERMAN" | "SWISSGERMAN" => Some("deu"),
         "ES" | "SPA" | "ESP" | "SPANISH" | "ESPANOL" | "CASTELLANO" => Some("spa"),
-        "IT" | "ITA" | "ITALIAN" => Some("ita"),
+        // fork (P27d): bare IT is not read, as in the arrs
+        "ITA" | "ITALIAN" => Some("ita"),
         "RU" | "RUS" | "RUSSIAN" => Some("rus"),
         // Bare `UK` is the United Kingdom in release names (`UK.BluRay`), so
         // only the three-letter code and the full name name Ukrainian.
@@ -927,6 +946,32 @@ fn normalize_language_token(token: &str) -> Option<&'static str> {
         "VI" | "VIE" | "VIETNAMESE" => Some("vie"),
         "CA" | "CAT" | "CATALAN" => Some("cat"),
         "KA" | "KAT" | "GEORGIAN" => Some("kat"),
+        // fork (P27d): arr case-sensitive short codes
+        "CZ" => Some("ces"),
+        "SK" => Some("slk"),
+        // fork (P27f): vocabulary the arrs read
+        "GREEK" => Some("ell"),
+        "ARABIC" => Some("ara"),
+        "PERSIAN" | "FARSI" => Some("fas"),
+        "BENGALI" => Some("ben"),
+        "TEL" | "TELUGU" => Some("tel"),
+        "TAMIL" => Some("tam"),
+        "SLOVAK" => Some("slk"),
+        "FLEMISH" => Some("nld"),
+        "CATALA" => Some("cat"),
+        "MALAYALAM" => Some("mal"),
+        "KANNADA" => Some("kan"),
+        "ALBANIAN" => Some("sqi"),
+        "AFRIKAANS" => Some("afr"),
+        "MARATHI" => Some("mar"),
+        "TAGALOG" => Some("tgl"),
+        "URDU" => Some("urd"),
+        "ROMANSH" | "RUMANTSCH" | "ROMANSCH" => Some("roh"),
+        "MONGOLIAN" | "KHALKHA" => Some("mon"),
+        "CANTONESE" | "MANDARIN" => Some("zho"),
+        "VIDEOMANN" => Some("deu"),
+        "GEO" => Some("kat"),
+        "ING" => Some("eng"),
         _ => None,
     }
 }

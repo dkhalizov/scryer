@@ -1619,6 +1619,7 @@ fn is_language_metadata_atom(token: &str) -> bool {
             | "UKR"
             | "UKRAINIAN"
             | "VFF"
+            | "VFI" // fork (P27c)
             | "VFQ"
             | "VOSTFR"
             | "ZHO"
