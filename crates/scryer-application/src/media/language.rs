@@ -123,6 +123,8 @@ fn normalize_generic_app_language_code(code: &str) -> Option<String> {
         "ea" => return Some("spa".to_string()),
         "pob" => return Some("por".to_string()),
         "zht" => return Some("zho".to_string()),
+        // fork (P27f): IsoLanguages.Find folds Khalkha/Halh Mongolian into Mongolian.
+        "khk" | "mvf" => return Some("mon".to_string()),
         _ => {}
     }
 
@@ -321,6 +323,14 @@ mod tests {
         normalize_metadata_language_code,
     };
     use crate::media_language_data::ISO6392_LANGUAGE_ENTRIES;
+
+    #[test]
+    fn khalkha_codes_fold_to_mongolian() {
+        // fork (P27f)
+        for code in ["khk", "mvf"] {
+            assert_eq!(normalize_detected_audio_language_code(code).as_deref(), Some("mon"));
+        }
+    }
 
     #[test]
     fn normalizes_detected_audio_languages_with_full_iso_coverage() {

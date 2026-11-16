@@ -163,7 +163,7 @@ const LANGUAGES: &[(&str, &str)] = &[
     ("mal", "Malayalam"), ("mar", "Marathi"), ("mon", "Mongolian"), ("nld", "Dutch"),
     ("nor", "Norwegian"), ("pol", "Polish"), ("por", "Portuguese"), ("roh", "Romansh"),
     ("ron", "Romanian"), ("rus", "Russian"), ("slk", "Slovak"), ("spa", "Spanish"),
-    ("sqi", "Albanian"), ("swe", "Swedish"), ("tel", "Telugu"), ("tgl", "Tagalog"),
+    ("sqi", "Albanian"), ("swe", "Swedish"), ("tam", "Tamil"), ("tel", "Telugu"), ("tgl", "Tagalog"),
     ("tha", "Thai"), ("tur", "Turkish"), ("ukr", "Ukrainian"), ("urd", "Urdu"),
     ("vie", "Vietnamese"), ("zho", "Chinese"),
 ];
