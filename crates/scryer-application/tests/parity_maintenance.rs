@@ -37,8 +37,10 @@
 //!
 //! Expect keys compared: `result`, `matched`, `matchedCount`,
 //! `transientFailure`, `throws` (compared as "an error happened", the message
-//! is Maintainerr's own), `value`. Keys Scryer has no field for fail the case:
-//! `ruleResult`, `sectionResult` (Maintainerr's per-rule comparison trace).
+//! is Maintainerr's own), `value`. Keys Scryer has no field for fail the case.
+//! Ignored (D36: per-rule trace, logging, not behaviour): `ruleResult`,
+//! `sectionResult`. MNT-MAINTENANCE-0358 is unmapped and its only expect key is
+//! `ruleResult`; if it is ever mapped it would pass with nothing compared.
 //!
 //! Suite `mnt_maintenance`, mapped IDs:
 //! - rule_group.json: 0352..0355, 0357, 0363..0366, 0369..0372.
@@ -559,6 +561,8 @@ fn rule_group(suite: &mut Suite, id: &str, case: &Value) {
                 Value::Bool(true),
                 Value::Bool(outcomes.iter().any(|(_, o)| o.is_err())),
             ),
+            // fork (17b): per-rule trace, logging, not behaviour (D36)
+            "ruleResult" | "sectionResult" => continue,
             _ => {
                 missing.push(key.clone());
                 continue;
