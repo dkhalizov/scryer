@@ -260,7 +260,7 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
         .enumerate()
         .skip(title_start)
         .find(|(index, token)| {
-            (looks_like_release_metadata_token(token, scan_tokens) || series_season_at(*index, scan_tokens))
+            (looks_like_release_metadata_token(token, scan_tokens) || series_season_at(*index, scan_tokens, raw))
                 && !numeric_title_word(token, &scan_tokens[index + 1..], scan_tokens)
         })
         .map(|(index, _)| index)
@@ -406,7 +406,7 @@ fn guess_context_facet(raw: &str, tokens: &[String]) -> ContextFacetHint {
         // fork (P34b1): Spanish `TEMPORADA 2`.
         || temporada_marker(tokens)
         || tokens.iter().any(|token| chain_marker(&normalize_alphanumeric_upper(token), tokens))
-        || (0..tokens.len()).any(|index| series_season_at(index, tokens))
+        || (0..tokens.len()).any(|index| series_season_at(index, tokens, raw))
         // fork (P34h): `Series.and.a.Title.103.720p.HDTV`; spaced names are not.
         || (!raw.contains(' ') && (0..tokens.len()).any(|index| compact_episode_at(index, tokens)))
         || tokens.iter().any(|token| bare_episode_token(&normalize_alphanumeric_upper(token), tokens))
@@ -518,10 +518,13 @@ fn compact_episode_at(index: usize, tokens: &[String]) -> bool {
         && !tokens.iter().any(|token| looks_like_standard_episode_token(token))
 }
 
-/// fork (P34e): ` - Series 1 (1970)`: a later `Series N` names a season.
-fn series_season_at(index: usize, tokens: &[String]) -> bool {
+/// fork (P34e): ` - Series 1 (1970)`: a later `Series N` names a season,
+/// only after a ` - ` (the tokens drop separators, so `raw` is checked):
+/// `Test Series - 19 (WEB …)` keeps `Series` as title and 19 as absolute.
+fn series_season_at(index: usize, tokens: &[String], raw: &str) -> bool {
     let upper = |at: usize| tokens.get(at).map(|token| normalize_alphanumeric_upper(token));
     index > 0
+        && raw.to_ascii_lowercase().contains(" - series ")
         && upper(index).as_deref() == Some("SERIES")
         && upper(index + 1).is_some_and(|n| looks_like_small_season_number(&n))
         && upper(index + 2)
@@ -1020,6 +1023,9 @@ mod tests {
         }
         assert!(ep("The.Series.S03.Extras.01.Deleted.Scenes.720p").is_season_extra);
         assert!(crate::parse_release_metadata("Series 7 The Contenders 2001 1080p").episode.is_none());
+        // `Series` inside the title, then an absolute number: not a season.
+        let absolute = crate::parse_release_metadata("Test Series - 19 (WEB 1080p x264 10-bit AAC) [A1B2C3D4]");
+        assert_eq!(absolute.episode.map(|e| e.absolute_episode_numbers), Some(vec![19]));
     }
 
     // fork (P34h): a bare compact number after the title is season and episode.
