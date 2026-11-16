@@ -46,14 +46,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/BuildFilePathFixture.cs:59"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming_rename_off]
 - id: SON-NAMING-0008
   behaviour: "CleanFileName replaces illegal characters in 'Law & Order: Criminal Intent - S10E07 - Icarus [HDTV-720p]'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:11"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0009
   behaviour: "CleanFileName removes leading periods from '.hack s01e01'"
@@ -81,14 +81,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:55"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0013
   behaviour: "Colon replacement Smart renders 'CSI: Vegas' as 'CSI - Vegas'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:64"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0014
   behaviour: "Colon replacement Dash renders 'CSI: Vegas' as 'CSI- Vegas'"
@@ -102,35 +102,36 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:66"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D75 W-P15: D75 (2) colon mode Delete is not used; we write Smart (P15 plan)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0016
   behaviour: "Colon replacement SpaceDash renders 'CSI: Vegas' as 'CSI - Vegas'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:67"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0017
   behaviour: "Colon replacement SpaceDashSpace renders 'CSI: Vegas' as 'CSI - Vegas'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:68"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0018
   behaviour: "Colon replacement Smart renders 'Series:Title' as 'Series-Title'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:79"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0019
   behaviour: "Colon replacement Dash renders 'Series:Title' as 'Series-Title'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:80"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0020
   behaviour: "Colon replacement Delete renders 'Series:Title' as 'SeriesTitle'"
@@ -172,63 +173,63 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:71"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0026
   behaviour: "Episode titles 'Meet the Guys and Girls of Cycle 20 Part 1' and 'Meet the Guys and Girls of Cycle 20 Part 2' collapse to 'Meet the Guys and Girls of Cycle 20'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:72"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0027
   behaviour: "Episode titles 'Meet the Guys and Girls of Cycle 20 Part1' and 'Meet the Guys and Girls of Cycle 20 Part2' collapse to 'Meet the Guys and Girls of Cycle 20'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:73"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0028
   behaviour: "Episode titles 'Meet the Guys and Girls of Cycle 20 Part01' and 'Meet the Guys and Girls of Cycle 20 Part02' collapse to 'Meet the Guys and Girls of Cycle 20'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:74"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0029
   behaviour: "Episode titles 'Meet the Guys and Girls of Cycle 20 Part 01' and 'Meet the Guys and Girls of Cycle 20 Part 02' collapse to 'Meet the Guys and Girls of Cycle 20'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:75"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0030
   behaviour: "Episode titles 'Meet the Guys and Girls of Cycle 20 part 1' and 'Meet the Guys and Girls of Cycle 20 part 2' collapse to 'Meet the Guys and Girls of Cycle 20'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:76"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0031
   behaviour: "Episode titles 'Meet the Guys and Girls of Cycle 20 pt 1' and 'Meet the Guys and Girls of Cycle 20 pt 2' collapse to 'Meet the Guys and Girls of Cycle 20'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:77"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0032
   behaviour: "Episode titles 'Meet the Guys and Girls of Cycle 20 pt. 1' and 'Meet the Guys and Girls of Cycle 20 pt. 2' collapse to 'Meet the Guys and Girls of Cycle 20'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:78"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0033
   behaviour: "Different episode titles are joined with ' + '"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/EpisodeTitleCollapseFixture.cs:90"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0034
   behaviour: "Titles 'Part 1' and 'Part 2' do not collapse to an empty title; they are joined with ' + '"
@@ -1084,7 +1085,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:86"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D75 W-P15c: D75 (2) multi-episode style Extend is not used; we write PrefixedRange (P15 plan)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0156
   behaviour: "Duplicate style repeats the SxxEyy block per episode"
@@ -1105,7 +1107,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:116"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0159
   behaviour: "Anime absolute numbers join with a dash; needs an anime series (all 23 of ours are standard, naming.json/series-summary.json)"
@@ -1175,7 +1177,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:222"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0169
   behaviour: "Prefixed Range style for anime absolute numbers; needs an anime series (all 23 of ours are standard, naming.json/series-summary.json)"
@@ -1217,49 +1219,49 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeTitleFixture.cs:69"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0175
   behaviour: "Episode titles 'Episode Title Part 1' and 'Episode Title Part 2' collapse to 'Episode Title' before {Quality Full}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeTitleFixture.cs:70"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0176
   behaviour: "Episode titles 'Episode Title' and 'Episode Title: Part 2' collapse to 'Episode Title' before {Quality Full}"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeTitleFixture.cs:71"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0177
   behaviour: "An illegal character in series title 'CSI: Crime Scene Investigation' renders 'CSI - Crime Scene Investigation'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:58"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0178
   behaviour: "An illegal character in series title 'Code:Breaker' renders 'Code-Breaker'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:59"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0179
   behaviour: "An illegal character in series title 'Back Slash\\' renders 'Back Slash+'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:60"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0180
   behaviour: "An illegal character in series title 'Forward Slash/' renders 'Forward Slash+'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:61"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0181
   behaviour: "An illegal character in series title 'Greater Than>' renders 'Greater Than'"
@@ -1280,21 +1282,21 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:64"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0184
   behaviour: "An illegal character in series title 'Aster*sk' renders 'Aster-sk'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:65"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0185
   behaviour: "An illegal character in series title 'Colon: Two Periods' renders 'Colon - Two Periods'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ReplaceCharacterFixure.cs:66"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0186
   behaviour: "An illegal character in series title 'Pipe|' renders 'Pipe'"
@@ -1448,7 +1450,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/GetSeasonFolderFixture.cs:25"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0207
   behaviour: "Series folder format '{Series Title}' renders '30 Rock' as '30 Rock'"
@@ -1469,7 +1471,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/GetSeriesFolderFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0210
   behaviour: "Series folder format '{Series.Title}' renders 'Venture Bros.' as 'Venture.Bros'"

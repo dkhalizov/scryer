@@ -5,7 +5,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs:11"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0002
   # key: "src/NzbDrone.Core.Test/OrganizerTests/CleanFilenameFixture.cs|should_remove_periods_from_start|[\".45 (2006)\", \"45 (2006)\"]|0"
@@ -45,7 +45,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:47"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0007
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs|should_replace_colon_followed_by_space_with_expected_result|[\"CSI: Vegas\", \"Smart\", \"CSI - Vegas\"]|0"
@@ -53,7 +53,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:56"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0008
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs|should_replace_colon_followed_by_space_with_expected_result|[\"CSI: Vegas\", \"Dash\", \"CSI- Vegas\"]|0"
@@ -69,7 +69,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:58"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D75 W-P15: D75 (2) colon mode Delete is not used; we write Smart (P15 plan)"
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0010
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs|should_replace_colon_followed_by_space_with_expected_result|[\"CSI: Vegas\", \"SpaceDash\", \"CSI - Vegas\"]|0"
@@ -77,7 +78,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:59"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0011
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs|should_replace_colon_followed_by_space_with_expected_result|[\"CSI: Vegas\", \"SpaceDashSpace\", \"CSI - Vegas\"]|0"
@@ -85,7 +86,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:60"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0012
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs|should_replace_colon_with_expected_result|[\"Movie:Title\", \"Smart\", \"Movie-Title\"]|0"
@@ -93,7 +94,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:71"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0013
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs|should_replace_colon_with_expected_result|[\"Movie:Title\", \"Dash\", \"Movie-Title\"]|0"
@@ -101,7 +102,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:72"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::rad_naming]
 - id: RAD-NAMING-0014
   # key: "src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs|should_replace_colon_with_expected_result|[\"Movie:Title\", \"Delete\", \"MovieTitle\"]|0"
