@@ -531,7 +531,8 @@
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W19: D75(2) list rules and guessit fields unused"
   tests: [scryer-application::parity_subtitles::baz_subtitles]
 # key: tests/subliminal_patch/test_video.py|test_video_fromname_movie
 - id: BAZ-SUBTITLES-0067
@@ -539,5 +540,6 @@
   source: reference
   ref: "Bazarr@v1.5.6 tests/subliminal_patch/test_video.py:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W19: D75(2) list rules and guessit fields unused"
   tests: [scryer-application::parity_subtitles::baz_subtitles]

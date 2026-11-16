@@ -6,7 +6,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:87"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1001
   behaviour: "A proper (v2) is ranked before the same quality v1"
@@ -176,7 +177,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:532"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1025
   behaviour: "With DoNotPrefer, a v1 with score 10 beats a proper with score 0"
@@ -190,7 +192,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:576"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_decision::son_decision_rank]
 - id: SON-DECISION-1027
   behaviour: "Equal releases are ordered by indexer priority, lowest number first (1, 25, 50)"
@@ -400,7 +403,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:453"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1057
   behaviour: "A release with no container and a non-disc title is accepted"
@@ -738,7 +742,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:220"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1102
   behaviour: "Retention 0 accepts a 100-day-old Usenet release"
@@ -906,7 +911,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1126
   behaviour: "With upgrades on, a lower custom format score is allowed"
@@ -920,7 +926,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:126"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1128
   behaviour: "With upgrades on, DVD to Bluray-1080p is allowed"
@@ -941,7 +948,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture .cs:168"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1131
   behaviour: "With upgrades on, a lower quality (SDTV) is allowed"
@@ -1053,21 +1061,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:242"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W16: D75(3) multi-episode cutoff by design"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1147
   behaviour: "With the HDTV-720p cutoff met, Bluray-1080p is not an upgrade (language variant)"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:257"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W16: D75(3) multi-episode cutoff by design"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1148
   behaviour: "With the HDTV-720p cutoff met, Bluray-1080p is not an upgrade (higher language variant)"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:272"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W16: D75(3) multi-episode cutoff by design"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1149
   behaviour: "Below the HDTV-720p cutoff, Bluray-1080p upgrades an SDTV file"
@@ -1088,7 +1099,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeDiskSpecificationFixture.cs:316"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W16: D75(3) multi-episode cutoff by design"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1152
   behaviour: "Above the HDTV-1080p cutoff, a WEBDL-1080p proper still upgrades WEBDL-1080p v1"
@@ -1137,56 +1149,64 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1159
   behaviour: "WEBDL-720p v1 to HDTV-720p v2 gives BetterQuality"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1160
   behaviour: "WEBDL-720p v1 to HDTV-720p v2 gives BetterQuality"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1161
   behaviour: "WEBDL-720p v1 to WEBDL-720p v1 gives CustomFormatScore"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:26"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1162
   behaviour: "WEBDL-1080p v1 to WEBDL-1080p v1 gives CustomFormatScore"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:27"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1163
   behaviour: "With DoNotUpgrade, DVD v1 to DVD v2 is upgradable"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:58"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1164
   behaviour: "With DoNotPrefer and upgrades off, DVD v1 to DVD v2 gives UpgradesNotAllowed"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:77"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1165
   behaviour: "With upgrades off, HDTV-720p v1 to the same gives UpgradesNotAllowed"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:96"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1166
   behaviour: "Below the HDTV-1080p cutoff, HDTV-720p to HDTV-1080p is upgradable"
@@ -1277,7 +1297,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:183"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_decision::son_decision_delay]
 - id: SON-DECISION-1179
   behaviour: "A WEBDL-720p proper does not bypass the delay over an HDTV-720p file"
@@ -1554,7 +1575,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:110"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::son_decision]
 - id: SON-DECISION-1217
   behaviour: "With PreferAndUpgrade, a DVD proper over a DVD file added today is accepted"

@@ -638,7 +638,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:11"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0092
   behaviour: "A PROPER (version 2) is greater than the default revision"
@@ -659,7 +660,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/Qualities/RevisionComparableFixture.cs:38"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_quality::rad_revision_compare]
 - id: RAD-QUALITY-0095
   behaviour: "The default revision is less than a PROPER"

@@ -335,7 +335,8 @@
   source: reference
   ref: "Seerr@v3.5.2 server/lib/watchlistsync.test.ts:164"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W19: D75(3) fail closed, no re-request"
   tests: [scryer-application::parity_requests::ser_requests_watchlist_rerequest]
 - id: SER-REQUESTS-0049
   behaviour: "A Plex full scan that finds a requested show with no episodes yet leaves its approved request APPROVED"

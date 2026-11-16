@@ -180,7 +180,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:430"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(2) usenet unpack folders and unmanic/.DS_Store exclusions unused"
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0027
   behaviour: "A download folder is matched to a movie by its folder name"
@@ -1101,7 +1102,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:75"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0148
   behaviour: "A 1920x1080 video titled 'Movie.Title.2008.x264-Radarr' gives 1080p with source UNKNOWN"
@@ -1244,7 +1246,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:60"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0168
   behaviour: "A scene-looking file name is the scene name"
@@ -1258,7 +1261,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:86"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0170
   behaviour: "A scene-looking folder title is the scene name when the file name is not one"
@@ -1273,14 +1277,16 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:108"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0172
   behaviour: "The folder title is not the scene name when the folder has other video files"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:123"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0173
   behaviour: "A '.mkv' extension is stripped from the download client item's title for the scene name"
@@ -1786,14 +1792,16 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotUnpackingSpecificationFixture.cs:65"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(2) usenet unpack folders and unmanic/.DS_Store exclusions unused"
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0245
   behaviour: "On Linux a file under an _UNPACK_ folder is rejected as still unpacking even when last written 5 days ago"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/Specifications/NotUnpackingSpecificationFixture.cs:74"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(2) usenet unpack folders and unmanic/.DS_Store exclusions unused"
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0246
   behaviour: "A movie with no file accepts any import"

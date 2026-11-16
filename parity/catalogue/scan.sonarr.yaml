@@ -147,7 +147,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/DiskScanServiceTests/ScanFixture.cs:463"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(2) usenet unpack folders and unmanic/.DS_Store exclusions unused"
   tests: [scryer-application::parity_scan::son_scan]
 - id: SON-SCAN-0022
   behaviour: "DB files that are on disk and linked to episodes leave episodes untouched"
@@ -426,7 +427,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0061
   behaviour: "Audio vorbis/-/- with scene name 'DB Super HDTV' formats as 'Vorbis'"
@@ -485,14 +487,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:21"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0069
   behaviour: "Audio wmav2/-/- with scene name 'B.N.S04E18.720p.WEB-DL' formats as 'WMA'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:22"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0070
   behaviour: "Audio opus/-/- with scene name 'Roadkill Ep3x11 - YouTube.webm' formats as 'Opus'"
@@ -520,7 +524,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:26"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0074
   behaviour: "Audio dts/-/DTS-HD MA with scene name 'DTS-HD.MA' formats as 'DTS-HD MA'"
@@ -534,21 +539,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0076
   behaviour: "Audio dts/-/DTS-ES with scene name 'DTS' formats as 'DTS-ES'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:29"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0077
   behaviour: "Audio dts/-/DTS-HD HRA with scene name 'DTSHD-HRA' formats as 'DTS-HD HRA'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatAudioCodecFixture.cs:30"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_audio_codec]
 - id: SON-SCAN-0078
   behaviour: "Audio dts/-/DTS with scene name 'DTS' formats as 'DTS'"
@@ -613,35 +621,40 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0087
   behaviour: "Video mpeg1video/- with scene name 'The.Simpsons.S13E04.INTERNAL-ANiVCD.mpg' formats as 'MPEG'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0088
   behaviour: "Video vc1/WVC1 with scene name 'B.N.S04E18.720p.WEB-DL' formats as 'VC1'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0089
   behaviour: "Video vc1/V_MS/VFW/FOURCC/WVC1 with scene name '' formats as 'VC1'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0090
   behaviour: "Video vc1/WMV3 with scene name 'It's Always Sunny S07E13 The Gang's RevengeHDTV.XviD-2HD.avi' formats as 'VC1'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:16"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0091
   behaviour: "Video h264/V.MPEG4/ISO/AVC with scene name 'pd.2015.S03E08.720p.iP.WEBRip.AAC2.0.H264-BTW' formats as 'h264'"
@@ -664,91 +677,104 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:19"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0094
   behaviour: "Video wmv2/WMV2 with scene name 'Droned.wmv' formats as 'WMV'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:20"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0095
   behaviour: "Video mpeg4/XVID with scene name '' formats as 'XviD'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:21"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0096
   behaviour: "Video mpeg4/DIVX with scene name '' formats as 'DivX'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:22"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0097
   behaviour: "Video mpeg4/divx with scene name '' formats as 'DivX'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0098
   behaviour: "Video mpeg4/DIV3 with scene name 'spsm.dvdrip.divx.avi'.' formats as 'DivX'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0099
   behaviour: "Video msmpeg4/DIV3 with scene name 'Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi' formats as 'DivX'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0100
   behaviour: "Video msmpeg4v2/DIV3 with scene name 'Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi' formats as 'DivX'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:26"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0101
   behaviour: "Video msmpeg4v3/DIV3 with scene name 'Exit the Dragon, Enter the Tiger (1976) 360p MPEG Audio.avi' formats as 'DivX'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:27"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0102
   behaviour: "Video vp6f/4 with scene name 'Top Gear - S12E01 - Lorries - SD TV.flv' formats as 'VP6'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0103
   behaviour: "Video vp6/4 with scene name 'Top Gear - S12E01 - Lorries - SD TV.flv' formats as 'VP6'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:29"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0104
   behaviour: "Video vp7/VP70 with scene name 'Sweet Seymour.avi' formats as 'VP7'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:30"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0105
   behaviour: "Video vp8/V_VP8 with scene name 'Dick.mkv' formats as 'VP8'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:31"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0106
   behaviour: "Video vp9/V_VP9 with scene name 'Roadkill Ep3x11 - YouTube.webm' formats as 'VP9'"
@@ -786,7 +812,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoCodecFixture.cs:36"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_video_codec]
 - id: SON-SCAN-0111
   behaviour: "Video rpza/V_QUICKTIME with scene name 'Custom' formats as ''"
@@ -887,35 +914,40 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range]
 - id: SON-SCAN-0124
   behaviour: "HDR format Pq10 formats as dynamic range 'HDR'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range]
 - id: SON-SCAN-0125
   behaviour: "HDR format Hdr10 formats as dynamic range 'HDR'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range]
 - id: SON-SCAN-0126
   behaviour: "HDR format Hdr10Plus formats as dynamic range 'HDR'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range]
 - id: SON-SCAN-0127
   behaviour: "HDR format DolbyVision formats as dynamic range 'HDR'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeFixture.cs:16"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range]
 - id: SON-SCAN-0128
   behaviour: "HDR format None formats as dynamic range type ''"
@@ -936,7 +968,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range_type]
 - id: SON-SCAN-0131
   behaviour: "HDR format Hdr10 formats as dynamic range type 'HDR10'"
@@ -972,7 +1005,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/MediaInfo/MediaInfoFormatterTests/FormatVideoDynamicRangeTypeFixture.cs:18"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_scan::son_scan_format_dynamic_range_type]
 - id: SON-SCAN-0136
   behaviour: "HDR format DolbyVisionHlg formats as dynamic range type 'DV HLG'"

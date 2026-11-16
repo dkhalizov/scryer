@@ -661,7 +661,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:74"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0095
   behaviour: "A media-info title without a source tag leaves the source unknown"
@@ -675,7 +676,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Aggregation/Aggregators/Augmenters/Quality/AugmentQualityFromMediaInfoFixture.cs:114"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0097
   behaviour: "Without a download, no quality is derived from the release name"
@@ -832,14 +834,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:65"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0119
   behaviour: "A download title is not used as the scene name when the download has other video files"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:81"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0120
   behaviour: "A file name that looks like a scene name is used as the scene name"
@@ -853,7 +857,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:108"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0122
   behaviour: "A folder name that looks like a scene name is used as the scene name"
@@ -868,28 +873,32 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:130"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0124
   behaviour: "A full-season folder name is not used as the scene name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:145"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0125
   behaviour: "A batch download or folder name is not used as the scene name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:161"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0126
   behaviour: "A folder name is not used as the scene name when the folder has other video files"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:187"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(3) scene-name candidate rules and free-space reserve by design"
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0127
   behaviour: "A .mkv extension on the download title is dropped from the scene name"
@@ -1499,14 +1508,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:65"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(2) usenet unpack folders and unmanic/.DS_Store exclusions unused"
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0214
   behaviour: "On Linux a file in an _UNPACK_ folder is still unpacking even if last written 5 days ago"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/Specifications/NotUnpackingSpecificationFixture.cs:74"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W10: D75(2) usenet unpack folders and unmanic/.DS_Store exclusions unused"
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0215
   behaviour: "An episode without a file accepts any import"

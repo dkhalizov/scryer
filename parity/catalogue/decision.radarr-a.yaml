@@ -8,7 +8,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:49"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|single_episode|1|0364795c5573
 - id: RAD-DECISION-0002
@@ -16,7 +17,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:50"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|single_episode|2|4de76b004c63
 - id: RAD-DECISION-0003
@@ -24,7 +26,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:51"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|single_episode|3|2ef6d54c4709
 - id: RAD-DECISION-0004
@@ -32,7 +35,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:52"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|single_episode|4|2f162d77cc00
 - id: RAD-DECISION-0005
@@ -40,7 +44,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:53"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|single_episode|5|5768079347a9
 - id: RAD-DECISION-0006
@@ -48,7 +53,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_if_size_is_zero|0|05e352803c15
 - id: RAD-DECISION-0007
@@ -56,7 +62,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:64"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_if_unlimited_30_minute|0|8bf71e595848
 - id: RAD-DECISION-0008
@@ -64,7 +71,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:76"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_return_true_if_unlimited_60_minute|0|c022ff6b1591
 - id: RAD-DECISION-0009
@@ -72,7 +80,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:87"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_use_110_minutes_if_runtime_is_0|0|14301b2776fc
 - id: RAD-DECISION-0010
@@ -80,7 +89,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs|should_use_110_minutes_if_runtime_is_0|1|1589e708b2e2
 - id: RAD-DECISION-0011
@@ -88,7 +98,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/AcceptableSizeSpecificationFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W11: D75(2) custom size definitions unused"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/AlreadyImportedSpecificationFixture.cs|should_be_accepted_if_CDH_is_disabled|0|8f70034bb58d
 - id: RAD-DECISION-0012
@@ -690,7 +701,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs:170"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_decision::rad_decision_delay]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/DelaySpecificationFixture.cs|should_be_false_when_release_is_proper_for_existing_movie_of_different_quality|0|a61dcdb7f712
 - id: RAD-DECISION-0086

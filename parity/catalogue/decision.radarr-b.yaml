@@ -8,7 +8,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:94"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_put_propers_before_non_propers|0|ecd43c61b12d
 - id: RAD-DECISION-1001
@@ -172,7 +173,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:490"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|should_prefer_score_over_proper_when_download_propers_is_do_not_prefer|0|43949019abe5
 - id: RAD-DECISION-1021
@@ -188,7 +190,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs:534"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_decision::rad_decision_rank]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/PrioritizeDownloadDecisionFixture.cs|sort_download_decisions_based_on_indexer_priority|0|90734f48714f
 - id: RAD-DECISION-1023
@@ -356,7 +359,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/QueueSpecificationFixture.cs:210"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RawDiskSpecificationFixture.cs|should_return_true_if_no_container_specified|0|d588a4533712
 - id: RAD-DECISION-1044
@@ -723,7 +727,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs:152"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RepackSpecificationFixture.cs|should_return_true_when_repack_but_auto_download_repack_is_true|0|8fb2c4d7864b
 - id: RAD-DECISION-1087
@@ -819,7 +824,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs|should_return_true_for_lower_custom_format_score_when_upgrading_is_allowed|0|8b814e66f91c
 - id: RAD-DECISION-1099
@@ -835,7 +841,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:126"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs|should_return_true_for_quality_upgrade_when_upgrading_is_allowed|0|654c1a046c71
 - id: RAD-DECISION-1101
@@ -859,7 +866,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs:168"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeAllowedSpecificationFixture.cs|should_return_true_for_lower_quality_when_upgrading_is_allowed|0|6995fac5b3c6
 - id: RAD-DECISION-1104
@@ -1091,7 +1099,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|IsUpgradeTest|9|0a992eaa2458
 - id: RAD-DECISION-1133
@@ -1099,7 +1108,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|IsUpgradeTest|10|6829efef5302
 - id: RAD-DECISION-1134
@@ -1107,7 +1117,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|IsUpgradeTest|11|f0fd480643f7
 - id: RAD-DECISION-1135
@@ -1115,7 +1126,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:42"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|IsUpgradeTest|12|c912fe5eac9e
 - id: RAD-DECISION-1136
@@ -1123,7 +1135,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:44"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|IsUpgradeTest|13|c912fe5eac9e
 - id: RAD-DECISION-1137
@@ -1131,7 +1144,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:45"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|IsUpgradeTest|14|fb7d5cab344e
 - id: RAD-DECISION-1138
@@ -1139,7 +1153,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:46"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|IsUpgradeTest|15|791f971470e2
 - id: RAD-DECISION-1139
@@ -1147,7 +1162,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:47"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|should_return_true_if_proper_and_download_propers_is_do_not_download|0|b2866a760c88
 - id: RAD-DECISION-1140
@@ -1155,7 +1171,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:91"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|should_return_false_if_proper_and_autoDownloadPropers_is_do_not_prefer|0|c93491bec28f
 - id: RAD-DECISION-1141
@@ -1163,7 +1180,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:110"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|should_return_false_if_release_and_existing_file_are_the_same|0|7fd60bb4685d
 - id: RAD-DECISION-1142
@@ -1171,7 +1189,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs:129"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W9: D75(4) arr tests one upgrade spec alone and names it; our whole verdict refuses too, only the label differs"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/UpgradeSpecificationFixture.cs|should_return_true_if_release_has_higher_quality_and_cutoff_is_not_already_met|0|c1c77f0149c0
 - id: RAD-DECISION-1143
@@ -1267,7 +1286,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs:79"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W12: D75(2) DoNotUpgrade unused, we use preferAndUpgrade"
   tests: [scryer-application::parity_decision::rad_decision]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/RssSync/ProperSpecificationFixture.cs|should_return_true_when_movieFile_was_added_today|0|607ae293f94f
 - id: RAD-DECISION-1155

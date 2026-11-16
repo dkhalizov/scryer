@@ -46,7 +46,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:16"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0007
   # key: "CrapParserFixture.cs|should_not_parse_crap|407e74aa47076910|0"
@@ -264,7 +265,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:10"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0034
   # key: "EditionParserFixture.cs|should_parse_edition|37bb69d10e39b3da|0"
@@ -272,7 +274,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:11"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0035
   # key: "EditionParserFixture.cs|should_parse_edition|b47fd6344e20398a|0"
@@ -296,7 +299,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0038
   # key: "EditionParserFixture.cs|should_parse_edition|e899c27fad9c54dc|0"
@@ -304,7 +308,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0039
   # key: "EditionParserFixture.cs|should_parse_edition|3627aa6a6a42db30|1"
@@ -312,7 +317,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:16"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0040
   # key: "EditionParserFixture.cs|should_parse_edition|ad1a87a7bfc38cc6|0"
@@ -336,7 +342,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:19"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0043
   # key: "EditionParserFixture.cs|should_parse_edition|b490f6120293bdf9|0"
@@ -360,7 +367,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:22"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0046
   # key: "EditionParserFixture.cs|should_parse_edition|c8a2db9da7efca3c|0"
@@ -368,7 +376,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0047
   # key: "EditionParserFixture.cs|should_parse_edition|8d2fda08ce9d8ee9|0"
@@ -392,7 +401,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0050
   # key: "EditionParserFixture.cs|should_parse_edition|d087f891c9341979|0"
@@ -400,7 +410,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:27"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0051
   # key: "EditionParserFixture.cs|should_parse_edition|54252128a9041d92|0"
@@ -408,7 +419,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0052
   # key: "EditionParserFixture.cs|should_parse_edition|bde997fdf6f2c1e9|0"
@@ -424,7 +436,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:30"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0054
   # key: "EditionParserFixture.cs|should_parse_edition|e5a989b664cff27c|0"
@@ -440,7 +453,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0056
   # key: "EditionParserFixture.cs|should_parse_edition|6d8c8cc9a835fba5|0"
@@ -464,7 +478,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0059
   # key: "EditionParserFixture.cs|should_parse_edition|ed60546c2ca68752|0"
@@ -488,7 +503,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:38"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0062
   # key: "EditionParserFixture.cs|should_parse_edition|0bca1c5ca3555344|0"
@@ -496,7 +512,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0063
   # key: "EditionParserFixture.cs|should_parse_edition|8154cf62819a7eca|0"
@@ -504,7 +521,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0064
   # key: "EditionParserFixture.cs|should_parse_edition|2286b592992496a3|0"
@@ -512,7 +530,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0065
   # key: "EditionParserFixture.cs|should_parse_edition|3f759f082687cc28|0"
@@ -520,7 +539,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:42"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0066
   # key: "EditionParserFixture.cs|should_parse_edition|3e3f1beda2e6d01c|0"
@@ -544,7 +564,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:45"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0069
   # key: "EditionParserFixture.cs|should_parse_edition|f553070cbde30f78|0"
@@ -552,7 +573,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:46"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0070
   # key: "EditionParserFixture.cs|should_parse_edition|e72d3ab2bb10a37d|0"
@@ -560,7 +582,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:47"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0071
   # key: "EditionParserFixture.cs|should_parse_edition|f82886e37fc6edc2|0"
@@ -568,7 +591,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:48"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0072
   # key: "EditionParserFixture.cs|should_parse_edition|737af1c7f43368d2|0"
@@ -576,7 +600,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:49"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0073
   # key: "EditionParserFixture.cs|should_parse_edition|da47f10285858ed5|0"
@@ -584,7 +609,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:50"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0074
   # key: "EditionParserFixture.cs|should_parse_edition|35fbac48c419e041|0"
@@ -592,7 +618,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/EditionParserFixture.cs:51"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0075
   # key: "EditionParserFixture.cs|should_parse_edition|074410b3ed7ce141|0"
@@ -664,7 +691,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:17"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0084
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|b5407a01fffa9848|0"
@@ -672,7 +700,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:18"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0085
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|f7dc72005e1f296e|0"
@@ -680,7 +709,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:19"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0086
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|dc0576114449511a|0"
@@ -688,7 +718,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:20"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0087
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|e168322016e41c38|0"
@@ -720,7 +751,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0091
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|df382b29e0182d12|0"
@@ -832,7 +864,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:43"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0105
   # key: "ExtendedQualityParserRegex.cs|should_parse_ultrahd_from_title|55513148d101bd7f|0"
@@ -2657,7 +2690,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:537"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_language]
 - id: RAD-PARSE-0330
   # key: "LanguageParserFixture.cs|should_parse_subtitle_language_unknown|5b215fed6febc1c3|0"
@@ -2745,7 +2779,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:591"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0341
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|a95cb5a0c18d8c47|0"
@@ -2753,7 +2788,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:592"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0342
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|951a1e0469e7e0b4|0"
@@ -2761,7 +2797,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:593"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0343
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|3c87b7eec45fd5f2|0"
@@ -2769,7 +2806,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:594"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0344
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|7650c6e5db14fffa|0"
@@ -2777,7 +2815,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:595"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0345
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|52148aa680dbac94|0"
@@ -2785,7 +2824,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:596"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0346
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|6570a1a619ac0dae|0"
@@ -2793,7 +2833,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:597"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0347
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|de64252f88cd2c53|0"
@@ -2801,7 +2842,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:598"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0348
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|91b17d3a20c4d170|0"
@@ -2809,7 +2851,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:599"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0349
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|919e7d38fdf5c8b8|0"
@@ -2817,7 +2860,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:600"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0350
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|5228c013445d3263|0"
@@ -2825,7 +2869,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:601"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0351
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|6f956f6b11c5806a|0"
@@ -2833,7 +2878,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:602"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0352
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|af45aaeb507fb5a2|0"
@@ -2841,7 +2887,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:603"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0353
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|5d3987c4df8a65e5|0"
@@ -2849,7 +2896,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:604"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0354
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|cf06a7cf1978a6e4|0"
@@ -2857,7 +2905,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:605"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0355
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|262fdc0d84a9ea18|0"
@@ -2865,7 +2914,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:606"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0356
   # key: "LanguageParserFixture.cs|should_parse_title_and_tags|a5503937768cd85a|0"
@@ -2873,7 +2923,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:607"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::rad_subtitle_info]
 - id: RAD-PARSE-0357
   # key: "LanguageParserFixture.cs|should_not_parse_false_title|2c42af13d3aaecdf|0"
@@ -3281,7 +3332,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:36"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0406
   # key: "ParserFixture.cs|should_parse_movie_title|4b0907ae4b61455f|0"
@@ -3305,7 +3357,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0409
   # key: "ParserFixture.cs|should_parse_movie_title|e709aff364b5f8e3|0"
@@ -3346,7 +3399,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:44"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0414
   # key: "ParserFixture.cs|should_parse_movie_title|d4ae49ee42515644|0"
@@ -3354,7 +3408,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:45"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0415
   # key: "ParserFixture.cs|should_parse_movie_title|94e0dd830c31fe4e|0"
@@ -3386,7 +3441,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:49"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0419
   # key: "ParserFixture.cs|should_parse_movie_title|93ef62787a9a7f5c|0"
@@ -3426,7 +3482,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0424
   # key: "ParserFixture.cs|should_parse_movie_title|f65799bc6b30f34d|0"
@@ -3490,7 +3547,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:62"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0432
   # key: "ParserFixture.cs|should_parse_movie_title|dc5d68db37cb2ec3|0"
@@ -3522,7 +3580,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:71"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0436
   # key: "ParserFixture.cs|should_parse_anime_movie_title|4e33642cf905c455|0"
@@ -3538,7 +3597,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:73"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0438
   # key: "ParserFixture.cs|should_parse_anime_movie_title_without_year|7f611f71a24edbc5|0"
@@ -3546,7 +3606,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:85"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0439
   # key: "ParserFixture.cs|should_parse_anime_movie_title_without_year|07ca51bf0ff7e569|0"
@@ -3554,7 +3615,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:86"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0440
   # key: "ParserFixture.cs|should_parse_anime_movie_title_without_year|f15bbd90874e1151|0"
@@ -3562,7 +3624,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:87"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0441
   # key: "ParserFixture.cs|should_parse_anime_movie_title_without_year|42aa005581b7f9a2|0"
@@ -3570,7 +3633,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:88"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0442
   # key: "ParserFixture.cs|should_parse_anime_movie_title_without_year|1d399813f5561fa3|0"
@@ -3578,7 +3642,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:89"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0443
   # key: "ParserFixture.cs|should_parse_anime_movie_title_without_year|15ca935713c4bf9c|0"
@@ -3644,7 +3709,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0451
   # key: "ParserFixture.cs|should_parse_german_movie|8e63302c86e33ef3|0"
@@ -3652,7 +3718,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:108"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0452
   # key: "ParserFixture.cs|should_parse_german_movie|e8d080075efed183|0"
@@ -3702,7 +3769,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:116"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W4: D75(2) edition string unused (no edition token or CF)"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0458
   # key: "ParserFixture.cs|should_parse_german_movie|1959ebc1627191eb|0"
@@ -3785,7 +3853,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:126"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0468
   # key: "ParserFixture.cs|should_parse_german_movie|84ff799e729e94ae|0"
@@ -4104,7 +4173,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:276"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0507
   # key: "ParserFixture.cs|should_parse_hardcoded_subs|aa15cae5ad5cca39|0"
@@ -8210,7 +8280,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1018
   # key: "SlugParserFixture.cs|should_replace_accents|8b8a3b4b3a139b21|0"
@@ -8218,7 +8289,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1019
   # key: "SlugParserFixture.cs|should_replace_accents|f6f473fc3be40741|0"
@@ -8226,7 +8298,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1020
   # key: "SlugParserFixture.cs|should_replace_accents|8bb920270f9d2d51|0"
@@ -8234,7 +8307,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1021
   # key: "SlugParserFixture.cs|should_replace_accents|53539630543eda24|0"
@@ -8242,7 +8316,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:16"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1022
   # key: "SlugParserFixture.cs|should_replace_accents|d4ec0e8678a34e9a|0"
@@ -8250,7 +8325,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:17"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1023
   # key: "SlugParserFixture.cs|should_replace_accents|b6c8c26006130dc5|0"
@@ -8258,7 +8334,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:18"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1024
   # key: "SlugParserFixture.cs|should_replace_accents|a6750c1431669765|0"
@@ -8266,7 +8343,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:19"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1025
   # key: "SlugParserFixture.cs|should_replace_accents|ec8bce4daf834df0|0"
@@ -8274,7 +8352,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:20"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1026
   # key: "SlugParserFixture.cs|should_replace_accents|32bdadba5f36ddca|0"
@@ -8282,7 +8361,8 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/SlugParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W13: D75(2) URL slug titles unused"
   tests: [scryer-application::parity_parse::rad_url_slug]
 - id: RAD-PARSE-1027
   # key: "SlugParserFixture.cs|should_replace_accents|b429f0dafc6b4273|0"

@@ -7,7 +7,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|df57a9bf1e25|0
 - id: SON-PARSE-0002
@@ -15,7 +16,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|aedc57fcc26f|0
 - id: SON-PARSE-0003
@@ -23,7 +25,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|a80763c23774|0
 - id: SON-PARSE-0004
@@ -39,7 +42,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:17"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|c290e5b6003c|0
 - id: SON-PARSE-0006
@@ -71,7 +75,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|71a290110995|0
 - id: SON-PARSE-0010
@@ -79,7 +84,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:22"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|2ce31876d1d1|0
 - id: SON-PARSE-0011
@@ -87,7 +93,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|c3136af17899|0
 - id: SON-PARSE-0012
@@ -95,7 +102,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|7a60d956ede5|0
 - id: SON-PARSE-0013
@@ -103,7 +111,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|b43027b4253c|0
 - id: SON-PARSE-0014
@@ -127,7 +136,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|134e777a202c|0
 - id: SON-PARSE-0017
@@ -135,7 +145,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|4039c2f2cd93|0
 - id: SON-PARSE-0018
@@ -143,7 +154,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:30"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|8a1d58e971a9|0
 - id: SON-PARSE-0019
@@ -175,7 +187,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:34"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|0c55af108fe0|0
 - id: SON-PARSE-0023
@@ -215,7 +228,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|d4fa7928c5ad|0
 - id: SON-PARSE-0028
@@ -239,7 +253,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:42"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|35b73b0325cd|0
 - id: SON-PARSE-0031
@@ -311,7 +326,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:53"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|4cd6ebb7cde0|0
 - id: SON-PARSE-0040
@@ -319,7 +335,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|e7bdd050d1f8|0
 - id: SON-PARSE-0041
@@ -327,7 +344,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:55"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|e627a097cb62|0
 - id: SON-PARSE-0042
@@ -335,7 +353,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:56"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|4f73d158399b|0
 - id: SON-PARSE-0043
@@ -343,7 +362,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:57"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|7c6b73591ab3|0
 - id: SON-PARSE-0044
@@ -351,7 +371,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:58"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|ce6934626af3|0
 - id: SON-PARSE-0045
@@ -359,7 +380,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:61"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|35609f514ed3|0
 - id: SON-PARSE-0046
@@ -383,7 +405,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:64"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|bad351cece32|0
 - id: SON-PARSE-0049
@@ -391,7 +414,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:65"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|6459fff6447d|0
 - id: SON-PARSE-0050
@@ -417,7 +441,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:68"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|26141987a975|0
 - id: SON-PARSE-0053
@@ -425,7 +450,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:69"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5394bef3f7e5|0
 - id: SON-PARSE-0054
@@ -457,7 +483,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:73"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|06c8560f2db7|0
 - id: SON-PARSE-0058
@@ -465,7 +492,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:74"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|3b77d3225acc|0
 - id: SON-PARSE-0059
@@ -481,7 +509,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:76"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|7cbbeeade1bb|0
 - id: SON-PARSE-0061
@@ -497,7 +526,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:78"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|288da561368b|0
 - id: SON-PARSE-0063
@@ -505,7 +535,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:79"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|48b6ed0dde01|0
 - id: SON-PARSE-0064
@@ -513,7 +544,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:80"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|fdf3502570a6|0
 - id: SON-PARSE-0065
@@ -546,7 +578,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:86"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|d2c7af037ba4|0
 - id: SON-PARSE-0069
@@ -554,7 +587,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:87"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5540e66235ae|0
 - id: SON-PARSE-0070
@@ -562,7 +596,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:88"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|c091883f90ac|0
 - id: SON-PARSE-0071
@@ -570,7 +605,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:89"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|165b816c04cb|0
 - id: SON-PARSE-0072
@@ -578,7 +614,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:90"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|cca542bb1d32|0
 - id: SON-PARSE-0073
@@ -586,7 +623,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:91"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5bd37faeab7d|0
 - id: SON-PARSE-0074
@@ -594,7 +632,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:92"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|ffd860e48084|0
 - id: SON-PARSE-0075
@@ -602,7 +641,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:93"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|cad065f892e7|0
 - id: SON-PARSE-0076
@@ -610,7 +650,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:94"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|e7e52fb3c605|0
 - id: SON-PARSE-0077
@@ -618,7 +659,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:95"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|9ed89dd52843|0
 - id: SON-PARSE-0078
@@ -626,7 +668,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:96"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|ce899bac6473|0
 - id: SON-PARSE-0079
@@ -634,7 +677,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:97"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|310687449105|0
 - id: SON-PARSE-0080
@@ -642,7 +686,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:98"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|c1c11d62b28b|0
 - id: SON-PARSE-0081
@@ -650,7 +695,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:99"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|e0e85ff60de6|0
 - id: SON-PARSE-0082
@@ -658,7 +704,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:100"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|2fc99523f5fe|0
 - id: SON-PARSE-0083
@@ -666,7 +713,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:101"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|3d530e333ebf|0
 - id: SON-PARSE-0084
@@ -715,7 +763,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5f7950e610be|0
 - id: SON-PARSE-0090
@@ -723,7 +772,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:108"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5ce948dcc647|0
 - id: SON-PARSE-0091
@@ -731,7 +781,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:109"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5c7e64242dad|0
 - id: SON-PARSE-0092
@@ -739,7 +790,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:110"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|273229f75e07|0
 - id: SON-PARSE-0093
@@ -747,7 +799,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:111"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|8b531f99e564|0
 - id: SON-PARSE-0094
@@ -755,7 +808,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:112"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|b181b44e7440|0
 - id: SON-PARSE-0095
@@ -763,7 +817,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:113"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|de42f76e72b7|0
 - id: SON-PARSE-0096
@@ -771,7 +826,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:114"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|d390ed1eb76f|0
 - id: SON-PARSE-0097
@@ -779,7 +835,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:115"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|4d12cd3b9fcf|0
 - id: SON-PARSE-0098
@@ -787,7 +844,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:116"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|c12c0a50785f|0
 - id: SON-PARSE-0099
@@ -795,7 +853,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:117"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|26a89340fdce|0
 - id: SON-PARSE-0100
@@ -803,7 +862,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:118"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|ce93cc644bd6|0
 - id: SON-PARSE-0101
@@ -811,7 +871,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:119"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|7827baa36352|0
 - id: SON-PARSE-0102
@@ -819,7 +880,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:120"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|665e9df66b60|0
 - id: SON-PARSE-0103
@@ -827,7 +889,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:121"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|59b840e0bb30|0
 - id: SON-PARSE-0104
@@ -835,7 +898,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:122"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|31dbb323fa55|0
 - id: SON-PARSE-0105
@@ -843,7 +907,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:123"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5e0d7215abe9|0
 - id: SON-PARSE-0106
@@ -851,7 +916,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:124"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|461344af4dc4|0
 - id: SON-PARSE-0107
@@ -907,7 +973,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:131"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|28700c2e7755|0
 - id: SON-PARSE-0114
@@ -915,7 +982,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:132"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|8d3adce92fd0|0
 - id: SON-PARSE-0115
@@ -939,7 +1007,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:135"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|c66c789e3cc6|0
 - id: SON-PARSE-0118
@@ -947,7 +1016,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:136"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|2e44da447d9f|0
 - id: SON-PARSE-0119
@@ -955,7 +1025,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:137"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|3ec2563e06ae|0
 - id: SON-PARSE-0120
@@ -972,7 +1043,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:139"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|0a5e8ea13366|0
 - id: SON-PARSE-0122
@@ -980,7 +1052,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:140"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|1ebb3d0865de|0
 - id: SON-PARSE-0123
@@ -988,7 +1061,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:141"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_specials|f9c1be7848dc|0
 - id: SON-PARSE-0124
@@ -996,7 +1070,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:155"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_specials|7aa9db1a485b|0
 - id: SON-PARSE-0125
@@ -1004,7 +1079,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:156"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_specials|512067c67063|0
 - id: SON-PARSE-0126
@@ -1037,7 +1113,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:172"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|f6ecb5c2803c|0
 - id: SON-PARSE-0130
@@ -1045,7 +1122,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:173"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|8cf735bb619b|0
 - id: SON-PARSE-0131
@@ -1053,7 +1131,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:174"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|aff9f4ccadf3|0
 - id: SON-PARSE-0132
@@ -1061,7 +1140,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:175"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|778c7cc498c2|0
 - id: SON-PARSE-0133
@@ -1077,7 +1157,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:177"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|735fc8bd92d6|0
 - id: SON-PARSE-0135
@@ -1093,7 +1174,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:179"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|db1f41670188|0
 - id: SON-PARSE-0137
@@ -1133,7 +1215,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:184"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|66018dc44c3c|0
 - id: SON-PARSE-0142
@@ -1149,7 +1232,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:186"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|148f2140b614|0
 - id: SON-PARSE-0144
@@ -1173,7 +1257,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:202"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_anime_season_packs|b67011cae9ea|0
 - id: SON-PARSE-0147
@@ -1181,7 +1266,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:203"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_anime_season_packs|b67011cae9ea|1
 - id: SON-PARSE-0148
@@ -1189,7 +1275,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:204"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_handle_anime_recap_numbering|48dd34daa14a|0
 - id: SON-PARSE-0149
@@ -1197,7 +1284,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:215"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_handle_anime_recap_numbering|aa3242ba68b9|0
 - id: SON-PARSE-0150
@@ -1205,7 +1293,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:216"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_handle_anime_recap_numbering|cff814e561e1|0
 - id: SON-PARSE-0151
@@ -1213,7 +1302,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:217"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_handle_ambiguously_named_anime_files_in_batch_release|27fa62d4b94b|0
 - id: SON-PARSE-0152
@@ -1229,7 +1319,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:241"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_followed_by_standard_as_standard|7c74c5bda08e|0
 - id: SON-PARSE-0154
@@ -1237,7 +1328,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:242"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_followed_by_standard_as_standard|c8e5a2b724a0|0
 - id: SON-PARSE-0155
@@ -1245,7 +1337,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:243"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_followed_by_standard_as_standard|db8742097cd5|0
 - id: SON-PARSE-0156
@@ -1253,7 +1346,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:244"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|a2ea55bd2a97|0
 - id: SON-PARSE-0157
@@ -1325,7 +1419,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:18"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|d8063b5a5898|0
 - id: SON-PARSE-0166
@@ -1366,7 +1461,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|de0ed74e626c|0
 - id: SON-PARSE-0171
@@ -1446,7 +1542,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|d8063b5a5898|1
 - id: SON-PARSE-0181
@@ -1487,7 +1584,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeMetadataParserFixture.cs|should_parse_releasegroup_and_hash|efd88a2d8937|0
 - id: SON-PARSE-0186
@@ -1567,7 +1665,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs|should_be_able_to_parse_repack|7e43bcda0fbb|0
 - id: SON-PARSE-0196
@@ -1591,7 +1690,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AnimeVersionFixture.cs:16"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_crap|2d604327142a|0
 - id: SON-PARSE-0199
@@ -2219,7 +2319,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|6f0541fbb82b|0
 - id: SON-PARSE-0275
@@ -2227,7 +2328,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|a39798e517f1|0
 - id: SON-PARSE-0276
@@ -2235,7 +2337,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|63465f19b633|0
 - id: SON-PARSE-0277
@@ -2243,7 +2346,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|c3d8fc50a495|0
 - id: SON-PARSE-0278
@@ -2275,7 +2379,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:19"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|57c8767284a9|0
 - id: SON-PARSE-0282
@@ -2404,7 +2509,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_version_from_title|e3d0abb3c8aa|0
 - id: SON-PARSE-0298
@@ -3970,7 +4076,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:465"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|b23a30479f60|0
 - id: SON-PARSE-0490
@@ -3978,7 +4085,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:466"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|5ac11f1fe4aa|0
 - id: SON-PARSE-0491
@@ -3986,7 +4094,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:467"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|46193969b48a|0
 - id: SON-PARSE-0492
@@ -3994,7 +4103,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:468"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|6cef0be4c8b5|0
 - id: SON-PARSE-0493
@@ -4002,7 +4112,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:469"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|c205b2a3045d|0
 - id: SON-PARSE-0494
@@ -4010,7 +4121,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:470"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|f636cbba8065|0
 - id: SON-PARSE-0495
@@ -4018,7 +4130,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:471"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|012ed937e3f9|0
 - id: SON-PARSE-0496
@@ -4026,7 +4139,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:472"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|f6367d8f2e7f|0
 - id: SON-PARSE-0497
@@ -4034,7 +4148,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:473"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|c86dda13225f|0
 - id: SON-PARSE-0498
@@ -4042,7 +4157,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:474"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|8279d1e5d1ac|0
 - id: SON-PARSE-0499
@@ -4050,7 +4166,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:475"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|6e6c5f52013a|0
 - id: SON-PARSE-0500
@@ -4058,7 +4175,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:476"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|74d53c17411d|0
 - id: SON-PARSE-0501
@@ -4066,7 +4184,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:477"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|362596b6ddf5|0
 - id: SON-PARSE-0502
@@ -4074,7 +4193,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:478"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|8c3bc273302f|0
 - id: SON-PARSE-0503
@@ -4082,7 +4202,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:479"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|f03a6ed34989|0
 - id: SON-PARSE-0504
@@ -4090,7 +4211,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:480"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_title_and_tags|6b73892e0983|0
 - id: SON-PARSE-0505
@@ -4098,7 +4220,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:481"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W5: D75(2) sidecar subtitle names, importExtraFiles off"
   tests: [scryer-application::parity_parse::son_subtitle_info]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_not_parse_false_title|cfd1825ff3b7|0
 - id: SON-PARSE-0506
@@ -4468,7 +4591,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:45"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|b6250a8e0b14|0
 - id: SON-PARSE-0551
@@ -4790,7 +4914,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_normalize_episode_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|f2084637bcc1|0
 - id: SON-PARSE-0591
@@ -5489,7 +5614,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:90"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_multiple_series_titles|7ee85b381dd7|0
 - id: SON-PARSE-0676
@@ -10332,7 +10458,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:31"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|d8251348d4c1|0
 - id: SON-PARSE-1278
@@ -10340,7 +10467,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|24fbba2b09da|0
 - id: SON-PARSE-1279
@@ -10542,7 +10670,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:57"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|36b82e2418b2|0
 - id: SON-PARSE-1304
@@ -10881,7 +11010,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:101"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|0b4457b40f33|0
 - id: SON-PARSE-1346
@@ -10994,7 +11124,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:120"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|0731ef2e7c94|0
 - id: SON-PARSE-1360
@@ -11285,7 +11416,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:156"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|153bd930d7e6|0
 - id: SON-PARSE-1396
@@ -11471,7 +11603,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:179"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W7: D75(4) displayed title rendering differs, lookup keys equal"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_japanese_variety_show_format|327da7c968ec|0
 - id: SON-PARSE-1419
@@ -11495,7 +11628,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:196"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W20: D75(2) daily layout unused"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_japanese_variety_show_format|15c0fcddb1d7|0
 - id: SON-PARSE-1422
@@ -11552,7 +11686,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|68e9580ab685|0
 - id: SON-PARSE-1429
@@ -11560,7 +11695,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|34890476e78b|0
 - id: SON-PARSE-1430
@@ -11568,7 +11704,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|c8ddc0793732|0
 - id: SON-PARSE-1431
@@ -11576,7 +11713,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:15"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|ef4675604392|0
 - id: SON-PARSE-1432
@@ -11584,7 +11722,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:16"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|0c15b5869c6e|0
 - id: SON-PARSE-1433
@@ -11592,7 +11731,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:17"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|00df6d0c856e|0
 - id: SON-PARSE-1434
@@ -11600,7 +11740,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:18"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|812f8f614d20|0
 - id: SON-PARSE-1435
@@ -11608,7 +11749,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:19"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|b1b85eae1bdc|0
 - id: SON-PARSE-1436
@@ -11616,7 +11758,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:20"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|bca0cde8080b|0
 - id: SON-PARSE-1437
@@ -11624,7 +11767,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|bd40346c2747|0
 - id: SON-PARSE-1438
@@ -11632,7 +11776,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:22"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|7eb7b584c3df|0
 - id: SON-PARSE-1439
@@ -11640,7 +11785,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:23"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|b83f222daac8|0
 - id: SON-PARSE-1440
@@ -11648,7 +11794,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|18c3bb2bfb66|0
 - id: SON-PARSE-1441
@@ -11656,7 +11803,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|236b5b2fcb91|0
 - id: SON-PARSE-1442
@@ -11664,7 +11812,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|6901215147a7|0
 - id: SON-PARSE-1443
@@ -11672,7 +11821,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:27"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|8e7b109f19c9|0
 - id: SON-PARSE-1444
@@ -11680,7 +11830,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|1535cb14107c|0
 - id: SON-PARSE-1445
@@ -11688,7 +11839,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:41"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|5149f484fe68|0
 - id: SON-PARSE-1446
@@ -11696,7 +11848,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:42"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|f55e1c7acc08|0
 - id: SON-PARSE-1447
@@ -11704,7 +11857,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:43"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|f4f864d11380|0
 - id: SON-PARSE-1448
@@ -11712,7 +11866,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:44"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|be5d437175f2|0
 - id: SON-PARSE-1449
@@ -11720,7 +11875,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:45"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|2590361175a4|0
 - id: SON-PARSE-1450
@@ -11728,7 +11884,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:46"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|7f1528d4c62d|0
 - id: SON-PARSE-1451
@@ -11736,7 +11893,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:47"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|4c21bf33a7c7|0
 - id: SON-PARSE-1452
@@ -11744,7 +11902,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:48"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|8b103dbe4323|0
 - id: SON-PARSE-1453
@@ -11752,7 +11911,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:49"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|faf69959e3bf|0
 - id: SON-PARSE-1454
@@ -11760,7 +11920,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:50"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|7e5ca8073f22|0
 - id: SON-PARSE-1455
@@ -11768,7 +11929,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:51"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|899fa1a2ebbf|0
 - id: SON-PARSE-1456
@@ -11776,7 +11938,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:52"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|6c32810b1c90|0
 - id: SON-PARSE-1457
@@ -11784,7 +11947,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:53"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|80a06ce2ddce|0
 - id: SON-PARSE-1458
@@ -11792,7 +11956,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|2cd4567346ad|0
 - id: SON-PARSE-1459
@@ -11800,7 +11965,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:55"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|d0e5db79aa5e|0
 - id: SON-PARSE-1460
@@ -11808,7 +11974,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:56"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_season_episode_releases|2c1987139ec5|0
 - id: SON-PARSE-1461
@@ -11816,7 +11983,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:57"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|3acbb4f51249|0
 - id: SON-PARSE-1462
@@ -11824,7 +11992,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:70"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|0fa50f084959|0
 - id: SON-PARSE-1463
@@ -11832,7 +12001,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:71"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|d679ecdc2849|0
 - id: SON-PARSE-1464
@@ -11840,7 +12010,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:72"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|5aac1ebf8843|0
 - id: SON-PARSE-1465
@@ -11848,7 +12019,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:73"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|12d293d7da10|0
 - id: SON-PARSE-1466
@@ -11856,7 +12028,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:74"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|cc627aebefed|0
 - id: SON-PARSE-1467
@@ -11864,7 +12037,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:75"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|621ca9b56a19|0
 - id: SON-PARSE-1468
@@ -11872,7 +12046,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:76"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|d842d5eb58e3|0
 - id: SON-PARSE-1469
@@ -11880,7 +12055,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:77"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unbracketed_chinese_anime_releases|8a956ad905b5|0
 - id: SON-PARSE-1470
@@ -11888,7 +12064,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:78"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_multiepisode_releases|7b86a66f8304|0
 - id: SON-PARSE-1471
@@ -11896,7 +12073,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:91"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_multiepisode_releases|a12ba947be73|0
 - id: SON-PARSE-1472
@@ -11904,7 +12082,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:92"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_gm_team_releases_and_files|f9c668b42be4|0
 - id: SON-PARSE-1473
@@ -11912,7 +12091,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:109"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_gm_team_releases_and_files|b153e173a50f|0
 - id: SON-PARSE-1474
@@ -11920,7 +12100,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:110"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_gm_team_releases_and_files|6766d16c129f|0
 - id: SON-PARSE-1475
@@ -11928,7 +12109,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:111"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_gm_team_releases_and_files|437bea2c0871|0
 - id: SON-PARSE-1476
@@ -11936,7 +12118,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:112"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_gm_team_releases_and_files|3e0a96e7559c|0
 - id: SON-PARSE-1477
@@ -11944,7 +12127,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:113"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_gm_team_releases_and_files|ee2ffdce635e|0
 - id: SON-PARSE-1478
@@ -11952,7 +12136,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:114"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_gm_team_releases_and_files|e70b3ff983a7|0
 - id: SON-PARSE-1479
@@ -11960,7 +12145,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:115"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_unicode_digits|554cacc7608f|0
 - id: SON-PARSE-1480
@@ -11976,7 +12162,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs:138"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W1: D75(1) anime release layouts"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UrlFixture.cs|should_not_parse_url_in_name|39a15bf0ac21|0
 - id: SON-PARSE-1482

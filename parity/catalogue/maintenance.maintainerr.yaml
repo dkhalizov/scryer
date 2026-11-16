@@ -2468,7 +2468,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts:82"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W19: D75(2) list rules and guessit fields unused"
   tests: [scryer-application::parity_maintenance::mnt_comparator]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.doRuleAction.spec.ts|doRuleAction > should return %s when val1 is %o and val2 is %o with action CONTAINS|3|[false, 'abc', 'de']
 - id: MNT-MAINTENANCE-0309
@@ -2837,7 +2838,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:210"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W19: D75(3) fail closed, no re-request"
   tests: [scryer-application::parity_maintenance::mnt_maintenance]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts|fails closed when a second value could not be read (#3886)
 - id: MNT-MAINTENANCE-0355

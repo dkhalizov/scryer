@@ -937,7 +937,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs:46"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W18: D75(3) multi-season packs go through coverage"
   tests: [scryer-application::parity_decision::son_decision_context]
 # key: src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs|should_return_false_if_is_a_multi_season_release|-|-
 - id: SON-DECISION-0115
@@ -945,5 +946,6 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/DecisionEngineTests/MultiSeasonSpecificationFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W18: D75(3) multi-season packs go through coverage"
   tests: [scryer-application::parity_decision::son_decision_context]

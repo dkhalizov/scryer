@@ -95,7 +95,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:65"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0015
   behaviour: "Colon replacement Delete renders 'CSI: Vegas' as 'CSI Vegas'"
@@ -138,35 +139,40 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:81"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0021
   behaviour: "Colon replacement SpaceDash renders 'Series:Title' as 'Series -Title'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:82"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0022
   behaviour: "Colon replacement SpaceDashSpace renders 'Series:Title' as 'Series - Title'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:83"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0023
   behaviour: "Custom colon replacement '꞉' renders 'Series: Title' as 'Series꞉ Title'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:94"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0024
   behaviour: "Custom colon replacement '∶' renders 'Series: Title' as 'Series∶ Title'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/ColonReplacementFixture.cs:95"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0025
   behaviour: "Episode titles 'Hey, Baby, What's Wrong (1)' and 'Hey, Baby, What's Wrong (2)' collapse to 'Hey, Baby, What's Wrong'"
@@ -271,7 +277,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0040
   behaviour: "A mixed-case token {sErIES-tItLE} keeps the title's own casing"
@@ -285,14 +292,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:125"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0042
   behaviour: "{Series.CleanTitle} strips parentheses from 'South Park (1997)'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:134"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0043
   behaviour: "{Episode Title} renders the episode title"
@@ -341,28 +350,32 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:202"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0050
   behaviour: "{Quality Proper} renders 'Proper' for revision version 2"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:211"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0051
   behaviour: "{Quality Real} renders 'REAL' for revision real 1"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:221"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0052
   behaviour: "A full standard pattern renders series, SxxEyy, episode title and quality"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:231"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0053
   behaviour: "Doubled braces in format 'Some Escaped {{ String' are literal braces: 'Some Escaped { String'"
@@ -469,7 +482,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:386"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0068
   behaviour: "A trailing period is trimmed from the episode title"
@@ -504,7 +518,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:461"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0073
   behaviour: "An anime format renders standard and absolute numbers; needs an anime series (all 23 of ours are standard, naming.json/series-summary.json)"
@@ -553,7 +568,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:533"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0080
   behaviour: "Prefix/suffix characters inside a token are dropped when the value is empty"
@@ -567,98 +583,112 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:553"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0082
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'nob' as [NB]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:570"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0083
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'swe' as [SV]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:571"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0084
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'zho' as [ZH]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:572"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0085
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'chi' as [ZH]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:573"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0086
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'fre' as [FR]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:574"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0087
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'rum' as [RO]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:575"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0088
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'per' as [FA]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:576"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0089
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'ger' as [DE]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:577"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0090
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'cze' as [CS]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:578"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0091
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'ice' as [IS]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:579"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0092
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'dut' as [NL]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:580"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0093
   behaviour: "{MEDIAINFO.FULL} renders subtitle language 'nor' as [NO]"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:581"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0094
   behaviour: "{MEDIAINFO.FULL} omits an English-only audio language"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:600"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0095
   behaviour: "Duplicate non-word characters are removed from '{Series.Title}' (marked [Ignore] 'not currently supported' upstream)"
@@ -672,14 +702,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:628"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0097
   behaviour: "A format of only {Original Title} renders the scene name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:641"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0098
   behaviour: "A period between season and episode tokens is kept"
@@ -707,21 +739,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:684"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0102
   behaviour: "{[Quality Proper]} wraps 'Proper' in brackets for a proper"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:693"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0103
   behaviour: "{[Quality Proper]} renders nothing, brackets included, for a non-proper"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:704"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0104
   behaviour: "{Quality Full} is just the quality name for a non-proper"
@@ -742,63 +777,72 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:733"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W6: D75(3) REAL folded into revision (D39)"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0107
   behaviour: "With separator ' ', an empty {Quality Proper} at the end leaves no trailing separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:743"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0108
   behaviour: "With separator '-', an empty {Quality Proper} at the end leaves no trailing separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:744"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0109
   behaviour: "With separator '.', an empty {Quality Proper} at the end leaves no trailing separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:745"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0110
   behaviour: "With separator '_', an empty {Quality Proper} at the end leaves no trailing separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:746"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0111
   behaviour: "With separator ' ', an empty {Quality Proper} in the middle leaves a single separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:755"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0112
   behaviour: "With separator '-', an empty {Quality Proper} in the middle leaves a single separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:756"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0113
   behaviour: "With separator '.', an empty {Quality Proper} in the middle leaves a single separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:757"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0114
   behaviour: "With separator '_', an empty {Quality Proper} in the middle leaves a single separator"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:758"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0115
   behaviour: "Tokens need no separator between them in an anime format; needs an anime series (all 23 of ours are standard, naming.json/series-summary.json)"
@@ -812,14 +856,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:777"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0117
   behaviour: "{Release Group} renders 'Sonarr' when the file has no release group"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:790"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0118
   behaviour: "'{Episode Title}{-Release Group}' with no release group renders no group and no separator"
@@ -868,119 +914,136 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:824"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0125
   behaviour: "{MediaInfo AudioLanguages} renders [EN+DE] under culture fr-FR"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:825"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0126
   behaviour: "{MediaInfo AudioLanguages} renders [EN+DE] under culture az"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:826"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0127
   behaviour: "{MediaInfo AudioLanguages} renders [EN+DE] under culture tr-TR"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:827"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0128
   behaviour: "{MediaInfo AudioLanguages} renders audio languages eng as ''"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:850"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0129
   behaviour: "{MediaInfo AudioLanguages} renders audio languages eng/deu as '[EN+DE]'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:851"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0130
   behaviour: "{MediaInfo AudioLanguagesAll} renders audio languages eng as '[EN]'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:864"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0131
   behaviour: "{MediaInfo AudioLanguagesAll} renders audio languages eng/deu as '[EN+DE]'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:865"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0132
   behaviour: "'{MediaInfo SubtitleLanguages}End' renders subtitles eng/deu as '[EN+DE]End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:878"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0133
   behaviour: "'{MediaInfo SubtitleLanguages}End' renders subtitles eng/nld/deu as '[EN+NL+DE]End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:879"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0134
   behaviour: "'{MediaInfo SubtitleLanguages:DE}End' renders subtitles eng/deu as '[DE]End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:880"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0135
   behaviour: "'{MediaInfo SubtitleLanguages:EN+NL}End' renders subtitles eng/nld/deu as '[EN+NL]End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:881"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0136
   behaviour: "'{MediaInfo SubtitleLanguages:NL+EN}End' renders subtitles eng/nld/deu as '[NL+EN]End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:882"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0137
   behaviour: "'{MediaInfo SubtitleLanguages:-NL}End' renders subtitles eng/nld/deu as '[EN+DE]End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:883"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0138
   behaviour: "'{MediaInfo SubtitleLanguages:DE+}End' renders subtitles eng/nld/deu as '[DE+-]End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:884"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0139
   behaviour: "'{MediaInfo SubtitleLanguages:DE+NO.}End' renders subtitles eng/nld/deu as '[DE].End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:885"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0140
   behaviour: "'{MediaInfo SubtitleLanguages:-EN-}End' renders subtitles eng/nld/deu as '[NL+DE]-End'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:886"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0141
   behaviour: "{MediaInfo VideoDynamicRange} for HDR format None renders 'South.Park.S15E06.City.Sushi'"
@@ -994,14 +1057,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:900"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0143
   behaviour: "{MediaInfo VideoDynamicRange} for HDR format Hdr10 renders 'South.Park.S15E06.City.Sushi.HDR'"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:901"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W3: D75(2) MediaInfo labels, not in our naming formats"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0144
   behaviour: "Media info is refreshed once when a media-info token is used and the schema revision is old; asserts calls on the IUpdateMediaInfo mock, not a name"
@@ -1057,21 +1122,24 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:1008"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0152
   behaviour: "{Release Hash} renders nothing when the hash is null"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:1019"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0153
   behaviour: "A literal '...' in the format is kept"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/FileNameBuilderFixture.cs:1030"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0154
   behaviour: "{Series Title} renders the series title"
@@ -1093,14 +1161,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:96"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0157
   behaviour: "Repeat style renders two episodes as S15E06E07"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:106"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0158
   behaviour: "Scene style renders two episodes as S15E06-E07"
@@ -1128,14 +1198,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:147"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0162
   behaviour: "Range style renders three episodes as S15E06-08"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:158"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0163
   behaviour: "Range style for anime absolute numbers; needs an anime series (all 23 of ours are standard, naming.json/series-summary.json)"
@@ -1205,14 +1277,16 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:264"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0173
   behaviour: "Range style inside parentheses renders (S15E06-08)"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/FileNameBuilderTests/MultiEpisodeFixture.cs:274"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W2: D75(2) naming token or mode our formats do not use"
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0174
   behaviour: "Episode titles 'Episode Title (1)' and 'Episode Title (2)' collapse to 'Episode Title' before {Quality Full}"
