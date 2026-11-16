@@ -781,6 +781,20 @@ fn sanitize_disarms_reserved_device_extension_forms() {
 }
 
 #[test]
+fn sanitize_replaces_the_dot_after_a_reserved_device_name() {
+    // fork (P36-dev)
+    for (raw, expected) in [
+        ("Con.Game", "Con_Game"),
+        ("Com1.Sat (2021)", "Com1_Sat (2021)"),
+        ("Con.Game - S15E06.mkv", "Con_Game - S15E06.mkv"),
+        ("CON.SRT", "CON_.SRT"),
+        ("aux.srt", "aux_.srt"),
+    ] {
+        assert_eq!(sanitize_filesystem_component(raw), expected);
+    }
+}
+
+#[test]
 fn sanitize_disarms_reserved_device_leading_tokens() {
     for (raw, expected) in [
         ("Con Game", "Con_Game"),

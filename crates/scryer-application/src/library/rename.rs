@@ -6375,7 +6375,15 @@ fn windows_reserved_device_name_bounds(component: &str) -> Option<(usize, usize)
             return Some((reserved.len(), reserved.len()));
         };
         if first == '.' {
-            return Some((reserved.len(), reserved.len()));
+            // fork (P36-dev): arr replaces the dot itself (Con.Game -> Con_Game); a bare
+            // extension keeps its dot (CON.SRT -> CON_.SRT).
+            // ponytail: an unlisted extension such as `con.jpg` becomes `con_jpg`.
+            let rest = &suffix[1..];
+            let bare_extension = !rest.contains('.')
+                && (is_rename_companion_suffix(rest)
+                    || scryer_domain::VIDEO_EXTENSIONS.contains(&rest.to_ascii_lowercase().as_str()));
+            let end = if bare_extension { reserved.len() } else { reserved.len() + 1 };
+            return Some((reserved.len(), end));
         }
         if first == '-' || first.is_whitespace() {
             let separator_len = suffix
