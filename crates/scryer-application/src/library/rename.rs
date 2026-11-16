@@ -5473,7 +5473,14 @@ pub(crate) fn insert_series_rename_tokens(
         "season_order".to_string(),
         numbering.season_order.to_string(),
     );
-    tokens.insert("episode".to_string(), numbering.episode.to_string());
+    // fork (P15c): multi-episode style PrefixedRange, our captured value (D77): first-E-last.
+    // ponytail: 'E' hardcoded (our S..E template); an `x` template gets "06-E08" and a bare
+    // {episode} without a leading E gets "06-E08" where Sonarr writes "06-08".
+    let episode = match numbering.episode.split_once('-') {
+        Some((first, rest)) => format!("{first}-E{}", rest.rsplit('-').next().unwrap_or(rest)),
+        None => numbering.episode.to_string(),
+    };
+    tokens.insert("episode".to_string(), episode);
     tokens.insert(
         "absolute_episode".to_string(),
         numbering.absolute_episode.to_string(),

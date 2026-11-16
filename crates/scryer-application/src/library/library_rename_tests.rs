@@ -800,6 +800,26 @@ fn episode_titles_are_trimmed_and_multi_part_titles_collapse() {
 }
 
 #[test]
+fn multi_episode_files_render_as_a_prefixed_range() {
+    // fork (P15c)
+    for (episode, expected) in [("06-07-08", "S15E06-E08"), ("06-07", "S15E06-E07"), ("06", "S15E06")] {
+        let mut tokens = BTreeMap::new();
+        tokens.insert("season".to_string(), "15".to_string());
+        insert_series_rename_tokens(
+            &mut tokens,
+            SeriesRenameNumbering {
+                season: "15",
+                season_order: "15",
+                episode,
+                absolute_episode: "1",
+                episode_title: "",
+            },
+        );
+        assert_eq!(render_rename_template("S{season:2}E{episode:2}", &tokens), expected);
+    }
+}
+
+#[test]
 fn sanitize_writes_arr_smart_colons_and_replacements() {
     // fork (P15a)
     for (raw, expected) in [
