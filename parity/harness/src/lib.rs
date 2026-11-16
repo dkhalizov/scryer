@@ -7,7 +7,8 @@ use std::collections::{BTreeMap, BTreeSet};
 use std::fmt::Debug;
 use std::path::{Path, PathBuf};
 
-pub const APPS: &[&str] = &["SON", "RAD", "PRW", "BAZ", "SER", "MNT", "QBT"];
+// fork (D91): STK is the whole stack, for end-to-end `flow` entries.
+pub const APPS: &[&str] = &["SON", "RAD", "PRW", "BAZ", "SER", "MNT", "QBT", "STK"];
 pub const AREAS: &[&str] = &[
     "parse",
     "decision",
@@ -21,6 +22,7 @@ pub const AREAS: &[&str] = &[
     "subtitles",
     "indexers",
     "notify",
+    "flow",
 ];
 
 #[derive(Deserialize, Serialize, Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]

@@ -1,0 +1,121 @@
+# Flow layer (end-to-end) entries, D91. Unmapped until the F3 harness test exists.
+# Text confirmed against captured config 2026-11-16 (F1).
+- id: STK-FLOW-0001
+  behaviour: "A movie on the Plex watchlist of a user with watchlist sync on becomes a request, approved at once (default permissions carry auto-approve)"
+  source: config
+  ref: "stack chain (Seerr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0002
+  behaviour: "A series on that watchlist becomes an approved request for all its seasons, specials excluded (Seerr special episodes off)"
+  source: config
+  ref: "stack chain (Seerr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0003
+  behaviour: "An approved request adds the title with the default quality profile and the single root folder, monitored; a series gets the Seerr series tag and no season folders; a movie waits for minimum availability Released"
+  source: config
+  ref: "stack chain (Seerr, Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0004
+  behaviour: "The add triggers a search over the enabled torrent indexers Prowlarr syncs for that app and category, higher priority first"
+  source: config
+  ref: "stack chain (Prowlarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0005
+  behaviour: "From the indexer feed, the release our profile and custom formats rank first is the one grabbed"
+  source: config
+  ref: "stack chain (Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0006
+  behaviour: "The grab reaches qBittorrent started, in category tv-sonarr or radarr, with the indexer's seed goal (ratio 1 or 7 days where Prowlarr sets one, else the client default)"
+  source: config
+  ref: "stack chain (qBittorrent, Prowlarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0007
+  behaviour: "A completed download is imported as a hardlink, renamed per our naming (Smart colons, prefixed multi-episode range, episode title required) into the root folder"
+  source: config
+  ref: "stack chain (Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0008
+  behaviour: "The imported file lands under the root folder Plex's library section scans; no arr connection notifies Plex, it finds the file by its own scan"
+  source: config
+  ref: "stack chain (Plex); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0009
+  behaviour: "After import, English subtitles (not HI, not forced) are searched; a low-scoring one is upgraded within 7 days"
+  source: config
+  ref: "stack chain (Bazarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0010
+  behaviour: "After its seed goal the torrent is removed by the arr (remove completed on); the imported hardlink stays"
+  source: config
+  ref: "stack chain (qBittorrent, Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0011
+  behaviour: "A failed or stalled download is removed, blocklisted and a new search runs (auto redownload failed on)"
+  source: config
+  ref: "stack chain (Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0012
+  behaviour: "A later better release (propers prefer-and-upgrade, profile upgrade) replaces the file; the old file is deleted, no recycle bin"
+  source: config
+  ref: "stack chain (Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0013
+  behaviour: "A fully aired season is grabbed as a season pack; an airing season per episode"
+  source: config
+  ref: "stack chain (Sonarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0014
+  behaviour: "Our Maintainerr rules delete media: a requested movie watched by its requester and added over 30 days ago, or any requested movie added over 60 days ago; a watched episode last viewed over 7 days ago. The files go and the request is cleared"
+  source: config
+  ref: "stack chain (Maintainerr, Seerr, Plex); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0015
+  behaviour: "Cleanup never touches a file Scryer did not import or a file outside its root folders"
+  source: config
+  ref: "stack chain (Maintainerr, Sonarr, Radarr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0016
+  behaviour: "A restart mid-download resumes tracking and the download is still imported"
+  source: config
+  ref: "stack chain (Sonarr, Radarr, qBittorrent); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
+- id: STK-FLOW-0017
+  behaviour: "An episode or movie deleted by cleanup is unmonitored (auto-unmonitor previously downloaded on), so it is not grabbed again"
+  source: config
+  ref: "stack chain (Sonarr, Radarr, Maintainerr); notes/11-parity-net-design.md § Flow layer"
+  in_scope: true
+  status: unmapped
+  tests: []
