@@ -126,6 +126,10 @@ pub(crate) fn resolve_release_coverage(
     let Some(episode) = parsed.episode.as_ref() else {
         return ReleaseCoverage::Title;
     };
+    // fork (P37): extras (deleted scenes etc.) fill no episode or season.
+    if episode.is_season_extra {
+        return ReleaseCoverage::Unknown;
+    }
 
     // Explicit episode bounds constrain coverage even when a pack qualifier
     // also describes the release. Never widen a bounded set to a collection.
@@ -1330,14 +1334,31 @@ mod tests {
         );
     }
 
-    // fork (P34e) probe: an extras pack is not the season's episodes.
+    // fork (P37): an extras pack is not the season's episodes.
     #[test]
-    #[ignore = "P34e probe is red: coverage reads an extras pack as the season collection; needs its own ledger item"]
     fn season_extras_pack_does_not_cover_the_season_collection() {
         let parsed = crate::parse_release_metadata("The.Series.S03.Extras.02.720p");
         assert!(parsed.episode.as_ref().is_some_and(|e| e.is_season_extra));
         let coverage = resolve_release_coverage(&parsed, &[], &[collection("season-3", "3")], None);
         assert_ne!(coverage, ReleaseCoverage::Collection("season-3".to_string()));
+    }
+
+    // fork (P37): guards for the extras rule.
+    #[test]
+    fn season_pack_and_episode_still_cover_with_extras_guard() {
+        let pack = crate::parse_release_metadata("The.Series.S03.1080p.WEB-DL");
+        assert_eq!(
+            resolve_release_coverage(&pack, &[], &[collection("season-3", "3")], None),
+            ReleaseCoverage::Collection("season-3".to_string())
+        );
+        let eps = vec![episode("ep-1", "3", "1", None)];
+        let single = crate::parse_release_metadata("The.Series.S03E01.1080p.WEB-DL");
+        assert_ne!(
+            resolve_release_coverage(&single, &eps, &[], None),
+            ReleaseCoverage::Unknown
+        );
+        let titled = crate::parse_release_metadata("Show.Extras.S01E01.720p");
+        assert!(!titled.episode.as_ref().is_some_and(|e| e.is_season_extra));
     }
 
     #[test]
