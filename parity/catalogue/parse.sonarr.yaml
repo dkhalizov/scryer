@@ -5307,7 +5307,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D95 W-P46: D75(3) clean key spells & as and on both sides by design"
   tests: [scryer-application::parity_parse::son_series_name]
 # key: src/NzbDrone.Core.Test/ParserTests/ParserFixture.cs|should_parse_series_name|6d261c77b993|0
 - id: SON-PARSE-0637
@@ -10534,7 +10535,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:39"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D95 W-P46: D75(4) identity equal; the arr keeps the title hyphens"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|4469f6898159|0
 - id: SON-PARSE-1286
@@ -10542,7 +10544,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:40"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D95 W-P46: D75(4) identity equal; the arr keeps the title hyphens"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|006e00d31bfb|0
 - id: SON-PARSE-1287
