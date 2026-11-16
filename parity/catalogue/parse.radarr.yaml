@@ -1661,7 +1661,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:88"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0207
   # key: "LanguageParserFixture.cs|should_parse_language_german|07232126ebdd0461|0"
@@ -1685,7 +1685,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:98"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0210
   # key: "LanguageParserFixture.cs|should_parse_language_german|93660c2326c6ee32|0"
@@ -1717,7 +1717,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:102"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0214
   # key: "LanguageParserFixture.cs|should_parse_language_german|f49d177cc46d5eb5|0"
@@ -1797,7 +1797,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:140"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0224
   # key: "LanguageParserFixture.cs|should_parse_language_icelandic|8094b267f4857bbb|0"
@@ -2186,7 +2186,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:362"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0272
   # key: "LanguageParserFixture.cs|should_parse_language_ukrainian|f604a716ed8e208d|0"
@@ -2194,7 +2194,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:363"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0273
   # key: "LanguageParserFixture.cs|should_parse_language_ukrainian|dadc2662923060e1|0"
@@ -2218,7 +2218,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:373"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0276
   # key: "LanguageParserFixture.cs|should_parse_language_persian|b2dacba1b8dfd4f0|0"
@@ -2729,7 +2729,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:573"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0339
   # key: "LanguageParserFixture.cs|should_add_original_language_and_english_to_german_release_with_ml_tag|3c04ebaacaa49513|0"
@@ -4422,7 +4422,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:69"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0547
   # key: "QualityParserFixture.cs|should_parse_dvd_quality|acf33a46baf62c72|0"
@@ -4600,7 +4600,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:116"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0569
   # key: "QualityParserFixture.cs|should_parse_bluray480p_quality|75f9482ed2bc71df|0"
@@ -4720,7 +4720,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:136"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0584
   # key: "QualityParserFixture.cs|should_parse_hdtv720p_quality|5177a45bf5de1f7f|0"
@@ -4728,7 +4728,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/QualityParserFixture.cs:137"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0585
   # key: "QualityParserFixture.cs|should_parse_hdtv1080p_quality|9567ae10e0c6abe7|0"
