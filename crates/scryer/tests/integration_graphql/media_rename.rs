@@ -1748,7 +1748,7 @@ async fn graphql_media_rename_preview_for_anime_multi_episode_file_uses_episode_
                 .path()
                 .join("Range Preview Show (2024)")
                 .join("Season 1")
-                .join("Range Preview Show - S01E01-02 (01-02) - 1080p.mkv")
+                .join("Range Preview Show - S01E01-E02 (01-02) - 1080p.mkv")
                 .to_string_lossy()
                 .to_string()
         )

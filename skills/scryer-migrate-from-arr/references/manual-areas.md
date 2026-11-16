@@ -115,6 +115,8 @@ digits, `{?token:text}` emits `text` only when the token has a value,
 Arr `{Quality Full}` is `{quality_full}` (`WEBDL-1080p`, `Bluray-1080p Proper`;
 a movie remux `Remux-2160p`, a series remux `Bluray-2160p Remux`; no REAL).
 
+Scryer writes arr Smart colons with illegal characters replaced (`?` to `!`, `/` and `\` to `+`, `*` to `-`, `<>|"` dropped), trims trailing `. ?` from episode titles, collapses multi-part titles, and writes multi-episode files as `S01E01-E03`. There is no setting for these; an arr on another colon mode or multi-episode style will see different names.
+
 Rewrite the arr format with these, show old and new side by side, and save
 with `UpdateMediaSettings.graphql` (`scope` plus only the changed fields).
 Arr tokens with no Scryer equivalent are dropped; name them to the operator.

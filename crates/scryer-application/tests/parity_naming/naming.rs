@@ -38,9 +38,8 @@
 //! `build_file_path` compares the full path; `build_file_name` compares the
 //! file name without the `.mkv` suffix. SON-NAMING-0007
 //! (BuildFilePathFixture.cs:59, asserted at :84) checks that a colon in the
-//! series title is cleaned in a `{Series Title}` season folder. Its red is
-//! the colon: Scryer's sanitiser gives
-//! "NCIS Los Angeles", the arr's Smart mode "NCIS - Los Angeles" (P15).
+//! series title is cleaned in a `{Series Title}` season folder. Green since
+//! P15a: Scryer's sanitiser writes the arr's Smart mode "NCIS - Los Angeles".
 //!
 //! Ignored keys: episodeFile.sceneName when relativePath or path is given,
 //! replaceIllegalCharacters, colonReplacementFormat,

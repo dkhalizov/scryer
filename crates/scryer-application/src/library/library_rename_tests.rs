@@ -518,7 +518,7 @@ fn configured_title_folder_path_disarms_reserved_device_title() {
 fn configured_title_folder_path_sanitizes_empty_template_fallback_title() {
     let title = test_movie_title("../Escape");
     let path = configured_title_folder_path("/library", &title, "", None);
-    assert_eq!(path, std::path::Path::new("/library/Escape"));
+    assert_eq!(path, std::path::Path::new("/library/+Escape"));
 }
 
 #[test]
@@ -891,7 +891,7 @@ fn finalize_generated_filename_sanitizes_fallback_title_before_join() {
     assert!(!result.contains('/'));
     assert!(!result.contains('\\'));
     assert!(!result.contains(':'));
-    assert_eq!(result, "Unsafe Title Name.mkv");
+    assert_eq!(result, "+Unsafe+Title-Name.mkv");
 }
 
 #[cfg(windows)]
@@ -2322,7 +2322,7 @@ fn movie_rename_items_use_matched_media_file_analysis_instead_of_path_parse() {
     );
     assert_eq!(
         items[0].normalized_filename.as_deref(),
-        Some("Movie (2024) [2160p H.265 DTS X 7.1].mkv")
+        Some("Movie (2024) [2160p H.265 DTS-X 7.1].mkv")
     );
 }
 
