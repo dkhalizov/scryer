@@ -3583,7 +3583,8 @@ fn render_rename_template_tokens_with_folder_path(
                     if resolved == "_" {
                         out.push('_');
                     } else {
-                        out.push_str(&sanitize_filesystem_component(&resolved));
+                        // fork (P43): trim the whole component only, not each token (`Bros.` keeps its dot).
+                        out.push_str(&sanitize_filesystem_chars(&resolved, false));
                     }
                 } else {
                     out.push_str(&resolved);
@@ -6289,6 +6290,10 @@ fn truncate_token_chars(value: &str, limit: usize) -> String {
 }
 
 pub fn sanitize_filesystem_component(raw: &str) -> String {
+    disarm_windows_reserved_device_name(&sanitize_filesystem_chars(raw, true))
+}
+
+fn sanitize_filesystem_chars(raw: &str, trim_edges: bool) -> String {
     // fork (P15a): arr CleanFileName at our captured settings (Smart colons, replace on; D77).
     let smart = raw.replace(": ", " - ").replace(':', "-");
     let mut sanitized = String::with_capacity(smart.len());
@@ -6303,7 +6308,7 @@ pub fn sanitize_filesystem_component(raw: &str) -> String {
         }
     }
 
-    disarm_windows_reserved_device_name(&collapse_separators(&sanitized))
+    collapse_separators(&sanitized, trim_edges)
 }
 
 fn truncate_generated_filename_component(component: &str) -> String {
@@ -6424,7 +6429,7 @@ fn windows_reserved_device_name_bounds(component: &str) -> Option<(usize, usize)
     })
 }
 
-fn collapse_separators(raw: &str) -> String {
+fn collapse_separators(raw: &str, trim_edges: bool) -> String {
     let mut collapsed = String::with_capacity(raw.len());
     let mut previous: Option<char> = None;
 
@@ -6438,6 +6443,9 @@ fn collapse_separators(raw: &str) -> String {
         previous = Some(normalized);
     }
 
+    if !trim_edges {
+        return collapsed;
+    }
     collapsed
         .trim_matches(|value: char| value.is_whitespace() || matches!(value, '.' | '-' | '_'))
         .to_string()

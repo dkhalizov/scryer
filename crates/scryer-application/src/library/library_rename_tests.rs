@@ -1181,32 +1181,39 @@ fn rename_planning_path_key_folds_case_and_separators_on_windows() {
 // ── collapse_separators ───────────────────────────────────────────────────
 
 #[test]
+fn collapse_separators_keeps_edges_for_a_token_inside_a_component() {
+    // fork (P43): a token's trailing dot survives; the whole component trims it.
+    assert_eq!(collapse_separators("Bros.", false), "Bros.");
+    assert_eq!(sanitize_filesystem_component("Bros."), "Bros");
+}
+
+#[test]
 fn collapse_double_spaces() {
-    let result = collapse_separators("movie  title   name");
+    let result = collapse_separators("movie  title   name", true);
     assert_eq!(result, "movie title name");
 }
 
 #[test]
 fn collapse_double_dots() {
-    let result = collapse_separators("movie..title...name");
+    let result = collapse_separators("movie..title...name", true);
     assert_eq!(result, "movie.title.name");
 }
 
 #[test]
 fn collapse_double_dashes() {
-    let result = collapse_separators("movie--title---name");
+    let result = collapse_separators("movie--title---name", true);
     assert_eq!(result, "movie-title-name");
 }
 
 #[test]
 fn collapse_trims_leading_trailing_separators() {
-    let result = collapse_separators("..movie.title..");
+    let result = collapse_separators("..movie.title..", true);
     assert_eq!(result, "movie.title");
 }
 
 #[test]
 fn collapse_mixed_whitespace() {
-    let result = collapse_separators("movie \t title");
+    let result = collapse_separators("movie \t title", true);
     // tabs become spaces
     assert!(!result.contains('\t'));
 }
