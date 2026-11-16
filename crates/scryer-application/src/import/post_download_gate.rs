@@ -338,21 +338,14 @@ impl RuntimeSampleValidation {
     }
 }
 
-#[cfg(any(feature = "runtime-media-analysis", test))]
 pub(crate) const SAMPLE_RUNTIME_ZERO_CODE: &str = "sample_runtime_zero";
-#[cfg(any(feature = "runtime-media-analysis", test))]
 pub(crate) const SAMPLE_RUNTIME_TOO_SHORT_CODE: &str = "sample_runtime_too_short";
-#[cfg(any(feature = "runtime-media-analysis", test))]
 pub(crate) const SAMPLE_RUNTIME_INDETERMINATE_CODE: &str = "sample_runtime_indeterminate";
 pub(crate) const RUNTIME_OUT_OF_BAND_CODE: &str = "runtime_out_of_band";
 
-#[cfg(any(feature = "runtime-media-analysis", test))]
 const MIN_EXPECTED_RUNTIME_FOR_SAMPLE_RATIO_SECONDS: i32 = 5 * 60;
-#[cfg(any(feature = "runtime-media-analysis", test))]
 const MIN_UNKNOWN_RUNTIME_SAMPLE_SECONDS: i32 = 60;
-#[cfg(any(feature = "runtime-media-analysis", test))]
 const MIN_RATIO_SAMPLE_SECONDS: i32 = 90;
-#[cfg(any(feature = "runtime-media-analysis", test))]
 const SAMPLE_RUNTIME_PERCENT: i32 = 10;
 /// Coarse plausibility band around the expected runtime. Deliberately wide (2x
 /// each way) so extended pilots, omnibus cuts, and padded encodes stay
@@ -383,7 +376,6 @@ pub(crate) fn facet_to_category_hint(facet: &MediaFacet) -> &'static str {
     facet.as_str()
 }
 
-#[cfg(any(feature = "runtime-media-analysis", test))]
 fn runtime_sample_rejection(
     validation: RuntimeSampleValidation,
     actual_runtime_seconds: Option<i32>,
@@ -468,10 +460,28 @@ fn runtime_sample_rejection(
     None
 }
 
+// fork: parity net seam (tests/parity_import.rs detect_sample)
+// fork (17a): the automatic-import runtime rule as the gate runs it.
+pub fn automatic_sample_rejection_code(
+    facet: &MediaFacet,
+    parsed: &crate::ParsedReleaseMetadata,
+    size_bytes: i64,
+    expected_runtime_seconds: Option<i32>,
+    actual_runtime_seconds: Option<i32>,
+) -> Option<&'static str> {
+    sample_rejection(
+        RuntimeSampleValidation::automatic(expected_runtime_seconds),
+        facet,
+        parsed,
+        size_bytes,
+        actual_runtime_seconds,
+    )
+    .map(|rejection| rejection.recycle_reason)
+}
+
 /// Runtime is authoritative when available from the catalog. Without that
 /// expectation, use the file's own duration and the shared codec/resolution
 /// bitrate floor instead of a fixed byte threshold for episodic media.
-#[cfg(any(feature = "runtime-media-analysis", test))]
 fn sample_rejection(
     validation: RuntimeSampleValidation,
     facet: &MediaFacet,
@@ -529,7 +539,6 @@ fn sample_rejection(
     None
 }
 
-#[cfg(any(feature = "runtime-media-analysis", test))]
 fn imported_runtime_sample_rejection(code: &'static str, message: String) -> ImportedFileRejection {
     ImportedFileRejection {
         message,

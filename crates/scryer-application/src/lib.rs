@@ -458,6 +458,9 @@ pub mod parity_seams {
     };
     // fork: parity net seam (tests/parity_requests/requests.rs)
     pub use crate::catalog::workflow::{monitor_selection_with_new_seasons, should_monitor_season};
+    // fork: parity net seam (tests/parity_import.rs detect_sample)
+    pub use crate::import::post_download_gate::automatic_sample_rejection_code;
+    pub use crate::import::workflow::expected_runtime_seconds_for_episode_import;
     pub use crate::media_requests::normalize_requested_monitor_selection;
     // fork: parity net seam (tests/parity_naming/naming.rs)
     pub use crate::import::workflow::{episode_import_dest_path, preserved_import_filename};

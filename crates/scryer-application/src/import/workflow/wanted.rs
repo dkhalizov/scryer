@@ -18,7 +18,8 @@ async fn reused_episode_destination(
         .map(|file| (destination, file.id)))
 }
 
-fn expected_runtime_seconds_for_episode_import(
+// fork: parity net seam (tests/parity_import.rs detect_sample)
+pub fn expected_runtime_seconds_for_episode_import(
     title: &scryer_domain::Title,
     target_episodes: &[scryer_domain::Episode],
 ) -> Option<i32> {

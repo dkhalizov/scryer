@@ -18,7 +18,7 @@
 //!
 //! Scryer code under test:
 //! - Import checks (crates/scryer-application/src/import/checks.rs):
-//!   `check_not_sample` (:159), `check_not_unpacking` (:193) and
+//!   `check_not_sample` (:162), `check_not_unpacking` (:193) and
 //!   `disk_space_verdict_for_measurement` (:97), the pure parts of the
 //!   pre-import pipeline `run_checks_with_measurement` (:344). Reached through
 //!   the parity seam re-export in lib.rs (see the seams in the phase report).
@@ -38,9 +38,9 @@
 //!
 //! | Reference | Scryer |
 //! |---|---|
-//! | DetectSample result `Sample` | `ImportVerdict::Reject` with code `SampleFile` or `SampleDirectory` |
+//! | DetectSample result `Sample` | `ImportVerdict::Reject` with code `SampleFile` or `SampleDirectory`, or a case with a runtime: `parity_seams::automatic_sample_rejection_code` returns any code but `sample_runtime_indeterminate` (too_short, zero, out_of_band) |
 //! | DetectSample result `NotSample` | `ImportVerdict::Accept` |
-//! | DetectSample result `Indeterminate` | no counterpart: Scryer's verdict is always Accept or Reject, so these cases fail |
+//! | DetectSample result `Indeterminate` | `automatic_sample_rejection_code` returns `sample_runtime_indeterminate` (a null runtime key); the expected runtime comes from `expected_runtime_seconds_for_episode_import` (series) or movie minutes * 60 (Radarr) |
 //! | spec `accepted: true / false` | `ImportVerdict::is_accept()` |
 //! | FreeSpace: `GetAvailableSpace` returns n bytes / null / throws (`"throws"`, `"error"`) | `disk_space_verdict_for_measurement(Some(n) / None / None, size)`: measured_disk_space (checks.rs:264) turns a failed measurement into `None` |
 //! | FreeSpace: `MinimumFreeSpaceWhenImporting` (MiB) | no setting: Scryer always reserves 500 MiB (checks.rs:79 DISK_SPACE_RESERVE_BYTES) |
@@ -54,14 +54,13 @@
 //! | `source` Unknown (Sonarr) / UNKNOWN (Radarr) | no source: Scryer's analysis carries no container title and derives no source from media info; compared as the app's Unknown spelling, so Web / Bluray / WEBDL cases fail |
 //!
 //! Ignored keys:
-//! - DetectSample `calls.GetRunTime: 0`, `runtime_probed: false`: probe counts
+//! - DetectSample `calls.GetRunTime: 0`, `runtime_probed: false`, `media_info.runtime_seconds` (duplicates `file_runtime_seconds`): probe counts
 //!   are not observable (the check has no probe seam); the result next to them
 //!   is compared. Cases whose only assertion is a probe count are unmapped.
 //! - Log counts `warnings`, `errors_logged`: log output, not behaviour; the
 //!   accept/reject or result next to them is compared.
-//! - DetectSample `call` (`series` / `local_episode`), `series`, `episodes`,
-//!   `quality`, runtimes: inputs to the reference's runtime rule; Scryer's rule
-//!   reads only the path, so they do not reach it.
+//! - DetectSample `call` (`series` / `local_episode`) and `quality`: not read
+//!   (the runtimes, `series` and `episodes` do reach the rule through the seams).
 //! - NotUnpacking `last_write_offset_hours` / `last_write_ago_minutes`, `os`:
 //!   on posix the reference rejects regardless of age (corpus note).
 //! - FreeSpace `root_folder`, `series_path`, `movie_path`: which directory is
@@ -208,10 +207,73 @@ fn sample_result(verdict: &ImportVerdict) -> String {
 }
 
 /// Sonarr DetectSampleFixture and Radarr detect_sample: compare the result.
+/// The path verdict comes first; a case that carries a runtime then goes through the
+/// automatic-import runtime rule (fork 17a seam).
 fn detect_sample(dir: &Path, given: &Value, expect: &Value) -> Option<(Value, Value)> {
+    use scryer_application::parity_seams::{
+        automatic_sample_rejection_code, expected_runtime_seconds_for_episode_import,
+    };
     let expected = expect.get("result")?.clone();
     let path = rebase(dir, given["path"].as_str()?);
-    let actual = sample_result(&verdict(&path, 0, check_not_sample));
+    let by_path = sample_result(&verdict(&path, 0, check_not_sample));
+    if by_path != "NotSample" {
+        return Some((expected, json!(by_path)));
+    }
+    let name = path.file_name()?.to_str()?;
+    let parsed = scryer_application::parse_release_metadata(name);
+    let (facet, expected_runtime, actual) = if let Some(probed) = given.get("file_runtime_seconds") {
+        let series = given.get("series")?;
+        let mut title = import_aggregate::title("30 Rock", "series");
+        title.runtime_minutes = series.get("runtime").and_then(Value::as_i64).map(|m| m as i32);
+        let episodes: Vec<scryer_domain::Episode> = given
+            .get("episodes")?
+            .as_array()?
+            .iter()
+            .map(|e| scryer_domain::Episode {
+                id: "parity-episode".into(),
+                title_id: "parity-title".into(),
+                collection_id: None,
+                episode_type: scryer_domain::EpisodeType::Standard,
+                episode_number: Some("1".into()),
+                season_number: e.get("season").and_then(Value::as_i64).map(|s| s.to_string()),
+                episode_label: None,
+                title: None,
+                air_date: None,
+                duration_seconds: e.get("runtime").and_then(Value::as_i64).map(|m| m * 60),
+                has_multi_audio: false,
+                has_subtitle: false,
+                is_filler: false,
+                is_recap: false,
+                absolute_number: None,
+                contiguous_absolute_number: None,
+                overview: None,
+                tvdb_id: None,
+                tmdb_id: None,
+                image_url: None,
+                monitored: true,
+                created_at: chrono::Utc::now(),
+            })
+            .collect();
+        (
+            scryer_domain::MediaFacet::Series,
+            expected_runtime_seconds_for_episode_import(&title, &episodes),
+            probed.as_i64().map(|v| v as i32),
+        )
+    } else if let Some(probed) = given.get("probed_runtime_seconds") {
+        let minutes = given.get("movie_runtime_minutes").and_then(Value::as_i64).unwrap_or(0);
+        (
+            scryer_domain::MediaFacet::Movie,
+            (minutes > 0).then(|| (minutes * 60) as i32),
+            probed.as_i64().map(|v| v as i32),
+        )
+    } else {
+        return Some((expected, json!(by_path)));
+    };
+    let actual = match automatic_sample_rejection_code(&facet, &parsed, 0, expected_runtime, actual) {
+        None => "NotSample",
+        Some("sample_runtime_indeterminate") => "Indeterminate",
+        Some(_) => "Sample",
+    };
     Some((expected, json!(actual)))
 }
 

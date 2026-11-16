@@ -114,7 +114,7 @@ use serde_json::{Value, json};
 
 use super::rebase;
 
-fn title(name: &str, facet: &str) -> scryer_domain::Title {
+pub(super) fn title(name: &str, facet: &str) -> scryer_domain::Title {
     serde_json::from_value(json!({
         "id": "parity-title",
         "library_id": "parity-library",
