@@ -68,10 +68,16 @@ pub(crate) fn enrich_candidate(
     raw_input: &str,
 ) -> MetadataEnrichment {
     let scoped_tokens = metadata_tokens_for_candidate(tokens, candidate);
-    let normalized_tokens = scoped_tokens
+    let mut normalized_tokens = scoped_tokens
         .iter()
         .map(|(_, token)| token.normalized.clone())
         .collect::<Vec<_>>();
+    // fork (P39): `0,Ing` (comma-glued list) and `2xUkr` (track multiplier) name a language.
+    for (slot, (_, token)) in normalized_tokens.iter_mut().zip(&scoped_tokens) {
+        if let Some(atom) = glued_language_atom(token) {
+            *slot = atom;
+        }
+    }
 
     let mut enrichment = MetadataEnrichment::default();
     let stereo = crate::stereoscopy::analyze_candidate(tokens, candidate);
@@ -688,6 +694,8 @@ fn metadata_tokens_for_candidate<'a>(
                 .is_some_and(|token| is_gap_metadata_token(token.normalized.as_str()))
     }));
 
+    scoped_indices.extend(p39_readable_outside_metadata(tokens, candidate));
+
     let Some(metadata_zone) = candidate.zones.metadata_zone else {
         scoped_indices.sort_unstable();
         scoped_indices.dedup();
@@ -706,6 +714,73 @@ fn metadata_tokens_for_candidate<'a>(
         .into_iter()
         .filter_map(|index| tokens.get(index).map(|token| (index, token)))
         .collect()
+}
+
+/// fork (P39): `by Videomann`, a trailing `+ Original` or `SxxEyy Original`, and a run
+/// of language atoms that reaches into the release-group span (`HIN-ENG-GER`,
+/// `LT.LV.RU`, `Louige-CZ.EN`, `DTS[EN+ES]`, `WEBRip-AVC Ukr/Eng`) are language evidence, not a group.
+/// The group value itself is unchanged.
+fn p39_readable_outside_metadata(tokens: &[Token], candidate: &ReleaseParseCandidate) -> Vec<usize> {
+    let in_title = |i: usize| token_in_ranges(i, candidate.zones.title_zones.as_slice());
+    let in_group = |i: usize| token_in_ranges(i, candidate.zones.release_group_span.as_slice());
+    let atom = |i: usize| {
+        let t = &tokens[i];
+        let (names, raws): (Vec<_>, Vec<_>) = (t.normalized.split('+').collect(), t.raw.split('+').collect());
+        names.len() == raws.len()
+            && names
+                .iter()
+                .zip(&raws)
+                .all(|(a, r)| parse_language_hint(a).is_some() && language_token_case_ok(a, r))
+    };
+    let mut out = Vec::new();
+    for i in (0..tokens.len()).filter(|&i| !in_title(i)) {
+        let t = tok(tokens, i);
+        let previous = i.checked_sub(1).map_or("", |p| tok(tokens, p));
+        let episode_marker = previous.strip_prefix('S').is_some_and(|rest| {
+            rest.starts_with(|c: char| c.is_ascii_digit())
+                && rest.contains('E')
+                && rest.chars().all(|c| c.is_ascii_digit() || c == 'E')
+        });
+        if t == "VIDEOMANN" || (matches!(t, "ORIGINAL" | "ORIG") && (previous == "+" || episode_marker)) {
+            out.push(i);
+        }
+    }
+    let mut i = 0;
+    while i < tokens.len() {
+        if in_title(i) || !atom(i) {
+            i += 1;
+            continue;
+        }
+        let start = i;
+        let linked = |i: usize| {
+            joined(tokens, i)
+                || (tokens[i + 1].separator_before == SeparatorKind::Slash
+                    && tokens[i + 1].span.start.checked_sub(tokens[i].span.end) == Some(1))
+        };
+        while i + 1 < tokens.len() && !in_title(i + 1) && atom(i + 1) && linked(i) {
+            i += 1;
+        }
+        let run = start..=i;
+        let single_list = start == i && tokens[i].normalized.contains('+');
+        // no metadata zone at all (`Title / Alias (2022) WEBRip-AVC Ukr/Eng`): a run still counts
+        if (start < i || single_list) && (candidate.zones.metadata_zone.is_none() || run.clone().any(in_group)) {
+            out.extend(run);
+        }
+        i += 1;
+    }
+    out
+}
+
+/// fork (P39): the language named by the tail after the last comma of a token
+/// (`0,Ing` -> `ING`) with a leading `2x` multiplier removed, when it differs
+/// from the token and reads as a language.
+fn glued_language_atom(token: &Token) -> Option<String> {
+    let raw = token.raw.rsplit(',').next()?;
+    let atom = strip_language_multiplier(&crate::lex::normalize_token(raw)).to_string();
+    (atom != token.normalized
+        && parse_language_hint(&atom).is_some()
+        && language_token_case_ok(&atom, raw.trim_start_matches(|c: char| c.is_ascii_digit() || c == 'x' || c == 'X')))
+    .then_some(atom)
 }
 
 fn metadata_token_is_protected(candidate: &ReleaseParseCandidate, index: usize) -> bool {

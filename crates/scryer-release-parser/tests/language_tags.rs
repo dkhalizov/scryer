@@ -105,3 +105,81 @@ fn plus_separated_language_lists() {
     assert_eq!(audio("Movie.Title.2010.ENG+RUS.1080p.BluRay.x264-Grp"), ["eng", "rus"]);
     assert_eq!(audio("Movie.Title.2010.2xUKR+ENG.1080p.BluRay.x264-Grp"), ["ukr", "eng"]);
 }
+
+fn audio_for(facet: &str, title: &str, release: &str) -> Vec<String> {
+    let target: ReleaseParseContext = serde_json::from_value(serde_json::json!({
+        "facet_hint": facet, "title": {"name": title}, "aliases": [],
+        "known_years": [], "imdb_ids": [], "episodes": []
+    }))
+    .expect("context");
+    best_parse_for_target(release, &target).languages_audio
+}
+
+fn has(fails: &std::cell::RefCell<Vec<String>>, facet: &str, title: &str, release: &str, codes: &[&str]) {
+    let got = audio_for(facet, title, release);
+    for code in codes {
+        if !got.iter().any(|g| g == code) {
+            fails.borrow_mut().push(format!("{release}: want {code}, got {got:?}"));
+        }
+    }
+}
+
+// fork (P39): language tokens remainder (census A5).
+#[test]
+fn p39_movie_language_shapes() {
+    let fails = std::cell::RefCell::new(Vec::new());
+    let m = |release: &str, codes: &[&str]| has(&fails, "movie", "Movie Title", release, codes);
+    m("Movie.Name.2022.BluRay.1080p.H264.DTS[EN+ES].[EN+ES+IT]", &["spa"]);
+    m("Movie Title 2016 - Kampfhaehne - mkv - by Videomann", &["deu"]);
+    m("Movie.Title.2016.1080p.10Bit.HEVC.WEBRip.HIN-ENG-GER.DD5.1.H.265", &["deu"]);
+    m("Movie Title (1985) (1080p.AC3 ITA-ENG-JAP)", &["jpn"]);
+    m("Movie.Title (2006) BDRemux 1080p 2xUkr | Sub Ukr", &["ukr"]);
+    m("Movie.Title [1984, BDRip 720p] MVO + MVO + Dub + AVO + 3xUkr", &["ukr"]);
+    m("Movie.Title.[2003.BDRemux.1080p].Dub.MVO.(2xUkr/Fra).Sub.(Rus/Fra)", &["ukr"]);
+    assert!(fails.borrow().is_empty(), "{}", fails.borrow().join("\n"));
+}
+
+#[test]
+fn p39_series_language_shapes() {
+    let fails = std::cell::RefCell::new(Vec::new());
+    let s = |release: &str, codes: &[&str]| has(&fails, "series", "Series", release, codes);
+    let has_c = |title: &str, release: &str, codes: &[&str]| has(&fails, "series", title, release, codes);
+    s("Series S02 (1999–2003)[BDRemux 1080p AVC Esp DD2.0,Ing DTS-HD5.1,Cat DD2.0 Subs][HD-Olimpo][PACK]", &["spa", "eng", "cat"]);
+    s("Series S02 (2009–2013)[BDRemux 1080p AVC Esp.DD2.0,Ing.DD2.0,Cat.DD2.0,Subs][HD-Olimpo][PACK]", &["spa", "eng", "cat"]);
+    s("The Series Title - S02E16 - Kampfhaehne - mkv - by Videomann", &["deu"]);
+    s("Title.the.Series.S01.COMPLETE.2009.1080p.WEB-DL.x264.AVC.AAC.LT.LV.RU", &["rus"]);
+    s("Title.the.Series.S07E11.WEB Rip.XviD.Louige-CZ.EN.5.1", &["ces"]);
+    has_c("Гало Сезон 1 Серії 1 5 SeriesTitle", "Гало(Сезон 1, серії 1-5) / SeriesTitle(Season 1, episodes 1-5) (2022) WEBRip-AVC Ukr/Eng", &["ukr"]);
+    has_c("Остання серія Сезон 1 The Last Series", "Остання серія (Сезон 1) / The Last Series (Season 1) (2024) WEB-DLRip-AVC 2xUkr/Eng | Sub Ukr/Eng", &["ukr", "eng"]);
+    has_c("Серія", "Серія (Сезон 1-3) / The Series (Seasons 1-3) (2019-2022) BDRip-AVC 4xUkr/Eng | Sub 2xUkr/Eng", &["ukr", "eng"]);
+    assert!(fails.borrow().is_empty(), "{}", fails.borrow().join("\n"));
+}
+
+#[test]
+fn p39_original_after_episode() {
+    let mut fails = Vec::new();
+    for (facet, release) in [
+        ("series", "Series.Title.S01E01.Original.1080P.WEB.H264-RlsGrp"),
+        ("series", "Series.Title.S01E01.Orig.1080P.WEB.H264-RlsGrp"),
+        ("series", "Series / S1E1-10 of 10 [2023, HEVC, HDR10, Dolby Vision, WEB-DL 2160p] [Hybrid] 3 XX + Original"),
+        ("movie", "Movie Title 2025 [HEVC, HDR10, Dolby Vision, WEB-DL 2160p] [Hybrid] 3 XX + Original"),
+    ] {
+        let target: ReleaseParseContext = serde_json::from_value(serde_json::json!({
+            "facet_hint": facet, "title": {"name": if facet == "movie" { "Movie Title" } else { "Series" }}, "aliases": [],
+            "known_years": [], "imdb_ids": [], "episodes": []
+        }))
+        .expect("context");
+        if !best_parse_for_target(release, &target).is_original_audio {
+            fails.push(release);
+        }
+    }
+    assert!(fails.is_empty(), "{}", fails.join("\n"));
+}
+
+// fork (P39): no panic on non-ASCII around the new list handling.
+#[test]
+fn p39_non_ascii_no_panic() {
+    for release in ["Фильм.2020.HIN-ЕNG-GER.DD5.1", "Série.S01E01.Esp.DD2.0,Ïng.DD2.0", "Тест [EN+ЕS] ｜ 3 ХХ + Оriginal"] {
+        let _ = audio_for("series", "Série", release);
+    }
+}
