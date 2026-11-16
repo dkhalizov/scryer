@@ -3804,7 +3804,6 @@ async fn execute_manual_import_with_release_evidence_inner(
             .as_ref()
             .and_then(|s| s.parse().ok())
             .unwrap_or(1);
-        let ep_num_str = episode.episode_number.clone().unwrap_or_default();
         let target_episodes = if let Some(selection) = &mapping.disc_selection {
             let ids = selection
                 .episode_mappings
@@ -3820,6 +3819,16 @@ async fn execute_manual_import_with_release_evidence_inner(
         } else {
             mapped_episodes
         };
+        // fork (P15d): number and title as rename writes them (all mapped episodes)
+        let refs = target_episodes.iter().collect::<Vec<_>>();
+        let ep_num_str = crate::library::rename::format_number_token(
+            crate::library::rename::collect_episode_numbers(&refs),
+            2,
+            false,
+        )
+        .or_else(|| episode.episode_number.clone())
+        .unwrap_or_default();
+        let episode_title = crate::library::rename::join_episode_titles(&refs);
         match execute_resolved_episode_import(
             app,
             actor,
@@ -3839,7 +3848,7 @@ async fn execute_manual_import_with_release_evidence_inner(
             season_num,
             &ep_num_str,
             episode.absolute_number.as_deref(),
-            episode.title.as_deref(),
+            episode_title.as_deref(),
             &quality_profile,
             None,
             crate::post_download_gate::RuntimeSampleValidationMode::BypassRuntimeSampleCheck,

@@ -1845,11 +1845,14 @@ async fn import_single_episode_file(
         (season, episode_number, absolute_number)
     };
     let post_processing_episode = if uses_catalog_identity {
-        ep_num_str.parse::<u32>().ok()
+        // fork (P15d): the first number of a "17-18" token
+        ep_num_str.split('-').next().and_then(|n| n.parse::<u32>().ok())
     } else {
         identity_episode.and_then(|(episode, _)| episode.episode_numbers.first().copied())
     };
-    let episode_title = target_episodes.first().and_then(|ep| ep.title.as_deref());
+    // fork (P15d): the title rename would write (trimmed, multi-part collapsed)
+    let episode_title = crate::library::rename::join_episode_titles(&target_episodes.iter().collect::<Vec<_>>());
+    let episode_title = episode_title.as_deref();
     let import_purpose = release_evidence.purpose();
     let origin = release_evidence.import_origin();
     let additional_import = import_purpose.is_additional_file();
@@ -2078,9 +2081,8 @@ fn episode_number_token_for_import(
     parsed_episode_numbers: &[u32],
     resolved_episode_number: Option<&str>,
 ) -> String {
-    parsed_episode_numbers
-        .first()
-        .map(ToString::to_string)
+    // fork (P15d): a multi-episode file is named "17-18", as rename names it.
+    crate::library::rename::format_number_token(parsed_episode_numbers.to_vec(), 2, false)
         .or_else(|| {
             resolved_episode_number
                 .map(str::trim)
@@ -2093,6 +2095,12 @@ fn episode_number_token_for_import(
 #[cfg(test)]
 mod episode_number_token_for_import_tests {
     use super::*;
+
+    #[test]
+    fn multi_episode_numbers_join_as_a_range() {
+        // fork (P15d)
+        assert_eq!(episode_number_token_for_import(&[18, 17], Some("17")), "17-18");
+    }
 
     #[test]
     fn parsed_regular_episode_number_takes_precedence() {
