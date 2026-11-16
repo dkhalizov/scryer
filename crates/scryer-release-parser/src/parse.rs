@@ -5733,7 +5733,8 @@ fn render_title_indices(tokens: &[Token], indices: &[usize]) -> String {
         }
         i += 1;
     }
-    words.join(" ")
+    // fork (P38): `Series Title? E11-E12`: the question mark is punctuation.
+    words.join(" ").trim_end_matches('?').to_string()
 }
 
 fn title_segments_before_components(
@@ -7313,6 +7314,14 @@ fn parse_dutch_episode_at(tokens: &[Token], index: usize) -> Option<(u32, Vec<u3
         episodes.push(episode);
         last += 2;
     }
+    // fork (P38): `afl.2-3-4` is a hyphen-joined range.
+    while tokens.get(last + 1).is_some_and(|token| token.separator_before == SeparatorKind::Hyphen)
+        && let Some(end) = number(last + 1)
+        && end > episodes.last().copied().unwrap_or(0)
+    {
+        episodes.extend(episodes.last().copied().unwrap_or(0) + 1..=end);
+        last += 1;
+    }
     Some((season, episodes, last))
 }
 
@@ -7432,7 +7441,8 @@ fn parse_season_keyword_episode_at(
         let normalized = episode_token.normalized.as_str();
         parse_numeric_token(
             split_episode_revision(normalized).map_or(normalized, |(episode, _)| episode),
-        )?
+        )
+        .filter(|_| parse_year(normalized).is_none())? // fork (P38)
     } else {
         dot_split_episode_after_season(tokens, episode_index)?
     };
@@ -7474,6 +7484,14 @@ fn parse_standard_episode_suffix(suffix: &str) -> Option<Vec<u32>> {
     for part in suffix.split('E') {
         let parsed = parse_episode_component(part)?;
         episode_numbers.push(parsed);
+    }
+    // fork (P38): `E1E3` is the range 1..3, as Sonarr fills a multi-episode list.
+    if let [first, .., last] = episode_numbers[..]
+        && first < last
+        && last - first <= 999
+        && episode_numbers.windows(2).all(|pair| pair[0] < pair[1])
+    {
+        return Some((first..=last).collect());
     }
     (!episode_numbers.is_empty()).then_some(episode_numbers)
 }
@@ -7528,7 +7546,8 @@ fn parse_split_standard_episode_at(
     let episode_token = tokens.get(index + 1)?;
     let episode = if episode_token.separator_before == SeparatorKind::Hyphen {
         let token = episode_token.normalized.as_str();
-        parse_numeric_token(token).or_else(|| {
+        // fork (P38): `S03 - 2019 -` names the year, not episode 2019.
+        parse_numeric_token(token).filter(|_| parse_year(token).is_none()).or_else(|| {
             // Anime revisions such as `17v2` still identify one episode.
             let (number, version) = token.split_once('V')?;
             parse_numeric_token(version)?;
@@ -7675,6 +7694,7 @@ fn dot_split_episode_after_season(tokens: &[Token], episode_index: usize) -> Opt
         next.separator_before == SeparatorKind::Dot
             && !next.normalized.is_empty()
             && next.normalized.bytes().all(|byte| byte.is_ascii_digit())
+            && parse_year(&next.normalized).is_none() // fork (P38): `s06.01.1999`
     }) {
         return None;
     }
@@ -7697,6 +7717,11 @@ fn parse_parenthetical_standard_after_absolute_at(
 
     for candidate_index in (index + 1)..(index + 4).min(tokens.len()) {
         let candidate = tokens.get(candidate_index)?;
+        // fork (P38): `Title (2010) [S01E01-02-03]` names a year, not absolute 2010
+        // (a year in the same group, `(2024/S01E07/...)`, still qualifies).
+        if parse_token_year(absolute_token).is_some() && candidate.group_id != absolute_token.group_id {
+            continue;
+        }
         if candidate.bracket_depth == 0 && candidate.separator_before != SeparatorKind::OpenParen {
             continue;
         }
@@ -7815,7 +7840,7 @@ const MAX_EXPLICIT_SEASON: u32 = 100;
 const MAX_PROJECTED_RANGE_SPAN: u32 = 9999;
 
 fn valid_explicit_season(season: u32) -> bool {
-    season <= MAX_EXPLICIT_SEASON
+    season <= MAX_EXPLICIT_SEASON || (1900..=2099).contains(&season) // fork (P38): `S2014`
 }
 
 /// `S01-05`, `Season 01-07`, `Season 01 - Season 07`: a season range. A bare
@@ -8452,6 +8477,7 @@ fn parse_season_pack_at(tokens: &[Token], index: usize) -> Option<SeasonPackPars
         if (tokens.get(index + 2).is_some_and(|candidate| {
             candidate.separator_before == SeparatorKind::Hyphen
                 && parse_numeric_token(candidate.normalized.as_str()).is_some()
+                && parse_year(candidate.normalized.as_str()).is_none() // fork (P38)
         }) || dot_split_episode_after_season(tokens, index + 2).is_some()
             || episode_marker_at(tokens, index + 2, None).is_some())
             && !has_batch_marker_around(tokens, index)
@@ -8529,6 +8555,7 @@ fn parse_season_pack_at(tokens: &[Token], index: usize) -> Option<SeasonPackPars
         if tokens.get(index + 1).is_some_and(|token| {
             token.separator_before == SeparatorKind::Hyphen
                 && parse_numeric_token(token.normalized.as_str()).is_some()
+                && parse_year(token.normalized.as_str()).is_none() // fork (P38): `S03 - 2019 -`
         }) || dot_split_episode_after_season(tokens, index + 1).is_some()
             || episode_marker_at(tokens, index + 1, None).is_some()
         {

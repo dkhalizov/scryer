@@ -255,12 +255,15 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
             && !looks_like_release_metadata_token(&stripped_tokens[1], &stripped_tokens);
         (&stripped_tokens, usize::from(leading_year))
     };
+    let series_facet = matches!(guess_context_facet(raw, &tokens), ContextFacetHint::Series);
     let title_boundary = scan_tokens
         .iter()
         .enumerate()
         .skip(title_start)
         .find(|(index, token)| {
-            (looks_like_release_metadata_token(token, scan_tokens) || series_season_at(*index, scan_tokens, raw))
+            (looks_like_release_metadata_token(token, scan_tokens)
+                || (!series_facet && *index > title_start && movie_tail_at(*index, scan_tokens))
+                || series_season_at(*index, scan_tokens, raw))
                 && !numeric_title_word(token, &scan_tokens[index + 1..], scan_tokens)
         })
         .map(|(index, _)| index)
@@ -322,6 +325,29 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
     }
 }
 
+/// fork (P40): a language or edition word that opens a run of release tags
+/// (`Movie.German.DL.AC3`, `Movie.EXTENDED.2011`). It ends a movie title only
+/// when metadata or another tag follows, so `The Danish Girl` keeps its title.
+fn movie_tail_at(index: usize, tokens: &[String]) -> bool {
+    let word = |at: usize| tokens.get(at).map(|token| normalize_alphanumeric_upper(token));
+    let starter = |w: &str| {
+        matches!(
+            w,
+            "GERMAN" | "FRENCH" | "TRUEFRENCH" | "VOSTFR" | "ITALIAN" | "SPANISH" | "EXTENDED" | "UNCUT" | "UNRATED"
+                | "THEATRICAL" | "DIRECTORS" | "REMASTERED" | "LIMITED" | "IMAX"
+        )
+    };
+    let follower = |w: &str| starter(w) || matches!(w, "CUT" | "EDITION" | "DL" | "AC3" | "DTS");
+    // A language before a bare year stays title text (`The Good German 2006`).
+    let language = |w: &str| matches!(w, "GERMAN" | "FRENCH" | "TRUEFRENCH" | "VOSTFR" | "ITALIAN" | "SPANISH");
+    word(index).is_some_and(|w| starter(&w))
+        && tokens.get(index + 1).is_some_and(|next| {
+            let next_word = normalize_alphanumeric_upper(next);
+            let year = parse_context_year(&next_word).is_some();
+            follower(&next_word) || (looks_like_release_metadata_token(next, tokens) && !(year && word(index).is_some_and(|w| language(&w))))
+        })
+}
+
 /// fork (P35 B): a number that only looks like an absolute episode is title
 /// text when an episode, season or year marker follows (`30 Series S01E01`,
 /// `(500) Days Of Movie (2009)`); a year is title text only when another year
@@ -333,7 +359,9 @@ fn numeric_title_word(token: &str, later: &[String], tokens: &[String]) -> bool 
     if parse_context_year(&normalized).is_some() {
         // fork (P34h): `series.2009.416.hdtv`: the year is title text.
         return later.first().is_some_and(year)
-            || later.first().is_some_and(|next| compact_number(&normalize_alphanumeric_upper(next)) && compact_follows(&later[1..]));
+            || later.first().is_some_and(|next| compact_number(&normalize_alphanumeric_upper(next)) && compact_follows(&later[1..]))
+            // fork (P40): `2020.A.Late.Talk.Show.2011.12.02`: the year starts the title.
+            || (!later.is_empty() && looks_like_daily_token_sequence(later));
     }
     looks_like_absolute_episode_token(&normalized)
         && later.iter().any(|t| {
@@ -343,6 +371,8 @@ fn numeric_title_word(token: &str, later: &[String], tokens: &[String]) -> bool 
                 || spelled_season_marker(&next, tokens)
                 || year(t)
         })
+        // fork (P38): Dutch `13 Series Se.1 afl.2`.
+        || (looks_like_absolute_episode_token(&normalized) && later.iter().any(|t| chain_marker(&normalize_alphanumeric_upper(t), tokens)))
 }
 
 /// fork (P34a): a name that opens with a strict `SxxEyy`/`NxNN` identity or a
@@ -568,7 +598,9 @@ fn chain_marker(normalized: &str, tokens: &[String]) -> bool {
     let metadata = |token: Option<&String>| {
         upper(token).is_some_and(|t| parse_context_year(&t).is_some() || looks_like_release_provenance_normalized(&t))
     };
-    if (normalized == "S" && small(next) && metadata(after))
+    // fork (P40): `V.H.S.2.2013` is an initialism, not season 2.
+    let initialism = index > 0 && tokens[index - 1].chars().count() == 1;
+    if (normalized == "S" && !initialism && small(next) && metadata(after))
     {
         return true;
     }
@@ -592,7 +624,8 @@ fn season_before_episode(normalized: &str, tokens: &[String]) -> bool {
             let next = normalize_alphanumeric_upper(next);
             next.strip_prefix("EP")
                 .or_else(|| next.strip_prefix('E'))
-                .is_some_and(|n| !n.is_empty() && n.chars().all(|ch| ch.is_ascii_digit()))
+                // fork (P38): `S6 E1E3` chains E-tokens.
+                .is_some_and(|n| n.split('E').all(|part| !part.is_empty() && part.chars().all(|ch| ch.is_ascii_digit())))
         })
 }
 
@@ -807,7 +840,7 @@ fn looks_like_bare_season_token(token: &str) -> bool {
         return false;
     };
     !rest.is_empty()
-        && rest.len() <= 3
+        && (rest.len() <= 3 || parse_context_year(rest).is_some()) // fork (P38): `S2014`
         && rest.chars().all(|ch| ch.is_ascii_digit())
         && !token.contains('E')
 }
@@ -1069,6 +1102,78 @@ mod tests {
         for raw in ["Room.237.1080p.BluRay.x264-GRP", "Movie.2010.1080p.BluRay.x264-GRP", "Movie.1408.2007.1080p.BluRay.x264-GRP"] {
             assert!(crate::parse_release_metadata(raw).episode.is_none(), "{raw}");
         }
+    }
+    // fork (P38): episode identity leftovers, one case per shape.
+    #[test]
+    fn episode_identity_leftovers() {
+        let id = |raw: &str| {
+            let p = crate::parse_release_metadata(raw);
+            let e = p.episode.unwrap_or_else(|| panic!("{raw}: no episode"));
+            (p.normalized_title.to_ascii_uppercase(), e.season, e.episode_numbers, e.full_season)
+        };
+        let t = |s: &str| s.to_string();
+        // a year after a season marker is not an episode (SON-PARSE-6962)
+        assert_eq!(id("The Grand Tour - S03 - 2019 - 1080p AMZN WEB-DL AAC5.1 x264-RG"), (t("THE GRAND TOUR"), Some(3), vec![], true));
+        assert_eq!(id("My.Series.S2014.720p.HDTV.x264-ME"), (t("MY SERIES"), Some(2014), vec![], true));
+        assert_eq!(id("Series Title.S6.E1E3.Episode Name.1080p.WEB-DL"), (t("SERIES TITLE"), Some(6), vec![1, 2, 3], false));
+        assert_eq!(id("Series Title.S6.E1E2.Episode Name.1080p.WEB-DL"), (t("SERIES TITLE"), Some(6), vec![1, 2], false));
+        assert_eq!(id("Series Title? E11-E12 1080p HDTV AAC H.264-NEXT"), (t("SERIES TITLE"), Some(1), vec![11, 12], false));
+        assert_eq!(id("The Series Title (2010) - [S01E01-02-03] - Episode Title").2, vec![1, 2, 3]);
+        assert_eq!(id("13 Series Se.1 afl.2-3-4 [VTM]"), (t("13 SERIES"), Some(1), vec![2, 3, 4], false));
+        assert_eq!(id("Titles.s06.01.1999.BDRip.1080p.Ukr.Eng.AC3.Hurtom.TNU.Tenax555").2, vec![1]);
+        // non-ASCII neighbours must not panic
+        for raw in ["Série - S03 - 2019 - 1080p", "Тест S2014 720p", "Тест (2016/S01/WEB-DL)", "Ünï.S6.E1E3.é", "Ünï se.1 afl.2-3-4 é"] {
+            let _ = crate::parse_release_metadata(raw);
+        }
+    }
+    // fork (P40): language, edition and audio tags after a movie title are not
+    // title text. Pins the title of the names that stay red only on `edition`
+    // (RAD-PARSE-0444, 0449, 0454, 0455, 0460..0463, 0465: W4, edition unused).
+    #[test]
+    fn movie_title_stops_at_language_and_edition_tags() {
+        for (raw, expected) in [
+            ("Der.Movie.James.German.Bluray.FuckYou.Pso.Why.cant.you.follow.scene.rules.1998", "Der Movie James"),
+            ("Movie.German.DL.AC3.Dubbed..BluRay.x264-PsO", "Movie"),
+            ("Valana la Movie TRUEFRENCH BluRay 720p 2016 kjhlj", "Valana la Movie"),
+            ("Movie.Title.Imax.2018.1080p.AMZN.WEB-DL.DD5.1.H.264-NTG", "Movie Title"),
+            ("World.Movie.Z.EXTENDED.2013.German.DL.1080p.BluRay.AVC-XANOR", "World Movie Z"),
+            ("World.Movie.Z.2.EXTENDED.2013.German.DL.1080p.BluRay.AVC-XANOR", "World Movie Z 2"),
+            ("Movie.Aufbruch.nach.Pandora.Extended.2009.German.DTS.720p.BluRay.x264-SoW", "Movie Aufbruch nach Pandora"),
+            ("Movie.War.Q.EXTENDED.CUT.2013.German.DL.1080p.BluRay.x264-HQX", "Movie War Q"),
+            ("Joe.Movie.2.EXTENDED.EDITION.2015.German.DL.PAL.DVDR-ETM", "Joe Movie 2"),
+            ("Movie.EXTENDED.2011.HDRip.AC3.German.XviD-POE", "Movie"),
+            ("Der.Movie.Eine.Unerwartete.Reise.Extended.German.720p.BluRay.x264-EXQUiSiTE", "Der Movie Eine Unerwartete Reise"),
+            ("Movie.Weg.des.Kriegers.EXTENDED.German.720p.BluRay.x264-EXQUiSiTE", "Movie Weg des Kriegers"),
+            ("Die.Unfassbaren.Movie.Name.EXTENDED.German.DTS.720p.BluRay.x264-RHD", "Die Unfassbaren Movie Name"),
+            ("Die Unfassbaren Movie Name EXTENDED German DTS 720p BluRay x264-RHD", "Die Unfassbaren Movie Name"),
+            ("Passengers.German.DL.AC3.Dubbed..BluRay.x264-PsO", "Passengers"),
+            ("Das.A.Team.Der.Film.Extended.Cut.German.720p.BluRay.x264-ANCIENT", "Das A Team Der Film"),
+            ("Cars.2.German.DL.720p.BluRay.x264-EmpireHD", "Cars 2"),
+            ("The.Good.German.2006.720p.BluRay.x264-RlsGrp", "The Good German"),
+            // a tag word inside the title stays
+            ("The.Danish.Girl.2015.1080p.BluRay.x264-GRP", "The Danish Girl"),
+            ("The.Final.Cut.2004.1080p.BluRay.x264-GRP", "The Final Cut"),
+            ("The.Extended.Family.2010.1080p.BluRay.x264-GRP", "The Extended Family"),
+        ] {
+            assert_eq!(title(raw), expected, "{raw}");
+        }
+        // `V.H.S.2` is an initialism, not season 2
+        let vhs = crate::parse_release_metadata("V.H.S.2.2013.LIMITED.720p.BluRay.x264-GECKOS");
+        assert_ne!(vhs.disposition, ParseDisposition::Unparseable);
+        assert!(vhs.episode.is_none());
+        assert_eq!(vhs.year, Some(2013));
+        // non-ASCII neighbours must not panic
+        for raw in ["Fílm.Ünï.German.DL.AC3.Dubbed..BluRay", "Тест.German.2011.720p", "Ünï.EXTENDED.CUT.É.2011"] {
+            let _ = crate::parse_release_metadata(raw);
+        }
+    }
+
+    // fork (P40): a number or year that leads a series title.
+    #[test]
+    fn numeric_led_series_titles() {
+        assert_eq!(title("2020.A.Late.Talk.Show.2011.12.02.PDTV.XviD-C4TV"), "2020 A Late Talk Show");
+        // a spaced `Part 2` is a sequel title
+        assert_eq!(title("Movie Part 2 1080p BluRay"), "Movie Part 2");
     }
 
     // fork (P41): TV and low-height spellings end the neutral title, so the
