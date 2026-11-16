@@ -1443,7 +1443,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/OrganizerTests/GetSeasonFolderFixture.cs:24"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_naming::son_naming]
 - id: SON-NAMING-0206
   behaviour: "Season folder format '{Series Title} Season {season:00}' renders 'Series Title?' season 1 as 'Series Title! Season 01'"

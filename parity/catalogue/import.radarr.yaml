@@ -1223,7 +1223,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:139"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0165
   behaviour: "Sample detection is indeterminate when the runtime cannot be probed"
@@ -1287,21 +1287,21 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:139"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0174
   behaviour: "A '.par2' extension is stripped from the download client item's title for the scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:140"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0175
   behaviour: "A '.nzb' extension is stripped from the download client item's title for the scene name"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/GetSceneNameFixture.cs:141"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::rad_import_aggregate]
 - id: RAD-IMPORT-0176
   behaviour: "Nothing is imported or recorded when every decision is rejected"

@@ -818,7 +818,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:217"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0117
   behaviour: "The download's release title is used as the scene name"
@@ -896,21 +896,21 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:204"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0128
   behaviour: "A .par2 extension on the download title is dropped from the scene name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:205"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0129
   behaviour: "A .nzb extension on the download title is dropped from the scene name"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/GetSceneNameFixture.cs:206"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import_aggregate]
 - id: SON-IMPORT-0130
   behaviour: "With only rejected decisions nothing is imported"

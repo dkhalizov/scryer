@@ -1938,7 +1938,8 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/getter/plex-getter.service.spec.ts:1658"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P43: Scryer fails closed on a Plex account it cannot name (deletion safety, P43 review) where Maintainerr drops it, and returns user ids sorted where Maintainerr uses server order; rules read it as a set (P43, D93)"
   tests: [scryer-application::parity_maintenance::mnt_maintenance]
 # key: apps/server/src/modules/rules/getter/plex-getter.service.spec.ts|seenBy (id 1) > returns [] for confirmed-empty history (no one has watched the item)
 - id: MNT-MAINTENANCE-0243

@@ -5140,7 +5140,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:156"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_replace_percent_sign_with_percent_following_numbers|a33ac92d0032|0
 - id: SON-PARSE-0633
@@ -5148,7 +5148,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs:157"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_clean_title]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeSeriesTitleFixture.cs|should_replace_percent_sign_with_percent_following_numbers|57b38f0de581|0
 - id: SON-PARSE-0634
