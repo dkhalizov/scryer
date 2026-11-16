@@ -1330,6 +1330,16 @@ mod tests {
         );
     }
 
+    // fork (P34e) probe: an extras pack is not the season's episodes.
+    #[test]
+    #[ignore = "P34e probe is red: coverage reads an extras pack as the season collection; needs its own ledger item"]
+    fn season_extras_pack_does_not_cover_the_season_collection() {
+        let parsed = crate::parse_release_metadata("The.Series.S03.Extras.02.720p");
+        assert!(parsed.episode.as_ref().is_some_and(|e| e.is_season_extra));
+        let coverage = resolve_release_coverage(&parsed, &[], &[collection("season-3", "3")], None);
+        assert_ne!(coverage, ReleaseCoverage::Collection("season-3".to_string()));
+    }
+
     #[test]
     fn explicit_range_runtime_uses_covered_episode_total() {
         let episodes = vec![

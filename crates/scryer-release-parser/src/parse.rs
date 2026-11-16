@@ -4175,6 +4175,42 @@ fn parse_identity_at(
                     "family:standard_episode",
                 ));
             }
+            // fork (P34c): `5of9` is episode 5 of 9, season 1.
+            if let Some(episode) = parse_n_of_m(tokens.get(index)?.normalized.as_str()) {
+                return Some((
+                    ReleaseIdentity::StandardEpisodeIdentity {
+                        season: Some(1),
+                        episode_numbers: vec![episode],
+                    },
+                    index,
+                    28,
+                    "family:standard_episode_n_of_m",
+                ));
+            }
+            // fork (P34h): `Series.and.a.Title.103.720p.HDTV` is S1E03.
+            if let Some((season, episode)) = parse_compact_episode_at(tokens, index, context) {
+                return Some((
+                    ReleaseIdentity::StandardEpisodeIdentity {
+                        season: Some(season),
+                        episode_numbers: vec![episode],
+                    },
+                    index,
+                    26,
+                    "family:standard_episode_compact",
+                ));
+            }
+            // fork (P34c): Dutch `Se.3 afl.3 en 4`.
+            if let Some((season, episode_numbers, last)) = parse_dutch_episode_at(tokens, index) {
+                return Some((
+                    ReleaseIdentity::StandardEpisodeIdentity {
+                        season: Some(season),
+                        episode_numbers,
+                    },
+                    last,
+                    30,
+                    "family:standard_episode_dutch",
+                ));
+            }
             if let Some((season, episode_numbers, consumed)) =
                 parse_split_standard_episode_at(tokens, index)
             {
@@ -4194,24 +4230,26 @@ fn parse_identity_at(
                 token => parse_season_token(token).map(|_| index),
             };
             if let Some(last) = season_words_last
-                && let Some((season, episode, _)) = (index + 1..tokens.len())
+                && let Some((season, episode_numbers, _)) = (index + 1..tokens.len())
                     .find_map(|chapter| parse_chapter_episode_at(tokens, chapter))
             {
                 return Some((
                     ReleaseIdentity::StandardEpisodeIdentity {
                         season: Some(season),
-                        episode_numbers: vec![episode],
+                        episode_numbers,
                     },
                     last,
                     30,
                     "family:standard_episode_chapter",
                 ));
             }
-            if let Some((season, episode, consumed)) = parse_chapter_episode_at(tokens, index) {
+            if let Some((season, episode_numbers, consumed)) =
+                parse_chapter_episode_at(tokens, index)
+            {
                 return Some((
                     ReleaseIdentity::StandardEpisodeIdentity {
                         season: Some(season),
-                        episode_numbers: vec![episode],
+                        episode_numbers,
                     },
                     consumed,
                     30,
@@ -6183,7 +6221,11 @@ fn project_episode(
             is_series_pack: false,
             season_part: None,
             is_season_extra: false,
-            is_split_episode: episode_numbers.len() > 1,
+            // fork (P34c): a lettered part (`S06E01b`) is split too.
+            is_split_episode: episode_numbers.len() > 1
+                || tokens
+                    .iter()
+                    .any(|token| is_split_letter_episode_token(&token.normalized)),
             is_mini_series: detect_mini_series_tokens(tokens),
             // fork (P34f): `S11E00` alone is a special.
             special_kind: (episode_numbers.as_slice() == [0]).then_some(ParsedSpecialKind::Special),
@@ -7176,6 +7218,109 @@ fn exceeds_season_digits(digits: &str) -> bool {
     digits.len() > 4 && digits.bytes().all(|byte| byte.is_ascii_digit())
 }
 
+/// `01B` -> `01`: one trailing split letter a-d after plain digits.
+fn split_letter_trimmed(suffix: &str) -> Option<&str> {
+    let (digits, letter) = suffix.split_at(suffix.len().checked_sub(1)?);
+    (matches!(letter, "A" | "B" | "C" | "D")
+        && !digits.is_empty()
+        && digits.bytes().all(|byte| byte.is_ascii_digit()))
+    .then_some(digits)
+}
+
+/// `S06E01B`: the token names one part of a split episode.
+fn is_split_letter_episode_token(token: &str) -> bool {
+    token.starts_with('S')
+        && token
+            .find('E')
+            .is_some_and(|e_index| split_letter_trimmed(&token[e_index + 1..]).is_some())
+        && parse_standard_episode_token(token).is_some()
+}
+
+/// fork (P34h): a dotted or underscored name whose bare `103` / `1013` right
+/// after the title (or its year) is season and episode, when a TV source,
+/// a resolution and TV source, or the end follows. Series targets only.
+fn parse_compact_episode_at(
+    tokens: &[Token],
+    index: usize,
+    context: &ContextIndex,
+) -> Option<(u32, u32)> {
+    let token = tokens.get(index)?;
+    if context.facet_hint != ContextFacetHint::Series
+        || index == 0
+        || token.bracket_depth > 0
+        || !matches!(
+            token.separator_before,
+            SeparatorKind::Dot | SeparatorKind::Underscore
+        )
+    {
+        return None;
+    }
+    let digits = token.normalized.as_str();
+    let number = parse_numeric_token(digits)?;
+    if !(digits.len() == 3 || digits.len() == 4 && parse_year(digits).is_none())
+        || digits.starts_with('0')
+        || parse_resolution_quality_token(&format!("{digits}P")).is_some()
+    {
+        return None;
+    }
+    let (season, episode) = (number / 100, number % 100);
+    let previous = &tokens.get(index - 1)?.normalized;
+    if season == 0
+        || episode == 0
+        || (parse_numeric_token(previous).is_some() && parse_year(previous).is_none())
+        || has_episode_marker(tokens)
+    {
+        return None;
+    }
+    let source = |at: usize| {
+        tokens.get(at).is_some_and(|next| {
+            matches!(
+                next.normalized.as_str(),
+                "HDTV" | "PDTV" | "SDTV" | "DSR" | "TVRIP" | "WEB" | "WEBDL" | "WEBRIP"
+            )
+        })
+    };
+    let resolution = tokens
+        .get(index + 1)
+        .is_some_and(|next| parse_resolution_quality_token(&next.normalized).is_some());
+    (index + 1 == tokens.len() || source(index + 1) || (resolution && source(index + 2)))
+        .then_some((season, episode))
+}
+
+/// `SE 3 AFL 3 [EN 4]`: Dutch season and episode list.
+fn parse_dutch_episode_at(tokens: &[Token], index: usize) -> Option<(u32, Vec<u32>, usize)> {
+    let number = |at: usize| {
+        let token = tokens.get(at)?.normalized.as_str();
+        (token.len() <= 2).then(|| parse_numeric_token(token)).flatten()
+    };
+    if tokens.get(index)?.normalized != "SE" || tokens.get(index + 2)?.normalized != "AFL" {
+        return None;
+    }
+    let season = number(index + 1)?;
+    let mut episodes = vec![number(index + 3)?];
+    let mut last = index + 3;
+    while tokens.get(last + 1).is_some_and(|token| token.normalized == "EN")
+        && let Some(episode) = number(last + 2)
+    {
+        episodes.push(episode);
+        last += 2;
+    }
+    Some((season, episodes, last))
+}
+
+/// `5OF9`: N of M with N <= M <= 99.
+fn parse_n_of_m(token: &str) -> Option<u32> {
+    let (n, m) = token.split_once("OF")?;
+    let digits = |value: &str| {
+        (1..=2).contains(&value.len()) && value.bytes().all(|byte| byte.is_ascii_digit())
+    };
+    if !digits(n) || !digits(m) {
+        return None;
+    }
+    let (n, m) = (n.parse::<u32>().ok()?, m.parse::<u32>().ok()?);
+    (1 <= n && n <= m).then_some(n)
+}
+
 fn parse_standard_episode_token(token: &str) -> Option<(Option<u32>, Vec<u32>)> {
     let revision = split_episode_revision(token);
     let token = revision.map_or(token, |(episode, _)| episode);
@@ -7190,6 +7335,8 @@ fn parse_standard_episode_token(token: &str) -> Option<(Option<u32>, Vec<u32>)> 
         }
         let season = season_digits.parse::<u32>().ok();
         let suffix = token.get(e_index + 1..)?;
+        // fork (P34c): `S06E01b` is the second part of episode 1.
+        let suffix = split_letter_trimmed(suffix).unwrap_or(suffix);
         let episode_numbers = parse_standard_episode_suffix(suffix)
             .or_else(|| parse_fused_standard_episode_suffix(suffix))?;
         return (!episode_numbers.is_empty()).then_some((season, episode_numbers));
@@ -7440,6 +7587,16 @@ fn extend_repeated_episodes(
                 fused_hyphen
                     .then(|| normalized.strip_prefix('X').unwrap_or(normalized))
                     .and_then(parse_numeric_token)
+            })
+            // fork (P34c): `8x01_02` continues the list; `S01E05_10bit` does not.
+            .or_else(|| {
+                (next.separator_before == SeparatorKind::Underscore
+                    && normalized.len() == 2
+                    && !tokens
+                        .get(last + 2)
+                        .is_some_and(|after| matches!(after.normalized.as_str(), "BIT" | "BITS")))
+                .then(|| parse_numeric_token(normalized))
+                .flatten()
             })
             .or_else(|| match parse_standard_episode_token(normalized) {
                 Some((Some(next_season), next_episodes))
@@ -8235,6 +8392,9 @@ fn parse_season_pack_at(tokens: &[Token], index: usize) -> Option<SeasonPackPars
     if season_before_special(tokens, index + 1).is_some() {
         return None;
     }
+    if let Some(pack) = parse_spaced_season_pack_at(tokens, index) {
+        return Some(pack);
+    }
     // `Temporada 2 [Cap.201]` names one chapter of the season.
     if (0..tokens.len()).any(|chapter| parse_chapter_episode_at(tokens, chapter).is_some()) {
         return None;
@@ -8392,6 +8552,39 @@ fn parse_season_pack_at(tokens: &[Token], index: usize) -> Option<SeasonPackPars
         });
     }
     None
+}
+
+/// fork (P34e): the season forms that name one season without an `Sxx` token:
+/// `S 01 720p` and ` - Series 1 (1970)`.
+fn parse_spaced_season_pack_at(tokens: &[Token], index: usize) -> Option<SeasonPackParse> {
+    let token = tokens.get(index)?;
+    let small = |at: usize| {
+        let digits = tokens.get(at)?.normalized.as_str();
+        parse_numeric_token(digits).filter(|season| digits.len() <= 2 && *season > 0)
+    };
+    let (season, last) = match token.normalized.as_str() {
+        "S" if tokens
+            .get(index + 2)
+            .is_some_and(|next| parse_resolution_quality_token(&next.normalized).is_some()) =>
+        {
+            (small(index + 1)?, index + 1)
+        }
+        "SERIES"
+            if index > 0
+                && token.separator_before == SeparatorKind::Hyphen
+                && token.separator_before_has_space =>
+        {
+            (small(index + 1)?, index + 1)
+        }
+        _ => return None,
+    };
+    Some(SeasonPackParse {
+        seasons: vec![season],
+        consumed: (index..=last).collect(),
+        is_partial: false,
+        season_part: None,
+        is_series_pack: false,
+    })
 }
 
 fn invalid_all_seasons_restriction_at(tokens: &[Token], index: usize) -> bool {
@@ -8898,7 +9091,7 @@ fn parse_daily_at(tokens: &[Token], index: usize) -> Option<(NaiveDate, Vec<usiz
 
 /// Spanish chapter numbering, `Cap.201` or `Cap. 1901`: the last two digits
 /// are the episode and the rest the season. Returns the last token too.
-fn parse_chapter_episode_at(tokens: &[Token], index: usize) -> Option<(u32, u32, usize)> {
+fn parse_chapter_episode_at(tokens: &[Token], index: usize) -> Option<(u32, Vec<u32>, usize)> {
     if tokens.get(index)?.normalized != "CAP" {
         return None;
     }
@@ -8908,7 +9101,22 @@ fn parse_chapter_episode_at(tokens: &[Token], index: usize) -> Option<(u32, u32,
     }
     let number = parse_numeric_token(digits)?;
     let (season, episode) = (number / 100, number % 100);
-    (season > 0 && episode > 0).then_some((season, episode, index + 1))
+    if season == 0 || episode == 0 {
+        return None;
+    }
+    // fork (P34c): `Cap.111_120` ends the range at chapter 120 of the same season.
+    if let Some(end) = tokens
+        .get(index + 2)
+        .filter(|end| {
+            end.separator_before == SeparatorKind::Underscore && (3..=4).contains(&end.normalized.len())
+        })
+        .and_then(|end| parse_numeric_token(&end.normalized))
+        && end / 100 == season
+        && end % 100 > episode
+    {
+        return Some((season, (episode..=end % 100).collect(), index + 2));
+    }
+    Some((season, vec![episode], index + 1))
 }
 
 /// Any standard (`S20E142`, `2x04`) or `E`/`Ep` episode marker in the name.
