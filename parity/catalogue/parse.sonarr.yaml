@@ -2946,7 +2946,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:53"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27sub: D75 (3) a language right before sub/Subs is a subtitle track (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_english|9ccab1020ec7|0
 - id: SON-PARSE-0365
@@ -2954,7 +2955,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:54"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27sub: D75 (3) a language right before sub/Subs is a subtitle track (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_english|ae6baacf82e7|0
 - id: SON-PARSE-0366
@@ -3170,7 +3172,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:135"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|0a5273a08c78|0
 - id: SON-PARSE-0393
@@ -3178,7 +3181,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:136"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|301aa2d83c56|0
 - id: SON-PARSE-0394
@@ -3186,7 +3190,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:137"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|3aca73da3f04|0
 - id: SON-PARSE-0395
@@ -3194,7 +3199,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:138"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|bedb7f141e76|0
 - id: SON-PARSE-0396
@@ -3202,7 +3208,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:139"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|e367b27726f7|0
 - id: SON-PARSE-0397
@@ -3210,7 +3217,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:140"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|5e3c73bdb585|0
 - id: SON-PARSE-0398
@@ -3218,7 +3226,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:141"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|c3e6e7aa45d2|0
 - id: SON-PARSE-0399
@@ -3226,7 +3235,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:142"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|2c2f7034048a|0
 - id: SON-PARSE-0400
@@ -3234,7 +3244,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:143"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_chinese|cfa9f895b915|0
 - id: SON-PARSE-0401
@@ -3242,7 +3253,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:144"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27anime: D75 (1) anime (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_korean|199513779f92|0
 - id: SON-PARSE-0402
@@ -3274,7 +3286,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:160"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27lat: D75 (3) LAT is read as Latino (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_latvian|b88738fe0c2a|0
 - id: SON-PARSE-0406
@@ -3442,7 +3455,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:235"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27fl: D75 (3) Flemish folds to nld (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_greek|4011f414816b|0
 - id: SON-PARSE-0427
@@ -3642,7 +3656,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:338"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_portuguese_brazil|4552e2f1973f|0
 - id: SON-PARSE-0452
@@ -3650,7 +3665,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:339"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_spanish_latino|3ca60d97682e|0
 - id: SON-PARSE-0453
@@ -3658,7 +3674,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:346"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_spanish_latino|cce6f0f57a61|0
 - id: SON-PARSE-0454
@@ -3666,7 +3683,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:347"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_spanish_latino|fde2bfe59bb0|0
 - id: SON-PARSE-0455
@@ -3674,7 +3692,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:348"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_spanish_latino|75103989f87d|0
 - id: SON-PARSE-0456
@@ -3682,7 +3701,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:349"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_spanish_latino|a70a65888a02|0
 - id: SON-PARSE-0457
@@ -3690,7 +3710,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:350"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_spanish_latino|a6bb34e671dd|0
 - id: SON-PARSE-0458
@@ -3698,7 +3719,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:351"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27reg: D75 (3) ISO 639-2 model has no regional variants (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_romanian|a3e1d44e2339|0
 - id: SON-PARSE-0459
@@ -3746,7 +3768,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:369"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27sub: D75 (3) a language right before sub/Subs is a subtitle track (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_language_catalan|46944724cb8a|0
 - id: SON-PARSE-0465
@@ -3786,7 +3809,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs:386"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P27sub: D75 (3) a language right before sub/Subs is a subtitle track (P27 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/LanguageParserFixture.cs|should_parse_spanish_and_catalan|3c3f1aa0b835|0
 - id: SON-PARSE-0470
