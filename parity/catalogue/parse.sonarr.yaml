@@ -399,7 +399,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:66"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (1) anime fansub layout (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|bc0c91ed9051|0
 - id: SON-PARSE-0051
@@ -407,7 +408,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:67"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (1) anime fansub layout (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|cd434183d9bb|0
 - id: SON-PARSE-0052
@@ -519,7 +521,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:81"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (1) anime fansub layout (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|105f7a2ceb02|0
 - id: SON-PARSE-0066
@@ -671,7 +674,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:102"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (1) anime fansub layout (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|2581a4693e69|0
 - id: SON-PARSE-0085
@@ -959,7 +963,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:138"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (1) anime fansub layout (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|6063f1930ea0|0
 - id: SON-PARSE-0121
@@ -1007,7 +1012,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:157"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (1) anime fansub layout (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_multi_episode_absolute_numbers|61337a07af2e|0
 - id: SON-PARSE-0127
@@ -1826,7 +1832,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:107"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs|should_not_parse_special_with_part_number|d4203aa6ef4f|0
 - id: SON-PARSE-0229
@@ -1834,7 +1841,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/CrapParserFixture.cs:113"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|c0c048e0d553|0
 - id: SON-PARSE-0230
@@ -1898,7 +1906,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:20"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|3aa4f6e631e5|0
 - id: SON-PARSE-0238
@@ -1906,7 +1915,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|45f8440d6c07|0
 - id: SON-PARSE-0239
@@ -1930,7 +1940,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:24"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|1cdcb7826df2|0
 - id: SON-PARSE-0242
@@ -1938,7 +1949,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:25"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|894d8a609bc2|0
 - id: SON-PARSE-0243
@@ -1946,7 +1958,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|798ddc31f5ba|0
 - id: SON-PARSE-0244
@@ -1954,7 +1967,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:29"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|9e52271bdb39|0
 - id: SON-PARSE-0245
@@ -2002,7 +2016,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:35"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|acb7b784954d|0
 - id: SON-PARSE-0251
@@ -2010,7 +2025,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:36"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode|dec2098f7681|0
 - id: SON-PARSE-0252
@@ -2018,7 +2034,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:37"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_parse_daily_episode_with_multiple_parts|6445252e0000|0
 - id: SON-PARSE-0253
@@ -2058,7 +2075,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:69"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_not_accept_ancient_daily_series|590f0e4dcc53|0
 - id: SON-PARSE-0258
@@ -2066,7 +2084,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:70"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_not_accept_ancient_daily_series|2765a88a4ce3|0
 - id: SON-PARSE-0259
@@ -2074,7 +2093,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:71"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_not_accept_ancient_daily_series|cd8091586395|0
 - id: SON-PARSE-0260
@@ -2082,7 +2102,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:72"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_not_accept_ancient_daily_series|b25629df4458|0
 - id: SON-PARSE-0261
@@ -2090,7 +2111,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:73"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_not_accept_ancient_daily_series|3e9eaf32981b|0
 - id: SON-PARSE-0262
@@ -2098,7 +2120,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:74"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_not_accept_ancient_daily_series|640be96d54eb|0
 - id: SON-PARSE-0263
@@ -2106,7 +2129,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:75"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs|should_not_accept_future_dates|bb0066a7c5da|0
 - id: SON-PARSE-0264
@@ -2178,7 +2202,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/DailyEpisodeParserFixture.cs:106"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (2) daily layouts unused in our library (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|70b5a622ffa7|0
 - id: SON-PARSE-0273
@@ -4090,7 +4115,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:11"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs|should_parse_mini_series_episode|af8726cde1c3|0
 - id: SON-PARSE-0511
@@ -4098,7 +4124,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:12"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (4) renders differently or unguarded compact form (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs|should_parse_mini_series_episode|3dbbef9b8a0f|0
 - id: SON-PARSE-0512
@@ -4106,7 +4133,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs:13"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MiniSeriesEpisodeParserFixture.cs|should_parse_mini_series_episode|e58ca60ddfca|0
 - id: SON-PARSE-0513
@@ -4162,7 +4190,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:11"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|bd22b7fde61a|0
 - id: SON-PARSE-0520
@@ -4282,7 +4311,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:26"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|830b2a89af46|0
 - id: SON-PARSE-0535
@@ -4290,7 +4319,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:27"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|1db75251fc9e|0
 - id: SON-PARSE-0536
@@ -4322,7 +4351,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:31"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|1b0e998691d2|0
 - id: SON-PARSE-0540
@@ -4330,7 +4360,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:32"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|cbb60077dcda|0
 - id: SON-PARSE-0541
@@ -4338,7 +4369,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:33"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|e7d7c703cd79|0
 - id: SON-PARSE-0542
@@ -4346,7 +4378,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:34"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|5a91783bd074|0
 - id: SON-PARSE-0543
@@ -4402,7 +4435,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:44"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|fd2b597a1fe7|0
 - id: SON-PARSE-0550
@@ -4658,7 +4692,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:76"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs|should_parse_multiple_episodes|cc9fd5398d9e|0
 - id: SON-PARSE-0582
@@ -4700,7 +4734,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/MultiEpisodeParserFixture.cs:81"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/NormalizeEpisodeTitleFixture.cs|should_normalize_episode_title|583ebb129efb|0
 - id: SON-PARSE-0587
@@ -9759,7 +9793,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|552f620d2e05|0
 - id: SON-PARSE-1214
@@ -9815,7 +9849,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_full_season_release|fadf23c121f4|0
 - id: SON-PARSE-1221
@@ -9936,7 +9970,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:53"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_season_extras|2879fcb81d5f|0
 - id: SON-PARSE-1236
@@ -10064,7 +10098,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:115"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeriesTitleInfoFixture.cs|should_have_year_zero_when_title_doesnt_have_a_year|be1d02c91bbf|0
 - id: SON-PARSE-1252
@@ -10120,7 +10155,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:12"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|52126355c82b|0
 - id: SON-PARSE-1259
@@ -10128,7 +10163,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:13"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|b1073aba60e3|0
 - id: SON-PARSE-1260
@@ -10136,7 +10171,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:14"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|3a10c30af9af|0
 - id: SON-PARSE-1261
@@ -10313,7 +10348,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:36"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|3f55787f9e8e|0
 - id: SON-PARSE-1283
@@ -10402,7 +10437,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:47"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|b0aaeef9af80|0
 - id: SON-PARSE-1294
@@ -10410,7 +10445,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:48"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (4) renders differently or unguarded compact form (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|0a3e76328d31|0
 - id: SON-PARSE-1295
@@ -10668,7 +10704,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:80"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|e14a4a87c911|0
 - id: SON-PARSE-1327
@@ -10700,7 +10736,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:84"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|d87fc53d39e4|0
 - id: SON-PARSE-1331
@@ -10900,7 +10937,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:116"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|c79213d4b8b1|0
 - id: SON-PARSE-1356
@@ -10924,7 +10961,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:119"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|69f568ca1853|0
 - id: SON-PARSE-1359
@@ -10948,7 +10986,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:122"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|6e484d288d88|0
 - id: SON-PARSE-1362
@@ -10980,7 +11018,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:126"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|13deb11c9f9e|0
 - id: SON-PARSE-1366
@@ -11004,7 +11043,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:129"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|50b6bd191537|0
 - id: SON-PARSE-1369
@@ -11124,7 +11164,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:144"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (3) design: season-folder reader, Part N, glued identity, unguarded compact numbers (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|17401779fe16|0
 - id: SON-PARSE-1384
@@ -11228,7 +11269,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:157"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_single_episode|6c658208711b|0
 - id: SON-PARSE-1397
@@ -11470,7 +11511,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:213"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D75 W-P34: D75 (1) anime fansub layout (P34 plan)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs|should_parse_split_episode|ec07086cd646|0
 - id: SON-PARSE-1427
@@ -11478,7 +11520,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SingleEpisodeParserFixture.cs:227"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/UnicodeReleaseParserFixture.cs|should_parse_chinese_anime_releases|30cb76c9f1c7|0
 - id: SON-PARSE-1428
