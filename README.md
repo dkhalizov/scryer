@@ -32,7 +32,7 @@ regressions out while we fix gaps. See [`parity/README.md`](parity/README.md).
 parity/run.sh
 ```
 
-Status at the last baseline (2026-11-14, `parity/report/baseline.md`).
+Status at the last baseline (2026-11-16, `parity/report/baseline.md`).
 Counts include cases captured from our own instances, which stay private.
 Green: matches the reference app. Red: differs today. Waived: difference
 kept on purpose. Unmapped: catalogued, no test yet. Passing is green out of
@@ -40,31 +40,33 @@ green + red.
 
 | Area | Covers | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|---|
-| parse | release-name parsing | 2224 | 1488 | 96 | 117 | 60% |
-| decision | which release to grab or reject | 644 | 193 | 80 | 129 | 77% |
-| quality | quality ranking, profiles, custom formats | 470 | 93 | 5 | 222 | 83% |
-| naming | file and folder names | 424 | 158 | 3 | 148 | 73% |
-| import | importing finished downloads | 151 | 44 | 16 | 386 | 77% |
+| parse | release-name parsing | 3141 | 422 | 245 | 117 | 88% |
+| decision | which release to grab or reject | 750 | 61 | 106 | 129 | 92% |
+| quality | quality ranking, profiles, custom formats | 496 | 4 | 68 | 222 | 99% |
+| naming | file and folder names | 489 | 83 | 13 | 148 | 85% |
+| import | importing finished downloads | 162 | 31 | 18 | 386 | 84% |
 | scan | reading an existing library | 70 | 34 | 32 | 39 | 67% |
-| torrent | download client, seeding | 25 | 1 | 24 | 170 | 96% |
-| requests | user requests (Seerr) | 12 | 3 | 4 | 320 | 80% |
-| maintenance | cleanup rules (Maintainerr) | 37 | 5 | 7 | 365 | 88% |
-| subtitles | subtitle matching (Bazarr) | 123 | 11 | 7 | 74 | 92% |
-| indexers | indexer settings and routing (Prowlarr) | 7 | 28 | 24 | 3 | 20% |
+| torrent | download client, seeding | 26 | 0 | 24 | 170 | 100% |
+| requests | user requests (Seerr) | 13 | 2 | 4 | 320 | 87% |
+| maintenance | cleanup rules (Maintainerr) | 39 | 3 | 7 | 365 | 93% |
+| subtitles | subtitle matching (Bazarr) | 124 | 10 | 7 | 74 | 93% |
+| indexers | indexer settings and routing (Prowlarr) | 32 | 3 | 24 | 3 | 91% |
 | notify | notifications | 0 | 0 | 2 | 8 | - |
-| **all** | | **4187** | **2058** | **300** | **1981** | **67%** |
+| flow | end-to-end chain, watchlist to cleanup | 0 | 0 | 0 | 17 | - |
+| **all** | | **5342** | **653** | **550** | **1998** | **89%** |
 
 By reference app:
 
 | App | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|
-| Sonarr | 3148 | 1373 | 134 | 633 | 70% |
-| Radarr | 852 | 655 | 121 | 530 | 57% |
-| Prowlarr | 16 | 11 | 23 | 24 | 59% |
-| Bazarr | 124 | 11 | 12 | 81 | 92% |
-| Seerr | 10 | 3 | 3 | 315 | 77% |
-| Maintainerr | 36 | 5 | 7 | 366 | 88% |
+| Sonarr | 3916 | 447 | 292 | 633 | 90% |
+| Radarr | 1226 | 189 | 213 | 530 | 87% |
+| Prowlarr | 25 | 2 | 23 | 24 | 93% |
+| Bazarr | 125 | 10 | 12 | 81 | 93% |
+| Seerr | 11 | 2 | 3 | 315 | 85% |
+| Maintainerr | 38 | 3 | 7 | 366 | 93% |
 | qBittorrent | 1 | 0 | 0 | 32 | 100% |
+| Whole stack | 0 | 0 | 0 | 17 | - |
 
 ## Build and test
 
