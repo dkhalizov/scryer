@@ -40,31 +40,31 @@ green + red.
 
 | Area | Covers | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|---|
-| parse | release-name parsing | 3141 | 422 | 245 | 117 | 88% |
-| decision | which release to grab or reject | 750 | 61 | 106 | 129 | 92% |
-| quality | quality ranking, profiles, custom formats | 496 | 4 | 68 | 222 | 99% |
-| naming | file and folder names | 489 | 83 | 13 | 148 | 85% |
-| import | importing finished downloads | 162 | 31 | 18 | 386 | 84% |
-| scan | reading an existing library | 70 | 34 | 32 | 39 | 67% |
+| parse | release-name parsing | 3216 | 23 | 569 | 117 | 99% |
+| decision | which release to grab or reject | 750 | 0 | 167 | 129 | 100% |
+| quality | quality ranking, profiles, custom formats | 496 | 0 | 72 | 222 | 100% |
+| naming | file and folder names | 490 | 3 | 92 | 148 | 99% |
+| import | importing finished downloads | 170 | 0 | 41 | 386 | 100% |
+| scan | reading an existing library | 70 | 0 | 66 | 39 | 100% |
 | torrent | download client, seeding | 26 | 0 | 24 | 170 | 100% |
-| requests | user requests (Seerr) | 13 | 2 | 4 | 320 | 87% |
-| maintenance | cleanup rules (Maintainerr) | 39 | 3 | 7 | 365 | 93% |
-| subtitles | subtitle matching (Bazarr) | 124 | 10 | 7 | 74 | 93% |
+| requests | user requests (Seerr) | 13 | 1 | 5 | 320 | 93% |
+| maintenance | cleanup rules (Maintainerr) | 39 | 0 | 10 | 365 | 100% |
+| subtitles | subtitle matching (Bazarr) | 132 | 0 | 9 | 74 | 100% |
 | indexers | indexer settings and routing (Prowlarr) | 32 | 3 | 24 | 3 | 91% |
 | notify | notifications | 0 | 0 | 2 | 8 | - |
 | flow | end-to-end chain, watchlist to cleanup | 0 | 0 | 0 | 17 | - |
-| **all** | | **5342** | **653** | **550** | **1998** | **89%** |
+| **all** |  | **5434** | **30** | **1081** | **1998** | **99%** |
 
 By reference app:
 
 | App | Green | Red | Waived | Unmapped | Passing |
 |---|---|---|---|---|---|
-| Sonarr | 3916 | 447 | 292 | 633 | 90% |
-| Radarr | 1226 | 189 | 213 | 530 | 87% |
+| Sonarr | 3959 | 22 | 674 | 633 | 99% |
+| Radarr | 1267 | 5 | 356 | 530 | 99% |
 | Prowlarr | 25 | 2 | 23 | 24 | 93% |
-| Bazarr | 125 | 10 | 12 | 81 | 93% |
-| Seerr | 11 | 2 | 3 | 315 | 85% |
-| Maintainerr | 38 | 3 | 7 | 366 | 93% |
+| Bazarr | 133 | 0 | 14 | 81 | 100% |
+| Seerr | 11 | 1 | 4 | 315 | 92% |
+| Maintainerr | 38 | 0 | 10 | 366 | 100% |
 | qBittorrent | 1 | 0 | 0 | 32 | 100% |
 | Whole stack | 0 | 0 | 0 | 17 | - |
 
