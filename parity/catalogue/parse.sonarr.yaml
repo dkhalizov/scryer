@@ -2251,7 +2251,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:16"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|ba643d2fae22|0
 - id: SON-PARSE-0279
@@ -2259,7 +2259,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:17"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|a722b77c06cc|0
 - id: SON-PARSE-0280
@@ -2267,7 +2267,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:18"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|e4ce96b8e075|0
 - id: SON-PARSE-0281
@@ -2283,7 +2283,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:20"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|8975926f1a2f|0
 - id: SON-PARSE-0283
@@ -2299,7 +2299,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|6fd11c4bcf29|0
 - id: SON-PARSE-0285
@@ -2307,7 +2307,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:23"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs|should_parse_reality_from_title|c27a40b88589|0
 - id: SON-PARSE-0286

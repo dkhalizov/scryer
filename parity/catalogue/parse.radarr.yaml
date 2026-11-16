@@ -696,7 +696,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:21"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0088
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|64e3920b399e1114|0"
@@ -704,7 +704,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:22"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0089
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|6967a8c0db4cbac7|0"
@@ -712,7 +712,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:23"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0090
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|58d0814e979369cc|0"
@@ -728,7 +728,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:25"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0092
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|e664151a23d14a50|0"
@@ -744,7 +744,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:27"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0094
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|e4d57cf5f71b64fe|0"
@@ -752,7 +752,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/ParserTests/ExtendedQualityParserRegex.cs:28"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::rad_parse]
 - id: RAD-PARSE-0095
   # key: "ExtendedQualityParserRegex.cs|should_parse_reality_from_title|929752c8e09626ee|0"
