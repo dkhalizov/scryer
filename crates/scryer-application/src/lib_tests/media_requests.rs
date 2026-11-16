@@ -1017,7 +1017,7 @@ async fn submit_media_request_enriches_anime_external_ids_from_hydration_metadat
         &[
             ("anidb", "333003"),
             ("anilist", "222002"),
-            ("imdb", "tt777007"),
+            ("imdb", "tt0777007"),
             ("kitsu", "444004"),
             ("mal", "111001"),
             ("simkl", "555005"),

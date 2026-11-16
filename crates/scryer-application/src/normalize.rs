@@ -16,12 +16,12 @@ pub fn normalize_imdb_id(raw: &str) -> Option<String> {
             .take_while(|ch| ch.is_ascii_digit())
             .collect();
         if !digits.is_empty() {
-            return Some(format!("tt{digits}"));
+            return Some(format!("tt{digits:0>7}")); // fork (P36b): Radarr PadLeft(7)
         }
     }
 
     if value.chars().all(|ch| ch.is_ascii_digit()) {
-        Some(format!("tt{value}"))
+        Some(format!("tt{value:0>7}")) // fork (P36b)
     } else {
         None
     }
@@ -67,6 +67,15 @@ pub(crate) fn external_id_kind_fits_facet(
 mod tests {
     use super::*;
     use scryer_domain::{ExternalId, MediaFacet};
+
+    #[test]
+    fn imdb_id_shorter_than_seven_digits_is_zero_padded() {
+        // fork (P36b)
+        assert_eq!(normalize_imdb_id("123").as_deref(), Some("tt0000123"));
+        assert_eq!(normalize_imdb_id("tt123").as_deref(), Some("tt0000123"));
+        assert_eq!(normalize_imdb_id("12345678").as_deref(), Some("tt12345678"));
+        assert_eq!(normalize_imdb_id("tt0103074").as_deref(), Some("tt0103074"));
+    }
 
     #[test]
     fn a_tmdb_id_fits_only_its_own_kind_or_no_kind() {

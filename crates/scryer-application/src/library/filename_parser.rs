@@ -1941,7 +1941,7 @@ mod tests {
     #[test]
     fn title_walk_reports_conflicting_ids_within_one_name() {
         for (tokens, expected_first) in [
-            ("{imdb-tt12345}.{imdb-tt67890}", "tt12345"),
+            ("{imdb-tt12345}.{imdb-tt67890}", "tt0012345"),
             ("{tmdb-123}.{tmdb-456}", "123"),
             ("{tvdb-123}.{tvdb-456}", "123"),
         ] {
@@ -1969,7 +1969,7 @@ mod tests {
         assert!(!conflicting_ids);
         assert_eq!(library_title_walk(name), walk);
         let walk = walk.expect("title walk");
-        assert_eq!(walk.imdb_id.as_deref(), Some("tt12345"));
+        assert_eq!(walk.imdb_id.as_deref(), Some("tt0012345"));
         assert_eq!(walk.tmdb_id.as_deref(), Some("123"));
         assert_eq!(walk.tvdb_id.as_deref(), Some("456"));
     }

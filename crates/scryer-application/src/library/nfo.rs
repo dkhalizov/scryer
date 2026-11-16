@@ -1621,7 +1621,7 @@ mod tests {
 </movie>"#;
         let meta = parse_nfo(nfo);
         assert_eq!(meta.tvdb_id, Some("12345".into()));
-        assert_eq!(meta.imdb_id, Some("tt999888".into()));
+        assert_eq!(meta.imdb_id, Some("tt0999888".into()));
         assert_eq!(meta.tmdb_id, Some("67890".into()));
     }
 

@@ -546,7 +546,7 @@ mod tests {
                 ExternalId::with_kind("simkl", "anime", "555005"),
                 ExternalId::with_kind("tvdb", "series", "12345"),
                 ExternalId::with_kind("tmdb", "series", "666006"),
-                ExternalId::with_kind("imdb", "series", "tt777007"),
+                ExternalId::with_kind("imdb", "series", "tt0777007"),
                 ExternalId::with_kind("trakt", "series", "888008"),
             ]
         );
