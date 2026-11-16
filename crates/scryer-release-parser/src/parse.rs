@@ -7386,9 +7386,11 @@ fn parse_leading_season_dash_episode(
     }
     let (season, next) = (tokens.first()?, tokens.get(1)?);
     let two = |t: &Token| t.normalized.len() == 2 && parse_numeric_token(&t.normalized).is_some();
-    let word = tokens
-        .get(2)
-        .is_some_and(|t| t.normalized.chars().next().is_some_and(char::is_alphabetic));
+    // a list-style `01-04. Title` stays ambiguous (issue 394 import test)
+    let word = tokens.get(2).is_some_and(|t| {
+        t.separator_before == SeparatorKind::Space
+            && t.normalized.chars().next().is_some_and(char::is_alphabetic)
+    });
     (two(season)
         && two(next)
         && next.separator_before == SeparatorKind::Hyphen
