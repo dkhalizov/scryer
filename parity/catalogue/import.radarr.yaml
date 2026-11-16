@@ -1194,14 +1194,15 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:105"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0161
   behaviour: "A 600 s file for a 30 min movie is not a sample"
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:113"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D75 W-17a: D75 (3) the 50-200 % runtime band refuses a plainly different file at automatic import (safer; Sonarr/Radarr accept 600 s for 30 min) (harness plan 17a)"
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0162
   behaviour: "A 299 s file for a 6 min movie is not a sample"
@@ -1229,7 +1230,7 @@
   source: reference
   ref: "Radarr@v6.4.4.10685 src/NzbDrone.Core.Test/MediaFiles/MovieImport/DetectSampleFixture.cs:148"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::rad_import]
 - id: RAD-IMPORT-0166
   behaviour: "The download client item's title is the scene name"

@@ -10058,7 +10058,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:95"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_multi_season_release|5554e1b25804|0
 - id: SON-PARSE-1244
@@ -10066,7 +10066,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:96"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_multi_season_release|338973cfb8de|0
 - id: SON-PARSE-1245
@@ -10074,7 +10074,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:97"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_multi_season_release|233bbea49a3a|0
 - id: SON-PARSE-1246
@@ -10082,7 +10082,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:98"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_multi_season_release|bc0b2f916a19|0
 - id: SON-PARSE-1247
@@ -10090,7 +10090,7 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs:99"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/SeasonParserFixture.cs|should_parse_multi_season_release|4424b58f81bc|0
 - id: SON-PARSE-1248

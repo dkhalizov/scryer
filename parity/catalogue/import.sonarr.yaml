@@ -747,14 +747,15 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:103"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0107
   behaviour: "A 600 s file of a 30-minute series is not a sample"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:113"
   in_scope: true
-  status: green
+  status: waived
+  decision: "D75 W-17a: D75 (3) the 50-200 % runtime band refuses a plainly different file at automatic import (safer; Sonarr/Radarr accept 600 s for 30 min) (harness plan 17a)"
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0108
   behaviour: "A 299 s file of a 6-minute series is not a sample"
@@ -775,14 +776,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:145"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0111
   behaviour: "An unreadable runtime makes the result Indeterminate"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:156"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0112
   behaviour: "A daily series' season-0 episode is still checked by runtime"
@@ -803,14 +804,14 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:193"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0115
   behaviour: "The episode runtime (30) is used over the series runtime (5); a 120 s file is a sample"
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/MediaFiles/EpisodeImport/DetectSampleFixture.cs:206"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_import::son_import]
 - id: SON-IMPORT-0116
   behaviour: "With no series or episode runtime, 45 minutes is assumed and a 120 s file is a sample"

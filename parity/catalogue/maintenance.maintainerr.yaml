@@ -2828,7 +2828,7 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:169"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_maintenance::mnt_maintenance]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts|preserves 3.1.0 numeric lastVal behavior when the second value is missing
 - id: MNT-MAINTENANCE-0354
@@ -2860,7 +2860,7 @@
   source: reference
   ref: "Maintainerr@v3.32.0 apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts:297"
   in_scope: true
-  status: red
+  status: green
   tests: [scryer-application::parity_maintenance::mnt_maintenance]
 # key: apps/server/src/modules/rules/tests/rule.comparator.service.executeRulesWithData.spec.ts|formats custom_days second value as a past Date when first value is null (issue #2582)
 - id: MNT-MAINTENANCE-0358
