@@ -32,7 +32,7 @@
 //! | `movie_titles`, `series_title_info.all_titles` | raw text of every `ObservedPrimary`/`ObservedAlternate` segment, in order. `all_titles` only (fork P35 A3, D80): a primary whose token range covers every alternate is dropped, since Sonarr AllTitles lists only the parts where Radarr MovieTitles keeps the whole title too |
 //! | `series_title_info.title`, `.title_without_year` | the same title; `.title` gets the Sonarr year suffix as for `title` |
 //! | `series_title_info.year`, `year` | `year`, absent = 0 |
-//! | `season` | `episode.season`, absent = 0 (no fallback to `season_numbers`) |
+//! | `season` | `episode.season`; for a multi-season pack (`is_multi_season`), the first of `season_numbers`; absent = 0 |
 //! | `episodes`, `absolute_episodes`, `special_absolute_episodes` | `episode_numbers`, `absolute_episode_numbers`, `special_absolute_episode_numbers` (integers: 12.5 cannot match) |
 //! | `full_season`, `is_partial_season`, `multi_season`, `is_season_extra`, `is_split_episode` | `full_season`, `is_partial_season`, `is_multi_season`, `is_season_extra`, `is_split_episode` |
 //! | `season_part`, `daily_part`, `air_date` | `season_part`, `daily_part`, `air_date` (YYYY-MM-DD) |
@@ -440,7 +440,12 @@ impl View {
             "title" => or_empty(self.title_with_year(app, exp), exp),
             "movie_titles" => json!(self.titles(false)),
             "year" => json!(p.year.unwrap_or(0)),
-            "season" => json!(ep.season.unwrap_or(0)),
+            // fork (17c): a multi-season pack is its first season, as Sonarr reads it
+            "season" => json!(
+                ep.season
+                    .or_else(|| ep.season_numbers.first().copied().filter(|_| ep.is_multi_season))
+                    .unwrap_or(0)
+            ),
             "episodes" => json!(ep.episode_numbers),
             "absolute_episodes" => json!(ep.absolute_episode_numbers),
             "special_absolute_episodes" => {
