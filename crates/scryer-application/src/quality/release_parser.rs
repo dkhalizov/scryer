@@ -489,6 +489,21 @@ fn looks_like_release_metadata_token(token: &str, tokens: &[String]) -> bool {
         || (normalized == "TEMPORADA" && temporada_marker(tokens))
         || complete_before_season(&normalized, tokens)
         || chain_marker(&normalized, tokens)
+        || bd_before_resolution(&normalized, tokens)
+}
+
+/// fork (P41): `(BD)(640x480` and `(BD 4K`: a `BD` straight before a
+/// resolution is a source, not a title word.
+fn bd_before_resolution(normalized: &str, tokens: &[String]) -> bool {
+    normalized == "BD"
+        && tokens.iter().position(|t| normalize_alphanumeric_upper(t) == normalized).is_some_and(|index| {
+            tokens.get(index + 1).map(|next| normalize_alphanumeric_upper(next)).is_some_and(|next| {
+                next == "4K"
+                    || next.split_once('X').is_some_and(|(w, h)| {
+                        !w.is_empty() && !h.is_empty() && w.bytes().chain(h.bytes()).all(|b| b.is_ascii_digit())
+                    })
+            })
+        })
 }
 
 /// fork (P34h): `Series.and.a.Title.103.720p.HDTV`: a bare 3-4 digit number
@@ -616,6 +631,14 @@ fn looks_like_release_provenance_normalized(normalized: &str) -> bool {
             | "BDRIP"
             | "BRRIP"
             | "HDTV"
+            // fork (P41): the other TV source spellings and low heights
+            | "PDTV"
+            | "SDTV"
+            | "DSR"
+            | "TVRIP"
+            | "540P"
+            | "576P"
+            | "360P"
             | "CAM"
             | "HQCAM"
             | "TS"
@@ -1047,5 +1070,25 @@ mod tests {
             assert!(crate::parse_release_metadata(raw).episode.is_none(), "{raw}");
         }
     }
-}
 
+    // fork (P41): TV and low-height spellings end the neutral title, so the
+    // quality vocabulary in the parser crate reaches them.
+    #[test]
+    fn tv_and_bracketed_source_tokens_end_the_title() {
+        for (raw, source, quality) in [
+            ("The.Series.S03.TVRip.XviD-NOGRP", Some(ReleaseSource::Hdtv), Some("480p")),
+            ("Movie Name.S03.TVRip.XviD-NOGRP", Some(ReleaseSource::Hdtv), Some("480p")),
+            ("Movie.Name.The.Lost.Pilots.Movie.HR.WS.PDTV.x264-DHD", Some(ReleaseSource::Hdtv), Some("720p")),
+            ("Movie.Name (BD)(640x480(RAW) (BATCH 1) (1-13)", Some(ReleaseSource::BluRay), Some("480p")),
+            ("[SubsPlease] Series Title (540p) [AB649D32].mkv", Some(ReleaseSource::Hdtv), Some("480p")),
+            ("[DameDesuYo] Series Bundle - Part 1 (BD 4K 8bit FLAC)", Some(ReleaseSource::BluRay), Some("2160p")),
+            // non-ASCII input must not panic the token scan
+            ("Сериал (BD)(640x480) Ünïcode", None, None),
+        ] {
+            let p = crate::parse_release_metadata(raw);
+            if source.is_some() {
+                assert_eq!((p.source, p.quality.as_deref()), (source, quality), "{raw}");
+            }
+        }
+    }
+}

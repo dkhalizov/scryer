@@ -45,8 +45,19 @@ pub(crate) fn apply(
     // source to the arrs, whose regexes see the whole name.
     let group = candidate.zones.release_group_span;
     let in_group = |i: usize| group.is_some_and(|g| (g.start_token..g.end_token).contains(&i));
+    // fork (P41): a yearless name (`Movie.HR.WS.PDTV.x264-DHD`) can have its whole
+    // body in the title zone; the arrs still read the spelling, so any token
+    // outside the context title counts too.
+    let in_context_title = |i: usize| {
+        candidate
+            .context_title_matches
+            .iter()
+            .any(|m| i >= m.token_range.start_token && i < m.token_range.end_token)
+    };
     let spelled = |words: &[&str]| {
-        word(words) || (0..tokens.len()).any(|i| in_group(i) && words.contains(&tok(tokens, i)))
+        word(words)
+            || (0..tokens.len())
+                .any(|i| (in_group(i) || !in_context_title(i)) && words.contains(&tok(tokens, i)))
     };
     let pair = |a: &str, b: &str| {
         (0..tokens.len()).any(|i| {
@@ -682,6 +693,21 @@ mod tests {
                 ),
             ],
         );
+    }
+
+    // fork (P41): a yearless name can have its body in the title zone.
+    #[test]
+    fn tv_spelling_in_a_yearless_movie_name() {
+        check(
+            movie,
+            &[
+                ("Movie.Title.PDTV.x264-DHD", Some(Hdtv), Some("480p"), false),
+                ("Movie.Title.HR.WS.PDTV.x264-DHD", Some(Hdtv), Some("720p"), false),
+                ("Movie.Title.TVRip.XviD-NOGRP", Some(Hdtv), Some("480p"), false),
+            ],
+        );
+        // non-ASCII body: no panic, no source
+        assert_eq!(movie("Фильм Ünï Ж").source, None);
     }
 
     #[test]
