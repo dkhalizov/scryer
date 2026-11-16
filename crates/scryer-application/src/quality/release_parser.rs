@@ -263,7 +263,9 @@ fn synthesize_release_parse_context(raw: &str) -> ReleaseParseContext {
         .find(|(index, token)| {
             (looks_like_release_metadata_token(token, scan_tokens)
                 || (!series_facet && *index > title_start && movie_tail_at(*index, scan_tokens))
-                || series_season_at(*index, scan_tokens, raw))
+                || series_season_at(*index, scan_tokens, raw)
+                || season_comma_episodes_at(*index, scan_tokens)
+                || part_marker_at(*index, scan_tokens))
                 && !numeric_title_word(token, &scan_tokens[index + 1..], scan_tokens)
         })
         .map(|(index, _)| index)
@@ -364,13 +366,13 @@ fn numeric_title_word(token: &str, later: &[String], tokens: &[String]) -> bool 
             || (!later.is_empty() && looks_like_daily_token_sequence(later));
     }
     looks_like_absolute_episode_token(&normalized)
-        && later.iter().any(|t| {
+        && (part_before_tv_source(later) || later.iter().any(|t| {
             let next = normalize_alphanumeric_upper(t);
             looks_like_standard_episode_token(&next)
                 || looks_like_season_pack_marker(&next, tokens)
                 || spelled_season_marker(&next, tokens)
                 || year(t)
-        })
+        }))
         // fork (P38): Dutch `13 Series Se.1 afl.2`.
         || (looks_like_absolute_episode_token(&normalized) && later.iter().any(|t| chain_marker(&normalize_alphanumeric_upper(t), tokens)))
 }
@@ -421,6 +423,62 @@ fn strict_identity_prefix(token: &str) -> bool {
     }
 }
 
+/// `Season 1, episodes 01-26` / `Сезон 1, серії 01-26`.
+fn season_comma_episodes(tokens: &[String]) -> bool {
+    (0..tokens.len()).any(|i| season_comma_episodes_at(i, tokens))
+}
+
+fn season_comma_episodes_at(index: usize, tokens: &[String]) -> bool {
+    tokens.get(index..index + 3).is_some_and(|w| {
+        matches!(w[0].to_uppercase().as_str(), "SEASON" | "СЕЗОН")
+            && w[1].strip_suffix(',').is_some_and(|d| {
+                (1..=2).contains(&d.len()) && d.bytes().all(|b| b.is_ascii_digit())
+            })
+            && ["EPISODE", "СЕРІЇ"].iter().any(|e| w[2].to_uppercase().starts_with(e))
+    })
+}
+
+/// `Part01`/`Part 02` followed within two tokens by a broadcast-TV source.
+fn part_before_tv_source(tokens: &[String]) -> bool {
+    (1..tokens.len()).any(|index| part_marker_at(index, tokens))
+}
+
+fn part_marker_at(index: usize, tokens: &[String]) -> bool {
+    tokens.get(index).filter(|_| index > 0).is_some_and(|token| {
+        let upper = token.to_ascii_uppercase();
+        let digits_at = match upper.strip_prefix("PART") {
+            Some("") => index + 1,
+            Some(d) if d.len() <= 2 && d.bytes().all(|b| b.is_ascii_digit()) => index,
+            _ => return false,
+        };
+        let number_ok = tokens
+            .get(digits_at)
+            .is_some_and(|t| t.len() <= 2 && t.bytes().all(|b| b.is_ascii_digit()) || digits_at == index);
+        number_ok
+            && tokens.iter().skip(digits_at + 1).take(2).any(|t| {
+                matches!(
+                    t.to_ascii_uppercase().as_str(),
+                    "HDTV" | "PDTV" | "SDTV" | "DSR" | "TVRIP"
+                )
+            })
+    })
+}
+
+/// A name that opens `NN-NN Word`: season-episode, not a movie or a range.
+fn leading_season_dash_episode(raw: &str, tokens: &[String]) -> bool {
+    let b = raw.trim_start().as_bytes();
+    b.len() > 6
+        && b[0].is_ascii_digit()
+        && b[1].is_ascii_digit()
+        && b[2] == b'-'
+        && b[3].is_ascii_digit()
+        && b[4].is_ascii_digit()
+        && b[5] == b' '
+        && tokens.len() > 2
+        && tokens[2].chars().next().is_some_and(char::is_alphabetic)
+        && !tokens.iter().any(|t| parse_context_year(t).is_some())
+}
+
 fn guess_context_facet(raw: &str, tokens: &[String]) -> ContextFacetHint {
     if tokens
         .iter()
@@ -443,6 +501,10 @@ fn guess_context_facet(raw: &str, tokens: &[String]) -> ContextFacetHint {
         || tokens.iter().any(|token| looks_like_daily_token(token))
         || looks_like_daily_token_sequence(tokens)
         || looks_like_season_pack_release(tokens)
+        // fork (P46): `Title Part01 720p HDTV`, `11-02 Title (HD)`.
+        || season_comma_episodes(tokens)
+        || part_before_tv_source(tokens)
+        || leading_season_dash_episode(raw, tokens)
         || tokens.iter().any(|token| {
             looks_like_season_pack_marker(&normalize_alphanumeric_upper(token), tokens)
         })
@@ -917,6 +979,21 @@ fn looks_like_absolute_episode_token(token: &str) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn p46_facet_rules_read_part_season_comma_and_leading_pair() {
+        let t = |s: &str| s.split(' ').map(str::to_string).collect::<Vec<_>>();
+        assert!(part_before_tv_source(&t("Road Part01 720p HDTV x264")));
+        assert!(part_before_tv_source(&t("Road Part 02 720p HDTV")));
+        assert!(!part_before_tv_source(&t("Harbors Part1 2010 720p BluRay")));
+        assert!(season_comma_episodes(&t("Серія Сезон 1, серії 01-26")));
+        assert!(!season_comma_episodes(&t("Season 1 episodes")));
+        let raw = "11-02 The Series Reaction (HD).m4v";
+        assert!(leading_season_dash_episode(raw, &t(raw)));
+        assert!(!leading_season_dash_episode("24-7 x", &t("24-7 x")));
+        // no panic on multibyte leading text
+        assert!(!leading_season_dash_episode("ñ1-02 é ü", &t("ñ1-02 é ü")));
+    }
 
     fn title(raw: &str) -> String {
         let analysis = neutral_release_analysis(raw);

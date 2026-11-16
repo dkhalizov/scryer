@@ -35,6 +35,13 @@ pub(crate) fn sanitize_input(raw: &str) -> SanitizedInput {
         }
         None => cleaned,
     };
+    let cleaned = split_year_slash_group(&cleaned).unwrap_or(cleaned);
+    let cleaned = drop_dangling_season_before_quote(&cleaned).unwrap_or(cleaned);
+    // fork (P46): a lone `(` with no closing `)` is stray punctuation.
+    let cleaned = match cleaned.strip_prefix('(') {
+        Some(rest) if !cleaned.contains(')') => rest.to_string(),
+        _ => cleaned,
+    };
     let punctuation_normalized = cleaned.replace('&', " and ").replace(':', " ");
     // fork (P34a): `S06E04,Marco.Polo` – a comma right after an `SxxEyy` run
     // separates it from the title (the lexer does not split on `,`).
@@ -44,6 +51,38 @@ pub(crate) fn sanitize_input(raw: &str) -> SanitizedInput {
         value: punctuation_normalized,
         hints,
     }
+}
+
+/// fork (P46): `Title (2016/S01/WEB-DL/1080p)` reads as `Title (2016) S01 WEB-DL 1080p`,
+/// so the identity after the year is not lost inside the bracket.
+fn split_year_slash_group(s: &str) -> Option<String> {
+    let b = s.as_bytes();
+    let open = (0..b.len().checked_sub(6)?).find(|&i| {
+        b[i] == b'(' && b[i + 1..i + 5].iter().all(u8::is_ascii_digit) && b[i + 5] == b'/'
+    })?;
+    let close = open + s[open..].find(')')?;
+    let inner = &s[open + 6..close];
+    Some(format!(
+        "{}) {}{}",
+        &s[..open + 5],
+        inner.replace('/', " "),
+        &s[close + 1..]
+    ))
+}
+
+/// fork (P46): `Title s03 e - "Title Season 3 Episode 10"` keeps only the spelled-out
+/// form; the dangling `s03 e -` carries no episode number.
+fn drop_dangling_season_before_quote(s: &str) -> Option<String> {
+    let lower = s.to_ascii_lowercase();
+    let at = lower.find(" e - \"")?;
+    let start = lower[..at].rfind(' ').map_or(0, |i| i + 1);
+    let marker = &lower[start..at];
+    let digits = marker.strip_prefix('s')?;
+    if digits.is_empty() || !digits.bytes().all(|b| b.is_ascii_digit()) {
+        return None;
+    }
+    let tail = &s[at + " e - \"".len()..];
+    Some(format!("{}{}", &s[..start], tail.trim_end_matches('"')))
 }
 
 /// Byte length of a leading site tag: `www.site.com - `, `[ site.co.uk ] - `,

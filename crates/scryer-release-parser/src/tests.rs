@@ -6539,3 +6539,37 @@ fn repeated_identity_title_is_primary() {
         ]
     );
 }
+
+#[test]
+fn p46_spaced_season_span_before_quality_bracket_is_multi_season() {
+    for name in [
+        "Quiet Meridian S01 S04 (1080p BluRay x265 HEVC 10bit AAC 5.1 Vyndros)",
+        "Quiet Meridian S01 04 (1080p BluRay x265 HEVC 10bit AAC 5.1 Vyndros)",
+        "Quiet Meridian S01 04 (1080p Серія ünï 5.1 Vyndros)",
+    ] {
+        let analysis =
+            analyze_release_for_target(name, &context(ContextFacetHint::Series, "Quiet Meridian"));
+        let episode = analysis
+            .best_candidate()
+            .and_then(|c| c.projected.episode.clone())
+            .unwrap_or_else(|| panic!("{name}: expected episodic"));
+        assert_eq!(episode.season_numbers, vec![1, 4], "{name}");
+        assert!(episode.is_multi_season, "{name}");
+    }
+}
+
+#[test]
+fn p46_sanitize_splits_year_slash_group_and_dangling_season() {
+    use crate::sanitize::sanitize_input as san;
+    assert_eq!(
+        san("Seriesless (2016/S01/WEB-DL/1080p)").value,
+        "Seriesless (2016) S01 WEB-DL 1080p"
+    );
+    assert_eq!(
+        san("(Series of Title s03 e - \"Series of Title Season 3 Episode 10\"").value,
+        "Series of Title Series of Title Season 3 Episode 10"
+    );
+    // non-ASCII must not panic on byte slicing
+    let _ = san("Серія (2016/Сезон/ü) s03 e - \"ñ\"");
+    let _ = san("Série (2016/é");
+}
