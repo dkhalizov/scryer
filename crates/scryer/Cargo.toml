@@ -104,6 +104,8 @@ tempfile = "3"
 # fork (D91 F2): flow-harness fakes (Torznab HTTP fake; list-plugin types for the Plex fake)
 scryer-mock-apis = { path = "../scryer-mock-apis" }
 scryer-plugin-sdk = { path = "../scryer-plugin-sdk" }
+# fork (P45): per-ID reporting for parity_flow
+scryer-parity = { path = "../../parity/harness" }
 
 [build-dependencies]
 embed-resource = "3.0.11"

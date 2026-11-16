@@ -5663,6 +5663,7 @@ dependencies = [
  "scryer-logging",
  "scryer-mock-apis",
  "scryer-outbound-http",
+ "scryer-parity",
  "scryer-plugin-sdk",
  "scryer-plugins",
  "scryer-rules",

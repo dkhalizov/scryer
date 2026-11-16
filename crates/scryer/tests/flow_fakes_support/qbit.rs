@@ -405,4 +405,20 @@ impl DownloadClientPluginProvider for FakeQbitProvider {
     fn available_provider_types(&self) -> Vec<String> {
         vec![CLIENT_TYPE.to_string()]
     }
+
+    // fork (P45): release search asks the provider what a client type accepts
+    // and whether its plugin is loaded; without these it drops every torrent.
+    fn accepted_inputs_for_provider(&self, provider_type: &str) -> Vec<String> {
+        if provider_type.eq_ignore_ascii_case(CLIENT_TYPE) {
+            vec!["torrent_file".to_string(), "magnet_uri".to_string()]
+        } else {
+            vec![]
+        }
+    }
+
+    fn plugin_name_for_provider(&self, provider_type: &str) -> Option<String> {
+        provider_type
+            .eq_ignore_ascii_case(CLIENT_TYPE)
+            .then(|| "qBittorrent (fake)".to_string())
+    }
 }

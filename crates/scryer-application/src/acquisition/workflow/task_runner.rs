@@ -1148,6 +1148,17 @@ impl AppUseCase {
 }
 
 impl AppUseCase {
+    // fork (P45): flow-harness seam. Runs one full background acquisition
+    // cycle directly, the way the poller would, without waiting on a timer.
+    pub async fn run_acquisition_cycle_for_test(&self) {
+        run_background_acquisition_cycle(
+            self,
+            BackgroundAcquisitionPass::Full,
+            WalkBudget::Unbounded,
+        )
+        .await;
+    }
+
     /// One convergence cycle, returning what it walked so a test can assert on
     /// the deferral counters the poller re-arms from.
     #[cfg(test)]
