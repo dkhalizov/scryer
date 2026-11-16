@@ -731,7 +731,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:103"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|5854fd4cdffa|0
 - id: SON-PARSE-0086
@@ -739,7 +740,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:104"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|4badc8e9cf92|0
 - id: SON-PARSE-0087
@@ -747,7 +749,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:105"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|2be94233cb1c|0
 - id: SON-PARSE-0088
@@ -755,7 +758,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:106"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|0f70167dd19d|0
 - id: SON-PARSE-0089
@@ -925,7 +929,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:125"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|1faca5698fca|0
 - id: SON-PARSE-0108
@@ -933,7 +938,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:126"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|e359d401a0e8|0
 - id: SON-PARSE-0109
@@ -941,7 +947,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:127"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|fd5b7b0cb1b1|0
 - id: SON-PARSE-0110
@@ -949,7 +956,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:128"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|ec41eba36d45|0
 - id: SON-PARSE-0111
@@ -957,7 +965,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:129"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|2df5078aa391|0
 - id: SON-PARSE-0112
@@ -965,7 +974,8 @@
   source: reference
   ref: "Sonarr@v4.0.20.3014 src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs:130"
   in_scope: true
-  status: red
+  status: waived
+  decision: "D94 W-D6: D75(1) absolute numbering path, as anime; none in our library (D93)"
   tests: [scryer-application::parity_parse::son_parse]
 # key: src/NzbDrone.Core.Test/ParserTests/AbsoluteEpisodeNumberParserFixture.cs|should_parse_absolute_numbers|65e35ea8838d|0
 - id: SON-PARSE-0113
