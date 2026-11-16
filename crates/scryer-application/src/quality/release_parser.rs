@@ -996,6 +996,10 @@ mod tests {
         let e = ep("Series.Title.S06E01b.Fade.Out.Fade.in.Part.2.1080p.DSNP.WEB-DL.AAC2.0.H.264-FLUX");
         assert_eq!((e.season, e.episode_numbers, e.is_split_episode), (Some(6), vec![1], true));
         assert!(!ep("Series.Title.S06E01.1080p.WEB-DL").is_split_episode);
+        // Hostile non-ASCII suffixes must not panic.
+        for raw in ["Show.S06E01\u{c9}.720p", "S06E01\u{fc}", "Show.5of\u{fc}.720p"] {
+            let _ = crate::parse_release_metadata(raw);
+        }
         assert_eq!(list("Series T Se.3 afl.3"), (Some(3), vec![3]));
         assert_eq!(list("Series T Se.3 afl.3 en 4"), (Some(3), vec![3, 4]));
         assert_eq!(title("Series T Se.3 afl.3 en 4"), "Series T");

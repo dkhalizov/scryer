@@ -7220,6 +7220,9 @@ fn exceeds_season_digits(digits: &str) -> bool {
 
 /// `01B` -> `01`: one trailing split letter a-d after plain digits.
 fn split_letter_trimmed(suffix: &str) -> Option<&str> {
+    if !suffix.is_ascii() {
+        return None; // a byte split inside a multi-byte char would panic
+    }
     let (digits, letter) = suffix.split_at(suffix.len().checked_sub(1)?);
     (matches!(letter, "A" | "B" | "C" | "D")
         && !digits.is_empty()
