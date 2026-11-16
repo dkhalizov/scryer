@@ -114,6 +114,8 @@ fn scryer_weight(w: &ScoreWeights, kind: SubtitleScoreKind, name: &str) -> Optio
         "resolution" => w.resolution,
         "video_codec" => w.video_codec,
         "hearing_impaired" => w.hearing_impaired,
+        "streaming_service" => w.streaming_service,
+        "edition" if !episode => w.edition,
         _ => return None,
     })
 }

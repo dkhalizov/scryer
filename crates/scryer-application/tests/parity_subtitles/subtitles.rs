@@ -56,7 +56,7 @@
 use std::collections::BTreeMap;
 
 use scryer_application::parse_release_metadata;
-use scryer_application::subtitles::scoring::SubtitleScoreKind;
+use scryer_application::subtitles::scoring::edition_matches;
 use scryer_parity::{Suite, corpus};
 use serde_json::{Value, json};
 
@@ -97,19 +97,6 @@ fn baz_subtitles_custom_weights() {
     suite.finish();
 }
 
-const EDITION: &str = "SubtitleQuery (subtitles/provider.rs) has no edition field and ScoreWeights (subtitles/scoring.rs) no edition weight, so Scryer computes no edition match";
-
-/// `guess_matches` (0060..0063): actual `edition_in_matches` comes from the
-/// production weight table for the movie kind. No edition factor -> `None`
-/// (Scryer cannot answer, red against the reference's bool). If a factor ever
-/// appears in `scryer_weight`, this panics so the case gets a real mapping.
-fn edition_in_matches() -> Option<bool> {
-    match super::scryer_weight(&SubtitleScoreKind::Movie.weights(), SubtitleScoreKind::Movie, "edition") {
-        None => None,
-        Some(_) => panic!("Scryer now has an edition weight ({EDITION}): map guess_matches for real"),
-    }
-}
-
 #[test]
 fn baz_subtitles_absent() {
     let Some(mut suite) = Suite::open("scryer-application::parity_subtitles::baz_subtitles_absent") else {
@@ -119,7 +106,10 @@ fn baz_subtitles_absent() {
         let id = case["id"].as_str().unwrap();
         if suite.wants(id) {
             let expected = case["expect"]["edition_in_matches"].as_bool();
-            suite.check(id, expected, edition_in_matches());
+            let side = |v: &Value| v["edition"].as_str().map(str::to_string);
+            let given = &case["input"]["given"];
+            let actual = edition_matches(side(&given["video"]).as_deref(), side(&given["guess"]).as_deref());
+            suite.check(id, expected, Some(actual));
         }
     }
     // `video_fromguess`: the reference builds a video from a guessit dict;

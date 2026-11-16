@@ -17,6 +17,9 @@ pub struct ScoreWeights {
     pub resolution: i32,
     pub video_codec: i32,
     pub hearing_impaired: i32,
+    // fork (P42): Bazarr's streaming_service / movie edition factors.
+    pub streaming_service: i32,
+    pub edition: i32,
 }
 
 impl ScoreWeights {
@@ -38,12 +41,14 @@ impl SeriesScore {
             year: 90,
             season: 30,
             episode: 30,
-            release_group: 15,
+            release_group: 14, // fork (P42): Bazarr 14 (was 15)
             source: 7,
             audio_codec: 3,
             resolution: 2,
             video_codec: 2,
             hearing_impaired: 1,
+            streaming_service: 1,
+            edition: 0,
         }
     }
 }
@@ -61,12 +66,14 @@ impl MovieScore {
             year: 30,
             season: 0,
             episode: 0,
-            release_group: 15,
+            release_group: 13, // fork (P42): Bazarr movie 13 (was 15)
             source: 7,
             audio_codec: 3,
             resolution: 2,
             video_codec: 2,
             hearing_impaired: 1,
+            streaming_service: 1,
+            edition: 1,
         }
     }
 }
@@ -125,11 +132,13 @@ pub(crate) enum MatchFlag {
     ExternalId = 13,
     SeriesImdbId = 14,
     AbsoluteEpisode = 15,
+    StreamingService = 16,
+    Edition = 17,
 }
 
 impl MatchFlag {
-    const fn bit(self) -> u16 {
-        1u16 << (self as u8)
+    const fn bit(self) -> u32 {
+        1u32 << (self as u8)
     }
 
     fn from_key(key: &str) -> Option<Self> {
@@ -150,13 +159,15 @@ impl MatchFlag {
             "external_id" => Some(Self::ExternalId),
             "series_imdb_id" => Some(Self::SeriesImdbId),
             "absolute_episode" => Some(Self::AbsoluteEpisode),
+            "streaming_service" => Some(Self::StreamingService),
+            "edition" => Some(Self::Edition),
             _ => None,
         }
     }
 }
 
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
-pub(crate) struct MatchBits(u16);
+pub(crate) struct MatchBits(u32);
 
 impl MatchBits {
     pub(crate) fn insert(&mut self, flag: MatchFlag) {
@@ -233,7 +244,19 @@ fn compute_score_bits(weights: &ScoreWeights, matches: MatchBits) -> i32 {
     if matches.contains(MatchFlag::HearingImpaired) {
         score += weights.hearing_impaired;
     }
+    if matches.contains(MatchFlag::StreamingService) {
+        score += weights.streaming_service;
+    }
+    if matches.contains(MatchFlag::Edition) {
+        score += weights.edition;
+    }
     score
+}
+
+/// fork (P42): Bazarr's `edition` match: both sides empty, or both name the same edition.
+pub fn edition_matches(video: Option<&str>, subtitle: Option<&str>) -> bool {
+    let norm = |e: Option<&str>| e.map(str::trim).filter(|e| !e.is_empty()).map(str::to_lowercase);
+    norm(video) == norm(subtitle)
 }
 
 /// Compute a subtitle match score given which factors matched.
@@ -342,7 +365,8 @@ mod tests {
             + w.source
             + w.audio_codec
             + w.resolution
-            + w.video_codec;
+            + w.video_codec
+            + w.streaming_service;
         assert_eq!(w.hash, expected);
     }
 
@@ -355,8 +379,18 @@ mod tests {
             + w.source
             + w.audio_codec
             + w.resolution
-            + w.video_codec;
+            + w.video_codec
+            + w.streaming_service
+            + w.edition;
         assert_eq!(w.hash, expected);
+    }
+
+    #[test]
+    fn edition_match_follows_bazarr() {
+        assert!(edition_matches(None, None));
+        assert!(edition_matches(Some("Director's Cut"), Some("director's cut")));
+        assert!(!edition_matches(Some("Director's Cut"), None));
+        assert!(!edition_matches(None, Some("Director's Cut")));
     }
 
     #[test]
@@ -498,11 +532,11 @@ mod tests {
     }
 
     #[test]
-    fn series_release_group_factor_adds_exactly_15() {
+    fn series_release_group_factor_adds_exactly_14() {
         let w = SERIES_WEIGHTS.weights();
         let mut matches = HashMap::new();
         matches.insert("release_group".to_string(), true);
-        assert_eq!(compute_score(&w, &matches), 15);
+        assert_eq!(compute_score(&w, &matches), 14);
     }
 
     #[test]
@@ -582,6 +616,7 @@ mod tests {
         matches.insert("audio_codec".to_string(), true);
         matches.insert("resolution".to_string(), true);
         matches.insert("video_codec".to_string(), true);
+        matches.insert("streaming_service".to_string(), true);
         let score = compute_score(&w, &matches);
         assert_eq!(score, w.hash);
     }
@@ -597,6 +632,8 @@ mod tests {
         matches.insert("audio_codec".to_string(), true);
         matches.insert("resolution".to_string(), true);
         matches.insert("video_codec".to_string(), true);
+        matches.insert("streaming_service".to_string(), true);
+        matches.insert("edition".to_string(), true);
         let score = compute_score(&w, &matches);
         assert_eq!(score, w.hash);
     }
@@ -615,6 +652,7 @@ mod tests {
         matches.insert("audio_codec".to_string(), true);
         matches.insert("resolution".to_string(), true);
         matches.insert("video_codec".to_string(), true);
+        matches.insert("streaming_service".to_string(), true);
         matches.insert("hearing_impaired".to_string(), true);
         let score = compute_score(&w, &matches);
         // hash == sum of non-hash non-HI, so all factors = hash + hash + HI

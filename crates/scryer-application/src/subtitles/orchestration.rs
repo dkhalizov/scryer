@@ -2117,6 +2117,11 @@ pub fn build_subtitle_query(
         parse_release_metadata_candidate(media_file.grabbed_release_title.as_deref());
 
     let preferred_release = scene_release.as_ref().or(grabbed_release.as_ref());
+    // fork (P42): Bazarr parses the video file path first; the scene name only fills gaps.
+    let path_release = std::path::Path::new(&media_file.file_path)
+        .file_stem()
+        .and_then(|stem| stem.to_str())
+        .and_then(|stem| parse_release_metadata_candidate(Some(stem)));
     let fallback_episode_context = preferred_release
         .map(parsed_episode_context)
         .unwrap_or_default();
@@ -2172,11 +2177,15 @@ pub fn build_subtitle_query(
         community_entry: episode_context.community_entry.clone(),
         external_ids: subtitle_external_ids(title, &episode_context),
         languages: languages.to_vec(),
-        release_group: preferred_release
+        release_group: path_release
+            .as_ref()
             .and_then(|release| release.release_group.clone())
+            .or_else(|| preferred_release.and_then(|release| release.release_group.clone()))
             .or_else(|| media_file.release_group.clone()),
-        source: preferred_release
+        source: path_release
+            .as_ref()
             .and_then(|release| release.source.as_ref().map(ToString::to_string))
+            .or_else(|| preferred_release.and_then(|release| release.source.as_ref().map(ToString::to_string)))
             .or_else(|| media_file.source_type.clone()),
         video_codec: preferred_release
             .and_then(|release| release.video_codec.as_ref().map(ToString::to_string))
@@ -2187,14 +2196,18 @@ pub fn build_subtitle_query(
             .or_else(|| media_file.audio_codec_parsed.clone())
             .or(analysis_labels.audio_codec),
         // fork (P33 review): a resolution the parser defaulted is no claim.
-        resolution: preferred_release
+        resolution: path_release
+            .as_ref()
+            .filter(|release| !release.parse_hints.iter().any(|hint| hint == scryer_release_parser::DEFAULT_RESOLUTION_HINT))
+            .and_then(|release| release.quality.clone())
+            .or_else(|| preferred_release
             .filter(|release| {
                 !release
                     .parse_hints
                     .iter()
                     .any(|hint| hint == scryer_release_parser::DEFAULT_RESOLUTION_HINT)
             })
-            .and_then(|release| release.quality.clone())
+            .and_then(|release| release.quality.clone()))
             .or_else(|| media_file.resolution.clone())
             .or(analysis_labels.quality),
         hearing_impaired,
